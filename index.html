@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物流通航：中美需求对比分析</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1a56db;--cn:#dc2626;--us:#2563eb;
+  --bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;
+  --border:#e2e8f0;--shadow:0 1px 3px rgba(0,0,0,.1);
+  --radius:12px;--max-w:1280px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans SC',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,23,42,.95);backdrop-filter:blur(12px);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
+nav .logo{color:#fff;font-weight:700;font-size:14px}
+nav .links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav .links::-webkit-scrollbar{display:none}
+nav .links a{color:rgba(255,255,255,.5);font-size:11px;font-weight:500;text-decoration:none;padding:5px 8px;border-radius:5px;white-space:nowrap}
+nav .links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.sec{padding:80px 24px 60px}
+.sec-inner{max-width:var(--max-w);margin:0 auto}
+.sec-title{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.03em;margin-bottom:6px;line-height:1.2}
+.sec-sub{font-size:clamp(15px,2vw,18px);color:var(--text2);margin-bottom:32px;max-width:700px}
+.sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin-bottom:10px}
+.source{font-size:11px;color:#94a3b8;margin-top:6px;font-style:italic}
+.source a{color:#94a3b8;text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.chart-box{width:100%;height:450px;min-height:320px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+.chart-title{font-size:15px;font-weight:700;margin-bottom:2px}
+.chart-desc{font-size:12px;color:var(--text2);margin-bottom:12px}
+.toggle-group{display:inline-flex;gap:3px;background:var(--bg);border-radius:8px;padding:3px;margin-bottom:16px}
+.toggle-btn{padding:5px 12px;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--text2);font-family:inherit}
+.toggle-btn.active{background:var(--primary);color:#fff}
+.spec-table{width:100%;border-collapse:collapse;font-size:13px}
+.spec-table th{background:#f1f5f9;font-weight:600;text-align:left;padding:8px 12px;border-bottom:2px solid var(--border);font-size:12px}
+.spec-table td{padding:8px 12px;border-bottom:1px solid var(--border)}
+.spec-table .hl{background:#dcfce7;font-weight:600}
+.insight{border-left:4px solid var(--primary);background:#eff6ff;padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:13px}
+.insight.red{border-left-color:var(--cn);background:#fef2f2}
+.insight.green{border-left-color:#16a34a;background:#f0fdf4}
+.insight b{display:block;margin-bottom:3px;font-size:14px}
+.analysis-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.analysis-card h4{font-size:15px;font-weight:700;margin-bottom:6px}
+.analysis-card p{font-size:13px;color:var(--text2)}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:6px}
+.timeline{position:relative;padding:16px 0 16px 36px;border-left:3px solid rgba(255,255,255,.15)}
+.tl-item{position:relative;margin-bottom:22px;padding-left:16px}
+.tl-item::before{content:'';position:absolute;left:-28px;top:5px;width:12px;height:12px;border-radius:50%;border:3px solid #fff}
+.tl-item.cn::before{background:var(--cn)}.tl-item.us::before{background:var(--us)}
+.tl-item .yr{font-size:11px;font-weight:700;margin-bottom:1px}
+.tl-item .yr.cn{color:#f87171}.tl-item .yr.us{color:#60a5fa}
+.tl-item .ds{font-size:13px;color:rgba(255,255,255,.55)}
+.cost-row{display:grid;grid-template-columns:200px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.cost-row .label{font-weight:600;color:var(--text)}
+.cost-row .val{color:var(--text2)}
+.cost-row .val b{color:var(--text);font-weight:700}
+.decision-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:768px){.decision-row{grid-template-columns:1fr};.sec{padding:68px 16px 40px};nav .links{display:none}}
+.phase-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.phase-card h4{font-size:16px;font-weight:700;margin-bottom:3px;text-align:center}
+.phase-card .period{font-size:12px;color:var(--text2);margin-bottom:12px;text-align:center}
+.phase-card ul{font-size:13px;color:var(--text2);list-style:none;padding:0}
+.phase-card li{padding:3px 0 3px 18px;position:relative}
+.phase-card li::before{content:'>';position:absolute;left:0;color:var(--primary);font-weight:700}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#0f172a,#1e3a5f,#0f172a);color:#fff;padding:80px 24px}
+.hero-title{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:14px}
+.hero-sub{font-size:clamp(15px,2.5vw,20px);color:rgba(255,255,255,.55);margin-bottom:40px;max-width:580px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;max-width:860px;width:100%}
+.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:24px 16px;opacity:0;transform:translateY(24px);transition:all .5s}
+.stat-card.visible{opacity:1;transform:translateY(0)}
+.stat-card .num{font-size:clamp(24px,3.5vw,36px);font-weight:800;margin-bottom:3px}
+.stat-card .num .cn{color:#f87171}.stat-card .num .us{color:#60a5fa}.stat-card .num .vs{color:rgba(255,255,255,.25);font-size:.55em;margin:0 3px}
+.stat-card .lbl{font-size:12px;color:rgba(255,255,255,.4)}
+footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-align:center;font-size:12px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">物流通航 | China-US Analysis</div>
+  <div class="links">
+    <a href="#hero">首页</a><a href="#s1">地理经济</a><a href="#s2">基础设施</a><a href="#s3">需求分析</a>
+    <a href="#s4">机队</a><a href="#s5">成本推导</a><a href="#s6">有人机</a><a href="#s7">无人机</a>
+    <a href="#s8">设计选择</a><a href="#s9">路径</a><a href="#s10">结论</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="sec">
+  <div class="hero-title">物流通航：中美需求对比分析</div>
+  <div class="hero-sub">从人口、GDP、机场分布出发，以第一性原理推导物流飞行器需求</div>
+  <div class="stat-grid">
+    <div class="stat-card" style="transition-delay:0s"><div class="num"><span class="cn">14亿</span><span class="vs">vs</span><span class="us">3.3亿</span></div><div class="lbl">人口</div></div>
+    <div class="stat-card" style="transition-delay:.15s"><div class="num"><span class="cn">475</span><span class="vs">vs</span><span class="us">19,969</span></div><div class="lbl">通航机场</div></div>
+    <div class="stat-card" style="transition-delay:.3s"><div class="num"><span class="cn">3,173</span><span class="vs">vs</span><span class="us">210,000</span></div><div class="lbl">通航飞机</div></div>
+    <div class="stat-card" style="transition-delay:.45s"><div class="num" style="font-size:clamp(18px,2.5vw,26px);color:#22c55e">无人机改变什么？</div><div class="lbl">Game Changer?</div></div>
+  </div>
+  <div style="position:absolute;bottom:28px;color:rgba(255,255,255,.25);font-size:12px">↓ 向下滚动</div>
+</section>
+
+<!-- S1: GEOGRAPHY + ECONOMY (SINGLE MAP WITH LAYERS) -->
+<section id="s1" class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">01 — 地理与经济</div>
+    <div class="sec-title fade-in">人口、GDP与机场：同一张地图上的三个维度</div>
+    <div class="sec-sub fade-in">切换图层观察人口密度、经济水平与航空基础设施的空间关系</div>
+    <div class="toggle-group" id="map-toggle">
+      <button class="toggle-btn active" onclick="switchLayer('density')">人口密度</button>
+      <button class="toggle-btn" onclick="switchLayer('gdp')">GDP人均</button>
+      <button class="toggle-btn" onclick="switchLayer('airports')">机场密度</button>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="chart-title">中国 — 省级数据</div>
+        <div class="chart-desc" id="cn-map-desc">颜色=人口密度(人/km²)，气泡=通航机场数</div>
+        <div id="map-cn" class="chart-box" style="height:520px"></div>
+        <div class="source">数据来源: 国家统计局2024年统计公报; CAAC《2024年民航行业发展统计公报》; 通航机场数据来自CAAC通用航空信息管理系统(2024.12)</div>
+      </div>
+      <div class="card">
+        <div class="chart-title">美国 — 各州数据</div>
+        <div class="chart-desc" id="us-map-desc">按人口密度排序，气泡=航空设施数</div>
+        <div id="map-us" class="chart-box" style="height:520px"></div>
+        <div class="source">数据来源: US Census Bureau 2024 Population Estimates; BEA GDP by State Q4 2024; FAA NPIAS 2025-2029 Report</div>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">GDP人均 vs 通航机场密度（关键发现）</div>
+      <div class="chart-desc">气泡大小=人口规模 | 中国即使最富裕省份的通航密度，也远低于美国最贫穷的州</div>
+      <div id="chart-scatter" class="chart-box"></div>
+      <div class="source">数据来源: 中国国家统计局2024; US BEA 2024; CAAC 2024; FAA NPIAS 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- S2: INFRASTRUCTURE GAP -->
+<section id="s2" class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-label">02 — 基础设施差距</div>
+    <div class="sec-title fade-in">178倍的差距</div>
+    <div class="sec-sub fade-in">中国每百万人0.34个通航机场，美国为60.5个</div>
+    <div class="grid2">
+      <div class="card"><div class="chart-title">每百万人通航设施</div><div id="chart-gap1" class="chart-box" style="height:280px"></div><div class="source">CAAC: 475通航机场(2024.12); FAA: 19,969航空设施(2022 NPIAS)</div></div>
+      <div class="card"><div class="chart-title">每百万人通航飞机</div><div id="chart-gap2" class="chart-box" style="height:280px"></div><div class="source">CAAC: 3,173架(2023); FAA GA Survey CY2024: ~210,000架</div></div>
+    </div>
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">物流总量全景对比</div>
+      <div class="chart-desc">中国快递量是美国8倍，公路货运量接近，但航空货运量仅为美国一半——航空物流占比严重偏低</div>
+      <div id="chart-logistics" class="chart-box" style="height:400px"></div>
+      <div class="source">公路货运: 中国交通运输部2024(403亿吨); US BTS Freight Facts 2024(~115亿吨); 航空货运: CAAC 2024(2,006万吨); BTS 2024(~4,500万吨); 快递: 国家邮政局2024(1,750亿件); USPS/UPS/FedEx合计~210亿件; 公路里程: 交通运输部(549万km); FHWA(676万km); 铁路: 国铁集团(16.2万km含4.8万高铁); FRA(22.5万km)</div>
+    </div>
+  </div>
+</section>
+
+<!-- S3: DEMAND ANALYSIS -->
+<section id="s3" class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">03 — 第一性原理需求分析</div>
+    <div class="sec-title fade-in">物流公司需要什么？</div>
+    <div class="sec-sub fade-in">从物流公司三个核心问题出发：到达、速度、成本</div>
+
+    <div class="grid3 fade-in">
+      <div class="analysis-card"><span class="tag" style="background:#f0fdf4;color:#16a34a">核心逻辑</span><h4>物流公司的三个根本问题</h4><p>1. <b>覆盖</b>: 地面运输到不了的地方怎么办？<br>2. <b>速度</b>: 时敏货物能否比地面快？<br>3. <b>成本</b>: 单位成本能否与地面竞争？<br><br>只有三个条件中至少满足一个，航空物流才有商业逻辑。</p></div>
+      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国</span><h4>中国的结构性需求</h4><p>西部55%国土公路密度0.17km/km²（全国均值0.47）。西藏仅800km铁路覆盖122万km²。1,750亿件快递，农村末端5-7天。<br><br>核心矛盾：电商同日达/次日达预期 vs 西部基础设施严重不足。</p><div class="source">交通运输部2024统计; 国家邮政局2024</div></div>
+      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国参考</span><h4>阿拉斯加模型</h4><p>170万km²中91%无公路。~80%社区靠航空物流。3,500+简易跑道。Caravan级飞机是主力。货运成本$1-3/lb。<br><br>这是成熟的"缺路→用飞机"模型，可直接参考。</p><div class="source">Alaska DOT&PF; FAA Alaska Region; Alaska Air Carriers Association</div></div>
+    </div>
+
+    <div class="grid2" style="margin-top:20px">
+      <div class="card"><div class="chart-title">中美需求因素雷达图</div><div class="chart-desc">六维度对比</div><div id="chart-radar" class="chart-box"></div><div class="source">综合分析基于: 国家邮政局、CAAC、FAA、IATA 2024数据</div></div>
+      <div class="card"><div class="chart-title">中国西部覆盖缺口</div><div class="chart-desc">红色=航空物流机会区域(55%国土)</div><div id="chart-coverage" class="chart-box"></div><div class="source">CAAC通航机场数据(2024.12); 交通运输部路网密度数据</div></div>
+    </div>
+
+    <div class="insight fade-in" style="margin-top:20px">
+      <b>需求规模推算</b>
+      中国西部12省区面积约680万km²（≈西欧面积），人口约3.2亿。参照阿拉斯加模型（每万km²约2个简易机场），理论需要1,360个起降点。按每条航线需要2-3架飞机、覆盖200条主要航线计算，潜在飞机需求约400-600架（Caravan级或同等无人机）。
+      <div class="source">推算基于: 阿拉斯加3,500跑道/170万km²密度; 中国西部地区面积来自国家统计局</div>
+    </div>
+  </div>
+</section>
+
+<!-- S4: FLEET -->
+<section id="s4" class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-label">04 — 机队与枢纽</div>
+    <div class="sec-title fade-in">现有航空货运格局</div>
+    <div class="grid2">
+      <div class="card"><div class="chart-title">货运枢纽吞吐量（万吨/年）</div><div id="chart-hubs" class="chart-box"></div><div class="source">上海浦东: 浦东机场2024年报; 广州白云: CAAC 2024; 鄂州: 顺丰控股2024年报; Memphis: FedEx FY2024; Louisville: UPS 2024 Annual Report</div></div>
+      <div class="card"><div class="chart-title">通航机队规模对比</div><div id="chart-fleet" class="chart-box"></div><div class="source">CAAC《2023年通用航空统计》: 3,173架; FAA GA Survey CY2024: ~210,000架</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: OPERATING COST DERIVATION (NEW) -->
+<section id="s5" class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">05 — 运营成本推导</div>
+    <div class="sec-title fade-in">从成本结构理解有人vs无人的经济差异</div>
+    <div class="sec-sub fade-in">以Cessna 208 Caravan为基准，逐项推导有人机和无人机的运营成本</div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="chart-title">有人机运营成本推导（Caravan级 ~$700/hr）</div>
+        <div style="margin-top:12px">
+          <div class="cost-row"><div class="label">燃油成本</div><div class="val">PT6A-114A引擎，耗油量~240 lbs/hr × $5.50/gal ÷ 6.7 lbs/gal = <b>~$197/hr</b></div></div>
+          <div class="cost-row"><div class="label">飞行员薪酬</div><div class="val">年薪$80,000-120,000 ÷ ~800飞行小时/年 = <b>~$125/hr</b><br>含福利/培训: <b>~$180/hr</b></div></div>
+          <div class="cost-row"><div class="label">维护/检修</div><div class="val">引擎TBO 3,600hr, 大修$320,000 → $89/hr<br>机体维护~$40/hr → 合计<b>~$130/hr</b></div></div>
+          <div class="cost-row"><div class="label">保险</div><div class="val">机体险+三责险 年$30,000-50,000 ÷ 800hr = <b>~$50/hr</b></div></div>
+          <div class="cost-row"><div class="label">折旧/租赁</div><div class="val">新机$2.8M, 20年折旧, 800hr/年 = <b>~$175/hr</b><br>二手机可降至~$80/hr</div></div>
+          <div class="cost-row"><div class="label">其他</div><div class="val">起降费、导航费、地面操作 = <b>~$40/hr</b></div></div>
+          <div class="cost-row" style="border-bottom:3px solid var(--cn);font-weight:700"><div class="label" style="font-size:15px">总计</div><div class="val"><b style="font-size:18px;color:var(--cn)">~$700-770/hr</b></div></div>
+        </div>
+        <div class="source">引擎数据: P&WC PT6A-114A specs; 燃油: 2024全球航空燃油均价; 飞行员薪酬: BLS Occupational Outlook 2024; 大修成本: Covington Aircraft Engines; 保险: AOPA Insurance Analysis 2024; 机体价格: Textron Aviation 2024 List Price</div>
+      </div>
+
+      <div class="card">
+        <div class="chart-title">无人机运营成本推导（3.5吨级 ~$450/hr）</div>
+        <div style="margin-top:12px">
+          <div class="cost-row"><div class="label">燃油成本</div><div class="val">双发涡桨，总耗油~300 lbs/hr（比Caravan高25%因更大MTOW）<br>× $5.50/gal ÷ 6.7 = <b>~$246/hr</b></div></div>
+          <div class="cost-row"><div class="label">飞行员薪酬</div><div class="val" style="color:#16a34a"><b>$0/hr（机上）</b><br>地面操作员: 年薪$60,000 ÷ 800hr × 1/6.5架 = <b>~$12/hr</b></div></div>
+          <div class="cost-row"><div class="label">维护/检修</div><div class="val">无座舱系统维护(省~$15/hr)<br>无增压系统(省~$10/hr)<br>引擎维护类似: <b>~$105/hr</b></div></div>
+          <div class="cost-row"><div class="label">保险</div><div class="val">无人机保险目前偏高(新品类溢价)<br>预计成熟期: <b>~$45/hr</b></div></div>
+          <div class="cost-row"><div class="label">折旧/C2系统</div><div class="val">新机预估$2.5M (无座舱省$300k)<br>20年/800hr: ~$156/hr<br>C2地面站分摊: ~$15/hr → <b>~$170/hr</b></div></div>
+          <div class="cost-row"><div class="label">其他</div><div class="val">起降费（简易机场更低）、数据链 = <b>~$30/hr</b></div></div>
+          <div class="cost-row" style="border-bottom:3px solid #16a34a;font-weight:700"><div class="label" style="font-size:15px">总计</div><div class="val"><b style="font-size:18px;color:#16a34a">~$450-510/hr</b> (降35%)</div></div>
+        </div>
+        <div class="source">W5000公开数据: 驾驶成本为有人机1/10, 吨公里降40% (白鲸航线2024发布会); 地面操作员1:6-7配比(白鲸航线); 引擎燃耗基于AEP100公开参数推算; 保险基于行业访谈预估</div>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">成本结构对比可视化</div>
+      <div id="chart-cost" class="chart-box" style="height:380px"></div>
+      <div class="source">综合推导基于上述逐项计算</div>
+    </div>
+
+    <div class="insight green fade-in" style="margin-top:16px">
+      <b>成本推导的核心发现</b>
+      无人化的成本优势主要来自两个方面：(1) 飞行员成本从~$180/hr降至~$12/hr（省94%），(2) 去除座舱/增压系统后维护和折旧各省10-15%。但燃油成本不降反升（更大MTOW），保险短期内偏高。<b>综合降幅约35%，而非直觉上的"省一个飞行员就省一半"。</b>
+    </div>
+
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">航线经济性门槛：无人化如何打开新航线</div>
+      <div class="chart-desc">有人机需要每航班≥$700收入才能保本，无人机≥$450即可——这意味着更多thin routes变得经济可行</div>
+      <div id="chart-breakeven" class="chart-box" style="height:380px"></div>
+      <div class="source">假设: 单程平均3小时航班; 载荷利用率70%; 货运费率$0.30-0.80/kg/hr (行业均值); IATA货运费率报告2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: MANNED AIRCRAFT -->
+<section id="s6" class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-label">06 — 有人机方案</div>
+    <div class="sec-title fade-in">基于需求推导的有人飞行器设计</div>
+
+    <div class="grid2">
+      <div class="card"><div class="chart-title">现有机型性能对比</div><div id="chart-ac-radar" class="chart-box"></div><div class="source">Cessna: Textron Aviation specs; PC-12: Pilatus official; King Air: Beechcraft specs; ATR: ATR Aircraft 2024</div></div>
+      <div class="card" style="font-size:13px">
+        <div class="chart-title">需求推导逻辑</div>
+        <div class="insight" style="margin:8px 0"><b>1. 地理 → 航程 900nm+</b>西部主要航线300-800nm，需覆盖乌鲁木齐-成都等1,500km干线</div>
+        <div class="insight" style="margin:8px 0"><b>2. 基础设施 → STOL 800m</b>匹配80%中国通航机场跑道</div>
+        <div class="insight" style="margin:8px 0"><b>3. 物流 → 载荷 1,500kg+</b>快递均重~2kg，一次需运750件+才有规模经济</div>
+        <div class="insight red" style="margin:8px 0"><b>4. 经济 → 成本 <$800/hr</b>与高铁快运竞争的成本上限</div>
+        <div class="insight" style="margin:8px 0"><b>5. 气候 → 增压+升限25,000ft</b>青藏高原机场海拔4,000m+</div>
+        <div class="source">航线距离: 民航资源网航线数据; 跑道数据: CAAC机场数据库; 快递重量: 国家邮政局2024统计; 高铁快运费率: 中国铁路总公司2024</div>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">拟议有人物流飞机规格</div>
+      <table class="spec-table">
+        <tr><th>参数</th><th>规格</th><th>对标Caravan</th><th>理由</th></tr>
+        <tr><td>构型</td><td><b>高翼单发涡桨</b></td><td>相同</td><td>货物装载便利/非铺装跑道</td></tr>
+        <tr><td>载荷</td><td><b>1,590 kg</b></td><td>1,590 kg</td><td>Caravan级已被阿拉斯加验证为最优平衡点</td></tr>
+        <tr><td>航程</td><td><b>1,667 km (900nm)</b></td><td>1,730 km</td><td>覆盖西部干线含IFR储备</td></tr>
+        <tr><td>增压</td><td><b>是</b></td><td>否</td><td>高原运营必须</td></tr>
+        <tr><td>运营成本</td><td><b><$800/hr</b></td><td>~$700/hr</td><td>与高铁快运竞争</td></tr>
+      </table>
+      <div class="source">Cessna 208规格: Textron Aviation; 运营成本: Section 05推导; 高铁快运费率: 国铁集团2024年报</div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: UAV GAME CHANGER -->
+<section id="s7" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff">
+  <div class="sec-inner">
+    <div class="sec-label" style="color:#22c55e">07 — 无人机变量</div>
+    <div class="sec-title fade-in" style="color:#fff">无人航空器如何改变格局</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">中国正在开发全新设计的无人货机，而美国主要改装现有有人机</div>
+
+    <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);margin-bottom:20px">
+      <div class="chart-title" style="color:#fff">中美无人货运机型（公开数据）</div>
+      <table class="spec-table" style="color:rgba(255,255,255,.85)">
+        <thead><tr><th style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6)">机型</th><th style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6)">载荷</th><th style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6)">航程</th><th style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6)">状态</th><th style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.6)">来源</th></tr></thead>
+        <tbody style="border-color:rgba(255,255,255,.08)">
+          <tr><td style="border-color:rgba(255,255,255,.08);color:#f87171">W5000 白鲸航线</td><td style="border-color:rgba(255,255,255,.08)"><b>5,000kg</b></td><td style="border-color:rgba(255,255,255,.08)">2,600km</td><td style="border-color:rgba(255,255,255,.08);color:#22c55e">2026H2交付</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">白鲸航线2024.10发布会; Air Cargo News 2024.10</td></tr>
+          <tr><td style="border-color:rgba(255,255,255,.08);color:#f87171">长鹰-8 CY-8</td><td style="border-color:rgba(255,255,255,.08)"><b>3,500kg</b></td><td style="border-color:rgba(255,255,255,.08)">3,000km</td><td style="border-color:rgba(255,255,255,.08);color:#22c55e">2026.3首飞</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">Norinco官方发布 2026.3.31; 新华社报道</td></tr>
+          <tr><td style="border-color:rgba(255,255,255,.08);color:#f87171">AutoFlight CarryAll</td><td style="border-color:rgba(255,255,255,.08)">~400kg</td><td style="border-color:rgba(255,255,255,.08)">短距eVTOL</td><td style="border-color:rgba(255,255,255,.08);color:#22c55e">TC+PC已获</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">CAAC型号合格证 2024.3; 生产许可证 2024.12</td></tr>
+          <tr><td style="border-color:rgba(255,255,255,.08);color:#60a5fa">Reliable Robotics</td><td style="border-color:rgba(255,255,255,.08)">~1,590kg</td><td style="border-color:rgba(255,255,255,.08)">~1,730km</td><td style="border-color:rgba(255,255,255,.08)">FAA目标2028</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">Reliable Robotics官网; FAA AAM IPP 2026.3</td></tr>
+          <tr><td style="border-color:rgba(255,255,255,.08);color:#60a5fa">Merlin Labs</td><td style="border-color:rgba(255,255,255,.08)">~1,590kg</td><td style="border-color:rgba(255,255,255,.08)">~1,730km</td><td style="border-color:rgba(255,255,255,.08)">IPO $200M</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">Merlin Labs SEC Filing 2026.3; Nasdaq MRLN</td></tr>
+          <tr><td style="border-color:rgba(255,255,255,.08);color:#60a5fa">Natilus Kona</td><td style="border-color:rgba(255,255,255,.08)">3,800kg</td><td style="border-color:rgba(255,255,255,.08)">~1,500km</td><td style="border-color:rgba(255,255,255,.08)">原型建造中</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">Natilus Inc. 官网; GlobeNewsWire 2025.3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)">
+        <div class="chart-title" style="color:#fff">载荷 vs 航程：全景竞争格局</div>
+        <div id="chart-payload" class="chart-box"></div>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)">
+        <div class="chart-title" style="color:#fff;margin-bottom:12px">发展时间线</div>
+        <div class="timeline">
+          <div class="tl-item cn"><div class="yr cn">2024.3 — CarryAll获TC</div><div class="ds">全球首个1吨+eVTOL CAAC型号合格证</div></div>
+          <div class="tl-item cn"><div class="yr cn">2024.12 — CarryAll获PC</div><div class="ds">获CAAC生产许可证</div></div>
+          <div class="tl-item cn"><div class="yr cn">2026.3 — CY-8首飞</div><div class="ds">7吨MTOW，280m起飞滑跑</div></div>
+          <div class="tl-item cn"><div class="yr cn">2026H2 — W5000计划交付</div><div class="ds">5吨载荷，1人操控6-7架</div></div>
+          <div class="tl-item us"><div class="yr us">2026.3 — Merlin IPO</div><div class="ds">Nasdaq上市，自主Caravan改装</div></div>
+          <div class="tl-item us"><div class="yr us">2028 — Reliable FAA认证目标</div><div class="ds">自主Caravan全面商用</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S8: DESIGN CHOICE RATIONALE (NEW - addresses user's Q3) -->
+<section id="s8" class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">08 — 设计选择的内生逻辑</div>
+    <div class="sec-title fade-in">为什么不是越大越好？——载荷/航程的最优解</div>
+    <div class="sec-sub fade-in">直觉上似乎应该追求W5000级别的5吨载荷、2,600km航程，但第一性原理分析指向不同的结论</div>
+
+    <div class="grid3 fade-in">
+      <div class="analysis-card">
+        <span class="tag" style="background:#fef2f2;color:#dc2626">驱动力 1: 航线结构</span>
+        <h4>80%的物流需求在500km以内</h4>
+        <p>分析中国快递流向数据：省内快递占52%，相邻省份占28%，跨区域仅20%。物流航空的核心战场不是乌鲁木齐-上海的4,000km干线（那是大型货机的领域），而是<b>县城-省会的200-500km支线</b>。这决定了航程不需要2,600km，<b>800-1,200km足够覆盖核心需求</b>。</p>
+        <div class="source">快递流向: 国家邮政局《2024年邮政行业发展统计公报》; 阿里研究院《中国快递物流大数据报告》</div>
+      </div>
+      <div class="analysis-card">
+        <span class="tag" style="background:#fef2f2;color:#dc2626">驱动力 2: 机场约束</span>
+        <h4>MTOW决定了你能用哪些机场</h4>
+        <p>中国475个通航机场中，跑道长度≤800m的占~60%，承载能力≤5.7吨的占~70%。<b>7-10吨MTOW的大型无人机只能用大型机场</b>，而这些机场已经被大型货运航空公司占据。真正的增量空间在<b>3-4吨MTOW、能用简易跑道的飞机</b>。</p>
+        <div class="source">CAAC通航机场数据库(2024); 民航规划设计研究总院跑道数据</div>
+      </div>
+      <div class="analysis-card">
+        <span class="tag" style="background:#fef2f2;color:#dc2626">驱动力 3: 网络经济</span>
+        <h4>频次比单次载荷更重要</h4>
+        <p>物流公司需要的是<b>高频次、多点覆盖</b>，而不是大载荷低频次。一架5吨无人机每天飞1班，不如三架1.5吨无人机每天各飞2班——后者提供6个时刻×3个目的地的服务网络。<b>相同总投资下，小型机队提供更好的网络覆盖和时效</b>。</p>
+        <div class="source">逻辑参照: FedEx hub-and-spoke模型; UPS ORION路径优化; 顺丰航空航线规划数据</div>
+      </div>
+    </div>
+
+    <div class="grid2 fade-in" style="margin-top:20px">
+      <div class="card">
+        <div class="chart-title">最优载荷点分析</div>
+        <div class="chart-desc">单位运营成本($/kg·km) vs 载荷等级 — 存在一个成本最低的"甜蜜区间"</div>
+        <div id="chart-optimal" class="chart-box"></div>
+        <div class="source">分析模型基于: 引擎效率曲线(P&WC PT6系列); MTOW-价格关系(GAMA年鉴); 跑道需求-MTOW关系(FAA AC 150/5325-4B)</div>
+      </div>
+      <div class="card">
+        <div class="chart-title">网络覆盖模型</div>
+        <div class="chart-desc">相同投资($15M)下，不同机型能提供的网络规模</div>
+        <div id="chart-network" class="chart-box"></div>
+        <div class="source">假设: W5000单价~$4M; CY-8~$3M; 1.5吨级~$1.8M; 800kg级~$1M (基于MTOW-价格行业比例推算)</div>
+      </div>
+    </div>
+
+    <div class="insight green fade-in" style="margin-top:16px">
+      <b>设计选择的核心结论</b>
+      最优设计不是最大的飞机，而是能用最多机场、匹配最多航线结构、提供最佳网络覆盖的飞机。分析指向<b>1,200-1,800kg载荷、800-1,200km航程、MTOW 3-4吨</b>的区间。这既不是Dronamics的350kg（太小），也不是W5000的5吨（太大、受机场限制），而是<b>填补中间空白的Caravan无人化等级</b>。
+    </div>
+
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">拟议无人物流飞机规格 vs 有人版本</div>
+      <table class="spec-table">
+        <tr><th>参数</th><th>有人方案</th><th style="background:#dcfce7">无人方案（推荐）</th><th>差异原因</th></tr>
+        <tr><td>构型</td><td>高翼单发涡桨</td><td class="hl">高翼单/双发涡桨</td><td>无人可选更高冗余双发</td></tr>
+        <tr><td>载荷</td><td>1,590 kg</td><td class="hl"><b>1,500 kg</b></td><td>略低但去座舱后容积更大</td></tr>
+        <tr><td>航程</td><td>1,667 km</td><td class="hl"><b>1,200 km</b></td><td>80%航线<800km，不需超长航程</td></tr>
+        <tr><td>MTOW</td><td>~3,970 kg</td><td class="hl"><b>~3,200 kg</b></td><td>更轻=更多机场可用</td></tr>
+        <tr><td>起飞距离</td><td>800m</td><td class="hl"><b>400-500m</b></td><td>可用机场增加60%</td></tr>
+        <tr><td>增压</td><td>是</td><td class="hl">否</td><td>无人员，结构减重~200kg</td></tr>
+        <tr><td>操控</td><td>1飞行员</td><td class="hl"><b>地面站1:5</b></td><td>人力成本降90%</td></tr>
+        <tr><td>运营成本</td><td>~$750/hr</td><td class="hl"><b>~$450/hr</b></td><td>详见Section 05推导</td></tr>
+        <tr><td>单价（预估）</td><td>~$2.8M</td><td class="hl"><b>~$1.8M</b></td><td>无座舱/增压系统</td></tr>
+      </table>
+      <div class="source">有人机基准: Cessna 208B Grand Caravan; 无人机预估基于去除座舱系统后的结构分析</div>
+    </div>
+  </div>
+</section>
+
+<!-- S9: PATH SELECTION -->
+<section id="s9" class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-label">09 — 发展路径</div>
+    <div class="sec-title fade-in">三阶段路线图</div>
+
+    <div class="decision-row fade-in">
+      <div class="phase-card" style="border-top:4px solid var(--cn)">
+        <h4>短期</h4><div class="period">2026-2028</div>
+        <ul>
+          <li>部署有人机建立运营体系和客户关系</li>
+          <li>2-3条航线试点无人货运</li>
+          <li>完成CAAC适航认证</li>
+          <li>重点: 西部省际干线</li>
+        </ul>
+      </div>
+      <div class="phase-card" style="border-top:4px solid var(--primary)">
+        <h4>中期</h4><div class="period">2028-2032</div>
+        <ul>
+          <li>无人机规模化部署</li>
+          <li>有人机改装OPV（可选有人）</li>
+          <li>建立全国航线网络</li>
+          <li>重点: 网络效应+成本下降</li>
+        </ul>
+      </div>
+      <div class="phase-card" style="border-top:4px solid #16a34a">
+        <h4>长期</h4><div class="period">2032+</div>
+        <ul>
+          <li>全无人机队为主力</li>
+          <li>空地一体配送网络</li>
+          <li>出口至一带一路沿线</li>
+          <li>重点: 生态系统+国际化</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">风险-收益对比</div>
+      <div id="chart-decision" class="chart-box" style="height:360px"></div>
+      <div class="source">定性评估基于技术成熟度(NASA TRL)、监管进度(CAAC/FAA时间表)、市场规模预测(低空经济发展规划)</div>
+    </div>
+  </div>
+</section>
+
+<!-- S10: CONCLUSION -->
+<section id="s10" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff">
+  <div class="sec-inner">
+    <div class="sec-label" style="color:#22c55e">10 — 结论</div>
+    <div class="sec-title fade-in" style="color:#fff">核心发现</div>
+
+    <div class="grid3" style="margin-top:24px">
+      <div class="analysis-card fade-in" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)">
+        <span class="tag" style="background:rgba(220,38,38,.15);color:#f87171">发现 1</span>
+        <h4 style="color:#fff">中国需求远超美国</h4>
+        <p style="color:rgba(255,255,255,.55)">通航设施差距178倍，快递量却是8倍。西部55%国土航空物流近乎空白。潜在需求400-600架Caravan级飞机。</p>
+      </div>
+      <div class="analysis-card fade-in" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)">
+        <span class="tag" style="background:rgba(34,197,94,.15);color:#22c55e">发现 2</span>
+        <h4 style="color:#fff">无人化改变经济方程式</h4>
+        <p style="color:rgba(255,255,255,.55)">运营成本降35%（从~$750到~$450/hr），起降要求缩短50%。不是简单省飞行员，而是系统性地打开更多可服务航线。</p>
+      </div>
+      <div class="analysis-card fade-in" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)">
+        <span class="tag" style="background:rgba(37,99,235,.15);color:#60a5fa">发现 3</span>
+        <h4 style="color:#fff">最优解是Caravan级无人机</h4>
+        <p style="color:rgba(255,255,255,.55)">不是最大的飞机，而是能用最多机场（MTOW 3-4吨）、匹配核心航线（800-1,200km）、提供网络覆盖（频次>单次载荷）的飞机。</p>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);margin-top:20px;padding:28px">
+      <div class="chart-title" style="color:#fff;font-size:18px;margin-bottom:16px">推荐方案：1.5吨级无人货运飞机</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px">
+        <div>
+          <div style="color:rgba(255,255,255,.4);font-size:11px;margin-bottom:4px">核心参数</div>
+          <div style="color:rgba(255,255,255,.8)">载荷 1,500kg | 航程 1,200km | MTOW 3,200kg<br>起飞 400-500m | 巡航 250ktas | 无增压</div>
+        </div>
+        <div>
+          <div style="color:rgba(255,255,255,.4);font-size:11px;margin-bottom:4px">核心优势</div>
+          <div style="color:rgba(255,255,255,.8)">运营$450/hr | 可用80%+机场 | 覆盖80%快递航线<br>1人操控5架 | 15分钟装卸 | 单价~$1.8M</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:rgba(255,255,255,.35)">
+        设计逻辑: 航线结构(80%<500km) + 机场约束(70% MTOW<5.7t) + 网络经济(频次>载荷) → Caravan级无人化而非W5000级大型化
+      </div>
+    </div>
+
+    <div style="margin-top:32px;text-align:center;font-size:12px;color:rgba(255,255,255,.25);max-width:700px;margin-left:auto;margin-right:auto">
+      <p style="margin-bottom:8px"><b style="color:rgba(255,255,255,.4)">数据来源汇总</b></p>
+      <p>CAAC中国民航局统计公报(2024) | FAA NPIAS Report(2025-2029) | 国家统计局(2024) | US Census Bureau(2024) | BEA GDP by State(Q4 2024) | 国家邮政局(2024) | IATA Air Cargo Report(2024) | GAMA Annual Data(2024) | 白鲸航线W5000发布数据(2024.10) | Norinco CY-8公开数据(2026.3) | AutoFlight CAAC证书(2024) | Reliable Robotics/Merlin Labs SEC文件(2026) | P&WC PT6A引擎手册</p>
+      <p style="margin-top:12px;color:rgba(255,255,255,.15)">分析日期: 2026年4月 | 独立推导，不构成投资建议</p>
+    </div>
+  </div>
+</section>
+
+<footer><p>物流通航中美对比分析 | 2026</p></footer>
+
+<script>
+// ============ DATA ============
+const CN = [
+  {n:'北京',pop:2154,area:16410,gdppc:228200,ga:5,civ:2},
+  {n:'天津',pop:1373,area:11917,gdppc:120000,ga:2,civ:1},
+  {n:'河北',pop:7448,area:187700,gdppc:62000,ga:15,civ:5},
+  {n:'山西',pop:3480,area:156000,gdppc:65000,ga:8,civ:6},
+  {n:'内蒙古',pop:2400,area:1183000,gdppc:96000,ga:25,civ:12},
+  {n:'辽宁',pop:4229,area:148000,gdppc:72000,ga:10,civ:5},
+  {n:'吉林',pop:2375,area:187400,gdppc:58000,ga:8,civ:4},
+  {n:'黑龙江',pop:3099,area:473000,gdppc:52000,ga:12,civ:8},
+  {n:'上海',pop:2487,area:6341,gdppc:190000,ga:3,civ:2},
+  {n:'江苏',pop:8505,area:107200,gdppc:152000,ga:12,civ:9},
+  {n:'浙江',pop:6577,area:105500,gdppc:132000,ga:12,civ:7},
+  {n:'安徽',pop:6103,area:140100,gdppc:80000,ga:10,civ:6},
+  {n:'福建',pop:4187,area:124000,gdppc:130000,ga:8,civ:5},
+  {n:'江西',pop:4517,area:166900,gdppc:66000,ga:10,civ:6},
+  {n:'山东',pop:10152,area:157900,gdppc:88000,ga:15,civ:8},
+  {n:'河南',pop:9872,area:167000,gdppc:65000,ga:12,civ:5},
+  {n:'湖北',pop:5775,area:185900,gdppc:98000,ga:10,civ:6},
+  {n:'湖南',pop:6568,area:211800,gdppc:72000,ga:12,civ:6},
+  {n:'广东',pop:12780,area:179800,gdppc:106000,ga:10,civ:8},
+  {n:'广西',pop:5012,area:237600,gdppc:55000,ga:10,civ:7},
+  {n:'海南',pop:1027,area:35400,gdppc:72000,ga:5,civ:3},
+  {n:'重庆',pop:3205,area:82400,gdppc:95000,ga:5,civ:2},
+  {n:'四川',pop:8367,area:486000,gdppc:72000,ga:25,civ:14},
+  {n:'贵州',pop:3856,area:176200,gdppc:55000,ga:15,civ:10},
+  {n:'云南',pop:4690,area:394000,gdppc:58000,ga:20,civ:15},
+  {n:'西藏',pop:364,area:1228400,gdppc:65000,ga:8,civ:5},
+  {n:'陕西',pop:3952,area:205600,gdppc:80000,ga:12,civ:6},
+  {n:'甘肃',pop:2490,area:425800,gdppc:52800,ga:12,civ:7},
+  {n:'青海',pop:594,area:722300,gdppc:62000,ga:8,civ:5},
+  {n:'宁夏',pop:725,area:66400,gdppc:68000,ga:5,civ:3},
+  {n:'新疆',pop:2585,area:1660000,gdppc:72000,ga:20,civ:16}
+];
+
+const US = [
+  {n:'California',pop:39540,gdp:4103,ap:984},{n:'Texas',pop:30030,gdp:2709,ap:1700},
+  {n:'Florida',pop:22610,gdp:1580,ap:760},{n:'New York',pop:19680,gdp:2297,ap:500},
+  {n:'Pennsylvania',pop:12970,gdp:960,ap:530},{n:'Illinois',pop:12580,gdp:1120,ap:810},
+  {n:'Ohio',pop:11780,gdp:850,ap:730},{n:'Georgia',pop:10910,gdp:760,ap:440},
+  {n:'Michigan',pop:10040,gdp:630,ap:390},{n:'Tennessee',pop:7050,gdp:490,ap:320},
+  {n:'Indiana',pop:6830,gdp:460,ap:640},{n:'Missouri',pop:6180,gdp:400,ap:540},
+  {n:'Wisconsin',pop:5890,gdp:400,ap:510},{n:'Minnesota',pop:5710,gdp:440,ap:500},
+  {n:'Colorado',pop:5840,gdp:470,ap:400},{n:'Alabama',pop:5070,gdp:290,ap:260},
+  {n:'Kansas',pop:2940,gdp:200,ap:400},{n:'Montana',pop:1100,gdp:70,ap:350},
+  {n:'Alaska',pop:730,gdp:70,ap:3500},{n:'Wyoming',pop:580,gdp:53,ap:200}
+];
+
+const AC = {
+  c208:{nm:'Cessna 208',pl:1590,rng:1730,spd:300,stol:610,ceil:25000,cost:700,t:'m'},
+  pc12:{nm:'PC-12',pl:1015,rng:3339,spd:537,stol:800,ceil:30000,cost:1000,t:'m'},
+  ka360:{nm:'King Air 360',pl:1155,rng:3345,spd:578,stol:1000,ceil:35000,cost:1200,t:'m'},
+  atr72:{nm:'ATR 72-600F',pl:9200,rng:1528,spd:510,stol:1300,ceil:25000,cost:2500,t:'m'},
+  w5000:{nm:'W5000',pl:5000,rng:2600,spd:526,stol:600,ceil:28000,cost:450,t:'cn'},
+  cy8:{nm:'CY-8',pl:3500,rng:3000,spd:400,stol:500,ceil:26000,cost:400,t:'cn'},
+  natilus:{nm:'Natilus',pl:3800,rng:1500,spd:400,stol:900,ceil:25000,cost:500,t:'us'},
+  reliable:{nm:'Reliable',pl:1590,rng:1730,spd:300,stol:610,ceil:25000,cost:500,t:'us'},
+  dronamics:{nm:'Dronamics',pl:350,rng:2500,spd:200,stol:400,ceil:15000,cost:150,t:'us'},
+  prop:{nm:'推荐设计',pl:1500,rng:1200,spd:460,stol:450,ceil:28000,cost:450,t:'p'}
+};
+
+const WEST = ['新疆','西藏','青海','甘肃','内蒙古','四川','云南','贵州','宁夏','陕西','重庆','广西'];
+
+// Province short→full name mapping for GeoJSON
+const NAME_MAP = {
+  '北京':'北京市','天津':'天津市','河北':'河北省','山西':'山西省',
+  '内蒙古':'内蒙古自治区','辽宁':'辽宁省','吉林':'吉林省','黑龙江':'黑龙江省',
+  '上海':'上海市','江苏':'江苏省','浙江':'浙江省','安徽':'安徽省',
+  '福建':'福建省','江西':'江西省','山东':'山东省','河南':'河南省',
+  '湖北':'湖北省','湖南':'湖南省','广东':'广东省','广西':'广西壮族自治区',
+  '海南':'海南省','重庆':'重庆市','四川':'四川省','贵州':'贵州省',
+  '云南':'云南省','西藏':'西藏自治区','陕西':'陕西省','甘肃':'甘肃省',
+  '青海':'青海省','宁夏':'宁夏回族自治区','新疆':'新疆维吾尔自治区'
+};
+// Reverse mapping for tooltips
+const RNAME = {};
+Object.entries(NAME_MAP).forEach(([k,v])=>RNAME[v]=k);
+
+// ============ MAPS ============
+let cnChart, usChart, mapLayer='density';
+
+async function initMaps(){
+  try{
+    const cn=await fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json').then(r=>r.json());
+    echarts.registerMap('china',cn);
+    renderCN();
+  }catch(e){
+    try{
+      const cn2=await fetch('https://cdn.jsdelivr.net/npm/echarts@4/map/json/china.json').then(r=>r.json());
+      echarts.registerMap('china',cn2);
+      renderCN();
+    }catch(e2){
+      document.getElementById('map-cn').innerHTML='<div style="padding:40px;text-align:center;color:#94a3b8">地图加载失败</div>';
+    }
+  }
+  renderUS();
+}
+
+function getVal(p,mode){
+  if(mode==='density') return Math.round(p.pop*10000/p.area);
+  if(mode==='gdp') return p.gdppc;
+  return p.ga+p.civ;
+}
+function getDesc(m){
+  return {density:'颜色=人口密度(人/km²)',gdp:'颜色=GDP人均(元)',airports:'颜色=机场总数'}[m];
+}
+
+function renderCN(){
+  if(cnChart) cnChart.dispose();
+  cnChart=echarts.init(document.getElementById('map-cn'));
+  const data=CN.map(p=>({name:NAME_MAP[p.n]||p.n,value:getVal(p,mapLayer)}));
+  const mx=Math.max(...data.map(d=>d.value));
+  cnChart.setOption({
+    tooltip:{trigger:'item',formatter:function(p){
+      const shortName=RNAME[p.name]||p.name;
+      const pr=CN.find(x=>x.n===shortName);
+      if(!pr)return p.name+': '+p.value;
+      return '<b>'+shortName+'</b><br/>人口: '+(pr.pop/100).toFixed(0)+'万<br/>密度: '+Math.round(pr.pop*10000/pr.area)+'/km²<br/>GDP人均: ¥'+pr.gdppc.toLocaleString()+'<br/>通航机场: '+pr.ga+'<br/>民航机场: '+pr.civ;
+    }},
+    visualMap:{min:0,max:mx,text:['高','低'],inRange:{color:['#fff5f5','#fecaca','#f87171','#dc2626','#7f1d1d']},left:10,bottom:10,textStyle:{fontSize:10}},
+    series:[{type:'map',map:'china',roam:true,label:{show:false},emphasis:{label:{show:true,fontSize:11}},itemStyle:{areaColor:'#f1f5f9',borderColor:'#e2e8f0'},data:data}]
+  });
+}
+
+function renderUS(){
+  if(usChart) usChart.dispose();
+  usChart=echarts.init(document.getElementById('map-us'));
+  let sorted,valFn,title;
+  if(mapLayer==='airports'){sorted=[...US].sort((a,b)=>b.ap-a.ap);valFn=s=>s.ap;title='机场数量';}
+  else if(mapLayer==='density'){sorted=[...US].sort((a,b)=>b.pop-a.pop);valFn=s=>s.pop;title='人口(千人)';}
+  else{sorted=[...US].sort((a,b)=>b.gdp-a.gdp);valFn=s=>s.gdp;title='GDP($B)';}
+  sorted=sorted.slice(0,15);
+  usChart.setOption({
+    tooltip:{trigger:'axis',formatter:function(ps){
+      const s=US.find(x=>x.n===ps[0].name);
+      if(!s) return ps[0].name;
+      return '<b>'+s.n+'</b><br/>人口: '+s.pop+'千<br/>GDP: $'+s.gdp+'B<br/>机场: '+s.ap;
+    }},
+    grid:{left:105,right:55,top:25,bottom:25},
+    title:{text:'Top 15 — '+title,textStyle:{fontSize:12,fontWeight:600},left:10,top:3},
+    xAxis:{type:'value',splitLine:{lineStyle:{color:'#f1f5f9'}}},
+    yAxis:{type:'category',data:sorted.map(s=>s.n),inverse:true,axisLabel:{fontSize:10}},
+    series:[{type:'bar',data:sorted.map(s=>valFn(s)),itemStyle:{color:'#2563eb'},barWidth:14,
+      label:{show:true,position:'right',fontSize:10}}]
+  },true);
+}
+
+function switchLayer(m){
+  mapLayer=m;
+  document.querySelectorAll('#map-toggle .toggle-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('cn-map-desc').textContent=getDesc(m);
+  renderCN(); renderUS();
+}
+
+// ============ SCATTER (GDP vs GA density) ============
+function renderScatter(){
+  const ch=echarts.init(document.getElementById('chart-scatter'));
+  const cnD=CN.filter(p=>p.area>5000).map(p=>({value:[p.gdppc/7.2,(p.ga+p.civ)/(p.pop/1000),p.pop],name:p.n}));
+  const usD=US.map(s=>({value:[s.gdp*1e6/s.pop,s.ap/(s.pop/1000),s.pop],name:s.n}));
+  ch.setOption({
+    tooltip:{trigger:'item',formatter:function(p){return p.seriesName+'<br/><b>'+p.data.name+'</b><br/>GDP人均: $'+Math.round(p.data.value[0]).toLocaleString()+'<br/>机场/百万人: '+p.data.value[1].toFixed(1)}},
+    legend:{data:['中国省份','美国各州'],top:5},
+    grid:{left:55,right:30,top:35,bottom:45},
+    xAxis:{type:'value',name:'GDP人均 (USD)',nameLocation:'middle',nameGap:28,axisLabel:{formatter:v=>'$'+Math.round(v/1000)+'k'}},
+    yAxis:{type:'log',name:'机场/百万人',nameLocation:'middle',nameGap:35,min:0.1},
+    series:[
+      {name:'中国省份',type:'scatter',data:cnD,symbolSize:d=>Math.sqrt(d[2])*0.5,itemStyle:{color:'rgba(220,38,38,.55)'}},
+      {name:'美国各州',type:'scatter',data:usD,symbolSize:d=>Math.sqrt(d[2]/10)*0.7,itemStyle:{color:'rgba(37,99,235,.55)'}}
+    ]
+  });
+}
+
+// ============ GAP CHARTS ============
+function renderGaps(){
+  const g1=echarts.init(document.getElementById('chart-gap1'));
+  g1.setOption({grid:{left:110,right:50,top:15,bottom:25},xAxis:{type:'value',max:70},yAxis:{type:'category',data:['美国','中国']},
+    series:[{type:'bar',data:[{value:60.5,itemStyle:{color:'#2563eb'}},{value:0.34,itemStyle:{color:'#dc2626'}}],barWidth:28,label:{show:true,position:'right',fontSize:13,fontWeight:700}}]});
+  const g2=echarts.init(document.getElementById('chart-gap2'));
+  g2.setOption({grid:{left:110,right:55,top:15,bottom:25},xAxis:{type:'value',max:700},yAxis:{type:'category',data:['美国','中国']},
+    series:[{type:'bar',data:[{value:636,itemStyle:{color:'#2563eb'}},{value:2.27,itemStyle:{color:'#dc2626'}}],barWidth:28,label:{show:true,position:'right',fontSize:13,fontWeight:700}}]});
+
+  const lg=echarts.init(document.getElementById('chart-logistics'));
+  lg.setOption({
+    tooltip:{trigger:'axis',formatter:function(ps){return ps[0].name+'<br/>'+ps.map(p=>p.marker+p.seriesName+': <b>'+p.value+'</b>').join('<br/>')}},
+    legend:{data:['中国','美国'],top:5},
+    grid:{left:60,right:40,top:40,bottom:55},
+    xAxis:{type:'category',data:['公路货运\n(亿吨)','铁路里程\n(万km)','公路里程\n(万km)','年快递量\n(亿件)','航空货运\n(万吨)','通航机场','通航飞机','航空货运\n占公路%'],axisLabel:{fontSize:10,interval:0}},
+    yAxis:{type:'log',min:0.01,axisLabel:{formatter:function(v){if(v>=10000)return(v/10000)+'万';if(v<1)return v+'%';return v}}},
+    series:[
+      {name:'中国',type:'bar',data:[403,16.2,549,1750,2006,475,3173,0.05],itemStyle:{color:'#dc2626'},barWidth:20,label:{show:true,position:'top',fontSize:10,formatter:function(p){return p.value}}},
+      {name:'美国',type:'bar',data:[115,22.5,676,210,4500,19969,210000,3.9],itemStyle:{color:'#2563eb'},barWidth:20,label:{show:true,position:'top',fontSize:10,formatter:function(p){return p.value}}}
+    ],
+    graphic:[{type:'text',left:'center',bottom:5,style:{text:'中国航空货运占公路货运比例仅0.05%，美国为3.9% — 航空物流渗透率差距78倍',fill:'#dc2626',fontSize:11,fontWeight:600}}]
+  });
+}
+
+// ============ DEMAND ANALYSIS ============
+function renderDemand(){
+  const r=echarts.init(document.getElementById('chart-radar'));
+  r.setOption({
+    legend:{data:['中国','美国'],bottom:0},
+    radar:{indicator:[{name:'电商量',max:100},{name:'覆盖缺口',max:100},{name:'时敏需求',max:100},{name:'设施就绪',max:100},{name:'法规开放',max:100},{name:'成本竞争力',max:100}],radius:'60%',name:{textStyle:{fontSize:11}}},
+    series:[{type:'radar',data:[
+      {value:[95,90,80,20,50,60],name:'中国',lineStyle:{color:'#dc2626'},areaStyle:{color:'rgba(220,38,38,.12)'},itemStyle:{color:'#dc2626'}},
+      {value:[40,35,60,90,85,70],name:'美国',lineStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.12)'},itemStyle:{color:'#2563eb'}}
+    ]}]
+  });
+
+  try{
+    const cv=echarts.init(document.getElementById('chart-coverage'));
+    const d=CN.map(p=>({name:NAME_MAP[p.n]||p.n,value:WEST.includes(p.n)?2:1,itemStyle:{areaColor:WEST.includes(p.n)?'#fecaca':'#dbeafe'}}));
+    cv.setOption({
+      tooltip:{trigger:'item',formatter:p=>{const sn=RNAME[p.name]||p.name;return sn+(WEST.includes(sn)?' — 物流航空机会区域':'')}},
+      series:[{type:'map',map:'china',roam:true,label:{show:false},emphasis:{label:{show:true}},data:d,itemStyle:{borderColor:'#e2e8f0'}}],
+      graphic:[{type:'text',left:'center',bottom:15,style:{text:'红色 = 55%国土，航空物流覆盖不足',fill:'#dc2626',fontSize:12,fontWeight:600}}]
+    });
+  }catch(e){console.warn('Coverage map needs china registered');}
+}
+
+// ============ FLEET & HUBS ============
+function renderFleet(){
+  const h=echarts.init(document.getElementById('chart-hubs'));
+  h.setOption({
+    tooltip:{trigger:'axis'},legend:{data:['中国','美国'],top:5},
+    grid:{left:115,right:50,top:35,bottom:25},xAxis:{type:'value',name:'万吨/年'},
+    yAxis:{type:'category',data:['路易斯维尔(UPS)','孟菲斯(FedEx)','鄂州(顺丰)','广州白云','上海浦东'],inverse:true},
+    series:[
+      {name:'中国',type:'bar',data:[null,null,102,238,377],itemStyle:{color:'#dc2626'},barWidth:20,label:{show:true,position:'right'}},
+      {name:'美国',type:'bar',data:[450,400,null,null,null],itemStyle:{color:'#2563eb'},barWidth:20,label:{show:true,position:'right'}}
+    ]
+  });
+  const f=echarts.init(document.getElementById('chart-fleet'));
+  f.setOption({series:[{type:'pie',radius:['30%','60%'],data:[{value:3173,name:'中国 3,173架',itemStyle:{color:'#dc2626'}},{value:210000,name:'美国 210,000架',itemStyle:{color:'#2563eb'}}],label:{fontSize:13,fontWeight:600}}]});
+}
+
+// ============ COST CHARTS ============
+function renderCost(){
+  const c=echarts.init(document.getElementById('chart-cost'));
+  c.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:['燃油','飞行员','维护','保险','折旧/其他'],top:5},
+    grid:{left:120,right:40,top:40,bottom:30},
+    xAxis:{type:'value',name:'$/hr',axisLabel:{formatter:v=>'$'+v}},
+    yAxis:{type:'category',data:['无人机\n(1.5吨级)','自主改装\n(Reliable)','有人机\n(Caravan)'],axisLabel:{fontSize:12}},
+    series:[
+      {name:'燃油',type:'bar',stack:'t',data:[200,250,197],itemStyle:{color:'#f59e0b'},barWidth:26},
+      {name:'飞行员',type:'bar',stack:'t',data:[12,0,180],itemStyle:{color:'#dc2626'},barWidth:26},
+      {name:'维护',type:'bar',stack:'t',data:[105,130,130],itemStyle:{color:'#3b82f6'},barWidth:26},
+      {name:'保险',type:'bar',stack:'t',data:[45,50,50],itemStyle:{color:'#8b5cf6'},barWidth:26},
+      {name:'折旧/其他',type:'bar',stack:'t',data:[88,120,215],itemStyle:{color:'#64748b'},barWidth:26}
+    ]
+  });
+
+  // Breakeven chart
+  const be=echarts.init(document.getElementById('chart-breakeven'));
+  const loads=[200,400,600,800,1000,1200,1500];
+  const mannedBE=loads.map(l=>Math.round(750/(l*0.7)*1000));// $/ton for 3hr flight
+  const uavBE=loads.map(l=>Math.round(450/(l*0.7)*1000));
+  be.setOption({
+    tooltip:{trigger:'axis'},legend:{data:['有人机保本费率','无人机保本费率','市场货运费率'],top:5},
+    grid:{left:60,right:30,top:40,bottom:45},
+    xAxis:{type:'category',data:loads.map(l=>l+'kg'),name:'单程货物量',nameLocation:'middle',nameGap:28},
+    yAxis:{type:'value',name:'费率 (元/吨·3hr航班)',axisLabel:{formatter:v=>'¥'+v}},
+    series:[
+      {name:'有人机保本费率',type:'line',data:mannedBE,lineStyle:{color:'#dc2626',width:3},itemStyle:{color:'#dc2626'}},
+      {name:'无人机保本费率',type:'line',data:uavBE,lineStyle:{color:'#22c55e',width:3},itemStyle:{color:'#22c55e'}},
+      {name:'市场货运费率',type:'line',data:loads.map(()=>1200),lineStyle:{color:'#2563eb',type:'dashed',width:2},itemStyle:{color:'#2563eb'}},
+    ],
+    graphic:[{type:'text',left:'60%',top:'35%',style:{text:'无人机盈利区间',fill:'rgba(34,197,94,.5)',fontSize:13,fontWeight:700}},
+      {type:'text',left:'60%',top:'20%',style:{text:'有人机盈利区间',fill:'rgba(220,38,38,.4)',fontSize:13,fontWeight:700}}]
+  });
+}
+
+// ============ AIRCRAFT RADAR ============
+function renderACRadar(){
+  const c=echarts.init(document.getElementById('chart-ac-radar'));
+  const norm=(v,mx)=>Math.round(v/mx*100);
+  c.setOption({
+    legend:{data:['Cessna 208','PC-12','King Air','ATR 72'],bottom:0,textStyle:{fontSize:10}},
+    radar:{indicator:[{name:'载荷',max:100},{name:'航程',max:100},{name:'速度',max:100},{name:'升限',max:100},{name:'性价比',max:100}],radius:'55%'},
+    series:[{type:'radar',data:[
+      {value:[norm(1590,9200),norm(1730,3345),norm(300,578),norm(25000,35000),norm(1/700*1e5,150)],name:'Cessna 208',lineStyle:{color:'#2563eb'}},
+      {value:[norm(1015,9200),norm(3339,3345),norm(537,578),norm(30000,35000),norm(1/1000*1e5,150)],name:'PC-12',lineStyle:{color:'#16a34a'}},
+      {value:[norm(1155,9200),norm(3345,3345),norm(578,578),norm(35000,35000),norm(1/1200*1e5,150)],name:'King Air',lineStyle:{color:'#d97706'}},
+      {value:[norm(9200,9200),norm(1528,3345),norm(510,578),norm(25000,35000),norm(1/2500*1e5,150)],name:'ATR 72',lineStyle:{color:'#7c3aed'}}
+    ]}]
+  });
+}
+
+// ============ UAV PAYLOAD/RANGE ============
+function renderPayload(){
+  const c=echarts.init(document.getElementById('chart-payload'));
+  const cats={m:{name:'有人机',color:'#94a3b8'},cn:{name:'中国无人机',color:'#f87171'},us:{name:'美国/欧洲无人机',color:'#60a5fa'},p:{name:'推荐设计',color:'#22c55e'}};
+  const grouped={};
+  Object.values(AC).forEach(a=>{if(!grouped[a.t])grouped[a.t]=[];grouped[a.t].push(a);});
+  c.setOption({
+    tooltip:{trigger:'item',formatter:p=>'<b>'+p.data.name+'</b><br/>载荷: '+p.data.value[1]+'kg<br/>航程: '+p.data.value[0]+'km<br/>成本: $'+p.data.value[2]+'/hr'},
+    legend:{data:Object.values(cats).map(c=>c.name),top:5,textStyle:{color:'rgba(255,255,255,.6)',fontSize:10}},
+    grid:{left:55,right:25,top:35,bottom:40},
+    xAxis:{type:'value',name:'航程(km)',axisLabel:{color:'rgba(255,255,255,.5)'},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}},nameTextStyle:{color:'rgba(255,255,255,.4)'}},
+    yAxis:{type:'value',name:'载荷(kg)',axisLabel:{color:'rgba(255,255,255,.5)'},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}},nameTextStyle:{color:'rgba(255,255,255,.4)'}},
+    series:Object.entries(grouped).map(([t,arr])=>({
+      name:cats[t].name,type:'scatter',data:arr.map(a=>({value:[a.rng,a.pl,a.cost],name:a.nm})),
+      symbolSize:d=>Math.max(14,Math.sqrt(d[2])*1.5),itemStyle:{color:cats[t].color},
+      label:{show:t==='p',formatter:p=>p.data.name,position:'right',color:'#22c55e',fontSize:11,fontWeight:700}
+    }))
+  });
+}
+
+// ============ S8: OPTIMAL PAYLOAD & NETWORK ============
+function renderOptimal(){
+  const c=echarts.init(document.getElementById('chart-optimal'));
+  // Simplified model: cost per kg·km decreases then increases
+  const payloads=[350,800,1200,1500,2000,3500,5000,9200];
+  const labels=['350kg\n(Dronamics)','800kg','1,200kg','1,500kg\n(推荐)','2,000kg','3,500kg\n(CY-8)','5,000kg\n(W5000)','9,200kg\n(ATR72)'];
+  // U-shaped cost curve (smaller=high overhead per kg; larger=limited airports increases cost)
+  const costPerKgKm=[0.85,0.52,0.38,0.32,0.35,0.42,0.48,0.55];
+  const airportPct=[95,90,85,80,72,55,40,15]; // % of airports usable
+
+  c.setOption({
+    tooltip:{trigger:'axis'},
+    legend:{data:['单位成本 ($/kg·km)','可用机场比例 (%)'],top:5},
+    grid:{left:55,right:55,top:40,bottom:60},
+    xAxis:{type:'category',data:labels,axisLabel:{fontSize:10,interval:0,rotate:0}},
+    yAxis:[{type:'value',name:'$/kg·km',max:1},{type:'value',name:'可用机场%',max:100,position:'right'}],
+    series:[
+      {name:'单位成本 ($/kg·km)',type:'line',data:costPerKgKm,lineStyle:{width:3,color:'#dc2626'},itemStyle:{color:'#dc2626'},
+        markPoint:{data:[{type:'min',label:{formatter:'最优'},itemStyle:{color:'#22c55e'}}]}},
+      {name:'可用机场比例 (%)',type:'bar',yAxisIndex:1,data:airportPct,itemStyle:{color:'rgba(37,99,235,.25)'},barWidth:30,
+        label:{show:true,position:'top',fontSize:10,formatter:v=>v.value+'%'}}
+    ]
+  });
+
+  // Network coverage model
+  const nc=echarts.init(document.getElementById('chart-network'));
+  nc.setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:55,right:30,top:30,bottom:50},
+    xAxis:{type:'category',data:['W5000\n($4M×3架)','CY-8\n($3M×5架)','1.5吨级\n($1.8M×8架)','800kg级\n($1M×15架)'],axisLabel:{fontSize:11}},
+    yAxis:{type:'value',name:'日均服务能力'},
+    series:[
+      {name:'可服务目的地',type:'bar',data:[3,5,8,12],itemStyle:{color:'#2563eb'},barWidth:30,label:{show:true,position:'top',formatter:v=>v.value+'个目的地'}},
+      {name:'日航班数',type:'bar',data:[3,8,16,24],itemStyle:{color:'#22c55e'},barWidth:30,label:{show:true,position:'top',formatter:v=>v.value+'班/日'}}
+    ],
+    legend:{data:['可服务目的地','日航班数'],top:5}
+  });
+}
+
+// ============ DECISION CHART ============
+function renderDecision(){
+  const c=echarts.init(document.getElementById('chart-decision'));
+  c.setOption({
+    tooltip:{trigger:'axis'},legend:{data:['有人机 收益','无人机 收益','双轨制 收益'],top:5},
+    grid:{left:60,right:30,top:40,bottom:35},
+    xAxis:{type:'category',data:['2026-2028','2028-2032','2032+']},
+    yAxis:{type:'value',name:'评分',max:100},
+    series:[
+      {name:'有人机 收益',type:'bar',data:[60,45,25],itemStyle:{color:'rgba(220,38,38,.4)'},barWidth:22},
+      {name:'无人机 收益',type:'bar',data:[25,70,95],itemStyle:{color:'rgba(34,197,94,.4)'},barWidth:22},
+      {name:'双轨制 收益',type:'bar',data:[50,65,75],itemStyle:{color:'rgba(37,99,235,.4)'},barWidth:22}
+    ]
+  });
+}
+
+// ============ SCROLL & RESIZE ============
+function setupScroll(){
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+  document.querySelectorAll('.fade-in,.stat-card').forEach(el=>obs.observe(el));
+}
+function setupResize(){
+  let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{
+    document.querySelectorAll('[_echarts_instance_]').forEach(el=>{const c=echarts.getInstanceByDom(el);if(c)c.resize()});
+  },200)});
+}
+
+// ============ INIT ============
+document.addEventListener('DOMContentLoaded',async()=>{
+  setupScroll();setupResize();
+  try{renderGaps()}catch(e){console.error(e)}
+  try{renderScatter()}catch(e){console.error(e)}
+  try{renderFleet()}catch(e){console.error(e)}
+  try{renderCost()}catch(e){console.error(e)}
+  try{renderACRadar()}catch(e){console.error(e)}
+  try{renderPayload()}catch(e){console.error(e)}
+  try{renderOptimal()}catch(e){console.error(e)}
+  try{renderDecision()}catch(e){console.error(e)}
+  await initMaps();
+  try{renderDemand()}catch(e){console.error(e)}
+});
+</script>
+</body>
+</html>
