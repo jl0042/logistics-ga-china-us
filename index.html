@@ -206,22 +206,80 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="card"><div class="chart-title">每百万人通航飞机</div><div id="chart-gap2" class="chart-box" style="height:280px"></div><div class="source">CAAC: 3,232架(2024); FAA GA Survey CY2024: ~210,000架</div></div>
     </div>
 
-    <!-- Split logistics charts -->
-    <div style="margin-top:24px">
-      <div class="chart-title fade-in" style="font-size:18px;margin-bottom:4px">物流总量分项对比</div>
-      <div class="chart-desc fade-in">中国快递量是美国8倍, 公路货运量接近, 但航空货运量仅为美国一半</div>
+    <!-- 1. Stacked total freight by mode -->
+    <div class="card fade-in" style="margin-top:24px">
+      <div class="chart-title">货运总量结构对比 (亿吨, 2024)</div>
+      <div class="chart-desc">中国总货运量555亿吨, 是美国159亿吨的3.5倍 — 但结构完全不同</div>
+      <div id="chart-freight-stack" class="chart-box" style="height:380px"></div>
+      <div class="source">中国: 交通运输部《2024年交通运输行业发展统计公报》; 美国: BTS National Transportation Statistics 2024; US Army Corps of Engineers (水运); EIA (管道)</div>
     </div>
-    <div class="grid2" style="margin-top:12px">
-      <div class="card fade-in"><div class="chart-title">A. 公路货运量 (亿吨)</div><div id="chart-highway" class="chart-box" style="height:280px"></div><div class="source">交通运输部2024(403亿吨); US BTS 2024(~115亿吨)</div></div>
-      <div class="card fade-in"><div class="chart-title">B. 铁路货运量 (亿吨)</div><div id="chart-rail" class="chart-box" style="height:280px"></div><div class="source">国铁集团2024(49.8亿吨); US BTS 2024(~17亿吨)</div></div>
-    </div>
+
+    <!-- 2. Per-capita metrics -->
     <div class="grid2" style="margin-top:16px">
-      <div class="card fade-in"><div class="chart-title">C. 航空货运量 (万吨)</div><div id="chart-air" class="chart-box" style="height:280px"></div><div class="source">CAAC 2024(2,006万吨); BTS 2024(~4,500万吨)</div></div>
-      <div class="card fade-in"><div class="chart-title">D. 快递单量 (亿件)</div><div id="chart-express" class="chart-box" style="height:280px"></div><div class="source">国家邮政局2024(1,750亿件); USPS/UPS/FedEx合计~210亿件</div></div>
+      <div class="card fade-in">
+        <div class="chart-title">人均货运量 (吨/人/年)</div>
+        <div class="chart-desc">美国人均货运量反而比中国高 — 经济结构差异</div>
+        <div id="chart-percapita-freight" class="chart-box" style="height:280px"></div>
+        <div class="source">总货运量/总人口: 中国555亿吨÷14亿人; 美国159亿吨÷3.3亿人</div>
+      </div>
+      <div class="card fade-in">
+        <div class="chart-title">人均快递单量 (件/人/年)</div>
+        <div class="chart-desc">中国人均快递量是美国的2倍 — 电商驱动的末端需求</div>
+        <div id="chart-percapita-express" class="chart-box" style="height:280px"></div>
+        <div class="source">国家邮政局2024: 1,750亿件÷14亿人; USPS+UPS+FedEx+Amazon ~210亿件÷3.3亿人</div>
+      </div>
     </div>
+
+    <!-- 3. The key gap: aviation share -->
     <div class="grid2" style="margin-top:16px">
-      <div class="card fade-in"><div class="chart-title">E. 物流成本占GDP比重 (%)</div><div id="chart-logcost-pct" class="chart-box" style="height:280px"></div><div class="source">中国物流与采购联合会2024; US CSCMP State of Logistics 2024</div></div>
-      <div class="card fade-in"><div class="chart-title">F. 物流总成本 (万亿元)</div><div id="chart-logcost-abs" class="chart-box" style="height:280px"></div><div class="source">中国18.2万亿元; 美国$2.58T x 7.27 = 18.8万亿元</div></div>
+      <div class="card fade-in">
+        <div class="chart-title">航空货运占总货运比重 (%)</div>
+        <div class="chart-desc">航空占比的差距才是核心问题</div>
+        <div id="chart-air-share" class="chart-box" style="height:280px"></div>
+        <div class="source">中国: 2,006万吨÷555亿吨=0.036%; 美国: 4,500万吨÷159亿吨=0.28%</div>
+      </div>
+      <div class="card fade-in">
+        <div class="chart-title">快递单量 vs 航空货运量</div>
+        <div class="chart-desc">中国快递量是美国8倍, 但航空货运仅为美国的45%</div>
+        <div id="chart-express-vs-air" class="chart-box" style="height:280px"></div>
+        <div class="source">国家邮政局2024; CAAC 2024; BTS 2024; USPS/UPS/FedEx年报</div>
+      </div>
+    </div>
+
+    <!-- 4. Logistics cost with proper sources -->
+    <div class="grid2" style="margin-top:16px">
+      <div class="card fade-in">
+        <div class="chart-title">物流成本占GDP比重 (%)</div>
+        <div id="chart-logcost-pct" class="chart-box" style="height:280px"></div>
+        <div class="source">中国: 中国物流与采购联合会《2024年中国物流运行报告》(14.1%); 美国: CSCMP 35th Annual State of Logistics Report 2024 (8.8%)</div>
+      </div>
+      <div class="card fade-in">
+        <div class="chart-title">物流总成本 (万亿元)</div>
+        <div id="chart-logcost-abs" class="chart-box" style="height:280px"></div>
+        <div class="source">中国: 中国物流与采购联合会 — 社会物流总费用18.2万亿元(2024); 美国: CSCMP — $2.58T (2024) x 7.27汇率 = 18.8万亿元</div>
+      </div>
+    </div>
+
+    <!-- 5. Conclusion -->
+    <div class="insight fade-in" style="margin-top:16px">
+      <b>结构性矛盾: 货多、路有、但天上不够</b>
+      中国货运总量是美国的3.5倍, 但航空货运占比仅为美国的1/8 (0.036% vs 0.28%)。人均快递125件/年 (美国64件), 电商驱动的末端需求远超美国, 但航空运力严重不足。物流总成本占GDP的14.1% (美国8.8%), 高出5.3个百分点, 核心原因是运输结构低效 — 过度依赖公路, 航空和多式联运不足。
+    </div>
+    <div class="text-block fade-in" style="margin-top:12px">
+      <h4>这个结论如何被增强或减弱?</h4>
+      <h5>增强结论的因素:</h5>
+      <ul>
+        <li><b>时效溢价:</b> 中国电商"次日达"预期持续渗透到低线城市和农村, 对航空速度的刚需将增加</li>
+        <li><b>冷链增长:</b> 生鲜电商、医药冷链的年增速超20%, 这类货物对时效极为敏感, 航空几乎是唯一选择</li>
+        <li><b>西部开发:</b> 国家西部大开发+一带一路政策持续, 西部基础设施投入将创造更多航线需求</li>
+      </ul>
+      <h5>减弱结论的因素:</h5>
+      <ul>
+        <li><b>高铁快运扩张:</b> 中铁快运持续拓展, 可能在500-1500km距离段进一步挤压航空货运份额</li>
+        <li><b>公路网络完善:</b> 中国高速公路里程已达18.4万km (全球第一), 继续完善将降低公路运输成本</li>
+        <li><b>统计口径差异:</b> 中美"货运量"的统计方法不同 — 中国按"发送量"统计, 美国按"吨英里"换算, 直接比较总量需谨慎</li>
+        <li><b>经济结构:</b> 美国航空货运占比高部分原因是高价值商品 (电子、医药) 占GDP比重更大, 并非单纯的"基础设施好"</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1090,7 +1148,7 @@ initC('chart-gap2',{
   series:[{type:'bar',data:[{value:2.3,itemStyle:{color:'#dc2626'}},{value:636,itemStyle:{color:'#2563eb'}}],barWidth:60,label:{show:true,position:'top',fontWeight:700}}]
 });
 
-// ===== SPLIT LOGISTICS CHARTS =====
+// ===== LOGISTICS CHARTS =====
 function simpleBar(id,labels,vals,colors,unit){
   initC(id,{
     tooltip:{formatter:'{b}: {c} '+unit},
@@ -1099,10 +1157,48 @@ function simpleBar(id,labels,vals,colors,unit){
     series:[{type:'bar',data:vals.map(function(v,i){return{value:v,itemStyle:{color:colors[i]}}}),barWidth:60,label:{show:true,position:'top',fontWeight:700,fontSize:13}}]
   });
 }
-simpleBar('chart-highway',['中国','美国'],[403,115],['#dc2626','#2563eb'],'亿吨');
-simpleBar('chart-rail',['中国','美国'],[49.8,17],['#dc2626','#2563eb'],'亿吨');
-simpleBar('chart-air',['中国','美国'],[2006,4500],['#dc2626','#2563eb'],'万吨');
-simpleBar('chart-express',['中国','美国'],[1750,210],['#dc2626','#2563eb'],'亿件');
+
+// 1. Stacked freight by mode
+initC('chart-freight-stack',{
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){
+    var total=0;ps.forEach(function(p){total+=p.value});
+    var s='<b>'+ps[0].axisValue+'</b> — 合计: '+total.toFixed(1)+'亿吨<br>';
+    ps.forEach(function(p){s+=p.marker+p.seriesName+': '+p.value+'亿吨 ('+(p.value/total*100).toFixed(1)+'%)<br>'});
+    return s;
+  }},
+  legend:{data:['公路','铁路','水运','航空','管道'],top:10,selected:{'公路':true,'铁路':true,'水运':true,'航空':true,'管道':true}},
+  xAxis:{type:'category',data:['中国','美国'],axisLabel:{fontSize:14,fontWeight:700}},
+  yAxis:{type:'value',name:'亿吨'},
+  series:[
+    {name:'公路',type:'bar',stack:'total',data:[403,115],itemStyle:{color:'#f59e0b'},label:{show:true,fontSize:11,position:'inside',formatter:function(p){return p.value>20?p.value:''}}},
+    {name:'铁路',type:'bar',stack:'total',data:[49.8,17],itemStyle:{color:'#22c55e'},label:{show:true,fontSize:11,position:'inside',formatter:function(p){return p.value>10?p.value:''}}},
+    {name:'水运',type:'bar',stack:'total',data:[93.7,7.6],itemStyle:{color:'#3b82f6'},label:{show:true,fontSize:11,position:'inside',formatter:function(p){return p.value>5?p.value:''}}},
+    {name:'航空',type:'bar',stack:'total',data:[0.2,0.45],itemStyle:{color:'#a855f7'},label:{show:false}},
+    {name:'管道',type:'bar',stack:'total',data:[8.5,19],itemStyle:{color:'#64748b'},label:{show:true,fontSize:11,position:'inside',formatter:function(p){return p.value>5?p.value:''}}}
+  ],
+  grid:{top:60,bottom:30}
+});
+
+// 2. Per-capita metrics
+simpleBar('chart-percapita-freight',['中国','美国'],[39.6,48.2],['#dc2626','#2563eb'],'吨/人');
+simpleBar('chart-percapita-express',['中国','美国'],[125,63.6],['#dc2626','#2563eb'],'件/人');
+
+// 3. Aviation share & express vs air
+simpleBar('chart-air-share',['中国','美国'],[0.036,0.28],['#dc2626','#2563eb'],'%');
+(function(){
+  initC('chart-express-vs-air',{
+    tooltip:{trigger:'axis'},
+    legend:{data:['快递量(亿件, ÷10)','航空货运(万吨)'],top:5},
+    xAxis:{type:'category',data:['中国','美国'],axisLabel:{fontSize:13,fontWeight:600}},
+    yAxis:{type:'value'},
+    series:[
+      {name:'快递量(亿件, ÷10)',type:'bar',data:[175,21],itemStyle:{color:'rgba(220,38,38,.7)'},barWidth:40,label:{show:true,position:'top',fontSize:11,formatter:function(p){return p.value*10+'亿件'}}},
+      {name:'航空货运(万吨)',type:'bar',data:[2006,4500],itemStyle:{color:'rgba(37,99,235,.7)'},barWidth:40,label:{show:true,position:'top',fontSize:11}}
+    ]
+  });
+})();
+
+// 4. Logistics cost
 simpleBar('chart-logcost-pct',['中国','美国'],[14.1,8.8],['#dc2626','#2563eb'],'%');
 simpleBar('chart-logcost-abs',['中国','美国'],[18.2,18.8],['#dc2626','#2563eb'],'万亿元');
 
