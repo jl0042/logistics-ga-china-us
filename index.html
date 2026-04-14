@@ -356,7 +356,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <p><b>单件限重:</b> 25kg (无法承运大件)<br>
         <b>品类限制:</b> 仅限小件包裹, 无法运液体/鲜活<br>
         <b>覆盖盲区:</b> 西部多数县市无高铁<br>
-        <b>运力瓶颈:</b> 客运优先, 货运利用客座空间<br><br>
+        <b>运力瓶颈:</b> 客运优先, 货运利用客座空间<br>
+        <b>年货运量:</b> 仅约600万吨 (2024), 占铁路货运49.8亿吨的0.12%<br><br>
         这些限制正是航空物流的机会窗口。</p>
       </div>
       <div class="analysis-card">
@@ -369,38 +370,80 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
-    <!-- Speed comparison table -->
+    <!-- HSR capacity analysis -->
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">高铁货运能力分析</div>
+      <div class="text-block" style="border:none;box-shadow:none;padding:0">
+        <h5>运力结构</h5>
+        <ul>
+          <li><b>客座行李架模式:</b> 每列8节车厢, 每节约40个行李架位, 单件≤25kg → 每列最大8吨, 但实际利用率仅10-20%</li>
+          <li><b>"确认车"专用车厢:</b> 部分车次预留1-2节车厢, 可装2-4吨货物</li>
+          <li><b>货运动车组 (试验):</b> CR200JS-G, 载货40吨/列, 2024年底仅6列投入运营</li>
+        </ul>
+        <h5>关键数据</h5>
+        <ul>
+          <li>2024年高铁快运量: ~600万吨, 同比增长18%</li>
+          <li>日均开行: 约850列快运车次 (含普速行包专列)</li>
+          <li>覆盖城市: 高铁快运触达约450个城市</li>
+          <li>对比: 航空货运2,006万吨, 是高铁快运的3.3倍</li>
+        </ul>
+        <p><b>核心瓶颈:</b> 高铁以客运为主, 货运是"边角料"。在没有大规模货运专列之前, 高铁快运的年运力天花板约1,500-2,000万吨。即使满载, 也仅能覆盖当前航空货运量的75-100%, 无法替代航空。</p>
+      </div>
+      <div class="source">中铁快运股份有限公司2024年报; 国铁集团2024年工作报告; CR200JS-G数据来自中车集团</div>
+    </div>
+
+    <!-- Speed comparison table - unified units -->
     <div class="card fade-in" style="margin-top:20px">
       <div class="chart-title">各距离段运输方式速度与成本对比</div>
+      <div class="chart-desc">所有成本统一为"终端定价 元/kg" — 物流公司实际需要支付的价格, 含取派、中转等全链条费用</div>
       <div class="table-wrap">
         <table class="hsr-compare">
           <thead>
-            <tr><th>距离</th><th>卡车(时间)</th><th>卡车(元/吨)</th><th>高铁(时间)</th><th>高铁(元/kg)</th><th>航空(时间)</th><th>航空(元/kg)</th><th>最优选</th></tr>
+            <tr><th>距离</th><th>卡车(时间)</th><th>卡车(元/kg)</th><th>高铁(时间)</th><th>高铁(元/kg)</th><th>航空(时间)</th><th>航空(元/kg)</th><th>成本最优</th><th>时效最优</th></tr>
           </thead>
           <tbody>
-            <tr><td>200km</td><td>3-4h</td><td>100</td><td>1h</td><td>23+</td><td>0.5h</td><td>5-8</td><td style="color:#16a34a;font-weight:700">卡车</td></tr>
-            <tr><td>500km</td><td>7-8h</td><td>250</td><td>2h</td><td>28+</td><td>1h</td><td>8-12</td><td style="color:#dc2626;font-weight:700">高铁/航空</td></tr>
-            <tr><td>1000km</td><td>14-16h</td><td>500</td><td>3-4h</td><td>33+</td><td>1.5h</td><td>12-18</td><td style="color:#dc2626;font-weight:700">高铁</td></tr>
-            <tr><td>1500km</td><td>20-24h</td><td>750</td><td>5-6h</td><td>40+</td><td>2h</td><td>15-22</td><td style="color:#2563eb;font-weight:700">航空</td></tr>
-            <tr><td>2000km+</td><td>30-36h</td><td>1000+</td><td>7-10h</td><td>50+</td><td>2.5h</td><td>18-28</td><td style="color:#2563eb;font-weight:700">航空</td></tr>
-            <tr style="background:#fef2f2"><td>西部无路区</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0.5-2h</td><td>15-30</td><td style="color:#2563eb;font-weight:700">航空唯一</td></tr>
+            <tr><td>200km</td><td>3-4h</td><td>0.10</td><td>1h</td><td>10-15</td><td>1h (含地面)</td><td>8-15</td><td style="color:#16a34a;font-weight:700">卡车</td><td style="color:#dc2626">高铁≈航空</td></tr>
+            <tr><td>500km</td><td>7-8h</td><td>0.25</td><td>2-3h</td><td>12-18</td><td>2h (含地面)</td><td>10-18</td><td style="color:#16a34a;font-weight:700">卡车</td><td style="color:#dc2626">高铁</td></tr>
+            <tr><td>1000km</td><td>14-16h</td><td>0.50</td><td>3-5h</td><td>15-25</td><td>3h (含地面)</td><td>12-22</td><td style="color:#16a34a;font-weight:700">卡车</td><td style="color:#2563eb">航空≈高铁</td></tr>
+            <tr><td>1500km</td><td>20-24h</td><td>0.75</td><td>5-7h</td><td>20-35</td><td>4h (含地面)</td><td>15-28</td><td style="color:#16a34a;font-weight:700">卡车</td><td style="color:#2563eb;font-weight:700">航空</td></tr>
+            <tr><td>2000km+</td><td>30-36h</td><td>1.0+</td><td>7-10h</td><td>25-45</td><td>5h (含地面)</td><td>18-35</td><td style="color:#16a34a;font-weight:700">卡车</td><td style="color:#2563eb;font-weight:700">航空</td></tr>
+            <tr style="background:#fef2f2"><td>西部无路区</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>2-4h</td><td>20-40</td><td colspan="2" style="color:#2563eb;font-weight:700">航空唯一</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="source">卡车成本基于中国公路货运协会2024均价; 高铁基于中铁快运官方定价; 航空为通航物流估算</div>
+      <div class="insight" style="margin-top:12px;font-size:12px">
+        <b>口径说明</b>
+        卡车: 整车运输定价 (满载10-30吨), 元/kg极低但时效差。高铁: 中铁快运零售定价 (单件≤25kg, 含取派), 首重+续重折算。航空: 通航物流估算 (Caravan级, 含地面转运), 基于运营成本5,089元/hr + 地面成本。三种方式的<b>服务内容完全不同</b>: 卡车是批量运输, 高铁和航空是快递/零担, 直接比较单价会产生误导。
+      </div>
+      <div class="source">卡车: 满帮集团2024年平台均价(约0.5元/吨公里); 高铁: 中铁快运官网2024标准价; 航空: 基于Section 06运营成本推算 + 地面取派估算3-5元/kg</div>
     </div>
 
     <!-- Cost per ton-km chart -->
     <div class="card fade-in" style="margin-top:20px">
-      <div class="chart-title">各运输方式单位成本 (元/吨公里)</div>
-      <div class="chart-desc">航空虽成本最高, 但在无地面覆盖区域和时敏货物场景下具有不可替代性</div>
+      <div class="chart-title">各运输方式单位成本 (元/吨公里) — 批量运输口径</div>
+      <div class="chart-desc">此图为大宗批量运输成本, 不含取派。高铁快运因零售定价模式, 实际单位成本远高于普通铁路</div>
       <div id="chart-tonkm" class="chart-box" style="height:350px"></div>
-      <div class="source">水运: 交通运输部; 铁路: 国铁集团; 公路: 中国公路货运协会; 高铁: 中铁快运; 航空: IATA/行业估算</div>
+      <div class="source">水运: 交通运输部2024; 铁路: 国铁集团2024均价; 公路: 满帮集团平台数据2024 (~0.5元/吨公里); 高铁快运: 中铁快运标准定价折算 (~15元/吨公里, 按5kg件500km); 航空: 基于Caravan 5,089元/hr, 载1吨, 巡航227km/h → ~22元/吨公里</div>
+    </div>
+
+    <!-- HSR Coverage Map -->
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">高铁网络覆盖 vs 无覆盖区域GDP占比</div>
+      <div class="chart-desc">高铁4.8万km覆盖东中部主要城市, 但西部大片区域无高铁 — 这些地区占中国GDP约15%</div>
+      <div class="grid2">
+        <div>
+          <div id="chart-hsr-coverage" class="chart-box" style="height:400px"></div>
+        </div>
+        <div>
+          <div id="chart-hsr-gdp-pie" class="chart-box" style="height:400px"></div>
+        </div>
+      </div>
+      <div class="source">高铁覆盖根据: 国铁集团《2024年铁路统计公报》高铁站点城市名单; GDP: 国家统计局2024</div>
     </div>
 
     <div class="insight green fade-in" style="margin-top:16px">
       <b>高铁竞争的核心洞察</b>
-      高铁快运在500-1500km的标准小件市场 (单件&lt;25kg) 已经非常强势。通航物流的机会在于三个高铁做不到的事: (1) 西部无铁路覆盖区域; (2) 大件/特殊品类运输; (3) 高铁末端 "最后100公里" 的支线接驳。UAV在后两个场景有独特优势。
+      高铁快运在500-1500km的标准小件市场 (单件&lt;25kg) 已经非常强势, 但年运力仅600万吨, 且受限于客运优先的运力分配。通航物流的机会在于三个高铁做不到的事: (1) 西部无高铁覆盖区域 (占国土55%, GDP占15%); (2) 大件/特殊品类/鲜活运输 (高铁限25kg/件, 禁液体); (3) 点对点灵活航线 (不受固定铁路线约束)。高铁货运的天花板约1,500-2,000万吨/年, 不会替代航空, 两者将长期共存互补。
     </div>
   </div>
 </section>
@@ -1236,17 +1279,74 @@ initC('chart-radar',{
 
 // ===== COST PER TON-KM =====
 initC('chart-tonkm',{
-  tooltip:{trigger:'axis'},
+  tooltip:{trigger:'axis',formatter:function(ps){
+    var p=ps[0];
+    var notes=['长江干线均价','普铁整车均价','满帮平台整车均价','中铁快运零售定价折算(5kg件/500km)','Caravan级通航物流估算'];
+    return '<b>'+p.name+'</b><br>'+p.value+' 元/吨公里<br><span style="color:#999;font-size:11px">'+notes[p.dataIndex]+'</span>';
+  }},
   xAxis:{type:'category',data:['水运','铁路','公路','高铁快运','航空'],axisLabel:{fontSize:12}},
   yAxis:{type:'log',name:'元/吨公里',min:0.005},
   series:[{type:'bar',data:[
     {value:0.006,itemStyle:{color:'#60a5fa'}},
     {value:0.15,itemStyle:{color:'#34d399'}},
     {value:0.50,itemStyle:{color:'#fbbf24'}},
-    {value:2.25,itemStyle:{color:'#f87171'}},
-    {value:3.5,itemStyle:{color:'#a78bfa'}}
+    {value:15,itemStyle:{color:'#f87171'}},
+    {value:22,itemStyle:{color:'#a78bfa'}}
   ],barWidth:50,label:{show:true,position:'top',fontWeight:600,fontSize:12}}]
 });
+
+// ===== HSR COVERAGE MAP + GDP PIE =====
+(function(){
+  // Provinces with HSR stations (2024)
+  var hsrProvinces=['北京','天津','河北','山西','辽宁','吉林','上海','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','重庆','四川','贵州','云南','陕西','黑龙江'];
+  var noHsrProvinces=['内蒙古','西藏','甘肃','青海','宁夏','新疆'];
+
+  function waitForCnMap(){
+    if(!cnMapReady){setTimeout(waitForCnMap,500);return}
+
+    var covData=cnProvinces.filter(function(p){return p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
+      var fn=CN_FULL[p.name]||p.name;
+      var hasHsr=hsrProvinces.indexOf(p.name)>=0;
+      return{name:fn,value:hasHsr?1:0,itemStyle:{areaColor:hasHsr?'rgba(22,163,74,.4)':'rgba(220,38,38,.3)'}};
+    });
+
+    initC('chart-hsr-coverage',{
+      tooltip:{trigger:'item',formatter:function(p){
+        var sn=CN_SHORT[p.name]||p.name;
+        var hasHsr=hsrProvinces.indexOf(sn)>=0;
+        var gdp=(cnProvGDP[sn]||0);
+        return '<b>'+sn+'</b><br>'+(hasHsr?'<span style="color:#16a34a">✓ 有高铁覆盖</span>':'<span style="color:#dc2626">✗ 无高铁/覆盖极少</span>')+'<br>GDP: '+Math.round(gdp).toLocaleString()+'亿元';
+      }},
+      geo:{map:'china',roam:true,zoom:1.2,label:{show:false},
+        itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#eee'},
+        emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}},
+        regions:covData.map(function(d){return{name:d.name,itemStyle:d.itemStyle}})
+      },
+      series:[{type:'map',map:'china',geoIndex:0,data:covData,silent:true}]
+    });
+
+    // GDP pie
+    var hsrGDP=0,noHsrGDP=0;
+    cnProvinces.forEach(function(p){
+      if(p.name==='台湾'||p.name==='香港'||p.name==='澳门') return;
+      if(noHsrProvinces.indexOf(p.name)>=0) noHsrGDP+=cnProvGDP[p.name]||0;
+      else hsrGDP+=cnProvGDP[p.name]||0;
+    });
+    initC('chart-hsr-gdp-pie',{
+      tooltip:{trigger:'item',formatter:'{b}: {c}亿元 ({d}%)'},
+      series:[{
+        type:'pie',radius:['40%','70%'],
+        data:[
+          {name:'高铁覆盖区域GDP',value:Math.round(hsrGDP),itemStyle:{color:'#22c55e'}},
+          {name:'无高铁区域GDP',value:Math.round(noHsrGDP),itemStyle:{color:'#ef4444'}}
+        ],
+        label:{formatter:'{b}\n{d}%',fontSize:13,fontWeight:600},
+        emphasis:{label:{fontSize:15}}
+      }]
+    });
+  }
+  waitForCnMap();
+})();
 
 // ===== HUBS =====
 (function(){
