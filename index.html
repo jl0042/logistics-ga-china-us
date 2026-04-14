@@ -1409,11 +1409,17 @@ function renderRadiusMaps(){
   var usCircles=[];
   usCargoHubs.forEach(function(h){usCircles.push(geoCircle(h[1],h[0],usRadius,48))});
 
-  // CN coverage map
+  // CN coverage map — color by GDP share, green=covered, red=uncovered
+  var cnMaxGDP=0;cnProvinces.forEach(function(p){if(p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门') cnMaxGDP=Math.max(cnMaxGDP,cnProvGDP[p.name]||0)});
   var cnMapData=cnProvinces.filter(function(p){return p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
     var fn=CN_FULL[p.name]||p.name;
     var isCovered=cnResult.covered[p.name];
-    return{name:fn,value:isCovered?1:0,itemStyle:{areaColor:isCovered?'rgba(34,197,94,.35)':'rgba(220,38,38,.15)'}};
+    var gdpShare=cnTotalGDP>0?(cnProvGDP[p.name]||0)/cnTotalGDP:0;
+    var intensity=Math.min(1,Math.sqrt(gdpShare)*4); // sqrt scale for better visual spread
+    var color=isCovered
+      ?'rgba(22,163,74,'+(.15+intensity*.55)+')' // green: 0.15-0.70 opacity
+      :'rgba(220,38,38,'+(.1+intensity*.6)+')';   // red: 0.10-0.70 opacity
+    return{name:fn,value:Math.round((cnProvGDP[p.name]||0)),itemStyle:{areaColor:color}};
   });
 
   var cnCircleSeries=cnCircles.map(function(circle,i){
@@ -1436,22 +1442,32 @@ function renderRadiusMaps(){
   var cnOpt={
     tooltip:{trigger:'item',formatter:function(p){
       if(p.seriesType==='scatter') return '<b>'+p.name+'</b><br>货运枢纽';
+      if(p.seriesType==='lines') return '';
       var sn=CN_SHORT[p.name]||p.name;
       var isCov=cnResult.covered[sn];
       var prov=cnProvinces.find(function(x){return x.name===sn});
       if(!prov) return p.name;
-      return '<b>'+sn+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ 在覆盖范围内</span>':'<span style="color:#dc2626">✗ 超出覆盖范围</span>')+'<br>GDP: '+(cnProvGDP[sn]||0).toFixed(0)+'亿元';
+      var gdp=(cnProvGDP[sn]||0);
+      var pct=cnTotalGDP>0?(gdp/cnTotalGDP*100).toFixed(1):0;
+      return '<b>'+sn+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ 在覆盖范围内</span>':'<span style="color:#dc2626">✗ 超出覆盖范围</span>')+'<br>GDP: '+Math.round(gdp).toLocaleString()+'亿元 (占全国'+pct+'%)';
     }},
-    geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}}},
-    series:[{type:'map',map:'china',geoIndex:0,data:cnMapData}].concat(cnCircleSeries).concat([cnHubScatter])
+    geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#eee'},emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}},
+      regions:cnMapData.map(function(d){return{name:d.name,itemStyle:d.itemStyle}})
+    },
+    series:cnCircleSeries.concat([cnHubScatter,{type:'map',map:'china',geoIndex:0,data:cnMapData,silent:true}])
   };
   if(charts['map-cn-radius']){charts['map-cn-radius'].setOption(cnOpt,true)}
   else{initC('map-cn-radius',cnOpt)}
 
-  // US coverage map
+  // US coverage map — color by GDP share
   var usMapData=usStates.filter(function(s){return s.name!=='District of Columbia'}).map(function(s){
     var isCovered=usResult.covered[s.name];
-    return{name:s.name,value:isCovered?1:0,itemStyle:{areaColor:isCovered?'rgba(34,197,94,.35)':'rgba(220,38,38,.15)'}};
+    var gdpShare=usTotalGDP>0?(usStateGDP[s.name]||0)/usTotalGDP:0;
+    var intensity=Math.min(1,Math.sqrt(gdpShare)*4);
+    var color=isCovered
+      ?'rgba(22,163,74,'+(.15+intensity*.55)+')'
+      :'rgba(220,38,38,'+(.1+intensity*.6)+')';
+    return{name:s.name,value:Math.round((usStateGDP[s.name]||0)),itemStyle:{areaColor:color}};
   });
 
   var usCircleSeries=usCircles.map(function(circle){
@@ -1473,13 +1489,18 @@ function renderRadiusMaps(){
   var usOpt={
     tooltip:{trigger:'item',formatter:function(p){
       if(p.seriesType==='scatter') return '<b>'+p.name+'</b><br>Cargo Hub';
+      if(p.seriesType==='lines') return '';
       var isCov=usResult.covered[p.name];
       var st=usStates.find(function(x){return x.name===p.name});
       if(!st) return p.name;
-      return '<b>'+p.name+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ Covered</span>':'<span style="color:#dc2626">✗ Outside range</span>')+'<br>GDP: $'+(usStateGDP[p.name]||0).toFixed(0)+'亿';
+      var gdp=(usStateGDP[p.name]||0);
+      var pct=usTotalGDP>0?(gdp/usTotalGDP*100).toFixed(1):0;
+      return '<b>'+p.name+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ Covered</span>':'<span style="color:#dc2626">✗ Outside range</span>')+'<br>GDP: $'+Math.round(gdp).toLocaleString()+'亿 ('+pct+'% of total)';
     }},
-    geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#bfdbfe'},label:{show:true,fontSize:10}}},
-    series:[{type:'map',map:'USA',geoIndex:0,data:usMapData}].concat(usCircleSeries).concat([usHubScatter])
+    geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#eee'},emphasis:{itemStyle:{areaColor:'#bfdbfe'},label:{show:true,fontSize:10}},
+      regions:usMapData.map(function(d){return{name:d.name,itemStyle:d.itemStyle}})
+    },
+    series:usCircleSeries.concat([usHubScatter,{type:'map',map:'USA',geoIndex:0,data:usMapData,silent:true}])
   };
   if(charts['map-us-radius']){charts['map-us-radius'].setOption(usOpt,true)}
   else{initC('map-us-radius',usOpt)}
