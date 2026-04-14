@@ -135,25 +135,62 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <button class="toggle-btn" onclick="switchLayer('gdp')">GDP人均</button>
       <button class="toggle-btn" onclick="switchLayer('airports')">机场密度</button>
     </div>
+    <div style="display:flex;gap:16px;margin-bottom:12px;font-size:12px;color:var(--text2);flex-wrap:wrap">
+      <span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#f59e0b;vertical-align:middle;margin-right:4px"></span>货运枢纽 Cargo Hub</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#84cc16;vertical-align:middle;margin-right:4px"></span>大型枢纽 Large Hub</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#06b6d4;vertical-align:middle;margin-right:4px"></span>干线/区域 Regional</span>
+      <span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#a78bfa;vertical-align:middle;margin-right:4px"></span>支线/通航 GA/Remote</span>
+    </div>
     <div class="grid2">
       <div class="card">
-        <div class="chart-title">中国 -- 省级数据 + 机场分布</div>
-        <div class="chart-desc" id="cn-map-desc">底色=人口密度(人/km2), 圆点=主要机场位置</div>
+        <div class="chart-title">中国 -- 省级数据 + 主要机场分布 (40个)</div>
+        <div class="chart-desc" id="cn-map-desc">底色=人口密度(人/km2), 圆点=机场(按类型着色)</div>
         <div id="map-cn" class="chart-box" style="height:520px"></div>
         <div class="source">数据来源: 国家统计局2024年统计公报; CAAC 2024年民航行业统计公报</div>
       </div>
       <div class="card">
-        <div class="chart-title">美国 -- 各州数据 + 货运机场分布</div>
-        <div class="chart-desc" id="us-map-desc">底色=人口密度(人/km2), 圆点=主要货运机场</div>
+        <div class="chart-title">美国 -- 各州数据 + 主要机场分布 (45个)</div>
+        <div class="chart-desc" id="us-map-desc">底色=人口密度(人/km2), 圆点=机场(按类型着色)</div>
         <div id="map-us" class="chart-box" style="height:520px"></div>
         <div class="source">数据来源: US Census Bureau 2024; BEA GDP by State Q4 2024; FAA NPIAS 2025</div>
       </div>
     </div>
     <div class="card fade-in" style="margin-top:20px">
-      <div class="chart-title">GDP人均 vs 通航机场密度 (关键发现)</div>
-      <div class="chart-desc">气泡大小=人口规模 | 中国即使最富裕省份的通航密度也远低于美国最贫穷的州</div>
+      <div class="chart-title">GDP人均 vs 每百万人通航机场数 (关键发现)</div>
+      <div class="chart-desc">气泡大小=人口规模 | 中国即使最富裕省份, 每百万人机场数也远低于美国最穷的州</div>
       <div id="chart-scatter" class="chart-box"></div>
       <div class="source">综合分析基于: 国家统计局2024; US BEA 2024; CAAC 2024; FAA NPIAS 2025</div>
+    </div>
+
+    <!-- Truck Radius GDP Coverage Analysis -->
+    <div class="card fade-in" style="margin-top:20px">
+      <div class="chart-title">货运枢纽公路辐射覆盖 vs GDP占比</div>
+      <div class="chart-desc">以主要货运枢纽为圆心, 按公路平均运输速度画覆盖半径, 计算辐射范围内GDP占比。中国平均60km/h, 美国平均80km/h。</div>
+      <div class="toggle-group" id="radius-toggle">
+        <button class="toggle-btn active" onclick="switchRadius(6)">6小时</button>
+        <button class="toggle-btn" onclick="switchRadius(12)">12小时</button>
+        <button class="toggle-btn" onclick="switchRadius(24)">24小时</button>
+      </div>
+      <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;font-size:15px;font-weight:700">
+          中国GDP覆盖: <span id="cn-gdp-cover" style="color:#dc2626;font-size:20px">--</span>%
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 18px;font-size:15px;font-weight:700">
+          美国GDP覆盖: <span id="us-gdp-cover" style="color:#2563eb;font-size:20px">--</span>%
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;font-size:13px;color:var(--text2);display:flex;align-items:center">
+          <span id="radius-info">半径: 中国360km / 美国480km</span>
+        </div>
+      </div>
+      <div class="grid2">
+        <div><div id="map-cn-radius" class="chart-box" style="height:500px"></div></div>
+        <div><div id="map-us-radius" class="chart-box" style="height:500px"></div></div>
+      </div>
+      <div class="insight fade-in" style="margin-top:12px">
+        <b id="radius-insight">分析加载中...</b>
+        <span id="radius-insight-text"></span>
+      </div>
+      <div class="source">假设: 中国公路平均速度60km/h (含高速+普通), 美国80km/h | GDP数据: 国家统计局2024, US BEA 2024 | 枢纽: 中国10大+美国10大货运机场</div>
     </div>
   </div>
 </section>
@@ -774,45 +811,55 @@ var cnProvinces=[
 // Red provinces for coverage gap
 var redProvinces=['西藏','新疆','青海','内蒙古','甘肃','宁夏','云南','贵州'];
 
-// China airports
+// China airports: [lon, lat, name, type, cargo_万吨]
 var cnAirports=[
-  [116.584,40.080,'北京首都PEK'],[116.411,39.509,'北京大兴PKX'],
-  [121.805,31.143,'上海浦东PVG'],[121.336,31.198,'上海虹桥SHA'],
-  [113.299,23.392,'广州白云CAN'],[113.811,22.639,'深圳宝安SZX'],
-  [103.947,30.578,'成都双流CTU'],[104.445,30.319,'成都天府TFU'],
-  [106.642,29.719,'重庆江北CKG'],[114.208,30.783,'武汉天河WUH'],
-  [113.841,34.520,'郑州新郑CGO'],[120.434,30.229,'杭州萧山HGH'],
-  [102.929,25.102,'昆明长水KMG'],[108.752,34.447,'西安咸阳XIY'],
-  [118.862,31.742,'南京禄口NKG'],[113.220,28.189,'长沙黄花CSX'],
-  [117.298,31.780,'合肥新桥HFE'],[115.900,28.865,'南昌昌北KHN'],
-  [110.459,19.935,'海口美兰HAK'],[109.412,18.303,'三亚凤凰SYX'],
-  [87.474,43.907,'乌鲁木齐URC'],[90.912,29.298,'拉萨贡嘎LXA'],
-  [102.043,36.528,'西宁曹家堡XNN'],[103.620,36.515,'兰州中川LHW'],
-  [106.801,26.538,'贵阳龙洞堡KWE'],[108.172,22.608,'南宁吴圩NNG'],
-  [100.760,21.974,'西双版纳JHG'],[100.246,26.682,'丽江LJG'],
-  [117.216,36.857,'济南遥墙TNA'],[120.087,36.266,'青岛胶东TAO'],
-  [118.128,24.544,'厦门高崎XMN'],[119.663,25.935,'福州长乐FOC'],
-  [126.250,45.623,'哈尔滨太平HRB'],[123.483,41.640,'沈阳桃仙SHE'],
-  [125.685,43.996,'长春龙嘉CGQ'],[106.393,38.322,'银川河东INC'],
-  [114.942,30.346,'鄂州花湖EHU'],[112.628,37.747,'太原武宿TYN'],
-  [114.697,38.281,'石家庄正定SJW'],[117.346,39.124,'天津滨海TSN']
+  [116.584,40.080,'北京首都 PEK','货运枢纽',144.3],[116.411,39.509,'北京大兴 PKX','大型枢纽',22],
+  [121.805,31.143,'上海浦东 PVG','货运枢纽',377.8],[121.336,31.198,'上海虹桥 SHA','大型枢纽',5.2],
+  [113.299,23.392,'广州白云 CAN','货运枢纽',238.2],[113.811,22.639,'深圳宝安 SZX','货运枢纽',188.1],
+  [103.947,30.578,'成都双流 CTU','干线机场',64.3],[104.445,30.319,'成都天府 TFU','大型枢纽',18],
+  [106.642,29.719,'重庆江北 CKG','干线机场',46.2],[114.208,30.783,'武汉天河 WUH','干线机场',31.5],
+  [113.841,34.520,'郑州新郑 CGO','货运枢纽',82.5],[120.434,30.229,'杭州萧山 HGH','货运枢纽',73.5],
+  [102.929,25.102,'昆明长水 KMG','干线机场',38.6],[108.752,34.447,'西安咸阳 XIY','干线机场',35.8],
+  [118.862,31.742,'南京禄口 NKG','干线机场',36.7],[113.220,28.189,'长沙黄花 CSX','干线机场',18.5],
+  [117.298,31.780,'合肥新桥 HFE','干线机场',8.2],[115.900,28.865,'南昌昌北 KHN','干线机场',6.8],
+  [110.459,19.935,'海口美兰 HAK','干线机场',15.3],[109.412,18.303,'三亚凤凰 SYX','支线机场',2.5],
+  [87.474,43.907,'乌鲁木齐 URC','干线机场',12.1],[90.912,29.298,'拉萨贡嘎 LXA','支线机场',3.2],
+  [102.043,36.528,'西宁曹家堡 XNN','支线机场',1.8],[103.620,36.515,'兰州中川 LHW','干线机场',5.6],
+  [106.801,26.538,'贵阳龙洞堡 KWE','干线机场',9.4],[108.172,22.608,'南宁吴圩 NNG','干线机场',11.2],
+  [100.760,21.974,'西双版纳 JHG','支线机场',0.5],[100.246,26.682,'丽江 LJG','支线机场',0.3],
+  [117.216,36.857,'济南遥墙 TNA','干线机场',12.8],[120.087,36.266,'青岛胶东 TAO','干线机场',22.1],
+  [118.128,24.544,'厦门高崎 XMN','干线机场',37.6],[119.663,25.935,'福州长乐 FOC','干线机场',8.5],
+  [126.250,45.623,'哈尔滨太平 HRB','干线机场',10.3],[123.483,41.640,'沈阳桃仙 SHE','干线机场',13.5],
+  [125.685,43.996,'长春龙嘉 CGQ','干线机场',4.8],[106.393,38.322,'银川河东 INC','支线机场',1.2],
+  [114.942,30.346,'鄂州花湖 EHU','货运枢纽',102],[112.628,37.747,'太原武宿 TYN','干线机场',3.9],
+  [114.697,38.281,'石家庄正定 SJW','干线机场',5.1],[117.346,39.124,'天津滨海 TSN','干线机场',18.7]
 ];
 
-// US airports
+// US airports: [lon, lat, name, type, cargo_万吨]
 var usAirports=[
-  [-89.976,35.044,'Memphis MEM'],[-85.735,38.171,'Louisville SDF'],
-  [-149.993,61.179,'Anchorage ANC'],[-80.290,25.796,'Miami MIA'],
-  [-118.408,33.943,'Los Angeles LAX'],[-87.905,41.979,'Chicago ORD'],
-  [-86.294,39.717,'Indianapolis IND'],[-84.668,39.049,'Cincinnati CVG'],
-  [-73.779,40.639,'JFK'],[-97.038,32.897,'Dallas DFW'],
-  [-84.428,33.637,'Atlanta ATL'],[-122.221,37.720,'Oakland OAK'],
-  [-122.310,47.448,'Seattle SEA'],[-74.171,40.689,'Newark EWR'],
-  [-112.006,33.435,'Phoenix PHX'],[-104.674,39.860,'Denver DEN'],
-  [-95.341,29.984,'Houston IAH'],[-75.241,39.872,'Philadelphia PHL'],
-  [-71.008,42.362,'Boston BOS'],[-122.375,37.620,'San Francisco SFO'],
-  [-111.980,40.789,'Salt Lake City SLC'],[-81.309,28.429,'Orlando MCO'],
-  [-93.222,44.880,'Minneapolis MSP'],[-117.190,32.734,'San Diego SAN'],
-  [-86.678,36.125,'Nashville BNA']
+  [-89.976,35.044,'Memphis MEM','Cargo Hub',375.4],[-85.735,38.171,'Louisville SDF','Cargo Hub',315.3],
+  [-149.993,61.179,'Anchorage ANC','Cargo Hub',369.9],[-80.290,25.796,'Miami MIA','Cargo Hub',275.3],
+  [-118.408,33.943,'Los Angeles LAX','Cargo Hub',217.4],[-87.905,41.979,'Chicago ORD','Cargo Hub',207.4],
+  [-86.294,39.717,'Indianapolis IND','Cargo Hub',110],[-84.668,39.049,'Cincinnati CVG','Cargo Hub',169.6],
+  [-73.779,40.639,'New York JFK','Cargo Hub',168],[-97.038,32.897,'Dallas DFW','Cargo Hub',81.8],
+  [-84.428,33.637,'Atlanta ATL','Large Hub',72.5],[-122.221,37.720,'Oakland OAK','Large Hub',58.2],
+  [-122.310,47.448,'Seattle SEA','Large Hub',45.3],[-74.171,40.689,'Newark EWR','Large Hub',62.1],
+  [-112.006,33.435,'Phoenix PHX','Large Hub',12.5],[-104.674,39.860,'Denver DEN','Large Hub',18.3],
+  [-95.341,29.984,'Houston IAH','Large Hub',42.8],[-75.241,39.872,'Philadelphia PHL','Large Hub',28.6],
+  [-71.008,42.362,'Boston BOS','Large Hub',22.1],[-122.375,37.620,'San Francisco SFO','Large Hub',38.5],
+  [-111.980,40.789,'Salt Lake City SLC','Large Hub',8.5],[-81.309,28.429,'Orlando MCO','Large Hub',9.2],
+  [-93.222,44.880,'Minneapolis MSP','Large Hub',15.8],[-117.190,32.734,'San Diego SAN','Regional',4.2],
+  [-86.678,36.125,'Nashville BNA','Regional',6.1],
+  [-83.353,42.212,'Detroit DTW','Large Hub',19.5],[-80.943,35.214,'Charlotte CLT','Large Hub',14.2],
+  [-115.152,36.080,'Las Vegas LAS','Regional',3.8],[-122.597,45.589,'Portland PDX','Regional',11.5],
+  [-90.370,38.748,'St. Louis STL','Regional',5.3],[-80.233,40.492,'Pittsburgh PIT','Regional',3.9],
+  [-94.714,39.298,'Kansas City MCI','Regional',3.1],[-82.533,27.976,'Tampa TPA','Regional',5.8],
+  [-121.591,38.695,'Sacramento SMF','Regional',2.4],[-97.670,30.195,'Austin AUS','Regional',1.8],
+  [-78.788,35.878,'Raleigh RDU','Regional',4.5],[-87.897,42.947,'Milwaukee MKE','Regional',2.1],
+  [-116.223,43.564,'Boise BOI','Regional',0.8],[-106.609,35.040,'Albuquerque ABQ','Regional',1.2],
+  [-147.856,64.815,'Fairbanks FAI','GA/Remote',0.5],[-134.576,58.355,'Juneau JNU','GA/Remote',0.3],
+  [-157.922,21.319,'Honolulu HNL','Large Hub',25.6],[-98.470,29.534,'San Antonio SAT','Regional',1.5],
+  [-117.534,47.620,'Spokane GEG','Regional',0.9],[-95.894,41.303,'Omaha OMA','Regional',1.6]
 ];
 
 // US State Data
@@ -908,15 +955,31 @@ function renderMaps(){
   if(usMapReady) renderUSMap();
 }
 
+function airportColor(type){
+  if(type==='货运枢纽'||type==='Cargo Hub') return '#f59e0b';
+  if(type==='大型枢纽'||type==='Large Hub') return '#84cc16';
+  if(type==='干线机场'||type==='Regional') return '#06b6d4';
+  return '#a78bfa';
+}
+function airportSize(type){
+  if(type==='货运枢纽'||type==='Cargo Hub') return 10;
+  if(type==='大型枢纽'||type==='Large Hub') return 7;
+  if(type==='干线机场'||type==='Regional') return 5;
+  return 4;
+}
+
 function renderChinaMap(){
   var data=getLayerData(cnProvinces,currentLayer);
   var range=getLayerRange(currentLayer,true);
   var desc=getLayerLabel(currentLayer);
-  $('cn-map-desc').textContent='底色='+desc+', 圆点=主要机场位置';
+  $('cn-map-desc').textContent='底色='+desc+', 圆点=机场(按类型着色)';
 
   var opt={
     tooltip:{trigger:'item',formatter:function(p){
-      if(p.seriesType==='scatter') return p.data[2];
+      if(p.seriesType==='scatter'){
+        var d=p.data;
+        return '<b>'+d.name+'</b><br>类型: '+(d.airportType||'')+(d.cargo?'<br>年货运量: '+d.cargo+'万吨':'');
+      }
       var sn=CN_SHORT[p.name]||p.name;
       var prov=cnProvinces.find(function(x){return x.name===sn});
       if(!prov) return p.name+': '+p.value;
@@ -926,9 +989,13 @@ function renderChinaMap(){
     geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}}},
     series:[
       {type:'map',map:'china',geoIndex:0,data:data},
-      {type:'scatter',coordinateSystem:'geo',data:cnAirports.map(function(a){return{value:[a[0],a[1],8],name:a[2]}}),
-       symbol:'circle',symbolSize:6,itemStyle:{color:'#2563eb',borderColor:'#fff',borderWidth:1},
-       label:{show:false},emphasis:{label:{show:true,position:'right',fontSize:10}}}
+      {type:'scatter',coordinateSystem:'geo',
+       data:cnAirports.map(function(a){
+         return{value:[a[0],a[1]],name:a[2],airportType:a[3],cargo:a[4],
+           symbolSize:airportSize(a[3]),itemStyle:{color:airportColor(a[3]),borderColor:'#fff',borderWidth:1.5}};
+       }),
+       symbol:'circle',
+       label:{show:false},emphasis:{label:{show:true,position:'right',fontSize:10,fontWeight:600},itemStyle:{borderWidth:3}}}
     ]
   };
   if(charts['map-cn']){charts['map-cn'].setOption(opt,true)}
@@ -943,11 +1010,14 @@ function renderUSMap(){
   });
   var range=getLayerRange(currentLayer,false);
   var desc=getLayerLabel(currentLayer);
-  $('us-map-desc').textContent='底色='+desc+', 圆点=主要货运机场';
+  $('us-map-desc').textContent='底色='+desc+', 圆点=机场(按类型着色)';
 
   var opt={
     tooltip:{trigger:'item',formatter:function(p){
-      if(p.seriesType==='scatter') return p.data[2];
+      if(p.seriesType==='scatter'){
+        var d=p.data;
+        return '<b>'+d.name+'</b><br>Type: '+(d.airportType||'')+(d.cargo?'<br>Annual Cargo: '+d.cargo+'万吨 ('+(d.cargo*10000/10000).toFixed(1)+'万吨)':'');
+      }
       var st=usStates.find(function(x){return x.name===p.name});
       if(!st) return p.name;
       return '<b>'+p.name+'</b><br>Density: '+st.density+' /km2<br>GDP/capita: $'+(st.gdp).toLocaleString()+'<br>GA Airports: '+st.airports;
@@ -956,9 +1026,13 @@ function renderUSMap(){
     geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#bfdbfe'},label:{show:true,fontSize:10}}},
     series:[
       {type:'map',map:'USA',geoIndex:0,data:data},
-      {type:'scatter',coordinateSystem:'geo',data:usAirports.map(function(a){return{value:[a[0],a[1],8],name:a[2]}}),
-       symbol:'circle',symbolSize:6,itemStyle:{color:'#dc2626',borderColor:'#fff',borderWidth:1},
-       label:{show:false},emphasis:{label:{show:true,position:'right',fontSize:10}}}
+      {type:'scatter',coordinateSystem:'geo',
+       data:usAirports.map(function(a){
+         return{value:[a[0],a[1]],name:a[2],airportType:a[3],cargo:a[4],
+           symbolSize:airportSize(a[3]),itemStyle:{color:airportColor(a[3]),borderColor:'#fff',borderWidth:1.5}};
+       }),
+       symbol:'circle',
+       label:{show:false},emphasis:{label:{show:true,position:'right',fontSize:10,fontWeight:600},itemStyle:{borderWidth:3}}}
     ]
   };
   if(charts['map-us']){charts['map-us'].setOption(opt,true)}
@@ -979,23 +1053,25 @@ fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geo
   renderUSMap();
 });
 
-// ===== SCATTER: GDP vs GA Density =====
+// ===== SCATTER: GDP vs Airports per Million People =====
 (function(){
   var cnD=cnProvinces.filter(function(p){return p.area>5000&&p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
-    return[p.gdp, p.airports/(p.area/100000), p.pop, p.name];
+    return[p.gdp, p.airports/(p.pop/100), p.pop, p.name]; // airports per million people (pop is in 万, so /100 = 百万)
   });
   var usD=usStates.filter(function(s){return s.name!=='District of Columbia'}).map(function(s){
-    var areakm2={California:423970,Texas:695660,Florida:170312,NewYork:141300,Pennsylvania:119283,Illinois:149997,Ohio:116096,Georgia:153910,NorthCarolina:139390,Michigan:250490,NewJersey:22591,Virginia:110787,Washington:184660,Arizona:295234,Massachusetts:27337,Tennessee:109153,Indiana:94326,Maryland:32131,Missouri:180540,Wisconsin:169635,Colorado:269602,Minnesota:225163,SouthCarolina:82933,Alabama:135767,Louisiana:135659,Kentucky:104656,Oregon:254800,Oklahoma:181038,Connecticut:14357,Utah:219882,Iowa:145746,Nevada:286380,Arkansas:137732,Mississippi:125438,Kansas:213100,NewMexico:314917,Nebraska:200330,Idaho:216443,WestVirginia:62756,Hawaii:28313,NewHampshire:24214,Maine:91634,Montana:380831,RhodeIsland:4001,Delaware:6446,SouthDakota:199730,NorthDakota:183108,Alaska:1723340,Vermont:24906,Wyoming:253335}[s.name.replace(/\s/g,'')]||150000;
-    return[s.gdp*7.27, s.airports/(areakm2/100000), s.pop, s.name];
+    return[s.gdp*7.27, s.airports/(s.pop/100), s.pop, s.name]; // airports per million people
   });
   initC('chart-scatter',{
-    tooltip:{trigger:'item',formatter:function(p){return p.data[3]+'<br>GDP人均: '+(p.data[0]>100000?Math.round(p.data[0]).toLocaleString()+'元':('$'+Math.round(p.data[0]/7.27).toLocaleString()))+'<br>机场密度: '+p.data[1].toFixed(1)+'/10万km2<br>人口: '+p.data[2]+'万'}},
+    tooltip:{trigger:'item',formatter:function(p){
+      var isCN=p.data[0]<300000;
+      return '<b>'+p.data[3]+'</b><br>GDP人均: '+(isCN?'¥'+Math.round(p.data[0]).toLocaleString():'$'+Math.round(p.data[0]/7.27).toLocaleString()+' (¥'+Math.round(p.data[0]).toLocaleString()+')')+'<br>机场/百万人: '+p.data[1].toFixed(1)+'<br>人口: '+p.data[2]+'万';
+    }},
     legend:{data:['中国省份','美国州'],top:10},
     xAxis:{name:'GDP人均 (元)',type:'value',axisLabel:{formatter:function(v){return v>=10000?(v/10000)+'万':v}}},
-    yAxis:{name:'通航机场/10万km2',type:'log',min:0.1},
+    yAxis:{name:'通航机场/百万人',type:'log',min:0.1},
     series:[
-      {name:'中国省份',type:'scatter',data:cnD,symbolSize:function(d){return Math.sqrt(d[2])*0.8},itemStyle:{color:'rgba(220,38,38,.6)'}},
-      {name:'美国州',type:'scatter',data:usD,symbolSize:function(d){return Math.sqrt(d[2])*1.2},itemStyle:{color:'rgba(37,99,235,.6)'}}
+      {name:'中国省份',type:'scatter',data:cnD,symbolSize:function(d){return Math.max(5,Math.min(22,Math.sqrt(d[2])*0.3))},itemStyle:{color:'rgba(220,38,38,.6)'},label:{show:true,formatter:function(p){return p.data[3]},position:'right',fontSize:9,color:'#666'},emphasis:{label:{show:true,fontSize:11}}},
+      {name:'美国州',type:'scatter',data:usD,symbolSize:function(d){return Math.max(4,Math.min(20,Math.sqrt(d[2])*0.12))},itemStyle:{color:'rgba(37,99,235,.6)'},label:{show:true,formatter:function(p){return p.data[3]},position:'right',fontSize:9,color:'#666'},emphasis:{label:{show:true,fontSize:11}}}
     ]
   });
 })();
@@ -1249,6 +1325,170 @@ initC('chart-tonkm',{
     ]
   });
 })();
+
+// ===== TRUCK RADIUS GDP COVERAGE =====
+var cnCentroids={'北京':[116.4,39.9],'天津':[117.2,39.1],'河北':[114.5,38.0],'山西':[112.5,37.9],'内蒙古':[111.7,40.8],'辽宁':[123.4,41.8],'吉林':[126.6,43.9],'黑龙江':[126.7,45.8],'上海':[121.5,31.2],'江苏':[118.8,32.1],'浙江':[120.2,29.3],'安徽':[117.3,31.9],'福建':[119.3,26.1],'江西':[115.9,27.6],'山东':[117.0,36.7],'河南':[113.7,34.0],'湖北':[114.3,30.6],'湖南':[112.9,27.6],'广东':[113.3,23.1],'广西':[108.3,22.8],'海南':[110.3,20.0],'重庆':[106.5,29.6],'四川':[104.1,30.7],'贵州':[106.7,26.6],'云南':[102.7,25.0],'西藏':[91.1,29.7],'陕西':[108.9,34.3],'甘肃':[103.8,36.1],'青海':[101.8,36.6],'宁夏':[106.3,38.5],'新疆':[87.6,43.8]};
+var usCentroids={'Alabama':[-86.9,32.3],'Alaska':[-153.4,64.2],'Arizona':[-111.1,34.0],'Arkansas':[-91.8,35.0],'California':[-119.4,36.8],'Colorado':[-105.8,39.0],'Connecticut':[-72.8,41.6],'Delaware':[-75.5,39.0],'Florida':[-81.5,27.6],'Georgia':[-83.5,32.2],'Hawaii':[-155.5,19.9],'Idaho':[-114.7,44.1],'Illinois':[-89.4,40.3],'Indiana':[-86.1,40.3],'Iowa':[-93.1,42.0],'Kansas':[-98.5,38.5],'Kentucky':[-84.3,37.8],'Louisiana':[-92.1,31.2],'Maine':[-69.4,45.3],'Maryland':[-76.6,39.0],'Massachusetts':[-71.5,42.4],'Michigan':[-84.5,44.3],'Minnesota':[-94.6,46.7],'Mississippi':[-89.4,32.3],'Missouri':[-91.8,38.6],'Montana':[-110.4,46.8],'Nebraska':[-99.9,41.5],'Nevada':[-116.4,38.8],'New Hampshire':[-71.6,43.2],'New Jersey':[-74.4,40.1],'New Mexico':[-105.9,34.5],'New York':[-74.2,43.3],'North Carolina':[-79.0,35.5],'North Dakota':[-101.0,47.5],'Ohio':[-82.9,40.4],'Oklahoma':[-97.1,35.0],'Oregon':[-120.5,43.8],'Pennsylvania':[-77.2,41.2],'Rhode Island':[-71.5,41.7],'South Carolina':[-81.2,34.0],'South Dakota':[-99.9,43.9],'Tennessee':[-86.6,35.5],'Texas':[-99.9,31.9],'Utah':[-111.1,39.3],'Vermont':[-72.6,44.6],'Virginia':[-78.7,37.4],'Washington':[-120.7,47.7],'West Virginia':[-80.5,38.9],'Wisconsin':[-89.6,43.8],'Wyoming':[-107.3,43.1],'District of Columbia':[-77.0,38.9]};
+
+// Cargo hubs: top 10 by cargo volume
+var cnCargoHubs=[[121.805,31.143],[113.299,23.392],[113.811,22.639],[116.584,40.080],[114.942,30.346],[113.841,34.520],[120.434,30.229],[103.947,30.578],[102.929,25.102],[118.128,24.544]];
+var usCargoHubs=[[-89.976,35.044],[-149.993,61.179],[-85.735,38.171],[-80.290,25.796],[-118.408,33.943],[-87.905,41.979],[-84.668,39.049],[-73.779,40.639],[-86.294,39.717],[-97.038,32.897]];
+
+function haversine(lat1,lon1,lat2,lon2){
+  var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLon=(lon2-lon1)*Math.PI/180;
+  var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+
+function geoCircle(lat,lon,radiusKm,n){
+  var pts=[];
+  for(var i=0;i<=n;i++){
+    var angle=i*2*Math.PI/n;
+    var dlat=radiusKm/111.32*Math.cos(angle);
+    var dlon=radiusKm/(111.32*Math.cos(lat*Math.PI/180))*Math.sin(angle);
+    pts.push([lon+dlon,lat+dlat]);
+  }
+  return pts;
+}
+
+var currentRadiusHours=6;
+function switchRadius(hours){
+  currentRadiusHours=hours;
+  document.querySelectorAll('#radius-toggle .toggle-btn').forEach(function(b){b.classList.remove('active')});
+  event.target.classList.add('active');
+  renderRadiusMaps();
+}
+
+// Province GDP totals (billion RMB)
+var cnProvGDP={};cnProvinces.forEach(function(p){cnProvGDP[p.name]=p.gdp*p.pop/10000;}); // gdp per capita * pop(万) / 10000 = 亿元
+var cnTotalGDP=0;cnProvinces.forEach(function(p){if(p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门') cnTotalGDP+=cnProvGDP[p.name]});
+// US state GDP totals
+var usStateGDP={};usStates.forEach(function(s){usStateGDP[s.name]=s.gdp*s.pop/10000;}); // gdp per capita * pop(万) / 10000 = 亿美元
+var usTotalGDP=0;usStates.forEach(function(s){if(s.name!=='District of Columbia') usTotalGDP+=usStateGDP[s.name]});
+
+function calcCoverage(centroids,hubs,radiusKm,provGDP,totalGDP,excludeList){
+  var coveredGDP=0;var covered={};
+  Object.keys(centroids).forEach(function(name){
+    if(excludeList&&excludeList.indexOf(name)>=0) return;
+    var c=centroids[name];
+    var minDist=Infinity;
+    hubs.forEach(function(h){
+      var d=haversine(c[1],c[0],h[1],h[0]);
+      if(d<minDist) minDist=d;
+    });
+    if(minDist<=radiusKm){covered[name]=true;coveredGDP+=provGDP[name]||0;}
+  });
+  return{pct:totalGDP>0?Math.round(coveredGDP/totalGDP*1000)/10:0,covered:covered};
+}
+
+function renderRadiusMaps(){
+  if(!cnMapReady||!usMapReady) return;
+  var cnRadius=currentRadiusHours*60; // 60 km/h
+  var usRadius=currentRadiusHours*80; // 80 km/h
+  $('radius-info').textContent='半径: 中国'+cnRadius+'km / 美国'+usRadius+'km';
+
+  var cnResult=calcCoverage(cnCentroids,cnCargoHubs,cnRadius,cnProvGDP,cnTotalGDP,['台湾','香港','澳门']);
+  var usResult=calcCoverage(usCentroids,usCargoHubs,usRadius,usStateGDP,usTotalGDP,['District of Columbia']);
+
+  $('cn-gdp-cover').textContent=cnResult.pct;
+  $('us-gdp-cover').textContent=usResult.pct;
+
+  // Insight text
+  var diff=usResult.pct-cnResult.pct;
+  if(diff>0){
+    $('radius-insight').textContent=currentRadiusHours+'小时公路覆盖: 美国领先'+diff.toFixed(1)+'个百分点';
+    $('radius-insight-text').textContent=' — 美国货运枢纽布局更均匀, 公路网络更密集。中国西部大片区域超出任何枢纽'+cnRadius+'km辐射范围, 这正是航空物流的结构性机会。';
+  } else {
+    $('radius-insight').textContent=currentRadiusHours+'小时公路覆盖: 中国领先'+(-diff).toFixed(1)+'个百分点';
+    $('radius-insight-text').textContent=' — 在较长运输时间下, 中国沿海枢纽密集布局的优势显现。但GDP覆盖率接近不代表物流效率等价 — 中国西部地形复杂, 实际运输时间远超理论值。';
+  }
+
+  // Generate circle data for all hubs
+  var cnCircles=[];
+  cnCargoHubs.forEach(function(h){cnCircles.push(geoCircle(h[1],h[0],cnRadius,48))});
+  var usCircles=[];
+  usCargoHubs.forEach(function(h){usCircles.push(geoCircle(h[1],h[0],usRadius,48))});
+
+  // CN coverage map
+  var cnMapData=cnProvinces.filter(function(p){return p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
+    var fn=CN_FULL[p.name]||p.name;
+    var isCovered=cnResult.covered[p.name];
+    return{name:fn,value:isCovered?1:0,itemStyle:{areaColor:isCovered?'rgba(34,197,94,.35)':'rgba(220,38,38,.15)'}};
+  });
+
+  var cnCircleSeries=cnCircles.map(function(circle,i){
+    return{type:'lines',coordinateSystem:'geo',polyline:true,silent:true,
+      lineStyle:{color:'rgba(245,158,11,.5)',width:2,type:'solid'},
+      effect:{show:false},
+      data:[{coords:circle}]};
+  });
+  // Hub markers
+  var cnHubScatter={type:'scatter',coordinateSystem:'geo',
+    data:cnCargoHubs.map(function(h,i){
+      var names=['上海浦东','广州白云','深圳宝安','北京首都','鄂州花湖','郑州新郑','杭州萧山','成都双流','昆明长水','厦门高崎'];
+      return{value:[h[0],h[1]],name:names[i]};
+    }),
+    symbol:'diamond',symbolSize:10,itemStyle:{color:'#f59e0b',borderColor:'#fff',borderWidth:2},
+    label:{show:true,formatter:'{b}',position:'right',fontSize:9,color:'#92400e'},
+    z:10
+  };
+
+  var cnOpt={
+    tooltip:{trigger:'item',formatter:function(p){
+      if(p.seriesType==='scatter') return '<b>'+p.name+'</b><br>货运枢纽';
+      var sn=CN_SHORT[p.name]||p.name;
+      var isCov=cnResult.covered[sn];
+      var prov=cnProvinces.find(function(x){return x.name===sn});
+      if(!prov) return p.name;
+      return '<b>'+sn+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ 在覆盖范围内</span>':'<span style="color:#dc2626">✗ 超出覆盖范围</span>')+'<br>GDP: '+(cnProvGDP[sn]||0).toFixed(0)+'亿元';
+    }},
+    geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}}},
+    series:[{type:'map',map:'china',geoIndex:0,data:cnMapData}].concat(cnCircleSeries).concat([cnHubScatter])
+  };
+  if(charts['map-cn-radius']){charts['map-cn-radius'].setOption(cnOpt,true)}
+  else{initC('map-cn-radius',cnOpt)}
+
+  // US coverage map
+  var usMapData=usStates.filter(function(s){return s.name!=='District of Columbia'}).map(function(s){
+    var isCovered=usResult.covered[s.name];
+    return{name:s.name,value:isCovered?1:0,itemStyle:{areaColor:isCovered?'rgba(34,197,94,.35)':'rgba(220,38,38,.15)'}};
+  });
+
+  var usCircleSeries=usCircles.map(function(circle){
+    return{type:'lines',coordinateSystem:'geo',polyline:true,silent:true,
+      lineStyle:{color:'rgba(245,158,11,.5)',width:2,type:'solid'},
+      effect:{show:false},
+      data:[{coords:circle}]};
+  });
+  var usHubScatter={type:'scatter',coordinateSystem:'geo',
+    data:usCargoHubs.map(function(h,i){
+      var names=['Memphis','Anchorage','Louisville','Miami','LAX','Chicago','Cincinnati','JFK','Indianapolis','Dallas'];
+      return{value:[h[0],h[1]],name:names[i]};
+    }),
+    symbol:'diamond',symbolSize:10,itemStyle:{color:'#f59e0b',borderColor:'#fff',borderWidth:2},
+    label:{show:true,formatter:'{b}',position:'right',fontSize:9,color:'#92400e'},
+    z:10
+  };
+
+  var usOpt={
+    tooltip:{trigger:'item',formatter:function(p){
+      if(p.seriesType==='scatter') return '<b>'+p.name+'</b><br>Cargo Hub';
+      var isCov=usResult.covered[p.name];
+      var st=usStates.find(function(x){return x.name===p.name});
+      if(!st) return p.name;
+      return '<b>'+p.name+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ Covered</span>':'<span style="color:#dc2626">✗ Outside range</span>')+'<br>GDP: $'+(usStateGDP[p.name]||0).toFixed(0)+'亿';
+    }},
+    geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#bfdbfe'},label:{show:true,fontSize:10}}},
+    series:[{type:'map',map:'USA',geoIndex:0,data:usMapData}].concat(usCircleSeries).concat([usHubScatter])
+  };
+  if(charts['map-us-radius']){charts['map-us-radius'].setOption(usOpt,true)}
+  else{initC('map-us-radius',usOpt)}
+}
+
+// Init radius maps after both maps loaded
+var radiusInitTimer=setInterval(function(){
+  if(cnMapReady&&usMapReady){clearInterval(radiusInitTimer);renderRadiusMaps();}
+},500);
 
 // ===== NETWORK MODEL =====
 (function(){
