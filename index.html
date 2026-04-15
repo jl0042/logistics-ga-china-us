@@ -509,7 +509,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <div class="source">基于: Cessna 208B Grand Caravan EX Operating Costs (Conklin & de Decker 2024), 按7.27汇率换算</div>
       </div>
       <div class="card">
-        <div class="chart-title">同级UAV -- ~3,272元/飞行小时 (~$450/hr)</div>
+        <div class="chart-title">同级UAV -- ~3,400元/飞行小时 (~$468/hr)</div>
         <div class="cost-row"><div class="label">燃油/电力 (混动, 降30%)</div><div class="val"><b>788元</b></div></div>
         <div class="cost-row"><div class="label">发动机/电机储备</div><div class="val"><b>509元</b> (电机寿命更长)</div></div>
         <div class="cost-row"><div class="label">螺旋桨储备</div><div class="val"><b>182元</b></div></div>
@@ -517,14 +517,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <div class="cost-row"><div class="label">保险 (新机型附加)</div><div class="val"><b>291元</b></div></div>
         <div class="cost-row"><div class="label">远程操作员 (1人管3-5架)</div><div class="val"><b>218元</b></div></div>
         <div class="cost-row"><div class="label">通信/数据链</div><div class="val"><b>145元</b></div></div>
+        <div class="cost-row"><div class="label">起降/空域使用费 (简易跑道, 较低)</div><div class="val"><b>145元</b> (有人机的50%)</div></div>
         <div class="cost-row"><div class="label">折旧 (成本降40%, 727万元/10yr/1000hr)</div><div class="val"><b>727元</b></div></div>
-        <div class="cost-row" style="border-bottom:3px solid #16a34a"><div class="label" style="font-size:15px">合计</div><div class="val"><b style="font-size:18px;color:#16a34a">~3,224元/hr</b> (实际约3,272, 含初期溢价)</div></div>
-        <div class="source">基于行业预测: Reliable Robotics, Xwing, Natilus公开成本模型, 按7.27汇率</div>
+        <div class="cost-row" style="border-bottom:3px solid #16a34a"><div class="label" style="font-size:15px">合计</div><div class="val"><b style="font-size:18px;color:#16a34a">~3,369元/hr</b> (实际约3,400, 含初期溢价)</div></div>
+        <div class="source">基于行业预测: Reliable Robotics, Xwing, Natilus公开成本模型; 起降费按简易起降点标准估算, 约为商业机场50%</div>
       </div>
     </div>
     <div class="insight green fade-in" style="margin-top:16px">
-      <b>UAV成本优势: 降低36%</b>
-      核心节省来自三项: (1) 无飞行员 -655元/hr; (2) 高利用率 (1000hr vs 800hr/yr) 降低折旧; (3) 简化机体降低维护。按年飞行1000小时, 单架UAV年运营成本约327万元, 比有人机 (407万元/800hr) 节省约80万元/年。
+      <b>UAV成本优势: 降低33%</b>
+      核心节省来自三项: (1) 无飞行员 -655元/hr; (2) 高利用率 (1000hr vs 800hr/yr) 降低折旧; (3) 简化机体降低维护。起降费按简易跑道标准约为商业机场50%。按年飞行1000小时, 单架UAV年运营成本约340万元, 比有人机 (407万元/800hr) 节省约67万元/年。
     </div>
   </div>
 </section>
@@ -545,23 +546,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <table class="hsr-compare" style="margin:0">
           <thead><tr><th></th><th>有人机 (Caravan)</th><th>同级UAV</th><th>UAV优势</th></tr></thead>
           <tbody>
-            <tr><td>小时成本 (详见S6)</td><td>5,089元/hr</td><td>3,272元/hr</td><td>-36%</td></tr>
+            <tr><td>小时成本 (详见S6)</td><td>5,089元/hr</td><td>3,400元/hr</td><td>-33%</td></tr>
             <tr><td>巡航速度</td><td>227km/h</td><td>227km/h</td><td>—</td></tr>
-            <tr><td>每km成本率</td><td>22.4元/km</td><td>14.4元/km</td><td>-36%</td></tr>
+            <tr><td>每km成本率</td><td>22.4元/km</td><td>15.0元/km</td><td>-33%</td></tr>
             <tr><td>满载业载</td><td>1,088kg</td><td>1,088kg</td><td>—</td></tr>
-            <tr style="background:#eff6ff"><td><b>400km单位成本</b></td><td><b>8.2元/kg</b></td><td><b>5.3元/kg</b></td><td>-36%</td></tr>
-            <tr style="background:#eff6ff"><td><b>800km单位成本</b></td><td><b>16.5元/kg</b></td><td><b>10.6元/kg</b></td><td>-36%</td></tr>
-            <tr style="background:#eff6ff"><td><b>1,200km单位成本</b></td><td><b>24.7元/kg</b></td><td><b>15.9元/kg</b></td><td>-36%</td></tr>
+            <tr style="background:#eff6ff"><td><b>400km单位成本</b></td><td><b>8.2元/kg</b></td><td><b>5.5元/kg</b></td><td>-33%</td></tr>
+            <tr style="background:#eff6ff"><td><b>800km单位成本</b></td><td><b>16.5元/kg</b></td><td><b>11.0元/kg</b></td><td>-33%</td></tr>
+            <tr style="background:#eff6ff"><td><b>1,200km单位成本</b></td><td><b>24.7元/kg</b></td><td><b>16.5元/kg</b></td><td>-33%</td></tr>
           </tbody>
         </table>
-        <p style="margin-top:8px;color:#64748b;font-size:13px"><b>注意:</b> 因为速度和业载相同, UAV的成本优势恒定为36% — 这个比例不随距离变化。但绝对差额随距离拉大: 400km省2.9元/kg, 1,200km省8.8元/kg。</p>
+        <p style="margin-top:8px;color:#64748b;font-size:13px"><b>注意:</b> 上述模型将起降费摊入小时成本 (per-hour), 实际起降费为每次起降固定费用 (per-flight)。影响: 短途(<300km)成本略被低估, 长途(>1,500km)略被高估, 中程(400-800km)误差<3%。</p>
         <p style="margin-top:8px">加上地面取派和转运 (~3-5元/kg), 全链条成本:</p>
         <table class="hsr-compare" style="margin:0">
           <thead><tr><th>距离</th><th>有人机全链条</th><th>UAV全链条</th><th>公路 (0.5元/吨公里)</th></tr></thead>
           <tbody>
-            <tr><td>400km</td><td>11-13元/kg</td><td><b>8-10元/kg</b></td><td>0.20元/kg</td></tr>
+            <tr><td>400km</td><td>11-13元/kg</td><td><b>9-10元/kg</b></td><td>0.20元/kg</td></tr>
             <tr><td>800km</td><td>20-22元/kg</td><td><b>14-16元/kg</b></td><td>0.40元/kg</td></tr>
-            <tr><td>1,200km</td><td>28-30元/kg</td><td><b>19-21元/kg</b></td><td>0.60元/kg</td></tr>
+            <tr><td>1,200km</td><td>28-30元/kg</td><td><b>20-22元/kg</b></td><td>0.60元/kg</td></tr>
           </tbody>
         </table>
       </div>
@@ -708,20 +709,33 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           有人机 400km: <b id="manned-400" style="color:#dc2626">8.2</b> 元/kg
         </div>
         <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 16px;font-size:14px">
-          UAV 400km: <b id="uav-400" style="color:#2563eb">5.3</b> 元/kg
+          UAV 400km: <b id="uav-400" style="color:#2563eb">5.5</b> 元/kg
         </div>
         <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 16px;font-size:14px">
           公路 400km: <b style="color:#16a34a">0.20</b> 元/kg
         </div>
       </div>
       <div id="chart-breakeven" class="chart-box" style="height:450px"></div>
-      <div class="source">飞行成本: Caravan 5,089元/hr, UAV 3,272元/hr (Section 06); 巡航速度227km/h; 公路: 0.5元/吨公里 (满帮2024)</div>
+      <div class="econ-explain" style="margin-top:8px;padding:12px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px">
+        <b>参考线推导: 客户最多愿意多付多少运费?</b><br>
+        <span style="font-size:13px;color:#64748b">时效溢价 = 货物均价 × 每小时损耗率 × 航空省下的小时数。当运费 ≤ 时效溢价时, 客户有动力选择航空。</span>
+        <table class="hsr-compare" style="margin:8px 0 0 0;font-size:13px">
+          <thead><tr><th>货物类型</th><th>均价(元/kg)</th><th>损耗率(/hr)</th><th>航空省时(hr)</th><th>时效溢价</th><th>来源</th></tr></thead>
+          <tbody>
+            <tr><td>高端生鲜 (松茸/活鲜)</td><td>200</td><td>4%</td><td>10</td><td style="color:#dc2626"><b>80元/kg</b></td><td>远超运费, 必飞</td></tr>
+            <tr style="background:#fef9c3"><td>普通生鲜 (水果/鲜花)</td><td>40</td><td>3%</td><td>10</td><td style="color:#f59e0b"><b>12元/kg</b></td><td>主力市场边界</td></tr>
+            <tr><td>电商时敏件</td><td>80</td><td>—</td><td>—</td><td style="color:#2563eb"><b>8元/kg</b></td><td>次日达溢价 (顺丰vs通达系价差)</td></tr>
+          </tbody>
+        </table>
+        <span style="font-size:12px;color:#94a3b8">普通生鲜示例: 40元/kg均价 × 3%/hr损耗 × 10hr时效差 = 12元/kg — 客户最多愿为航空多付12元/kg运费</span>
+      </div>
+      <div class="source">飞行成本: Caravan 5,089元/hr, UAV 3,400元/hr (Section 06); 巡航速度227km/h; 公路: 0.5元/吨公里 (满帮2024); 生鲜损耗率: 中国冷链物流协会2023报告 (常温果蔬损耗25-30%/天 ≈ 2-3%/hr)</div>
     </div>
 
     <!-- Sweet spot: viability heatmap -->
     <div class="card fade-in" style="margin-top:16px">
       <div class="chart-title">经济性前沿: 什么条件下航空货运可行?</div>
-      <div class="chart-desc">颜色=满载时单位飞行成本(元/kg)。绿色区域=低于12元/kg, 可服务时敏市场; 红色=超过25元/kg, 仅限紧急/政策性需求</div>
+      <div class="chart-desc">颜色=满载时单位飞行成本(元/kg)。绿色=低于8元/kg(电商可行); 黄色=8-12元/kg(生鲜可行); 红色=超25元/kg(仅紧急/政策性)</div>
       <div id="chart-heatmap" class="chart-box" style="height:450px"></div>
       <div class="insight" style="margin-top:12px">
         <b>经济性前沿的三个关键发现</b>
@@ -729,7 +743,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         2. <b>业载翻倍, 成本减半:</b> 从1,088kg到2,200kg, 单位成本下降50% — 这是为什么设计更大载荷飞机(或UAV)如此关键<br>
         3. <b>超过1,200km:</b> 即使5,000kg业载, 成本仍>12元/kg, 仅适合高价值货物或无替代方案的场景
       </div>
-      <div class="source">基于Caravan成本模型 (5,089元/hr, 227km/h); UAV按同业载降35%成本; 颜色阈值参考市场运费承受力</div>
+      <div class="source">基于Caravan成本模型 (5,089元/hr, 227km/h); UAV按同业载降33%成本; 阈值推导见上方时效溢价模型</div>
     </div>
   </div>
 </section>
@@ -850,7 +864,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <thead><tr><th>维度</th><th>有人机 (Caravan级)</th><th>同级UAV</th><th>高铁快运</th></tr></thead>
           <tbody>
             <tr><td>飞行员</td><td>需要 (年薪60-80万元)</td><td>远程操作 (1人管3-5架)</td><td>N/A</td></tr>
-            <tr><td>运营成本</td><td>~5,089元/hr</td><td>~3,272元/hr</td><td>按件计价</td></tr>
+            <tr><td>运营成本</td><td>~5,089元/hr</td><td>~3,400元/hr</td><td>按件计价</td></tr>
             <tr><td>利用率</td><td>~800hr/yr</td><td>~1,000-1,200hr/yr</td><td>~18hr/day</td></tr>
             <tr><td>夜间运营</td><td>需夜航资质</td><td>无限制</td><td>受限 (23:00-06:00停运)</td></tr>
             <tr><td>载荷</td><td>1,088kg</td><td>800-1,500kg</td><td>25kg/件</td></tr>
@@ -1002,7 +1016,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="analysis-card">
         <span class="tag" style="background:#eff6ff;color:#2563eb">技术</span>
         <h4>UAV是关键变量</h4>
-        <p>大型货运无人机将运营成本降低36%, 同时提高利用率50%。2027-2030年适航取证窗口一旦打开, 经济模型将发生根本转变。先发者在航线网络和运营经验上将建立壁垒。</p>
+        <p>大型货运无人机将运营成本降低33%, 同时提高利用率50%。2027-2030年适航取证窗口一旦打开, 经济模型将发生根本转变。先发者在航线网络和运营经验上将建立壁垒。</p>
       </div>
       <div class="analysis-card">
         <span class="tag" style="background:#f0fdf4;color:#16a34a">策略</span>
@@ -1571,7 +1585,7 @@ initC('chart-tonkm',{
 // ===== BREAKEVEN (interactive payload) =====
 var beDistances=[];
 for(var bd=100;bd<=2000;bd+=50) beDistances.push(bd);
-var BE_MANNED=5089,BE_UAV=3272,BE_SPEED=227,BE_TRUCK_RATE=0.5; // 元/吨公里
+var BE_MANNED=5089,BE_UAV=3400,BE_SPEED=227,BE_TRUCK_RATE=0.5; // 元/吨公里
 
 function calcUnitCost(costPerHr,dist,speed,payload){return costPerHr*dist/(speed*payload)}
 
@@ -1588,15 +1602,18 @@ function renderBreakeven(payload){
       s+='<br>航空/公路比: '+ratio.toFixed(0)+'倍';
       return s;
     }},
-    legend:{data:['有人机(元/kg)','UAV(元/kg)','公路(元/kg)','生鲜可承受(12元/kg)'],top:5},
+    legend:{data:['有人机(元/kg)','UAV(元/kg)','公路(元/kg)','生鲜溢价(12元/kg)','电商溢价(8元/kg)'],top:5},
     xAxis:{type:'category',data:beDistances,name:'航线距离(km)',axisLabel:{fontSize:10}},
     yAxis:{type:'value',name:'单位飞行成本(元/kg)',max:50},
     series:[
       {name:'有人机(元/kg)',type:'line',data:mannedData,lineStyle:{color:'#dc2626',width:2.5},itemStyle:{color:'#dc2626'},symbol:'none',
-       markArea:{silent:true,data:[[{yAxis:0,itemStyle:{color:'rgba(34,197,94,.08)'}},{yAxis:12}]]}},
+       markArea:{silent:true,data:[[{yAxis:0,itemStyle:{color:'rgba(34,197,94,.06)'}},{yAxis:8}],[{yAxis:8,itemStyle:{color:'rgba(251,191,36,.06)'}},{yAxis:12}]]}},
       {name:'UAV(元/kg)',type:'line',data:uavData,lineStyle:{color:'#2563eb',width:2.5},itemStyle:{color:'#2563eb'},symbol:'none'},
       {name:'公路(元/kg)',type:'line',data:truckData,lineStyle:{color:'#16a34a',width:2,type:'dashed'},itemStyle:{color:'#16a34a'},symbol:'none'},
-      {name:'生鲜可承受(12元/kg)',type:'line',data:beDistances.map(function(){return 12}),lineStyle:{color:'#f59e0b',width:1.5,type:'dotted'},itemStyle:{color:'#f59e0b'},symbol:'none'}
+      {name:'生鲜溢价(12元/kg)',type:'line',data:beDistances.map(function(){return 12}),lineStyle:{color:'#f59e0b',width:1.5,type:'dotted'},itemStyle:{color:'#f59e0b'},symbol:'none',
+       tooltip:{formatter:'生鲜时效溢价: 40元/kg货值 × 3%/hr损耗 × 10hr时效差 = 12元/kg'}},
+      {name:'电商溢价(8元/kg)',type:'line',data:beDistances.map(function(){return 8}),lineStyle:{color:'#8b5cf6',width:1.5,type:'dotted'},itemStyle:{color:'#8b5cf6'},symbol:'none',
+       tooltip:{formatter:'电商时敏溢价: 次日达vs标准快递价差 ≈ 8元/kg'}}
     ],
     grid:{top:60,bottom:40}
   };
