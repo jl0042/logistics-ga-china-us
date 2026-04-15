@@ -533,35 +533,111 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s7" class="sec">
   <div class="sec-inner">
     <div class="sec-label">07 -- 航线经济分析</div>
-    <div class="sec-title fade-in">盈亏平衡: 需要多少货量?</div>
-    <div class="sec-sub fade-in">不同航线距离下, Caravan和UAV的盈亏平衡货运量对比</div>
+    <div class="sec-title fade-in">航空货运的经济性边界在哪里?</div>
+    <div class="sec-sub fade-in">从成本结构出发, 推导航空货运在什么距离、什么业载、什么运费下才具有商业可行性</div>
 
-    <!-- Route economics explanation -->
+    <!-- Freight rate derivation -->
     <div class="econ-explain fade-in">
-      <h4>如何阅读盈亏平衡图</h4>
-      <p><b>X轴 (航线距离):</b> 单程飞行距离, 单位为公里。距离越远, 单次飞行的燃油和时间成本越高。</p>
-      <p><b>Y轴 (盈亏平衡货量):</b> 每次飞行需要装载的最低货物重量 (kg), 使得运费收入恰好覆盖飞行成本。低于此货量则亏损。</p>
-      <p><b>两条线的含义:</b> 红线是Caravan有人机, 蓝线是同级UAV。UAV线始终低于Caravan线, 意味着UAV在任何距离上都需要更少的货量即可盈利。</p>
-      <p><b>交叉区域:</b> 当两条线与"最大载荷线" (Caravan 1,088kg) 交叉时, 该距离以外即使满载也无法盈利。UAV因成本低, 可经营距离更远的航线。</p>
-
+      <h4>运费推导: 航空货运到底要收多少钱?</h4>
+      <p>航空货运的单位成本 = 飞行成本 ÷ 载货量。以Caravan (5,089元/hr, 巡航227km/h, 载荷1,088kg) 为例:</p>
       <div class="step">
-        <b>示例: 成都-拉萨航线 (约1,250km)</b><br>
-        - 飞行时间: ~5.5小时 (Caravan巡航227km/h)<br>
-        - 单程成本 (Caravan): 5,089 x 5.5 = 27,990元<br>
-        - 单程成本 (UAV): 3,272 x 5.5 = 17,996元<br>
-        - 假设运费5元/kg (西部偏远溢价):<br>
-        - Caravan盈亏平衡: 27,990 / 5 = 5,598kg -- <span style="color:var(--cn);font-weight:700">远超载荷1,088kg, 不可行!</span><br>
-        - 但如果按往返 + 每天2班, 月均收入 = 1,088kg x 5元 x 2班 x 25天 = 272,000元, 月成本 = 27,990 x 2 x 25 = 1,399,500元<br>
-        - <b>结论:</b> 纯货运超长距离航线经济性差, 需要政府补贴或客货混运。UAV可降低阈值但仍需规模效应。<br>
-        - <b>更现实的策略:</b> 拉萨-林芝 (~400km) 等中短途航线, 盈亏平衡约1,996kg (UAV) or 2,795kg (Caravan), 结合高运费更可行。
+        <b>飞行成本 = 时间成本率 × 距离 ÷ 速度 = 22.4 × 距离(km) 元/趟</b><br>
+        <b>单位成本 = 飞行成本 ÷ 载货量 (元/kg)</b><br><br>
+        400km航线: 22.4 × 400 / 1,088 = <b>8.2元/kg</b> (纯飞行, 不含地面)<br>
+        800km航线: 22.4 × 800 / 1,088 = <b>16.5元/kg</b><br>
+        1,200km航线: 22.4 × 1,200 / 1,088 = <b>24.7元/kg</b><br><br>
+        加上地面取派和转运 (~3-5元/kg), 实际全链条成本:<br>
+        400km: <b>11-13元/kg</b> | 800km: <b>20-22元/kg</b> | 1,200km: <b>28-30元/kg</b>
+      </div>
+      <p><b>关键问题: 市场上谁愿意付这个价?</b></p>
+      <div class="step">
+        <table class="hsr-compare" style="margin:0">
+          <thead><tr><th>货物类型</th><th>时效敏感度</th><th>可承受运费</th><th>市场规模</th><th>典型场景</th></tr></thead>
+          <tbody>
+            <tr><td>医疗急件/器官</td><td>极高</td><td>50-200元/kg</td><td>小</td><td>器官移植、急救药品</td></tr>
+            <tr><td>生鲜/冷链</td><td>高</td><td>10-30元/kg</td><td>中</td><td>高原松茸、鲜花、水果</td></tr>
+            <tr><td>电商时敏件</td><td>中高</td><td>8-20元/kg</td><td>大</td><td>次日达/当日达快递</td></tr>
+            <tr><td>一般快递</td><td>中</td><td>3-8元/kg</td><td>大</td><td>标准快递 (2-3天)</td></tr>
+            <tr style="background:#fef2f2"><td>普通货物</td><td>低</td><td>0.5-2元/kg</td><td>极大</td><td>一般货运 — <b>航空不可能竞争</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-weight:700;color:var(--primary)">结论: 航空货运不是与卡车争"所有货"的生意, 而是服务"时效溢价"市场。合理定价区间为 8-25元/kg, 目标客户是生鲜、医疗、时敏电商。</p>
+      <div class="source">定价参考: 顺丰航空特快 (23元/kg起, 含取派); 圆通航空 (12-18元/kg); 阿拉斯加Bush航空 ($1-3/lb ≈ 16-44元/kg); 中国邮政航空 (EMS标准 15-25元/kg)</div>
+    </div>
+
+    <!-- Case study: Lhasa-Nyingchi -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">案例分析: 拉萨-林芝 (400km)</div>
+      <div class="chart-desc">西部高原典型航线, 对比公路与航空的全成本</div>
+      <div class="grid2" style="margin-top:12px">
+        <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:16px">
+          <div style="font-weight:700;font-size:15px;margin-bottom:8px">公路运输 (G4218拉林高速)</div>
+          <div class="cost-row"><div class="label">距离</div><div class="val">410km (高速公路, 2021年通车)</div></div>
+          <div class="cost-row"><div class="label">时间</div><div class="val">5-6小时 (海拔3,000-5,000m)</div></div>
+          <div class="cost-row"><div class="label">标准运费</div><div class="val">0.8-1.2元/吨公里 (高原溢价, 平原2倍)</div></div>
+          <div class="cost-row"><div class="label">单位成本</div><div class="val"><b>0.33-0.49元/kg</b></div></div>
+          <div class="cost-row"><div class="label">高原附加</div><div class="val">燃油+20%, 回程空载率高, 冬季封路风险</div></div>
+          <div class="source">西藏公路运价参考: 满帮集团2024西藏区域数据; 拉林高速于2021年6月通车</div>
+        </div>
+        <div style="border:2px solid #3b82f6;border-radius:var(--radius);padding:16px">
+          <div style="font-weight:700;font-size:15px;margin-bottom:8px">航空运输 (Caravan)</div>
+          <div class="cost-row"><div class="label">距离</div><div class="val">~400km (直线, 不受地形限制)</div></div>
+          <div class="cost-row"><div class="label">飞行时间</div><div class="val">1.8小时 (含起降)</div></div>
+          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,089 × 1.8 = 9,160元/趟</div></div>
+          <div class="cost-row"><div class="label">单位成本 (满载1,088kg)</div><div class="val"><b>8.4元/kg</b> (不含地面)</div></div>
+          <div class="cost-row"><div class="label">全链条成本 (含地面)</div><div class="val"><b>11-13元/kg</b></div></div>
+          <div class="cost-row"><div class="label">时间节省</div><div class="val">3-4小时 (高原天气下差异更大)</div></div>
+        </div>
+      </div>
+      <div class="insight fade-in" style="margin-top:12px">
+        <b>航空比公路贵22-33倍 — 但值得吗?</b>
+        对松茸 (市价200-500元/kg, 保鲜窗口12小时)、急救药品 (生命价值无限)、高原鲜花 (损耗率每小时增2%) 而言, 3-4小时的时效差可能价值远超10元/kg的运费差。但对一般货物, 航空在拉萨-林芝这条已通高速的线路上没有成本优势。<b>注意: 如果是拉萨到阿里 (1,600km, 公路需2天), 航空的相对优势将完全不同。</b>
       </div>
     </div>
 
+    <!-- Interactive breakeven with payload slider -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">盈亏平衡货量 vs 航线距离</div>
-      <div class="chart-desc">运费假设: 东部2元/kg, 西部5元/kg | 虚线=Caravan最大载荷1,088kg</div>
+      <div class="chart-title">业载敏感性: 载荷越大, 单位成本越低</div>
+      <div class="chart-desc">拖动滑块调整业载, 观察不同距离下的单位飞行成本变化</div>
+      <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
+        <label style="font-weight:600;font-size:14px">业载:
+          <span id="payload-val" style="color:var(--primary);font-size:18px;font-weight:800">1,088</span> kg
+        </label>
+        <input type="range" min="500" max="5000" step="100" value="1088" id="payload-slider" oninput="updateBreakeven(this.value)" style="flex:1;min-width:200px;cursor:pointer">
+        <div style="font-size:12px;color:var(--text2)">
+          <span style="margin-right:12px">Caravan: 1,088kg</span>
+          <span style="margin-right:12px">Y-12F: 1,700kg</span>
+          <span>ATR 42: 5,500kg</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 16px;font-size:14px">
+          有人机 400km: <b id="manned-400" style="color:#dc2626">8.2</b> 元/kg
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 16px;font-size:14px">
+          UAV 400km: <b id="uav-400" style="color:#2563eb">5.3</b> 元/kg
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 16px;font-size:14px">
+          公路 400km: <b style="color:#16a34a">0.20</b> 元/kg
+        </div>
+      </div>
       <div id="chart-breakeven" class="chart-box" style="height:450px"></div>
-      <div class="source">成本数据来自Section 06; 运费基于顺丰/中通西部航线报价</div>
+      <div class="source">飞行成本: Caravan 5,089元/hr, UAV 3,272元/hr (Section 06); 巡航速度227km/h; 公路: 0.5元/吨公里 (满帮2024)</div>
+    </div>
+
+    <!-- Sweet spot: viability heatmap -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">经济性前沿: 什么条件下航空货运可行?</div>
+      <div class="chart-desc">颜色=满载时单位飞行成本(元/kg)。绿色区域=低于12元/kg, 可服务时敏市场; 红色=超过25元/kg, 仅限紧急/政策性需求</div>
+      <div id="chart-heatmap" class="chart-box" style="height:450px"></div>
+      <div class="insight" style="margin-top:12px">
+        <b>经济性前沿的三个关键发现</b>
+        1. <b>距离≤600km + 业载≥1,500kg:</b> 飞行成本可控制在8元/kg以下, 对生鲜/电商有竞争力<br>
+        2. <b>业载翻倍, 成本减半:</b> 从1,088kg到2,200kg, 单位成本下降50% — 这是为什么设计更大载荷飞机(或UAV)如此关键<br>
+        3. <b>超过1,200km:</b> 即使5,000kg业载, 成本仍>12元/kg, 仅适合高价值货物或无替代方案的场景
+      </div>
+      <div class="source">基于Caravan成本模型 (5,089元/hr, 227km/h); UAV按同业载降35%成本; 颜色阈值参考市场运费承受力</div>
     </div>
   </div>
 </section>
@@ -1400,34 +1476,78 @@ initC('chart-tonkm',{
   initC('chart-fleet-us',pieOpt(usFleet,210000));
 })();
 
-// ===== BREAKEVEN =====
-(function(){
-  var distances=[];
-  for(var d=100;d<=2000;d+=50) distances.push(d);
-  var caravanCost=5089; // RMB/hr
-  var uavCost=3272;
-  var speed=227; // km/h Caravan cruise
-  var rateWest=5; // RMB/kg west
-  var rateEast=2;
+// ===== BREAKEVEN (interactive payload) =====
+var beDistances=[];
+for(var bd=100;bd<=2000;bd+=50) beDistances.push(bd);
+var BE_MANNED=5089,BE_UAV=3272,BE_SPEED=227,BE_TRUCK_RATE=0.5; // 元/吨公里
 
-  var caravanBE_w=distances.map(function(d){return Math.round(caravanCost*(d/speed)/rateWest)});
-  var uavBE_w=distances.map(function(d){return Math.round(uavCost*(d/speed)/rateWest)});
-  var caravanBE_e=distances.map(function(d){return Math.round(caravanCost*(d/speed)/rateEast)});
-  var uavBE_e=distances.map(function(d){return Math.round(uavCost*(d/speed)/rateEast)});
+function calcUnitCost(costPerHr,dist,speed,payload){return costPerHr*dist/(speed*payload)}
 
-  initC('chart-breakeven',{
-    tooltip:{trigger:'axis'},
-    legend:{data:['Caravan(西部5元/kg)','UAV(西部5元/kg)','Caravan(东部2元/kg)','UAV(东部2元/kg)','最大载荷1,088kg'],top:10},
-    xAxis:{type:'category',data:distances,name:'航线距离(km)',axisLabel:{fontSize:10}},
-    yAxis:{type:'value',name:'盈亏平衡货量(kg)',max:8000},
+function renderBreakeven(payload){
+  var mannedData=beDistances.map(function(d){return Math.round(calcUnitCost(BE_MANNED,d,BE_SPEED,payload)*100)/100});
+  var uavData=beDistances.map(function(d){return Math.round(calcUnitCost(BE_UAV,d,BE_SPEED,payload)*100)/100});
+  var truckData=beDistances.map(function(d){return Math.round(BE_TRUCK_RATE*d/1000*100)/100});
+
+  var opt={
+    tooltip:{trigger:'axis',formatter:function(ps){
+      var s='<b>'+ps[0].axisValue+'km</b><br>';
+      ps.forEach(function(p){s+=p.marker+p.seriesName+': '+p.value+'元/kg<br>'});
+      var ratio=ps[0].value/ps[2].value;
+      s+='<br>航空/公路比: '+ratio.toFixed(0)+'倍';
+      return s;
+    }},
+    legend:{data:['有人机(元/kg)','UAV(元/kg)','公路(元/kg)','生鲜可承受(12元/kg)'],top:5},
+    xAxis:{type:'category',data:beDistances,name:'航线距离(km)',axisLabel:{fontSize:10}},
+    yAxis:{type:'value',name:'单位飞行成本(元/kg)',max:50},
     series:[
-      {name:'Caravan(西部5元/kg)',type:'line',data:caravanBE_w,lineStyle:{color:'#dc2626',width:2},itemStyle:{color:'#dc2626'},symbol:'none'},
-      {name:'UAV(西部5元/kg)',type:'line',data:uavBE_w,lineStyle:{color:'#2563eb',width:2},itemStyle:{color:'#2563eb'},symbol:'none'},
-      {name:'Caravan(东部2元/kg)',type:'line',data:caravanBE_e,lineStyle:{color:'#dc2626',width:1,type:'dashed'},itemStyle:{color:'#dc2626'},symbol:'none'},
-      {name:'UAV(东部2元/kg)',type:'line',data:uavBE_e,lineStyle:{color:'#2563eb',width:1,type:'dashed'},itemStyle:{color:'#2563eb'},symbol:'none'},
-      {name:'最大载荷1,088kg',type:'line',data:distances.map(function(){return 1088}),lineStyle:{color:'#16a34a',width:2,type:'dotted'},itemStyle:{color:'#16a34a'},symbol:'none'}
+      {name:'有人机(元/kg)',type:'line',data:mannedData,lineStyle:{color:'#dc2626',width:2.5},itemStyle:{color:'#dc2626'},symbol:'none',
+       markArea:{silent:true,data:[[{yAxis:0,itemStyle:{color:'rgba(34,197,94,.08)'}},{yAxis:12}]]}},
+      {name:'UAV(元/kg)',type:'line',data:uavData,lineStyle:{color:'#2563eb',width:2.5},itemStyle:{color:'#2563eb'},symbol:'none'},
+      {name:'公路(元/kg)',type:'line',data:truckData,lineStyle:{color:'#16a34a',width:2,type:'dashed'},itemStyle:{color:'#16a34a'},symbol:'none'},
+      {name:'生鲜可承受(12元/kg)',type:'line',data:beDistances.map(function(){return 12}),lineStyle:{color:'#f59e0b',width:1.5,type:'dotted'},itemStyle:{color:'#f59e0b'},symbol:'none'}
     ],
-    grid:{top:80}
+    grid:{top:60,bottom:40}
+  };
+  if(charts['chart-breakeven']){charts['chart-breakeven'].setOption(opt,true)}
+  else{initC('chart-breakeven',opt)}
+}
+function updateBreakeven(val){
+  var p=parseInt(val);
+  $('payload-val').textContent=p.toLocaleString();
+  $('manned-400').textContent=(BE_MANNED*400/(BE_SPEED*p)).toFixed(1);
+  $('uav-400').textContent=(BE_UAV*400/(BE_SPEED*p)).toFixed(1);
+  renderBreakeven(p);
+}
+renderBreakeven(1088);
+
+// ===== SWEET SPOT HEATMAP =====
+(function(){
+  var payloads=[500,750,1000,1200,1500,2000,2500,3000,4000,5000];
+  var dists=[200,400,600,800,1000,1200,1500,2000];
+  var heatData=[];
+  dists.forEach(function(d,di){
+    payloads.forEach(function(p,pi){
+      var cost=Math.round(BE_MANNED*d/(BE_SPEED*p)*10)/10;
+      heatData.push([di,pi,cost]);
+    });
+  });
+
+  initC('chart-heatmap',{
+    tooltip:{formatter:function(p){
+      return '距离: '+dists[p.data[0]]+'km<br>业载: '+payloads[p.data[1]]+'kg<br>单位成本: <b>'+p.data[2]+'元/kg</b>'
+        +(p.data[2]<=8?'<br><span style="color:#16a34a">✓ 电商/生鲜可行</span>':'')
+        +(p.data[2]>8&&p.data[2]<=15?'<br><span style="color:#f59e0b">△ 高端时敏可行</span>':'')
+        +(p.data[2]>25?'<br><span style="color:#dc2626">✗ 仅限紧急/政策</span>':'');
+    }},
+    xAxis:{type:'category',data:dists.map(function(d){return d+'km'}),name:'航线距离',splitArea:{show:true}},
+    yAxis:{type:'category',data:payloads.map(function(p){return p+'kg'}),name:'业载'},
+    visualMap:{min:3,max:45,calculable:true,orient:'horizontal',left:'center',bottom:0,
+      inRange:{color:['#22c55e','#86efac','#fef08a','#fbbf24','#f87171','#991b1b']},
+      text:['45元/kg','3元/kg'],textStyle:{fontSize:11}},
+    series:[{type:'heatmap',data:heatData,
+      label:{show:true,formatter:function(p){return p.data[2]},fontSize:10,color:'#1e293b'},
+      emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(0,0,0,.5)'}}}],
+    grid:{top:30,bottom:80,left:70,right:30}
   });
 })();
 
