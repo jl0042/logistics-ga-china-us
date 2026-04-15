@@ -539,15 +539,31 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Freight rate derivation -->
     <div class="econ-explain fade-in">
       <h4>运费推导: 航空货运到底要收多少钱?</h4>
-      <p>航空货运的单位成本 = 飞行成本 ÷ 载货量。以Caravan (5,089元/hr, 巡航227km/h, 载荷1,088kg) 为例:</p>
+      <p>航空货运的单位成本 = 飞行成本 ÷ 载货量。通用公式:</p>
       <div class="step">
-        <b>飞行成本 = 时间成本率 × 距离 ÷ 速度 = 22.4 × 距离(km) 元/趟</b><br>
-        <b>单位成本 = 飞行成本 ÷ 载货量 (元/kg)</b><br><br>
-        400km航线: 22.4 × 400 / 1,088 = <b>8.2元/kg</b> (纯飞行, 不含地面)<br>
-        800km航线: 22.4 × 800 / 1,088 = <b>16.5元/kg</b><br>
-        1,200km航线: 22.4 × 1,200 / 1,088 = <b>24.7元/kg</b><br><br>
-        加上地面取派和转运 (~3-5元/kg), 实际全链条成本:<br>
-        400km: <b>11-13元/kg</b> | 800km: <b>20-22元/kg</b> | 1,200km: <b>28-30元/kg</b>
+        <b>单位成本 (元/kg) = 小时成本 × 距离 ÷ (速度 × 业载)</b><br><br>
+        <table class="hsr-compare" style="margin:0">
+          <thead><tr><th></th><th>有人机 (Caravan)</th><th>同级UAV</th><th>UAV优势</th></tr></thead>
+          <tbody>
+            <tr><td>小时成本 (详见S6)</td><td>5,089元/hr</td><td>3,272元/hr</td><td>-36%</td></tr>
+            <tr><td>巡航速度</td><td>227km/h</td><td>227km/h</td><td>—</td></tr>
+            <tr><td>每km成本率</td><td>22.4元/km</td><td>14.4元/km</td><td>-36%</td></tr>
+            <tr><td>满载业载</td><td>1,088kg</td><td>1,088kg</td><td>—</td></tr>
+            <tr style="background:#eff6ff"><td><b>400km单位成本</b></td><td><b>8.2元/kg</b></td><td><b>5.3元/kg</b></td><td>-36%</td></tr>
+            <tr style="background:#eff6ff"><td><b>800km单位成本</b></td><td><b>16.5元/kg</b></td><td><b>10.6元/kg</b></td><td>-36%</td></tr>
+            <tr style="background:#eff6ff"><td><b>1,200km单位成本</b></td><td><b>24.7元/kg</b></td><td><b>15.9元/kg</b></td><td>-36%</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;color:#64748b;font-size:13px"><b>注意:</b> 因为速度和业载相同, UAV的成本优势恒定为36% — 这个比例不随距离变化。但绝对差额随距离拉大: 400km省2.9元/kg, 1,200km省8.8元/kg。</p>
+        <p style="margin-top:8px">加上地面取派和转运 (~3-5元/kg), 全链条成本:</p>
+        <table class="hsr-compare" style="margin:0">
+          <thead><tr><th>距离</th><th>有人机全链条</th><th>UAV全链条</th><th>公路 (0.5元/吨公里)</th></tr></thead>
+          <tbody>
+            <tr><td>400km</td><td>11-13元/kg</td><td><b>8-10元/kg</b></td><td>0.20元/kg</td></tr>
+            <tr><td>800km</td><td>20-22元/kg</td><td><b>14-16元/kg</b></td><td>0.40元/kg</td></tr>
+            <tr><td>1,200km</td><td>28-30元/kg</td><td><b>19-21元/kg</b></td><td>0.60元/kg</td></tr>
+          </tbody>
+        </table>
       </div>
       <p><b>关键问题: 市场上谁愿意付这个价?</b></p>
       <div class="step">
@@ -566,10 +582,35 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="source">定价参考: 顺丰航空特快 (23元/kg起, 含取派); 圆通航空 (12-18元/kg); 阿拉斯加Bush航空 ($1-3/lb ≈ 16-44元/kg); 中国邮政航空 (EMS标准 15-25元/kg)</div>
     </div>
 
-    <!-- Case study: Lhasa-Nyingchi -->
+    <!-- High altitude performance penalty -->
+    <div class="card fade-in" style="margin-top:16px;border-left:4px solid #ef4444">
+      <div class="chart-title">高原性能惩罚: 密度高度对飞机的真实影响</div>
+      <div class="chart-desc">空气稀薄 → 发动机功率下降 + 升力减小 → 业载必须削减, 起飞距离增加</div>
+      <div class="econ-explain" style="margin-top:12px">
+        <div class="step">
+          <b>什么是密度高度?</b> 空气密度随海拔和温度降低。飞机性能取决于空气密度，而非跑道海拔。<br>
+          <b>密度高度 ≈ 场高 + 温度修正</b> (高于ISA标准温度每1°C，密度高度增加约120ft)<br><br>
+          <table class="hsr-compare" style="margin:0">
+            <thead><tr><th>机场</th><th>场高</th><th>夏季密度高度</th><th>发动机功率</th><th>业载削减</th><th>起飞距离</th></tr></thead>
+            <tbody>
+              <tr><td>海平面基准</td><td>0m</td><td>~300m</td><td>100%</td><td>—</td><td>625m</td></tr>
+              <tr><td>昆明长水 KMG</td><td>2,102m</td><td>~2,800m</td><td>~75%</td><td>-20%</td><td>~880m</td></tr>
+              <tr style="background:#fef2f2"><td>林芝米林 LZY</td><td>2,949m</td><td>~3,700m</td><td>~65%</td><td>-30%</td><td>~1,000m</td></tr>
+              <tr style="background:#fef2f2"><td>拉萨贡嘎 LXA</td><td>3,570m</td><td>~4,400m</td><td>~58%</td><td>-40%</td><td>~1,125m</td></tr>
+              <tr style="background:#fef2f2"><td>阿里昆莎 NGQ</td><td>4,274m</td><td>~5,100m</td><td>~50%</td><td>-50%</td><td>~1,300m</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><b>Caravan (PT6A-114A, 675SHP) 在拉萨:</b> 发动机可用功率仅~390SHP; MTOW受限从3,629kg降至~3,000kg; 扣除空重2,145kg和燃油200kg, <b>可用业载仅~650kg</b> (海平面的60%)。起飞滚跑增至~1,125m (拉萨跑道4,000m足够, 但简易跑道可能不够)。</p>
+        <p style="color:var(--danger)"><b>关键结论: 高原运营不仅是飞不飞得到的问题, 更是能装多少货的问题。同一架飞机, 在拉萨比在海平面少装40%的货。</b></p>
+        <div class="source">性能数据基于: Cessna 208B POH高海拔性能图表; PT6A系列发动机高原性能手册; ISA+15°C夏季条件估算</div>
+      </div>
+    </div>
+
+    <!-- Case study 1: Lhasa-Nyingchi (revised with altitude penalty) -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">案例分析: 拉萨-林芝 (400km)</div>
-      <div class="chart-desc">西部高原典型航线, 对比公路与航空的全成本</div>
+      <div class="chart-title">案例A: 拉萨-林芝 (400km) — 高原极端案例</div>
+      <div class="chart-desc">双端高海拔 + 已通高速 = 航空最不利场景, 但有助于理解成本底线</div>
       <div class="grid2" style="margin-top:12px">
         <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:16px">
           <div style="font-weight:700;font-size:15px;margin-bottom:8px">公路运输 (G4218拉林高速)</div>
@@ -581,18 +622,69 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <div class="source">西藏公路运价参考: 满帮集团2024西藏区域数据; 拉林高速于2021年6月通车</div>
         </div>
         <div style="border:2px solid #3b82f6;border-radius:var(--radius);padding:16px">
-          <div style="font-weight:700;font-size:15px;margin-bottom:8px">航空运输 (Caravan)</div>
-          <div class="cost-row"><div class="label">距离</div><div class="val">~400km (直线, 不受地形限制)</div></div>
-          <div class="cost-row"><div class="label">飞行时间</div><div class="val">1.8小时 (含起降)</div></div>
-          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,089 × 1.8 = 9,160元/趟</div></div>
-          <div class="cost-row"><div class="label">单位成本 (满载1,088kg)</div><div class="val"><b>8.4元/kg</b> (不含地面)</div></div>
-          <div class="cost-row"><div class="label">全链条成本 (含地面)</div><div class="val"><b>11-13元/kg</b></div></div>
-          <div class="cost-row"><div class="label">时间节省</div><div class="val">3-4小时 (高原天气下差异更大)</div></div>
+          <div style="font-weight:700;font-size:15px;margin-bottom:8px">航空运输 (Caravan, 高原修正)</div>
+          <div class="cost-row"><div class="label">距离</div><div class="val">~400km 直线 (需飞越4,500m+山脊)</div></div>
+          <div class="cost-row"><div class="label">最低安全高度</div><div class="val">5,500-6,000m (18,000-20,000ft)</div></div>
+          <div class="cost-row"><div class="label">飞行时间</div><div class="val">~2.0小时 (爬升慢, 含起降)</div></div>
+          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,089 × 2.0 = 10,178元/趟</div></div>
+          <div class="cost-row" style="background:#fef2f2"><div class="label">高原业载 (仅~650kg)</div><div class="val"><b>15.7元/kg</b> (海平面满载时仅8.4)</div></div>
+          <div class="cost-row"><div class="label">全链条成本</div><div class="val"><b>19-21元/kg</b> (含地面)</div></div>
+          <div class="cost-row"><div class="label">时间节省</div><div class="val">3-4小时 (但冬季公路封路时: 无替代)</div></div>
         </div>
       </div>
       <div class="insight fade-in" style="margin-top:12px">
-        <b>航空比公路贵22-33倍 — 但值得吗?</b>
-        对松茸 (市价200-500元/kg, 保鲜窗口12小时)、急救药品 (生命价值无限)、高原鲜花 (损耗率每小时增2%) 而言, 3-4小时的时效差可能价值远超10元/kg的运费差。但对一般货物, 航空在拉萨-林芝这条已通高速的线路上没有成本优势。<b>注意: 如果是拉萨到阿里 (1,600km, 公路需2天), 航空的相对优势将完全不同。</b>
+        <b>高原修正后: 航空比公路贵40-60倍 (而非之前估算的22-33倍)。</b>
+        拉萨-林芝是航空货运的"最困难案例": 双端高海拔 (业载-40%)、短距 (时效差仅3-4小时)、已通高速 (公路条件好)。即便如此, 对松茸 (200-500元/kg, 保鲜窗口12小时) 和急救药品, 19元/kg的运费仍在可承受范围。<b>但此案例不代表航空货运的典型场景。</b>
+      </div>
+    </div>
+
+    <!-- Case study 2: Lower altitude, worse road -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">案例B: 和田-乌鲁木齐 (1,100km) — 更有代表性的航线</div>
+      <div class="chart-desc">低海拔 + 超长公路 + 高价值时敏货物 = 航空更有优势的场景</div>
+      <div class="grid2" style="margin-top:12px">
+        <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:16px">
+          <div style="font-weight:700;font-size:15px;margin-bottom:8px">公路运输 (G3012沙漠公路+连霍高速)</div>
+          <div class="cost-row"><div class="label">距离</div><div class="val">~1,400km (需穿越塔克拉玛干沙漠边缘)</div></div>
+          <div class="cost-row"><div class="label">时间</div><div class="val">18-22小时 (单司机需中途休息, 实际24h+)</div></div>
+          <div class="cost-row"><div class="label">标准运费</div><div class="val">0.4-0.6元/吨公里 (新疆区域)</div></div>
+          <div class="cost-row"><div class="label">单位成本</div><div class="val"><b>0.56-0.84元/kg</b></div></div>
+          <div class="cost-row"><div class="label">风险</div><div class="val">沙尘暴封路, 夏季高温(45°C+)损耗, 冬季暗冰</div></div>
+          <div class="source">新疆物流运价参考: 货拉拉/满帮新疆区域2024数据</div>
+        </div>
+        <div style="border:2px solid #3b82f6;border-radius:var(--radius);padding:16px">
+          <div style="font-weight:700;font-size:15px;margin-bottom:8px">航空运输 (Caravan, 低海拔)</div>
+          <div class="cost-row"><div class="label">距离</div><div class="val">~1,100km 直线</div></div>
+          <div class="cost-row"><div class="label">海拔</div><div class="val">和田1,375m / 乌鲁木齐647m — 性能损失极小</div></div>
+          <div class="cost-row"><div class="label">飞行时间</div><div class="val">~4.8小时 (含起降)</div></div>
+          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,089 × 4.8 = 24,427元/趟</div></div>
+          <div class="cost-row"><div class="label">满载业载 1,088kg</div><div class="val"><b>22.5元/kg</b> (无高原惩罚)</div></div>
+          <div class="cost-row"><div class="label">全链条成本</div><div class="val"><b>26-28元/kg</b></div></div>
+          <div class="cost-row" style="background:#f0fdf4"><div class="label">时间节省</div><div class="val"><b>18-20小时</b> (vs公路, 极大优势)</div></div>
+        </div>
+      </div>
+      <div class="insight fade-in" style="margin-top:12px">
+        <b>航空仍贵27-50倍, 但时效差18-20小时改变了价值判断。</b>
+        和田红枣 (30-80元/kg)、和田玉毛料 (数百-数万元/kg)、新疆鲜果 (库尔勒香梨/阿克苏苹果, 旺季损耗每天3-5%): 20小时意味着多损耗10-15%的货值。对50元/kg的鲜果, 损耗5-7.5元/kg → 接近运费差额。<b>对高值/鲜活货物, 长距离航线的时效价值可以覆盖运费溢价。</b>
+      </div>
+    </div>
+
+    <!-- Synthesis: when does aviation actually work? -->
+    <div class="card fade-in" style="margin-top:16px;border-left:4px solid var(--primary)">
+      <div class="chart-title">两个案例的启示: 航空货运的适用条件</div>
+      <table class="hsr-compare" style="margin-top:12px">
+        <thead><tr><th>条件</th><th>案例A 拉萨-林芝</th><th>案例B 和田-乌鲁木齐</th><th>判断</th></tr></thead>
+        <tbody>
+          <tr><td>海拔影响</td><td style="color:#ef4444">严重 (业载-40%)</td><td style="color:#22c55e">极小 (业载接近满载)</td><td>低海拔航线经济性好1.7倍</td></tr>
+          <tr><td>公路替代</td><td style="color:#ef4444">已通高速, 5-6小时</td><td style="color:#22c55e">沙漠公路, 18-22小时</td><td>公路越差, 航空越有价值</td></tr>
+          <tr><td>时效差</td><td>3-4小时</td><td style="color:#22c55e"><b>18-20小时</b></td><td>航空至少要省10小时才有说服力</td></tr>
+          <tr><td>单位成本</td><td>15.7元/kg (高原)</td><td>22.5元/kg (长距离)</td><td>虽然B更贵, 但时效价值更高</td></tr>
+          <tr><td>目标货物</td><td>松茸、急救药品</td><td>鲜果、玉石、时敏电商</td><td>B的市场规模显著更大</td></tr>
+        </tbody>
+      </table>
+      <div class="insight fade-in" style="margin-top:12px">
+        <b>结论: 飞机设计不应以西藏高原为主要目标市场。</b>
+        高原运营面临发动机功率损失、业载大幅削减、可用机场少等系统性限制。更有价值的目标是: <b>连接新疆、云贵等低中海拔但公路耗时长的区域与东部枢纽</b>, 这些航线海拔惩罚小、时效差大、货物价值高、市场规模更大。高原可作为特殊能力而非核心设计点 — 类似军用飞机的"高原选装包"思路。
       </div>
     </div>
 
@@ -863,7 +955,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <div class="period">2025-2027 | 投资~5,000万元</div>
         <ul>
           <li>采购2-3架Caravan/Y-12F</li>
-          <li>西部3-5条试点航线 (拉萨-林芝等)</li>
+          <li>新疆/云贵3-5条试点航线 (和田-乌鲁木齐等中低海拔)</li>
           <li>UAV改装1架FH-98测试</li>
           <li>建立简易跑道标准</li>
           <li>验证运营经济模型</li>
