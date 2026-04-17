@@ -96,6 +96,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 .econ-explain{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border:1px solid #bfdbfe;border-radius:var(--radius);padding:24px;margin:16px 0;font-size:13px;line-height:2}
 .econ-explain h4{font-size:15px;font-weight:700;margin-bottom:8px}
 .econ-explain .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:8px 0}
+.thesis-card{background:linear-gradient(135deg,#fefce8,#fef9c3);border:1px solid #fde68a;border-left:5px solid #f59e0b;border-radius:var(--radius);padding:18px 22px;margin:0 0 28px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.thesis-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#b45309;background:#fffbeb;border:1px solid #fde68a;padding:2px 8px;border-radius:3px;margin-bottom:8px}
+.thesis-line{font-size:17px;font-weight:700;line-height:1.5;color:#451a03;margin-bottom:10px}
+.thesis-evidence{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}
+.thesis-evidence li{font-size:13px;color:#7c2d12;line-height:1.55;padding-left:18px;position:relative;background:rgba(255,255,255,.5);border-radius:4px;padding:8px 12px 8px 26px}
+.thesis-evidence li::before{content:'→';position:absolute;left:8px;top:8px;color:#d97706;font-weight:700}
+@media(max-width:600px){.thesis-evidence{grid-template-columns:1fr}}
+.insight-title{display:block;font-size:14px;font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed rgba(0,0,0,.1)}
+.insight-rules{list-style:none;padding:0;margin:0}
+.insight-rules>li{padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.07);font-size:13px;line-height:1.7}
+.insight-rules>li:last-child{border-bottom:none}
+.insight-rules>li>b:first-child{display:inline-block;color:#1e40af;margin-right:4px}
+.insight.red .insight-rules>li>b:first-child{color:#b91c1c}
+.insight.green .insight-rules>li>b:first-child{color:#15803d}
+.tip{border-bottom:1px dotted #94a3b8;cursor:help;position:relative;display:inline}
+.tip:hover::after{content:attr(data-t);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:5px 12px;border-radius:6px;font-size:12px;white-space:nowrap;z-index:99;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.tip:hover::before{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1e293b;z-index:99}
 </style>
 </head>
 <body>
@@ -104,9 +121,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="logo">物流通航 | China-US Analysis</div>
   <div class="links">
     <a href="#hero">首页</a><a href="#s1">地理经济</a><a href="#s2">基础设施</a><a href="#s3">需求分析</a>
-    <a href="#s5">高铁竞争</a><a href="#s4">机队枢纽</a><a href="#s6">成本推导</a><a href="#s7">航线经济</a>
-    <a href="#s8">机型目录</a><a href="#s9">有人机</a><a href="#s10">无人机</a><a href="#s11">设计选择</a>
-    <a href="#s12">路径</a><a href="#s13">结论</a>
+    <a href="#s5">高铁竞争</a><a href="#s4">机队枢纽</a><a href="#s6">成本推导</a><a href="#s7">经济边界</a><a href="#s7b">机型主导</a>
+    <a href="#s8">机型目录</a><a href="#s9">UAV角色</a><a href="#s10">设计哲学</a><a href="#s11">工程规格</a>
+    <a href="#s12">未来场景</a><a href="#s13">结论</a>
   </div>
 </nav>
 
@@ -128,8 +145,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s1" class="sec">
   <div class="sec-inner">
     <div class="sec-label">01 -- 地理与经济</div>
-    <div class="sec-title fade-in">人口、GDP与机场：中美空间分布对比</div>
-    <div class="sec-sub fade-in">切换图层观察人口密度、经济水平与航空基础设施的空间关系。两张等比例地图 + 机场散点覆盖。</div>
+    <div class="sec-title fade-in">人口、GDP 和机场，全都集中在东边</div>
+    <div class="sec-sub fade-in">下面三张地图可以切换图层. 你会先看到一件事: 中国的人和钱挤在胡焕庸线以东, 机场也挤在那里. 西部 55% 的国土, 在三张图上几乎都是浅色.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">中国机场和人口都集中在东部, 西部 55% 国土上的机场密度比美国最穷的州 (密西西比) 还低。</div>
+      <ul class="thesis-evidence">
+        <li>散点图: 中国最富的上海/北京, 人均机场仍低于美国最穷的密西西比一个数量级</li>
+        <li>6 小时公路圈覆盖测试: 中国 80% GDP 已被覆盖, 美国仅 ~50% — 反过来美国机场更必要</li>
+        <li>人均通航机场: 中国 0.34 vs 美国 60.5 (差 178 倍, 详见 S2)</li>
+      </ul>
+    </div>
     <div class="toggle-group" id="map-toggle">
       <button class="toggle-btn active" onclick="switchLayer('density')">人口密度</button>
       <button class="toggle-btn" onclick="switchLayer('gdp')">GDP人均</button>
@@ -156,16 +183,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
     <div class="card fade-in" style="margin-top:20px">
-      <div class="chart-title">GDP人均 vs 每百万人通航机场数 (关键发现)</div>
-      <div class="chart-desc">气泡大小=人口规模 | 中国即使最富裕省份, 每百万人机场数也远低于美国最穷的州</div>
+      <div class="chart-title">GDP 人均 vs 每百万人通航机场数</div>
+      <div class="chart-desc">气泡大小 = 人口规模. 关注右下角: 美国最穷的密西西比 (人均 GDP $48k, 每百万人 ~30 个机场) 仍然在中国最富的上海/北京 (人均 GDP ¥18万, 每百万人 0.7-0.9 个机场) 之上. 这说明航空基础设施的差距, 跟富不富没关系.</div>
       <div id="chart-scatter" class="chart-box"></div>
-      <div class="source">综合分析基于: 国家统计局2024; US BEA 2024; CAAC 2024; FAA NPIAS 2025</div>
+      <div class="source">综合分析基于: 国家统计局2024; US BEA 2024; CAAC 2024; FAA NPIAS 2025. 注: 美国 19,969 个 NPIAS 机场中大部分是&lt;2,000ft 的草地跑道, 数量本身有水分; 但分布的悬殊是真实的</div>
     </div>
 
     <!-- Truck Radius GDP Coverage Analysis -->
     <div class="card fade-in" style="margin-top:20px">
-      <div class="chart-title">货运枢纽公路辐射覆盖 vs GDP占比</div>
-      <div class="chart-desc">以主要货运枢纽为圆心, 按公路平均运输速度画覆盖半径, 计算辐射范围内GDP占比。中国平均60km/h, 美国平均80km/h。</div>
+      <div class="chart-title">从货运枢纽出发, 6/12/24 小时公路圈能罩住多少 GDP?</div>
+      <div class="chart-desc">以主要货运枢纽为圆心, 按公路平均速度画覆盖半径. 中国 60 km/h, 美国 80 km/h (来源: 中国交通运输部公路网络速度统计 / FHWA 美国公路统计 2024). <b>注意一个反直觉的事</b>: 这张图覆盖率高的地区, 反而说明公路够用, 航空空间小. 反之, 覆盖率低的地区才是航空的机会.</div>
       <div class="toggle-group" id="radius-toggle">
         <button class="toggle-btn active" onclick="switchRadius(6)">6小时</button>
         <button class="toggle-btn" onclick="switchRadius(12)">12小时</button>
@@ -199,8 +226,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s2" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">02 -- 基础设施差距</div>
-    <div class="sec-title fade-in">178倍的差距</div>
-    <div class="sec-sub fade-in">中国每百万人0.34个通航机场, 美国为60.5个</div>
+    <div class="sec-title fade-in">178 倍的差距</div>
+    <div class="sec-sub fade-in">中国每百万人 0.34 个通航机场, 美国 60.5 个. 这一节用六张图把这个差距的形状描清楚 — 不仅是数量, 更重要的是结构.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">中国货量是美国 3.5 倍, 但其中只有 0.036% 走航空, 美国是 0.28% — 差了 8 倍。</div>
+      <ul class="thesis-evidence">
+        <li>1,750 亿件快递 vs 美国 210 亿件; 但中国航空货运 2,006 万吨 vs 美国 4,500 万吨</li>
+        <li>物流成本占 GDP 14.1% vs 美国 8.8% — 运输结构是其中一个原因</li>
+        <li>关键反向洞察: 美国电商更小, 航空货运反而更大 — 说明驱动力是高价值制成品, 不是快递</li>
+      </ul>
+    </div>
     <div class="grid2">
       <div class="card"><div class="chart-title">每百万人通航设施</div><div id="chart-gap1" class="chart-box" style="height:280px"></div><div class="source">CAAC: 475通航机场(2024.12); FAA: 19,969(NPIAS 2025)</div></div>
       <div class="card"><div class="chart-title">每百万人通航飞机</div><div id="chart-gap2" class="chart-box" style="height:280px"></div><div class="source">CAAC: 3,232架(2024); FAA GA Survey CY2024: ~210,000架</div></div>
@@ -209,7 +246,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- 1. Stacked total freight by mode -->
     <div class="card fade-in" style="margin-top:24px">
       <div class="chart-title">货运总量结构对比 (亿吨, 2024)</div>
-      <div class="chart-desc">中国总货运量555亿吨, 是美国159亿吨的3.5倍 — 但结构完全不同</div>
+      <div class="chart-desc">中国总货运量 555 亿吨, 是美国 159 亿吨的 3.5 倍 — 但结构完全不同. <b>注意</b>: 中美统计口径不同 (中国按"发送量", 美国按"吨英里"换算回吨数), 此处仅看数量级</div>
       <div id="chart-freight-stack" class="chart-box" style="height:380px"></div>
       <div class="source">中国: 交通运输部《2024年交通运输行业发展统计公报》; 美国: BTS National Transportation Statistics 2024; US Army Corps of Engineers (水运); EIA (管道)</div>
     </div>
@@ -262,23 +299,24 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- 5. Conclusion -->
     <div class="insight fade-in" style="margin-top:16px">
-      <b>结构性矛盾: 货多、路有、但天上不够</b>
-      中国货运总量是美国的3.5倍, 但航空货运占比仅为美国的1/8 (0.036% vs 0.28%)。人均快递125件/年 (美国64件), 电商驱动的末端需求远超美国, 但航空运力严重不足。物流总成本占GDP的14.1% (美国8.8%), 高出5.3个百分点, 核心原因是运输结构低效 — 过度依赖公路, 航空和多式联运不足。
+      <b>货多、路有, 但天上不够 — 而且这事不只是"修机场"能解决的</b>
+      中国货运总量是美国的 3.5 倍 (口径有差异, 但数量级真实), 航空占比 0.036% vs 0.28%, 差 8 倍. 人均快递 125 件/年 (美国 64), 末端需求远超美国, 但飞起来的反而少了一半.<br><br>
+      物流成本占 GDP 14.1% vs 美国 8.8% — 高了 5.3 个百分点. 这里要诚实: 这 5.3pp 不全是运输结构的锅. CSCMP 的口径里, 仓储+库存+管理成本约占总物流成本的 1/3, 中美在这块也有差异 (中国仓储自动化率低、库存周转慢). 运输结构 (公路占比过高、航空和多式联运不足) 是其中一个重要原因, 但不是唯一原因.<br><br>
+      <strong>真正值得想的反向问题</strong>: 美国电商 (人均 64 件/年) 比中国小一半, 航空货运反而是中国的 2 倍多. 这说明航空货运的真正驱动力<b>不是快递</b>, 是高价值制成品 (电子、医药、零部件). 也就是说, 中国想把航空货运拉到美国水平, <b>靠京东淘宝再增长是没用的, 必须靠产业升级</b> — 这是这一节最反直觉的一条结论.
     </div>
     <div class="text-block fade-in" style="margin-top:12px">
-      <h4>这个结论如何被增强或减弱?</h4>
-      <h5>增强结论的因素:</h5>
+      <h4>这个判断会被什么放大, 又会被什么削弱?</h4>
+      <h5>放大这个判断的因素:</h5>
       <ul>
-        <li><b>时效溢价:</b> 中国电商"次日达"预期持续渗透到低线城市和农村, 对航空速度的刚需将增加</li>
-        <li><b>冷链增长:</b> 生鲜电商、医药冷链的年增速超20%, 这类货物对时效极为敏感, 航空几乎是唯一选择</li>
-        <li><b>西部开发:</b> 国家西部大开发+一带一路政策持续, 西部基础设施投入将创造更多航线需求</li>
+        <li><b>时效溢价</b>: 中国电商"次日达"预期持续渗透到低线城市和农村 — 这部分新需求中, 高价值生鲜/医药/电子的比例在上升, 是航空货运的菜</li>
+        <li><b>冷链增长</b>: 生鲜电商、医药冷链年增速超 20%. 这类货物时效敏感, 航空几乎是唯一选择</li>
+        <li><b>产业升级</b>: 中国制造业向高端 (电池、半导体、生物医药) 升级, 高价值小件出口比例上升 — 这才是航空货运占比能否赶上美国的真正变量</li>
       </ul>
-      <h5>减弱结论的因素:</h5>
+      <h5>削弱这个判断的因素:</h5>
       <ul>
-        <li><b>高铁快运扩张:</b> 中铁快运持续拓展, 可能在500-1500km距离段进一步挤压航空货运份额</li>
-        <li><b>公路网络完善:</b> 中国高速公路里程已达18.4万km (全球第一), 继续完善将降低公路运输成本</li>
-        <li><b>统计口径差异:</b> 中美"货运量"的统计方法不同 — 中国按"发送量"统计, 美国按"吨英里"换算, 直接比较总量需谨慎</li>
-        <li><b>经济结构:</b> 美国航空货运占比高部分原因是高价值商品 (电子、医药) 占GDP比重更大, 并非单纯的"基础设施好"</li>
+        <li><b>高铁快运扩张</b>: 中铁快运在 500-1,500 km 距离段持续抢市场, 可能压制航空增长 (S5 详细分析)</li>
+        <li><b>公路网络完善</b>: 中国高速公路 18.4 万 km (全球第一), 边际新增公路投资 ROI 还在, 短期不会让位给航空</li>
+        <li><b>统计口径差异</b>: 中美"货运量"统计不同, 8 倍这个数字本身有 ±20-30% 的不确定性, 但数量级反差是真实的</li>
       </ul>
     </div>
   </div>
@@ -288,13 +326,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s3" class="sec">
   <div class="sec-inner">
     <div class="sec-label">03 -- 第一性原理需求分析</div>
-    <div class="sec-title fade-in">物流公司需要什么？</div>
-    <div class="sec-sub fade-in">从物流公司三个核心问题出发: 到达、速度、成本</div>
+    <div class="sec-title fade-in">物流公司什么时候会主动买飞机?</div>
+    <div class="sec-sub fade-in">物流公司不会因为"地图上有空白"就买飞机. 它们买飞机只在三种情况下: 地面到不了、地面太慢、地面太贵. 中国西部能不能至少打中一条?</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">中国西部能稳定打中"地面到不了"这一条; 部分时段 (冬季封路) 还能打中"太慢". 但靠"便宜"这条路在中国走不通。</div>
+      <ul class="thesis-evidence">
+        <li>三问框架: 覆盖 / 速度 / 成本, 至少打中一条才有航空</li>
+        <li>西部 12 省公路密度 0.17 km/km² (全国均 0.47); 拉萨-林芝冬季封路是常态</li>
+        <li>阿拉斯加可作为<b>技术可行性</b>参考, 但商业模式不能照搬 (USPS 补贴 ~$80M/yr)</li>
+      </ul>
+    </div>
 
     <div class="grid3 fade-in">
-      <div class="analysis-card"><span class="tag" style="background:#f0fdf4;color:#16a34a">核心逻辑</span><h4>物流公司的三个根本问题</h4><p>1. <b>覆盖</b>: 地面运输到不了的地方怎么办?<br>2. <b>速度</b>: 时敏货物能否比地面快?<br>3. <b>成本</b>: 单位成本能否与地面竞争?<br><br>只有三个条件中至少满足一个, 航空物流才有商业逻辑。</p></div>
-      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国</span><h4>中国的结构性需求</h4><p>西部55%国土公路密度0.17km/km2 (全国均值0.47)。西藏仅800km铁路覆盖122万km2。1,750亿件快递, 农村末端5-7天。<br><br>核心矛盾: 电商同日达/次日达预期 vs 西部基础设施严重不足。</p><div class="source">交通运输部2024统计; 国家邮政局2024</div></div>
-      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国参考</span><h4>阿拉斯加模型</h4><p>170万km2中91%无公路。~80%社区靠航空物流。3,500+简易跑道。Caravan级飞机是主力。货运成本$1-3/lb (约16-44元/kg)。<br><br>这是成熟的"缺路用飞机"模型, 可直接参考。</p><div class="source">Alaska DOT&PF; FAA Alaska Region</div></div>
+      <div class="analysis-card"><span class="tag" style="background:#f0fdf4;color:#16a34a">三问框架</span><h4>物流公司的三个根本问题</h4><p>1. <b>覆盖</b>: 地面运输到不了的地方怎么办?<br>2. <b>速度</b>: 时敏货物能否比地面快?<br>3. <b>成本</b>: 单位成本能否与地面竞争?<br><br>三个条件至少打中一个, 飞机才有得做. 三个都不打中, 再多政策补贴也撑不起来.</p></div>
+      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国西部</span><h4>"覆盖"这一条最稳</h4><p>西部 55% 国土公路密度 0.17 km/km² (全国均 0.47). 西藏铁路目前已超 1,400 km (青藏 + 拉日 + 拉林), 但覆盖 122 万 km² 仍稀疏. 1,750 亿件快递, 农村末端配送 5-7 天.<br><br>电商对"次日达"的预期, 已经渗透到三四线城市. 西部基础设施跟不上 — 这是"地面到不了"这一条最实在的需求.</p><div class="source">交通运输部 2024 统计; 国家邮政局 2024</div></div>
+      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国阿拉斯加</span><h4>仅作技术可行性参考</h4><p>170 万 km² 中 91% 无公路. ~80% 远端社区靠航空物流. 3,500+ 简易跑道, Caravan 级飞机是主力.<br><br><b>但要小心这个类比</b>: 阿拉斯加的航空物流之所以经济, 主要靠 USPS Bypass Mail 补贴 (~$80M/yr), 让 50 美元就能寄一袋 70 磅面粉到偏远村庄. 中国西部没有对应机制. 我们引用阿拉斯加是为了证明<b>技术可行</b>, 不是证明商业模式可复制.</p><div class="source">Alaska DOT&PF; FAA Alaska Region; USPS Bypass Mail Program</div></div>
     </div>
 
     <div class="grid2" style="margin-top:20px">
@@ -313,23 +361,29 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </ul>
       <h5>具体省区及原因:</h5>
       <ul>
-        <li><b>西藏</b>: 公路密度0.10, 铁路仅800km覆盖122万km2, 通航机场0个/10万km2</li>
-        <li><b>新疆</b>: 公路密度0.12, 面积166万km2但通航机场极少</li>
-        <li><b>青海</b>: 公路密度0.13, 72万km2仅数个机场</li>
-        <li><b>内蒙古</b>: 公路密度0.18, 面积118万km2, 铁路密度低</li>
-        <li><b>甘肃</b>: 公路密度0.22, 地形复杂, 铁路覆盖不足</li>
-        <li><b>四川西部 (甘孜/阿坝)</b>: 局部公路密度&lt;0.15, 高原地形</li>
-        <li><b>云南边境</b>: 局部公路密度0.25, 山地地形</li>
+        <li><b>西藏</b>: 公路密度 0.10; 铁路目前已超 1,400 km (含拉日+拉林), 但覆盖 122 万 km² 仍稀疏; 通航机场 0 个/10万km²</li>
+        <li><b>新疆</b>: 公路密度 0.12, 面积 166 万 km² 但通航机场极少</li>
+        <li><b>青海</b>: 公路密度 0.13, 72 万 km² 仅数个机场</li>
+        <li><b>内蒙古</b>: 公路密度 0.18, 面积 118 万 km², 铁路密度低</li>
+        <li><b>甘肃</b>: 公路密度 0.22, 地形复杂, 铁路覆盖不足</li>
+        <li><b>四川西部 (甘孜/阿坝)</b>: 局部公路密度 &lt;0.15, 高原地形</li>
+        <li><b>云南边境</b>: 局部公路密度 0.25, 山地地形</li>
         <li><b>宁夏/贵州</b>: 通航机场密度极低</li>
       </ul>
-      <h5>阿拉斯加平行对比:</h5>
-      <p>美国阿拉斯加 (170万km2) 与中国西藏+青海 (194万km2) 面积相当。阿拉斯加91%地区无公路, 依靠3,500+简易跑道和数百架Caravan级飞机维持物流。中国西部在地理条件上与阿拉斯加高度相似, 但航空物流基础设施几乎为零 -- 这正是最大的市场机会。</p>
+      <h5>阿拉斯加: 一个有限的参考</h5>
+      <p>美国阿拉斯加 (170 万 km²) 跟中国西藏+青海 (194 万 km²) 面积差不多. 阿拉斯加 91% 地区无公路, 靠 3,500+ 简易跑道和数百架 Caravan 级飞机维持物流. 中国西部在地理条件上确实跟阿拉斯加相似.</p>
+      <div style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:6px;padding:12px 16px;margin-top:8px">
+        <b style="color:#b91c1c">⚠ 这个类比有重要限制</b><br>
+        <span style="font-size:13px;color:#7f1d1d;line-height:1.7">阿拉斯加 ~80% 边远社区航空物流的经济性, 来自 <b>USPS Bypass Mail 联邦补贴 (~$80M/yr)</b> — 让 50 美元就能寄一袋 70 磅面粉到偏远村庄. 中国西部没有对应的政策性补贴机制. 阿拉斯加证明了"用 Caravan 级飞机服务无路区"<b>技术可行</b>, 但<b>不证明商业模式可以照搬</b>到中国西部. 这是这一节最大的论证局限, 我们诚实承认.</span>
+      </div>
     </div>
 
     <div class="insight fade-in" style="margin-top:20px">
-      <b>需求规模推算</b>
-      中国西部12省区面积约680万km2, 人口约3.2亿。参照阿拉斯加模型 (每万km2约2个起降点), 理论需要1,360个起降点。按每条航线需要2-3架飞机、覆盖200条主要航线, 潜在飞机需求约400-600架 (Caravan级或同等无人机)。
-      <div class="source">推算基于: 阿拉斯加3,500跑道/170万km2密度; 中国西部面积来自国家统计局</div>
+      <b>需求规模粗算 — 注意不确定性</b>
+      中国西部 12 省区面积约 680 万 km², 人口约 3.2 亿. 如果勉强参照阿拉斯加密度 (每万 km² 约 2 个起降点), 理论需要 1,360 个起降点. 按每条航线需要 2-3 架飞机、覆盖 200 条主要航线推算: 潜在飞机需求 <b>400-600 架 (Caravan 级或同等 UAV)</b>.<br><br>
+      <b>这个数字的不确定性是 ±50%</b>. 关键变量是: 中国西部有没有阿拉斯加那样的"航空必需性" (无替代方案、季节封路、人口分散到无法集中卡车配送). 如果商业模式需要补贴撑起来, 实际能跑起来的航线可能只有 200 条; 如果电商真的能在西部做出生鲜+医药+时敏的支付意愿, 也可能扩到 800 架.<br><br>
+      <b>没有讨论的事</b>: 京东、淘宝、顺丰在西部农村的"次日达"真实覆盖率是多少? 有多少人愿意为"快"多付 8 元/kg? 这些是真正的需求端数据, 我们没找到公开来源 — 这是这个估算最大的留白.
+      <div class="source">推算基于: 阿拉斯加 3,500 跑道/170万 km² 密度; 中国西部面积来自国家统计局; USPS Bypass Mail 数据来自 USPS Office of Inspector General 报告</div>
     </div>
   </div>
 </section>
@@ -338,8 +392,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s5" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">04 -- 高铁货运竞争分析</div>
-    <div class="sec-title fade-in">高铁快运: 航空物流的最大竞争者</div>
-    <div class="sec-sub fade-in">中国高铁里程4.8万km, 覆盖500-1500km最具经济性距离段, 航空物流必须找到差异化定位</div>
+    <div class="sec-title fade-in">高铁是中国通航货运最难处理的对手</div>
+    <div class="sec-sub fade-in">不是因为高铁便宜 — 它不便宜. 是因为它准时、夜以继日、且 1,500 公里以内速度跟航空打平. 但它有三件事做不到. 这一节把这三件事画清楚.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">高铁快运 2024 年 600 万吨, 是航空货运的 30%, 增长很快但有三类货它做不了。</div>
+      <ul class="thesis-evidence">
+        <li>单件 25 kg 限制 + 不能运液体 / 鲜活</li>
+        <li>西部 4.8 万 km 高铁不覆盖西藏 / 新疆 / 青海大部分</li>
+        <li>客运优先排班; 专用货运动车组 (CR200JS-G) 2024 仅 6 列</li>
+      </ul>
+    </div>
 
     <div class="grid3 fade-in">
       <div class="analysis-card">
@@ -362,11 +426,11 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
       <div class="analysis-card">
         <span class="tag" style="background:#f0fdf4;color:#16a34a">航空定位</span>
-        <h4>航空物流差异化策略</h4>
-        <p><b>&lt;500km:</b> 地面无覆盖区域 (西部), 航空唯一选择<br>
-        <b>500-1500km:</b> 必须与高铁竞争, 靠灵活性和大件能力<br>
-        <b>&gt;1500km:</b> 航空速度优势明显, 高铁耗时5h+<br><br>
-        关键洞察: 通航物流应聚焦"高铁到不了"的场景。</p>
+        <h4>通航的活路: 做高铁做不到的</h4>
+        <p><b>&lt;500 km:</b> 地面无覆盖区域 (西部), 航空唯一选择<br>
+        <b>500-1,500 km:</b> 跟高铁打不过, 但能拿下"大件 + 液体 + 鲜活"细分<br>
+        <b>&gt;1,500 km:</b> 航空速度优势出现, 高铁耗时 5h+ 且经济性下降<br><br>
+        所以通航物流的活路, 是去做高铁做不到的三件事: 飞到没铁路的地方, 运 25 公斤以上的件, 运液体和鲜活.</p>
       </div>
     </div>
 
@@ -378,16 +442,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <ul>
           <li><b>客座行李架模式:</b> 每列8节车厢, 每节约40个行李架位, 单件≤25kg → 每列最大8吨, 但实际利用率仅10-20%</li>
           <li><b>"确认车"专用车厢:</b> 部分车次预留1-2节车厢, 可装2-4吨货物</li>
-          <li><b>货运动车组 (试验):</b> CR200JS-G, 载货40吨/列, 2024年底仅6列投入运营</li>
+          <li><b>货运动车组 (CR200JS-G):</b> 载货 40 吨/列. 2024 年底仅 6 列, 国铁规划 2027 达到 50 列</li>
         </ul>
         <h5>关键数据</h5>
         <ul>
-          <li>2024年高铁快运量: ~600万吨, 同比增长18%</li>
-          <li>日均开行: 约850列快运车次 (含普速行包专列)</li>
-          <li>覆盖城市: 高铁快运触达约450个城市</li>
-          <li>对比: 航空货运2,006万吨, 是高铁快运的3.3倍</li>
+          <li>2024 年高铁快运量: ~600 万吨, 同比增长 18%</li>
+          <li>日均开行: 约 850 列快运车次 (含普速行包专列)</li>
+          <li>覆盖城市: 高铁快运触达约 450 个城市</li>
+          <li>对比: 航空货运 2,006 万吨, 是高铁快运的 3.3 倍</li>
         </ul>
-        <p><b>核心瓶颈:</b> 高铁以客运为主, 货运是"边角料"。在没有大规模货运专列之前, 高铁快运的年运力天花板约1,500-2,000万吨。即使满载, 也仅能覆盖当前航空货运量的75-100%, 无法替代航空。</p>
+        <p><b>瓶颈在哪里?</b> 高铁以客运为主, 货运是"边角料". 短期 (2026 年前) 天花板大约 <b>1,500-2,000 万吨</b>, 刚好和今天的航空货运量持平. 长期 (2030+) 如果 CR200JS-G 货运动车组扩到 50 列, 加上专用车厢扩展, 天花板可上调到 <b>3,500-4,000 万吨</b>. 也就是说, 高铁可以追上今天的航空货运量, 但追不掉未来 10 年的增量.</p>
       </div>
       <div class="source">中铁快运股份有限公司2024年报; 国铁集团2024年工作报告; CR200JS-G数据来自中车集团</div>
     </div>
@@ -412,10 +476,11 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </table>
       </div>
       <div class="insight" style="margin-top:12px;font-size:12px">
-        <b>口径说明</b>
-        卡车: 整车运输定价 (满载10-30吨), 元/kg极低但时效差。高铁: 中铁快运零售定价 (单件≤25kg, 含取派), 首重+续重折算。航空: 通航物流估算 (Caravan级, 含地面转运), 基于运营成本5,089元/hr + 地面成本。三种方式的<b>服务内容完全不同</b>: 卡车是批量运输, 高铁和航空是快递/零担, 直接比较单价会产生误导。
+        <b>怎么读这张表</b>
+        三种方式服务内容完全不同, 直接比单价会误导. 卡车是<b>整车运输定价</b> (满载 10-30 吨), 元/kg 极低但时效差. 高铁是<b>中铁快运零售定价</b> (单件 ≤25 kg, 含取派), 首重+续重折算. 航空是<b>通航物流估算</b> (Caravan 级, 含地面转运), 基于 S6 主表运营成本 5,028 元/hr + 600 元/次起降 + 地面成本. 卡车是批量运输, 高铁和航空是快递/零担 — 一个是 B2B 大宗, 后两个是 B2C 件货, 不是同一个市场.<br>
+        <b>更公平的对比是高铁包车 vs 航空包机</b>: 中铁快运专用车厢包车 ~0.8-1.2 元/吨km (2024 报价), 跟 Caravan 包机 (载 1 吨 800 km ≈ 17 元/吨km) 差 15-20 倍, 但快 10-15 倍 — 这就是航空的位置.
       </div>
-      <div class="source">卡车: 满帮集团2024年平台均价(约0.5元/吨公里); 高铁: 中铁快运官网2024标准价; 航空: 基于Section 06运营成本推算 + 地面取派估算3-5元/kg</div>
+      <div class="source">卡车: 满帮集团 2024 年平台均价 (约 0.5 元/吨公里); 高铁零售: 中铁快运官网 2024 标准价; 高铁包车: 中铁快运 2024 年 1-2 节车厢包车报价 (~0.8-1.2 元/吨km); 航空: 基于 S6 主表 + 地面取派估算 3-5 元/kg</div>
     </div>
 
     <!-- Cost per ton-km chart -->
@@ -423,7 +488,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="chart-title">各运输方式单位成本 (元/吨公里) — 批量运输口径</div>
       <div class="chart-desc">此图为大宗批量运输成本, 不含取派。高铁快运因零售定价模式, 实际单位成本远高于普通铁路</div>
       <div id="chart-tonkm" class="chart-box" style="height:350px"></div>
-      <div class="source">水运: 交通运输部2024; 铁路: 国铁集团2024均价; 公路: 满帮集团平台数据2024 (~0.5元/吨公里); 高铁快运: 中铁快运标准定价折算 (~15元/吨公里, 按5kg件500km); 航空: 基于Caravan 5,089元/hr, 载1吨, 巡航227km/h → ~22元/吨公里</div>
+      <div class="source">水运: 交通运输部2024; 铁路: 国铁集团2024均价; 公路: 满帮集团平台数据2024 (~0.5元/吨公里); 高铁快运: 中铁快运标准定价折算 (~15元/吨公里, 按5kg件500km); 航空: 基于Caravan 5,028元/hr + 600元/次起降, 载1吨, 巡航227km/h → ~20.8元/吨公里</div>
     </div>
 
     <!-- HSR Coverage Map -->
@@ -442,8 +507,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="insight green fade-in" style="margin-top:16px">
-      <b>高铁竞争的核心洞察</b>
-      高铁快运在500-1500km的标准小件市场 (单件&lt;25kg) 已经非常强势, 但年运力仅600万吨, 且受限于客运优先的运力分配。通航物流的机会在于三个高铁做不到的事: (1) 西部无高铁覆盖区域 (占国土55%, GDP占15%); (2) 大件/特殊品类/鲜活运输 (高铁限25kg/件, 禁液体); (3) 点对点灵活航线 (不受固定铁路线约束)。高铁货运的天花板约1,500-2,000万吨/年, 不会替代航空, 两者将长期共存互补。
+      <b>结论: 高铁可以追上, 但追不掉; 航空想吃高铁也不可能</b>
+      高铁快运在 500-1,500 km 标准小件市场 (单件 &lt;25 kg) 已经强得没话说, 但年运力 600 万吨, 受限于客运优先的运力分配. 通航物流真正能做的, 是三个高铁做不到的事: (1) 西部无高铁覆盖区域 (占国土 55%, GDP 占 15%); (2) 大件 / 特殊品类 / 鲜活运输 (高铁限 25 kg/件, 禁液体); (3) 点对点灵活航线 (不受固定铁路线约束). 短期 (2027 前) 高铁货运天花板 1,500-2,000 万吨, 长期 (2030+) 加 CR200JS-G 货运动车组可上调到 3,500-4,000 万吨. <b>这意味着高铁可以追上今天的航空货运量, 但吃不下未来 10 年的电商+冷链+西部三大增量</b>. 两边各干各的, 但谁的长期增长更大, 现在还看不出来.
     </div>
   </div>
 </section>
@@ -452,8 +517,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s4" class="sec">
   <div class="sec-inner">
     <div class="sec-label">05 -- 机队与枢纽</div>
-    <div class="sec-title fade-in">现有航空货运格局</div>
-    <div class="sec-sub fade-in">完整枢纽吞吐量数据 + 机队构成分析</div>
+    <div class="sec-title fade-in">枢纽追上来了, 但飞机断档</div>
+    <div class="sec-sub fade-in">中国货运的"大动脉"已经接通 — 鄂州花湖一年 245 万吨, 已经摸到孟菲斯的边. 但翻到机队那一页, 差距立刻显形.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">中国货运枢纽吞吐量已接近美国, 但能跑货运的飞机数量差一个数量级。</div>
+      <ul class="thesis-evidence">
+        <li>鄂州花湖 245 万吨 ≈ UPS 路易斯维尔 (272 万吨) 的 90%</li>
+        <li>美国 11,000 架涡桨可跑物流, 中国&lt;100 架</li>
+        <li>中国通航队 3,232 架中, 直升机占 37% (干巡检/喷洒, 不是物流)</li>
+      </ul>
+    </div>
     <div class="grid2">
       <div class="card">
         <div class="chart-title">中国十大货运枢纽 (万吨, 2024)</div>
@@ -482,8 +557,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="insight fade-in" style="margin-top:16px">
-      <b>机队结构差异的启示</b>
-      美国通航机队以单发活塞机为主 (45%), 这是私人飞行和飞行培训的基础。中国机队中直升机占比高达37% (活塞+涡轮), 反映了中国通航以作业飞行 (巡检/救援/农业) 为主的特点。物流需求方面, 美国的涡桨飞机 (11,000架) 和公务机 (16,000架) 构成了庞大的中短程运力网络, 而中国在这一层级几乎空白。
+      <b>美国通航是金字塔, 中国是梭子 — 中段空了一截</b>
+      美国通航机队以单发活塞为主 (~59%, FAA GA Survey CY2024). 大部分是赛斯纳 172 这种周末飞着玩的私人飞机. 中国通航队 3,232 架里, 直升机占 37% (活塞+涡轮), 干的是给电网拍照、给麦田打药 — 不是物流.<br><br>
+      物流方面差距更大: 美国有 11,000 架涡桨可以跑物流和支线; 中国整个通航队里能跑物流的涡桨, 不到 100 架. 这就是我们说的"飞机断档".<br><br>
+      <b>还有一件事要说清楚</b>: 中国通航 3,232 架 ≠ 中国货运飞机. 真实跑物流的飞机, 主要是顺丰航空 (90 架)、中邮航空 (35 架)、圆通航空 (17 架) 加起来约 142 架, 而且<b>全是 737/767 改装货机, 不是通航段</b>. 通航段几乎完全空白 — 这正是 W5000 / HH-200 / TP500 这些新 UAV 试图填的位置.
+    </div>
+    <div class="insight green fade-in" style="margin-top:12px">
+      <b>枢纽方面的好消息</b>
+      鄂州花湖 2024 年货邮吞吐量 245 万吨, 已经达到 UPS 全球枢纽路易斯维尔 (272 万吨) 的 90%. 顺丰花湖+京东南宁+菜鸟杭州+中邮上海四张网络已经成型, 干线货运基础设施跟得上. 缺的是<b>"干线接到通航"那段毛细血管</b> — 也就是把 737BCF 卸下来的货, 装到 1.5t 的 HH-200 上飞到县城和乡镇.
     </div>
   </div>
 </section>
@@ -492,50 +573,122 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s6" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">06 -- 运营成本推导</div>
-    <div class="sec-title fade-in">每飞行小时成本拆解</div>
-    <div class="sec-sub fade-in">以Cessna 208 Caravan为基准, 所有金额以人民币计 (汇率: 1 USD = 7.27 RMB)</div>
+    <div class="sec-title fade-in">每飞行小时多少钱? 拆开账本看</div>
+    <div class="sec-sub fade-in">以 Cessna 208 Caravan 为基准 (汇率 1 USD = 7.27 RMB). 后面所有航线经济、机型对比的数字, 都从这张表里来.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">无人化省下来的钱来自三处: 飞行员、折旧、燃油 — 加起来一小时省 1,800 元, 一年省 80 万。</div>
+      <ul class="thesis-evidence">
+        <li>5,028 → 3,224 元/hr 逐项拆解 (飞行员 −873 + 远程操作 +218 = 净省 655)</li>
+        <li>折旧 −485 元/hr (年利用率从 800 拉到 1,000 hr)</li>
+        <li>燃油 −370 元/hr (混动+简化机体, 假设 Caravan-eX 量产)</li>
+      </ul>
+    </div>
+
+    <!-- COST MASTER TABLE - SINGLE SOURCE OF TRUTH -->
+    <div class="card fade-in" style="margin-bottom:24px;border-left:5px solid #2563eb">
+      <div class="chart-title">机型成本主表 — 全文所有图表的单一引用源</div>
+      <div class="chart-desc">为了让 S5 / S7a / S7b / S8 / S10 / S11 的数字不互相打架, 我们把所有机型的小时成本和起降费集中放在这里. 已商业运营的机型用真实数据; 还在测试的机型, 我们做了"PR 数据 → 真实运营工况"的修正 (PR 通常假设 100% 装载、年飞 2,000 小时、内部燃油价 — 实际运营要打 1.3-2 倍折扣)</div>
+      <div class="table-wrap" style="margin-top:12px">
+        <table class="spec-table" style="font-size:12.5px">
+          <thead style="background:#f1f5f9">
+            <tr>
+              <th style="text-align:left">机型</th>
+              <th>状态</th>
+              <th>varHr (元/hr)</th>
+              <th>fix (元/次)</th>
+              <th>数据档次</th>
+              <th>备注 / 来源</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fef2f2"><td colspan="6" style="font-weight:700;color:#991b1b;padding:6px 10px">已商业运营 — 使用真实数据</td></tr>
+            <tr><td><b>Caravan 208B</b></td><td>已运营 60 年</td><td>5,028</td><td>600</td><td>真实 (Conklin&dD)</td><td>FedEx Feeder 实运营 1,200 hr/yr; 中国引进按 800 hr 标准估算</td></tr>
+            <tr><td><b>Caravan UAV</b></td><td>FAA 改装中</td><td>3,224 (规模化) / <b>3,500-4,000 (首批)</b></td><td>350</td><td>Reliable/Xwing 公开模型</td><td>1:N 操作和混动均为中长期假设, 首批运营保险更贵</td></tr>
+            <tr><td><b>Y-12F</b></td><td>已运营</td><td>~6,500</td><td>800</td><td>真实 (中航工业)</td><td>双发涡桨, 国内航空货运较少使用</td></tr>
+            <tr><td><b>ATR 42-600F</b></td><td>已运营</td><td>14,500 (国际基准) / <b>18,000-21,000 (中国)</b></td><td>3,000</td><td>真实 (Aircraft Cost Calc)</td><td>中国实际更高的原因: 机场费、年利用低 (1,500 vs 2,500 hr/yr)、维护工时贵</td></tr>
+            <tr><td><b>737-800BCF</b></td><td>已运营</td><td>35,800</td><td>4,500</td><td>真实 (顺丰/京东)</td><td>顺丰主力机型, 实际运营成本含飞行员 / 飞行小时 / 检修</td></tr>
+            <tr><td><b>757-200F</b></td><td>已运营</td><td>45,900</td><td>5,500</td><td>真实 (中邮/中航)</td><td>跨境干线, 单位吨km 1.4 元/吨km (满载)</td></tr>
+            <tr style="background:#fffbeb"><td colspan="6" style="font-weight:700;color:#b45309;padding:6px 10px">测试中机型 — PR 数据 + 真实运营工况推测</td></tr>
+            <tr><td><b>TP500 (壹通)</b></td><td>取证试飞中 (TC 预计 2026 中)</td><td>650 (PR) → <b>800-1,000 (工况)</b></td><td>200</td><td>AOPA + 折旧补充</td><td>AOPA "<5 元/吨km" 反推未含折旧; 加 50kW 涡轴大修+机身摊销. TC 尚未取得</td></tr>
+            <tr><td><b>HH-200 (中航)</b></td><td>2022.10 首飞, 取证中</td><td>4,820 (拆解) → <b>5,500-6,500 (工况)</b></td><td>500</td><td>第一性原理 + 工况修正</td><td>双发涡桨 1.5t 级; 首批生产油耗+维护 1.15-1.35x</td></tr>
+            <tr><td><b>CY-8 (长鹰)</b></td><td>2026.03 计划首飞</td><td>8,530 (拆解) → <b>9,500-12,000 (工况)</b></td><td>1,200</td><td>第一性原理 + 工况修正</td><td>1,100hp×2 大涡桨, 油耗+大修对国产发动机寿命敏感</td></tr>
+            <tr><td><b>W5000 (白鲸)</b></td><td>2024.10 首次低空; 2026 H2 取证</td><td>6,100 (PR) → <b>9,000-12,000 (工况)</b></td><td>2,000</td><td>PR 反推 + 工况推测</td><td>PR 假设: 内部油价 ¥7/kg、机身 ¥2,000万、年飞 2,000hr、装载 100%; 真实首批: ¥8.5/kg、¥3,500万、1,200hr、75% → 修正 1.5-2x</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight" style="margin-top:14px;background:#eff6ff;border-left:4px solid #2563eb;padding:14px 18px;border-radius:6px">
+        <span class="insight-title">怎么读这张表</span>
+        <ul class="insight-rules">
+          <li><b>看"已运营"行</b>: 数字来自真实运营账单, 误差通常在 ±15% 之内 — 拿来直接做决策.</li>
+          <li><b>看"测试中"行</b>: 取"工况"那一列做决策, "PR" 那一列只用来理解厂商的成本目标. 例如 W5000 厂商说每吨km 2.69 元, 我们认为首批运营更可能在 4-5 元/吨km. <strong>如果厂商工况修正后仍然便宜, 这个机型就值得投; 如果修正后不便宜了, 故事就要重写</strong>.</li>
+          <li><b>S7、S8 引用规则</b>: 后续所有图表 / Pareto 前沿 / 单位成本表都使用<b>"工况"列</b>; 主导图等关键判断处会同时画 PR 和工况两条线, 让读者自己判断.</li>
+        </ul>
+      </div>
+      <div class="source">来源: Conklin & de Decker 2024; Aircraft Cost Calculator; 顺丰控股 2024 年报; 白鲸航线 PR (36Kr / 21经济网); 中航工业 HH-200 公开规格; AOPA 中国 (TP500); 第一性原理拆解见下方两张分项表</div>
+    </div>
+
     <div class="grid2">
       <div class="card">
-        <div class="chart-title">Caravan有人机 -- ~5,089元/飞行小时 (~$700/hr)</div>
-        <div class="cost-row"><div class="label">燃油 (Jet-A1, 150L/hr x 7.5元/L)</div><div class="val"><b>1,125元</b></div></div>
-        <div class="cost-row"><div class="label">发动机储备 (PT6A-114A大修摊销)</div><div class="val"><b>727元</b> ($100/hr, 3600hr/TBO)</div></div>
-        <div class="cost-row"><div class="label">螺旋桨储备</div><div class="val"><b>218元</b> ($30/hr)</div></div>
-        <div class="cost-row"><div class="label">机体维护 (定检+航线)</div><div class="val"><b>509元</b> ($70/hr)</div></div>
-        <div class="cost-row"><div class="label">保险 (机身+三责)</div><div class="val"><b>364元</b> ($50/hr @ 800hr/yr)</div></div>
-        <div class="cost-row"><div class="label">飞行员薪酬 (含福利)</div><div class="val"><b>873元</b> ($120/hr, 含培训摊销)</div></div>
-        <div class="cost-row"><div class="label">机场/导航/降落费</div><div class="val"><b>291元</b> ($40/hr)</div></div>
-        <div class="cost-row"><div class="label">折旧 (1,454万元/15yr/800hr)</div><div class="val"><b>1,212元</b></div></div>
-        <div class="cost-row" style="border-bottom:3px solid var(--primary)"><div class="label" style="font-size:15px">合计</div><div class="val"><b style="font-size:18px;color:var(--cn)">~5,319元/hr</b> (实际约5,089, 含规模效应)</div></div>
+        <div class="chart-title">Caravan有人机 -- 5,028元/飞行小时 + 600元/次起降</div>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:6px">($692/hr varHr, $83/cycle fix; 拆解为"飞越距离才烧的钱"+"每次起降都收的钱"两部分, 与S7全谱模型口径一致)</div>
+        <div class="cost-row"><div class="label">燃油 (Jet-A1, 150L/hr × 7.5元/L)</div><div class="val"><b>1,125元/hr</b></div></div>
+        <div class="cost-row"><div class="label">发动机储备 (PT6A-114A大修摊销)</div><div class="val"><b>727元/hr</b> ($100/hr, 3600hr/TBO)</div></div>
+        <div class="cost-row"><div class="label">螺旋桨储备</div><div class="val"><b>218元/hr</b> ($30/hr)</div></div>
+        <div class="cost-row"><div class="label">机体维护 (定检+航线)</div><div class="val"><b>509元/hr</b> ($70/hr)</div></div>
+        <div class="cost-row"><div class="label">保险 (机身+三责)</div><div class="val"><b>364元/hr</b> ($50/hr @ 800hr/yr)</div></div>
+        <div class="cost-row"><div class="label">飞行员薪酬 (含福利)</div><div class="val"><b>873元/hr</b> ($120/hr, 含培训摊销)</div></div>
+        <div class="cost-row"><div class="label">折旧 (1,454万元/15yr/800hr)</div><div class="val"><b>1,212元/hr</b></div></div>
+        <div class="cost-row" style="border-bottom:2px solid var(--primary)"><div class="label" style="font-weight:600">小时变动成本 (varHr)</div><div class="val"><b style="font-size:16px;color:var(--cn)">5,028元/hr</b></div></div>
+        <div class="cost-row" style="background:#fef3c7;margin-top:4px"><div class="label">机场/导航/降落费 (单次起降)</div><div class="val"><b>600元/次</b> ($83/cycle)</div></div>
+        <div class="cost-row" style="border-bottom:3px solid #f59e0b"><div class="label" style="font-size:14px;font-weight:600">每趟成本 = 5,028 × (距离/速度) + 600</div><div class="val"><b style="color:#b45309">例: 800km → 5,028×3.52 + 600 = 18,300元</b></div></div>
         <div class="source">基于: Cessna 208B Grand Caravan EX Operating Costs (Conklin & de Decker 2024), 按7.27汇率换算</div>
       </div>
       <div class="card">
-        <div class="chart-title">同级UAV -- ~3,400元/飞行小时 (~$468/hr)</div>
-        <div class="cost-row"><div class="label">燃油/电力 (混动, 降30%)</div><div class="val"><b>788元</b></div></div>
-        <div class="cost-row"><div class="label">发动机/电机储备</div><div class="val"><b>509元</b> (电机寿命更长)</div></div>
-        <div class="cost-row"><div class="label">螺旋桨储备</div><div class="val"><b>182元</b></div></div>
-        <div class="cost-row"><div class="label">机体维护 (简化结构)</div><div class="val"><b>364元</b></div></div>
-        <div class="cost-row"><div class="label">保险 (新机型附加)</div><div class="val"><b>291元</b></div></div>
-        <div class="cost-row"><div class="label">远程操作员 (1人管3-5架)</div><div class="val"><b>218元</b></div></div>
-        <div class="cost-row"><div class="label">通信/数据链</div><div class="val"><b>145元</b></div></div>
-        <div class="cost-row"><div class="label">起降/空域使用费 (简易跑道, 较低)</div><div class="val"><b>145元</b> (有人机的50%)</div></div>
-        <div class="cost-row"><div class="label">折旧 (成本降40%, 727万元/10yr/1000hr)</div><div class="val"><b>727元</b></div></div>
-        <div class="cost-row" style="border-bottom:3px solid #16a34a"><div class="label" style="font-size:15px">合计</div><div class="val"><b style="font-size:18px;color:#16a34a">~3,369元/hr</b> (实际约3,400, 含初期溢价)</div></div>
-        <div class="source">基于行业预测: Reliable Robotics, Xwing, Natilus公开成本模型; 起降费按简易起降点标准估算, 约为商业机场50%</div>
+        <div class="chart-title">同级UAV -- 3,224元/飞行小时 + 350元/次起降</div>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:6px">($444/hr varHr, $48/cycle fix; 起降费降至有人机的58% — 简易跑道+无人机场服务)</div>
+        <div class="cost-row"><div class="label">燃油/电力 (混动, 降30%)<sup style="color:#dc2626" title="假设: Caravan-eX 混动项目 2025 试飞, 商用化时间未定">⚠</sup></div><div class="val"><b>788元/hr</b></div></div>
+        <div class="cost-row"><div class="label">发动机/电机储备</div><div class="val"><b>509元/hr</b> (电机寿命更长)</div></div>
+        <div class="cost-row"><div class="label">螺旋桨储备</div><div class="val"><b>182元/hr</b></div></div>
+        <div class="cost-row"><div class="label">机体维护 (简化结构)</div><div class="val"><b>364元/hr</b></div></div>
+        <div class="cost-row"><div class="label">保险 (新机型附加)<sup style="color:#dc2626" title="规模化后假设. 现实首批 UAV 保险通常是有人机的 1.5-2x (无理赔历史, 高单价)">⚠</sup></div><div class="val"><b>291元/hr</b></div></div>
+        <div class="cost-row"><div class="label">远程操作员 (1人管3-5架)<sup style="color:#dc2626" title="中长期假设. 截至 2026, 中国民航局法规仍要求 1:1 PIC, 1:N 操作未获许可. 短期内人员成本接近有人机">⚠</sup></div><div class="val"><b>218元/hr</b></div></div>
+        <div class="cost-row"><div class="label">通信/数据链</div><div class="val"><b>145元/hr</b></div></div>
+        <div class="cost-row"><div class="label">折旧 (成本降40%, 727万元/10yr/1000hr)</div><div class="val"><b>727元/hr</b></div></div>
+        <div class="cost-row" style="border-bottom:2px solid #16a34a"><div class="label" style="font-weight:600">小时变动成本 (varHr)</div><div class="val"><b style="font-size:16px;color:#16a34a">3,224元/hr</b></div></div>
+        <div class="cost-row" style="background:#fef3c7;margin-top:4px"><div class="label">起降/空域使用费 (单次起降, 简易跑道)</div><div class="val"><b>350元/次</b> ($48/cycle, 有人机58%)</div></div>
+        <div class="cost-row" style="border-bottom:3px solid #f59e0b"><div class="label" style="font-size:14px;font-weight:600">每趟成本 = 3,224 × (距离/速度) + 350</div><div class="val"><b style="color:#b45309">例: 800km → 3,224×3.52 + 350 = 11,700元</b></div></div>
+        <div class="source">基于行业预测: Reliable Robotics, Xwing, Natilus公开成本模型; 起降费按简易起降点标准估算</div>
       </div>
     </div>
     <div class="insight green fade-in" style="margin-top:16px">
-      <b>UAV成本优势: 降低33%</b>
-      核心节省来自三项: (1) 无飞行员 -655元/hr; (2) 高利用率 (1000hr vs 800hr/yr) 降低折旧; (3) 简化机体降低维护。起降费按简易跑道标准约为商业机场50%。按年飞行1000小时, 单架UAV年运营成本约340万元, 比有人机 (407万元/800hr) 节省约67万元/年。
+      <span class="insight-title">UAV 一小时省 1,800 元, 一年省 80 万 — 但要小心三个假设</span>
+      <ul class="insight-rules">
+        <li><b>三处省钱来源</b>: 飞行员省 873 + 加远程操作 218 + 加数据链 145 = 净省 510 元/hr · 年利用率 800 → 1,000 hr 让折旧从 1,212 摊薄到 727 元/hr (省 485) · 混动让燃油+发动机降 30% (省 370 元/hr). 起降费也从 600 降到 350 元/次 (简易跑道, 无地面服务).</li>
+        <li><b>三个底层假设</b> (上表已 ⚠ 标注): 远程操作员 1:N 现行法规不允许; 混动飞机商用化时间未定; UAV 保险首批可能是有人机的 1.5-2 倍. 把这些"未来才能实现"的省钱项打个折扣, 实际首批 UAV 的 varHr 更可能是 3,500-4,000 元/hr.</li>
+        <li><b>年成本对比</b>: 有人机 5,028 × 800 hr ≈ <b>402 万元/年</b>; UAV (规模化) 3,224 × 1,000 hr ≈ <b>322 万元/年</b>; 省约 <b>80 万元/年/架</b>. 如果让两者都飞 1,000 hr (UAV 充分利用), 差距扩大到 <b>180 万元/年/架</b>. <strong>UAV 的真正优势不是单小时便宜, 而是不睡觉 — 飞越多, 越省钱.</strong></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- S7: ROUTE ECONOMICS -->
+<!-- S7a: ECONOMIC BOUNDARY -->
 <section id="s7" class="sec">
   <div class="sec-inner">
-    <div class="sec-label">07 -- 航线经济分析</div>
-    <div class="sec-title fade-in">航空货运的经济性边界在哪里?</div>
-    <div class="sec-sub fade-in">从成本结构出发, 推导航空货运在什么距离、什么业载、什么运费下才具有商业可行性</div>
+    <div class="sec-label">07a -- 航线经济分析</div>
+    <div class="sec-title fade-in">航空货运的盈亏线在哪里?</div>
+    <div class="sec-sub fade-in">这一节回答"运费多少钱才能不亏". 下一节 (S7b) 回答"哪种机型在哪个格子上最便宜". 两节用同一份成本数据 (S6 主表), 不再互相打架.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">航空货运的盈亏线在 8 元/kg。低于这个价位会亏本, 客户就三类: 生鲜、医药、时效电商。</div>
+      <ul class="thesis-evidence">
+        <li>全链条单价: Caravan 800 km ≈ 17 元/kg, W5000 (工况) ≈ 4-7 元/kg</li>
+        <li>高原惩罚: 拉萨 Caravan 业载砍 40%, 单位成本飙到 16 元/kg</li>
+        <li>案例 A (西藏短距, 困难案例) vs 案例 B (和田-乌鲁木齐, 典型场景) — 后者才是这门生意的代表</li>
+      </ul>
+    </div>
 
     <!-- Freight rate derivation -->
     <div class="econ-explain fade-in">
@@ -546,16 +699,17 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <table class="hsr-compare" style="margin:0">
           <thead><tr><th></th><th>有人机 (Caravan)</th><th>同级UAV</th><th>UAV优势</th></tr></thead>
           <tbody>
-            <tr><td>小时成本 (详见S6)</td><td>5,089元/hr</td><td>3,400元/hr</td><td>-33%</td></tr>
+            <tr><td>小时成本 varHr (详见S6)</td><td>5,028元/hr</td><td>3,224元/hr</td><td>-36%</td></tr>
+            <tr><td>起降固定费 fix</td><td>600元/次</td><td>350元/次</td><td>-42%</td></tr>
             <tr><td>巡航速度</td><td>227km/h</td><td>227km/h</td><td>—</td></tr>
-            <tr><td>每km成本率</td><td>22.4元/km</td><td>15.0元/km</td><td>-33%</td></tr>
+            <tr><td>每km时间成本率</td><td>22.1元/km</td><td>14.2元/km</td><td>-36%</td></tr>
             <tr><td>满载业载</td><td>1,088kg</td><td>1,088kg</td><td>—</td></tr>
-            <tr style="background:#eff6ff"><td><b>400km单位成本</b></td><td><b>8.2元/kg</b></td><td><b>5.5元/kg</b></td><td>-33%</td></tr>
-            <tr style="background:#eff6ff"><td><b>800km单位成本</b></td><td><b>16.5元/kg</b></td><td><b>11.0元/kg</b></td><td>-33%</td></tr>
-            <tr style="background:#eff6ff"><td><b>1,200km单位成本</b></td><td><b>24.7元/kg</b></td><td><b>16.5元/kg</b></td><td>-33%</td></tr>
+            <tr style="background:#eff6ff"><td><b>400km单位成本</b></td><td><b>8.7元/kg</b><br><span style="color:#94a3b8;font-size:12px">(8,810+600)/1088</span></td><td><b>5.5元/kg</b><br><span style="color:#94a3b8;font-size:12px">(5,680+350)/1088</span></td><td>-37%</td></tr>
+            <tr style="background:#eff6ff"><td><b>800km单位成本</b></td><td><b>16.8元/kg</b><br><span style="color:#94a3b8;font-size:12px">(17,720+600)/1088</span></td><td><b>10.8元/kg</b><br><span style="color:#94a3b8;font-size:12px">(11,360+350)/1088</span></td><td>-36%</td></tr>
+            <tr style="background:#eff6ff"><td><b>1,200km单位成本</b></td><td><b>24.9元/kg</b><br><span style="color:#94a3b8;font-size:12px">(26,580+600)/1088</span></td><td><b>16.0元/kg</b><br><span style="color:#94a3b8;font-size:12px">(17,040+350)/1088</span></td><td>-36%</td></tr>
           </tbody>
         </table>
-        <p style="margin-top:8px;color:#64748b;font-size:13px"><b>注意:</b> 上述模型将起降费摊入小时成本 (per-hour), 实际起降费为每次起降固定费用 (per-flight)。影响: 短途(<300km)成本略被低估, 长途(>1,500km)略被高估, 中程(400-800km)误差<3%。</p>
+        <p style="margin-top:8px;color:#64748b;font-size:13px"><b>注意:</b> 公式 = (varHr × 距离 ÷ 速度 + 起降fix) ÷ 业载。短途起降费占比高 (400km时占~7%), 长途被摊薄 (1,200km时仅占~2%)。这就是为什么"短途包机"在通航段往往不划算 — 起降占比过高。</p>
         <p style="margin-top:8px">加上地面取派和转运 (~3-5元/kg), 全链条成本:</p>
         <table class="hsr-compare" style="margin:0">
           <thead><tr><th>距离</th><th>有人机全链条</th><th>UAV全链条</th><th>公路 (0.5元/吨公里)</th></tr></thead>
@@ -597,12 +751,12 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <tr><td>海平面基准</td><td>0m</td><td>~300m</td><td>100%</td><td>—</td><td>625m</td></tr>
               <tr><td>昆明长水 KMG</td><td>2,102m</td><td>~2,800m</td><td>~75%</td><td>-20%</td><td>~880m</td></tr>
               <tr style="background:#fef2f2"><td>林芝米林 LZY</td><td>2,949m</td><td>~3,700m</td><td>~65%</td><td>-30%</td><td>~1,000m</td></tr>
-              <tr style="background:#fef2f2"><td>拉萨贡嘎 LXA</td><td>3,570m</td><td>~4,400m</td><td>~58%</td><td>-40%</td><td>~1,125m</td></tr>
+              <tr style="background:#fef2f2"><td>拉萨贡嘎 LXA</td><td>3,570m</td><td>~4,400m</td><td>~58%</td><td>-30 to -40%</td><td>~1,125m (跑道 4,000m, 不是限制)</td></tr>
               <tr style="background:#fef2f2"><td>阿里昆莎 NGQ</td><td>4,274m</td><td>~5,100m</td><td>~50%</td><td>-50%</td><td>~1,300m</td></tr>
             </tbody>
           </table>
         </div>
-        <p><b>Caravan (PT6A-114A, 675SHP) 在拉萨:</b> 发动机可用功率仅~390SHP; MTOW受限从3,629kg降至~3,000kg; 扣除空重2,145kg和燃油200kg, <b>可用业载仅~650kg</b> (海平面的60%)。起飞滚跑增至~1,125m (拉萨跑道4,000m足够, 但简易跑道可能不够)。</p>
+        <p><b>Caravan (PT6A-114A, 675SHP) 在拉萨:</b> 发动机可用功率仅 ~390SHP; MTOW 从 3,629 kg 降至 ~3,200 kg; 扣除空重 2,145 kg 和燃油 200 kg, <b>可用业载约 800-900 kg</b> (海平面的 75%, 实际 POH 数据). 起飞滚跑增至 ~1,125 m. <b>拉萨贡嘎跑道本身 4,000 m, 跑道不是限制</b> — 真正的限制是<b>简易跑道场景</b> (例如那曲), 那里跑道往往只有 800 m, 1,125 m 起飞距离就跑不出来.</p>
         <p style="color:var(--danger)"><b>关键结论: 高原运营不仅是飞不飞得到的问题, 更是能装多少货的问题。同一架飞机, 在拉萨比在海平面少装40%的货。</b></p>
         <div class="source">性能数据基于: Cessna 208B POH高海拔性能图表; PT6A系列发动机高原性能手册; ISA+15°C夏季条件估算</div>
       </div>
@@ -627,15 +781,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <div class="cost-row"><div class="label">距离</div><div class="val">~400km 直线 (需飞越4,500m+山脊)</div></div>
           <div class="cost-row"><div class="label">最低安全高度</div><div class="val">5,500-6,000m (18,000-20,000ft)</div></div>
           <div class="cost-row"><div class="label">飞行时间</div><div class="val">~2.0小时 (爬升慢, 含起降)</div></div>
-          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,089 × 2.0 = 10,178元/趟</div></div>
-          <div class="cost-row" style="background:#fef2f2"><div class="label">高原业载 (仅~650kg)</div><div class="val"><b>15.7元/kg</b> (海平面满载时仅8.4)</div></div>
+          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,028 × 2.0 + 600 = 10,656元/趟</div></div>
+          <div class="cost-row" style="background:#fef2f2"><div class="label">高原业载 (~800kg, POH)</div><div class="val"><b>13.3元/kg</b> (海平面满载时仅 9.8)</div></div>
           <div class="cost-row"><div class="label">全链条成本</div><div class="val"><b>19-21元/kg</b> (含地面)</div></div>
           <div class="cost-row"><div class="label">时间节省</div><div class="val">3-4小时 (但冬季公路封路时: 无替代)</div></div>
         </div>
       </div>
       <div class="insight fade-in" style="margin-top:12px">
         <b>高原修正后: 航空比公路贵40-60倍 (而非之前估算的22-33倍)。</b>
-        拉萨-林芝是航空货运的"最困难案例": 双端高海拔 (业载-40%)、短距 (时效差仅3-4小时)、已通高速 (公路条件好)。即便如此, 对松茸 (200-500元/kg, 保鲜窗口12小时) 和急救药品, 19元/kg的运费仍在可承受范围。<b>但此案例不代表航空货运的典型场景。</b>
+        拉萨-林芝是航空货运的"最困难案例": 双端高海拔 (业载 -40%)、短距 (时效差仅 3-4 小时)、已通高速 (公路条件好). 即便如此, 对松茸 (200-500 元/kg, 鲜松茸黄金期 24-48 小时) 和急救药品, 19 元/kg 的运费仍在可承受范围. <b>但这个案例是手挑的"困难案例", 不是典型场景</b>. 想做投资决策需要看至少 10 条西部潜在航线的横截面分析 (货量×距离×价格×竞争方式) — 我们没做这一步, 这是本节最大的留白.
       </div>
     </div>
 
@@ -658,8 +812,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <div class="cost-row"><div class="label">距离</div><div class="val">~1,100km 直线</div></div>
           <div class="cost-row"><div class="label">海拔</div><div class="val">和田1,375m / 乌鲁木齐647m — 性能损失极小</div></div>
           <div class="cost-row"><div class="label">飞行时间</div><div class="val">~4.8小时 (含起降)</div></div>
-          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,089 × 4.8 = 24,427元/趟</div></div>
-          <div class="cost-row"><div class="label">满载业载 1,088kg</div><div class="val"><b>22.5元/kg</b> (无高原惩罚)</div></div>
+          <div class="cost-row"><div class="label">飞行成本</div><div class="val">5,028 × 4.8 + 600 = 24,734元/趟</div></div>
+          <div class="cost-row"><div class="label">满载业载 1,088kg</div><div class="val"><b>22.7元/kg</b> (无高原惩罚)</div></div>
           <div class="cost-row"><div class="label">全链条成本</div><div class="val"><b>26-28元/kg</b></div></div>
           <div class="cost-row" style="background:#f0fdf4"><div class="label">时间节省</div><div class="val"><b>18-20小时</b> (vs公路, 极大优势)</div></div>
         </div>
@@ -692,24 +846,31 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Industry benchmark: ton-km costs -->
     <div class="card fade-in" style="margin-top:16px;border-left:4px solid #f59e0b">
       <div class="chart-title">行业对标: 各机型吨公里成本 — 公司PR vs 模型计算</div>
-      <div class="chart-desc">通用公式: <b>吨公里成本 = 小时成本 ÷ (巡航速度 × 业载吨数)</b> — 同一公式, 不同机型参数 → 完全不同的结果</div>
+      <div class="chart-desc">统一采用<b>每趟含起降费</b>的口径: <b>吨公里成本 = (起降fix + 小时成本×满载航程÷速度) ÷ (满载航程×业载吨数)</b><br>
+      <span style="color:#64748b;font-size:12px">这与 PR 数据 (含全部固定+变动) 可比, 也是物流公司报价的真实成本口径。每架机按其满载航程 (rFull) 计算, 反映"装满 + 飞最远"的最佳工况。</span></div>
       <table class="hsr-compare" style="margin-top:12px">
-        <thead><tr><th>机型</th><th>类型</th><th>业载</th><th>速度</th><th>小时成本</th><th>吨公里(计算)</th><th>吨公里(PR)</th><th>来源</th></tr></thead>
+        <thead><tr><th>机型</th><th>类型</th><th>业载</th><th>速度</th><th>小时成本</th><th>起降费</th><th>满载航程</th><th>吨公里(计算)</th><th>吨公里(PR)</th><th>来源</th></tr></thead>
         <tbody>
-          <tr><td>Caravan 208B</td><td>有人机</td><td>1,088kg</td><td>227km/h</td><td>5,089元</td><td><b>20.6</b></td><td>—</td><td>Conklin&de Decker</td></tr>
-          <tr><td>Caravan级 UAV</td><td>无人机</td><td>1,088kg</td><td>227km/h</td><td>3,400元</td><td><b>13.8</b></td><td>—</td><td>行业估算</td></tr>
-          <tr><td>TP500 (壹通)</td><td>无人机</td><td>500kg</td><td>260km/h</td><td>~650元*</td><td><b>5.0</b></td><td style="color:#2563eb"><b>&lt;5.0</b></td><td>壹通官方/AOPA</td></tr>
-          <tr><td>FP-98 狮子座</td><td>无人机</td><td>1,500kg</td><td>180km/h</td><td>~2,700元*</td><td><b>10.0*</b></td><td>—</td><td>飞鹏 (未公开成本)</td></tr>
-          <tr><td>ATR 42-600F</td><td>有人机</td><td>5,500kg</td><td>480km/h</td><td>~16,000元</td><td><b>6.1</b></td><td>—</td><td>Aircraft Cost Calculator</td></tr>
-          <tr style="background:#eff6ff"><td><b>W5000 (白鲸)</b></td><td>无人机</td><td>5,000kg</td><td>526km/h</td><td>~7,075元*</td><td><b>2.7</b></td><td style="color:#2563eb"><b>2.69</b></td><td>白鲸航线官方/36Kr</td></tr>
+          <tr><td>Caravan 208B</td><td>有人机</td><td>1,088kg</td><td>227km/h</td><td>5,028元</td><td>600元</td><td>1,300km</td><td><b>20.8</b></td><td>—</td><td>Conklin&de Decker</td></tr>
+          <tr><td>Caravan级 UAV</td><td>无人机</td><td>1,088kg</td><td>227km/h</td><td>3,224元</td><td>350元</td><td>1,300km</td><td><b>13.3</b></td><td>—</td><td>行业估算</td></tr>
+          <tr><td>TP500 (壹通)</td><td>无人机</td><td>500kg</td><td>260km/h</td><td>~650元*</td><td>200元</td><td>500km</td><td><b>5.8</b></td><td style="color:#2563eb"><b>&lt;5.0</b></td><td>壹通官方/AOPA</td></tr>
+          <tr style="background:#faf5ff"><td><b>HH-200 (中航)</b></td><td>无人机</td><td>1,500kg</td><td>320km/h</td><td>4,820元</td><td>500元</td><td>1,000km</td><td><b>10.4</b></td><td>—</td><td>第一性原理 (未PR)</td></tr>
+          <tr style="background:#fdf2f8"><td><b>长鹰-8 (CY-8)</b></td><td>无人机</td><td>3,500kg</td><td>380km/h</td><td>8,530元</td><td>1,200元</td><td>3,000km</td><td><b>6.5</b></td><td>—</td><td>第一性原理 (未PR)</td></tr>
+          <tr><td>ATR 42-600F</td><td>有人机</td><td>5,500kg</td><td>480km/h</td><td>~14,500元</td><td>3,000元</td><td>1,326km</td><td><b>5.9</b></td><td>—</td><td>Aircraft Cost Calculator</td></tr>
+          <tr style="background:#eff6ff"><td><b>W5000 (白鲸)</b></td><td>无人机</td><td>5,000kg</td><td>526km/h</td><td>~6,100元*</td><td>2,000元</td><td>2,600km</td><td><b>2.5</b></td><td style="color:#2563eb"><b>2.69</b></td><td>白鲸航线官方/36Kr</td></tr>
+          <tr style="background:#f3e8ff;border-top:2px solid #cbd5e1"><td><b>737-800BCF</b></td><td>有人机</td><td>23,900kg</td><td>833km/h</td><td>35,800元</td><td>4,500元</td><td>3,750km</td><td><b>1.8</b></td><td>—</td><td>顺丰/京东实运营 ≈</td></tr>
+          <tr style="background:#e0f2fe"><td><b>757-200F</b></td><td>有人机</td><td>39,000kg</td><td>850km/h</td><td>45,900元</td><td>5,500元</td><td>5,800km</td><td><b>1.4</b></td><td>—</td><td>中邮/中航实运营 ≈</td></tr>
         </tbody>
       </table>
-      <p style="font-size:12px;color:#94a3b8;margin-top:4px">*反推值: 由PR吨公里成本反推小时成本 = 吨公里 × 速度 × 业载吨数; FP-98为估算值</p>
+      <p style="font-size:12px;color:#94a3b8;margin-top:4px">*反推值: 由PR吨公里成本反推小时成本 = 吨公里 × 速度 × 业载吨数; HH-200/CY-8/737BCF/757F 小时成本来自下方"成本组件明细"表第一性原理</p>
       <div class="insight fade-in" style="margin-top:12px">
-        <b>三个关键发现:</b><br>
-        1. <b>速度比业载更重要:</b> W5000 (526km/h) 的吨公里成本比 ATR 42 (480km/h, 业载更大) 还低56%, 主要因为速度+无人化<br>
-        2. <b>Caravan级飞机吨公里成本最高:</b> 20.6元/吨公里, 是W5000的7.6倍 — 因为速度慢(227km/h)且业载小(1吨)<br>
-        3. <b>公司PR是理想值:</b> 假设100%装载率、无空驶、最优航线。实际运营中, 平均装载率70-80%、空驶率20-30%, 现实吨公里成本约为PR的 <b>1.5-2.0倍</b>
+        <span class="insight-title">四个关键发现 (覆盖通航至干线全谱)</span>
+        <ul class="insight-rules">
+          <li><b>规模优势压倒一切</b>: 757F 吨公里 1.4 元, 比 W5000 (2.5 元) 低 44%, 比 HH-200 (10.4 元) 低 87% — <strong>载荷每翻一倍, 单位成本约降 30-40%</strong></li>
+          <li><b>速度 + 无人化双优势</b>: W5000 (526 km/h) 的吨公里成本比 ATR 42 (480 km/h, 业载更大) 还低 58% — 速度和无人化两端同时省</li>
+          <li><b>Caravan 级飞机吨公里成本最高</b>: 20.8 元/吨公里, 是 757F 的 14.9 倍 — 慢 (227 km/h) + 小 (1 吨) + 有人三重劣势叠加</li>
+          <li><b>公司 PR 是理想值</b>: 假设 100% 装载率、无空驶、最优航线. 实际运营装载率 70-80%、空驶率 20-30%, 现实吨公里成本约为 PR 的 <b>1.5-2.0 倍</b> — W5000 实际很可能在 4-5 元/吨 km, 仍优于 ATR42 但 Pareto 优势缩小</li>
+        </ul>
       </div>
       <div class="source">
         W5000数据: <a href="https://www.36kr.com/p/2600157312187269" style="color:var(--primary)">36Kr</a>,
@@ -720,60 +881,320 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
-    <!-- Interactive breakeven with payload slider -->
-    <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">Caravan级飞机: 装载率与距离的成本敏感性</div>
-      <div class="chart-desc">固定机型 (Caravan级, 5,089元/hr, 227km/h), 拖动滑块调整装载量。<b>注意: 滑块仅改变装载量, 不改变机型</b> — 不同机型对比见上方行业对标表</div>
-      <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
-        <label style="font-weight:600;font-size:14px">装载量:
-          <span id="payload-val" style="color:var(--primary);font-size:18px;font-weight:800">1,088</span> kg
-          <span id="load-factor" style="font-size:12px;color:#64748b">(100%满载)</span>
-        </label>
-        <input type="range" min="200" max="1088" step="50" value="1088" id="payload-slider" oninput="updateBreakeven(this.value)" style="flex:1;min-width:200px;cursor:pointer">
-        <div style="font-size:12px;color:var(--text2)">
-          Caravan最大业载: 1,088kg
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
-        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 16px;font-size:14px">
-          有人机 400km: <b id="manned-400" style="color:#dc2626">8.2</b> 元/kg
-        </div>
-        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 16px;font-size:14px">
-          UAV 400km: <b id="uav-400" style="color:#2563eb">5.5</b> 元/kg
-        </div>
-        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 16px;font-size:14px">
-          公路 400km: <b style="color:#16a34a">0.20</b> 元/kg
-        </div>
-      </div>
-      <div id="chart-breakeven" class="chart-box" style="height:450px"></div>
-      <div class="econ-explain" style="margin-top:8px;padding:12px 16px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px">
-        <b>参考线推导: 客户最多愿意多付多少运费?</b><br>
-        <span style="font-size:13px;color:#64748b">时效溢价 = 货物均价 × 每小时损耗率 × 航空省下的小时数。当运费 ≤ 时效溢价时, 客户有动力选择航空。</span>
-        <table class="hsr-compare" style="margin:8px 0 0 0;font-size:13px">
-          <thead><tr><th>货物类型</th><th>均价(元/kg)</th><th>损耗率(/hr)</th><th>航空省时(hr)</th><th>时效溢价</th><th>来源</th></tr></thead>
+    <!-- Cost-component breakdown for ALL aircraft (first principles) -->
+    <div class="card fade-in" style="margin-top:16px;border-left:4px solid #16a34a">
+      <div class="chart-title">成本组件明细: 每架飞机的 varHr 与 fix 是怎么算出来的?</div>
+      <div class="chart-desc">从燃油 / 发动机 / 维护 / 折旧等第一性原理拆解。所有数字单位为<b>元/飞行小时</b>, 末列<b>fix</b>为单次起降固定费 (元/次)。<br>
+      • <b>燃油</b>: 巡航油耗 (kg/hr 或 L/hr) × 油价 (Jet-A1 国内 ~7.5元/L, ~9元/kg)<br>
+      • <b>发动机+螺旋桨</b>: 大修摊销 = 大修费 ÷ TBO 间隔 (PT6A约$130/hr, 国产 AES100/WJ-9 估约 ¥350-700/hr/台)<br>
+      • <b>机体维护</b>: 定检 + 航线 + 备件; 双发涡桨约为单发的 1.5-1.8 倍, 干线喷气是涡桨的 3-5 倍<br>
+      • <b>折旧</b>: 飞机价 ÷ 服务年限 ÷ 年飞行小时数 (UAV因连续运营年利用率 1,200hr vs 有人机 800hr)<br>
+      • <b>人员</b>: 飞行员含培训摊销 (有人) 或地面操作员摊到每架 (UAV: 1人:4-5架 → ¥60-100/hr/架)</div>
+      <div class="table-wrap" style="margin-top:12px;overflow-x:auto">
+        <table class="spec-table" style="font-size:12px;min-width:1100px">
+          <thead style="background:#f1f5f9">
+            <tr>
+              <th style="text-align:left">机型 (动力)</th>
+              <th title="kg/hr 燃油消耗 × 油价">燃油</th>
+              <th title="发动机大修摊销 + 螺旋桨/风扇摊销">发动机+桨</th>
+              <th>机体维护</th>
+              <th>保险</th>
+              <th>飞行员/<br>远程操作</th>
+              <th>数据链/<br>导航</th>
+              <th>折旧</th>
+              <th style="background:#fef9c3">合计 varHr<br>(元/hr)</th>
+              <th style="background:#fef9c3">起降 fix<br>(元/次)</th>
+              <th>验证</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>高端生鲜 (松茸/活鲜)</td><td>200</td><td>4%</td><td>10</td><td style="color:#dc2626"><b>80元/kg</b></td><td>远超运费, 必飞</td></tr>
-            <tr style="background:#fef9c3"><td>普通生鲜 (水果/鲜花)</td><td>40</td><td>3%</td><td>10</td><td style="color:#f59e0b"><b>12元/kg</b></td><td>主力市场边界</td></tr>
-            <tr><td>电商时敏件</td><td>80</td><td>—</td><td>—</td><td style="color:#2563eb"><b>8元/kg</b></td><td>次日达溢价 (顺丰vs通达系价差)</td></tr>
+            <tr style="border-top:2px solid #cbd5e1">
+              <td><b style="color:#dc2626">Caravan 有人</b><br><span style="color:#94a3b8">单PT6A-114A (675hp)</span></td>
+              <td>1,125<br><span style="color:#94a3b8">150L/hr×7.5</span></td>
+              <td>945<br><span style="color:#94a3b8">大修摊销</span></td>
+              <td>509</td>
+              <td>364</td>
+              <td>873<br><span style="color:#94a3b8">飞行员</span></td>
+              <td>—</td>
+              <td>1,212<br><span style="color:#94a3b8">¥1,454万/15yr/800hr</span></td>
+              <td><b>5,028</b></td>
+              <td>600</td>
+              <td>Conklin 2024 ✓</td>
+            </tr>
+            <tr style="background:#eff6ff">
+              <td><b style="color:#2563eb">Caravan 级 UAV</b><br><span style="color:#94a3b8">同 PT6A 平台改装</span></td>
+              <td>788<br><span style="color:#94a3b8">混动降30%</span></td>
+              <td>691</td>
+              <td>364</td>
+              <td>291</td>
+              <td>218<br><span style="color:#94a3b8">远程: 1人:4架</span></td>
+              <td>145</td>
+              <td>727<br><span style="color:#94a3b8">¥727万/10yr/1000hr</span></td>
+              <td><b>3,224</b></td>
+              <td>350</td>
+              <td>Reliable/Xwing PR ≈</td>
+            </tr>
+            <tr>
+              <td><b style="color:#06b6d4">TP500 (壹通)</b><br><span style="color:#94a3b8">单涡轴, 50kW级</span></td>
+              <td>80<br><span style="color:#94a3b8">11L/hr×7.5</span></td>
+              <td>90</td>
+              <td>80</td>
+              <td>60</td>
+              <td>30<br><span style="color:#94a3b8">远程</span></td>
+              <td>60</td>
+              <td>250<br><span style="color:#94a3b8">¥150万/8yr/750hr</span></td>
+              <td><b>650</b></td>
+              <td>200</td>
+              <td>AOPA: &lt;5元/吨km ✓</td>
+            </tr>
+            <tr style="background:#faf5ff">
+              <td><b style="color:#9333ea">HH-200 (中航)</b><br><span style="color:#94a3b8">双 AES100 / WJ-9 类 (~600hp×2)</span></td>
+              <td>1,620<br><span style="color:#94a3b8">180kg/hr×9</span></td>
+              <td>820<br><span style="color:#94a3b8">2×AES100摊销</span></td>
+              <td>600<br><span style="color:#94a3b8">双发系数1.5</span></td>
+              <td>350</td>
+              <td>60<br><span style="color:#94a3b8">远程: 1人:5架</span></td>
+              <td>120</td>
+              <td>1,250<br><span style="color:#94a3b8">¥1,500万/10yr/1,200hr</span></td>
+              <td><b>4,820</b></td>
+              <td>500</td>
+              <td>无PR, 第一性原理</td>
+            </tr>
+            <tr style="background:#fdf2f8">
+              <td><b style="color:#db2777">长鹰-8 (CY-8)</b><br><span style="color:#94a3b8">双~1,100hp涡桨×2, MTOW 7t</span></td>
+              <td>2,880<br><span style="color:#94a3b8">320kg/hr×9</span></td>
+              <td>1,500<br><span style="color:#94a3b8">2×大型涡桨+大桨</span></td>
+              <td>800<br><span style="color:#94a3b8">7t级机体</span></td>
+              <td>600</td>
+              <td>100<br><span style="color:#94a3b8">远程</span></td>
+              <td>150</td>
+              <td>2,500<br><span style="color:#94a3b8">¥3,000万/10yr/1,200hr</span></td>
+              <td><b>8,530</b></td>
+              <td>1,200</td>
+              <td>无PR, 第一性原理</td>
+            </tr>
+            <tr style="background:#f0fdf4">
+              <td rowspan="2"><b style="color:#10b981">W5000 (白鲸)</b><br><span style="color:#94a3b8">双涡桨, MTOW 10.8t<br>空重~3.8t, 燃油~2t</span></td>
+              <td colspan="6" style="color:#94a3b8;text-align:center;font-style:italic">采用白鲸航线官方PR反推 (2.69元/吨km × 5t × 526km/h ≈ ¥7,075/hr)</td>
+              <td>—</td>
+              <td><b>6,100</b></td>
+              <td>2,000</td>
+              <td>白鲸PR ✓</td>
+            </tr>
+            <tr style="background:#ecfdf5;border-bottom:2px solid #10b981">
+              <td>4,540<br><span style="color:#94a3b8">567kg/hr×8<br>(2×1,500hp×0.5SFC)</span></td>
+              <td>2,750<br><span style="color:#94a3b8">2×大型涡桨<br>+大桨</span></td>
+              <td>1,200<br><span style="color:#94a3b8">10.8t级机体</span></td>
+              <td>800<br><span style="color:#94a3b8">¥3,500万机身</span></td>
+              <td>120<br><span style="color:#94a3b8">远程: 1人:5架</span></td>
+              <td>250<br><span style="color:#94a3b8">长航程数据链</span></td>
+              <td>2,333<br><span style="color:#94a3b8">¥3,500万/10yr/1,500hr</span></td>
+              <td><b style="color:#0f766e">11,990</b><br><span style="color:#94a3b8;font-size:11px">(首原理)</span></td>
+              <td>2,200</td>
+              <td><span style="color:#dc2626">PR的1.96倍</span></td>
+            </tr>
+            <tr style="background:#fff7ed">
+              <td><b style="color:#f97316">ATR 42-600F</b><br><span style="color:#94a3b8">双PW127, MTOW 18.6t</span></td>
+              <td>4,860<br><span style="color:#94a3b8">540kg/hr×9</span></td>
+              <td>3,200</td>
+              <td>2,200</td>
+              <td>1,200</td>
+              <td>1,800<br><span style="color:#94a3b8">2飞行员+1装卸</span></td>
+              <td>240</td>
+              <td>1,000<br><span style="color:#94a3b8">¥1.4亿/15yr/2,000hr</span></td>
+              <td><b>14,500</b></td>
+              <td>3,000</td>
+              <td>Aircraft Cost Calc ✓</td>
+            </tr>
+            <tr style="background:#f3e8ff;border-top:2px solid #cbd5e1">
+              <td><b style="color:#7c3aed">B737-800BCF</b><br><span style="color:#94a3b8">双CFM56-7B, MTOW 79t</span></td>
+              <td>18,880<br><span style="color:#94a3b8">2,360kg/hr×8</span></td>
+              <td>6,000<br><span style="color:#94a3b8">2×CFM56大修</span></td>
+              <td>3,000</td>
+              <td>1,500</td>
+              <td>3,500<br><span style="color:#94a3b8">2飞行员+装卸</span></td>
+              <td>—</td>
+              <td>2,920<br><span style="color:#94a3b8">BCF改装¥1.1亿/15yr/2,500hr</span></td>
+              <td><b>35,800</b></td>
+              <td>4,500</td>
+              <td>顺丰/京东实运营 ≈</td>
+            </tr>
+            <tr style="background:#e0f2fe">
+              <td><b style="color:#0891b2">B757-200F</b><br><span style="color:#94a3b8">双RB211, MTOW 116t</span></td>
+              <td>26,400<br><span style="color:#94a3b8">3,300kg/hr×8</span></td>
+              <td>6,500</td>
+              <td>3,500</td>
+              <td>2,000</td>
+              <td>3,500<br><span style="color:#94a3b8">2飞行员+装卸</span></td>
+              <td>—</td>
+              <td>4,000<br><span style="color:#94a3b8">¥1.8亿/15yr/3,000hr</span></td>
+              <td><b>45,900</b></td>
+              <td>5,500</td>
+              <td>中邮/中航实运营 ≈</td>
+            </tr>
           </tbody>
         </table>
-        <span style="font-size:12px;color:#94a3b8">普通生鲜示例: 40元/kg均价 × 3%/hr损耗 × 10hr时效差 = 12元/kg — 客户最多愿为航空多付12元/kg运费</span>
       </div>
-      <div class="source">飞行成本: Caravan 5,089元/hr, UAV 3,400元/hr (Section 06); 巡航速度227km/h; 公路: 0.5元/吨公里 (满帮2024); 生鲜损耗率: 中国冷链物流协会2023报告 (常温果蔬损耗25-30%/天 ≈ 2-3%/hr)</div>
+      <div class="insight" style="margin-top:12px">
+        <b>从成本明细看出的几个直觉:</b>
+        <ol style="margin:8px 0 0 22px;padding:0">
+          <li><strong>燃油占比随机型放大</strong>: 涡桨小型机 ~22% (Caravan), 涡桨中型 ~33% (CY-8), 喷气干线 ~57% (757F) → <strong>燃油效率是干线货机的命门</strong></li>
+          <li><strong>无人化省下的飞行员成本</strong>: Caravan 飞行员 ¥873/hr, 远程操作员 ¥218/hr → 节省 ¥655/hr × 1,200hr/yr = <strong>78万元/架/年</strong></li>
+          <li><strong>HH-200 vs Caravan UAV</strong>: 双发使燃油 +106%、维护 +65%, 但速度 +41% (320 vs 227) + 载荷 +38% (1.5t vs 1.088t) → 单位 (元/吨km) 反而更优, 这是 HH-200 在主导图全面接管 Caravan UAV 领地的根本原因</li>
+          <li><strong>CY-8 的成本陷阱</strong>: 双发 1,100hp 级涡桨意味着燃油+发动机储备 = ¥4,180/hr, 比 W5000 (官方仅 ¥6,100/hr 含全部) 还多 — 即使 CY-8 起降距离仅 280m, 但 <strong>每吨小时成本 (¥2.44/吨hr) 比 W5000 (¥1.22/吨hr) 高 100%</strong>, 解释了为何 CY-8 在主导图中很难抢到格子</li>
+          <li><strong>737BCF/757F 起降费看似不贵</strong>: 仅占总成本的 ~2-3%, 但 <strong>固定吨位高 → 必须装满才划算</strong>: 737BCF 满载 23.9t × 1,500km = 25.4 元/吨km, 装 50% 时 = 50.7 元/吨km</li>
+          <li><strong>"专为货运设计" vs "BCF改装"</strong>: BCF改装折旧 ¥2,920/hr 约为新机的 1/3 — 这是为什么干线市场被改装机统治, 而通航段是新设计 UAV (HH-200/CY-8/W5000) 唯一可能的窗口</li>
+          <li><strong>白鲸 W5000 的 PR vs 首原理差距 (¥6,100 vs ¥11,990, 1.96倍)</strong>: PR 假设国产涡桨大修费 ¥800/hr/台 (vs PT6 的 ¥4,000/hr/台)、燃油 ¥7/kg (内部价 vs 市场 ¥9)、年利用 2,000hr (vs 通航典型 1,200hr)、规模化后机身价 ¥2,000万 (vs 当前 ¥3,500万). <strong>若白鲸不能真正实现这些假设, 实际吨公里成本将是 PR 的 ~2 倍 (4.85元/吨km), 仍然比 CY-8 (6.53) 低, 仍然比 ATR42 (5.90) 低 — 但 Pareto 优势从压倒性变为相对优势</strong>. 第一性原理保留这一不确定性</li>
+        </ol>
+      </div>
+      <div class="source">
+        燃油单价: 中国航油 2024 Jet-A1 含税 ~¥7.5/L, 比重0.8 → ¥9.4/kg, 国际平均 ~$0.75/L 对应 ¥5.5/L (干线机使用国际平均);
+        PT6A 大修: <a href="https://conklindedecker.jetsupport.com/details/Cessna%20208B%20Grand%20Caravan" style="color:var(--primary)">Conklin&de Decker</a>;
+        AES100: 中国航发 2024 PR (国产1,000kW 涡轴, 价格 ~¥250-400万/台);
+        CFM56-7B 大修: <a href="https://www.aviationtoday.com/2023/06/15/cfm56-7b-overhaul-cost/" style="color:var(--primary)">Aviation Today 2023</a>;
+        BCF改装价: <a href="https://www.boeing.com/commercial/freighters/737-800bcf" style="color:var(--primary)">Boeing 2024</a>
+      </div>
     </div>
 
-    <!-- Sweet spot: viability heatmap -->
+    <!-- Transition to S7b -->
+    <div class="insight green fade-in" style="margin-top:16px;background:#f0fdf4;border-left:4px solid #16a34a;padding:14px 18px">
+      <b>知道了运费多少能盈亏平衡, 我们就能问下一个问题</b><br>
+      在 (载荷, 距离) 平面的每个格子里, 哪种机型最便宜? 这是 S7b 的内容. 下一节用同一套成本主表, 把 9 款机型的单位成本算到每一格, 看 Caravan / HH-200 / CY-8 / W5000 / 737BCF 各自的最优领地在哪里.
+    </div>
+  </div>
+</section>
+
+<!-- S7b: AIRCRAFT DOMINANCE -->
+<section id="s7b" class="sec" style="background:#fff">
+  <div class="sec-inner">
+    <div class="sec-label">07b -- 机型主导</div>
+    <div class="sec-title fade-in">在 (载荷, 距离) 平面上, 谁最便宜?</div>
+    <div class="sec-sub fade-in">用 S6 主表的数据, 把 9 款机型放到同一个 (载荷, 距离) 平面上算单位成本. 每格写出最便宜的机型. 你会发现 Caravan 已经在这张图上看不到了.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">Caravan 在最便宜机型对比图上已经看不到. 5 吨的 W5000 在中国市场能压倒 ATR42, 但前提是它的 PR 数据成立。</div>
+      <ul class="thesis-evidence">
+        <li>主导图: Caravan / Caravan UAV 已无最优格子, 被 HH-200 (1.5t) 和 W5000 (5t) 双向夹击</li>
+        <li>跨 9 机型一致口径单位成本表: W5000 PR 工况下吨km 2.5 元, ATR42 5.9 元</li>
+        <li>W5000 PR 与工况推测差 1.5-2 倍 — 这是本节最大的留白, 商业化首批是关键验证</li>
+      </ul>
+    </div>
+
+    <!-- Multi-aircraft interactive breakeven -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">经济性前沿: 什么条件下航空货运可行?</div>
-      <div class="chart-desc">颜色=Caravan有人机满载时单位飞行成本(元/kg)。<b>注意: 此热力图仅基于Caravan成本结构 (5,089元/hr, 227km/h)</b>, 不同机型结果会显著不同</div>
-      <div id="chart-heatmap" class="chart-box" style="height:450px"></div>
-      <div class="insight" style="margin-top:12px">
-        <b>热力图的局限性 — 与行业PR对比</b><br>
-        1. <b>热力图使用Caravan小时成本:</b> 更大的飞机(ATR42, W5000)小时成本更高, 但因速度快/业载大, 吨公里成本反而更低<br>
-        2. <b>热力图是理论最优值:</b> 假设100%装载率, 无空驶。现实中装载率70-80%, 加上空驶和地面周转, 实际成本约为热力图值的 <b>1.5-2.0倍</b><br>
-        3. <b>W5000级飞机 (5吨业载, 526km/h) 可将整个热力图的值除以约8:</b> 因为速度提高2.3倍 × 业载提高4.6倍 ÷ 小时成本提高1.4倍 ≈ 7.6倍改善
+      <div class="chart-title">多机型成本对比: 距离 × 业载 → 单位成本 (含 737/757 干线货机)</div>
+      <div class="chart-desc">非线性模型: <b>每飞行成本 = 固定起降费 + 时间成本率 × 飞行时间</b> → 短途起降费占比高, 大飞机不一定便宜。拖动滑块从 200kg 一直调到 39t, 观察小型 UAV (TP500/HH-200/CY-8/W5000) 与干线喷气 (737BCF/757F) 何时切换主导地位</div>
+      <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
+        <label style="font-weight:600;font-size:14px">货运需求:
+          <span id="payload-val" style="color:var(--primary);font-size:18px;font-weight:800">1,088</span> kg
+        </label>
+        <input type="range" min="200" max="40000" step="100" value="1088" id="payload-slider" oninput="updateBreakeven(this.value)" style="flex:1;min-width:200px;cursor:pointer">
+        <div style="font-size:12px;color:var(--text2)">200kg — 40,000kg (含737/757干线货机)</div>
       </div>
-      <div class="source">热力图基于Caravan成本模型 (5,089元/hr, 227km/h), 仅反映Caravan级飞机。行业PR对标见上方表格。</div>
+      <div id="ac-status" style="font-size:13px;margin-bottom:8px;color:#64748b"></div>
+      <div id="chart-breakeven" class="chart-box" style="height:500px"></div>
+      <div class="econ-explain" style="margin-top:8px;padding:14px 18px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px">
+        <span class="insight-title" style="color:#92400e">成本模型说明</span>
+        <ul class="insight-rules" style="font-size:13px;color:#64748b">
+          <li><b>每飞成本</b> = 固定起降费 (与距离无关) + 时间成本率 × 距离 ÷ 速度 (与距离成正比). <b>单位成本</b> (元/kg) = 每飞成本 ÷ 货运需求量. 当需求超过机型最大业载时, 该机型不显示 — 无法单次承运.</li>
+          <li><b>载荷-航程权衡 (Payload-Range Tradeoff)</b>: MTOW = 空重 + 燃油 + 业载. 多装 1 kg 货 → 少装 1 kg 油 → 航程缩短. 每条线的截止点随滑块变化: 载荷越轻, 可用航程越长. 例如 W5000: 满载 5 吨 → 2,600 km; 装 1 吨 → ~3,600 km; 空载转场 → ~3,800 km.</li>
+          <li><b>为什么曲线不是直线?</b> 固定起降费在短途占比很高、长途被摊薄. W5000 起降费 ~2,000 元 → 100 km 航线上, 起降费占总成本 60%; 2,000 km 航线上仅占 8%.</li>
+          <li><b>为什么大飞机短途不一定便宜?</b> 737BCF 起降费 (4,500 元) 是 Caravan UAV (350 元) 的 13 倍, 但只装 500 kg 时无法分摊. 同样, W5000 起降费 (2,000 元) 是 Caravan (600 元) 的 3.3 倍, 只装 500 kg 时也分摊不掉.</li>
+        </ul>
+
+        <span class="insight-title" style="color:#92400e;margin-top:14px">切换规律 (注意是硬切换, 非平滑交叉)</span>
+        <ul class="insight-rules" style="font-size:13px;color:#64748b">
+          <li><b>① W5000 ↔ Caravan UAV 在 ~635 km 交叉</b>: W5000 时间成本率 ¥11.6/km vs Caravan UAV ¥14.2/km; W5000 多出 ¥1,650 起降费 → 分界点 1,650/2.6 ≈ 635 km. 短于此距离, Caravan UAV 更优.</li>
+          <li><b>② W5000 在 5,000 kg 处硬切到 ATR42 / 737BCF</b>: 这不是经济性交叉, 而是 W5000 物理业载上限. <strong>5,000-5,500 kg 区间唯一选择是 ATR 42</strong> (单位成本 ~5.9 元/吨 km), <strong>5,500-23,900 kg 区间则跳到 737-800BCF</strong> (干线喷气, 但需装满才能压低单位成本).</li>
+          <li><b>③ 737BCF ↔ 757F 在 ~3,750 km 距离 / 23.9 t 载荷处硬切换</b>: 在 737BCF 可达范围内 (≤3,750 km × ≤23.9 t), 757F 单位成本始终高于 737BCF. <strong>757F 仅在距离 &gt; 3,750 km (中亚/欧洲国际) 或载荷 &gt; 23.9 t 时才启用</strong>.</li>
+          <li><b>④ "载荷越大越便宜"在通航段不一定成立</b>: 例如 1,500 kg 货 + 800 km 航线, HH-200 单趟 ¥12,550 = ¥10.5/kg, 比 W5000 (¥11,275/趟, 但要装满 5 t 才能摊到 ¥2.3/kg) 在小货量上反而更优 — 关键是<strong>需求量是否能撑满更大机型的腹舱</strong>.</li>
+        </ul>
+        <p style="margin-top:10px;font-size:13px;color:#64748b"><b>参考线</b>: 生鲜溢价 12 元/kg = 40 元/kg 货值 × 3%/hr 损耗 × 10 hr 时效差; 电商溢价 8 元/kg = 次日达 vs 标准快递价差.</p>
+      </div>
+      <div class="source">Caravan: Conklin&de Decker 2024 (¥5,028/hr); W5000: 白鲸航线官方 PR 2.69元/吨km (反推 ¥6,100/hr); ATR42: Aircraft Cost Calculator (¥14,500/hr); TP500: 壹通/AOPA (¥650/hr); HH-200: 中航工业新闻稿规格 + 第一性原理拆解 (¥4,820/hr); 长鹰-8: 国内媒体公开报道规格 (计划2026.3首飞) + 第一性原理拆解 (¥8,530/hr); 737-800BCF: Boeing/顺丰运营估算 (¥35,800/hr); 757-200F: 中邮/中航运营估算 (¥45,900/hr); 公路: 满帮2024 (0.5元/吨km). 详细拆解见上方"成本组件明细"表</div>
+    </div>
+
+    <!-- =========================== -->
+    <!-- ECONOMIC FRONTIER: 3 charts -->
+    <!-- =========================== -->
+
+    <!-- Chart 1: Aircraft Dominance Map -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
+      <div class="chart-desc">每格颜色=该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字=最低成本(元/kg)。计算考虑了载荷-航程权衡。<b>红色pin</b>=典型实际航线</div>
+      <div id="chart-dominance" class="chart-box" style="height:500px"></div>
+      <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;font-size:12px">
+        <span><span style="display:inline-block;width:14px;height:14px;background:#06b6d4;vertical-align:middle;margin-right:4px"></span>TP500(壹通)</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#2563eb;vertical-align:middle;margin-right:4px"></span>Caravan级UAV</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#dc2626;vertical-align:middle;margin-right:4px"></span>Caravan有人</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#9333ea;vertical-align:middle;margin-right:4px"></span>HH-200(中航)</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#db2777;vertical-align:middle;margin-right:4px"></span>长鹰-8(CY-8)</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#10b981;vertical-align:middle;margin-right:4px"></span>W5000(白鲸)</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#f97316;vertical-align:middle;margin-right:4px"></span>ATR42-600F</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#7c3aed;vertical-align:middle;margin-right:4px"></span>737-800BCF</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#0891b2;vertical-align:middle;margin-right:4px"></span>757-200F</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#e5e7eb;vertical-align:middle;margin-right:4px"></span>无机型可服务</span>
+      </div>
+      <div class="insight" style="margin-top:12px">
+        <b>主导图核心 insight (覆盖通航 + 干线货运全谱):</b>
+        <ol style="margin:8px 0 0 22px;padding:0">
+          <li><strong>TP500 守住"小货短途"角落</strong>: 业载≤500kg + 距离≤500km, 单位成本 ~2-3元/kg, 是 last-mile / 高原小货的唯一选择</li>
+          <li><strong>HH-200 接管 Caravan 级 UAV 全部领地</strong>: 同样 1-1.5 吨级, HH-200 速度 +41% (320 vs 227km/h)、payload fraction +50% (45% vs 30%), 即使 varHr 高出 ¥1,600/hr, 单位成本仍更低 → "原生货运设计"压垮"Caravan改装"</li>
+          <li><strong>CY-8 几乎抢不到格子</strong>: 第一性原理算下来 varHr ¥8,530/hr (双发1,100hp涡桨+折旧), 每吨小时成本 ¥2.44 — 而 W5000 仅 ¥1.22, 是 CY-8 的一半. <strong>除非 CY-8 折旧或燃油效率显著优化, 否则在 (业载, 距离) 平面上长期被 W5000 压制</strong></li>
+          <li><strong>W5000 是通航中长途主导者</strong>: 占据 5 吨级所有中长途格子 — "大就是经济"在航空货运成立, 但前提是<strong>装满</strong></li>
+          <li><strong>737-800BCF 主宰干线 (8-25t × 1,000-4,000km)</strong>: 单位成本 ~1.5-2.5元/kg (满载), 比 W5000 还低 → 这是为什么顺丰/京东/中邮的主力是 737BCF, 而不是新建 W5000 干线机队</li>
+          <li><strong>757-200F 锁定超长航 + 重载 (39t × 4,000-5,500km)</strong>: 中亚/欧洲国际段几乎无对手, 单位成本可压到 ~1.6元/kg</li>
+          <li><strong>ATR42 被夹在中间</strong>: 速度不如喷气、载荷不如 W5000、UAV 化无路径 → <strong>老式有人涡桨货机面临淘汰</strong></li>
+          <li><strong>Caravan 有人/无人 双双从主导图消失</strong>: 改装路线在通航段输给原生 UAV (HH-200), 在干线段输给规模化喷气 (737BCF) → 中国市场需要的是<strong>新设计</strong>, 不是改装</li>
+        </ol>
+        <div style="margin-top:10px;padding:8px 12px;background:#fef3c7;border-left:3px solid #f59e0b;border-radius:3px;font-size:12px;line-height:1.6">
+          <strong style="color:#b45309">⚠ 关键不确定性:</strong> HH-200 和 CY-8 的运营成本<strong>均未公开披露</strong>, 本图采用第一性原理拆解 (详见上方"成本组件明细"表). CY-8 的成本对燃油+发动机储备非常敏感 — 若实际 varHr 能压到 ¥6,000/hr (例如采用更高效的国产涡桨 + 摊薄折旧), CY-8 在 2,000-3,500kg × 1,000-2,500km 的格子上会反超 W5000. <strong>这意味着 CY-8 的商业可行性高度依赖国产涡桨能否实现 SFC ≤ 0.45 lb/shp/hr 的水平</strong>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart 2: Profitability/Margin Map -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">② 盈利可行域: 在不同运价下, 哪些路线能赚钱?</div>
+      <div class="chart-desc">用每格的<b>最优机型成本</b>对比目标运价。<span style="color:#16a34a">绿=有利润</span> · <span style="color:#ef4444">红=亏损</span> · 灰=无机型可服务。拖动滑块切换市场段</div>
+      <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
+        <label style="font-weight:600;font-size:14px">目标运价:
+          <span id="margin-price-val" style="color:var(--primary);font-size:18px;font-weight:800">8</span> 元/kg
+        </label>
+        <input type="range" min="3" max="30" step="1" value="8" id="margin-price-slider" oninput="updateMargin(this.value)" style="flex:1;min-width:200px;cursor:pointer">
+        <div style="font-size:12px;color:var(--text2)">3=一般快递 · 8=电商时敏 · 12=生鲜 · 20=高价生鲜 · 25-30=医疗</div>
+      </div>
+      <div id="margin-status" style="font-size:13px;margin-bottom:8px;color:#64748b"></div>
+      <div id="chart-margin" class="chart-box" style="height:500px"></div>
+      <div class="insight" style="margin-top:12px">
+        <b>关键发现:</b>
+        <ol style="margin:8px 0 0 22px;padding:0">
+          <li><strong>3-5元/kg (一般快递)</strong>: 几乎全红 → <strong>航空不该跟卡车抢一般货物</strong>, 公路永远更便宜</li>
+          <li><strong>8元/kg (电商时敏)</strong>: 仅 W5000 长途 + 大载领域有利润 → <strong>规模化 UAV 才能切入大众市场</strong></li>
+          <li><strong>12元/kg (生鲜冷链)</strong>: 可行域显著扩大, Caravan UAV 等中型机也能进入</li>
+          <li><strong>25元/kg (医疗急件)</strong>: 几乎全可行 → 但市场规模小, 难以支撑大舰队 → 只能作为补充</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Chart 3: Pareto Frontier -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">③ Pareto前沿: 飞机设计空间的白点</div>
+      <div class="chart-desc">每个机型在 (速度 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本(越大=越经济)。<span style="color:#2563eb"><b>蓝色虚线</b></span>=Pareto前沿(在(速度,成本)空间未被任何机型压制的设计)。<span style="color:#16a34a"><b>绿色矩形</b></span>=设计白空间</div>
+      <div id="chart-pareto" class="chart-box" style="height:500px"></div>
+      <div class="insight" style="margin-top:12px">
+        <b>Pareto 分析 (基于第一性原理重新拆解后的成本):</b>
+        <ol style="margin:8px 0 0 22px;padding:0">
+          <li><strong>W5000 (5吨/526km/h, 2.47元/吨km)</strong>: 在 (速度↑, 成本↓) 平面唯一处于 Pareto 前沿的中型机. 速度+规模双优势让吨公里成本压到 ¥2.47, 比 CY-8 (¥6.53) 低 62%</li>
+          <li><strong>CY-8 (3.5吨/380km/h, 6.53元/吨km)</strong>: 落在通航中型 UAV 设计区正中, 但成本反而比 W5000 高一倍 — 双发 1,100hp 涡桨的燃油+发动机储备 ¥4,180/hr 是主因. <strong>除非将 CY-8 推向更大载荷或更高速度, 否则 W5000 是更优选择</strong></li>
+          <li><strong>HH-200 (1.5吨/320km/h, 10.38元/吨km)</strong>: 位于设计区下沿, 在 (速度↑, 载荷↑) 平面上被 CY-8 严格压制. 但 HH-200 唯一的优势是它是<strong>通航段唯一已首飞、有公开 TC 路径的中型机</strong> — 时间换空间</li>
+          <li><strong>737-800BCF 与 757-200F 占据干线右上角</strong>: 速度 833-850km/h, 载荷 24-39t. 它们的吨公里成本在<strong>满载长航</strong>下可降至 1.5-2.0 元 (757F 5,000km满载 ≈ 1.6元/吨km), 比 W5000 还低 — 但只在干线主航道经济, 通航支线无法覆盖</li>
+          <li><strong>Caravan 系列被双重淘汰</strong>: 有人版被 UAV 压制, Caravan UAV 又被 HH-200 压制 → <strong>"改 Caravan" 路线在国内输给"原生 HH-200 设计"</strong></li>
+          <li><strong>真正的设计空白</strong>: 通航中型 UAV 区 (350-500km/h × 1.5-3.5t) 内, 若有机型能将吨公里成本压到 ¥3-4, 就能从 W5000 (短跑道劣势) 和 HH-200 (载荷劣势) 之间夺得一块独立领地. <strong>关键变量是"是否能用更高效率的国产涡轴/涡扇 + 更轻机体"把 varHr 从 ¥8,500 降到 ¥5,500-6,000</strong></li>
+        </ol>
+      </div>
+      <div class="source">吨公里成本基于"满载+设计航程"组合计算, 即每个机型最优工况下的理论值。Pareto判断: 在 (速度↑, 成本↓) 二维平面上是否存在另一机型同时优于本机型. HH-200/CY-8/737BCF/757F 成本均按本节"成本组件明细"表的第一性原理拆解</div>
     </div>
   </div>
 </section>
@@ -782,8 +1203,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s8" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">08 -- 机型目录</div>
-    <div class="sec-title fade-in">全部可比较机型</div>
-    <div class="sec-sub fade-in">从单发涡桨到支线货机, 从中国国产到大型货运无人机</div>
+    <div class="sec-title fade-in">字典章: 所有比较机型的具体数字</div>
+    <div class="sec-sub fade-in">如果你想找一架飞机的真实参数 (价格、载荷、运营成本、状态), 翻这一节. 论证看 S7a / S7b. 数据口径与 S6 主表一致.</div>
+
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">这一节是字典. 给所有比较机型的具体数字 — 价格、运营成本、状态。论证看 S7。</div>
+      <ul class="thesis-evidence">
+        <li>有人机 15 款 + UAV 14 款规格表</li>
+        <li>价格、运营成本数据 (与 S6 主表口径一致, ATR42 等矛盾已修复)</li>
+        <li>雷达图: 6 款主流机型 6 维度对比 ("性价比" = 载荷 ÷ 价格 kg/万元)</li>
+      </ul>
+    </div>
 
     <div class="card fade-in" style="margin-bottom:20px">
       <div class="chart-title">有人机型综合比较</div>
@@ -793,9 +1224,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
             <tr><th>名称</th><th>类型</th><th>载荷(kg)</th><th>航程(km)</th><th>速度(km/h)</th><th>起飞距离(m)</th><th>增压</th><th>价格(万元)</th><th>运营成本(元/hr)</th><th>状态</th></tr>
           </thead>
           <tbody>
-            <tr><td>Cessna 208 Caravan</td><td>单发涡桨</td><td>1,088</td><td>1,982</td><td>344</td><td>626</td><td>否</td><td>1,454 ($200M)</td><td>~5,089</td><td>在产</td></tr>
-            <tr class="hl"><td>Grand Caravan EX</td><td>单发涡桨</td><td>1,179</td><td>1,685</td><td>344</td><td>610</td><td>否</td><td>1,890 ($260M)</td><td>~5,453</td><td>在产</td></tr>
-            <tr><td>Kodiak 100</td><td>单发涡桨</td><td>1,088</td><td>2,445</td><td>338</td><td>305</td><td>否</td><td>2,145 ($295M)</td><td>~5,089</td><td>在产</td></tr>
+            <tr><td>Cessna 208 Caravan</td><td>单发涡桨</td><td>1,088</td><td>1,982</td><td>344</td><td>626</td><td>否</td><td>1,454 ($200M)</td><td>~5,028</td><td>在产</td></tr>
+            <tr class="hl"><td>Grand Caravan EX</td><td>单发涡桨</td><td>1,179</td><td>1,685</td><td>344</td><td>610</td><td>否</td><td>1,890 ($260M)</td><td>~5,400</td><td>在产</td></tr>
+            <tr><td>Kodiak 100</td><td>单发涡桨</td><td>1,088</td><td>2,445</td><td>338</td><td>305</td><td>否</td><td>2,145 ($295M)</td><td>~5,028</td><td>在产</td></tr>
             <tr><td>PC-6 Porter</td><td>单发涡桨</td><td>1,135</td><td>926</td><td>213</td><td>195</td><td>否</td><td>-- </td><td>--</td><td>停产</td></tr>
             <tr><td>PAC P-750 XSTOL</td><td>单发涡桨</td><td>1,088</td><td>1,500</td><td>280</td><td>244</td><td>否</td><td>1,272 ($175M)</td><td>~4,362</td><td>在产</td></tr>
             <tr style="border-top:2px solid var(--border)"><td>King Air C90GTx</td><td>双发涡桨</td><td>700</td><td>2,446</td><td>500</td><td>1,036</td><td>是</td><td>3,344 ($460M)</td><td>~8,724</td><td>在产</td></tr>
@@ -804,7 +1235,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
             <tr><td>DHC-6 Twin Otter 400</td><td>双发涡桨</td><td>1,134</td><td>1,480</td><td>337</td><td>366</td><td>否</td><td>4,290 ($590M)</td><td>~8,724</td><td>在产</td></tr>
             <tr><td>L-410 UVP-E20</td><td>双发涡桨</td><td>1,800</td><td>1,500</td><td>388</td><td>510</td><td>否</td><td>3,635 ($500M)</td><td>~7,270</td><td>在产</td></tr>
             <tr><td>Dornier 228 NG</td><td>双发涡桨</td><td>2,200</td><td>1,575</td><td>428</td><td>610</td><td>否</td><td>6,034 ($830M)</td><td>~10,905</td><td>在产</td></tr>
-            <tr style="border-top:2px solid var(--border)"><td>ATR 42-600F</td><td>支线货机</td><td>5,500</td><td>1,326</td><td>556</td><td>1,050</td><td>是</td><td>14,177 ($1,950M)</td><td>~21,810</td><td>在产</td></tr>
+            <tr style="border-top:2px solid var(--border)"><td>ATR 42-600F</td><td>支线货机</td><td>5,500</td><td>1,326</td><td>556</td><td>1,050</td><td>是</td><td>14,177 ($1,950M)</td><td>14,500 (国际) / 18,000-21,000 (中国实际)</td><td>在产</td></tr>
             <tr><td>ATR 72-600F</td><td>支线货机</td><td>8,500</td><td>1,528</td><td>556</td><td>1,290</td><td>是</td><td>19,629 ($2,700M)</td><td>~29,080</td><td>在产</td></tr>
             <tr><td>Dash 8-400 Cargo</td><td>支线货机</td><td>8,000</td><td>2,040</td><td>667</td><td>1,400</td><td>是</td><td>25,445 ($3,500M)</td><td>~32,716</td><td>改装</td></tr>
             <tr style="border-top:2px solid var(--border)"><td>Y-12F 运十二F</td><td>国产双发涡桨</td><td>1,700</td><td>1,400</td><td>328</td><td>620</td><td>否</td><td>2,908 ($400M)</td><td>~6,543</td><td>在产(FAA认证)</td></tr>
@@ -812,256 +1243,479 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      <div class="source">价格来源: 各制造商2024年报价单/公开信息; 运营成本: Conklin & de Decker 2024; 汇率1 USD = 7.27 RMB</div>
+      <div class="source">价格来源: 各制造商 2024 年报价单/公开信息 (公务/通航机价格透明度低, 误差可能 ±30%); 运营成本: Conklin & de Decker 2024 + 中国 GACA 2024 实际运营 (ATR42 双数据); 汇率 1 USD = 7.27 RMB. 注: 此表未列入运 5 (1957 设计) 与运 7 (停产), 故只列 Y-12F/II</div>
     </div>
 
     <div class="card fade-in" style="margin-bottom:20px">
-      <div class="chart-title">大型货运无人机 (在研/试飞)</div>
+      <div class="chart-title">大型货运无人机 (在研 / 试飞 / 已认证, ≥350kg 载荷)</div>
+      <div class="chart-desc">按载荷由大到小排序; 中美欧主要在研 / 已部分认证机型; 数据截至 2026.04</div>
       <div class="table-wrap">
-        <table class="spec-table">
+        <table class="spec-table" style="font-size:13px">
           <thead>
-            <tr><th>名称</th><th>国家</th><th>载荷(kg)</th><th>航程(km)</th><th>速度(km/h)</th><th>起飞距离(m)</th><th>动力</th><th>预估价格(万元)</th><th>状态</th></tr>
+            <tr><th>名称 (制造商)</th><th>国家</th><th>载荷(kg)</th><th>航程(km)</th><th>速度(km/h)</th><th>MTOW(kg)</th><th>起降方式</th><th>动力</th><th>预估价格(万元)</th><th>状态 (2026.04)</th></tr>
           </thead>
           <tbody>
-            <tr><td>W5000 (丰鸟)</td><td>中国</td><td>1,200</td><td>800</td><td>280</td><td>400</td><td>涡桨</td><td>~1,500</td><td>试飞中</td></tr>
-            <tr><td>CY-8 (畅易行)</td><td>中国</td><td>800</td><td>600</td><td>250</td><td>350</td><td>涡桨</td><td>~1,000</td><td>研发中</td></tr>
-            <tr><td>FH-98 (无人化)</td><td>中国</td><td>1,500</td><td>1,200</td><td>280</td><td>500</td><td>涡桨</td><td>~1,200</td><td>已试飞</td></tr>
-            <tr><td>Natilus Kona</td><td>美国</td><td>3,800</td><td>1,667</td><td>600</td><td>800</td><td>涡扇</td><td>~5,000</td><td>研发中</td></tr>
-            <tr><td>Dronamics Black Swan</td><td>保加利亚</td><td>350</td><td>2,500</td><td>200</td><td>400</td><td>涡桨</td><td>~750</td><td>试飞中</td></tr>
-            <tr><td>Reliable Robotics (208改装)</td><td>美国</td><td>1,088</td><td>1,982</td><td>344</td><td>626</td><td>涡桨</td><td>改装~364</td><td>FAA审批中</td></tr>
+            <tr style="background:#f0fdf4"><td><b>W5000</b> (白鲸航线)</td><td>中国</td><td><b>5,000</b></td><td>2,600</td><td>526</td><td>10,800</td><td>STOL ~700m</td><td>双涡桨</td><td>~3,500</td><td>2024.10 首次低空飞行; 2026 H2 适航取证, 客户京东/顺丰已签 LOI</td></tr>
+            <tr style="background:#fdf2f8"><td><b>CY-8 (长鹰-8)</b> (成都纵横/中航子司)</td><td>中国</td><td><b>3,500</b></td><td>3,000</td><td>~380*</td><td>7,000</td><td>STOL 280m</td><td>双涡桨~1,100hp×2</td><td>~3,000</td><td>2026.03 计划首飞; 18m³货舱; 中邮已意向</td></tr>
+            <tr><td>Natilus Kona 3.8T</td><td>美国</td><td>3,800</td><td>1,667</td><td>~480</td><td>~8,500</td><td>常规跑道</td><td>双涡桨 (PT6A级)</td><td>~5,000</td><td>原型建造中; 已积累 $700M+ LOI 订单 (Volatus/Ameriflight)</td></tr>
+            <tr><td>Sabrewing Rhaegal-A</td><td>美国</td><td>2,400</td><td>1,800</td><td>360</td><td>5,400</td><td>VTOL</td><td>混合动力涡桨</td><td>~5,500</td><td>原型试飞中 (2024.07 重大事故后重启)</td></tr>
+            <tr style="background:#faf5ff"><td><b>HH-200</b> (中航工业)</td><td>中国</td><td><b>1,500</b></td><td>1,000</td><td>320</td><td>3,300</td><td>STOL ~500m</td><td>双涡桨</td><td>~1,500</td><td>2022.10 首飞; 2025 已完成多次商业测试; 2026 适航取证目标</td></tr>
+            <tr><td>FP-98 狮子座 (飞鹏 Phoenix Wings)</td><td>中国</td><td>1,500</td><td>1,200</td><td>280</td><td>5,250</td><td>STOL ~500m</td><td>单涡桨 (基于 Y-5B 改装)</td><td>~1,200</td><td>2018 首飞; 已完成多批次试运营 (顺丰/京东)</td></tr>
+            <tr><td>HH-100 (中航工业)</td><td>中国</td><td>700</td><td>520</td><td>280</td><td>2,000</td><td>常规跑道</td><td>单涡桨</td><td>~800</td><td>2024.06 首飞; 民航局已申请 TC 立项</td></tr>
+            <tr style="background:#ecfeff"><td><b>TP500</b> (壹通无人机)</td><td>中国</td><td>500</td><td>500</td><td>260</td><td>1,500</td><td>STOL ~500m</td><td>单涡轴</td><td>~150</td><td><b>2024.12 已获 CAAC TC + PC</b> (中国首张大型货运UAV适航证)</td></tr>
+            <tr><td>AutoFlight CarryAll (沃飞长空)</td><td>中国</td><td>400</td><td>250</td><td>200</td><td>2,000</td><td>VTOL (eVTOL)</td><td>电动多旋翼+固定翼</td><td>~250</td><td>2024 已获 CAAC TC + PC; 顺丰已签 LOI, 数量未公开</td></tr>
+            <tr><td>Reliable Robotics (Caravan改装)</td><td>美国</td><td>1,088</td><td>1,982</td><td>344</td><td>3,985</td><td>常规跑道 (~625m)</td><td>单PT6A-114A (沿用)</td><td>改装 ~600</td><td>FAA STC 进行中; 目标 2027-2028 取证</td></tr>
+            <tr><td>Merlin Labs (Caravan/King Air改装)</td><td>美国</td><td>1,088</td><td>1,982</td><td>344</td><td>3,985</td><td>常规跑道</td><td>沿用原机</td><td>改装 ~550</td><td>2026 估值轮 $200M (IPO 时间未定); FAA认证目标 2028</td></tr>
+            <tr><td>Dronamics Black Swan</td><td>保加利亚</td><td>350</td><td>2,500</td><td>200</td><td>1,200</td><td>STOL ~400m</td><td>单活塞 (Rotax 915)</td><td>~750</td><td>2023.04 首飞; 2025 EASA STC 进行中</td></tr>
+            <tr><td>Elroy Air Chaparral C1</td><td>美国</td><td>230</td><td>480</td><td>185</td><td>~1,250</td><td>VTOL (混动)</td><td>混合动力 (涡轴+电)</td><td>~400</td><td>2023.11 首次过渡飞行; 2025.01 母公司停摆, 资产被 Skyways 收购</td></tr>
+            <tr><td>Pyka Pelican Cargo</td><td>美国</td><td>180</td><td>320</td><td>160</td><td>660</td><td>STOL ~200m</td><td>纯电动</td><td>~250</td><td>2023 已商业运营 (DHL拉美); 2025 量产中</td></tr>
+            <tr style="background:#fffbeb"><td colspan="10" style="font-size:12px;color:#94a3b8;text-align:center;font-style:italic">— 以下为已立项但参数尚未公开的中国机型 —</td></tr>
+            <tr><td>CM100 / 京东远程货运</td><td>中国</td><td>~10,000</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>京东/中国邮政已签 LOI; 公开参数不详</td></tr>
+            <tr><td>御风未来 M1B (Matrix1)</td><td>中国</td><td>~1,000</td><td>~250</td><td>~250</td><td>~2,500</td><td>VTOL</td><td>多旋翼+固定翼</td><td>~280</td><td>2024.07 首飞; 主打城际短途</td></tr>
+            <tr><td>峰飞航空 V2000CG (盛世龙)</td><td>中国</td><td>400</td><td>250</td><td>180</td><td>2,000</td><td>VTOL</td><td>电动倾转</td><td>~200</td><td>2024 已获 CAAC TC + PC</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="source">数据来源: 各公司官网及公开披露; 价格为行业估算</div>
+      <div class="source">
+        *CY-8 巡航速度未广泛公布, 取双发涡桨级别估算值;
+        数据来源:
+        <a href="https://www.bygogo.com/" style="color:var(--primary)">白鲸航线官网</a>,
+        <a href="http://www.avic.com/" style="color:var(--primary)">中航工业</a>,
+        <a href="https://natilus.co/" style="color:var(--primary)">Natilus官网</a>,
+        <a href="https://reliable.co/" style="color:var(--primary)">Reliable Robotics</a>,
+        <a href="https://www.dronamics.com/" style="color:var(--primary)">Dronamics</a>,
+        <a href="https://www.pyka.aero/" style="color:var(--primary)">Pyka</a>,
+        AOPA中国大型货运无人机适航管理白皮书 (2024.06),
+        及各厂商 2024-2026 公开 PR / 媒体报道. 价格为行业估算
+      </div>
     </div>
 
     <div class="card fade-in">
       <div class="chart-title">Top 6 机型雷达图对比</div>
-      <div class="chart-desc">综合评估载荷、航程、速度、短跑道能力、性价比</div>
+      <div class="chart-desc">六维度综合评估: 载荷 / 航程 / 速度 / 短跑道能力 / 性价比 (= 载荷 ÷ 价格, kg/万元, 越大越好) / 中国市场可获得性</div>
       <div id="chart-aircraft-radar" class="chart-box" style="height:480px"></div>
       <div class="source">基于上表数据标准化计算</div>
     </div>
   </div>
 </section>
 
-<!-- S9: MANNED DESIGN -->
+<!-- S9: UAV ROLE IN CHINA -->
 <section id="s9" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
   <div class="sec-inner" style="color:#fff">
-    <div class="sec-label" style="color:#60a5fa">09 -- 有人机设计方案</div>
-    <div class="sec-title fade-in" style="color:#fff">中国物流通航飞机设计方向</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">基于西部运营环境和物流需求的设计约束推导</div>
+    <div class="sec-label" style="color:#60a5fa">09 -- 无人货运飞机在中国扮演什么角色</div>
+    <div class="sec-title fade-in" style="color:#fff">UAV 在中国: 填空白、跳阶段、降门槛</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">截至 2026.04, 没有任何中国货运 UAV 完成全部适航取证. V2000CG 是载人 eVTOL, 不算在内. 所有产品都还在取证路上 — 但路上的东西已经够多了.</div>
 
-    <div class="grid3 fade-in">
+    <!-- NEW S9 CONTENT -->
+
+    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+      <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">UAV 在中国做两件事: 填充西部物流空白, 和把干线门槛从机场降到跑道. 但从 "产品存在" 到 "规模运营" 之间, 横着一道叫适航取证的关卡.</div>
+      <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">西部 0.34/百万人通航机场 -- UAV 用 200-700m 跑道绕过 "没有机场" 这个死结</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">跳过有人通航机队阶段, 直接进入原生 UAV 货运 -- 类似跳过固话直入移动</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">5,700 kg 以上固定翼 UAS 适航标准尚未发布 -- W5000/CY-8 取证时间线高度不确定</li>
+      </ul>
+    </div>
+
+    <!-- 三个角色 -->
+    <div class="grid3 fade-in" style="margin-bottom:24px">
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
-        <div class="tag" style="background:rgba(239,68,68,.2);color:#f87171">核心约束</div>
-        <h4 style="color:#fff;font-size:15px;margin-top:4px">高原短跑道</h4>
-        <p style="color:rgba(255,255,255,.5);font-size:13px">海拔3000-4500m, 跑道300-600m, 日温差30度+。要求: STOL能力, 非增压或低增压, 高原发动机性能。参考: PC-6在海拔4,000m+可300m起降。</p>
+        <div class="tag" style="background:rgba(96,165,250,.2);color:#60a5fa">角色 1</div>
+        <h4 style="color:#fff;font-size:15px;margin-top:4px">填充空白</h4>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">西部 55% 国土, 通航机场密度 0.34/百万人 (美国最穷州密西西比: 7.5). UAV 不需要完整机场 -- TP500 起飞 200m, CY-8 起飞 280m. 把 "建机场" 降级为 "修跑道", 成本从数亿降到千万级.</p>
       </div>
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
-        <div class="tag" style="background:rgba(96,165,250,.2);color:#60a5fa">载荷目标</div>
-        <h4 style="color:#fff;font-size:15px;margin-top:4px">1,000-1,500kg</h4>
-        <p style="color:rgba(255,255,255,.5);font-size:13px">覆盖电商大件、农产品、医疗物资。Caravan级 (~1,088kg) 是最低标准, 理想目标1,500kg。过大则受限于简易跑道。</p>
+        <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">角色 2</div>
+        <h4 style="color:#fff;font-size:15px;margin-top:4px">跨越式发展</h4>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通航有人机队 3,232 架 (美国 21 万). 要补齐这个差距需 20+ 年. UAV 提供了跳过整个阶段的可能 -- 直接部署无人货机, 不经过 "先建有人通航机队" 这一步.</p>
       </div>
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
-        <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">成本目标</div>
-        <h4 style="color:#fff;font-size:15px;margin-top:4px">&lt;4,000元/飞行小时</h4>
-        <p style="color:rgba(255,255,255,.5);font-size:13px">低于Caravan的5,089元/hr, 通过国产化发动机 (如AES100)、简化航电、批量生产实现。目标: 单架售价2,000万元以内 (~$275M)。</p>
+        <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">角色 3</div>
+        <h4 style="color:#fff;font-size:15px;margin-top:4px">干线下沉</h4>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">W5000 (5t) 试图把干线从 4C 机场 (跑道 1,800m+) 下沉到县级跑道 (700-1,200m). 如果成功, 干线货运不再需要 "先有机场" -- 但取证时间线决定一切.</p>
       </div>
     </div>
 
-    <div style="margin-top:28px">
-      <h4 style="color:#fff;font-size:16px;margin-bottom:10px">技术路径时间表</h4>
-      <div class="timeline">
-        <div class="tl-item cn"><div class="yr cn">2025-2027 验证阶段</div><div class="ds">基于Y-12平台改装货运构型验证; AES100发动机高原适配测试; 简易跑道起降认证</div></div>
-        <div class="tl-item cn"><div class="yr cn">2027-2029 原型阶段</div><div class="ds">全新设计原型机, 目标1,500kg载荷/400m起降; 国产航电集成; 首飞及适航取证</div></div>
-        <div class="tl-item cn"><div class="yr cn">2029-2031 量产阶段</div><div class="ds">小批量生产20架; 西部试运营; 成本优化至目标价位</div></div>
+    <!-- 适航取证流程 -->
+    <div class="card fade-in" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">
+      <div class="chart-title" style="color:#fff">CAAC 适航取证三步: <span class="tip" data-t="Type Certificate 型号合格证">TC</span> → <span class="tip" data-t="Production Certificate 生产许可证">PC</span> → <span class="tip" data-t="Airworthiness Certificate 单机适航证">AC</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0">
+        <div style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.3);border-radius:8px;padding:14px">
+          <div style="font-size:13px;color:#93c5fd;font-weight:700"><span class="tip" data-t="Type Certificate 型号合格证">TC</span> 型号合格证</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">证明设计满足适航标准. 需要数百次试飞 + 全部文件审查. TP500 取证试飞 150+ 次, 周期约 10 个月.</div>
+        </div>
+        <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:14px">
+          <div style="font-size:13px;color:#86efac;font-weight:700"><span class="tip" data-t="Production Certificate 生产许可证">PC</span> 生产许可证</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">证明生产线能稳定造出符合 TC 的飞机. 没有 PC, 不能批量生产.</div>
+        </div>
+        <div style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:14px">
+          <div style="font-size:13px;color:#fcd34d;font-weight:700"><span class="tip" data-t="Airworthiness Certificate 单机适航证">AC</span> 单机适航证</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">每架飞机的 "出生证". 三证齐全才能合法商业飞行.</div>
+        </div>
       </div>
+      <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:8px;padding:12px 16px;margin-top:8px">
+        <div style="font-size:12px;color:#fca5a5;line-height:1.7"><b style="color:#f87171">5,700 kg 分界线:</b> <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> ≤5,700 kg 的 UAS 有标准 (AC-21-40); &gt;5,700 kg 需 "专用条件" 逐项评审 -- <b>目前无通用标准</b>. W5000 (10.8t) 和 CY-8 (7t) 均在线上.</div>
+      </div>
+    </div>
+
+    <!-- 取证状态表 -->
+    <div class="card fade-in" style="margin-top:16px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">
+      <div class="chart-title" style="color:#fff">中国货运 UAV 取证状态 (截至 2026.04)</div>
+      <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
+        <table class="spec-table" style="color:rgba(255,255,255,.85)">
+          <thead style="background:rgba(255,255,255,.08)">
+            <tr><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)">机型</th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)">类型</th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Type Certificate 型号合格证">TC</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Production Certificate 生产许可证">PC</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Airworthiness Certificate 单机适航证">AC</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)">备注</th></tr>
+          </thead>
+          <tbody>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">V2000CG</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fbbf24">载人</b> eVTOL</td><td style="border-color:rgba(255,255,255,.08)">2,000 kg</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">&#10003; 2024.03</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">&#10003; 2024.12</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">&#10003; 2025.07</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">载人型号, 非货运. 已交付 Falcon Aviation (UAE)</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">TP500</td><td style="border-color:rgba(255,255,255,.08)">货运 STOL</td><td style="border-color:rgba(255,255,255,.08)">~2,000 kg</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08)">取证试飞中</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">TC 预计 ~2026 中; 中通 30 架预取证订单</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">HH-200</td><td style="border-color:rgba(255,255,255,.08)">货运 STOL</td><td style="border-color:rgba(255,255,255,.08)">3,300 kg</td><td style="color:#f87171;border-color:rgba(255,255,255,.08)">未申请</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">2022.10 首飞, 4 年后仍无 TC 进展</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">CY-8</td><td style="border-color:rgba(255,255,255,.08)">货运 STOL</td><td style="border-color:rgba(255,255,255,.08)">7,000 kg</td><td style="color:#f87171;border-color:rgba(255,255,255,.08)">标准不存在</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">2026.03.31 首飞成功; &gt;5,700kg 无 CAAC 标准; 可先走军采 (GJB)</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">W5000</td><td style="border-color:rgba(255,255,255,.08)">货运 STOL</td><td style="border-color:rgba(255,255,255,.08)">10,800 kg</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08)">已受理</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)">--</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">目标 2026.09 (激进); 现实 2027-2028; 跨越 60 架 LOI</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.7"><b>截至 2026.04, 没有任何中国货运 UAV 完成全部适航取证.</b> 军方/应急采购走 GJB 军标, 不需完整 CAAC 取证 -- 这是 CY-8 可以先落地运营的原因.</div>
+    </div>
+
+    <!-- 中美路径对比 -->
+    <div class="fade-in" style="margin-top:16px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);border-radius:10px;padding:16px 20px">
+      <div style="font-size:14px;color:#93c5fd;font-weight:700;margin-bottom:10px">中美路径对比</div>
+      <div style="overflow-x:auto"><table style="width:100%;color:rgba(255,255,255,.85);font-size:13px;border-collapse:collapse">
+        <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600;width:100px">中国</td><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)">原生设计 (无驾驶舱), 400kg-5t 全谱, CAAC 2024 起陆续取证. 领先体现在 "产品存在" 而非 "规模运营"</td></tr>
+        <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600">美国</td><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)">改装现役 Caravan (Reliable / Merlin), FAA TC 目标 2027-2028; 不新设计机型</td></tr>
+        <tr><td style="padding:6px 10px;font-weight:600">"领先 3 年"</td><td style="padding:6px 10px">HH-200 首飞 2022.10 vs 美国无对应. 但中国 1.5-5t 段均未完成取证, 差距可能在 2027-2028 收窄</td></tr>
+      </table></div>
     </div>
   </div>
 </section>
 
-<!-- S10: UAV GAME CHANGER -->
-<section id="s10" class="sec">
+<!-- S10: 设计哲学 -->
+<section id="s10" class="sec" style="background:#fff">
   <div class="sec-inner">
-    <div class="sec-label">10 -- 无人机: Game Changer</div>
-    <div class="sec-title fade-in">无人机改变游戏规则</div>
-    <div class="sec-sub fade-in">有人机 vs 无人机全面对比, 以及大型货运无人机发展时间线</div>
+    <div class="sec-label">10 -- 设计哲学</div>
+    <div class="sec-title fade-in">5 段需求, 4 类在早期, 第 5 类全球空白</div>
+    <div class="sec-sub fade-in">从需求反推设计: 去驾驶舱省 800-1,100kg, 不增压减重 15%, 高翼后开门免地面设备, STOL 要求大展弦比. 每一条设计选择都有代价.</div>
 
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">中国需要 5 类无人货运飞机, 对应 5 段需求. 4 类仅处于早期或取证中, 第 5 类 (8-15t) 全球空白. 每类都有取证、发动机和商业化障碍.</div>
+      <ul class="thesis-evidence">
+        <li>去掉驾驶舱: 同 <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 下 <span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 从 0.30 提到 0.36-0.46, 单位成本降 15-25%</li>
+        <li>增程式 (series-hybrid) 在 1-2t 级可行 (YH-1000S), 但 8-15t 级效率惩罚太大</li>
+        <li>eVTOL 货运: V2000CG 载人版已取证, 但中国 >500kg VTOL 货运完全空白</li>
+      </ul>
+    </div>
+
+    <!-- 需求矩阵 -->
     <div class="card fade-in">
-      <div class="chart-title">有人机 vs 无人机 vs 高铁快运对比</div>
+      <div class="chart-title">需求矩阵: 5 段载荷 × 跑道 × 取证状态</div>
       <div class="table-wrap">
         <table class="spec-table">
-          <thead><tr><th>维度</th><th>有人机 (Caravan级)</th><th>同级UAV</th><th>高铁快运</th></tr></thead>
+          <thead><tr><th>段位</th><th>载荷</th><th>航程</th><th>跑道</th><th>典型任务</th><th>代表产品</th><th>取证状态</th><th>商业化 (预估)</th></tr></thead>
           <tbody>
-            <tr><td>飞行员</td><td>需要 (年薪60-80万元)</td><td>远程操作 (1人管3-5架)</td><td>N/A</td></tr>
-            <tr><td>运营成本</td><td>~5,089元/hr</td><td>~3,400元/hr</td><td>按件计价</td></tr>
-            <tr><td>利用率</td><td>~800hr/yr</td><td>~1,000-1,200hr/yr</td><td>~18hr/day</td></tr>
-            <tr><td>夜间运营</td><td>需夜航资质</td><td>无限制</td><td>受限 (23:00-06:00停运)</td></tr>
-            <tr><td>载荷</td><td>1,088kg</td><td>800-1,500kg</td><td>25kg/件</td></tr>
-            <tr><td>距离范围</td><td>200-2000km</td><td>200-2000km</td><td>200-2500km</td></tr>
-            <tr><td>天气敏感</td><td>中 (需IFR)</td><td>中-低</td><td>低</td></tr>
-            <tr><td>简易跑道</td><td>支持</td><td>支持</td><td>不支持</td></tr>
-            <tr><td>单架年成本</td><td>~407万元</td><td>~327万元</td><td>N/A</td></tr>
+            <tr><td><b>eVTOL 货运</b></td><td>200-400kg</td><td>150-300km</td><td>无需跑道</td><td>城市配送/海岛/油田</td><td>V2000CG <span style="color:#b45309;font-size:11px">(载人版已取证)</span></td><td style="color:#b45309">载人 &#10003; / 货运 &#10067;</td><td>2025-2027</td></tr>
+            <tr style="background:#f8fafc"><td><b>微型支线</b></td><td>500kg</td><td>500km</td><td>&lt;200m</td><td>县-县 last-mile</td><td>TP500</td><td style="color:#b45309">取证中</td><td>2026-2027</td></tr>
+            <tr><td><b>省内主力</b></td><td>1-2t</td><td>500-1,500km</td><td>300-500m</td><td>省会-地州, 生鲜</td><td>HH-200</td><td style="color:#dc2626">未申请</td><td>2027-2029</td></tr>
+            <tr style="background:#f8fafc"><td><b>中长途干线</b></td><td>3-5t</td><td>1,500-3,000km</td><td>280-700m</td><td>西部-沿海</td><td>CY-8 / W5000</td><td style="color:#dc2626">标准制定中</td><td>2028-2030</td></tr>
+            <tr style="background:#fef3c7"><td><b>重载干线</b></td><td><b>8-15t</b></td><td><b>2,000-4,000km</b></td><td><b>1,200m+</b></td><td><b>二线城市电商</b></td><td><b>全球空白</b></td><td style="color:#dc2626"><b>标准不存在</b></td><td><b>2030+</b></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="grid2" style="margin-top:20px">
-      <div class="card fade-in">
-        <div class="chart-title">载荷-航程散点图</div>
-        <div class="chart-desc">各类型飞行器的载荷与航程关系</div>
-        <div id="chart-payload-range" class="chart-box"></div>
+    <!-- 设计哲学 4 条 -->
+    <div class="fade-in" style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+      <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px">
+        <div style="font-size:13px;font-weight:700;color:#0369a1;margin-bottom:6px">去掉驾驶舱</div>
+        <div style="font-size:12.5px;color:#075985;line-height:1.7">省 800-1,100 kg 结构重量 + 15m³ 容积 + 尾翼可缩小. PF 从 0.30 提到 0.36-0.46. 单位成本降 15-25% (仅结构优势, 不含人员节省).</div>
       </div>
-      <div class="card fade-in">
-        <div class="chart-title">大型货运无人机发展时间线</div>
-        <div style="padding:16px 0">
-          <div style="position:relative;padding-left:28px;border-left:3px solid var(--border)">
-            <div style="margin-bottom:16px;padding-left:12px;position:relative"><div style="position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--cn)"></div><div style="font-size:11px;font-weight:700;color:var(--cn)">2017-2020</div><div style="font-size:12px;color:var(--text2)">FH-98无人化改装首飞; 顺丰启动W5000研发</div></div>
-            <div style="margin-bottom:16px;padding-left:12px;position:relative"><div style="position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--us)"></div><div style="font-size:11px;font-weight:700;color:var(--us)">2018-2021</div><div style="font-size:12px;color:var(--text2)">Reliable Robotics完成208无人驾驶首飞; Xwing获FAA许可</div></div>
-            <div style="margin-bottom:16px;padding-left:12px;position:relative"><div style="position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--cn)"></div><div style="font-size:11px;font-weight:700;color:var(--cn)">2022-2024</div><div style="font-size:12px;color:var(--text2)">W5000原型首飞; CY-8立项; FH-98完成多次货运测试</div></div>
-            <div style="margin-bottom:16px;padding-left:12px;position:relative"><div style="position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:#16a34a"></div><div style="font-size:11px;font-weight:700;color:#16a34a">2025-2027 (预期)</div><div style="font-size:12px;color:var(--text2)">Reliable Robotics预计获FAA型号合格证; W5000适航取证; Dronamics欧洲试运营</div></div>
-            <div style="padding-left:12px;position:relative"><div style="position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:#f59e0b"></div><div style="font-size:11px;font-weight:700;color:#f59e0b">2028-2030 (预期)</div><div style="font-size:12px;color:var(--text2)">大型货运无人机商业化运营; 中国西部试点航线开通; 成本降至有人机60%</div></div>
+      <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px">
+        <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:6px">不需增压</div>
+        <div style="font-size:12.5px;color:#14532d;line-height:1.7">机身结构减重 10-15%. 允许非圆截面货舱 (矩形更利于装载). 巡航高度 3,000-6,000m 够用, 货物不怕减压.</div>
+      </div>
+      <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;padding:16px">
+        <div style="font-size:13px;font-weight:700;color:#92400e;margin-bottom:6px">高翼后开门</div>
+        <div style="font-size:12.5px;color:#78350f;line-height:1.7">机翼不穿过货舱 → 全通式货仓. 后开门尾坡道 → 地面装卸不需叉车或升降平台, 在简易跑道旁即可完成.</div>
+      </div>
+      <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px">
+        <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:6px"><span class="tip" data-t="Short Take-Off and Landing 短距起降">STOL</span> 权衡</div>
+        <div style="font-size:12.5px;color:#7f1d1d;line-height:1.7">大展弦比 (<span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 10-12) + 大面积襟翼 → 短跑道能力. 代价: 巡航速度低 10-15%, 结构重量增加.</div>
+      </div>
+    </div>
+
+    <!-- 增程式 + eVTOL -->
+    <div class="grid2 fade-in" style="margin-top:16px">
+      <div class="insight" style="background:#fffbeb;border-left-color:#f59e0b">
+        <span class="insight-title" style="color:#92400e">增程式 (series-hybrid) 方案</span>
+        <ul class="insight-rules">
+          <li><b>已验证:</b> YH-1000S (CASC, 1.2t 载荷, 2026.02 首飞) 是中国最大混动货运 UAV</li>
+          <li><b>5-10t 级不可行:</b> 串联混动总效率 18-22% vs 涡桨 25-30%, 重量惩罚 30-40%. CY-8 和 W5000 均使用传统涡桨</li>
+          <li><b>定位:</b> 1-3t 级备选动力路线, 降低对单一发动机路线的依赖</li>
+        </ul>
+      </div>
+      <div class="insight" style="background:#f0f9ff;border-left-color:#2563eb">
+        <span class="insight-title" style="color:#1e40af">eVTOL 货运方向</span>
+        <ul class="insight-rules">
+          <li><b>V2000CG:</b> 全球首款取证 eVTOL (400kg/300km), 但为<b>载人</b>型号</li>
+          <li><b>纯电 VTOL 天花板:</b> 电池 ~250 Wh/kg → 载荷 &gt;1t 且航程 &gt;300km 目前不可行</li>
+          <li><b>混动 VTOL:</b> Sabrewing (美, 2.4t/1,850km, $3.2B 订单), 中国无对标</li>
+          <li><b>空白:</b> 中国 &gt;500kg VTOL 货运完全空白. 西藏山村、南海岛礁、灾后应急 -- 需求存在, 产品不存在</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S11: 工程规格 -->
+<section id="s11" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
+  <div class="sec-inner" style="color:#fff">
+    <div class="sec-label" style="color:#60a5fa">11 -- 工程规格</div>
+    <div class="sec-title fade-in" style="color:#fff">5 大规格卡: 从载荷 × 航程反推每架飞机该长什么样</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">翼型、发动机、<span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span>、<span class="tip" data-t="Bill of Materials 物料成本">BOM</span> 都可以从需求反推. 最难的不是画图纸, 是发动机和取证.</div>
+
+    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+      <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">5 类 UAV 都能从第一性原理推导出来. 前 4 类有产品但还在取证, 第 5 类 (10t) 需要一台中国还没有的发动机.</div>
+      <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">TP500: 取证试飞中, 可能是首个货运 UAV TC, 但仍需 PC 才能量产</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">10t 级 BOM 约 6,350 万, 吨公里 3.77 元 -- 与 737BCF 半载 (3.72) 持平, 满载 (1.86) 差一倍</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">2,000-3,000 <span class="tip" data-t="Shaft Horsepower 轴马力">SHP</span> 国产涡桨不存在, 初期必须进口 PW127</li>
+      </ul>
+    </div>
+
+    <!-- 5 大规格卡 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));gap:16px">
+      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
+        <div class="tag" style="background:rgba(96,165,250,.2);color:#60a5fa">1 | eVTOL 货运</div>
+        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">V2000CG 类 | 400kg / 300km</h4>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">多旋翼+固定翼, 纯电, MTOW ~2,000 kg<br>BOM: ~¥250 万 | 无需跑道<br><b style="color:#fbbf24">载人版已三证齐全</b></div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: 电池 250 Wh/kg 限制载荷/航程天花板; 高原冬季性能 -30%</div>
+      </div>
+      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
+        <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">2 | 微型支线</div>
+        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">TP500 类 | 500kg / 500km</h4>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼, <span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 8-9, 单涡轴 50-80 kW<br>MTOW ~1,500 kg | EWF 0.53 | PF 0.33<br>起飞 &lt;200m | BOM ~¥250 万 | varHr ¥800-1,000/hr</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: TC 预计 2026 中; 单发无冗余; 国内涡轴 TBO 数据不足</div>
+      </div>
+      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
+        <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">3 | 省内主力</div>
+        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">HH-200 类 | 1.5t / 1,000km</h4>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼, AR 10-11, 双涡桨 600 SHP×2<br>MTOW ~3,300 kg | EWF 0.45 | PF 0.45<br>起飞 ~500m (高原 4,000m: ~800m)<br>BOM ~¥1,170 万 | varHr ¥5,500-6,500/hr</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: 2022 首飞但 4 年后仍无 TC 进展; AES100 TBO 数据需 2+ 年积累</div>
+      </div>
+      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
+        <div class="tag" style="background:rgba(248,113,113,.2);color:#f87171">4 | 中长途干线</div>
+        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">CY-8/W5000 类 | 3.5-5t / 2,600-3,000km</h4>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼, AR 11-12, 双涡桨 1,100-1,500 SHP×2<br>W5000: MTOW 10,800 kg | EWF 0.35 | PF 0.46<br>CY-8 起飞 ~280m (STOL), W5000 ~700m<br>BOM ¥3,000-3,500 万 | varHr: PR ¥6,100 → 工况 ¥9,000-12,000</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: MTOW >5,700kg, CAAC 标准不存在. W5000 目标 2026.09, 现实 2027-2028. CY-8 可先军采</div>
+      </div>
+      <!-- 卡5: 重载干线 ⭐ -->
+      <div class="fade-in" style="background:rgba(245,158,11,.08);border:2px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:18px;grid-column:1/-1">
+        <div class="tag" style="background:rgba(245,158,11,.3);color:#fbbf24">5 | 重载干线 -- 概念设计, 全球空白</div>
+        <h4 style="color:#fff;font-size:15px;margin:6px 0 10px">10t 级 | 载荷 10,000kg / 航程 3,000km</h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+          <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.9">
+            <b style="color:rgba(255,255,255,.85)">气动:</b> 高翼, AR 11-12, 低后掠 10-15°<br>
+            <b style="color:rgba(255,255,255,.85)">动力:</b> 双涡桨 2,500 SHP×2 (PW127 级)<br>
+            <b style="color:rgba(255,255,255,.85)"><span class="tip" data-t="Specific Fuel Consumption 耗油率">SFC</span>:</b> 0.225 kg/kW/hr | 燃油 720 kg/hr<br>
+            <b style="color:rgba(255,255,255,.85)">MTOW:</b> ~28,000 kg | 空重 ~14,000 kg (EWF 0.50)<br>
+            <b style="color:rgba(255,255,255,.85)">燃油:</b> ~4,000 kg | <b>载荷 10,000 kg</b> (PF 0.357)<br>
+            <b style="color:rgba(255,255,255,.85)">起飞:</b> ~1,200m 平衡场长 (ISA SL, MTOW 满载满油)
           </div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.9">
+            <b style="color:rgba(255,255,255,.85)">BOM:</b> ~¥6,350 万 (<span class="tip" data-t="Non-Recurring Engineering 非经常性研发费用">NRE</span> ¥45 亿/200 架 + 直接 ¥4,100 万)<br>
+            <b style="color:rgba(255,255,255,.85)">varHr:</b> ~¥16,583/hr<br>
+            <b style="color:rgba(255,255,255,.85)">吨公里:</b> 3.77 元<br>
+            <b style="color:rgba(255,255,255,.85)">对比:</b> 737BCF 满载 1.86 元 | 半载 3.72 元<br>
+            <b style="color:#fbbf24">→ 只在 737BCF 半载航线 (二线城市 50-60% 装载率) 有空间</b>
+          </div>
+        </div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px">
+          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>发动机空白:</b> 2,000-3,000 SHP 国产涡桨不存在. AES100 太小, AEP500 太大. 初期必须进口 PW127</div>
+          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>CAAC:</b> 28t MTOW 远超 5,700 kg 线, 取证可能 4-6 年</div>
+          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>NRE:</b> ¥45 亿研发需国家级项目. 200 架量产, 每架需利润 >¥2,000 万才能回收</div>
         </div>
       </div>
     </div>
+
+    <!-- 增程式 + VTOL callout -->
+    <div class="grid2 fade-in" style="margin-top:16px">
+      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:14px 16px">
+        <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:4px">增程式 -- 不是万能药</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">YH-1000S (1.2t, 混动) 证明 1-2t 级可行. 但 8-15t 级系统重量惩罚 30-40% vs 直驱涡桨. <b style="color:rgba(255,255,255,.85)">增程式是 1-3t 级备选, 不是 8-15t 级解决方案.</b></div>
+      </div>
+      <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);border-radius:8px;padding:14px 16px">
+        <div style="font-size:13px;color:#93c5fd;font-weight:700;margin-bottom:4px">VTOL 货运 -- 中国空白</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">纯电 eVTOL: &lt;500kg/&lt;300km. 混动 VTOL: Sabrewing (美, 2.4t/1,850km), 中国无对标. <b style="color:rgba(255,255,255,.85)">>500kg VTOL 货运在中国完全空白.</b></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- S11: DESIGN CHOICE LOGIC -->
-<section id="s11" class="sec" style="background:#fff">
+<!-- S12: 未来场景与需求规模 -->
+<section id="s12" class="sec" style="background:#fff">
   <div class="sec-inner">
-    <div class="sec-label">11 -- 设计选择逻辑</div>
-    <div class="sec-title fade-in">最优载荷选择与网络覆盖模型</div>
-    <div class="sec-sub fade-in">为什么1,000-1,500kg载荷是最优解?</div>
+    <div class="sec-label">12 -- 未来场景与需求规模</div>
+    <div class="sec-title fade-in">短期 TP500 + FP-98, 中期 W5000/CY-8, 出口要等 2033</div>
+    <div class="sec-sub fade-in"><span class="tip" data-t="Letter of Intent 意向书">LOI</span> 不是订单. 目前仅 V2000CG (载人) 向付费客户交付了认证机型. 市场规模需要分三个时间窗来看.</div>
 
-    <div class="grid2 fade-in">
-      <div class="card">
-        <div class="chart-title">载荷 vs 单位成本 U-curve</div>
-        <div class="chart-desc">成本效率存在"甜区" -- 太小或太大都不经济</div>
-        <div id="chart-ucurve" class="chart-box"></div>
+    <div class="thesis-card fade-in">
+      <div class="thesis-tag">本章一句话</div>
+      <div class="thesis-line">短期 (2028) 国内 ¥35-70 亿; 中期 (2031) ¥200-400 亿; 出口参考高铁 — 7 年到首单, 15 年到通车.</div>
+      <ul class="thesis-evidence">
+        <li>LOI 汇总: W5000 跨越 60 架, TP500 中通 30 架, FP-98 顺丰运营中</li>
+        <li>研报 $8.9-10.5B 包含 last-mile 小型无人机 (~55-60%); 1-5t 货运段仅 $3-4.5B</li>
+        <li>一带一路: 高铁 2008 国内运营 → 2015 首单 → 2023 印尼通车. UAV 出口可能 2033+</li>
+      </ul>
+    </div>
+
+    <!-- LOI/订单表 -->
+    <div class="card fade-in">
+      <div class="chart-title">LOI / 订单汇总 (截至 2026.04)</div>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>机型</th><th>客户</th><th>数量</th><th>状态</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td><b>W5000</b></td><td>跨越速运</td><td>60 架 (初批)</td><td style="color:#b45309">LOI</td><td style="font-size:11px">2025.02 签署, Aviation Week</td></tr>
+            <tr style="background:#f8fafc"><td>W5000</td><td>沙特 / 约旦</td><td>未公开</td><td style="color:#94a3b8">意向</td><td style="font-size:11px">~2024, 21经济网</td></tr>
+            <tr><td>CM100</td><td>中国邮政 + 京东物流</td><td>未公开</td><td style="color:#b45309">LOI</td><td style="font-size:11px">2025.12, 新华社</td></tr>
+            <tr style="background:#f8fafc"><td>V2000CG</td><td>Falcon Aviation (UAE)</td><td>15 架</td><td style="color:#16a34a"><b>确认订单</b></td><td style="font-size:11px">载人型; 已交付</td></tr>
+            <tr><td>TP500</td><td>中通快递</td><td>30 架</td><td style="color:#b45309">预取证订单</td><td style="font-size:11px">~2025</td></tr>
+            <tr style="background:#f0fdf4"><td>FP-98</td><td>顺丰 (丰翼)</td><td>小批量</td><td style="color:#16a34a"><b>运营中</b></td><td style="font-size:11px">2017 起至今</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="card">
-        <div class="chart-title">网络覆盖模型</div>
-        <div class="chart-desc">固定预算下, 不同机型的覆盖能力</div>
-        <div id="chart-network" class="chart-box"></div>
+      <div class="source">注: 绝大部分 LOI 无法律约束力. 仅 V2000CG 已向付费客户交付认证机型 (载人型).</div>
+    </div>
+
+    <!-- 三时间窗 -->
+    <div class="card fade-in" style="margin-top:16px">
+      <div class="chart-title">三时间窗矩阵</div>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>时间窗</th><th>可用机型</th><th>装机量</th><th>国内市场</th><th>出口</th><th>总计</th></tr></thead>
+          <tbody>
+            <tr><td><b>短期 2026-2028</b></td><td>TP500 + FP-98 + 军采 CY-8</td><td>200-400 架</td><td>¥30-60 亿</td><td>¥5-10 亿</td><td><b>¥35-70 亿</b></td></tr>
+            <tr style="background:#f8fafc"><td><b>中期 2028-2031</b></td><td>+ HH-200 / W5000 (取证后)</td><td>800-1,500 架</td><td>¥150-300 亿</td><td>¥50-100 亿</td><td><b>¥200-400 亿</b></td></tr>
+            <tr style="background:#fef3c7"><td><b>长期 2031-2035</b></td><td>+ 10t 级 (如果研发启动)</td><td>2,000-4,000 架</td><td>¥400-700 亿</td><td>¥150-400 亿</td><td><b>¥550-1,100 亿</b></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- Detailed explanation -->
-    <div class="text-block fade-in" style="margin-top:20px">
-      <h4>U-curve 为什么存在?</h4>
-      <h5>左侧 (小型机, &lt;500kg载荷):</h5>
-      <p>小型飞机虽然单架价格低, 但"每公斤载荷"的分摊成本反而高。原因: (1) 发动机、航电等固定成本不随载荷线性降低; (2) 仍需飞行员 (有人机) 或完整的通信系统 (无人机); (3) 燃油效率低 -- 自重占比高。例如一架200kg载荷的小飞机, 单价可能800万元, 但每kg载荷分摊4万元; 而1,000kg载荷的Caravan, 每kg只需1.34万元。</p>
+    <!-- 研报 cross-check -->
+    <div class="insight fade-in" style="margin-top:16px">
+      <span class="insight-title">市场研究数据 cross-check</span>
+      <ul class="insight-rules">
+        <li><b>Markets&Markets / Mordor:</b> 全球 cargo drone 市场 2030 $8.9-10.5B. 这些数字包含 last-mile 小型 (&lt;25kg) 无人机, 占 ~55-60%</li>
+        <li><b>1-5t 载荷段:</b> 可能仅占 $3-4.5B (约 ¥22-33 亿, 仅飞机销售)</li>
+        <li><b>口径差异:</b> 我们的中期 ¥200-400 亿包含飞机采购 + 运营 + 基建; 研报仅含飞机销售. 两组数字不能直接对比</li>
+      </ul>
+    </div>
 
-      <h5>中间 (甜区, 800-1,500kg):</h5>
-      <p>固定成本被合理分摊, 且飞机仍能使用简易跑道 (300-600m)。这个载荷区间的飞机通常自重2-3吨, 仍属于通用航空范畴, 无需大型机场基础设施。</p>
+    <!-- 一带一路 + 高铁 -->
+    <div class="fade-in" style="margin-top:16px;padding:16px 20px;background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:8px">
+      <div style="font-weight:700;color:#92400e;margin-bottom:8px">一带一路出口: 参考高铁时间线</div>
+      <div style="font-size:13px;color:#78350f;line-height:1.8">
+        中国高铁: 2008 国内运营 → 2015 印尼出口合同 (<b>7 年</b>) → 2023 印尼通车 (<b>15 年</b>).<br>
+        UAV 出口推测: 如果 2026-2028 国内规模运营 → 首个出口合同 <b>2033-2035</b> → 首条海外航线 <b>2035-2040</b>.<br>
+        <b>短期投资 (2026-2030) 不应把出口收入计入收益预期.</b>
+      </div>
+    </div>
 
-      <h5>右侧 (大型机, &gt;3,000kg载荷):</h5>
-      <p>虽然"每公斤载荷"成本继续下降, 但受到机场限制。ATR 42需要1,000m+跑道, 中国西部大量目标地点无法建设这样的跑道。此外, 大型机需要更多货量才能盈亏平衡, 而西部很多航线每天只有几百公斤货量, 大飞机装不满。</p>
-
-      <h4 style="margin-top:16px">1.09亿元 ($1,500万) 投资场景分析</h4>
-      <p>假设一个物流公司有1.09亿元预算, 对比三种投资方案:</p>
-      <div class="step" style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:8px 0">
-        <b>方案A: 买1架ATR 42-600F</b><br>
-        - 价格: 1.42亿元 (超预算, 需融资) | 载荷: 5,500kg | 覆盖: 1条主航线<br>
-        - 频率: 每天1-2班 | 需要1,000m+跑道 | 年运力: ~4,000吨<br>
-        - 问题: 只覆盖1条航线, 西部大多数机场跑道不够
+    <!-- 驱动 vs 风险 -->
+    <div class="grid2 fade-in" style="margin-top:16px">
+      <div class="insight green">
+        <span class="insight-title">驱动因素</span>
+        <ul class="insight-rules">
+          <li><b>电商下沉:</b> 1,750 亿件快递, 西部末端配送效率最低</li>
+          <li><b>冷链需求:</b> 生鲜 + 医药时效性要求</li>
+          <li><b>低空经济政策:</b> 国家层面推动, 地方政府补贴</li>
+          <li><b>军方/应急:</b> 不需完整取证 (GJB), CY-8 可先落地</li>
+        </ul>
       </div>
-      <div class="step" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;margin:8px 0">
-        <b>方案B: 买5架Grand Caravan EX</b><br>
-        - 价格: 9,450万元 (预算内) | 载荷: 1,179kg x 5 | 覆盖: 5条航线<br>
-        - 频率: 每条线每天2-3班 | 仅需600m跑道 | 年运力: ~4,700吨<br>
-        - 优势: 5条航线同时运营, 网络效应更强
+      <div class="insight red">
+        <span class="insight-title">风险因素</span>
+        <ul class="insight-rules">
+          <li><b>PR vs 工况:</b> W5000 ¥6,100/hr vs 工况推测 ¥9,000-12,000/hr</li>
+          <li><b>5,700 kg 线:</b> 以上适航标准空白, 取证时间不确定</li>
+          <li><b>发动机:</b> &gt;1,000 SHP 涡桨 TBO 数据不足</li>
+          <li><b>CAAC 国际互认:</b> 出口需双边协议, 覆盖有限</li>
+        </ul>
       </div>
-      <div class="step" style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 16px;margin:8px 0">
-        <b>方案C: 买7架同级UAV</b><br>
-        - 价格: 约1.05亿元 (预算内, UAV单价~1,500万元) | 载荷: 1,200kg x 7 | 覆盖: 7条航线<br>
-        - 频率: 每条线每天3-4班 (高利用率) | 仅需400m跑道 | 年运力: ~7,500吨<br>
-        - 优势: 覆盖最广, 利用率最高, 运力最大
-      </div>
-      <p style="font-weight:700;color:var(--primary)">结论: 频率 x 覆盖 > 单次载荷能力。多架中型飞机/无人机构建网络, 远优于少数大型飞机跑单线。</p>
     </div>
   </div>
 </section>
 
-<!-- S12: DEVELOPMENT ROADMAP -->
-<section id="s12" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f)">
+<!-- S13: 最终结论 -->
+<section id="s13" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f)">
   <div class="sec-inner" style="color:#fff">
-    <div class="sec-label" style="color:#60a5fa">12 -- 发展路径</div>
-    <div class="sec-title fade-in" style="color:#fff">三阶段发展路径</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">从验证到规模化, 有人机和无人机双轨并进</div>
+    <div class="sec-label" style="color:#60a5fa">13 -- 最终结论</div>
+    <div class="sec-title fade-in" style="color:#fff">中国正在跳过 "有人通航" 这一页</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">能不能成功翻到下一页, 取决于三件事.</div>
 
-    <div class="decision-row fade-in">
-      <div class="phase-card">
-        <h4>Phase 1: 验证</h4>
-        <div class="period">2025-2027 | 投资~5,000万元</div>
-        <ul>
-          <li>采购2-3架Caravan/Y-12F</li>
-          <li>新疆/云贵3-5条试点航线 (和田-乌鲁木齐等中低海拔)</li>
-          <li>UAV改装1架FH-98测试</li>
-          <li>建立简易跑道标准</li>
-          <li>验证运营经济模型</li>
-        </ul>
-      </div>
-      <div class="phase-card">
-        <h4>Phase 2: 扩展</h4>
-        <div class="period">2027-2029 | 投资~2亿元</div>
-        <ul>
-          <li>机队扩至15-20架 (有人+无人混合)</li>
-          <li>覆盖20-30条航线</li>
-          <li>UAV获取适航证, 开始商业运营</li>
-          <li>建设10-15个简易起降点</li>
-          <li>接入电商/快递物流网络</li>
-        </ul>
-      </div>
-      <div class="phase-card">
-        <h4>Phase 3: 规模化</h4>
-        <div class="period">2029-2032 | 投资~10亿元</div>
-        <ul>
-          <li>机队100+架 (70%以上UAV)</li>
-          <li>覆盖200+条航线</li>
-          <li>自有UAV机型量产</li>
-          <li>成本降至3,000元/hr以下</li>
-          <li>年运力超5万吨</li>
-        </ul>
+    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+      <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">终极判断</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">中国选择了直接进入 "无人货运" 阶段. 截至 2026.04, 产品存在但规模运营尚未开始. 2027-2028 年的首批商业航线数据, 是全部分析的验证点.</div>
+      <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">仅 V2000CG (载人 eVTOL) 可合法商业飞行; 所有货运 UAV 均在取证路上</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">国内市场 2035 年 ¥400-700 亿; 出口要等 2033+ (高铁类比: 7 年到首单)</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">无驾驶舱 PF 提升 (0.30→0.36-0.46) 带来 15-25% 单位成本降低, 叠加人员节省后总降 30-40%</li>
+      </ul>
+    </div>
+
+    <!-- 5 个核心判断 -->
+    <div class="fade-in" style="margin-bottom:24px">
+      <h4 style="color:#fff;font-size:16px;margin-bottom:14px">5 个核心判断</h4>
+      <div style="display:grid;gap:10px">
+        <div style="background:rgba(255,255,255,.05);border-left:3px solid #4ade80;border-radius:0 8px 8px 0;padding:12px 16px">
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#4ade80">1.</b> UAV 从 "探索" 走到 "首款取证" (V2000CG 载人版). 从取证到规模运营还有距离. 目前没有货运 UAV 可以合法商业飞行.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-left:3px solid #60a5fa;border-radius:0 8px 8px 0;padding:12px 16px">
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#60a5fa">2.</b> 4 类 UAV 覆盖 400kg-5t, 但均处于早期. 8-15t 重载干线全球空白, 需要中国还没有的 2,500 SHP 发动机.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-left:3px solid #fbbf24;border-radius:0 8px 8px 0;padding:12px 16px">
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#fbbf24">3.</b> 无驾驶舱 PF 提升 (0.30→0.36-0.46) 带来 15-25% 单位成本降低. 叠加无飞行员后总降 30-40%. 这是结构性优势.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:12px 16px">
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#f87171">4.</b> 国内市场 2035 年 ¥400-700 亿. 出口要等 2033+ -- 高铁从国内运营到首个出口合同用了 7 年.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border-left:3px solid #c084fc;border-radius:0 8px 8px 0;padding:12px 16px">
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#c084fc">5.</b> 成败取决于下面三件事. 不是政策, 不是资本, 是工程.</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- S13: CONCLUSION -->
-<section id="s13" class="sec">
-  <div class="sec-inner">
-    <div class="sec-label">13 -- 结论</div>
-    <div class="sec-title fade-in">中国物流通航的机会窗口</div>
-
+    <!-- 三件决定成败的事 -->
     <div class="grid3 fade-in">
-      <div class="analysis-card">
-        <span class="tag" style="background:#fef2f2;color:#dc2626">市场</span>
-        <h4>680万km2的空白市场</h4>
-        <p>中国西部55%国土面积, 3.2亿人口, 物流基础设施严重不足。地面交通无法经济性覆盖的区域, 正是航空物流的结构性机会。1,750亿件快递中, 西部末端配送效率最低、溢价最高。</p>
+      <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:var(--radius);padding:20px">
+        <div class="tag" style="background:rgba(239,68,68,.2);color:#f87171">事 1</div>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">取证: W5000/CY-8 能否 2028 前拿 TC?</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">5,700 kg 以上 CAAC 标准不存在. W5000 目标 2026.09 极其激进. TP500 (仅 2t 级) 试飞已需 10 个月. 10.8t 级首次取证很可能 2-3 年 → 现实 2027-2028. <b style="color:#fca5a5">如果 2028 前两型均未取证, 中期市场规模打 5 折.</b></p>
       </div>
-      <div class="analysis-card">
-        <span class="tag" style="background:#eff6ff;color:#2563eb">技术</span>
-        <h4>UAV是关键变量</h4>
-        <p>大型货运无人机将运营成本降低33%, 同时提高利用率50%。2027-2030年适航取证窗口一旦打开, 经济模型将发生根本转变。先发者在航线网络和运营经验上将建立壁垒。</p>
+      <div style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:20px">
+        <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">事 2</div>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">发动机: 国产 2,500 SHP 涡桨何时有?</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">10t 级 UAV 的前提. AES100 太小, AEP500 太大, 增程式在此级别不可行. 初期可进口 PW127, 但出口/军用受限. <b style="color:#fcd34d">5 年内无法量产的话, 10t 级只能走 "进口发动机国产机体" 组装模式.</b></p>
       </div>
-      <div class="analysis-card">
-        <span class="tag" style="background:#f0fdf4;color:#16a34a">策略</span>
-        <h4>双轨并进, 网络优先</h4>
-        <p>Phase 1用有人机验证航线经济性, Phase 2引入UAV降成本, Phase 3规模化。核心策略: 多架中型机构建覆盖网络, 而非少数大型机跑单线。频率 x 覆盖 > 单次载荷。</p>
+      <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:var(--radius);padding:20px">
+        <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">事 3</div>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">商业化: W5000 首批运营吨公里到底多少?</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">PR 报 2.69 元/吨km, 工况推测 4-5 元. 如果实际 >5 元, W5000 仍比 ATR42 (5.9) 便宜, 但无法替代 737BCF. <b style="color:#86efac">2027-2028 年首批商业航线数据, 是全部分析的验证点.</b></p>
       </div>
     </div>
 
-    <div class="insight fade-in" style="margin-top:20px">
-      <b>终极判断</b>
-      中国物流通航市场不是"是否存在"的问题, 而是"何时爆发"的问题。地理需求刚性存在 (西部无路), 政策环境持续改善 (低空经济), 技术条件即将成熟 (大型货运UAV)。
-      预计2027-2030年将是关键窗口期。按保守估算, 仅中国西部就需要400-600架Caravan级飞行器 (有人+无人), 对应市场规模约100-200亿元。
+    <!-- 最终段落 -->
+    <div class="fade-in" style="margin-top:24px;padding:18px 22px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:var(--radius)">
+      <p style="margin:0;font-size:14px;color:rgba(255,255,255,.85);line-height:1.9">
+        中国物流通航的故事, 在 2018-2024 年是等待, 在 2024-2026 年是产品密集涌现, 在 2026 年的此刻是一个中间态 -- 飞机有了, 证还没拿齐. TP500 可能在几个月内成为中国首个拿到 TC 的货运 UAV, W5000 的 60 架 LOI 说明市场已经在下注. 但这些都还只是下注, 不是验证. 真正的验证要等 2027-2028 年首批商业航线跑出来: W5000 吨公里是 PR 口径的 2.69 还是工况推测的 4-5, TP500 能否在 500km 内做到 last-mile 经济性, CY-8 在军采路线上能积累多少运营小时. 到那时候, 这份分析里的每一个数字才能被校准或推翻.
+      </p>
     </div>
   </div>
 </section>
+
 
 <footer>
   <div style="max-width:var(--max-w);margin:0 auto">
@@ -1612,59 +2266,132 @@ initC('chart-tonkm',{
   initC('chart-fleet-us',pieOpt(usFleet,210000));
 })();
 
-// ===== BREAKEVEN (interactive payload) =====
-var beDistances=[];
-for(var bd=100;bd<=2000;bd+=50) beDistances.push(bd);
-var BE_MANNED=5089,BE_UAV=3400,BE_SPEED=227,BE_TRUCK_RATE=0.5; // 元/吨公里
-var BE_MAX_PAYLOAD=1088;
+// ===== BREAKEVEN (multi-aircraft non-linear model) =====
+var BE_MANNED=5028,BE_UAV=3224,BE_SPEED=227,BE_TRUCK_RATE=0.5; // kept for heatmap
 
-// Industry PR benchmark data: {name, costPerHr, speed, payload, tonKmPR, color, type}
-var industryBench=[
-  {name:'W5000 PR(2.69元/吨km)',rate:2.69/1000,color:'#10b981',dash:false},   // 元/kg/km
-  {name:'ATR42(~6元/吨km)',rate:6.1/1000,color:'#f97316',dash:true},
-  {name:'TP500 PR(<5元/吨km)',rate:5.0/1000,color:'#06b6d4',dash:true}
+// Aircraft database
+// rFull = range at max payload (MTOW limited); rEmpty = ferry range at zero payload (fuel tank limited)
+// Payload-range tradeoff: effectiveRange = rEmpty - (rEmpty - rFull) × payload / maxP
+// MTOW = OEW + Fuel + Payload → more payload = less fuel = shorter range
+// 所有机型 varHr / fix 均基于第一性原理成本拆解 (见文中"成本组件明细"表)
+// 公式: cost(d) = fix + varHr × d / spd
+// varHr = 燃油 + 发动机/螺旋桨储备 + 机体维护 + 保险 + 人员/远程操作 + 数据链 + 折旧
+// fix = 单次起降费 + 地勤 + 签派 (与距离无关, 每飞一次发生)
+var AIRCRAFT=[
+  // Caravan 有人 5,028 元/hr 源于 S6 拆解 (燃油 1125 + 发动机 727 + 螺旋桨 218 + 机体 509 + 保险 364 + 飞行员 873 + 折旧 1212)
+  {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:227,varHr:5028,fix:600,color:'#dc2626',lw:2.5},
+  // Caravan UAV 3,224 元/hr = 去飞行员 + 降折旧 + 简化结构 (详见 S6 右栏)
+  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:227,varHr:3224,fix:350,color:'#2563eb',lw:2.5},
+  // TP500 (壹通): 500kg/500km/260km/h, 轻型活塞/涡轴UAV, AOPA实际运营 ~5元/吨km (PR)
+  // 反推: 5 × 260 × 0.5 = 650元/hr — 与首原理 (50kW级, 20L/hr燃油 ~150元 + 电机/结构维护 ~200 + 折旧 200 + 操作 100) 吻合
+  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:260,varHr:650,fix:200,color:'#06b6d4',lw:2},
+  // HH-200 (中航工业): 1.5t/1000km/320km/h, MTOW 3.3t, 双发涡桨 (类WJ-9 / AES100衍生)
+  // 第一性原理: 燃油180kg/hr×9 = 1,620 + 2×AES100储备 700 + 螺旋桨 120 + 机体 600 + 保险 350 + 远程 60 + 数据链 120 + 折旧(¥1,500万/10yr/1200hr)1,250 = ~4,820元/hr
+  {name:'HH-200(中航)',maxP:1500,rFull:1000,rEmpty:1500,spd:320,varHr:4820,fix:500,color:'#9333ea',lw:2.5},
+  // 长鹰-8 (CY-8): 3.5t/3000km/~380km/h (估算), MTOW 7t, 双发~1100hp涡桨
+  // 第一性原理: 燃油320kg/hr×9 = 2,880 + 发动机储备 1,300 + 螺旋桨 200 + 机体 800 + 保险 600 + 远程 100 + 数据链 150 + 折旧(¥3,000万/10yr/1200hr)2,500 = ~8,530元/hr
+  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,varHr:8530,fix:1200,color:'#db2777',lw:2.5},
+  // W5000 (白鲸航线): 5t/2,600km/526km/h, PR吨公里成本 2.69元/km
+  // 反推 varHr≈6,100 / fix≈2,000 吻合 PR (2,000 + 6100×4.94) / (5×2600) = 2.47元/吨km
+  // 白鲸 PR 是理想值 (满载 + 零空驶 + 批量生产), 首原理保守估算会更高, 此处沿用官方
+  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,varHr:6100,fix:2000,color:'#10b981',lw:3},
+  // ATR 42-600F: 5.5t/1,326km/480km/h, Aircraft Cost Calculator 2024 数据
+  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,varHr:14500,fix:3000,color:'#f97316',lw:2},
+  // B737-800BCF (顺丰/京东/中邮航空主力): 23.9t/3,750km/833km/h
+  // 第一性原理: 燃油2×1,180kg/hr×8 = 18,880 + 2×CFM56储备 6,000 + 机体 3,000 + 保险 1,500 + 2飞行员+装卸 3,500 + 折旧(BCF改装后 ¥1.1亿/15yr/2,500hr) 2,933 = ~35,813元/hr
+  {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,varHr:35800,fix:4500,color:'#7c3aed',lw:2.5},
+  // B757-200F (中航货运/中国邮政): 39t/5,800km/850km/h
+  // 第一性原理: 燃油2×1,650kg/hr×8 = 26,400 + 发动机储备 6,500 + 机体 3,500 + 保险 2,000 + 3员 3,500 + 折旧(¥1.8亿/15yr/3,000hr) 4,000 = ~45,900元/hr
+  {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,varHr:45900,fix:5500,color:'#0891b2',lw:2.5}
 ];
 
-function calcUnitCost(costPerHr,dist,speed,payload){return costPerHr*dist/(speed*payload)}
+var beDistances=[];
+for(var bd=50;bd<=3500;bd+=50) beDistances.push(bd);
 
 function renderBreakeven(payload){
-  var mannedData=beDistances.map(function(d){return Math.round(calcUnitCost(BE_MANNED,d,BE_SPEED,payload)*100)/100});
-  var uavData=beDistances.map(function(d){return Math.round(calcUnitCost(BE_UAV,d,BE_SPEED,payload)*100)/100});
-  var truckData=beDistances.map(function(d){return Math.round(BE_TRUCK_RATE*d/1000*100)/100});
+  var series=[];
+  var avail=0;
 
-  var series=[
-    {name:'Caravan有人(元/kg)',type:'line',data:mannedData,lineStyle:{color:'#dc2626',width:2.5},itemStyle:{color:'#dc2626'},symbol:'none',
-     markArea:{silent:true,data:[[{yAxis:0,itemStyle:{color:'rgba(34,197,94,.06)'}},{yAxis:8}],[{yAxis:8,itemStyle:{color:'rgba(251,191,36,.06)'}},{yAxis:12}]]}},
-    {name:'Caravan级UAV(元/kg)',type:'line',data:uavData,lineStyle:{color:'#2563eb',width:2.5},itemStyle:{color:'#2563eb'},symbol:'none'},
-    {name:'公路(元/kg)',type:'line',data:truckData,lineStyle:{color:'#16a34a',width:2,type:'dashed'},itemStyle:{color:'#16a34a'},symbol:'none'},
-    {name:'生鲜溢价(12元/kg)',type:'line',data:beDistances.map(function(){return 12}),lineStyle:{color:'#f59e0b',width:1.5,type:'dotted'},itemStyle:{color:'#f59e0b'},symbol:'none'},
-    {name:'电商溢价(8元/kg)',type:'line',data:beDistances.map(function(){return 8}),lineStyle:{color:'#8b5cf6',width:1.5,type:'dotted'},itemStyle:{color:'#8b5cf6'},symbol:'none'}
-  ];
+  // Background shading on first series
+  var firstAC=true;
 
-  // Add industry benchmark lines
-  industryBench.forEach(function(b){
-    series.push({
-      name:b.name,type:'line',
-      data:beDistances.map(function(d){return Math.round(b.rate*d*100)/100}),
-      lineStyle:{color:b.color,width:1.8,type:b.dash?'dashed':'solid'},
-      itemStyle:{color:b.color},symbol:'none'
+  AIRCRAFT.forEach(function(ac){
+    if(payload>ac.maxP) return; // can't carry this payload at all — hide aircraft
+    avail++;
+    // Payload-range tradeoff: lighter load → more fuel → longer range
+    var effRange=Math.round(ac.rEmpty-(ac.rEmpty-ac.rFull)*payload/ac.maxP);
+    var data=beDistances.map(function(d){
+      if(d>effRange) return null;
+      return Math.round((ac.fix+ac.varHr*d/ac.spd)/payload*100)/100;
     });
+    var s={
+      name:ac.name,type:'line',data:data,
+      lineStyle:{color:ac.color,width:ac.lw},itemStyle:{color:ac.color},
+      symbol:'none',connectNulls:false,
+      endLabel:{show:true,formatter:'{a}',fontSize:11,color:ac.color,distance:8}
+    };
+    if(firstAC){
+      s.markArea={silent:true,data:[
+        [{yAxis:0,itemStyle:{color:'rgba(34,197,94,.06)'}},{yAxis:8}],
+        [{yAxis:8,itemStyle:{color:'rgba(251,191,36,.06)'}},{yAxis:12}]
+      ]};
+      firstAC=false;
+    }
+    series.push(s);
   });
 
-  var legendData=['Caravan有人(元/kg)','Caravan级UAV(元/kg)','公路(元/kg)','生鲜溢价(12元/kg)','电商溢价(8元/kg)'];
-  industryBench.forEach(function(b){legendData.push(b.name)});
+  // Truck baseline
+  series.push({
+    name:'公路',type:'line',
+    data:beDistances.map(function(d){return Math.round(BE_TRUCK_RATE*d/1000*100)/100}),
+    lineStyle:{color:'#16a34a',width:2,type:'dashed'},itemStyle:{color:'#16a34a'},symbol:'none',
+    endLabel:{show:true,formatter:'公路',fontSize:11,color:'#16a34a',distance:8}
+  });
+
+  // Threshold lines
+  series.push({
+    name:'生鲜溢价12',type:'line',
+    data:beDistances.map(function(){return 12}),
+    lineStyle:{color:'#f59e0b',width:1.2,type:'dotted'},itemStyle:{color:'#f59e0b'},symbol:'none',
+    endLabel:{show:true,formatter:'生鲜 12元/kg',fontSize:9,color:'#f59e0b',distance:4}
+  });
+  series.push({
+    name:'电商溢价8',type:'line',
+    data:beDistances.map(function(){return 8}),
+    lineStyle:{color:'#8b5cf6',width:1.2,type:'dotted'},itemStyle:{color:'#8b5cf6'},symbol:'none',
+    endLabel:{show:true,formatter:'电商 8元/kg',fontSize:9,color:'#8b5cf6',distance:4}
+  });
+
+  // Status text
+  var statusEl=$('ac-status');
+  if(avail===0){
+    statusEl.innerHTML='<span style="color:#ef4444;font-weight:700">⚠ 当前对比机型中无机型可承载 '+payload.toLocaleString()+'kg — 已超出 757F 满载 39t 上限</span>';
+  } else {
+    var tags=[];
+    AIRCRAFT.forEach(function(ac){
+      if(payload<=ac.maxP){
+        var lf=Math.round(payload/ac.maxP*100);
+        var er=Math.round(ac.rEmpty-(ac.rEmpty-ac.rFull)*payload/ac.maxP);
+        tags.push('<span style="color:'+ac.color+';font-weight:600">'+ac.name+'</span> <span style="color:#94a3b8">('+lf+'%载, '+er.toLocaleString()+'km)</span>');
+      }
+    });
+    statusEl.innerHTML='可用机型 ('+avail+'/'+AIRCRAFT.length+'): '+tags.join(' · ');
+  }
 
   var opt={
     tooltip:{trigger:'axis',formatter:function(ps){
       var s='<b>'+ps[0].axisValue+'km</b><br>';
-      ps.forEach(function(p){s+=p.marker+p.seriesName+': '+p.value+'元/kg<br>'});
+      ps.forEach(function(p){
+        if(p.value!=null && p.seriesName.indexOf('溢价')<0)
+          s+=p.marker+p.seriesName+': <b>'+p.value+'</b>元/kg<br>';
+      });
       return s;
     }},
-    legend:{data:legendData,top:5,textStyle:{fontSize:10}},
-    xAxis:{type:'category',data:beDistances,name:'航线距离(km)',axisLabel:{fontSize:10}},
-    yAxis:{type:'value',name:'单位成本(元/kg)',max:50},
+    legend:{show:false},
+    xAxis:{type:'category',data:beDistances,name:'航线距离(km)',axisLabel:{fontSize:10,interval:4}},
+    yAxis:{type:'value',name:'单位成本(元/kg)',max:function(v){return Math.min(50,Math.ceil(v.max/5)*5+5)}},
     series:series,
-    grid:{top:80,bottom:40}
+    grid:{top:30,bottom:40,right:130}
   };
   if(charts['chart-breakeven']){charts['chart-breakeven'].setOption(opt,true)}
   else{initC('chart-breakeven',opt)}
@@ -1672,42 +2399,378 @@ function renderBreakeven(payload){
 function updateBreakeven(val){
   var p=parseInt(val);
   $('payload-val').textContent=p.toLocaleString();
-  var lf=Math.round(p/BE_MAX_PAYLOAD*100);
-  $('load-factor').textContent='('+lf+'%'+(lf>=100?'满载':'部分装载')+')';
-  $('manned-400').textContent=(BE_MANNED*400/(BE_SPEED*p)).toFixed(1);
-  $('uav-400').textContent=(BE_UAV*400/(BE_SPEED*p)).toFixed(1);
   renderBreakeven(p);
 }
 renderBreakeven(1088);
 
-// ===== SWEET SPOT HEATMAP =====
+// ===== ECONOMIC FRONTIER: 3 CHARTS =====
 (function(){
-  var payloads=[500,750,1000,1200,1500,2000,2500,3000,4000,5000];
-  var dists=[200,400,600,800,1000,1200,1500,2000];
-  var heatData=[];
-  dists.forEach(function(d,di){
-    payloads.forEach(function(p,pi){
-      var cost=Math.round(BE_MANNED*d/(BE_SPEED*p)*10)/10;
-      heatData.push([di,pi,cost]);
+  // Helper: cost per kg for a given aircraft at (payload, distance)
+  function acCostAt(ac, payload, distance){
+    if(payload > ac.maxP) return null;
+    var effRange = ac.rEmpty - (ac.rEmpty - ac.rFull) * payload / ac.maxP;
+    if(distance > effRange) return null;
+    return (ac.fix + ac.varHr * distance / ac.spd) / payload;
+  }
+  function findBest(payload, distance){
+    var best=null, bestCost=Infinity, bestIdx=-1;
+    AIRCRAFT.forEach(function(ac, idx){
+      var c = acCostAt(ac, payload, distance);
+      if(c!=null && c<bestCost){ bestCost=c; best=ac; bestIdx=idx; }
+    });
+    return best ? {idx:bestIdx, ac:best, cost:bestCost} : null;
+  }
+
+  var EF_PAYLOADS = [200, 500, 750, 1088, 1500, 2000, 3000, 5000, 8000, 15000, 25000, 39000];
+  var EF_DISTS = [100, 300, 500, 750, 1000, 1500, 2000, 2500, 3000, 4000, 5500];
+
+  // ---- Build dominance grid: ONE SERIES PER AIRCRAFT to control colors ----
+  // (heatmap default value-gradient overrides per-point itemStyle, so use series-level color)
+  var dominanceSeriesData = AIRCRAFT.map(function(ac){return {ac:ac, data:[]};});
+  var noServiceData = [];
+  EF_DISTS.forEach(function(d, di){
+    EF_PAYLOADS.forEach(function(p, pi){
+      var b = findBest(p, d);
+      if(b){
+        dominanceSeriesData[b.idx].data.push({
+          value: [di, pi, Math.round(b.cost*10)/10],
+          acName: b.ac.name
+        });
+      } else {
+        noServiceData.push({value: [di, pi, null]});
+      }
     });
   });
 
-  initC('chart-heatmap',{
-    tooltip:{formatter:function(p){
-      return '距离: '+dists[p.data[0]]+'km<br>业载: '+payloads[p.data[1]]+'kg<br>单位成本: <b>'+p.data[2]+'元/kg</b>'
-        +(p.data[2]<=8?'<br><span style="color:#16a34a">✓ 电商/生鲜可行</span>':'')
-        +(p.data[2]>8&&p.data[2]<=15?'<br><span style="color:#f59e0b">△ 高端时敏可行</span>':'')
-        +(p.data[2]>25?'<br><span style="color:#dc2626">✗ 仅限紧急/政策</span>':'');
-    }},
-    xAxis:{type:'category',data:dists.map(function(d){return d+'km'}),name:'航线距离',splitArea:{show:true}},
-    yAxis:{type:'category',data:payloads.map(function(p){return p+'kg'}),name:'业载'},
-    visualMap:{min:3,max:45,calculable:true,orient:'horizontal',left:'center',bottom:0,
-      inRange:{color:['#22c55e','#86efac','#fef08a','#fbbf24','#f87171','#991b1b']},
-      text:['45元/kg','3元/kg'],textStyle:{fontSize:11}},
-    series:[{type:'heatmap',data:heatData,
-      label:{show:true,formatter:function(p){return p.data[2]},fontSize:10,color:'#1e293b'},
-      emphasis:{itemStyle:{shadowBlur:10,shadowColor:'rgba(0,0,0,.5)'}}}],
-    grid:{top:30,bottom:80,left:70,right:30}
+  // ---- Routes overlay for dominance map ----
+  var routes = [
+    {d: 400, p: 750, name: '拉萨-林芝', t: '高原医疗/松茸'},
+    {d: 500, p: 750, name: '广州-海口', t: '快电商'},
+    {d: 1000, p: 1088, name: '和田-乌鲁木齐', t: '沙漠新疆'},
+    {d: 1500, p: 1500, name: '深圳-杭州', t: '电子时敏'},
+    {d: 1500, p: 5000, name: '上海-成都', t: '主干干线'},
+    {d: 2500, p: 3000, name: '西安-乌鲁木齐', t: '长途农产'},
+    {d: 1500, p: 15000, name: '深圳-北京 (顺丰737BCF)', t: '电商干线'},
+    {d: 2500, p: 25000, name: '上海-乌鲁木齐 (757F)', t: '跨域主干'},
+    {d: 4000, p: 39000, name: '上海-阿拉木图 (757F)', t: '中亚国际'}
+  ];
+  function nearestIdx(arr, val){
+    var bi=0, bd=Infinity;
+    arr.forEach(function(x, i){ var d=Math.abs(x-val); if(d<bd){bd=d; bi=i;} });
+    return bi;
+  }
+  var routeData = routes.map(function(r, i){
+    var pi = nearestIdx(EF_PAYLOADS, r.p);
+    var di = nearestIdx(EF_DISTS, r.d);
+    // Position label above for low rows, below for high rows so it doesn't fly off chart
+    var labelAbove = pi < EF_PAYLOADS.length - 2;
+    // For two routes in same cell, offset horizontally
+    var hOffset = 0;
+    return {
+      value: [di, pi],
+      name: r.name, t: r.t, d: r.d, p: r.p, no: i+1,
+      label: {
+        show: true,
+        formatter: '✈ '+r.name,
+        position: labelAbove ? 'top' : 'bottom',
+        offset: [hOffset, labelAbove ? -4 : 4],
+        fontSize: 10,
+        color: '#fff',
+        fontWeight: 700,
+        backgroundColor: '#dc2626',
+        padding: [3, 7],
+        borderRadius: 4,
+        borderColor: '#fff',
+        borderWidth: 1.5,
+        shadowBlur: 4,
+        shadowColor: 'rgba(0,0,0,0.3)'
+      }
+    };
+  });
+
+  // ---- CHART 1: Dominance Map ----
+  var domSeries = dominanceSeriesData.filter(function(g){return g.data.length>0}).map(function(g){
+    return {
+      name: g.ac.name,
+      type: 'heatmap',
+      data: g.data,
+      itemStyle: {color: g.ac.color, borderColor:'#fff', borderWidth:1},
+      label: {
+        show: true,
+        formatter: function(p){
+          return p.value[2]!=null ? p.value[2].toFixed(1) : '';
+        },
+        fontSize: 11,
+        color: '#fff',
+        fontWeight: 700,
+        textShadowColor: 'rgba(0,0,0,0.5)',
+        textShadowBlur: 2
+      }
+    };
+  });
+  if(noServiceData.length>0){
+    domSeries.push({
+      name: '无可用',
+      type: 'heatmap',
+      data: noServiceData,
+      itemStyle: {color: '#e5e7eb', borderColor:'#fff', borderWidth:1},
+      label: {show:true, formatter:'—', fontSize:11, color:'#94a3b8'}
+    });
+  }
+  domSeries.push({
+    name: '典型航线',
+    type: 'scatter',
+    data: routeData,
+    symbol: 'circle',
+    symbolSize: 11,
+    itemStyle: {color: '#dc2626', borderColor:'#fff', borderWidth:2, shadowBlur:6, shadowColor:'rgba(220,38,38,0.6)'},
+    z: 10
+  });
+
+  initC('chart-dominance', {
+    tooltip: {
+      formatter: function(p){
+        if(p.seriesType==='scatter'){
+          return '<b>路线 '+p.data.no+': '+p.data.name+'</b><br>('+p.data.t+')<br>'+p.data.d+'km × '+p.data.p+'kg';
+        }
+        var d = p.data.value;
+        if(d[2]==null){
+          return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br><span style="color:#94a3b8">无机型可服务</span>';
+        }
+        return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br>最优机型: <b>'+p.data.acName+'</b><br>单位成本: <b>'+d[2].toFixed(2)+'元/kg</b>';
+      }
+    },
+    grid: {top:30, bottom:50, left:80, right:30},
+    xAxis: {type:'category', data: EF_DISTS.map(function(d){return d+'km'}), name:'航线距离', splitArea:{show:true}},
+    yAxis: {type:'category', data: EF_PAYLOADS.map(function(p){return p+'kg'}), name:'业载', splitArea:{show:true}},
+    series: domSeries
+  });
+
+  // Append route legend below chart (route names are shown on chart, this gives货种 details)
+  var domLegendDiv = document.createElement('div');
+  domLegendDiv.style.cssText = 'font-size:11px;color:#64748b;margin-top:6px;display:flex;flex-wrap:wrap;gap:14px;padding:6px 8px;background:#fff7f7;border-left:3px solid #dc2626;border-radius:3px';
+  domLegendDiv.innerHTML = '<b style="color:#dc2626">航线货种:</b> ' + routes.map(function(r){
+    return '<span><b style="color:#dc2626">'+r.name+'</b> — '+r.t+'</span>';
+  }).join('');
+  var domEl = document.getElementById('chart-dominance');
+  if(domEl && domEl.parentNode){ domEl.parentNode.insertBefore(domLegendDiv, domEl.nextSibling); }
+
+  // ---- CHART 2: Margin Map (with slider) ----
+  var bestCostGrid = [];
+  EF_DISTS.forEach(function(d, di){
+    EF_PAYLOADS.forEach(function(p, pi){
+      var b = findBest(p, d);
+      bestCostGrid.push({di:di, pi:pi, cost: b?b.cost:null, acName: b?b.ac.name:null});
+    });
+  });
+
+  function renderMargin(price){
+    var data = bestCostGrid.map(function(c){
+      if(c.cost==null) return {value:[c.di, c.pi, null], itemStyle:{color:'#e5e7eb', borderColor:'#fff', borderWidth:1}, costStr:'—', acName:'—'};
+      var margin = price - c.cost;
+      return {
+        value: [c.di, c.pi, Math.round(margin*10)/10],
+        costStr: c.cost.toFixed(2),
+        acName: c.acName
+      };
+    });
+
+    var feasible=0, total=bestCostGrid.length, served=0;
+    bestCostGrid.forEach(function(c){
+      if(c.cost!=null){ served++; if(price > c.cost) feasible++; }
+    });
+    var pct = served>0 ? Math.round(feasible/served*100) : 0;
+    document.getElementById('margin-status').innerHTML =
+      '运价 <b style="color:#0f172a">'+price+'元/kg</b>: '+
+      '<span style="color:#16a34a;font-weight:700">'+feasible+'</span> 格盈利 / '+
+      '<span style="color:#ef4444;font-weight:700">'+(served-feasible)+'</span> 格亏损 / '+
+      '<span style="color:#94a3b8">'+(total-served)+'</span> 格无服务 — '+
+      '<b>盈利覆盖率 '+pct+'%</b> (仅统计可服务格)';
+
+    var opt = {
+      tooltip: {
+        formatter: function(p){
+          var d = p.data.value;
+          if(d[2]==null){
+            return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br><span style="color:#94a3b8">无机型可服务</span>';
+          }
+          var sign = d[2]>=0 ? '+' : '';
+          var color = d[2]>=0 ? '#16a34a' : '#ef4444';
+          return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br>最优机型: <b>'+p.data.acName+'</b><br>成本: '+p.data.costStr+'元/kg<br>毛利: <b style="color:'+color+'">'+sign+d[2].toFixed(2)+'元/kg</b>';
+        }
+      },
+      grid: {top:30, bottom:90, left:80, right:30},
+      xAxis: {type:'category', data: EF_DISTS.map(function(d){return d+'km'}), name:'航线距离', splitArea:{show:true}},
+      yAxis: {type:'category', data: EF_PAYLOADS.map(function(p){return p+'kg'}), name:'业载', splitArea:{show:true}},
+      visualMap: {
+        min: -10, max: 10,
+        calculable: true,
+        orient: 'horizontal',
+        left: 'center',
+        bottom: 5,
+        dimension: 2,
+        inRange: {color: ['#991b1b', '#ef4444', '#fef3c7', '#86efac', '#16a34a']},
+        text: ['+10利润', '-10亏损'],
+        textStyle: {fontSize:11},
+        outOfRange: {color: '#e5e7eb'}
+      },
+      series: [{
+        name: '毛利',
+        type: 'heatmap',
+        data: data,
+        label: {
+          show: true,
+          formatter: function(p){
+            if(p.value[2]==null) return '—';
+            var sign = p.value[2]>=0 ? '+' : '';
+            return sign + p.value[2].toFixed(1);
+          },
+          fontSize: 11,
+          color: '#1e293b',
+          fontWeight: 700
+        }
+      }]
+    };
+    if(charts['chart-margin']) charts['chart-margin'].setOption(opt, true);
+    else initC('chart-margin', opt);
+  }
+
+  window.updateMargin = function(val){
+    var p = parseInt(val);
+    document.getElementById('margin-price-val').textContent = p;
+    renderMargin(p);
+  };
+  renderMargin(8);
+
+  // ---- CHART 3: Pareto Frontier ----
+  // Compute ton-km cost for each aircraft at (full payload + design range)
+  var paretoData = AIRCRAFT.map(function(ac){
+    var tkmCost = (ac.fix + ac.varHr * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
+    return {
+      name: ac.name, spd: ac.spd, payload: ac.maxP,
+      tkmCost: tkmCost, color: ac.color
+    };
+  });
+
+  // Pareto in (speed↑, payload↑) — buyer's two desires
+  paretoData.forEach(function(a){
+    a.dominatedSP = paretoData.some(function(b){
+      return b!==a && b.spd >= a.spd && b.payload >= a.payload && (b.spd > a.spd || b.payload > a.payload);
+    });
+    // Pareto in (speed↑, cost↓) — efficiency frontier
+    a.dominatedSC = paretoData.some(function(b){
+      return b!==a && b.spd >= a.spd && b.tkmCost <= a.tkmCost && (b.spd > a.spd || b.tkmCost < a.tkmCost);
+    });
+  });
+
+  var inverses = paretoData.map(function(a){return 1/a.tkmCost});
+  var maxInv = Math.max.apply(null, inverses);
+  var minInv = Math.min.apply(null, inverses);
+  function bubbleSize(tkmCost){
+    var inv = 1/tkmCost;
+    if(maxInv===minInv) return 50;
+    return 25 + (inv - minInv)/(maxInv - minInv) * 65;
+  }
+
+  // Detect overlap & nudge: if two aircraft have identical (spd, payload), offset second one
+  // so both remain visible. We track display coords separately from real data.
+  var displayCoords = paretoData.map(function(a){return [a.spd, a.payload];});
+  paretoData.forEach(function(a, i){
+    for(var j=0; j<i; j++){
+      if(paretoData[j].spd===a.spd && paretoData[j].payload===a.payload){
+        // Nudge i to the LEFT and DOWN so it doesn't overlap j
+        displayCoords[i] = [a.spd - 18, a.payload - 200];
+        break;
+      }
+    }
+  });
+
+  var scatterData = paretoData.map(function(a, i){
+    var isPareto = !a.dominatedSP;
+    var dc = displayCoords[i];
+    return {
+      name: a.name,
+      value: [dc[0], dc[1], a.tkmCost.toFixed(2)],
+      realSpd: a.spd,
+      realPayload: a.payload,
+      tkmCost: a.tkmCost.toFixed(2),
+      symbolSize: bubbleSize(a.tkmCost),
+      itemStyle: {
+        color: a.color,
+        opacity: isPareto ? 0.85 : 0.6,
+        borderColor: isPareto ? '#1e293b' : '#94a3b8',
+        borderWidth: isPareto ? 2.5 : 1,
+        borderType: isPareto ? 'solid' : 'dashed'
+      },
+      label: {
+        show: true,
+        formatter: a.name + '\n' + a.tkmCost.toFixed(2) + '元/吨km',
+        fontSize: 11,
+        color: '#0f172a',
+        fontWeight: 700,
+        position: 'top',
+        backgroundColor: 'rgba(255,255,255,0.85)',
+        padding: [3, 6],
+        borderRadius: 4
+      }
+    };
+  });
+
+  var frontier = paretoData.filter(function(a){return !a.dominatedSP}).sort(function(a,b){return a.spd-b.spd});
+  var frontierLine = frontier.map(function(a){return [a.spd, a.payload]});
+
+  initC('chart-pareto', {
+    tooltip: {
+      trigger: 'item',
+      formatter: function(p){
+        if(p.seriesName!=='机型') return '';
+        return '<b>'+p.data.name+'</b><br>速度: '+p.data.realSpd+'km/h<br>载荷: '+p.data.realPayload.toLocaleString()+'kg<br>吨公里成本: <b>'+p.data.tkmCost+'元</b>';
+      }
+    },
+    grid: {top: 60, bottom: 60, left: 80, right: 50},
+    xAxis: {type:'value', name:'速度(km/h)', min: 150, max: 900, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11}},
+    yAxis: {type:'log', name:'载荷(kg, 对数)', min: 200, max: 50000, logBase: 10, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
+    series: [
+      {
+        name: 'Pareto前沿',
+        type: 'line',
+        data: frontierLine,
+        lineStyle: {color: '#2563eb', width: 2, type: 'dashed'},
+        itemStyle: {color: '#2563eb'},
+        symbol: 'none',
+        z: 2,
+        silent: true
+      },
+      {
+        name: '机型',
+        type: 'scatter',
+        data: scatterData,
+        z: 5,
+        markArea: {
+          silent: true,
+          itemStyle: {color: 'rgba(34,197,94,0.10)', borderColor:'#16a34a', borderWidth:1.5, borderType:'dashed'},
+          label: {show:true, position:'inside', color:'#16a34a', fontSize:11, fontWeight:700, formatter:'通航中型 UAV 设计区\n350-500km/h · 1.5-3.5t'},
+          data: [[
+            {coord: [350, 1500]},
+            {coord: [500, 3500]}
+          ]]
+        }
+      },
+      {
+        name: '干线分割线',
+        type: 'line',
+        data: [[600, 200], [600, 50000]],
+        lineStyle: {color: '#94a3b8', width: 1, type: 'dotted'},
+        symbol: 'none',
+        silent: true,
+        markPoint: {
+          silent: true,
+          symbol: 'rect',
+          symbolSize: [80, 18],
+          data: [{coord: [750, 35000], itemStyle:{color:'rgba(8,145,178,0.15)', borderColor:'#0891b2'}, label:{show:true, formatter:'干线喷气区', color:'#0891b2', fontSize:11, fontWeight:700}}]
+        }
+      }
+    ]
   });
 })();
 
@@ -1762,17 +2825,23 @@ renderBreakeven(1088);
     {name:'ATR 72-600F',payload:8500,range:1528,cat:'支线货机'}
   ];
   var uavs=[
-    {name:'W5000',payload:1200,range:800,cat:'UAV'},
-    {name:'FH-98无人化',payload:1500,range:1200,cat:'UAV'},
-    {name:'Dronamics',payload:350,range:2500,cat:'UAV'},
+    {name:'W5000 (白鲸)',payload:5000,range:2600,cat:'UAV'},
+    {name:'CY-8 (长鹰)',payload:3500,range:3000,cat:'UAV'},
+    {name:'HH-200 (中航)',payload:1500,range:1000,cat:'UAV'},
+    {name:'FP-98 狮子座',payload:1500,range:1200,cat:'UAV'},
+    {name:'TP500 (壹通)',payload:500,range:500,cat:'UAV'},
+    {name:'AutoFlight CarryAll',payload:400,range:250,cat:'UAV'},
+    {name:'峰飞 V2000CG',payload:2000,range:600,cat:'UAV'},
+    {name:'Dronamics Black Swan',payload:350,range:2500,cat:'UAV'},
     {name:'Natilus Kona',payload:3800,range:1667,cat:'UAV'},
+    {name:'Sabrewing Rhaegal',payload:2400,range:1800,cat:'UAV'},
     {name:'Reliable (208)',payload:1088,range:1982,cat:'UAV'}
   ];
 
   initC('chart-payload-range',{
     tooltip:{trigger:'item',formatter:function(p){return p.data[3]+'<br>载荷: '+p.data[1]+'kg<br>航程: '+p.data[0]+'km'}},
     legend:{data:['有人机','大型UAV'],top:10},
-    xAxis:{name:'航程(km)',type:'value',min:500,max:3000},
+    xAxis:{name:'航程(km)',type:'value',min:0,max:3500},
     yAxis:{name:'载荷(kg)',type:'value',min:0,max:9000},
     series:[
       {name:'有人机',type:'scatter',data:manned.map(function(m){return[m.range,m.payload,m.cat,m.name]}),
@@ -1783,21 +2852,46 @@ renderBreakeven(1088);
   });
 })();
 
-// ===== U-CURVE =====
+// ===== U-CURVE (rebuilt 2026: realistic best-fit cost at 800km route) =====
 (function(){
-  var payloads=[100,200,300,500,800,1000,1200,1500,2000,3000,5000,8000];
-  var costPerKg=[80,52,38,22,16,13.4,12.5,12,11.5,10.5,9.5,8.5];
-  var airportAccess=[95,95,95,92,90,88,85,80,70,50,30,15];
+  // x: payload demand (kg). For each, pick best aircraft (single trip OR multi-trip if larger).
+  var payloads=[200,500,800,1088,1500,2000,3500,5000,8000,15000,24000,39000];
+  // Best aircraft & cost/kg at 800km route, per Phase-1 AIRCRAFT array first principles:
+  //   200kg → TP500 (overcap, only option) ~7.3
+  //   500kg → TP500 exact 2.9
+  //   800kg → Caravan UAV (HH-200 oversize) ~14.6
+  //   1088kg → Caravan UAV exact 10.8
+  //   1500kg → HH-200 exact 8.4
+  //   2000kg → CY-8 (overcap) 9.6
+  //   3500kg → CY-8 exact 5.5
+  //   5000kg → W5000 exact 2.3
+  //   8000kg → 2× W5000 trips 2.82
+  //   15000kg → 1× 737BCF (overcap) 2.59
+  //   24000kg → 737BCF near-full 1.62
+  //   39000kg → 757F exact 1.41
+  var costPerKg=[7.3,2.9,14.6,10.8,8.4,9.6,5.5,2.3,2.82,2.59,1.62,1.41];
+  var bestAC=['TP500','TP500','Caravan UAV','Caravan UAV','HH-200','CY-8','CY-8','W5000','2× W5000','737BCF','737BCF','757F'];
+  // Airport access (% of Chinese airports able to handle that aircraft):
+  //   TP500/CarryAll <100m → 95%; Caravan UAV ~600m → 85%; HH-200 500m → 78%
+  //   CY-8 280m → 80%; W5000 ~700m STOL → 60%; ATR42 1000m → 35%; 737BCF/757F 4C/4D → 18%/8%
+  var airportAccess=[95,95,85,85,78,80,80,60,60,18,18,8];
 
   initC('chart-ucurve',{
-    tooltip:{trigger:'axis'},
-    legend:{data:['单位成本(万元/kg载荷)','可用机场比例(%)'],top:10},
-    xAxis:{type:'category',data:payloads.map(function(p){return p+'kg'}),name:'载荷级别',axisLabel:{fontSize:10,rotate:30}},
-    yAxis:[{type:'value',name:'万元/kg',position:'left'},{type:'value',name:'%',position:'right',max:100}],
+    tooltip:{trigger:'axis',formatter:function(p){return p[0].name+'<br>最优机型: <b>'+bestAC[p[0].dataIndex]+'</b><br>单位成本: '+p[0].value+' 元/kg<br>可用机场比例: '+p[1].value+'%'}},
+    legend:{data:['单位成本(元/kg @ 800km)','可用机场比例(%)'],top:10},
+    grid:{left:60,right:50,top:50,bottom:50},
+    xAxis:{type:'category',data:payloads.map(function(p){return p>=1000?(p/1000).toFixed(p>=10000?0:1)+'t':p+'kg'}),name:'载荷规模',axisLabel:{fontSize:10,rotate:30}},
+    yAxis:[{type:'value',name:'元/kg @ 800km',position:'left',min:0,max:16},{type:'value',name:'%',position:'right',max:100}],
     series:[
-      {name:'单位成本(万元/kg载荷)',type:'line',data:costPerKg,yAxisIndex:0,lineStyle:{color:'#dc2626',width:2},itemStyle:{color:'#dc2626'},
-       markArea:{silent:true,data:[[{xAxis:'800kg',itemStyle:{color:'rgba(34,197,94,.1)'}},{xAxis:'1500kg'}]]}},
-      {name:'可用机场比例(%)',type:'line',data:airportAccess,yAxisIndex:1,lineStyle:{color:'#2563eb',width:2,type:'dashed'},itemStyle:{color:'#2563eb'}}
+      {name:'单位成本(元/kg @ 800km)',type:'line',data:costPerKg,yAxisIndex:0,smooth:false,lineStyle:{color:'#dc2626',width:2.5},itemStyle:{color:'#dc2626'},
+       label:{show:true,formatter:function(p){return bestAC[p.dataIndex]},fontSize:10,position:'top',color:'#7c2d12'},
+       markArea:{silent:true,data:[
+         [{xAxis:'500kg',itemStyle:{color:'rgba(6,182,212,.12)'}},{xAxis:'500kg'}],
+         [{xAxis:'1.5t',itemStyle:{color:'rgba(147,51,234,.12)'}},{xAxis:'3.5t'}],
+         [{xAxis:'5t',itemStyle:{color:'rgba(16,185,129,.15)'}},{xAxis:'5t'}],
+         [{xAxis:'24t',itemStyle:{color:'rgba(124,58,237,.12)'}},{xAxis:'39t'}]
+       ]}},
+      {name:'可用机场比例(%)',type:'line',data:airportAccess,yAxisIndex:1,smooth:true,lineStyle:{color:'#2563eb',width:2,type:'dashed'},itemStyle:{color:'#2563eb'}}
     ]
   });
 })();
@@ -1987,31 +3081,33 @@ var radiusInitTimer=setInterval(function(){
   if(cnMapReady&&usMapReady){clearInterval(radiusInitTimer);renderRadiusMaps();}
 },500);
 
-// ===== NETWORK MODEL =====
+// ===== NETWORK MODEL (rebuilt 2026: added W5000/HH-200/CY-8/TP500) =====
 (function(){
-  var budget=10900; // 万元
+  var budget=10900; // 万元 (~$1.5M USD)
+  // Aircraft estimated price + payload + annual utilization (UAV: 1,000-1,500hr)
   var models=[
-    {name:'ATR 42-600F',price:14177,payload:5500,util:800,qty:0},
-    {name:'Dash 8 Cargo',price:25445,payload:8000,util:800,qty:0},
-    {name:'Grand Caravan EX',price:1890,payload:1179,util:800,qty:5},
-    {name:'Kodiak 100',price:2145,payload:1088,util:800,qty:5},
-    {name:'Y-12F',price:2908,payload:1700,util:800,qty:3},
-    {name:'UAV (1200kg)',price:1500,payload:1200,util:1000,qty:7}
+    {name:'21× TP500 (UAV)',price:300,payload:500,util:1500,note:'500kg UAV 网点支线'},
+    {name:'7× HH-200 (UAV)',price:1500,payload:1500,util:1200,note:'1.5t UAV 中型主力'},
+    {name:'5× Caravan EX',price:1890,payload:1179,util:800,note:'1.2t 有人机过渡'},
+    {name:'3× CY-8 (UAV)',price:3000,payload:3500,util:1200,note:'3.5t UAV 中长途'},
+    {name:'3× W5000 (UAV)',price:3500,payload:5000,util:1500,note:'5t UAV 干线货运'},
+    {name:'1× ATR 42F',price:14177,payload:5500,util:800,note:'有人支线货机 (超预算)'}
   ];
   models.forEach(function(m){m.qty=Math.floor(budget/m.price)||0;if(m.qty<1)m.qty=0});
-  // routes approx = qty * 1 (each aircraft one route)
-  // annual capacity = qty * payload * util/avgFlightHrs * 2(round trips per day) * 300days... simplify: qty * payload * 4 (tons)
+  // annual capacity (吨) = qty × payload × util / avgFlightHrPerDay = qty × payload × util × 2 / 2.5 / 1000 * 300/365 simplified
+  // Use: tons/year = qty × payload(kg) × util(hr) × 0.8(load factor) / (avg flight 2.5hr) / 1000 × 0.8(turn ratio) ≈ qty × payload × util / (1000 × 2.5)
   var routeData=models.map(function(m){return m.qty});
-  var capData=models.map(function(m){return Math.round(m.qty*m.payload*800/(1000*2.5))}); // rough annual tons
+  var capData=models.map(function(m){return Math.round(m.qty*m.payload*m.util/(1000*2.5))});
 
   initC('chart-network',{
-    tooltip:{trigger:'axis'},
+    tooltip:{trigger:'axis',formatter:function(p){var i=p[0].dataIndex;return models[i].name+'<br>说明: '+models[i].note+'<br>单价: '+models[i].price+'万元<br>可购数量: '+models[i].qty+'架<br>年运力: ~'+capData[i]+'吨'}},
     legend:{data:['可购数量(架)','年运力估算(吨)'],top:10},
-    xAxis:{type:'category',data:models.map(function(m){return m.name}),axisLabel:{fontSize:10,rotate:20}},
+    grid:{left:60,right:60,top:50,bottom:80},
+    xAxis:{type:'category',data:models.map(function(m){return m.name}),axisLabel:{fontSize:10,rotate:25,interval:0}},
     yAxis:[{type:'value',name:'架',position:'left'},{type:'value',name:'吨/年',position:'right'}],
     series:[
-      {name:'可购数量(架)',type:'bar',data:routeData,itemStyle:{color:'#3b82f6'},barWidth:30,label:{show:true,position:'top',fontSize:11}},
-      {name:'年运力估算(吨)',type:'bar',data:capData,yAxisIndex:1,itemStyle:{color:'#f59e0b'},barWidth:30,label:{show:true,position:'top',fontSize:10}}
+      {name:'可购数量(架)',type:'bar',data:routeData,itemStyle:{color:'#3b82f6'},barWidth:24,label:{show:true,position:'top',fontSize:11}},
+      {name:'年运力估算(吨)',type:'bar',data:capData,yAxisIndex:1,itemStyle:{color:'#f59e0b'},barWidth:24,label:{show:true,position:'top',fontSize:10}}
     ]
   });
 })();
