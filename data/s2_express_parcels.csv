@@ -1,0 +1,11 @@
+﻿country,carrier,packages,unit,year,source_org,source_doc,source_url,status,notes
+China,全国快递业务量,1750.8,亿件,2024,国家邮政局,2024年邮政行业发展统计公报,https://www.spb.gov.cn/gjyzj/c100276/202501/460d02f2e54c4d0ebbba3a4f431d0042.shtml,verified,同比+21.5%;含EMS+民营快递
+China,同城快递,156.4,亿件,2024,国家邮政局,2024年邮政行业发展统计公报,https://www.spb.gov.cn/gjyzj/c100276/202501/460d02f2e54c4d0ebbba3a4f431d0042.shtml,verified,同比+14.6%
+China,异地快递,1555.7,亿件,2024,国家邮政局,2024年邮政行业发展统计公报,https://www.spb.gov.cn/gjyzj/c100276/202501/460d02f2e54c4d0ebbba3a4f431d0042.shtml,verified,同比+22.1%
+China,国际/港澳台,38.7,亿件,2024,国家邮政局,2024年邮政行业发展统计公报,https://www.spb.gov.cn/gjyzj/c100276/202501/460d02f2e54c4d0ebbba3a4f431d0042.shtml,verified,同比+26.3%
+US,全国包裹总量,238,亿件,2024,ShipMatrix,2024 US Parcel Market Report,https://shipmatrix.com/wp-content/uploads/2025/04/SMx-Press-Release-on-parcel-market-for-2024_4.10.2025.pdf,verified,US domestic parcel volume; 含所有承运商; 已扣除double-count
+US,USPS,72,亿件,2024(FY),USPS,FY2024 Annual Report,https://about.usps.com/newsroom/national-releases/2024/1114-usps-reports-fiscal-year-2024-results.htm,verified,7.3 billion shipping/package volume;USPS财年截止9月
+US,Amazon Logistics,61,亿件,2024,Amazon/Sherwood News,Amazon Logistics 2024,https://sherwood.news/business/amazon-delivered-9-billion-items-same-next-day-in-2024/,verified,6.1 billion packages;同比+7.3%;28%市场份额
+US,UPS,48,亿件,2024,UPS,2024 Annual Report 10-K,https://investors.ups.com/sec-filings/all-sec-filings/content/0001090727-25-000019/0001090727-25-000019.pdf,verified,4.8 billion packages;22.4M/day average;全球(含美国外)
+US,FedEx,34,亿件,2024(FY),FedEx,Q4 FY2024 Statistics,https://s21.q4cdn.com/665674268/files/doc_financials/2024/q4/FedEx-Q4-FY24-Stat-Book.pdf,verified,3.4 billion packages;FedEx财年截止5月
+US,其他承运商,23,亿件,2024,ShipMatrix,2024 US Parcel Market Report,https://shipmatrix.com/wp-content/uploads/2025/04/SMx-Press-Release-on-parcel-market-for-2024_4.10.2025.pdf,verified,2.3 billion packages; OnTrac/LaserShip/区域承运商; +44%同比

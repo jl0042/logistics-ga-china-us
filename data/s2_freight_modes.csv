@@ -1,0 +1,14 @@
+﻿country,mode,value,unit,year,source_org,source_doc,source_url,status,notes
+China,公路,418.80,亿吨,2024,交通运输部,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,营业性公路货运量;同比+3.8%
+China,铁路,51.75,亿吨,2024,交通运输部,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,同比+2.8%
+China,水运,98.11,亿吨,2024,交通运输部,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,内河49.53+海洋48.58;同比+4.7%
+China,民航(航空公司运输量),0.0898,亿吨,2024,交通运输部,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,898.16万吨;同比+22.1%;航空公司承运口径(不重复计算)
+China,民航(机场货邮吞吐量),0.2006,亿吨,2024,中国民用航空局,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,2006.19万吨;同比+19.2%;机场口径(起降双方计算)
+China,管道(油气主干管网),,亿吨,2024,国家能源局,中国能源大数据报告2024,http://www.nea.gov.cn/2024-07/26/c_1310782806.htm,partial,主干管网总里程10万千米;天然气2464亿立方米/原油2.13亿吨需要换算到管道运输量;MOT营业性公报未含管道
+China,合计(营业性,不含管道),568.75,亿吨,2024,交通运输部,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,公路+铁路+水运+民航;同比+3.9%
+US,公路(truck),113.5,亿吨,2024,American Trucking Associations (ATA),American Trucking Trends 2025,https://www.trucking.org/news-insights/ata-american-trucking-trends-2025,verified,11.27 billion short tons = 113.5 亿短吨 = 102.9 亿公吨; 占总tonnage的72.7%
+US,铁路(rail),16.5,亿吨,2024,Association of American Railroads (AAR),Rail Industry Overview Jan 2025,https://www.aar.org/wp-content/uploads/2025/01/AAR-RIO-January-10-FINAL.pdf,partial,carload only ~10亿吨+intermodal estimate;占总tonnage的~10.6%(ATA数据)
+US,水运(water),~7-8,亿吨,2023,US Army Corps of Engineers,Waterborne Commerce of the United States 2023,https://www.iwr.usace.army.mil/About/Technical-Centers/WCSC-Waterborne-Commerce-Statistics-Center/WCSC-Waterborne-Commerce/,unverified,具体2023数字待USACE公布;历史2022约7.5-8亿短吨
+US,民航(air),0.30,亿吨,2023,综合估算,Wikipedia US Cargo Airports 2023 + ICAO US national,https://en.wikipedia.org/wiki/List_of_largest_cargo_airports_in_the_United_States,unverified,~30million metric tonnes;BTS T-100精确数字未抓到
+US,管道(pipeline),~33,亿吨,2023,综合估算,FAF 5.7 + EIA petroleum movements,https://www.bts.gov/faf,unverified,主要是石油+天然气液;具体数字待FAF直接抓取
+US,合计(估算),~155-165,亿吨,2024,综合估算,ATA + AAR + USACE + EIA + BTS,https://www.bts.gov/product/freight-facts-and-figures,unverified,truck占72.7%反推总量~15.5B short tons=155亿短吨

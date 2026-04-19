@@ -1,0 +1,15 @@
+﻿country,category,count,unit,year,source_org,source_doc,source_url,status,notes
+China,运输飞机(在册),4394,架,2024,中国民用航空局(CAAC),2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,期末在册;同比+124架;含客机+货机+公务机
+China,通用航空器(在册),3232,架,2024(?),中国民用航空局,CAAC 民航行业统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/index_1214.html,unverified,网页当前数字3232;具体年份需要从2024公报核实;可能是2023或更早数据
+China,运输机场(颁证),259,个,2024,中国民用航空局(CAAC),2024年民航运输机场生产统计公报,http://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353469776556.pdf,verified,境内运输机场(港澳台另算)
+China,通用机场(颁证),475,个,2024,中国民用航空局(CAAC),CAAC 通航机场名录2024.12,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/index_1214.html,verified,通航机场目录2024年第三季度数据
+China,民用机场合计(运输+通航),734,个,2024,综合,运输259+通航475,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/index_1214.html,verified,口径A;不含私用
+China,定期航班通航城市,258,个,2024,CAAC,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,不含港澳台
+China,注册无人机,217.7,万架,2024,CAAC,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,大幅增长
+US,通用航空飞机(GA active),~204000,架,2023,FAA,General Aviation Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation,verified,GA active aircraft;包含活塞+涡轴+涡桨+喷气+rotorcraft
+US,商业航空(运输类),~7800,架,2024,FAA,Air Carriers/Commercial Operators,https://www.faa.gov/regulations_policies/handbooks_manuals/aircraft,partial,FAR Part 121 + Part 135 commercial fleets
+US,NPIAS机场总数,3287,个,2025-2029,FAA,NPIAS 2025-2029 Narrative,https://www.faa.gov/airports/planning_capacity/npias,verified,Primary+Nonprimary+Reliever+GA;不含私用
+US,Commercial Service Primary,395,个,2025-2029,FAA,NPIAS 2025-2029 Narrative,https://www.faa.gov/airports/planning_capacity/npias,verified,定期航班服务机场
+US,FAA登记所有民用机场,~19969,个,2024,FAA,Airport Master Record,https://www.faa.gov/airports/airport_safety/airportdata_5010,verified,含14852个私用机场;为口径B"完全包含"
+US,人口(2024),3.40,亿,2024,US Census Bureau,2024 Population Estimates,https://www.census.gov/popclock/,verified,
+China,人口(2024),14.08,亿,2024,国家统计局,2024年国民经济和社会发展统计公报,https://www.stats.gov.cn/sj/zxfb/202502/t20250228_1958817.html,verified,
