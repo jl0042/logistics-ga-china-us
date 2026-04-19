@@ -1,0 +1,36 @@
+﻿metro,longitude,latitude,gdp_2023_usd_billion,source_url,notes
+New York-Newark-Jersey City,-74.00,40.71,2283,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA Real GDP by Metropolitan Area 2023
+Los Angeles-Long Beach-Anaheim,-118.24,34.05,1245,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Chicago-Naperville-Elgin,-87.63,41.88,897,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+San Francisco-Oakland-Berkeley,-122.42,37.77,782,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Dallas-Fort Worth-Arlington,-96.80,32.78,735,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Washington-Arlington-Alexandria,-77.04,38.91,701,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Houston-The Woodlands-Sugar Land,-95.36,29.76,668,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Boston-Cambridge-Newton,-71.06,42.36,613,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Atlanta-Sandy Springs-Alpharetta,-84.39,33.75,546,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Philadelphia-Camden-Wilmington,-75.16,39.95,542,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Miami-Fort Lauderdale-Pompano Beach,-80.19,25.76,500,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Seattle-Tacoma-Bellevue,-122.33,47.61,495,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Phoenix-Mesa-Chandler,-112.07,33.45,361,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Detroit-Warren-Dearborn,-83.05,42.33,325,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+San Diego-Chula Vista-Carlsbad,-117.16,32.72,312,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Minneapolis-St. Paul-Bloomington,-93.27,44.98,310,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Denver-Aurora-Lakewood,-104.99,39.74,294,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Riverside-San Bernardino-Ontario,-117.40,34.00,267,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Charlotte-Concord-Gastonia,-80.84,35.23,244,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Baltimore-Columbia-Towson,-76.61,39.29,234,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Tampa-St. Petersburg-Clearwater,-82.46,27.95,230,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+St. Louis,-90.20,38.63,222,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Portland-Vancouver-Hillsboro,-122.68,45.52,215,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Orlando-Kissimmee-Sanford,-81.38,28.54,206,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Austin-Round Rock-Georgetown,-97.74,30.27,200,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Sacramento-Roseville-Folsom,-121.49,38.58,190,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Cincinnati,-84.51,39.10,185,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Pittsburgh,-79.99,40.44,180,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Indianapolis-Carmel-Anderson,-86.16,39.77,176,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Las Vegas-Henderson-Paradise,-115.14,36.17,175,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Nashville-Davidson-Murfreesboro,-86.78,36.16,170,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Columbus OH,-83.00,39.96,170,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Kansas City,-94.58,39.10,158,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Honolulu,-157.86,21.31,74,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023
+Anchorage,-149.90,61.22,33,https://www.bea.gov/data/gdp/gdp-metropolitan-area,BEA 2023

@@ -15,7 +15,7 @@
   --radius:12px;--max-w:1280px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter','Noto Sans SC',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden}
+body{font-family:'Inter','Noto Sans SC',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden;overflow-wrap:break-word;line-break:strict;word-break:normal}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,23,42,.95);backdrop-filter:blur(12px);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
 nav .logo{color:#fff;font-weight:700;font-size:14px;white-space:nowrap}
 nav .links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
@@ -46,7 +46,7 @@ nav .links a:hover{color:#fff;background:rgba(255,255,255,.1)}
 .insight{border-left:4px solid var(--primary);background:#eff6ff;padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:13px;line-height:1.8}
 .insight.red{border-left-color:var(--cn);background:#fef2f2}
 .insight.green{border-left-color:#16a34a;background:#f0fdf4}
-.insight b{display:block;margin-bottom:3px;font-size:14px}
+.insight b:first-child{display:block;margin-bottom:3px;font-size:14px}
 .analysis-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
 .analysis-card h4{font-size:15px;font-weight:700;margin-bottom:6px}
 .analysis-card p{font-size:13px;color:var(--text2);line-height:1.8}
@@ -75,12 +75,13 @@ nav .links a:hover{color:#fff;background:rgba(255,255,255,.1)}
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#0f172a,#1e3a5f,#0f172a);color:#fff;padding:80px 24px;position:relative}
 .hero-title{font-size:clamp(28px,5vw,50px);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:14px}
 .hero-sub{font-size:clamp(14px,2.5vw,19px);color:rgba(255,255,255,.55);margin-bottom:40px;max-width:600px}
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;max-width:860px;width:100%}
-.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:22px 16px;opacity:0;transform:translateY(24px);transition:all .5s}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:720px;width:100%}
+.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px 16px;opacity:0;transform:translateY(24px);transition:all .5s}
 .stat-card.visible{opacity:1;transform:translateY(0)}
-.stat-card .num{font-size:clamp(22px,3.5vw,34px);font-weight:800;margin-bottom:3px}
-.stat-card .num .cn{color:#f87171}.stat-card .num .us{color:#60a5fa}.stat-card .num .vs{color:rgba(255,255,255,.25);font-size:.55em;margin:0 3px}
+.stat-card .num{font-size:clamp(18px,2.8vw,28px);font-weight:800;margin-bottom:3px;white-space:nowrap}
+.stat-card .num .cn{color:#f87171}.stat-card .num .us{color:#60a5fa}.stat-card .num .vs{color:rgba(255,255,255,.25);font-size:.5em;margin:0 4px}
 .stat-card .lbl{font-size:12px;color:rgba(255,255,255,.4)}
+@media(max-width:500px){.stat-grid{grid-template-columns:1fr}.stat-card .num{font-size:clamp(16px,5vw,24px)}}
 footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-align:center;font-size:12px}
 .text-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);font-size:14px;line-height:2;color:var(--text)}
 .text-block h4{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text)}
@@ -129,14 +130,13 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
 <!-- HERO -->
 <section id="hero" class="sec">
-  <div class="hero-title">物流通航：中美需求对比分析</div>
-  <div class="hero-sub">从人口、GDP、机场分布出发，以第一性原理推导物流飞行器需求</div>
+  <div class="hero-title">中国物流通航：无人货运飞机能改变什么？</div>
+  <div class="hero-sub">从地理、成本、需求出发，用第一性原理推导中国需要什么样的无人货运飞机，以及这门生意能不能做</div>
   <div class="stat-grid">
     <div class="stat-card" style="transition-delay:0s"><div class="num"><span class="cn">14亿</span><span class="vs">vs</span><span class="us">3.3亿</span></div><div class="lbl">人口</div></div>
-    <div class="stat-card" style="transition-delay:.15s"><div class="num"><span class="cn">475</span><span class="vs">vs</span><span class="us">19,969</span></div><div class="lbl">通航机场</div></div>
-    <div class="stat-card" style="transition-delay:.15s"><div class="num"><span class="cn">3,232</span><span class="vs">vs</span><span class="us">210,000</span></div><div class="lbl">通航飞机</div></div>
-    <div class="stat-card" style="transition-delay:.3s"><div class="num"><span class="cn">14.1%</span><span class="vs">vs</span><span class="us">8.8%</span></div><div class="lbl">物流成本/GDP</div></div>
-    <div class="stat-card" style="transition-delay:.45s"><div class="num" style="font-size:clamp(18px,2.5vw,26px);color:#22c55e">无人机改变什么？</div><div class="lbl">Game Changer?</div></div>
+    <div class="stat-card" style="transition-delay:.12s"><div class="num"><span class="cn">734</span><span class="vs">vs</span><span class="us">3,287</span></div><div class="lbl">民用机场 (含运输+通航)</div></div>
+    <div class="stat-card" style="transition-delay:.24s"><div class="num"><span class="cn">3,232</span><span class="vs">vs</span><span class="us">21万</span></div><div class="lbl">通航飞机</div></div>
+    <div class="stat-card" style="transition-delay:.36s"><div class="num"><span class="cn">14.1%</span><span class="vs">vs</span><span class="us">8.8%</span></div><div class="lbl">物流成本/GDP</div></div>
   </div>
   <div style="position:absolute;bottom:28px;color:rgba(255,255,255,.25);font-size:12px">&#8595; 向下滚动</div>
 </section>
@@ -146,15 +146,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner">
     <div class="sec-label">01 -- 地理与经济</div>
     <div class="sec-title fade-in">人口、GDP 和机场，全都集中在东边</div>
-    <div class="sec-sub fade-in">下面三张地图可以切换图层. 你会先看到一件事: 中国的人和钱挤在胡焕庸线以东, 机场也挤在那里. 西部 55% 的国土, 在三张图上几乎都是浅色.</div>
+    <div class="sec-sub fade-in">下面三张地图可以切换图层。你会先看到一件事：中国的人和钱挤在胡焕庸线以东，机场也挤在那里。西部 55% 的国土，在三张图上几乎都是浅色。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">中国机场和人口都集中在东部, 西部 55% 国土上的机场密度比美国最穷的州 (密西西比) 还低。</div>
+      <div class="thesis-line">中国机场和人口都集中在东部，西部 55% 国土上的机场密度比美国最穷的州（密西西比）还低。</div>
       <ul class="thesis-evidence">
-        <li>散点图: 中国最富的上海/北京, 人均机场仍低于美国最穷的密西西比一个数量级</li>
-        <li>6 小时公路圈覆盖测试: 中国 80% GDP 已被覆盖, 美国仅 ~50% — 反过来美国机场更必要</li>
-        <li>人均通航机场: 中国 0.34 vs 美国 60.5 (差 178 倍, 详见 S2)</li>
+        <li>散点图：中国最富的上海/北京，人均机场仍低于美国最穷的密西西比一个数量级</li>
+        <li>6 小时公路圈覆盖测试：中国 80% GDP 已被覆盖，美国仅 ~50% — 反过来美国机场更必要</li>
+        <li>每百万人民用机场：中国 0.52 vs 美国 9.8（差约 19 倍；详见 S2 方法论说明）</li>
       </ul>
     </div>
     <div class="toggle-group" id="map-toggle">
@@ -171,41 +171,52 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <div class="grid2">
       <div class="card">
         <div class="chart-title">中国 -- 省级数据 + 主要机场分布 (40个)</div>
-        <div class="chart-desc" id="cn-map-desc">底色=人口密度(人/km2), 圆点=机场(按类型着色)</div>
+        <div class="chart-desc" id="cn-map-desc">底色=人口密度（人/km2），圆点=机场（按类型着色）</div>
         <div id="map-cn" class="chart-box" style="height:520px"></div>
-        <div class="source">数据来源: 国家统计局2024年统计公报; CAAC 2024年民航行业统计公报</div>
+        <div class="source">数据来源：人口与人均 GDP 来自各省 2024 国民经济和社会发展统计公报 (国家统计局 NBS); 机场数据来自 CAAC 2024 民航行业发展统计公报 (运输 + 通航合并). 胡焕庸线 (1935 年提出, 黑河-腾冲) 为视觉参考. 详细数据: <a href="data/s1_cn_provinces.csv">s1_cn_provinces.csv</a></div>
       </div>
       <div class="card">
         <div class="chart-title">美国 -- 各州数据 + 主要机场分布 (45个)</div>
-        <div class="chart-desc" id="us-map-desc">底色=人口密度(人/km2), 圆点=机场(按类型着色)</div>
+        <div class="chart-desc" id="us-map-desc">底色=人口密度（人/km2），圆点=机场（按类型着色）</div>
         <div id="map-us" class="chart-box" style="height:520px"></div>
-        <div class="source">数据来源: US Census Bureau 2024; BEA GDP by State Q4 2024; FAA NPIAS 2025</div>
+        <div class="source">数据来源：人口数据来自 US Census Bureau 2024; 人均 GDP 来自 BEA Real GDP by State 2023; 机场数据来自 FAA NPIAS 2025-2029 (含 Primary + Nonprimary + Reliever + GA, 不含私用机场). 详细数据: <a href="data/s1_us_states.csv">s1_us_states.csv</a></div>
       </div>
     </div>
     <div class="card fade-in" style="margin-top:20px">
-      <div class="chart-title">GDP 人均 vs 每百万人通航机场数</div>
-      <div class="chart-desc">气泡大小 = 人口规模. 关注右下角: 美国最穷的密西西比 (人均 GDP $48k, 每百万人 ~30 个机场) 仍然在中国最富的上海/北京 (人均 GDP ¥18万, 每百万人 0.7-0.9 个机场) 之上. 这说明航空基础设施的差距, 跟富不富没关系.</div>
+      <div class="chart-title">人口密度 vs 机场密度</div>
+      <div class="chart-desc">每个气泡 = 一个省 / 一个州，大小代表人口规模。横轴：人口密度（人/km²，对数刻度）。纵轴：民用机场（通航 + 运输）每百万人（对数刻度）。<b>正常预期是：人口密度越高，机场/人口比越低（因为一个机场能服务的人口更多）</b>——这在中美都成立。关键是<b>纵轴的绝对位置</b>：美国所有州都在纵轴 1 个/百万人以上，阿拉斯加达 338；中国所有省都在 0.2-0.5 个/百万人之间。同等人口密度下，美国机场密度比中国高 10-100 倍。<br><span style="color:#94a3b8;font-size:12px">交互提示：鼠标滚轮在图中缩放；右上角工具条可框选放大 / 还原；下方/右侧滑块拖拽平移。</span></div>
       <div id="chart-scatter" class="chart-box"></div>
-      <div class="source">综合分析基于: 国家统计局2024; US BEA 2024; CAAC 2024; FAA NPIAS 2025. 注: 美国 19,969 个 NPIAS 机场中大部分是&lt;2,000ft 的草地跑道, 数量本身有水分; 但分布的悬殊是真实的</div>
+      <div class="source">数据来源：中国人均 GDP 来自各省 2024 统计公报 (NBS); 美国来自 BEA 2023; 机场数采用口径 A (民用机场全集, 不含私用) — 中国 734 (CAAC 475 通航 + 259 运输, 2024.12), 美国 3,287 (FAA NPIAS 2025-2029). 详细数据: <a href="data/s1_cn_provinces.csv">s1_cn_provinces.csv</a> · <a href="data/s1_us_states.csv">s1_us_states.csv</a> · <a href="data/s1_airport_counts.csv">s1_airport_counts.csv</a></div>
     </div>
 
     <!-- Truck Radius GDP Coverage Analysis -->
     <div class="card fade-in" style="margin-top:20px">
-      <div class="chart-title">从货运枢纽出发, 6/12/24 小时公路圈能罩住多少 GDP?</div>
-      <div class="chart-desc">以主要货运枢纽为圆心, 按公路平均速度画覆盖半径. 中国 60 km/h, 美国 80 km/h (来源: 中国交通运输部公路网络速度统计 / FHWA 美国公路统计 2024). <b>注意一个反直觉的事</b>: 这张图覆盖率高的地区, 反而说明公路够用, 航空空间小. 反之, 覆盖率低的地区才是航空的机会.</div>
+      <div class="chart-title">从货运枢纽出发, 6/12/24/48 小时公路圈能罩住多少 GDP?</div>
+      <div class="chart-desc">以主要货运枢纽为圆心，按公路平均速度画覆盖半径。中国 60 km/h，美国 80 km/h（含高速 + 普通公路加权平均）。<b>注意一个反直觉的事</b>：这张图覆盖率高的地区，反而说明公路够用，航空空间小。反之，覆盖率低的地区才是航空的机会。</div>
       <div class="toggle-group" id="radius-toggle">
         <button class="toggle-btn active" onclick="switchRadius(6)">6小时</button>
         <button class="toggle-btn" onclick="switchRadius(12)">12小时</button>
         <button class="toggle-btn" onclick="switchRadius(24)">24小时</button>
+        <button class="toggle-btn" onclick="switchRadius(48)">48小时</button>
       </div>
-      <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
-        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:10px 18px;font-size:15px;font-weight:700">
-          中国GDP覆盖: <span id="cn-gdp-cover" style="color:#dc2626;font-size:20px">--</span>%
+      <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;line-height:1.5">
+          <div style="color:#7f1d1d;font-size:11px">中国 — Top35 城市 GDP</div>
+          <div>覆盖: <span id="cn-gdp-cover" style="color:#dc2626;font-size:18px;font-weight:700">--</span>%</div>
         </div>
-        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 18px;font-size:15px;font-weight:700">
-          美国GDP覆盖: <span id="us-gdp-cover" style="color:#2563eb;font-size:20px">--</span>%
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;line-height:1.5">
+          <div style="color:#7f1d1d;font-size:11px">中国 — 分省 GDP (面积加权)</div>
+          <div>覆盖: <span id="cn-area-cover" style="color:#dc2626;font-size:18px;font-weight:700">--</span>%</div>
         </div>
-        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 18px;font-size:13px;color:var(--text2);display:flex;align-items:center">
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;line-height:1.5">
+          <div style="color:#1e3a8a;font-size:11px">美国 — Top35 MSA GDP</div>
+          <div>覆盖: <span id="us-gdp-cover" style="color:#2563eb;font-size:18px;font-weight:700">--</span>%</div>
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;line-height:1.5">
+          <div style="color:#1e3a8a;font-size:11px">美国 — 分州 GDP (面积加权)</div>
+          <div>覆盖: <span id="us-area-cover" style="color:#2563eb;font-size:18px;font-weight:700">--</span>%</div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 14px;font-size:12px;color:var(--text2);display:flex;align-items:center">
           <span id="radius-info">半径: 中国360km / 美国480km</span>
         </div>
       </div>
@@ -217,7 +228,10 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <b id="radius-insight">分析加载中...</b>
         <span id="radius-insight-text"></span>
       </div>
-      <div class="source">假设: 中国公路平均速度60km/h (含高速+普通), 美国80km/h | GDP数据: 国家统计局2024, US BEA 2024 | 枢纽: 中国10大+美国10大货运机场</div>
+      <div class="source" style="line-height:1.7">
+        <b>数据来源</b>：城市 GDP 来自各市统计局 2024 国民经济和社会发展统计公报; 美国 MSA GDP 来自 BEA Real GDP by Metropolitan Area 2023; 货运枢纽 cargo 量来自 ACI World Airport Traffic Report 2024 + 各机场年报 + 顺丰控股 2024 年报 (鄂州花湖). 公路速度: 中国交通运输部公路网络速度统计 (60 km/h) / 美国 FHWA Highway Statistics 2024 (80 km/h). 驾驶法规: 美国 FMCSA HOS 49 CFR 395 / 中国《道路运输条例》. 详细数据: <a href="data/s1_cn_cities.csv">s1_cn_cities.csv</a> · <a href="data/s1_us_metros.csv">s1_us_metros.csv</a> · <a href="data/s1_cargo_hubs.csv">s1_cargo_hubs.csv</a><br>
+        <b>关键假设</b>：(1) 图中"小时数" = 车辆在途时间, <b>不是单人驾驶时间</b>。美国 FMCSA HOS 规定单人最多连续驾驶 11 小时 (单日跑 ~880 km); 中国《道路运输条例》单日累计不超过 8 小时 (~480 km)。本图按双班制 / 中转接力计算 — 这是 FedEx 长途、顺丰跨省"甩挂" + 中转换司机的标准做法, 卡车实际 24 小时连续在途。(2) GDP 覆盖给出两个互补口径: <b>(A) Top35 城市加权</b> = 头部经济中心是否被覆盖 (中国 Top35 城市覆盖全国 GDP ~60%, 美国 Top35 MSA ~65%); <b>(B) 分省/州面积加权</b> = 按地理面积看实际覆盖比例 (西部大省/州权重更高)。两个口径数字差距越大, 说明该国经济越集中。
+      </div>
     </div>
   </div>
 </section>
@@ -226,27 +240,46 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s2" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">02 -- 基础设施差距</div>
-    <div class="sec-title fade-in">178 倍的差距</div>
-    <div class="sec-sub fade-in">中国每百万人 0.34 个通航机场, 美国 60.5 个. 这一节用六张图把这个差距的形状描清楚 — 不仅是数量, 更重要的是结构.</div>
+    <div class="sec-title fade-in">机场差 19 倍，飞机差 277 倍</div>
+    <div class="sec-sub fade-in">按可比口径统计（民用机场全集：运输 + 通航，不含私用农场跑道）：中国每百万人 0.52 个民用机场，美国 9.8 个，相差约 19 倍。通航飞机差距更大——中国 3,232 架 vs 美国 21 万架，每百万人相差 277 倍。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">中国货量是美国 3.5 倍, 但其中只有 0.036% 走航空, 美国是 0.28% — 差了 8 倍。</div>
+      <div class="thesis-line">中国货量是美国 3.5 倍，但其中只有 0.036% 走航空，美国是 0.28% — 差了 8 倍。</div>
       <ul class="thesis-evidence">
-        <li>1,750 亿件快递 vs 美国 210 亿件; 但中国航空货运 2,006 万吨 vs 美国 4,500 万吨</li>
+        <li>1,750 亿件快递 vs 美国 210 亿件；但中国航空货运 2,006 万吨 vs 美国 4,500 万吨</li>
         <li>物流成本占 GDP 14.1% vs 美国 8.8% — 运输结构是其中一个原因</li>
-        <li>关键反向洞察: 美国电商更小, 航空货运反而更大 — 说明驱动力是高价值制成品, 不是快递</li>
+        <li>关键反向洞察：美国电商更小，航空货运反而更大 — 说明驱动力是高价值制成品，不是快递</li>
       </ul>
     </div>
+    <!-- 机场口径方法论说明 -->
+    <div class="fade-in" style="background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:8px;padding:14px 18px;margin-bottom:16px">
+      <div style="font-weight:700;color:#92400e;margin-bottom:6px">机场口径说明 — 为什么是 19 倍，不是 178 倍？</div>
+      <div style="font-size:13px;color:#78350f;line-height:1.7">
+        过去常见的"中国 475 vs 美国 19,969 = 178 倍"比较并不公平：左边是 CAAC 注册的通航机场，右边是 FAA 登记的<b>所有</b>民用机场——包括 14,852 个私用设施（农场草地跑道、私人直升机坪）。这不是同一把尺子。<br>
+        本节采用两个可比口径（原始数据见 <a href="data/s1_airport_counts.csv" style="color:#b45309">data/s1_airport_counts.csv</a>）：
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
+        <div style="background:#fff;border:1px solid #fde68a;border-radius:6px;padding:10px 14px">
+          <div style="font-size:12px;font-weight:700;color:#92400e">口径 A (主): 民用机场全集</div>
+          <div style="font-size:12px;color:#78350f;line-height:1.6;margin-top:4px">运输 + 通航，不含私用。中国 734 (259+475) vs 美国 3,287 (NPIAS)。<b>每百万人 0.52 vs 9.8，差 19 倍。</b></div>
+        </div>
+        <div style="background:#fff;border:1px solid #fde68a;border-radius:6px;padding:10px 14px">
+          <div style="font-size:12px;font-weight:700;color:#92400e">口径 B (参考): 只算运输机场</div>
+          <div style="font-size:12px;color:#78350f;line-height:1.6;margin-top:4px">仅计定期航班商用机场。中国 259 vs 美国 395 (NPIAS Commercial)。<b>每百万人 0.18 vs 1.18，差 6.5 倍。</b></div>
+        </div>
+      </div>
+    </div>
+
     <div class="grid2">
-      <div class="card"><div class="chart-title">每百万人通航设施</div><div id="chart-gap1" class="chart-box" style="height:280px"></div><div class="source">CAAC: 475通航机场(2024.12); FAA: 19,969(NPIAS 2025)</div></div>
-      <div class="card"><div class="chart-title">每百万人通航飞机</div><div id="chart-gap2" class="chart-box" style="height:280px"></div><div class="source">CAAC: 3,232架(2024); FAA GA Survey CY2024: ~210,000架</div></div>
+      <div class="card"><div class="chart-title">每百万人民用机场 (口径 A)</div><div id="chart-gap1" class="chart-box" style="height:280px"></div><div class="source">中国 734 (CAAC 2024.12: 475 通航 + 259 运输) / 美国 3,287 (FAA NPIAS 2025-2029 Narrative); 人口: 国家统计局 2023 / US Census 2023</div></div>
+      <div class="card"><div class="chart-title">每百万人通航飞机</div><div id="chart-gap2" class="chart-box" style="height:280px"></div><div class="source">CAAC 2024 民航行业发展统计公报: 3,232 架通航飞机 / FAA GA Survey CY2024: ~210,000 架</div></div>
     </div>
 
     <!-- 1. Stacked total freight by mode -->
     <div class="card fade-in" style="margin-top:24px">
       <div class="chart-title">货运总量结构对比 (亿吨, 2024)</div>
-      <div class="chart-desc">中国总货运量 555 亿吨, 是美国 159 亿吨的 3.5 倍 — 但结构完全不同. <b>注意</b>: 中美统计口径不同 (中国按"发送量", 美国按"吨英里"换算回吨数), 此处仅看数量级</div>
+      <div class="chart-desc">中国总货运量 555 亿吨，是美国 159 亿吨的 3.5 倍 — 但结构完全不同。<b>注意</b>：中美统计口径不同（中国按"发送量"，美国按"吨英里"换算回吨数），此处仅看数量级</div>
       <div id="chart-freight-stack" class="chart-box" style="height:380px"></div>
       <div class="source">中国: 交通运输部《2024年交通运输行业发展统计公报》; 美国: BTS National Transportation Statistics 2024; US Army Corps of Engineers (水运); EIA (管道)</div>
     </div>
@@ -277,7 +310,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
       <div class="card fade-in">
         <div class="chart-title">快递单量 vs 航空货运量</div>
-        <div class="chart-desc">中国快递量是美国8倍, 但航空货运仅为美国的45%</div>
+        <div class="chart-desc">中国快递量是美国8倍，但航空货运仅为美国的45%</div>
         <div id="chart-express-vs-air" class="chart-box" style="height:280px"></div>
         <div class="source">国家邮政局2024; CAAC 2024; BTS 2024; USPS/UPS/FedEx年报</div>
       </div>
@@ -299,24 +332,25 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- 5. Conclusion -->
     <div class="insight fade-in" style="margin-top:16px">
-      <b>货多、路有, 但天上不够 — 而且这事不只是"修机场"能解决的</b>
-      中国货运总量是美国的 3.5 倍 (口径有差异, 但数量级真实), 航空占比 0.036% vs 0.28%, 差 8 倍. 人均快递 125 件/年 (美国 64), 末端需求远超美国, 但飞起来的反而少了一半.<br><br>
-      物流成本占 GDP 14.1% vs 美国 8.8% — 高了 5.3 个百分点. 这里要诚实: 这 5.3pp 不全是运输结构的锅. CSCMP 的口径里, 仓储+库存+管理成本约占总物流成本的 1/3, 中美在这块也有差异 (中国仓储自动化率低、库存周转慢). 运输结构 (公路占比过高、航空和多式联运不足) 是其中一个重要原因, 但不是唯一原因.<br><br>
-      <strong>真正值得想的反向问题</strong>: 美国电商 (人均 64 件/年) 比中国小一半, 航空货运反而是中国的 2 倍多. 这说明航空货运的真正驱动力<b>不是快递</b>, 是高价值制成品 (电子、医药、零部件). 也就是说, 中国想把航空货运拉到美国水平, <b>靠京东淘宝再增长是没用的, 必须靠产业升级</b> — 这是这一节最反直觉的一条结论.
+      <b>货多、路有，但天上不够 — 而且这事不只是"修机场"能解决的</b>
+      中国货运总量是美国的 3.5 倍（口径有差异，但数量级真实），航空占比 0.036% vs 0.28%，差 8 倍。人均快递 125 件/年（美国 64），末端需求远超美国，但飞起来的反而少了一半。<br><br>
+      物流成本占 GDP 14.1% vs 美国 8.8% — 高了 5.3 个百分点。这里要诚实：这 5.3pp 不全是运输结构的锅。CSCMP 的口径里，仓储+库存+管理成本约占总物流成本的 1/3，中美在这块也有差异（中国仓储自动化率低、库存周转慢）。运输结构（公路占比过高、航空和多式联运不足）是其中一个重要原因，但不是唯一原因。<br><br>
+      <strong>真正值得想的反向问题</strong>：美国电商（人均 64 件/年）比中国小一半，航空货运反而是中国的 2 倍多。这说明航空货运的真正驱动力<b>不是快递</b>，是高价值制成品（电子、医药、零部件）。也就是说，中国想把航空货运拉到美国水平，<b>靠京东淘宝再增长是没用的，必须靠产业升级</b> — 这是这一节最反直觉的一条结论。
     </div>
     <div class="text-block fade-in" style="margin-top:12px">
-      <h4>这个判断会被什么放大, 又会被什么削弱?</h4>
-      <h5>放大这个判断的因素:</h5>
+      <h4>接下来可能发生什么？</h4>
+      <p>上面的差距是真实的，但差距会不会缩小、还是继续扩大，取决于几股力量的拉扯。</p>
+      <h5>让航空货运占比上升的力量：</h5>
       <ul>
-        <li><b>时效溢价</b>: 中国电商"次日达"预期持续渗透到低线城市和农村 — 这部分新需求中, 高价值生鲜/医药/电子的比例在上升, 是航空货运的菜</li>
-        <li><b>冷链增长</b>: 生鲜电商、医药冷链年增速超 20%. 这类货物时效敏感, 航空几乎是唯一选择</li>
-        <li><b>产业升级</b>: 中国制造业向高端 (电池、半导体、生物医药) 升级, 高价值小件出口比例上升 — 这才是航空货运占比能否赶上美国的真正变量</li>
+        <li>电商"次日达"预期正在渗透到三四线城市和农村。这些新增需求里面，高价值的生鲜、医药、电子产品比例在上升，这些品类对时效极度敏感，几乎只有航空能满足。</li>
+        <li>生鲜电商和医药冷链年增速超过 20%，是航空货运增长最确定的方向。</li>
+        <li>中国制造业正在向高端升级（电池、半导体、生物医药）。高价值小件出口比例上升，这才是航空货运占比能否赶上美国的真正变量——美国航空货运量大，靠的不是快递多，而是高价值制成品多。</li>
       </ul>
-      <h5>削弱这个判断的因素:</h5>
+      <h5>让航空货运增长放慢的力量：</h5>
       <ul>
-        <li><b>高铁快运扩张</b>: 中铁快运在 500-1,500 km 距离段持续抢市场, 可能压制航空增长 (S5 详细分析)</li>
-        <li><b>公路网络完善</b>: 中国高速公路 18.4 万 km (全球第一), 边际新增公路投资 ROI 还在, 短期不会让位给航空</li>
-        <li><b>统计口径差异</b>: 中美"货运量"统计不同, 8 倍这个数字本身有 ±20-30% 的不确定性, 但数量级反差是真实的</li>
+        <li>高铁快运在 500-1,500 公里距离段抢得很凶，而且还在扩张（详见下一节）。</li>
+        <li>中国高速公路已经 18.4 万公里，全球第一。公路越修越好，短途货运就越不需要飞机。</li>
+        <li>统计口径本身有误差：中美"货运量"统计方法不同，"8 倍"这个数字可能有 ±20-30% 的偏差。但数量级的反差是真实的——即使打完折扣，差距仍然在 5-10 倍。</li>
       </ul>
     </div>
   </div>
@@ -326,23 +360,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s3" class="sec">
   <div class="sec-inner">
     <div class="sec-label">03 -- 第一性原理需求分析</div>
-    <div class="sec-title fade-in">物流公司什么时候会主动买飞机?</div>
-    <div class="sec-sub fade-in">物流公司不会因为"地图上有空白"就买飞机. 它们买飞机只在三种情况下: 地面到不了、地面太慢、地面太贵. 中国西部能不能至少打中一条?</div>
+    <div class="sec-title fade-in">物流公司什么时候会主动买飞机？</div>
+    <div class="sec-sub fade-in">物流公司不会因为"地图上有空白"就买飞机。它们买飞机只在三种情况下：地面到不了、地面太慢、地面太贵。中国西部能不能至少打中一条？</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">中国西部能稳定打中"地面到不了"这一条; 部分时段 (冬季封路) 还能打中"太慢". 但靠"便宜"这条路在中国走不通。</div>
+      <div class="thesis-line">中国西部能稳定打中"地面到不了"这一条；部分时段（冬季封路）还能打中"太慢"。但靠"便宜"这条路在中国走不通。</div>
       <ul class="thesis-evidence">
-        <li>三问框架: 覆盖 / 速度 / 成本, 至少打中一条才有航空</li>
-        <li>西部 12 省公路密度 0.17 km/km² (全国均 0.47); 拉萨-林芝冬季封路是常态</li>
-        <li>阿拉斯加可作为<b>技术可行性</b>参考, 但商业模式不能照搬 (USPS 补贴 ~$80M/yr)</li>
+        <li>三问框架：覆盖 / 速度 / 成本，至少打中一条才有航空</li>
+        <li>西部 12 省公路密度 0.17 km/km²（全国均 0.47）；拉萨-林芝冬季封路是常态</li>
+        <li>阿拉斯加可作为<b>技术可行性</b>参考，但商业模式不能照搬（USPS 补贴 ~$80M/yr）</li>
       </ul>
     </div>
 
     <div class="grid3 fade-in">
-      <div class="analysis-card"><span class="tag" style="background:#f0fdf4;color:#16a34a">三问框架</span><h4>物流公司的三个根本问题</h4><p>1. <b>覆盖</b>: 地面运输到不了的地方怎么办?<br>2. <b>速度</b>: 时敏货物能否比地面快?<br>3. <b>成本</b>: 单位成本能否与地面竞争?<br><br>三个条件至少打中一个, 飞机才有得做. 三个都不打中, 再多政策补贴也撑不起来.</p></div>
-      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国西部</span><h4>"覆盖"这一条最稳</h4><p>西部 55% 国土公路密度 0.17 km/km² (全国均 0.47). 西藏铁路目前已超 1,400 km (青藏 + 拉日 + 拉林), 但覆盖 122 万 km² 仍稀疏. 1,750 亿件快递, 农村末端配送 5-7 天.<br><br>电商对"次日达"的预期, 已经渗透到三四线城市. 西部基础设施跟不上 — 这是"地面到不了"这一条最实在的需求.</p><div class="source">交通运输部 2024 统计; 国家邮政局 2024</div></div>
-      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国阿拉斯加</span><h4>仅作技术可行性参考</h4><p>170 万 km² 中 91% 无公路. ~80% 远端社区靠航空物流. 3,500+ 简易跑道, Caravan 级飞机是主力.<br><br><b>但要小心这个类比</b>: 阿拉斯加的航空物流之所以经济, 主要靠 USPS Bypass Mail 补贴 (~$80M/yr), 让 50 美元就能寄一袋 70 磅面粉到偏远村庄. 中国西部没有对应机制. 我们引用阿拉斯加是为了证明<b>技术可行</b>, 不是证明商业模式可复制.</p><div class="source">Alaska DOT&PF; FAA Alaska Region; USPS Bypass Mail Program</div></div>
+      <div class="analysis-card"><span class="tag" style="background:#f0fdf4;color:#16a34a">三问框架</span><h4>物流公司的三个根本问题</h4><p>1. <b>覆盖</b>：地面运输到不了的地方怎么办？<br>2. <b>速度</b>：时敏货物能否比地面快？<br>3. <b>成本</b>：单位成本能否与地面竞争？<br><br>三个条件至少打中一个，飞机才有得做。三个都不打中，再多政策补贴也撑不起来。</p></div>
+      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国西部</span><h4>"覆盖"这一条最稳</h4><p>西部 55% 国土公路密度 0.17 km/km²（全国均 0.47）。西藏铁路目前已超 1,400 km（青藏 + 拉日 + 拉林），但覆盖 122 万 km² 仍稀疏。1,750 亿件快递，农村末端配送 5-7 天。<br><br>电商对"次日达"的预期，已经渗透到三四线城市。西部基础设施跟不上 — 这是"地面到不了"这一条最实在的需求。</p><div class="source">交通运输部 2024 统计; 国家邮政局 2024</div></div>
+      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国阿拉斯加</span><h4>仅作技术可行性参考</h4><p>170 万 km² 中 91% 无公路。~80% 远端社区靠航空物流。3,500+ 简易跑道，Caravan 级飞机是主力。<br><br><b>但要小心这个类比</b>：阿拉斯加的航空物流之所以经济，主要靠 USPS Bypass Mail 补贴（~$80M/yr），让 50 美元就能寄一袋 70 磅面粉到偏远村庄。中国西部没有对应机制。我们引用阿拉斯加是为了证明<b>技术可行</b>，不是证明商业模式可复制。</p><div class="source">Alaska DOT&PF; FAA Alaska Region; USPS Bypass Mail Program</div></div>
     </div>
 
     <div class="grid2" style="margin-top:20px">
@@ -353,36 +387,36 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Western coverage gap explanation -->
     <div class="text-block fade-in" style="margin-top:20px">
       <h4>西部覆盖缺口详细说明</h4>
-      <h5>红色省份判定标准 (满足任一即标红):</h5>
+      <h5>红色省份判定标准（满足任一即标红）：</h5>
       <ul>
         <li>公路密度 &lt; 0.3 km/km2</li>
         <li>通航机场 &lt; 1个/10万km2</li>
         <li>铁路密度低于全国均值50%</li>
       </ul>
-      <h5>具体省区及原因:</h5>
+      <h5>具体省区及原因：</h5>
       <ul>
-        <li><b>西藏</b>: 公路密度 0.10; 铁路目前已超 1,400 km (含拉日+拉林), 但覆盖 122 万 km² 仍稀疏; 通航机场 0 个/10万km²</li>
-        <li><b>新疆</b>: 公路密度 0.12, 面积 166 万 km² 但通航机场极少</li>
-        <li><b>青海</b>: 公路密度 0.13, 72 万 km² 仅数个机场</li>
-        <li><b>内蒙古</b>: 公路密度 0.18, 面积 118 万 km², 铁路密度低</li>
-        <li><b>甘肃</b>: 公路密度 0.22, 地形复杂, 铁路覆盖不足</li>
-        <li><b>四川西部 (甘孜/阿坝)</b>: 局部公路密度 &lt;0.15, 高原地形</li>
-        <li><b>云南边境</b>: 局部公路密度 0.25, 山地地形</li>
-        <li><b>宁夏/贵州</b>: 通航机场密度极低</li>
+        <li><b>西藏</b>：公路密度 0.10；铁路目前已超 1,400 km（含拉日+拉林），但覆盖 122 万 km² 仍稀疏；通航机场 0 个/10万km²</li>
+        <li><b>新疆</b>：公路密度 0.12，面积 166 万 km²，但通航机场极少</li>
+        <li><b>青海</b>：公路密度 0.13，72 万 km² 仅数个机场</li>
+        <li><b>内蒙古</b>：公路密度 0.18，面积 118 万 km²，铁路密度低</li>
+        <li><b>甘肃</b>：公路密度 0.22，地形复杂，铁路覆盖不足</li>
+        <li><b>四川西部（甘孜/阿坝）</b>：局部公路密度 &lt;0.15，高原地形</li>
+        <li><b>云南边境</b>：局部公路密度 0.25，山地地形</li>
+        <li><b>宁夏/贵州</b>：通航机场密度极低</li>
       </ul>
-      <h5>阿拉斯加: 一个有限的参考</h5>
-      <p>美国阿拉斯加 (170 万 km²) 跟中国西藏+青海 (194 万 km²) 面积差不多. 阿拉斯加 91% 地区无公路, 靠 3,500+ 简易跑道和数百架 Caravan 级飞机维持物流. 中国西部在地理条件上确实跟阿拉斯加相似.</p>
+      <h5>阿拉斯加：一个有限的参考</h5>
+      <p>美国阿拉斯加（170 万 km²）跟中国西藏+青海（194 万 km²）面积差不多。阿拉斯加 91% 地区无公路，靠 3,500+ 简易跑道和数百架 Caravan 级飞机维持物流。中国西部在地理条件上确实跟阿拉斯加相似。</p>
       <div style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:6px;padding:12px 16px;margin-top:8px">
         <b style="color:#b91c1c">⚠ 这个类比有重要限制</b><br>
-        <span style="font-size:13px;color:#7f1d1d;line-height:1.7">阿拉斯加 ~80% 边远社区航空物流的经济性, 来自 <b>USPS Bypass Mail 联邦补贴 (~$80M/yr)</b> — 让 50 美元就能寄一袋 70 磅面粉到偏远村庄. 中国西部没有对应的政策性补贴机制. 阿拉斯加证明了"用 Caravan 级飞机服务无路区"<b>技术可行</b>, 但<b>不证明商业模式可以照搬</b>到中国西部. 这是这一节最大的论证局限, 我们诚实承认.</span>
+        <span style="font-size:13px;color:#7f1d1d;line-height:1.7">阿拉斯加 ~80% 边远社区航空物流的经济性，来自 <b>USPS Bypass Mail 联邦补贴（~$80M/yr）</b> — 让 50 美元就能寄一袋 70 磅面粉到偏远村庄。中国西部没有对应的政策性补贴机制。阿拉斯加证明了"用 Caravan 级飞机服务无路区"<b>技术可行</b>，但<b>不证明商业模式可以照搬</b>到中国西部。这是这一节最大的论证局限，我们诚实承认。</span>
       </div>
     </div>
 
     <div class="insight fade-in" style="margin-top:20px">
       <b>需求规模粗算 — 注意不确定性</b>
-      中国西部 12 省区面积约 680 万 km², 人口约 3.2 亿. 如果勉强参照阿拉斯加密度 (每万 km² 约 2 个起降点), 理论需要 1,360 个起降点. 按每条航线需要 2-3 架飞机、覆盖 200 条主要航线推算: 潜在飞机需求 <b>400-600 架 (Caravan 级或同等 UAV)</b>.<br><br>
-      <b>这个数字的不确定性是 ±50%</b>. 关键变量是: 中国西部有没有阿拉斯加那样的"航空必需性" (无替代方案、季节封路、人口分散到无法集中卡车配送). 如果商业模式需要补贴撑起来, 实际能跑起来的航线可能只有 200 条; 如果电商真的能在西部做出生鲜+医药+时敏的支付意愿, 也可能扩到 800 架.<br><br>
-      <b>没有讨论的事</b>: 京东、淘宝、顺丰在西部农村的"次日达"真实覆盖率是多少? 有多少人愿意为"快"多付 8 元/kg? 这些是真正的需求端数据, 我们没找到公开来源 — 这是这个估算最大的留白.
+      中国西部 12 省区面积约 680 万 km²，人口约 3.2 亿。如果勉强参照阿拉斯加密度（每万 km² 约 2 个起降点），理论需要 1,360 个起降点。按每条航线需要 2-3 架飞机、覆盖 200 条主要航线推算：潜在飞机需求 <b>400-600 架（Caravan 级或同等 UAV）</b>。<br><br>
+      <b>这个数字的不确定性是 ±50%</b>。关键变量是：中国西部有没有阿拉斯加那样的"航空必需性"（无替代方案、季节封路、人口分散到无法集中卡车配送）。如果商业模式需要补贴撑起来，实际能跑起来的航线可能只有 200 条；如果电商真的能在西部做出生鲜+医药+时敏的支付意愿，也可能扩到 800 架。<br><br>
+      <b>没有讨论的事</b>：京东、淘宝、顺丰在西部农村的"次日达"真实覆盖率是多少？有多少人愿意为"快"多付 8 元/kg？这些是真正的需求端数据，我们没找到公开来源 — 这是这个估算最大的留白。
       <div class="source">推算基于: 阿拉斯加 3,500 跑道/170万 km² 密度; 中国西部面积来自国家统计局; USPS Bypass Mail 数据来自 USPS Office of Inspector General 报告</div>
     </div>
   </div>
@@ -393,15 +427,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner">
     <div class="sec-label">04 -- 高铁货运竞争分析</div>
     <div class="sec-title fade-in">高铁是中国通航货运最难处理的对手</div>
-    <div class="sec-sub fade-in">不是因为高铁便宜 — 它不便宜. 是因为它准时、夜以继日、且 1,500 公里以内速度跟航空打平. 但它有三件事做不到. 这一节把这三件事画清楚.</div>
+    <div class="sec-sub fade-in">不是因为高铁便宜 — 它不便宜。是因为它准时、夜以继日、且 1,500 公里以内速度跟航空打平。但它有三件事做不到。这一节把这三件事画清楚。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">高铁快运 2024 年 600 万吨, 是航空货运的 30%, 增长很快但有三类货它做不了。</div>
+      <div class="thesis-line">高铁快运 2024 年 600 万吨，是航空货运的 30%，增长很快但有三类货它做不了。</div>
       <ul class="thesis-evidence">
         <li>单件 25 kg 限制 + 不能运液体 / 鲜活</li>
         <li>西部 4.8 万 km 高铁不覆盖西藏 / 新疆 / 青海大部分</li>
-        <li>客运优先排班; 专用货运动车组 (CR200JS-G) 2024 仅 6 列</li>
+        <li>客运优先排班；专用货运动车组（CR200JS-G）2024 仅 6 列</li>
       </ul>
     </div>
 
@@ -409,28 +443,28 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="analysis-card">
         <span class="tag" style="background:#fef2f2;color:#dc2626">高铁快运</span>
         <h4>高铁货运产品线</h4>
-        <p><b>高铁快运:</b> 标准时效, 首重23元 + 续重10元/kg<br>
-        <b>极速达:</b> 当日达/次日达, 首重30元 + 续重15元/kg<br>
-        <b>急送:</b> 4小时门到门, 150-340元/件<br><br>
-        优势: 准时率99%+, 不受天气影响, 网络密集</p>
+        <p><b>高铁快运：</b>标准时效，首重23元 + 续重10元/kg<br>
+        <b>极速达：</b>当日达/次日达，首重30元 + 续重15元/kg<br>
+        <b>急送：</b>4小时门到门，150-340元/件<br><br>
+        优势：准时率99%+，不受天气影响，网络密集</p>
       </div>
       <div class="analysis-card">
         <span class="tag" style="background:#eff6ff;color:#2563eb">局限性</span>
         <h4>高铁快运的天然限制</h4>
-        <p><b>单件限重:</b> 25kg (无法承运大件)<br>
-        <b>品类限制:</b> 仅限小件包裹, 无法运液体/鲜活<br>
-        <b>覆盖盲区:</b> 西部多数县市无高铁<br>
-        <b>运力瓶颈:</b> 客运优先, 货运利用客座空间<br>
-        <b>年货运量:</b> 仅约600万吨 (2024), 占铁路货运49.8亿吨的0.12%<br><br>
+        <p><b>单件限重：</b>25kg（无法承运大件）<br>
+        <b>品类限制：</b>仅限小件包裹，无法运液体/鲜活<br>
+        <b>覆盖盲区：</b>西部多数县市无高铁<br>
+        <b>运力瓶颈：</b>客运优先，货运利用客座空间<br>
+        <b>年货运量：</b>仅约600万吨（2024），占铁路货运49.8亿吨的0.12%<br><br>
         这些限制正是航空物流的机会窗口。</p>
       </div>
       <div class="analysis-card">
         <span class="tag" style="background:#f0fdf4;color:#16a34a">航空定位</span>
         <h4>通航的活路: 做高铁做不到的</h4>
-        <p><b>&lt;500 km:</b> 地面无覆盖区域 (西部), 航空唯一选择<br>
-        <b>500-1,500 km:</b> 跟高铁打不过, 但能拿下"大件 + 液体 + 鲜活"细分<br>
-        <b>&gt;1,500 km:</b> 航空速度优势出现, 高铁耗时 5h+ 且经济性下降<br><br>
-        所以通航物流的活路, 是去做高铁做不到的三件事: 飞到没铁路的地方, 运 25 公斤以上的件, 运液体和鲜活.</p>
+        <p><b>&lt;500 km：</b>地面无覆盖区域（西部），航空是唯一选择<br>
+        <b>500-1,500 km：</b>跟高铁打不过，但能拿下"大件 + 液体 + 鲜活"细分<br>
+        <b>&gt;1,500 km：</b>航空速度优势出现，高铁耗时 5h+ 且经济性下降<br><br>
+        所以通航物流的活路，是去做高铁做不到的三件事：飞到没铁路的地方，运 25 公斤以上的件，运液体和鲜活。</p>
       </div>
     </div>
 
@@ -440,18 +474,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="text-block" style="border:none;box-shadow:none;padding:0">
         <h5>运力结构</h5>
         <ul>
-          <li><b>客座行李架模式:</b> 每列8节车厢, 每节约40个行李架位, 单件≤25kg → 每列最大8吨, 但实际利用率仅10-20%</li>
-          <li><b>"确认车"专用车厢:</b> 部分车次预留1-2节车厢, 可装2-4吨货物</li>
-          <li><b>货运动车组 (CR200JS-G):</b> 载货 40 吨/列. 2024 年底仅 6 列, 国铁规划 2027 达到 50 列</li>
+          <li><b>客座行李架模式：</b>目前高铁货运的主要方式是利用客运列车的行李架。每列高铁大约有 8 节车厢，每节车厢约 40 个行李架位，单件限重 25 公斤。算下来一列车最多能装 8 吨货，但实际上行李架被旅客行李占了大部分，货运利用率只有 10-20%。</li>
+          <li><b>"确认车"专用车厢：</b>部分高铁车次会预留 1-2 节车厢专门装货，每节车厢可装 2-4 吨货物。这种方式比行李架高效，但运力仍然有限。</li>
+          <li><b>货运动车组（CR200JS-G）：</b>这是国铁集团专门为货运设计的动车组，每列可载货 40 吨。不过截至 2024 年底全国仅有 6 列投入运营，国铁规划到 2027 年扩充至 50 列。</li>
         </ul>
         <h5>关键数据</h5>
         <ul>
-          <li>2024 年高铁快运量: ~600 万吨, 同比增长 18%</li>
-          <li>日均开行: 约 850 列快运车次 (含普速行包专列)</li>
-          <li>覆盖城市: 高铁快运触达约 450 个城市</li>
-          <li>对比: 航空货运 2,006 万吨, 是高铁快运的 3.3 倍</li>
+          <li>2024 年高铁快运量约 600 万吨，同比增长 18%</li>
+          <li>日均开行约 850 列快运车次（含普速行包专列）</li>
+          <li>高铁快运已触达约 450 个城市</li>
+          <li>作为对比，航空货运 2,006 万吨，是高铁快运的 3.3 倍</li>
         </ul>
-        <p><b>瓶颈在哪里?</b> 高铁以客运为主, 货运是"边角料". 短期 (2026 年前) 天花板大约 <b>1,500-2,000 万吨</b>, 刚好和今天的航空货运量持平. 长期 (2030+) 如果 CR200JS-G 货运动车组扩到 50 列, 加上专用车厢扩展, 天花板可上调到 <b>3,500-4,000 万吨</b>. 也就是说, 高铁可以追上今天的航空货运量, 但追不掉未来 10 年的增量.</p>
+        <p><b>瓶颈在哪里？</b>高铁以客运为主，货运是"边角料"。短期（2026 年前）天花板大约 <b>1,500-2,000 万吨</b>，刚好和今天的航空货运量持平。长期（2030+）如果 CR200JS-G 货运动车组扩到 50 列，加上专用车厢扩展，天花板可上调到 <b>3,500-4,000 万吨</b>。也就是说，高铁可以追上今天的航空货运量，但追不掉未来 10 年的增量。</p>
       </div>
       <div class="source">中铁快运股份有限公司2024年报; 国铁集团2024年工作报告; CR200JS-G数据来自中车集团</div>
     </div>
@@ -459,7 +493,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Speed comparison table - unified units -->
     <div class="card fade-in" style="margin-top:20px">
       <div class="chart-title">各距离段运输方式速度与成本对比</div>
-      <div class="chart-desc">所有成本统一为"终端定价 元/kg" — 物流公司实际需要支付的价格, 含取派、中转等全链条费用</div>
+      <div class="chart-desc">所有成本统一为"终端定价 元/kg" — 物流公司实际需要支付的价格，含取派、中转等全链条费用</div>
       <div class="table-wrap">
         <table class="hsr-compare">
           <thead>
@@ -477,8 +511,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
       <div class="insight" style="margin-top:12px;font-size:12px">
         <b>怎么读这张表</b>
-        三种方式服务内容完全不同, 直接比单价会误导. 卡车是<b>整车运输定价</b> (满载 10-30 吨), 元/kg 极低但时效差. 高铁是<b>中铁快运零售定价</b> (单件 ≤25 kg, 含取派), 首重+续重折算. 航空是<b>通航物流估算</b> (Caravan 级, 含地面转运), 基于 S6 主表运营成本 5,028 元/hr + 600 元/次起降 + 地面成本. 卡车是批量运输, 高铁和航空是快递/零担 — 一个是 B2B 大宗, 后两个是 B2C 件货, 不是同一个市场.<br>
-        <b>更公平的对比是高铁包车 vs 航空包机</b>: 中铁快运专用车厢包车 ~0.8-1.2 元/吨km (2024 报价), 跟 Caravan 包机 (载 1 吨 800 km ≈ 17 元/吨km) 差 15-20 倍, 但快 10-15 倍 — 这就是航空的位置.
+        三种方式服务内容完全不同，直接比单价会误导。卡车是<b>整车运输定价</b>（满载 10-30 吨），元/kg 极低但时效差。高铁是<b>中铁快运零售定价</b>（单件 ≤25 kg，含取派），首重+续重折算。航空是<b>通航物流估算</b>（Caravan 级，含地面转运），基于 S6 主表运营成本 5,028 元/hr + 600 元/次起降 + 地面成本。卡车是批量运输，高铁和航空是快递/零担 — 一个是 B2B 大宗，后两个是 B2C 件货，不是同一个市场。<br>
+        <b>更公平的对比是高铁包车 vs 航空包机</b>：中铁快运专用车厢包车 ~0.8-1.2 元/吨km（2024 报价），跟 Caravan 包机（载 1 吨 800 km ≈ 17 元/吨km）差 15-20 倍，但快 10-15 倍 — 这就是航空的位置。
       </div>
       <div class="source">卡车: 满帮集团 2024 年平台均价 (约 0.5 元/吨公里); 高铁零售: 中铁快运官网 2024 标准价; 高铁包车: 中铁快运 2024 年 1-2 节车厢包车报价 (~0.8-1.2 元/吨km); 航空: 基于 S6 主表 + 地面取派估算 3-5 元/kg</div>
     </div>
@@ -486,7 +520,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Cost per ton-km chart -->
     <div class="card fade-in" style="margin-top:20px">
       <div class="chart-title">各运输方式单位成本 (元/吨公里) — 批量运输口径</div>
-      <div class="chart-desc">此图为大宗批量运输成本, 不含取派。高铁快运因零售定价模式, 实际单位成本远高于普通铁路</div>
+      <div class="chart-desc">此图为大宗批量运输成本，不含取派。高铁快运因零售定价模式，实际单位成本远高于普通铁路</div>
       <div id="chart-tonkm" class="chart-box" style="height:350px"></div>
       <div class="source">水运: 交通运输部2024; 铁路: 国铁集团2024均价; 公路: 满帮集团平台数据2024 (~0.5元/吨公里); 高铁快运: 中铁快运标准定价折算 (~15元/吨公里, 按5kg件500km); 航空: 基于Caravan 5,028元/hr + 600元/次起降, 载1吨, 巡航227km/h → ~20.8元/吨公里</div>
     </div>
@@ -494,7 +528,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- HSR Coverage Map -->
     <div class="card fade-in" style="margin-top:20px">
       <div class="chart-title">高铁网络覆盖 vs 无覆盖区域GDP占比</div>
-      <div class="chart-desc">高铁4.8万km覆盖东中部主要城市, 但西部大片区域无高铁 — 这些地区占中国GDP约15%</div>
+      <div class="chart-desc">高铁4.8万km覆盖东中部主要城市，但西部大片区域无高铁 — 这些地区占中国GDP约15%</div>
       <div class="grid2">
         <div>
           <div id="chart-hsr-coverage" class="chart-box" style="height:400px"></div>
@@ -507,8 +541,12 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="insight green fade-in" style="margin-top:16px">
-      <b>结论: 高铁可以追上, 但追不掉; 航空想吃高铁也不可能</b>
-      高铁快运在 500-1,500 km 标准小件市场 (单件 &lt;25 kg) 已经强得没话说, 但年运力 600 万吨, 受限于客运优先的运力分配. 通航物流真正能做的, 是三个高铁做不到的事: (1) 西部无高铁覆盖区域 (占国土 55%, GDP 占 15%); (2) 大件 / 特殊品类 / 鲜活运输 (高铁限 25 kg/件, 禁液体); (3) 点对点灵活航线 (不受固定铁路线约束). 短期 (2027 前) 高铁货运天花板 1,500-2,000 万吨, 长期 (2030+) 加 CR200JS-G 货运动车组可上调到 3,500-4,000 万吨. <b>这意味着高铁可以追上今天的航空货运量, 但吃不下未来 10 年的电商+冷链+西部三大增量</b>. 两边各干各的, 但谁的长期增长更大, 现在还看不出来.
+      <span class="insight-title">结论：高铁和航空是互补关系，各有各的市场</span>
+      <ul class="insight-rules">
+        <li><b>高铁强在哪里</b>：500-1,500 公里的标准小件（单件 25 公斤以内），准时率 99%，不受天气影响。在这个距离段，航空跟高铁正面竞争没有胜算。</li>
+        <li><b>航空做什么</b>：高铁做不了的三件事——（1）飞到西部无铁路的地方（占国土 55%）；（2）运 25 公斤以上的大件和液体、鲜活品类；（3）点对点灵活航线，不受固定铁路线约束。</li>
+        <li><b>会不会互相取代</b>：不会。高铁短期天花板 1,500-2,000 万吨，长期加货运专列可到 3,500-4,000 万吨。航空目前 2,006 万吨，增量来自电商冷链和西部需求。两边的客户群几乎不重叠——高铁服务标准件，航空服务非标件和无路区域。</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -517,16 +555,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s4" class="sec">
   <div class="sec-inner">
     <div class="sec-label">05 -- 机队与枢纽</div>
-    <div class="sec-title fade-in">枢纽追上来了, 但飞机断档</div>
-    <div class="sec-sub fade-in">中国货运的"大动脉"已经接通 — 鄂州花湖一年 245 万吨, 已经摸到孟菲斯的边. 但翻到机队那一页, 差距立刻显形.</div>
+    <div class="sec-title fade-in">中国货运枢纽吞吐量已接近美国，但能跑货运的飞机差一个数量级</div>
+    <div class="sec-sub fade-in">中国货运的"大动脉"已经接通 — 鄂州花湖一年 245 万吨，已经摸到孟菲斯的边。但翻到机队那一页，差距立刻显形。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">中国货运枢纽吞吐量已接近美国, 但能跑货运的飞机数量差一个数量级。</div>
+      <div class="thesis-line">中国货运枢纽吞吐量已接近美国，但能跑货运的飞机数量差一个数量级。</div>
       <ul class="thesis-evidence">
-        <li>鄂州花湖 245 万吨 ≈ UPS 路易斯维尔 (272 万吨) 的 90%</li>
-        <li>美国 11,000 架涡桨可跑物流, 中国&lt;100 架</li>
-        <li>中国通航队 3,232 架中, 直升机占 37% (干巡检/喷洒, 不是物流)</li>
+        <li>鄂州花湖 245 万吨 ≈ UPS 路易斯维尔（272 万吨）的 90%</li>
+        <li>美国 11,000 架涡桨可跑物流，中国&lt;100 架</li>
+        <li>中国通航队 3,232 架中，直升机占 37%（干巡检/喷洒，不是物流）</li>
       </ul>
     </div>
     <div class="grid2">
@@ -557,14 +595,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="insight fade-in" style="margin-top:16px">
-      <b>美国通航是金字塔, 中国是梭子 — 中段空了一截</b>
-      美国通航机队以单发活塞为主 (~59%, FAA GA Survey CY2024). 大部分是赛斯纳 172 这种周末飞着玩的私人飞机. 中国通航队 3,232 架里, 直升机占 37% (活塞+涡轮), 干的是给电网拍照、给麦田打药 — 不是物流.<br><br>
-      物流方面差距更大: 美国有 11,000 架涡桨可以跑物流和支线; 中国整个通航队里能跑物流的涡桨, 不到 100 架. 这就是我们说的"飞机断档".<br><br>
-      <b>还有一件事要说清楚</b>: 中国通航 3,232 架 ≠ 中国货运飞机. 真实跑物流的飞机, 主要是顺丰航空 (90 架)、中邮航空 (35 架)、圆通航空 (17 架) 加起来约 142 架, 而且<b>全是 737/767 改装货机, 不是通航段</b>. 通航段几乎完全空白 — 这正是 W5000 / HH-200 / TP500 这些新 UAV 试图填的位置.
+      <b>美国通航是金字塔，中国是梭子 — 中段空了一截</b>
+      美国通航机队以单发活塞为主（~59%，FAA GA Survey CY2024）。大部分是赛斯纳 172 这种周末飞着玩的私人飞机。中国通航队 3,232 架里，直升机占 37%（活塞+涡轮），干的是给电网拍照、给麦田打药 — 不是物流。<br><br>
+      物流方面差距更大：美国有 11,000 架涡桨可以跑物流和支线；中国整个通航队里能跑物流的涡桨，不到 100 架。这就是我们说的"飞机断档"。<br><br>
+      <b>还有一件事要说清楚</b>：中国通航 3,232 架 ≠ 中国货运飞机。真实跑物流的飞机，主要是顺丰航空（90 架）、中邮航空（35 架）、圆通航空（17 架）加起来约 142 架，而且<b>全是 737/767 改装货机，不是通航段</b>。通航段几乎完全空白 — 这正是 W5000 / HH-200 / TP500 这些新 UAV 试图填的位置。
     </div>
     <div class="insight green fade-in" style="margin-top:12px">
       <b>枢纽方面的好消息</b>
-      鄂州花湖 2024 年货邮吞吐量 245 万吨, 已经达到 UPS 全球枢纽路易斯维尔 (272 万吨) 的 90%. 顺丰花湖+京东南宁+菜鸟杭州+中邮上海四张网络已经成型, 干线货运基础设施跟得上. 缺的是<b>"干线接到通航"那段毛细血管</b> — 也就是把 737BCF 卸下来的货, 装到 1.5t 的 HH-200 上飞到县城和乡镇.
+      鄂州花湖 2024 年货邮吞吐量 245 万吨，已经达到 UPS 全球枢纽路易斯维尔（272 万吨）的 90%。顺丰花湖+京东南宁+菜鸟杭州+中邮上海四张网络已经成型，干线货运基础设施跟得上。缺的是<b>"干线接到通航"那段毛细血管</b> — 也就是把 <span class="tip" data-t="Boeing Converted Freighter 波音改装货机">737BCF</span> 卸下来的货，装到 1.5t 的 HH-200 上飞到县城和乡镇。
     </div>
   </div>
 </section>
@@ -573,23 +611,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s6" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">06 -- 运营成本推导</div>
-    <div class="sec-title fade-in">每飞行小时多少钱? 拆开账本看</div>
-    <div class="sec-sub fade-in">以 Cessna 208 Caravan 为基准 (汇率 1 USD = 7.27 RMB). 后面所有航线经济、机型对比的数字, 都从这张表里来.</div>
+    <div class="sec-title fade-in">每飞行小时多少钱？拆开账本看</div>
+    <div class="sec-sub fade-in">以 Cessna 208 Caravan 为基准（汇率 1 USD = 7.27 RMB）。后面所有航线经济、机型对比的数字，都从这张表里来。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">无人化省下来的钱来自三处: 飞行员、折旧、燃油 — 加起来一小时省 1,800 元, 一年省 80 万。</div>
+      <div class="thesis-line">无人化省下来的钱来自三处：飞行员、折旧、燃油 — 加起来一小时省 1,800 元，一年省 80 万。</div>
       <ul class="thesis-evidence">
-        <li>5,028 → 3,224 元/hr 逐项拆解 (飞行员 −873 + 远程操作 +218 = 净省 655)</li>
-        <li>折旧 −485 元/hr (年利用率从 800 拉到 1,000 hr)</li>
-        <li>燃油 −370 元/hr (混动+简化机体, 假设 Caravan-eX 量产)</li>
+        <li>5,028 → 3,224 元/hr 逐项拆解（飞行员 −873 + 远程操作 +218 = 净省 655）</li>
+        <li>折旧 −485 元/hr（年利用率从 800 拉到 1,000 hr）</li>
+        <li>燃油 −370 元/hr（混动+简化机体，假设 Caravan-eX 量产）</li>
       </ul>
     </div>
 
     <!-- COST MASTER TABLE - SINGLE SOURCE OF TRUTH -->
     <div class="card fade-in" style="margin-bottom:24px;border-left:5px solid #2563eb">
       <div class="chart-title">机型成本主表 — 全文所有图表的单一引用源</div>
-      <div class="chart-desc">为了让 S5 / S7a / S7b / S8 / S10 / S11 的数字不互相打架, 我们把所有机型的小时成本和起降费集中放在这里. 已商业运营的机型用真实数据; 还在测试的机型, 我们做了"PR 数据 → 真实运营工况"的修正 (PR 通常假设 100% 装载、年飞 2,000 小时、内部燃油价 — 实际运营要打 1.3-2 倍折扣)</div>
+      <div class="chart-desc">为了让 S5 / S7a / S7b / S8 / S10 / S11 的数字不互相打架，我们把所有机型的小时成本和起降费集中放在这里。已商业运营的机型用真实数据；还在测试的机型，我们做了"PR 数据 → 真实运营工况"的修正（PR 通常假设 100% 装载、年飞 2,000 小时、内部燃油价 — 实际运营要打 1.3-2 倍折扣）</div>
       <div class="table-wrap" style="margin-top:12px">
         <table class="spec-table" style="font-size:12.5px">
           <thead style="background:#f1f5f9">
@@ -621,9 +659,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="insight" style="margin-top:14px;background:#eff6ff;border-left:4px solid #2563eb;padding:14px 18px;border-radius:6px">
         <span class="insight-title">怎么读这张表</span>
         <ul class="insight-rules">
-          <li><b>看"已运营"行</b>: 数字来自真实运营账单, 误差通常在 ±15% 之内 — 拿来直接做决策.</li>
-          <li><b>看"测试中"行</b>: 取"工况"那一列做决策, "PR" 那一列只用来理解厂商的成本目标. 例如 W5000 厂商说每吨km 2.69 元, 我们认为首批运营更可能在 4-5 元/吨km. <strong>如果厂商工况修正后仍然便宜, 这个机型就值得投; 如果修正后不便宜了, 故事就要重写</strong>.</li>
-          <li><b>S7、S8 引用规则</b>: 后续所有图表 / Pareto 前沿 / 单位成本表都使用<b>"工况"列</b>; 主导图等关键判断处会同时画 PR 和工况两条线, 让读者自己判断.</li>
+          <li><b>看"已运营"行</b>：数字来自真实运营账单，误差通常在 ±15% 之内 — 拿来直接做决策。</li>
+          <li><b>看"测试中"行</b>：取"工况"那一列做决策，"PR" 那一列只用来理解厂商的成本目标。例如 W5000 厂商说每吨km 2.69 元，我们认为首批运营更可能在 4-5 元/吨km。<strong>如果厂商工况修正后仍然便宜，这个机型就值得投；如果修正后不便宜了，故事就要重写</strong>。</li>
+          <li><b>S7、S8 引用规则</b>：后续所有图表 / Pareto 前沿 / 单位成本表都使用<b>"工况"列</b>；主导图等关键判断处会同时画 PR 和工况两条线，让读者自己判断。</li>
         </ul>
       </div>
       <div class="source">来源: Conklin & de Decker 2024; Aircraft Cost Calculator; 顺丰控股 2024 年报; 白鲸航线 PR (36Kr / 21经济网); 中航工业 HH-200 公开规格; AOPA 中国 (TP500); 第一性原理拆解见下方两张分项表</div>
@@ -663,11 +701,11 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
     <div class="insight green fade-in" style="margin-top:16px">
-      <span class="insight-title">UAV 一小时省 1,800 元, 一年省 80 万 — 但要小心三个假设</span>
+      <span class="insight-title">UAV 一小时省 1,800 元，一年省 80 万 — 但要小心三个假设</span>
       <ul class="insight-rules">
-        <li><b>三处省钱来源</b>: 飞行员省 873 + 加远程操作 218 + 加数据链 145 = 净省 510 元/hr · 年利用率 800 → 1,000 hr 让折旧从 1,212 摊薄到 727 元/hr (省 485) · 混动让燃油+发动机降 30% (省 370 元/hr). 起降费也从 600 降到 350 元/次 (简易跑道, 无地面服务).</li>
-        <li><b>三个底层假设</b> (上表已 ⚠ 标注): 远程操作员 1:N 现行法规不允许; 混动飞机商用化时间未定; UAV 保险首批可能是有人机的 1.5-2 倍. 把这些"未来才能实现"的省钱项打个折扣, 实际首批 UAV 的 varHr 更可能是 3,500-4,000 元/hr.</li>
-        <li><b>年成本对比</b>: 有人机 5,028 × 800 hr ≈ <b>402 万元/年</b>; UAV (规模化) 3,224 × 1,000 hr ≈ <b>322 万元/年</b>; 省约 <b>80 万元/年/架</b>. 如果让两者都飞 1,000 hr (UAV 充分利用), 差距扩大到 <b>180 万元/年/架</b>. <strong>UAV 的真正优势不是单小时便宜, 而是不睡觉 — 飞越多, 越省钱.</strong></li>
+        <li><b>三处省钱来源</b>：飞行员省 873 + 加远程操作 218 + 加数据链 145 = 净省 510 元/hr；年利用率 800 → 1,000 hr 让折旧从 1,212 摊薄到 727 元/hr（省 485）；混动让燃油+发动机降 30%（省 370 元/hr）。起降费也从 600 降到 350 元/次（简易跑道，无地面服务）。</li>
+        <li><b>三个底层假设</b>（上表已 ⚠ 标注）：远程操作员 1:N 现行法规不允许；混动飞机商用化时间未定；UAV 保险首批可能是有人机的 1.5-2 倍。把这些"未来才能实现"的省钱项打个折扣，实际首批 UAV 的 varHr 更可能是 3,500-4,000 元/hr。</li>
+        <li><b>年成本对比</b>：有人机 5,028 × 800 hr ≈ <b>402 万元/年</b>；UAV（规模化）3,224 × 1,000 hr ≈ <b>322 万元/年</b>；省约 <b>80 万元/年/架</b>。如果让两者都飞 1,000 hr（UAV 充分利用），差距扩大到 <b>180 万元/年/架</b>。<strong>UAV 的真正优势不是单小时便宜，而是不睡觉 — 飞越多，越省钱。</strong></li>
       </ul>
     </div>
   </div>
@@ -677,23 +715,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s7" class="sec">
   <div class="sec-inner">
     <div class="sec-label">07a -- 航线经济分析</div>
-    <div class="sec-title fade-in">航空货运的盈亏线在哪里?</div>
-    <div class="sec-sub fade-in">这一节回答"运费多少钱才能不亏". 下一节 (S7b) 回答"哪种机型在哪个格子上最便宜". 两节用同一份成本数据 (S6 主表), 不再互相打架.</div>
+    <div class="sec-title fade-in">航空货运的盈亏线在哪里？</div>
+    <div class="sec-sub fade-in">这一节回答"运费多少钱才能不亏"。下一节（S7b）回答"哪种机型在哪个格子上最便宜"。两节用同一份成本数据（S6 主表），不再互相打架。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">航空货运的盈亏线在 8 元/kg。低于这个价位会亏本, 客户就三类: 生鲜、医药、时效电商。</div>
+      <div class="thesis-line">航空货运的盈亏线在 8 元/kg。低于这个价位会亏本，客户就三类：生鲜、医药、时效电商。</div>
       <ul class="thesis-evidence">
-        <li>全链条单价: Caravan 800 km ≈ 17 元/kg, W5000 (工况) ≈ 4-7 元/kg</li>
-        <li>高原惩罚: 拉萨 Caravan 业载砍 40%, 单位成本飙到 16 元/kg</li>
-        <li>案例 A (西藏短距, 困难案例) vs 案例 B (和田-乌鲁木齐, 典型场景) — 后者才是这门生意的代表</li>
+        <li>全链条单价：Caravan 800 km ≈ 17 元/kg，W5000（工况）≈ 4-7 元/kg</li>
+        <li>高原惩罚：拉萨 Caravan 业载砍 40%，单位成本飙到 16 元/kg</li>
+        <li>案例 A（西藏短距，困难案例）vs 案例 B（和田-乌鲁木齐，典型场景）— 后者才是这门生意的代表</li>
       </ul>
     </div>
 
     <!-- Freight rate derivation -->
     <div class="econ-explain fade-in">
-      <h4>运费推导: 航空货运到底要收多少钱?</h4>
-      <p>航空货运的单位成本 = 飞行成本 ÷ 载货量。通用公式:</p>
+      <h4>运费推导：航空货运到底要收多少钱？</h4>
+      <p>航空货运的单位成本 = 飞行成本 ÷ 载货量。通用公式：</p>
       <div class="step">
         <b>单位成本 (元/kg) = 小时成本 × 距离 ÷ (速度 × 业载)</b><br><br>
         <table class="hsr-compare" style="margin:0">
@@ -720,7 +758,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      <p><b>关键问题: 市场上谁愿意付这个价?</b></p>
+      <p><b>关键问题：市场上谁愿意付这个价？</b></p>
       <div class="step">
         <table class="hsr-compare" style="margin:0">
           <thead><tr><th>货物类型</th><th>时效敏感度</th><th>可承受运费</th><th>市场规模</th><th>典型场景</th></tr></thead>
@@ -733,18 +771,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      <p style="font-weight:700;color:var(--primary)">结论: 航空货运不是与卡车争"所有货"的生意, 而是服务"时效溢价"市场。合理定价区间为 8-25元/kg, 目标客户是生鲜、医疗、时敏电商。</p>
+      <p style="font-weight:700;color:var(--primary)">结论：航空货运不是与卡车争"所有货"的生意，而是服务"时效溢价"市场。合理定价区间为 8-25元/kg，目标客户是生鲜、医疗、时敏电商。</p>
       <div class="source">定价参考: 顺丰航空特快 (23元/kg起, 含取派); 圆通航空 (12-18元/kg); 阿拉斯加Bush航空 ($1-3/lb ≈ 16-44元/kg); 中国邮政航空 (EMS标准 15-25元/kg)</div>
     </div>
 
     <!-- High altitude performance penalty -->
     <div class="card fade-in" style="margin-top:16px;border-left:4px solid #ef4444">
-      <div class="chart-title">高原性能惩罚: 密度高度对飞机的真实影响</div>
-      <div class="chart-desc">空气稀薄 → 发动机功率下降 + 升力减小 → 业载必须削减, 起飞距离增加</div>
+      <div class="chart-title">高原性能惩罚：密度高度对飞机的真实影响</div>
+      <div class="chart-desc">空气稀薄 → 发动机功率下降 + 升力减小 → 业载必须削减，起飞距离增加</div>
       <div class="econ-explain" style="margin-top:12px">
         <div class="step">
-          <b>什么是密度高度?</b> 空气密度随海拔和温度降低。飞机性能取决于空气密度，而非跑道海拔。<br>
-          <b>密度高度 ≈ 场高 + 温度修正</b> (高于ISA标准温度每1°C，密度高度增加约120ft)<br><br>
+          <b>什么是密度高度？</b>空气密度随海拔和温度降低。飞机性能取决于空气密度，而非跑道海拔。<br>
+          <b>密度高度 ≈ 场高 + 温度修正</b>（高于 <span class="tip" data-t="International Standard Atmosphere 国际标准大气">ISA</span> 标准温度每1°C，<span class="tip" data-t="Density Altitude 密度高度">DA</span> 增加约120ft）<br><br>
           <table class="hsr-compare" style="margin:0">
             <thead><tr><th>机场</th><th>场高</th><th>夏季密度高度</th><th>发动机功率</th><th>业载削减</th><th>起飞距离</th></tr></thead>
             <tbody>
@@ -756,16 +794,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
             </tbody>
           </table>
         </div>
-        <p><b>Caravan (PT6A-114A, 675SHP) 在拉萨:</b> 发动机可用功率仅 ~390SHP; MTOW 从 3,629 kg 降至 ~3,200 kg; 扣除空重 2,145 kg 和燃油 200 kg, <b>可用业载约 800-900 kg</b> (海平面的 75%, 实际 POH 数据). 起飞滚跑增至 ~1,125 m. <b>拉萨贡嘎跑道本身 4,000 m, 跑道不是限制</b> — 真正的限制是<b>简易跑道场景</b> (例如那曲), 那里跑道往往只有 800 m, 1,125 m 起飞距离就跑不出来.</p>
-        <p style="color:var(--danger)"><b>关键结论: 高原运营不仅是飞不飞得到的问题, 更是能装多少货的问题。同一架飞机, 在拉萨比在海平面少装40%的货。</b></p>
+        <p><b>Caravan（PT6A-114A，675<span class="tip" data-t="Shaft Horsepower 轴马力">SHP</span>）在拉萨：</b>发动机可用功率仅 ~390SHP；<span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 从 3,629 kg 降至 ~3,200 kg；扣除空重 2,145 kg 和燃油 200 kg，<b>可用业载约 800-900 kg</b>（海平面的 75%，实际 POH 数据）。起飞滚跑增至 ~1,125 m。<b>拉萨贡嘎跑道本身 4,000 m，跑道不是限制</b> — 真正的限制是<b>简易跑道场景</b>（例如那曲），那里跑道往往只有 800 m，1,125 m 起飞距离就跑不出来。</p>
+        <p style="color:var(--danger)"><b>关键结论：高原运营不仅是飞不飞得到的问题，更是能装多少货的问题。同一架飞机，在拉萨比在海平面少装40%的货。</b></p>
         <div class="source">性能数据基于: Cessna 208B POH高海拔性能图表; PT6A系列发动机高原性能手册; ISA+15°C夏季条件估算</div>
       </div>
     </div>
 
     <!-- Case study 1: Lhasa-Nyingchi (revised with altitude penalty) -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">案例A: 拉萨-林芝 (400km) — 高原极端案例</div>
-      <div class="chart-desc">双端高海拔 + 已通高速 = 航空最不利场景, 但有助于理解成本底线</div>
+      <div class="chart-title">案例A：拉萨-林芝（400km）— 高原极端案例</div>
+      <div class="chart-desc">双端高海拔 + 已通高速 = 航空最不利场景，但有助于理解成本底线</div>
       <div class="grid2" style="margin-top:12px">
         <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:16px">
           <div style="font-weight:700;font-size:15px;margin-bottom:8px">公路运输 (G4218拉林高速)</div>
@@ -788,14 +826,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </div>
       </div>
       <div class="insight fade-in" style="margin-top:12px">
-        <b>高原修正后: 航空比公路贵40-60倍 (而非之前估算的22-33倍)。</b>
-        拉萨-林芝是航空货运的"最困难案例": 双端高海拔 (业载 -40%)、短距 (时效差仅 3-4 小时)、已通高速 (公路条件好). 即便如此, 对松茸 (200-500 元/kg, 鲜松茸黄金期 24-48 小时) 和急救药品, 19 元/kg 的运费仍在可承受范围. <b>但这个案例是手挑的"困难案例", 不是典型场景</b>. 想做投资决策需要看至少 10 条西部潜在航线的横截面分析 (货量×距离×价格×竞争方式) — 我们没做这一步, 这是本节最大的留白.
+        <b>高原修正后：航空比公路贵40-60倍（而非之前估算的22-33倍）。</b>
+        拉萨-林芝是航空货运的"最困难案例"：双端高海拔（业载 -40%）、短距（时效差仅 3-4 小时）、已通高速（公路条件好）。即便如此，对松茸（200-500 元/kg，鲜松茸黄金期 24-48 小时）和急救药品，19 元/kg 的运费仍在可承受范围。<b>但这个案例是手挑的"困难案例"，不是典型场景</b>。想做投资决策需要看至少 10 条西部潜在航线的横截面分析（货量×距离×价格×竞争方式）— 我们没做这一步，这是本节最大的留白。
       </div>
     </div>
 
     <!-- Case study 2: Lower altitude, worse road -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">案例B: 和田-乌鲁木齐 (1,100km) — 更有代表性的航线</div>
+      <div class="chart-title">案例B：和田-乌鲁木齐（1,100km）— 更有代表性的航线</div>
       <div class="chart-desc">低海拔 + 超长公路 + 高价值时敏货物 = 航空更有优势的场景</div>
       <div class="grid2" style="margin-top:12px">
         <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:16px">
@@ -819,33 +857,33 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </div>
       </div>
       <div class="insight fade-in" style="margin-top:12px">
-        <b>航空仍贵27-50倍, 但时效差18-20小时改变了价值判断。</b>
-        和田红枣 (30-80元/kg)、和田玉毛料 (数百-数万元/kg)、新疆鲜果 (库尔勒香梨/阿克苏苹果, 旺季损耗每天3-5%): 20小时意味着多损耗10-15%的货值。对50元/kg的鲜果, 损耗5-7.5元/kg → 接近运费差额。<b>对高值/鲜活货物, 长距离航线的时效价值可以覆盖运费溢价。</b>
+        <b>航空仍贵27-50倍，但时效差18-20小时改变了价值判断。</b>
+        和田红枣（30-80元/kg）、和田玉毛料（数百-数万元/kg）、新疆鲜果（库尔勒香梨/阿克苏苹果，旺季损耗每天3-5%）：20小时意味着多损耗10-15%的货值。对50元/kg的鲜果，损耗5-7.5元/kg → 接近运费差额。<b>对高值/鲜活货物，长距离航线的时效价值可以覆盖运费溢价。</b>
       </div>
     </div>
 
     <!-- Synthesis: when does aviation actually work? -->
     <div class="card fade-in" style="margin-top:16px;border-left:4px solid var(--primary)">
-      <div class="chart-title">两个案例的启示: 航空货运的适用条件</div>
+      <div class="chart-title">两个案例的启示：航空货运的适用条件</div>
       <table class="hsr-compare" style="margin-top:12px">
         <thead><tr><th>条件</th><th>案例A 拉萨-林芝</th><th>案例B 和田-乌鲁木齐</th><th>判断</th></tr></thead>
         <tbody>
           <tr><td>海拔影响</td><td style="color:#ef4444">严重 (业载-40%)</td><td style="color:#22c55e">极小 (业载接近满载)</td><td>低海拔航线经济性好1.7倍</td></tr>
-          <tr><td>公路替代</td><td style="color:#ef4444">已通高速, 5-6小时</td><td style="color:#22c55e">沙漠公路, 18-22小时</td><td>公路越差, 航空越有价值</td></tr>
+          <tr><td>公路替代</td><td style="color:#ef4444">已通高速，5-6小时</td><td style="color:#22c55e">沙漠公路，18-22小时</td><td>公路越差，航空越有价值</td></tr>
           <tr><td>时效差</td><td>3-4小时</td><td style="color:#22c55e"><b>18-20小时</b></td><td>航空至少要省10小时才有说服力</td></tr>
-          <tr><td>单位成本</td><td>15.7元/kg (高原)</td><td>22.5元/kg (长距离)</td><td>虽然B更贵, 但时效价值更高</td></tr>
+          <tr><td>单位成本</td><td>15.7元/kg（高原）</td><td>22.5元/kg（长距离）</td><td>虽然B更贵，但时效价值更高</td></tr>
           <tr><td>目标货物</td><td>松茸、急救药品</td><td>鲜果、玉石、时敏电商</td><td>B的市场规模显著更大</td></tr>
         </tbody>
       </table>
       <div class="insight fade-in" style="margin-top:12px">
-        <b>结论: 飞机设计不应以西藏高原为主要目标市场。</b>
-        高原运营面临发动机功率损失、业载大幅削减、可用机场少等系统性限制。更有价值的目标是: <b>连接新疆、云贵等低中海拔但公路耗时长的区域与东部枢纽</b>, 这些航线海拔惩罚小、时效差大、货物价值高、市场规模更大。高原可作为特殊能力而非核心设计点 — 类似军用飞机的"高原选装包"思路。
+        <b>结论：飞机设计不应以西藏高原为主要目标市场。</b>
+        高原运营面临发动机功率损失、业载大幅削减、可用机场少等系统性限制。更有价值的目标是：<b>连接新疆、云贵等低中海拔但公路耗时长的区域与东部枢纽</b>，这些航线海拔惩罚小、时效差大、货物价值高、市场规模更大。高原可作为特殊能力而非核心设计点 — 类似军用飞机的"高原选装包"思路。
       </div>
     </div>
 
     <!-- Industry benchmark: ton-km costs -->
     <div class="card fade-in" style="margin-top:16px;border-left:4px solid #f59e0b">
-      <div class="chart-title">行业对标: 各机型吨公里成本 — 公司PR vs 模型计算</div>
+      <div class="chart-title">行业对标：各机型吨公里成本 — 公司PR vs 模型计算</div>
       <div class="chart-desc">统一采用<b>每趟含起降费</b>的口径: <b>吨公里成本 = (起降fix + 小时成本×满载航程÷速度) ÷ (满载航程×业载吨数)</b><br>
       <span style="color:#64748b;font-size:12px">这与 PR 数据 (含全部固定+变动) 可比, 也是物流公司报价的真实成本口径。每架机按其满载航程 (rFull) 计算, 反映"装满 + 飞最远"的最佳工况。</span></div>
       <table class="hsr-compare" style="margin-top:12px">
@@ -864,12 +902,12 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </table>
       <p style="font-size:12px;color:#94a3b8;margin-top:4px">*反推值: 由PR吨公里成本反推小时成本 = 吨公里 × 速度 × 业载吨数; HH-200/CY-8/737BCF/757F 小时成本来自下方"成本组件明细"表第一性原理</p>
       <div class="insight fade-in" style="margin-top:12px">
-        <span class="insight-title">四个关键发现 (覆盖通航至干线全谱)</span>
+        <span class="insight-title">四个关键发现（覆盖通航至干线全谱）</span>
         <ul class="insight-rules">
-          <li><b>规模优势压倒一切</b>: 757F 吨公里 1.4 元, 比 W5000 (2.5 元) 低 44%, 比 HH-200 (10.4 元) 低 87% — <strong>载荷每翻一倍, 单位成本约降 30-40%</strong></li>
-          <li><b>速度 + 无人化双优势</b>: W5000 (526 km/h) 的吨公里成本比 ATR 42 (480 km/h, 业载更大) 还低 58% — 速度和无人化两端同时省</li>
-          <li><b>Caravan 级飞机吨公里成本最高</b>: 20.8 元/吨公里, 是 757F 的 14.9 倍 — 慢 (227 km/h) + 小 (1 吨) + 有人三重劣势叠加</li>
-          <li><b>公司 PR 是理想值</b>: 假设 100% 装载率、无空驶、最优航线. 实际运营装载率 70-80%、空驶率 20-30%, 现实吨公里成本约为 PR 的 <b>1.5-2.0 倍</b> — W5000 实际很可能在 4-5 元/吨 km, 仍优于 ATR42 但 Pareto 优势缩小</li>
+          <li><b>规模优势压倒一切</b>：757F 吨公里 1.4 元，比 W5000（2.5 元）低 44%，比 HH-200（10.4 元）低 87% — <strong>载荷每翻一倍，单位成本约降 30-40%</strong></li>
+          <li><b>速度 + 无人化双优势</b>：W5000（526 km/h）的吨公里成本比 ATR 42（480 km/h，业载更大）还低 58% — 速度和无人化两端同时省</li>
+          <li><b>Caravan 级飞机吨公里成本最高</b>：20.8 元/吨公里，是 757F 的 14.9 倍 — 慢（227 km/h）+ 小（1 吨）+ 有人三重劣势叠加</li>
+          <li><b>公司 PR 是理想值</b>：假设 100% 装载率、无空驶、最优航线。实际运营装载率 70-80%、空驶率 20-30%，现实吨公里成本约为 PR 的 <b>1.5-2.0 倍</b> — W5000 实际很可能在 4-5 元/吨 km，仍优于 ATR42 但 Pareto 优势缩小</li>
         </ul>
       </div>
       <div class="source">
@@ -883,7 +921,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- Cost-component breakdown for ALL aircraft (first principles) -->
     <div class="card fade-in" style="margin-top:16px;border-left:4px solid #16a34a">
-      <div class="chart-title">成本组件明细: 每架飞机的 varHr 与 fix 是怎么算出来的?</div>
+      <div class="chart-title">成本组件明细：每架飞机的 varHr 与 fix 是怎么算出来的？</div>
       <div class="chart-desc">从燃油 / 发动机 / 维护 / 折旧等第一性原理拆解。所有数字单位为<b>元/飞行小时</b>, 末列<b>fix</b>为单次起降固定费 (元/次)。<br>
       • <b>燃油</b>: 巡航油耗 (kg/hr 或 L/hr) × 油价 (Jet-A1 国内 ~7.5元/L, ~9元/kg)<br>
       • <b>发动机+螺旋桨</b>: 大修摊销 = 大修费 ÷ TBO 间隔 (PT6A约$130/hr, 国产 AES100/WJ-9 估约 ¥350-700/hr/台)<br>
@@ -1036,15 +1074,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </table>
       </div>
       <div class="insight" style="margin-top:12px">
-        <b>从成本明细看出的几个直觉:</b>
+        <b>从成本明细看出的几个直觉：</b>
         <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>燃油占比随机型放大</strong>: 涡桨小型机 ~22% (Caravan), 涡桨中型 ~33% (CY-8), 喷气干线 ~57% (757F) → <strong>燃油效率是干线货机的命门</strong></li>
-          <li><strong>无人化省下的飞行员成本</strong>: Caravan 飞行员 ¥873/hr, 远程操作员 ¥218/hr → 节省 ¥655/hr × 1,200hr/yr = <strong>78万元/架/年</strong></li>
-          <li><strong>HH-200 vs Caravan UAV</strong>: 双发使燃油 +106%、维护 +65%, 但速度 +41% (320 vs 227) + 载荷 +38% (1.5t vs 1.088t) → 单位 (元/吨km) 反而更优, 这是 HH-200 在主导图全面接管 Caravan UAV 领地的根本原因</li>
-          <li><strong>CY-8 的成本陷阱</strong>: 双发 1,100hp 级涡桨意味着燃油+发动机储备 = ¥4,180/hr, 比 W5000 (官方仅 ¥6,100/hr 含全部) 还多 — 即使 CY-8 起降距离仅 280m, 但 <strong>每吨小时成本 (¥2.44/吨hr) 比 W5000 (¥1.22/吨hr) 高 100%</strong>, 解释了为何 CY-8 在主导图中很难抢到格子</li>
-          <li><strong>737BCF/757F 起降费看似不贵</strong>: 仅占总成本的 ~2-3%, 但 <strong>固定吨位高 → 必须装满才划算</strong>: 737BCF 满载 23.9t × 1,500km = 25.4 元/吨km, 装 50% 时 = 50.7 元/吨km</li>
-          <li><strong>"专为货运设计" vs "BCF改装"</strong>: BCF改装折旧 ¥2,920/hr 约为新机的 1/3 — 这是为什么干线市场被改装机统治, 而通航段是新设计 UAV (HH-200/CY-8/W5000) 唯一可能的窗口</li>
-          <li><strong>白鲸 W5000 的 PR vs 首原理差距 (¥6,100 vs ¥11,990, 1.96倍)</strong>: PR 假设国产涡桨大修费 ¥800/hr/台 (vs PT6 的 ¥4,000/hr/台)、燃油 ¥7/kg (内部价 vs 市场 ¥9)、年利用 2,000hr (vs 通航典型 1,200hr)、规模化后机身价 ¥2,000万 (vs 当前 ¥3,500万). <strong>若白鲸不能真正实现这些假设, 实际吨公里成本将是 PR 的 ~2 倍 (4.85元/吨km), 仍然比 CY-8 (6.53) 低, 仍然比 ATR42 (5.90) 低 — 但 Pareto 优势从压倒性变为相对优势</strong>. 第一性原理保留这一不确定性</li>
+          <li><strong>燃油占比随机型放大</strong>：涡桨小型机 ~22%（Caravan），涡桨中型 ~33%（CY-8），喷气干线 ~57%（757F）→ <strong>燃油效率是干线货机的命门</strong></li>
+          <li><strong>无人化省下的飞行员成本</strong>：Caravan 飞行员 ¥873/hr，远程操作员 ¥218/hr → 节省 ¥655/hr × 1,200hr/yr = <strong>78万元/架/年</strong></li>
+          <li><strong>HH-200 vs Caravan UAV</strong>：双发使燃油 +106%、维护 +65%，但速度 +41%（320 vs 227）+ 载荷 +38%（1.5t vs 1.088t）→ 单位（元/吨km）反而更优，这是 HH-200 在主导图全面接管 Caravan UAV 领地的根本原因</li>
+          <li><strong>CY-8 的成本陷阱</strong>：双发 1,100hp 级涡桨意味着燃油+发动机储备 = ¥4,180/hr，比 W5000（官方仅 ¥6,100/hr 含全部）还多 — 即使 CY-8 起降距离仅 280m，但 <strong>每吨小时成本（¥2.44/吨hr）比 W5000（¥1.22/吨hr）高 100%</strong>，解释了为何 CY-8 在主导图中很难抢到格子</li>
+          <li><strong>737BCF/757F 起降费看似不贵</strong>：仅占总成本的 ~2-3%，但 <strong>固定吨位高 → 必须装满才划算</strong>：737BCF 满载 23.9t × 1,500km = 25.4 元/吨km，装 50% 时 = 50.7 元/吨km</li>
+          <li><strong>"专为货运设计" vs "BCF改装"</strong>：BCF改装折旧 ¥2,920/hr 约为新机的 1/3 — 这是为什么干线市场被改装机统治，而通航段是新设计 UAV（HH-200/CY-8/W5000）唯一可能的窗口</li>
+          <li><strong>白鲸 W5000 的 PR vs 首原理差距（¥6,100 vs ¥11,990，1.96倍）</strong>：PR 假设国产涡桨大修费 ¥800/hr/台（vs PT6 的 ¥4,000/hr/台）、燃油 ¥7/kg（内部价 vs 市场 ¥9）、年利用 2,000hr（vs 通航典型 1,200hr）、规模化后机身价 ¥2,000万（vs 当前 ¥3,500万）。<strong>若白鲸不能真正实现这些假设，实际吨公里成本将是 PR 的 ~2 倍（4.85元/吨km），仍然比 CY-8（6.53）低，仍然比 ATR42（5.90）低 — 但 Pareto 优势从压倒性变为相对优势</strong>。第一性原理保留这一不确定性</li>
         </ol>
       </div>
       <div class="source">
@@ -1058,8 +1096,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- Transition to S7b -->
     <div class="insight green fade-in" style="margin-top:16px;background:#f0fdf4;border-left:4px solid #16a34a;padding:14px 18px">
-      <b>知道了运费多少能盈亏平衡, 我们就能问下一个问题</b><br>
-      在 (载荷, 距离) 平面的每个格子里, 哪种机型最便宜? 这是 S7b 的内容. 下一节用同一套成本主表, 把 9 款机型的单位成本算到每一格, 看 Caravan / HH-200 / CY-8 / W5000 / 737BCF 各自的最优领地在哪里.
+      <b>知道了运费多少能盈亏平衡，我们就能问下一个问题</b><br>
+      在（载荷，距离）平面的每个格子里，哪种机型最便宜？这是 S7b 的内容。下一节用同一套成本主表，把 9 款机型的单位成本算到每一格，看 Caravan / HH-200 / CY-8 / W5000 / 737BCF 各自的最优领地在哪里。
     </div>
   </div>
 </section>
@@ -1068,23 +1106,23 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s7b" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">07b -- 机型主导</div>
-    <div class="sec-title fade-in">在 (载荷, 距离) 平面上, 谁最便宜?</div>
-    <div class="sec-sub fade-in">用 S6 主表的数据, 把 9 款机型放到同一个 (载荷, 距离) 平面上算单位成本. 每格写出最便宜的机型. 你会发现 Caravan 已经在这张图上看不到了.</div>
+    <div class="sec-title fade-in">在（载荷，距离）平面上，谁最便宜？</div>
+    <div class="sec-sub fade-in">用 S6 主表的数据，把 9 款机型放到同一个（载荷，距离）平面上算单位成本。每格写出最便宜的机型。你会发现 Caravan 已经在这张图上看不到了。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">Caravan 在最便宜机型对比图上已经看不到. 5 吨的 W5000 在中国市场能压倒 ATR42, 但前提是它的 PR 数据成立。</div>
+      <div class="thesis-line">Caravan 在最便宜机型对比图上已经看不到。5 吨的 W5000 在中国市场能压倒 ATR42，但前提是它的 PR 数据成立。</div>
       <ul class="thesis-evidence">
-        <li>主导图: Caravan / Caravan UAV 已无最优格子, 被 HH-200 (1.5t) 和 W5000 (5t) 双向夹击</li>
-        <li>跨 9 机型一致口径单位成本表: W5000 PR 工况下吨km 2.5 元, ATR42 5.9 元</li>
-        <li>W5000 PR 与工况推测差 1.5-2 倍 — 这是本节最大的留白, 商业化首批是关键验证</li>
+        <li>主导图：Caravan / Caravan UAV 已无最优格子，被 HH-200（1.5t）和 W5000（5t）双向夹击</li>
+        <li>跨 9 机型一致口径单位成本表：W5000 PR 工况下吨km 2.5 元，ATR42 5.9 元</li>
+        <li>W5000 PR 与工况推测差 1.5-2 倍 — 这是本节最大的留白，商业化首批是关键验证</li>
       </ul>
     </div>
 
     <!-- Multi-aircraft interactive breakeven -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">多机型成本对比: 距离 × 业载 → 单位成本 (含 737/757 干线货机)</div>
-      <div class="chart-desc">非线性模型: <b>每飞行成本 = 固定起降费 + 时间成本率 × 飞行时间</b> → 短途起降费占比高, 大飞机不一定便宜。拖动滑块从 200kg 一直调到 39t, 观察小型 UAV (TP500/HH-200/CY-8/W5000) 与干线喷气 (737BCF/757F) 何时切换主导地位</div>
+      <div class="chart-title">多机型成本对比：距离 × 业载 → 单位成本（含 737/757 干线货机）</div>
+      <div class="chart-desc">非线性模型：<b>每飞行成本 = 固定起降费 + 时间成本率 × 飞行时间</b> → 短途起降费占比高，大飞机不一定便宜。拖动滑块从 200kg 一直调到 39t，观察小型 UAV（TP500/HH-200/CY-8/W5000）与干线喷气（737BCF/757F）何时切换主导地位</div>
       <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
         <label style="font-weight:600;font-size:14px">货运需求:
           <span id="payload-val" style="color:var(--primary);font-size:18px;font-weight:800">1,088</span> kg
@@ -1097,20 +1135,20 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="econ-explain" style="margin-top:8px;padding:14px 18px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px">
         <span class="insight-title" style="color:#92400e">成本模型说明</span>
         <ul class="insight-rules" style="font-size:13px;color:#64748b">
-          <li><b>每飞成本</b> = 固定起降费 (与距离无关) + 时间成本率 × 距离 ÷ 速度 (与距离成正比). <b>单位成本</b> (元/kg) = 每飞成本 ÷ 货运需求量. 当需求超过机型最大业载时, 该机型不显示 — 无法单次承运.</li>
-          <li><b>载荷-航程权衡 (Payload-Range Tradeoff)</b>: MTOW = 空重 + 燃油 + 业载. 多装 1 kg 货 → 少装 1 kg 油 → 航程缩短. 每条线的截止点随滑块变化: 载荷越轻, 可用航程越长. 例如 W5000: 满载 5 吨 → 2,600 km; 装 1 吨 → ~3,600 km; 空载转场 → ~3,800 km.</li>
-          <li><b>为什么曲线不是直线?</b> 固定起降费在短途占比很高、长途被摊薄. W5000 起降费 ~2,000 元 → 100 km 航线上, 起降费占总成本 60%; 2,000 km 航线上仅占 8%.</li>
-          <li><b>为什么大飞机短途不一定便宜?</b> 737BCF 起降费 (4,500 元) 是 Caravan UAV (350 元) 的 13 倍, 但只装 500 kg 时无法分摊. 同样, W5000 起降费 (2,000 元) 是 Caravan (600 元) 的 3.3 倍, 只装 500 kg 时也分摊不掉.</li>
+          <li><b>每飞成本</b> = 固定起降费（与距离无关）+ 时间成本率 × 距离 ÷ 速度（与距离成正比）。<b>单位成本</b>（元/kg）= 每飞成本 ÷ 货运需求量。当需求超过机型最大业载时，该机型不显示 — 无法单次承运。</li>
+          <li><b>载荷-航程权衡（Payload-Range Tradeoff）</b>：MTOW = 空重 + 燃油 + 业载。多装 1 kg 货 → 少装 1 kg 油 → 航程缩短。每条线的截止点随滑块变化：载荷越轻，可用航程越长。例如 W5000：满载 5 吨 → 2,600 km；装 1 吨 → ~3,600 km；空载转场 → ~3,800 km。</li>
+          <li><b>为什么曲线不是直线？</b>固定起降费在短途占比很高、长途被摊薄。W5000 起降费 ~2,000 元 → 100 km 航线上，起降费占总成本 60%；2,000 km 航线上仅占 8%。</li>
+          <li><b>为什么大飞机短途不一定便宜？</b>737BCF 起降费（4,500 元）是 Caravan UAV（350 元）的 13 倍，但只装 500 kg 时无法分摊。同样，W5000 起降费（2,000 元）是 Caravan（600 元）的 3.3 倍，只装 500 kg 时也分摊不掉。</li>
         </ul>
 
-        <span class="insight-title" style="color:#92400e;margin-top:14px">切换规律 (注意是硬切换, 非平滑交叉)</span>
+        <span class="insight-title" style="color:#92400e;margin-top:14px">切换规律（注意是硬切换，非平滑交叉）</span>
         <ul class="insight-rules" style="font-size:13px;color:#64748b">
-          <li><b>① W5000 ↔ Caravan UAV 在 ~635 km 交叉</b>: W5000 时间成本率 ¥11.6/km vs Caravan UAV ¥14.2/km; W5000 多出 ¥1,650 起降费 → 分界点 1,650/2.6 ≈ 635 km. 短于此距离, Caravan UAV 更优.</li>
-          <li><b>② W5000 在 5,000 kg 处硬切到 ATR42 / 737BCF</b>: 这不是经济性交叉, 而是 W5000 物理业载上限. <strong>5,000-5,500 kg 区间唯一选择是 ATR 42</strong> (单位成本 ~5.9 元/吨 km), <strong>5,500-23,900 kg 区间则跳到 737-800BCF</strong> (干线喷气, 但需装满才能压低单位成本).</li>
-          <li><b>③ 737BCF ↔ 757F 在 ~3,750 km 距离 / 23.9 t 载荷处硬切换</b>: 在 737BCF 可达范围内 (≤3,750 km × ≤23.9 t), 757F 单位成本始终高于 737BCF. <strong>757F 仅在距离 &gt; 3,750 km (中亚/欧洲国际) 或载荷 &gt; 23.9 t 时才启用</strong>.</li>
-          <li><b>④ "载荷越大越便宜"在通航段不一定成立</b>: 例如 1,500 kg 货 + 800 km 航线, HH-200 单趟 ¥12,550 = ¥10.5/kg, 比 W5000 (¥11,275/趟, 但要装满 5 t 才能摊到 ¥2.3/kg) 在小货量上反而更优 — 关键是<strong>需求量是否能撑满更大机型的腹舱</strong>.</li>
+          <li><b>① W5000 ↔ Caravan UAV 在 ~635 km 交叉</b>：W5000 时间成本率 ¥11.6/km vs Caravan UAV ¥14.2/km；W5000 多出 ¥1,650 起降费 → 分界点 1,650/2.6 ≈ 635 km。短于此距离，Caravan UAV 更优。</li>
+          <li><b>② W5000 在 5,000 kg 处硬切到 ATR42 / 737BCF</b>：这不是经济性交叉，而是 W5000 物理业载上限。<strong>5,000-5,500 kg 区间唯一选择是 ATR 42</strong>（单位成本 ~5.9 元/吨 km），<strong>5,500-23,900 kg 区间则跳到 737-800BCF</strong>（干线喷气，但需装满才能压低单位成本）。</li>
+          <li><b>③ 737BCF ↔ 757F 在 ~3,750 km 距离 / 23.9 t 载荷处硬切换</b>：在 737BCF 可达范围内（≤3,750 km × ≤23.9 t），757F 单位成本始终高于 737BCF。<strong>757F 仅在距离 &gt; 3,750 km（中亚/欧洲国际）或载荷 &gt; 23.9 t 时才启用</strong>。</li>
+          <li><b>④ "载荷越大越便宜"在通航段不一定成立</b>：例如 1,500 kg 货 + 800 km 航线，HH-200 单趟 ¥12,550 = ¥10.5/kg，比 W5000（¥11,275/趟，但要装满 5 t 才能摊到 ¥2.3/kg）在小货量上反而更优 — 关键是<strong>需求量是否能撑满更大机型的腹舱</strong>。</li>
         </ul>
-        <p style="margin-top:10px;font-size:13px;color:#64748b"><b>参考线</b>: 生鲜溢价 12 元/kg = 40 元/kg 货值 × 3%/hr 损耗 × 10 hr 时效差; 电商溢价 8 元/kg = 次日达 vs 标准快递价差.</p>
+        <p style="margin-top:10px;font-size:13px;color:#64748b"><b>参考线</b>：生鲜溢价 12 元/kg = 40 元/kg 货值 × 3%/hr 损耗 × 10 hr 时效差；电商溢价 8 元/kg = 次日达 vs 标准快递价差。</p>
       </div>
       <div class="source">Caravan: Conklin&de Decker 2024 (¥5,028/hr); W5000: 白鲸航线官方 PR 2.69元/吨km (反推 ¥6,100/hr); ATR42: Aircraft Cost Calculator (¥14,500/hr); TP500: 壹通/AOPA (¥650/hr); HH-200: 中航工业新闻稿规格 + 第一性原理拆解 (¥4,820/hr); 长鹰-8: 国内媒体公开报道规格 (计划2026.3首飞) + 第一性原理拆解 (¥8,530/hr); 737-800BCF: Boeing/顺丰运营估算 (¥35,800/hr); 757-200F: 中邮/中航运营估算 (¥45,900/hr); 公路: 满帮2024 (0.5元/吨km). 详细拆解见上方"成本组件明细"表</div>
     </div>
@@ -1121,8 +1159,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- Chart 1: Aircraft Dominance Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
-      <div class="chart-desc">每格颜色=该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字=最低成本(元/kg)。计算考虑了载荷-航程权衡。<b>红色pin</b>=典型实际航线</div>
+      <div class="chart-title">① 机型主导图：（业载 × 距离）平面上，谁最便宜？</div>
+      <div class="chart-desc">每格颜色=该（业载，距离）组合下<b>单位成本最低的机型</b>，数字=最低成本（元/kg）。计算考虑了载荷-航程权衡。<b>红色pin</b>=典型实际航线</div>
       <div id="chart-dominance" class="chart-box" style="height:500px"></div>
       <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;font-size:12px">
         <span><span style="display:inline-block;width:14px;height:14px;background:#06b6d4;vertical-align:middle;margin-right:4px"></span>TP500(壹通)</span>
@@ -1137,26 +1175,26 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <span><span style="display:inline-block;width:14px;height:14px;background:#e5e7eb;vertical-align:middle;margin-right:4px"></span>无机型可服务</span>
       </div>
       <div class="insight" style="margin-top:12px">
-        <b>主导图核心 insight (覆盖通航 + 干线货运全谱):</b>
+        <b>主导图核心 insight（覆盖通航 + 干线货运全谱）：</b>
         <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>TP500 守住"小货短途"角落</strong>: 业载≤500kg + 距离≤500km, 单位成本 ~2-3元/kg, 是 last-mile / 高原小货的唯一选择</li>
-          <li><strong>HH-200 接管 Caravan 级 UAV 全部领地</strong>: 同样 1-1.5 吨级, HH-200 速度 +41% (320 vs 227km/h)、payload fraction +50% (45% vs 30%), 即使 varHr 高出 ¥1,600/hr, 单位成本仍更低 → "原生货运设计"压垮"Caravan改装"</li>
-          <li><strong>CY-8 几乎抢不到格子</strong>: 第一性原理算下来 varHr ¥8,530/hr (双发1,100hp涡桨+折旧), 每吨小时成本 ¥2.44 — 而 W5000 仅 ¥1.22, 是 CY-8 的一半. <strong>除非 CY-8 折旧或燃油效率显著优化, 否则在 (业载, 距离) 平面上长期被 W5000 压制</strong></li>
-          <li><strong>W5000 是通航中长途主导者</strong>: 占据 5 吨级所有中长途格子 — "大就是经济"在航空货运成立, 但前提是<strong>装满</strong></li>
-          <li><strong>737-800BCF 主宰干线 (8-25t × 1,000-4,000km)</strong>: 单位成本 ~1.5-2.5元/kg (满载), 比 W5000 还低 → 这是为什么顺丰/京东/中邮的主力是 737BCF, 而不是新建 W5000 干线机队</li>
-          <li><strong>757-200F 锁定超长航 + 重载 (39t × 4,000-5,500km)</strong>: 中亚/欧洲国际段几乎无对手, 单位成本可压到 ~1.6元/kg</li>
-          <li><strong>ATR42 被夹在中间</strong>: 速度不如喷气、载荷不如 W5000、UAV 化无路径 → <strong>老式有人涡桨货机面临淘汰</strong></li>
-          <li><strong>Caravan 有人/无人 双双从主导图消失</strong>: 改装路线在通航段输给原生 UAV (HH-200), 在干线段输给规模化喷气 (737BCF) → 中国市场需要的是<strong>新设计</strong>, 不是改装</li>
+          <li><strong>TP500 守住"小货短途"角落</strong>：业载≤500kg + 距离≤500km，单位成本 ~2-3元/kg，是 last-mile / 高原小货的唯一选择</li>
+          <li><strong>HH-200 接管 Caravan 级 UAV 全部领地</strong>：同样 1-1.5 吨级，HH-200 速度 +41%（320 vs 227km/h）、payload fraction +50%（45% vs 30%），即使 varHr 高出 ¥1,600/hr，单位成本仍更低 → "原生货运设计"压垮"Caravan改装"</li>
+          <li><strong>CY-8 几乎抢不到格子</strong>：第一性原理算下来 varHr ¥8,530/hr（双发1,100hp涡桨+折旧），每吨小时成本 ¥2.44 — 而 W5000 仅 ¥1.22，是 CY-8 的一半。<strong>除非 CY-8 折旧或燃油效率显著优化，否则在（业载，距离）平面上长期被 W5000 压制</strong></li>
+          <li><strong>W5000 是通航中长途主导者</strong>：占据 5 吨级所有中长途格子 — "大就是经济"在航空货运成立，但前提是<strong>装满</strong></li>
+          <li><strong>737-800BCF 主宰干线（8-25t × 1,000-4,000km）</strong>：单位成本 ~1.5-2.5元/kg（满载），比 W5000 还低 → 这是为什么顺丰/京东/中邮的主力是 737BCF，而不是新建 W5000 干线机队</li>
+          <li><strong>757-200F 锁定超长航 + 重载（39t × 4,000-5,500km）</strong>：中亚/欧洲国际段几乎无对手，单位成本可压到 ~1.6元/kg</li>
+          <li><strong>ATR42 被夹在中间</strong>：速度不如喷气、载荷不如 W5000、UAV 化无路径 → <strong>老式有人涡桨货机面临淘汰</strong></li>
+          <li><strong>Caravan 有人/无人 双双从主导图消失</strong>：改装路线在通航段输给原生 UAV（HH-200），在干线段输给规模化喷气（737BCF）→ 中国市场需要的是<strong>新设计</strong>，不是改装</li>
         </ol>
         <div style="margin-top:10px;padding:8px 12px;background:#fef3c7;border-left:3px solid #f59e0b;border-radius:3px;font-size:12px;line-height:1.6">
-          <strong style="color:#b45309">⚠ 关键不确定性:</strong> HH-200 和 CY-8 的运营成本<strong>均未公开披露</strong>, 本图采用第一性原理拆解 (详见上方"成本组件明细"表). CY-8 的成本对燃油+发动机储备非常敏感 — 若实际 varHr 能压到 ¥6,000/hr (例如采用更高效的国产涡桨 + 摊薄折旧), CY-8 在 2,000-3,500kg × 1,000-2,500km 的格子上会反超 W5000. <strong>这意味着 CY-8 的商业可行性高度依赖国产涡桨能否实现 SFC ≤ 0.45 lb/shp/hr 的水平</strong>.
+          <strong style="color:#b45309">⚠ 关键不确定性：</strong>HH-200 和 CY-8 的运营成本<strong>均未公开披露</strong>，本图采用第一性原理拆解（详见上方"成本组件明细"表）。CY-8 的成本对燃油+发动机储备非常敏感 — 若实际 varHr 能压到 ¥6,000/hr（例如采用更高效的国产涡桨 + 摊薄折旧），CY-8 在 2,000-3,500kg × 1,000-2,500km 的格子上会反超 W5000。<strong>这意味着 CY-8 的商业可行性高度依赖国产涡桨能否实现 <span class="tip" data-t="Specific Fuel Consumption 耗油率">SFC</span> ≤ 0.45 lb/shp/hr 的水平</strong>。
         </div>
       </div>
     </div>
 
     <!-- Chart 2: Profitability/Margin Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">② 盈利可行域: 在不同运价下, 哪些路线能赚钱?</div>
+      <div class="chart-title">② 盈利可行域：在不同运价下，哪些路线能赚钱？</div>
       <div class="chart-desc">用每格的<b>最优机型成本</b>对比目标运价。<span style="color:#16a34a">绿=有利润</span> · <span style="color:#ef4444">红=亏损</span> · 灰=无机型可服务。拖动滑块切换市场段</div>
       <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
         <label style="font-weight:600;font-size:14px">目标运价:
@@ -1168,30 +1206,30 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div id="margin-status" style="font-size:13px;margin-bottom:8px;color:#64748b"></div>
       <div id="chart-margin" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
-        <b>关键发现:</b>
+        <b>关键发现：</b>
         <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>3-5元/kg (一般快递)</strong>: 几乎全红 → <strong>航空不该跟卡车抢一般货物</strong>, 公路永远更便宜</li>
-          <li><strong>8元/kg (电商时敏)</strong>: 仅 W5000 长途 + 大载领域有利润 → <strong>规模化 UAV 才能切入大众市场</strong></li>
-          <li><strong>12元/kg (生鲜冷链)</strong>: 可行域显著扩大, Caravan UAV 等中型机也能进入</li>
-          <li><strong>25元/kg (医疗急件)</strong>: 几乎全可行 → 但市场规模小, 难以支撑大舰队 → 只能作为补充</li>
+          <li><strong>3-5元/kg（一般快递）</strong>：几乎全红 → <strong>航空不该跟卡车抢一般货物</strong>，公路永远更便宜</li>
+          <li><strong>8元/kg（电商时敏）</strong>：仅 W5000 长途 + 大载领域有利润 → <strong>规模化 UAV 才能切入大众市场</strong></li>
+          <li><strong>12元/kg（生鲜冷链）</strong>：可行域显著扩大，Caravan UAV 等中型机也能进入</li>
+          <li><strong>25元/kg（医疗急件）</strong>：几乎全可行 → 但市场规模小，难以支撑大舰队 → 只能作为补充</li>
         </ol>
       </div>
     </div>
 
     <!-- Chart 3: Pareto Frontier -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">③ Pareto前沿: 飞机设计空间的白点</div>
-      <div class="chart-desc">每个机型在 (速度 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本(越大=越经济)。<span style="color:#2563eb"><b>蓝色虚线</b></span>=Pareto前沿(在(速度,成本)空间未被任何机型压制的设计)。<span style="color:#16a34a"><b>绿色矩形</b></span>=设计白空间</div>
+      <div class="chart-title">③ Pareto前沿：飞机设计空间的白点</div>
+      <div class="chart-desc">每个机型在（速度 × 业载）平面的位置，气泡大小 ∝ 1/吨公里成本（越大=越经济）。<span style="color:#2563eb"><b>蓝色虚线</b></span>=Pareto前沿（在（速度，成本）空间未被任何机型压制的设计）。<span style="color:#16a34a"><b>绿色矩形</b></span>=设计白空间</div>
       <div id="chart-pareto" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
-        <b>Pareto 分析 (基于第一性原理重新拆解后的成本):</b>
+        <b>Pareto 分析（基于第一性原理重新拆解后的成本）：</b>
         <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>W5000 (5吨/526km/h, 2.47元/吨km)</strong>: 在 (速度↑, 成本↓) 平面唯一处于 Pareto 前沿的中型机. 速度+规模双优势让吨公里成本压到 ¥2.47, 比 CY-8 (¥6.53) 低 62%</li>
-          <li><strong>CY-8 (3.5吨/380km/h, 6.53元/吨km)</strong>: 落在通航中型 UAV 设计区正中, 但成本反而比 W5000 高一倍 — 双发 1,100hp 涡桨的燃油+发动机储备 ¥4,180/hr 是主因. <strong>除非将 CY-8 推向更大载荷或更高速度, 否则 W5000 是更优选择</strong></li>
-          <li><strong>HH-200 (1.5吨/320km/h, 10.38元/吨km)</strong>: 位于设计区下沿, 在 (速度↑, 载荷↑) 平面上被 CY-8 严格压制. 但 HH-200 唯一的优势是它是<strong>通航段唯一已首飞、有公开 TC 路径的中型机</strong> — 时间换空间</li>
-          <li><strong>737-800BCF 与 757-200F 占据干线右上角</strong>: 速度 833-850km/h, 载荷 24-39t. 它们的吨公里成本在<strong>满载长航</strong>下可降至 1.5-2.0 元 (757F 5,000km满载 ≈ 1.6元/吨km), 比 W5000 还低 — 但只在干线主航道经济, 通航支线无法覆盖</li>
-          <li><strong>Caravan 系列被双重淘汰</strong>: 有人版被 UAV 压制, Caravan UAV 又被 HH-200 压制 → <strong>"改 Caravan" 路线在国内输给"原生 HH-200 设计"</strong></li>
-          <li><strong>真正的设计空白</strong>: 通航中型 UAV 区 (350-500km/h × 1.5-3.5t) 内, 若有机型能将吨公里成本压到 ¥3-4, 就能从 W5000 (短跑道劣势) 和 HH-200 (载荷劣势) 之间夺得一块独立领地. <strong>关键变量是"是否能用更高效率的国产涡轴/涡扇 + 更轻机体"把 varHr 从 ¥8,500 降到 ¥5,500-6,000</strong></li>
+          <li><strong>W5000（5吨/526km/h，2.47元/吨km）</strong>：在（速度↑，成本↓）平面唯一处于 Pareto 前沿的中型机。速度+规模双优势让吨公里成本压到 ¥2.47，比 CY-8（¥6.53）低 62%</li>
+          <li><strong>CY-8（3.5吨/380km/h，6.53元/吨km）</strong>：落在通航中型 UAV 设计区正中，但成本反而比 W5000 高一倍 — 双发 1,100hp 涡桨的燃油+发动机储备 ¥4,180/hr 是主因。<strong>除非将 CY-8 推向更大载荷或更高速度，否则 W5000 是更优选择</strong></li>
+          <li><strong>HH-200（1.5吨/320km/h，10.38元/吨km）</strong>：位于设计区下沿，在（速度↑，载荷↑）平面上被 CY-8 严格压制。但 HH-200 唯一的优势是它是<strong>通航段唯一已首飞、有公开 TC 路径的中型机</strong> — 时间换空间</li>
+          <li><strong>737-800BCF 与 757-200F 占据干线右上角</strong>：速度 833-850km/h，载荷 24-39t。它们的吨公里成本在<strong>满载长航</strong>下可降至 1.5-2.0 元（757F 5,000km满载 ≈ 1.6元/吨km），比 W5000 还低 — 但只在干线主航道经济，通航支线无法覆盖</li>
+          <li><strong>Caravan 系列被双重淘汰</strong>：有人版被 UAV 压制，Caravan UAV 又被 HH-200 压制 → <strong>"改 Caravan" 路线在国内输给"原生 HH-200 设计"</strong></li>
+          <li><strong>真正的设计空白</strong>：通航中型 UAV 区（350-500km/h × 1.5-3.5t）内，若有机型能将吨公里成本压到 ¥3-4，就能从 W5000（短跑道劣势）和 HH-200（载荷劣势）之间夺得一块独立领地。<strong>关键变量是"是否能用更高效率的国产涡轴/涡扇 + 更轻机体"把 varHr 从 ¥8,500 降到 ¥5,500-6,000</strong></li>
         </ol>
       </div>
       <div class="source">吨公里成本基于"满载+设计航程"组合计算, 即每个机型最优工况下的理论值。Pareto判断: 在 (速度↑, 成本↓) 二维平面上是否存在另一机型同时优于本机型. HH-200/CY-8/737BCF/757F 成本均按本节"成本组件明细"表的第一性原理拆解</div>
@@ -1203,16 +1241,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s8" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">08 -- 机型目录</div>
-    <div class="sec-title fade-in">字典章: 所有比较机型的具体数字</div>
-    <div class="sec-sub fade-in">如果你想找一架飞机的真实参数 (价格、载荷、运营成本、状态), 翻这一节. 论证看 S7a / S7b. 数据口径与 S6 主表一致.</div>
+    <div class="sec-title fade-in">有人机与无人机：全部可比较机型的参数和价格</div>
+    <div class="sec-sub fade-in">如果你想找一架飞机的真实参数（价格、载荷、运营成本、状态），翻这一节。论证看 S7a / S7b。数据口径与 S6 主表一致。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">这一节是字典. 给所有比较机型的具体数字 — 价格、运营成本、状态。论证看 S7。</div>
+      <div class="thesis-line">这一节是字典，给所有比较机型的具体数字 — 价格、运营成本、状态。论证看 S7。</div>
       <ul class="thesis-evidence">
         <li>有人机 15 款 + UAV 14 款规格表</li>
-        <li>价格、运营成本数据 (与 S6 主表口径一致, ATR42 等矛盾已修复)</li>
-        <li>雷达图: 6 款主流机型 6 维度对比 ("性价比" = 载荷 ÷ 价格 kg/万元)</li>
+        <li>价格、运营成本数据（与 S6 主表口径一致，ATR42 等矛盾已修复）</li>
+        <li>雷达图：6 款主流机型 6 维度对比（"性价比" = 载荷 ÷ 价格 kg/万元）</li>
       </ul>
     </div>
 
@@ -1248,7 +1286,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <div class="card fade-in" style="margin-bottom:20px">
       <div class="chart-title">大型货运无人机 (在研 / 试飞 / 已认证, ≥350kg 载荷)</div>
-      <div class="chart-desc">按载荷由大到小排序; 中美欧主要在研 / 已部分认证机型; 数据截至 2026.04</div>
+      <div class="chart-desc">按载荷由大到小排序；中美欧主要在研 / 已部分认证机型；数据截至 2026.04</div>
       <div class="table-wrap">
         <table class="spec-table" style="font-size:13px">
           <thead>
@@ -1291,8 +1329,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="card fade-in">
-      <div class="chart-title">Top 6 机型雷达图对比</div>
-      <div class="chart-desc">六维度综合评估: 载荷 / 航程 / 速度 / 短跑道能力 / 性价比 (= 载荷 ÷ 价格, kg/万元, 越大越好) / 中国市场可获得性</div>
+      <div class="chart-title">六款主流机型雷达图对比</div>
+      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>注意 ATR 42 航程偏短</b>：虽然它是六款中最大的飞机（5.5 吨载荷），但作为支线货机设计，航程只有 1,326 公里——比 Caravan（1,685 公里）还短。这是因为它优先了载荷和跑道性能，牺牲了航程。</div>
       <div id="chart-aircraft-radar" class="chart-box" style="height:480px"></div>
       <div class="source">基于上表数据标准化计算</div>
     </div>
@@ -1303,18 +1341,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s9" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">09 -- 无人货运飞机在中国扮演什么角色</div>
-    <div class="sec-title fade-in" style="color:#fff">UAV 在中国: 填空白、跳阶段、降门槛</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">截至 2026.04, 没有任何中国货运 UAV 完成全部适航取证. V2000CG 是载人 eVTOL, 不算在内. 所有产品都还在取证路上 — 但路上的东西已经够多了.</div>
+    <div class="sec-title fade-in" style="color:#fff">UAV 在中国：填空白、跳阶段、降门槛</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">截至 2026.04，没有任何中国货运 UAV 完成全部适航取证。V2000CG 是载人 <span class="tip" data-t="electric Vertical Take-Off and Landing 电动垂直起降">eVTOL</span>，不算在内。所有产品都还在取证路上 — 但路上的东西已经够多了。</div>
 
     <!-- NEW S9 CONTENT -->
 
     <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
-      <div class="thesis-line" style="color:rgba(255,255,255,.95)">UAV 在中国做两件事: 填充西部物流空白, 和把干线门槛从机场降到跑道. 但从 "产品存在" 到 "规模运营" 之间, 横着一道叫适航取证的关卡.</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">UAV 在中国做两件事：填充西部物流空白，和把干线门槛从机场降到跑道。但从"产品存在"到"规模运营"之间，横着一道叫适航取证的关卡。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">西部 0.34/百万人通航机场 -- UAV 用 200-700m 跑道绕过 "没有机场" 这个死结</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">跳过有人通航机队阶段, 直接进入原生 UAV 货运 -- 类似跳过固话直入移动</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">5,700 kg 以上固定翼 UAS 适航标准尚未发布 -- W5000/CY-8 取证时间线高度不确定</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">西部民用机场密度远低于全国平均（全国 0.52/百万人，仅为美国 1/19）—— UAV 用 200-700m 跑道绕过"没有机场"这个死结</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">跳过有人通航机队阶段，直接进入原生 UAV 货运 -- 类似跳过固话直入移动</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">5,700 kg 以上固定翼 <span class="tip" data-t="Unmanned Aircraft System 无人航空器系统">UAS</span> 适航标准尚未发布 -- W5000/CY-8 取证时间线高度不确定</li>
       </ul>
     </div>
 
@@ -1323,17 +1361,17 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(96,165,250,.2);color:#60a5fa">角色 1</div>
         <h4 style="color:#fff;font-size:15px;margin-top:4px">填充空白</h4>
-        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">西部 55% 国土, 通航机场密度 0.34/百万人 (美国最穷州密西西比: 7.5). UAV 不需要完整机场 -- TP500 起飞 200m, CY-8 起飞 280m. 把 "建机场" 降级为 "修跑道", 成本从数亿降到千万级.</p>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">西部 55% 国土，民用机场密度远低于全国平均（全国 0.52/百万人 vs 美国 9.8）。西部县市很多根本没有任何机场。UAV 不需要完整机场 —— TP500 起飞 200m，CY-8 起飞 280m。把"建机场"降级为"修跑道"，成本从数亿降到千万级。</p>
       </div>
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">角色 2</div>
         <h4 style="color:#fff;font-size:15px;margin-top:4px">跨越式发展</h4>
-        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通航有人机队 3,232 架 (美国 21 万). 要补齐这个差距需 20+ 年. UAV 提供了跳过整个阶段的可能 -- 直接部署无人货机, 不经过 "先建有人通航机队" 这一步.</p>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通航有人机队 3,232 架（美国 21 万）。要补齐这个差距需 20+ 年。UAV 提供了跳过整个阶段的可能 -- 直接部署无人货机，不经过"先建有人通航机队"这一步。</p>
       </div>
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">角色 3</div>
         <h4 style="color:#fff;font-size:15px;margin-top:4px">干线下沉</h4>
-        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">W5000 (5t) 试图把干线从 4C 机场 (跑道 1,800m+) 下沉到县级跑道 (700-1,200m). 如果成功, 干线货运不再需要 "先有机场" -- 但取证时间线决定一切.</p>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">W5000（5t）试图把干线从 4C 机场（跑道 1,800m+）下沉到县级跑道（700-1,200m）。如果成功，干线货运不再需要"先有机场" -- 但取证时间线决定一切。</p>
       </div>
     </div>
 
@@ -1343,15 +1381,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0">
         <div style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.3);border-radius:8px;padding:14px">
           <div style="font-size:13px;color:#93c5fd;font-weight:700"><span class="tip" data-t="Type Certificate 型号合格证">TC</span> 型号合格证</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">证明设计满足适航标准. 需要数百次试飞 + 全部文件审查. TP500 取证试飞 150+ 次, 周期约 10 个月.</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">证明设计满足适航标准。需要数百次试飞 + 全部文件审查。TP500 取证试飞 150+ 次，周期约 10 个月。</div>
         </div>
         <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:14px">
           <div style="font-size:13px;color:#86efac;font-weight:700"><span class="tip" data-t="Production Certificate 生产许可证">PC</span> 生产许可证</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">证明生产线能稳定造出符合 TC 的飞机. 没有 PC, 不能批量生产.</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">证明生产线能稳定造出符合 TC 的飞机。没有 PC，不能批量生产。</div>
         </div>
         <div style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:14px">
           <div style="font-size:13px;color:#fcd34d;font-weight:700"><span class="tip" data-t="Airworthiness Certificate 单机适航证">AC</span> 单机适航证</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">每架飞机的 "出生证". 三证齐全才能合法商业飞行.</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6">每架飞机的"出生证"。三证齐全才能合法商业飞行。</div>
         </div>
       </div>
       <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:8px;padding:12px 16px;margin-top:8px">
@@ -1364,8 +1402,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="chart-title" style="color:#fff">中国货运 UAV 取证状态 (截至 2026.04)</div>
       <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
         <table class="spec-table" style="color:rgba(255,255,255,.85)">
-          <thead style="background:rgba(255,255,255,.08)">
-            <tr><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)">机型</th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)">类型</th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Type Certificate 型号合格证">TC</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Production Certificate 生产许可证">PC</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)"><span class="tip" data-t="Airworthiness Certificate 单机适航证">AC</span></th><th style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)">备注</th></tr>
+          <thead>
+            <tr style="background:rgba(255,255,255,.15)"><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">机型</th><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">类型</th><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent"><span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span></th><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent"><span class="tip" data-t="Type Certificate 型号合格证">TC</span></th><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent"><span class="tip" data-t="Production Certificate 生产许可证">PC</span></th><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent"><span class="tip" data-t="Airworthiness Certificate 单机适航证">AC</span></th><th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">备注</th></tr>
           </thead>
           <tbody>
             <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">V2000CG</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fbbf24">载人</b> eVTOL</td><td style="border-color:rgba(255,255,255,.08)">2,000 kg</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">&#10003; 2024.03</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">&#10003; 2024.12</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">&#10003; 2025.07</td><td style="border-color:rgba(255,255,255,.08);font-size:11px">载人型号, 非货运. 已交付 Falcon Aviation (UAE)</td></tr>
@@ -1376,16 +1414,22 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.7"><b>截至 2026.04, 没有任何中国货运 UAV 完成全部适航取证.</b> 军方/应急采购走 GJB 军标, 不需完整 CAAC 取证 -- 这是 CY-8 可以先落地运营的原因.</div>
+      <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.7"><b>截至 2026.04，没有任何中国货运 UAV 完成全部适航取证。</b>军方/应急采购走 <span class="tip" data-t="国家军用标准">GJB</span> 军标，不需完整 <span class="tip" data-t="Civil Aviation Administration of China 中国民用航空局">CAAC</span> 取证——这是 CY-8 可以先落地运营的原因。</div>
+    </div>
+
+    <!-- 适航资源马太效应 -->
+    <div class="fade-in" style="margin-top:16px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:14px 16px">
+      <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:6px">适航资源分配正在形成马太效应</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">民航局适航司已公开表态："适航资源要向完成了完整飞行的厂家倾斜。"背景是大量 eVTOL 企业提交了适航材料但后续不了了之，浪费了审核资源。这形成了一个正反馈循环：先飞成的公司获得更多适航资源→适航进度更快→更容易完成下一代→获得更多资源。<b style="color:rgba(255,255,255,.85)">适航审定不是排队等号，而是资源分配越来越不均匀的过程。先飞成的公司（沃飞、峰飞）会获得不成比例的加速，还没飞成的公司即使技术路线更优，在适航进度上也可能被拉开差距。</b></div>
     </div>
 
     <!-- 中美路径对比 -->
     <div class="fade-in" style="margin-top:16px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);border-radius:10px;padding:16px 20px">
       <div style="font-size:14px;color:#93c5fd;font-weight:700;margin-bottom:10px">中美路径对比</div>
       <div style="overflow-x:auto"><table style="width:100%;color:rgba(255,255,255,.85);font-size:13px;border-collapse:collapse">
-        <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600;width:100px">中国</td><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)">原生设计 (无驾驶舱), 400kg-5t 全谱, CAAC 2024 起陆续取证. 领先体现在 "产品存在" 而非 "规模运营"</td></tr>
-        <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600">美国</td><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)">改装现役 Caravan (Reliable / Merlin), FAA TC 目标 2027-2028; 不新设计机型</td></tr>
-        <tr><td style="padding:6px 10px;font-weight:600">"领先 3 年"</td><td style="padding:6px 10px">HH-200 首飞 2022.10 vs 美国无对应. 但中国 1.5-5t 段均未完成取证, 差距可能在 2027-2028 收窄</td></tr>
+        <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600;width:100px">中国</td><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)">原生设计（无驾驶舱），400kg-5t 全谱，CAAC 2024 起陆续取证。领先体现在"产品存在"而非"规模运营"</td></tr>
+        <tr><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600">美国</td><td style="padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.08)">改装现役 Caravan（Reliable / Merlin），<span class="tip" data-t="Federal Aviation Administration 美国联邦航空管理局">FAA</span> TC 目标 2027-2028；不新设计机型</td></tr>
+        <tr><td style="padding:6px 10px;font-weight:600">"领先 3 年"</td><td style="padding:6px 10px">HH-200 首飞 2022.10 vs 美国无对应。但中国 1.5-5t 段均未完成取证，差距可能在 2027-2028 收窄</td></tr>
       </table></div>
     </div>
   </div>
@@ -1395,27 +1439,27 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s10" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">10 -- 设计哲学</div>
-    <div class="sec-title fade-in">5 段需求, 4 类在早期, 第 5 类全球空白</div>
-    <div class="sec-sub fade-in">从需求反推设计: 去驾驶舱省 800-1,100kg, 不增压减重 15%, 高翼后开门免地面设备, STOL 要求大展弦比. 每一条设计选择都有代价.</div>
+    <div class="sec-title fade-in">从需求出发：中国需要哪几类无人货运飞机，每类面对什么挑战？</div>
+    <div class="sec-sub fade-in">从需求反推设计：去驾驶舱省 800-1,100kg，不增压减重 15%，高翼后开门免地面设备，<span class="tip" data-t="Short Take-Off and Landing 短距起降">STOL</span> 要求大展弦比。每一条设计选择都有代价。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">中国需要 5 类无人货运飞机, 对应 5 段需求. 4 类仅处于早期或取证中, 第 5 类 (8-15t) 全球空白. 每类都有取证、发动机和商业化障碍.</div>
+      <div class="thesis-line">中国需要 5 类无人货运飞机，对应 5 段需求。4 类仅处于早期或取证中，第 5 类（8-15t）全球空白。每类都有取证、发动机和商业化障碍。</div>
       <ul class="thesis-evidence">
-        <li>去掉驾驶舱: 同 <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 下 <span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 从 0.30 提到 0.36-0.46, 单位成本降 15-25%</li>
-        <li>增程式 (series-hybrid) 在 1-2t 级可行 (YH-1000S), 但 8-15t 级效率惩罚太大</li>
-        <li>eVTOL 货运: V2000CG 载人版已取证, 但中国 >500kg VTOL 货运完全空白</li>
+        <li>去掉驾驶舱：同 <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 下 <span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 从 0.30 提到 0.36-0.46，单位成本降 15-25%</li>
+        <li>增程式（series-hybrid）在 1-2t 级可行（YH-1000S），但 8-15t 级效率惩罚太大</li>
+        <li>eVTOL 货运：V2000CG 载人版已取证，但中国 >500kg <span class="tip" data-t="Vertical Take-Off and Landing 垂直起降">VTOL</span> 货运完全空白</li>
       </ul>
     </div>
 
     <!-- 需求矩阵 -->
     <div class="card fade-in">
-      <div class="chart-title">需求矩阵: 5 段载荷 × 跑道 × 取证状态</div>
+      <div class="chart-title">需求矩阵：5 段载荷 × 跑道 × 取证状态</div>
       <div class="table-wrap">
         <table class="spec-table">
           <thead><tr><th>段位</th><th>载荷</th><th>航程</th><th>跑道</th><th>典型任务</th><th>代表产品</th><th>取证状态</th><th>商业化 (预估)</th></tr></thead>
           <tbody>
-            <tr><td><b>eVTOL 货运</b></td><td>200-400kg</td><td>150-300km</td><td>无需跑道</td><td>城市配送/海岛/油田</td><td>V2000CG <span style="color:#b45309;font-size:11px">(载人版已取证)</span></td><td style="color:#b45309">载人 &#10003; / 货运 &#10067;</td><td>2025-2027</td></tr>
+            <tr><td><b>eVTOL 货运</b></td><td>200-400kg</td><td>标称 150-300km<br><span style="color:#dc2626;font-size:11px">实际运营约 50-120km</span></td><td>无需跑道</td><td>城市内/近郊配送</td><td>V2000CG <span style="color:#b45309;font-size:11px">(载人版已取证)</span></td><td style="color:#b45309">载人 &#10003; / 货运 &#10067;</td><td>2025-2027</td></tr>
             <tr style="background:#f8fafc"><td><b>微型支线</b></td><td>500kg</td><td>500km</td><td>&lt;200m</td><td>县-县 last-mile</td><td>TP500</td><td style="color:#b45309">取证中</td><td>2026-2027</td></tr>
             <tr><td><b>省内主力</b></td><td>1-2t</td><td>500-1,500km</td><td>300-500m</td><td>省会-地州, 生鲜</td><td>HH-200</td><td style="color:#dc2626">未申请</td><td>2027-2029</td></tr>
             <tr style="background:#f8fafc"><td><b>中长途干线</b></td><td>3-5t</td><td>1,500-3,000km</td><td>280-700m</td><td>西部-沿海</td><td>CY-8 / W5000</td><td style="color:#dc2626">标准制定中</td><td>2028-2030</td></tr>
@@ -1429,39 +1473,42 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <div class="fade-in" style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
       <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px">
         <div style="font-size:13px;font-weight:700;color:#0369a1;margin-bottom:6px">去掉驾驶舱</div>
-        <div style="font-size:12.5px;color:#075985;line-height:1.7">省 800-1,100 kg 结构重量 + 15m³ 容积 + 尾翼可缩小. PF 从 0.30 提到 0.36-0.46. 单位成本降 15-25% (仅结构优势, 不含人员节省).</div>
+        <div style="font-size:12.5px;color:#075985;line-height:1.7">省 800-1,100 kg 结构重量 + 15m³ 容积 + 尾翼可缩小。<span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 从 0.30 提到 0.36-0.46。单位成本降 15-25%（仅结构优势，不含人员节省）。</div>
       </div>
       <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px">
         <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:6px">不需增压</div>
-        <div style="font-size:12.5px;color:#14532d;line-height:1.7">机身结构减重 10-15%. 允许非圆截面货舱 (矩形更利于装载). 巡航高度 3,000-6,000m 够用, 货物不怕减压.</div>
+        <div style="font-size:12.5px;color:#14532d;line-height:1.7">机身结构减重 10-15%。允许非圆截面货舱（矩形更利于装载）。巡航高度 3,000-6,000m 够用，货物不怕减压。</div>
       </div>
       <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;padding:16px">
         <div style="font-size:13px;font-weight:700;color:#92400e;margin-bottom:6px">高翼后开门</div>
-        <div style="font-size:12.5px;color:#78350f;line-height:1.7">机翼不穿过货舱 → 全通式货仓. 后开门尾坡道 → 地面装卸不需叉车或升降平台, 在简易跑道旁即可完成.</div>
+        <div style="font-size:12.5px;color:#78350f;line-height:1.7">机翼不穿过货舱 → 全通式货仓。后开门尾坡道 → 地面装卸不需叉车或升降平台，在简易跑道旁即可完成。</div>
       </div>
       <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px">
         <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:6px"><span class="tip" data-t="Short Take-Off and Landing 短距起降">STOL</span> 权衡</div>
-        <div style="font-size:12.5px;color:#7f1d1d;line-height:1.7">大展弦比 (<span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 10-12) + 大面积襟翼 → 短跑道能力. 代价: 巡航速度低 10-15%, 结构重量增加.</div>
+        <div style="font-size:12.5px;color:#7f1d1d;line-height:1.7">大展弦比（<span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 10-12）+ 大面积襟翼 → 短跑道能力。代价：巡航速度低 10-15%，结构重量增加。</div>
       </div>
     </div>
 
     <!-- 增程式 + eVTOL -->
     <div class="grid2 fade-in" style="margin-top:16px">
       <div class="insight" style="background:#fffbeb;border-left-color:#f59e0b">
-        <span class="insight-title" style="color:#92400e">增程式 (series-hybrid) 方案</span>
+        <span class="insight-title" style="color:#92400e">增程式（series-hybrid）：在航空场景中可能长期优于纯电</span>
         <ul class="insight-rules">
-          <li><b>已验证:</b> YH-1000S (CASC, 1.2t 载荷, 2026.02 首飞) 是中国最大混动货运 UAV</li>
-          <li><b>5-10t 级不可行:</b> 串联混动总效率 18-22% vs 涡桨 25-30%, 重量惩罚 30-40%. CY-8 和 W5000 均使用传统涡桨</li>
-          <li><b>定位:</b> 1-3t 级备选动力路线, 降低对单一发动机路线的依赖</li>
+          <li><b>航空和汽车的经济逻辑完全相反。</b>汽车行业的经验是"电便宜油贵，电池寿命长→纯电取代增程"。但航空的成本结构不同：航空级高 C 率电池极其昂贵（一个 pack 几十万元），寿命极短（不到 500 次循环——<span class="tip" data-t="electric Vertical Take-Off and Landing 电动垂直起降">eVTOL</span> 几乎每飞一次就要深度充放一次），而航空燃油相对便宜。所以在航空场景里，<b>电池损耗才是运营成本的大头，油反而是小钱</b>。</li>
+          <li><b>增程式的隐藏优势是电池 pack 更小。</b>纯电 eVTOL 电池占 <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 30-40%（200 kWh pack，¥60-100 万），500 循环摊销约 <b>¥1,200-2,000/飞行小时</b>。增程式电池仅占 MTOW 8-15%（50 kWh pack，¥15-25 万），摊销约 <b>¥300-500/飞行小时</b>——差 3-4 倍。</li>
+          <li><b>纯电改增程几乎等于重新研制一架飞机。</b>飞行器的重心必须在压心的稳定裕度范围内，增程器不能像汽车那样随便放一个位置。Joby 的增程版就是在纯电机型上直接改的，增程器只能塞进客舱，"这个飞机就没有用处了"。要真正做增程式，必须从总体设计阶段就把增程器纳入重心计算。</li>
+          <li><b>竞争含义：</b>沃飞、峰飞等纯电头部如果要转增程路线，几乎要从头来过。一开始就做增程的公司（蓝霄、追梦空天）有结构性先发优势。</li>
+          <li><b>已验证规模：</b>YH-1000S（CASC，1.2t 载荷，2026.02 首飞）是中国最大混动货运 UAV。5-10t 级仍使用传统涡桨（CY-8、W5000），增程式在此级别的重量惩罚（30-40%）仍然过大。</li>
         </ul>
       </div>
       <div class="insight" style="background:#f0f9ff;border-left-color:#2563eb">
-        <span class="insight-title" style="color:#1e40af">eVTOL 货运方向</span>
+        <span class="insight-title" style="color:#1e40af">纯电 eVTOL 货运：航程虚标是行业性问题</span>
         <ul class="insight-rules">
-          <li><b>V2000CG:</b> 全球首款取证 eVTOL (400kg/300km), 但为<b>载人</b>型号</li>
-          <li><b>纯电 VTOL 天花板:</b> 电池 ~250 Wh/kg → 载荷 &gt;1t 且航程 &gt;300km 目前不可行</li>
-          <li><b>混动 VTOL:</b> Sabrewing (美, 2.4t/1,850km, $3.2B 订单), 中国无对标</li>
-          <li><b>空白:</b> 中国 &gt;500kg VTOL 货运完全空白. 西藏山村、南海岛礁、灾后应急 -- 需求存在, 产品不存在</li>
+          <li><b>航程数据需要大幅打折。</b>官方标称航程用的是软包电池 260 Wh/kg 在地面上算"用光"的理论值。实际飞行中有三重折损：放电深度限制（低电量放不出功率）、软包转圆柱的能量密度下降（航空安全要求）、以及垂起阶段的额外能耗。叠加下来，美国第三方对 Joby 的实测是 60-80 km 运营里程。<b>标称 300 km 的纯电 eVTOL，实际运营半径可能只有 50-120 km</b>。</li>
+          <li><b>适用场景因此大幅缩小。</b>50-120 km 的运营半径意味着纯电 eVTOL 基本只能做城市内短途和近郊配送，城际场景几乎不成立。</li>
+          <li><b>航空电池供应链是瓶颈。</b>eVTOL 需要 7-10C 大倍率放电的电池，宁德时代这些大厂没有这种产品。能做的供应商是比克、Molicel 等小众电动赛车电池厂，产能小、价格极高（pack 价格 ¥3,000-5,000/kWh，远高于动力电池 ¥600-800/kWh）。动力电池的降本路径（规模效应）在航空电池上走不通。</li>
+          <li><b>V2000CG（AutoFlight）：</b>全球首款取证 eVTOL（标称 400 kg / 300 km），但为载人型号。考虑航程折损后，实际货运运营半径可能仅 50-100 km。</li>
+          <li><b>中国 &gt;500 kg <span class="tip" data-t="Vertical Take-Off and Landing 垂直起降">VTOL</span> 货运完全空白。</b>Sabrewing（美，2.4t / 1,850 km，混动 VTOL，$3.2B 订单）目前无中国对标。</li>
         </ul>
       </div>
     </div>
@@ -1473,15 +1520,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">11 -- 工程规格</div>
     <div class="sec-title fade-in" style="color:#fff">5 大规格卡: 从载荷 × 航程反推每架飞机该长什么样</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">翼型、发动机、<span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span>、<span class="tip" data-t="Bill of Materials 物料成本">BOM</span> 都可以从需求反推. 最难的不是画图纸, 是发动机和取证.</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">翼型、发动机、<span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span>、<span class="tip" data-t="Bill of Materials 物料成本">BOM</span> 都可以从需求反推。最难的不是画图纸，是发动机和取证。</div>
 
     <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
-      <div class="thesis-line" style="color:rgba(255,255,255,.95)">5 类 UAV 都能从第一性原理推导出来. 前 4 类有产品但还在取证, 第 5 类 (10t) 需要一台中国还没有的发动机.</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">5 类 UAV 都能从第一性原理推导出来。前 4 类有产品但还在取证，第 5 类（10t）需要一台中国还没有的发动机。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">TP500: 取证试飞中, 可能是首个货运 UAV TC, 但仍需 PC 才能量产</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">10t 级 BOM 约 6,350 万, 吨公里 3.77 元 -- 与 737BCF 半载 (3.72) 持平, 满载 (1.86) 差一倍</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">2,000-3,000 <span class="tip" data-t="Shaft Horsepower 轴马力">SHP</span> 国产涡桨不存在, 初期必须进口 PW127</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">TP500：取证试飞中，可能是首个货运 UAV TC，但仍需 PC 才能量产</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">10t 级 <span class="tip" data-t="Bill of Materials 物料成本">BOM</span> 约 6,350 万，吨公里 3.77 元 -- 与 737BCF 半载（3.72）持平，满载（1.86）差一倍</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">2,000-3,000 <span class="tip" data-t="Shaft Horsepower 轴马力">SHP</span> 国产涡桨不存在，初期必须进口 <span class="tip" data-t="Pratt & Whitney Canada PW127 涡桨发动机">PW127</span></li>
       </ul>
     </div>
 
@@ -1491,25 +1538,29 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <div class="tag" style="background:rgba(96,165,250,.2);color:#60a5fa">1 | eVTOL 货运</div>
         <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">V2000CG 类 | 400kg / 300km</h4>
         <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">多旋翼+固定翼, 纯电, MTOW ~2,000 kg<br>BOM: ~¥250 万 | 无需跑道<br><b style="color:#fbbf24">载人版已三证齐全</b></div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: 电池 250 Wh/kg 限制载荷/航程天花板; 高原冬季性能 -30%</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 10px;line-height:1.6">
+          <b>挑战 1 — 航程虚标：</b>标称 300 km 实际运营约 50-120 km（三重折损：放电深度 + 软包转圆柱 + 垂起额外能耗）<br>
+          <b>挑战 2 — 电池供应链：</b>航空级 7-10C 高倍率电池由比克、Molicel 等小众厂供应，pack 价 ¥3,000-5,000/kWh（动力电池的 5-7 倍），规模降本走不通<br>
+          <b>挑战 3 — 电池更换成本高：</b>200 kWh pack 约 ¥60-100 万，寿命 <500 循环，摊销约 ¥1,200-2,000/飞行小时——占纯电 eVTOL 运营成本的 30-40%
+        </div>
       </div>
       <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
         <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">2 | 微型支线</div>
         <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">TP500 类 | 500kg / 500km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼, <span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 8-9, 单涡轴 50-80 kW<br>MTOW ~1,500 kg | EWF 0.53 | PF 0.33<br>起飞 &lt;200m | BOM ~¥250 万 | varHr ¥800-1,000/hr</div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: TC 预计 2026 中; 单发无冗余; 国内涡轴 TBO 数据不足</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼，<span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 8-9，单涡轴 50-80 kW<br>MTOW ~1,500 kg | <span class="tip" data-t="Empty Weight Fraction 空重占比">EWF</span> 0.53 | PF 0.33<br>起飞 &lt;200m | BOM ~¥250 万 | varHr ¥800-1,000/hr</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战：TC 预计 2026 中；单发无冗余；国内涡轴 <span class="tip" data-t="Time Between Overhaul 翻修间隔">TBO</span> 数据不足</div>
       </div>
       <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
         <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">3 | 省内主力</div>
         <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">HH-200 类 | 1.5t / 1,000km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼, AR 10-11, 双涡桨 600 SHP×2<br>MTOW ~3,300 kg | EWF 0.45 | PF 0.45<br>起飞 ~500m (高原 4,000m: ~800m)<br>BOM ~¥1,170 万 | varHr ¥5,500-6,500/hr</div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: 2022 首飞但 4 年后仍无 TC 进展; AES100 TBO 数据需 2+ 年积累</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼，AR 10-11，双涡桨 600 SHP×2<br>MTOW ~3,300 kg | EWF 0.45 | PF 0.45<br>起飞 ~500m（高原 4,000m：~800m）<br>BOM ~¥1,170 万 | varHr ¥5,500-6,500/hr</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战：2022 首飞但 4 年后仍无 TC 进展；<span class="tip" data-t="中国航发 AES100 涡轴发动机">AES100</span> TBO 数据需 2+ 年积累</div>
       </div>
       <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
         <div class="tag" style="background:rgba(248,113,113,.2);color:#f87171">4 | 中长途干线</div>
         <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">CY-8/W5000 类 | 3.5-5t / 2,600-3,000km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼, AR 11-12, 双涡桨 1,100-1,500 SHP×2<br>W5000: MTOW 10,800 kg | EWF 0.35 | PF 0.46<br>CY-8 起飞 ~280m (STOL), W5000 ~700m<br>BOM ¥3,000-3,500 万 | varHr: PR ¥6,100 → 工况 ¥9,000-12,000</div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战: MTOW >5,700kg, CAAC 标准不存在. W5000 目标 2026.09, 现实 2027-2028. CY-8 可先军采</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼，AR 11-12，双涡桨 1,100-1,500 SHP×2<br>W5000: MTOW 10,800 kg | EWF 0.35 | PF 0.46<br>CY-8 起飞 ~280m（STOL），W5000 ~700m<br>BOM ¥3,000-3,500 万 | varHr: PR ¥6,100 → 工况 ¥9,000-12,000</div>
+        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战：MTOW >5,700kg，CAAC 标准不存在。W5000 目标 2026.09，现实 2027-2028。CY-8 可先军采</div>
       </div>
       <!-- 卡5: 重载干线 ⭐ -->
       <div class="fade-in" style="background:rgba(245,158,11,.08);border:2px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:18px;grid-column:1/-1">
@@ -1533,9 +1584,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </div>
         </div>
         <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px">
-          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>发动机空白:</b> 2,000-3,000 SHP 国产涡桨不存在. AES100 太小, AEP500 太大. 初期必须进口 PW127</div>
-          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>CAAC:</b> 28t MTOW 远超 5,700 kg 线, 取证可能 4-6 年</div>
-          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>NRE:</b> ¥45 亿研发需国家级项目. 200 架量产, 每架需利润 >¥2,000 万才能回收</div>
+          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>发动机空白：</b>2,000-3,000 SHP 国产涡桨不存在。AES100 太小，AEP500 太大。初期必须进口 PW127</div>
+          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>CAAC：</b>28t MTOW 远超 5,700 kg 线，取证可能 4-6 年</div>
+          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b><span class="tip" data-t="Non-Recurring Engineering 非经常性研发费用">NRE</span>：</b>¥45 亿研发需国家级项目。200 架量产，每架需利润 >¥2,000 万才能回收</div>
         </div>
       </div>
     </div>
@@ -1544,11 +1595,11 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <div class="grid2 fade-in" style="margin-top:16px">
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:14px 16px">
         <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:4px">增程式 -- 不是万能药</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">YH-1000S (1.2t, 混动) 证明 1-2t 级可行. 但 8-15t 级系统重量惩罚 30-40% vs 直驱涡桨. <b style="color:rgba(255,255,255,.85)">增程式是 1-3t 级备选, 不是 8-15t 级解决方案.</b></div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">YH-1000S（1.2t，混动）证明 1-2t 级可行。但 8-15t 级系统重量惩罚 30-40% vs 直驱涡桨。<b style="color:rgba(255,255,255,.85)">增程式是 1-3t 级备选，不是 8-15t 级解决方案。</b></div>
       </div>
       <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);border-radius:8px;padding:14px 16px">
         <div style="font-size:13px;color:#93c5fd;font-weight:700;margin-bottom:4px">VTOL 货运 -- 中国空白</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">纯电 eVTOL: &lt;500kg/&lt;300km. 混动 VTOL: Sabrewing (美, 2.4t/1,850km), 中国无对标. <b style="color:rgba(255,255,255,.85)">>500kg VTOL 货运在中国完全空白.</b></div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">纯电 eVTOL：&lt;500kg/&lt;300km。混动 VTOL：Sabrewing（美，2.4t/1,850km），中国无对标。<b style="color:rgba(255,255,255,.85)">>500kg VTOL 货运在中国完全空白。</b></div>
       </div>
     </div>
   </div>
@@ -1558,22 +1609,22 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s12" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">12 -- 未来场景与需求规模</div>
-    <div class="sec-title fade-in">短期 TP500 + FP-98, 中期 W5000/CY-8, 出口要等 2033</div>
-    <div class="sec-sub fade-in"><span class="tip" data-t="Letter of Intent 意向书">LOI</span> 不是订单. 目前仅 V2000CG (载人) 向付费客户交付了认证机型. 市场规模需要分三个时间窗来看.</div>
+    <div class="sec-title fade-in">短期 TP500 + FP-98，中期 W5000/CY-8，出口要等 2033</div>
+    <div class="sec-sub fade-in"><span class="tip" data-t="Letter of Intent 意向书">LOI</span> 不是订单。目前仅 V2000CG（载人）向付费客户交付了认证机型。市场规模需要分三个时间窗来看。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">短期 (2028) 国内 ¥35-70 亿; 中期 (2031) ¥200-400 亿; 出口参考高铁 — 7 年到首单, 15 年到通车.</div>
+      <div class="thesis-line">短期（2028）国内 ¥35-70 亿；中期（2031）¥200-400 亿；出口参考高铁 — 7 年到首单，15 年到通车。</div>
       <ul class="thesis-evidence">
-        <li>LOI 汇总: W5000 跨越 60 架, TP500 中通 30 架, FP-98 顺丰运营中</li>
-        <li>研报 $8.9-10.5B 包含 last-mile 小型无人机 (~55-60%); 1-5t 货运段仅 $3-4.5B</li>
-        <li>一带一路: 高铁 2008 国内运营 → 2015 首单 → 2023 印尼通车. UAV 出口可能 2033+</li>
+        <li>LOI 汇总：W5000 跨越 60 架，TP500 中通 30 架，FP-98 顺丰运营中</li>
+        <li>研报 $8.9-10.5B 包含 last-mile 小型无人机（~55-60%）；1-5t 货运段仅 $3-4.5B</li>
+        <li>一带一路：高铁 2008 国内运营 → 2015 首单 → 2023 印尼通车。UAV 出口可能 2033+</li>
       </ul>
     </div>
 
     <!-- LOI/订单表 -->
     <div class="card fade-in">
-      <div class="chart-title">LOI / 订单汇总 (截至 2026.04)</div>
+      <div class="chart-title">LOI / 订单汇总（截至 2026.04）</div>
       <div class="table-wrap">
         <table class="spec-table">
           <thead><tr><th>机型</th><th>客户</th><th>数量</th><th>状态</th><th>备注</th></tr></thead>
@@ -1587,7 +1638,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      <div class="source">注: 绝大部分 LOI 无法律约束力. 仅 V2000CG 已向付费客户交付认证机型 (载人型).</div>
+      <div class="source">注：绝大部分 LOI 无法律约束力。仅 V2000CG 已向付费客户交付认证机型（载人型）。</div>
     </div>
 
     <!-- 三时间窗 -->
@@ -1595,32 +1646,38 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="chart-title">三时间窗矩阵</div>
       <div class="table-wrap">
         <table class="spec-table">
-          <thead><tr><th>时间窗</th><th>可用机型</th><th>装机量</th><th>国内市场</th><th>出口</th><th>总计</th></tr></thead>
+          <thead><tr><th>时间窗</th><th>可用机型</th><th>主要客户</th><th>装机量</th><th>国内市场</th><th>出口</th><th>总计</th></tr></thead>
           <tbody>
-            <tr><td><b>短期 2026-2028</b></td><td>TP500 + FP-98 + 军采 CY-8</td><td>200-400 架</td><td>¥30-60 亿</td><td>¥5-10 亿</td><td><b>¥35-70 亿</b></td></tr>
-            <tr style="background:#f8fafc"><td><b>中期 2028-2031</b></td><td>+ HH-200 / W5000 (取证后)</td><td>800-1,500 架</td><td>¥150-300 亿</td><td>¥50-100 亿</td><td><b>¥200-400 亿</b></td></tr>
-            <tr style="background:#fef3c7"><td><b>长期 2031-2035</b></td><td>+ 10t 级 (如果研发启动)</td><td>2,000-4,000 架</td><td>¥400-700 亿</td><td>¥150-400 亿</td><td><b>¥550-1,100 亿</b></td></tr>
+            <tr><td><b>短期 2026-2028</b></td><td>TP500 + FP-98 + 军采 CY-8</td><td style="color:#b45309"><b>政府为主</b><br><span style="font-size:11px">应急/国土/边防</span></td><td>200-400 架</td><td>¥30-60 亿</td><td>¥5-10 亿</td><td><b>¥35-70 亿</b></td></tr>
+            <tr style="background:#f8fafc"><td><b>中期 2028-2031</b></td><td>+ HH-200 / W5000 (取证后)</td><td><b>政府 + 物流</b><br><span style="font-size:11px">顺丰/京东/中邮</span></td><td>800-1,500 架</td><td>¥150-300 亿</td><td>¥50-100 亿</td><td><b>¥200-400 亿</b></td></tr>
+            <tr style="background:#fef3c7"><td><b>长期 2031-2035</b></td><td>+ 10t 级 (如果研发启动)</td><td><b>商业为主</b><br><span style="font-size:11px">电商/冷链/干线</span></td><td>2,000-4,000 架</td><td>¥400-700 亿</td><td>¥150-400 亿</td><td><b>¥550-1,100 亿</b></td></tr>
           </tbody>
         </table>
       </div>
+    </div>
+
+    <!-- 政府先于商业 -->
+    <div class="fade-in" style="margin-top:16px;padding:14px 18px;background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:8px">
+      <div style="font-weight:700;color:#b91c1c;margin-bottom:4px">短期市场规模取决于政府采购预算，不是物流渗透率</div>
+      <div style="font-size:13px;color:#7f1d1d;line-height:1.7">用"万亿物流市场的渗透率"来估算 eVTOL 短期市场是不靠谱的。"半日达"的消费需求目前还没有自然产生，需要一个历史发展过程。在商业需求成熟之前，无人货运飞机的真实客户是政府部门（应急管理、国土资源、边防武警）——这是一个存量市场，目前被小型无人机占据但缺乏 500 kg 以上的大机型。近 2-3 年的市场规模上限就是政府采购预算能给到多少。</div>
     </div>
 
     <!-- 研报 cross-check -->
     <div class="insight fade-in" style="margin-top:16px">
       <span class="insight-title">市场研究数据 cross-check</span>
       <ul class="insight-rules">
-        <li><b>Markets&Markets / Mordor:</b> 全球 cargo drone 市场 2030 $8.9-10.5B. 这些数字包含 last-mile 小型 (&lt;25kg) 无人机, 占 ~55-60%</li>
-        <li><b>1-5t 载荷段:</b> 可能仅占 $3-4.5B (约 ¥22-33 亿, 仅飞机销售)</li>
-        <li><b>口径差异:</b> 我们的中期 ¥200-400 亿包含飞机采购 + 运营 + 基建; 研报仅含飞机销售. 两组数字不能直接对比</li>
+        <li><b>Markets&Markets / Mordor：</b>全球 cargo drone 市场 2030 $8.9-10.5B。这些数字包含 last-mile 小型（&lt;25kg）无人机，占 ~55-60%</li>
+        <li><b>1-5t 载荷段：</b>可能仅占 $3-4.5B（约 ¥22-33 亿，仅飞机销售）</li>
+        <li><b>口径差异：</b>我们的中期 ¥200-400 亿包含飞机采购 + 运营 + 基建；研报仅含飞机销售。两组数字不能直接对比</li>
       </ul>
     </div>
 
     <!-- 一带一路 + 高铁 -->
     <div class="fade-in" style="margin-top:16px;padding:16px 20px;background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:8px">
-      <div style="font-weight:700;color:#92400e;margin-bottom:8px">一带一路出口: 参考高铁时间线</div>
+      <div style="font-weight:700;color:#92400e;margin-bottom:8px">一带一路出口：参考高铁时间线</div>
       <div style="font-size:13px;color:#78350f;line-height:1.8">
-        中国高铁: 2008 国内运营 → 2015 印尼出口合同 (<b>7 年</b>) → 2023 印尼通车 (<b>15 年</b>).<br>
-        UAV 出口推测: 如果 2026-2028 国内规模运营 → 首个出口合同 <b>2033-2035</b> → 首条海外航线 <b>2035-2040</b>.<br>
+        中国高铁：2008 国内运营 → 2015 印尼出口合同（<b>7 年</b>）→ 2023 印尼通车（<b>15 年</b>）。<br>
+        UAV 出口推测：如果 2026-2028 国内规模运营 → 首个出口合同 <b>2033-2035</b> → 首条海外航线 <b>2035-2040</b>。<br>
         <b>短期投资 (2026-2030) 不应把出口收入计入收益预期.</b>
       </div>
     </div>
@@ -1630,19 +1687,19 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="insight green">
         <span class="insight-title">驱动因素</span>
         <ul class="insight-rules">
-          <li><b>电商下沉:</b> 1,750 亿件快递, 西部末端配送效率最低</li>
-          <li><b>冷链需求:</b> 生鲜 + 医药时效性要求</li>
-          <li><b>低空经济政策:</b> 国家层面推动, 地方政府补贴</li>
-          <li><b>军方/应急:</b> 不需完整取证 (GJB), CY-8 可先落地</li>
+          <li><b>电商下沉：</b>电商向低线城市下沉带来 1,750 亿件快递需求，西部末端配送效率最低</li>
+          <li><b>冷链需求：</b>生鲜电商和医药冷链快速增长，对时效性要求极高</li>
+          <li><b>低空经济政策：</b>国家层面推动低空经济发展，地方政府提供专项补贴</li>
+          <li><b>军方/应急：</b>不需完整取证（GJB），CY-8 可先通过军采落地运营</li>
         </ul>
       </div>
       <div class="insight red">
         <span class="insight-title">风险因素</span>
         <ul class="insight-rules">
-          <li><b>PR vs 工况:</b> W5000 ¥6,100/hr vs 工况推测 ¥9,000-12,000/hr</li>
-          <li><b>5,700 kg 线:</b> 以上适航标准空白, 取证时间不确定</li>
-          <li><b>发动机:</b> &gt;1,000 SHP 涡桨 TBO 数据不足</li>
-          <li><b>CAAC 国际互认:</b> 出口需双边协议, 覆盖有限</li>
+          <li><b>PR vs 工况：</b>W5000 ¥6,100/hr vs 工况推测 ¥9,000-12,000/hr</li>
+          <li><b>5,700 kg 线：</b>以上适航标准空白，取证时间不确定</li>
+          <li><b>发动机：</b>&gt;1,000 SHP 涡桨 TBO 数据不足</li>
+          <li><b>CAAC 国际互认：</b>出口需双边协议，覆盖有限</li>
         </ul>
       </div>
     </div>
@@ -1654,15 +1711,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">13 -- 最终结论</div>
     <div class="sec-title fade-in" style="color:#fff">中国正在跳过 "有人通航" 这一页</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">能不能成功翻到下一页, 取决于三件事.</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">能不能成功翻到下一页，取决于三件事。</div>
 
     <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">终极判断</div>
-      <div class="thesis-line" style="color:rgba(255,255,255,.95)">中国选择了直接进入 "无人货运" 阶段. 截至 2026.04, 产品存在但规模运营尚未开始. 2027-2028 年的首批商业航线数据, 是全部分析的验证点.</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">中国选择了直接进入"无人货运"阶段。截至 2026.04，产品存在但规模运营尚未开始。2027-2028 年的首批商业航线数据，是全部分析的验证点。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">仅 V2000CG (载人 eVTOL) 可合法商业飞行; 所有货运 UAV 均在取证路上</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">国内市场 2035 年 ¥400-700 亿; 出口要等 2033+ (高铁类比: 7 年到首单)</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">无驾驶舱 PF 提升 (0.30→0.36-0.46) 带来 15-25% 单位成本降低, 叠加人员节省后总降 30-40%</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">仅 V2000CG（载人 eVTOL）可合法商业飞行；所有货运 UAV 均在取证路上</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">国内市场 2035 年 ¥400-700 亿；出口要等 2033+（高铁类比：7 年到首单）</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">无驾驶舱 PF 提升（0.30→0.36-0.46）带来 15-25% 单位成本降低，叠加人员节省后总降 30-40%</li>
       </ul>
     </div>
 
@@ -1671,19 +1728,19 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <h4 style="color:#fff;font-size:16px;margin-bottom:14px">5 个核心判断</h4>
       <div style="display:grid;gap:10px">
         <div style="background:rgba(255,255,255,.05);border-left:3px solid #4ade80;border-radius:0 8px 8px 0;padding:12px 16px">
-          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#4ade80">1.</b> UAV 从 "探索" 走到 "首款取证" (V2000CG 载人版). 从取证到规模运营还有距离. 目前没有货运 UAV 可以合法商业飞行.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#4ade80">1.</b> UAV 从"探索"走到"首款取证"（V2000CG 载人版）。从取证到规模运营还有距离。目前没有货运 UAV 可以合法商业飞行。</div>
         </div>
         <div style="background:rgba(255,255,255,.05);border-left:3px solid #60a5fa;border-radius:0 8px 8px 0;padding:12px 16px">
-          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#60a5fa">2.</b> 4 类 UAV 覆盖 400kg-5t, 但均处于早期. 8-15t 重载干线全球空白, 需要中国还没有的 2,500 SHP 发动机.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#60a5fa">2.</b> 4 类 UAV 覆盖 400kg-5t，但均处于早期。8-15t 重载干线全球空白，需要中国还没有的 2,500 SHP 发动机。</div>
         </div>
         <div style="background:rgba(255,255,255,.05);border-left:3px solid #fbbf24;border-radius:0 8px 8px 0;padding:12px 16px">
-          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#fbbf24">3.</b> 无驾驶舱 PF 提升 (0.30→0.36-0.46) 带来 15-25% 单位成本降低. 叠加无飞行员后总降 30-40%. 这是结构性优势.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#fbbf24">3.</b> 无驾驶舱 PF 提升（0.30→0.36-0.46）带来 15-25% 单位成本降低。叠加无飞行员后总降 30-40%。这是结构性优势。</div>
         </div>
         <div style="background:rgba(255,255,255,.05);border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:12px 16px">
-          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#f87171">4.</b> 国内市场 2035 年 ¥400-700 亿. 出口要等 2033+ -- 高铁从国内运营到首个出口合同用了 7 年.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#f87171">4.</b> 国内市场 2035 年 ¥400-700 亿。出口要等 2033+ -- 高铁从国内运营到首个出口合同用了 7 年。</div>
         </div>
         <div style="background:rgba(255,255,255,.05);border-left:3px solid #c084fc;border-radius:0 8px 8px 0;padding:12px 16px">
-          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#c084fc">5.</b> 成败取决于下面三件事. 不是政策, 不是资本, 是工程.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7"><b style="color:#c084fc">5.</b> 成败取决于下面三件事。不是政策，不是资本，是工程。</div>
         </div>
       </div>
     </div>
@@ -1692,25 +1749,30 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <div class="grid3 fade-in">
       <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(239,68,68,.2);color:#f87171">事 1</div>
-        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">取证: W5000/CY-8 能否 2028 前拿 TC?</h4>
-        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">5,700 kg 以上 CAAC 标准不存在. W5000 目标 2026.09 极其激进. TP500 (仅 2t 级) 试飞已需 10 个月. 10.8t 级首次取证很可能 2-3 年 → 现实 2027-2028. <b style="color:#fca5a5">如果 2028 前两型均未取证, 中期市场规模打 5 折.</b></p>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">取证：W5000/CY-8 能否 2028 前拿 TC？</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">5,700 kg 以上 CAAC 标准不存在。W5000 目标 2026.09 极其激进。TP500（仅 2t 级）试飞已需 10 个月。10.8t 级首次取证很可能 2-3 年 → 现实 2027-2028。<b style="color:#fca5a5">如果 2028 前两型均未取证，中期市场规模打 5 折。</b></p>
       </div>
       <div style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">事 2</div>
-        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">发动机: 国产 2,500 SHP 涡桨何时有?</h4>
-        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">10t 级 UAV 的前提. AES100 太小, AEP500 太大, 增程式在此级别不可行. 初期可进口 PW127, 但出口/军用受限. <b style="color:#fcd34d">5 年内无法量产的话, 10t 级只能走 "进口发动机国产机体" 组装模式.</b></p>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">发动机：国产 2,500 SHP 涡桨何时有？</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">10t 级 UAV 的前提。AES100 太小，AEP500 太大，增程式在此级别不可行。初期可进口 PW127，但出口/军用受限。<b style="color:#fcd34d">5 年内无法量产的话，10t 级只能走"进口发动机国产机体"组装模式。</b></p>
       </div>
       <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">事 3</div>
-        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">商业化: W5000 首批运营吨公里到底多少?</h4>
-        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">PR 报 2.69 元/吨km, 工况推测 4-5 元. 如果实际 >5 元, W5000 仍比 ATR42 (5.9) 便宜, 但无法替代 737BCF. <b style="color:#86efac">2027-2028 年首批商业航线数据, 是全部分析的验证点.</b></p>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">商业化：W5000 首批运营吨公里到底多少？</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">PR 报 2.69 元/吨km，工况推测 4-5 元。如果实际 >5 元，W5000 仍比 ATR42（5.9）便宜，但无法替代 737BCF。<b style="color:#86efac">2027-2028 年首批商业航线数据，是全部分析的验证点。</b></p>
+      </div>
+      <div style="background:rgba(147,51,234,.1);border:1px solid rgba(147,51,234,.3);border-radius:var(--radius);padding:20px">
+        <div class="tag" style="background:rgba(147,51,234,.2);color:#c084fc">事 4</div>
+        <h4 style="color:#fff;font-size:15px;margin:4px 0 8px">动力路线：纯电 vs 增程，电池技术是分水岭</h4>
+        <p style="color:rgba(255,255,255,.6);font-size:12.5px;line-height:1.7">航空场景中电池损耗是运营成本大头（纯电 eVTOL 电池摊销约 ¥1,200-2,000/飞行小时），增程式用更小的 pack 可以将这项成本压到 ¥300-500。在电池能量密度和循环寿命没有量级突破之前（不是渐进改良，而是同时翻倍），增程式在航空场景中可能长期优于纯电。<b style="color:#c4b5fd">而且纯电转增程几乎等于重新研制一架飞机——这意味着动力路线的选择在设计阶段就已锁定，后续切换的成本极高。</b></p>
       </div>
     </div>
 
     <!-- 最终段落 -->
     <div class="fade-in" style="margin-top:24px;padding:18px 22px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:var(--radius)">
       <p style="margin:0;font-size:14px;color:rgba(255,255,255,.85);line-height:1.9">
-        中国物流通航的故事, 在 2018-2024 年是等待, 在 2024-2026 年是产品密集涌现, 在 2026 年的此刻是一个中间态 -- 飞机有了, 证还没拿齐. TP500 可能在几个月内成为中国首个拿到 TC 的货运 UAV, W5000 的 60 架 LOI 说明市场已经在下注. 但这些都还只是下注, 不是验证. 真正的验证要等 2027-2028 年首批商业航线跑出来: W5000 吨公里是 PR 口径的 2.69 还是工况推测的 4-5, TP500 能否在 500km 内做到 last-mile 经济性, CY-8 在军采路线上能积累多少运营小时. 到那时候, 这份分析里的每一个数字才能被校准或推翻.
+        中国物流通航的故事，在 2018-2024 年是等待，在 2024-2026 年是产品密集涌现，在 2026 年的此刻是一个中间态 -- 飞机有了，证还没拿齐。TP500 可能在几个月内成为中国首个拿到 TC 的货运 UAV，W5000 的 60 架 LOI 说明市场已经在下注。但这些都还只是下注，不是验证。真正的验证要等 2027-2028 年首批商业航线跑出来：W5000 吨公里是 PR 口径的 2.69 还是工况推测的 4-5，TP500 能否在 500km 内做到 last-mile 经济性，CY-8 在军采路线上能积累多少运营小时。到那时候，这份分析里的每一个数字才能被校准或推翻。
       </p>
     </div>
   </div>
@@ -1738,38 +1800,43 @@ var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInte
 document.querySelectorAll('.fade-in,.stat-card').forEach(function(e){obs.observe(e)});
 
 // ===== CHINA MAP DATA =====
+// China provinces - 2024 NBS data (人均GDP + 2024年末常住人口)
+// 数据源: 各省统计局 2024 年国民经济和社会发展统计公报 / Wikipedia (引用 NBS)
+// airports 字段 = 通航机场 + 运输机场 (所有民用机场)
+// 省级运输机场来自 Wikipedia "List of airports in China" (引用 CAAC)
+// 省级通航机场为估算 (CAAC 仅公布全国总数 475, 按各省已知机场分布估算)
 var cnProvinces=[
-  {name:'北京',density:1324,gdp:200278,airports:2,area:16410,pop:2171},
-  {name:'天津',density:1162,gdp:101340,airports:1,area:11917,pop:1364},
-  {name:'河北',density:394,gdp:42928,airports:4,area:187700,pop:7420},
-  {name:'山西',density:222,gdp:49582,airports:5,area:156700,pop:3465},
-  {name:'内蒙古',density:21,gdp:78908,airports:25,area:1183000,pop:2400},
-  {name:'辽宁',density:292,gdp:65418,airports:8,area:148000,pop:4197},
-  {name:'吉林',density:127,gdp:47872,airports:7,area:187400,pop:2347},
-  {name:'黑龙江',density:68,gdp:42292,airports:12,area:473000,pop:3099},
-  {name:'上海',density:3810,gdp:183571,airports:2,area:6341,pop:2489},
-  {name:'江苏',density:791,gdp:152460,airports:9,area:107200,pop:8505},
-  {name:'浙江',density:629,gdp:124368,airports:7,area:105500,pop:6577},
-  {name:'安徽',density:439,gdp:73603,airports:8,area:140100,pop:6127},
-  {name:'福建',density:322,gdp:127842,airports:6,area:124000,pop:4187},
-  {name:'江西',density:270,gdp:61898,airports:8,area:166900,pop:4490},
-  {name:'山东',density:647,gdp:94720,airports:9,area:155800,pop:10123},
-  {name:'河南',density:579,gdp:61389,airports:5,area:167000,pop:9820},
-  {name:'湖北',density:314,gdp:93729,airports:7,area:185900,pop:5775},
-  {name:'湖南',density:314,gdp:69983,airports:8,area:211800,pop:6568},
-  {name:'广东',density:720,gdp:105508,airports:8,area:179700,pop:12684},
-  {name:'广西',density:199,gdp:49898,airports:7,area:237600,pop:5027},
-  {name:'海南',density:281,gdp:72892,airports:3,area:35400,pop:1027},
-  {name:'重庆',density:383,gdp:92714,airports:4,area:82400,pop:3191},
-  {name:'四川',density:172,gdp:68312,airports:15,area:486000,pop:8367},
-  {name:'贵州',density:222,gdp:55399,airports:11,area:176100,pop:3856},
-  {name:'云南',density:122,gdp:48018,airports:15,area:394000,pop:4690},
-  {name:'西藏',density:3,gdp:62950,airports:5,area:1228400,pop:364},
-  {name:'陕西',density:100,gdp:80612,airports:7,area:205800,pop:3953},
-  {name:'甘肃',density:59,gdp:39498,airports:9,area:425800,pop:2465},
-  {name:'青海',density:8,gdp:54078,airports:6,area:722000,pop:594},
-  {name:'宁夏',density:109,gdp:59732,airports:3,area:51800,pop:725},
-  {name:'新疆',density:16,gdp:62420,airports:22,area:1660000,pop:2585},
+  {name:'北京',density:1330,gdp:228167,airports:4,area:16410,pop:2183.2},
+  {name:'天津',density:1145,gdp:132143,airports:2,area:11917,pop:1364.0},
+  {name:'河北',density:393,gdp:64352,airports:11,area:187700,pop:7385.5},
+  {name:'山西',density:221,gdp:73769,airports:13,area:156700,pop:3455.98},
+  {name:'内蒙古',density:20,gdp:110011,airports:44,area:1183000,pop:2392.0},
+  {name:'辽宁',density:282,gdp:78236,airports:16,area:148000,pop:4168.5},
+  {name:'吉林',density:124,gdp:61689,airports:13,area:187400,pop:2317.31},
+  {name:'黑龙江',density:64,gdp:54102,airports:26,area:473000,pop:3029.0},
+  {name:'上海',density:3911,gdp:217140,airports:4,area:6341,pop:2480.26},
+  {name:'江苏',density:795,gdp:160694,airports:18,area:107200,pop:8526.0},
+  {name:'浙江',density:632,gdp:135565,airports:15,area:105500,pop:6670.0},
+  {name:'安徽',density:437,gdp:82694,airports:15,area:140100,pop:6122.0},
+  {name:'福建',density:338,gdp:137920,airports:12,area:124000,pop:4188.0},
+  {name:'江西',density:270,gdp:75862,airports:16,area:166900,pop:4508.51},
+  {name:'山东',density:647,gdp:97575,airports:19,area:155800,pop:10080.17},
+  {name:'河南',density:586,gdp:64888,airports:10,area:167000,pop:9785.0},
+  {name:'湖北',density:314,gdp:102832,airports:15,area:185900,pop:5836.0},
+  {name:'湖南',density:309,gdp:81225,airports:18,area:211800,pop:6539.0},
+  {name:'广东',density:711,gdp:111146,airports:17,area:179700,pop:12780.0},
+  {name:'广西',density:211,gdp:57071,airports:15,area:237600,pop:5020.0},
+  {name:'海南',density:295,gdp:75903,airports:7,area:35400,pop:1045.5},
+  {name:'重庆',density:387,gdp:100903,airports:9,area:82400,pop:3190.47},
+  {name:'四川',density:172,gdp:77333,airports:32,area:486000,pop:8366.0},
+  {name:'贵州',density:219,gdp:58685,airports:22,area:176100,pop:3862.5},
+  {name:'云南',density:118,gdp:67612,airports:30,area:394000,pop:4664.0},
+  {name:'西藏',density:3,gdp:75237,airports:13,area:1228400,pop:367.41},
+  {name:'陕西',density:192,gdp:89915,airports:12,area:205800,pop:3952.5},
+  {name:'甘肃',density:58,gdp:52825,airports:18,area:425800,pop:2461.91},
+  {name:'青海',density:8,gdp:66568,airports:13,area:722000,pop:593.5},
+  {name:'宁夏',density:141,gdp:75484,airports:6,area:51800,pop:729.0},
+  {name:'新疆',density:16,gdp:78660,airports:50,area:1660000,pop:2610.5},
   {name:'台湾',density:652,gdp:200000,airports:5,area:36000,pop:2350},
   {name:'香港',density:6810,gdp:380000,airports:1,area:1114,pop:750},
   {name:'澳门',density:20000,gdp:500000,airports:1,area:33,pop:68}
@@ -1830,58 +1897,61 @@ var usAirports=[
 ];
 
 // US State Data
+// US states - BEA 2023 per-capita GDP (estimated) + FAA NPIAS 2023-2027 airport counts
+// Source: Wikipedia "List of airports in <State>" (cites FAA NPIAS); Census 2024 population
+// airports 字段 = NPIAS 总数 (Commercial Primary + Nonprimary + Reliever + GA)
 var usStates=[
-  {name:'California',density:97,gdp:85490,airports:450,pop:39030},
-  {name:'Texas',density:43,gdp:72690,airports:730,pop:30500},
-  {name:'Florida',density:154,gdp:55820,airports:510,pop:22610},
-  {name:'New York',density:159,gdp:96510,airports:400,pop:19680},
-  {name:'Pennsylvania',density:115,gdp:61840,airports:310,pop:12970},
-  {name:'Illinois',density:87,gdp:68230,airports:350,pop:12550},
-  {name:'Ohio',density:109,gdp:54870,airports:420,pop:11780},
-  {name:'Georgia',density:72,gdp:56320,airports:320,pop:10920},
-  {name:'North Carolina',density:80,gdp:54260,airports:280,pop:10700},
-  {name:'Michigan',density:67,gdp:50690,airports:390,pop:10040},
-  {name:'New Jersey',density:467,gdp:69290,airports:120,pop:9290},
-  {name:'Virginia',density:82,gdp:63620,airports:220,pop:8640},
-  {name:'Washington',density:44,gdp:76430,airports:280,pop:7750},
-  {name:'Arizona',density:25,gdp:50810,airports:180,pop:7300},
-  {name:'Massachusetts',density:336,gdp:86840,airports:110,pop:7000},
-  {name:'Tennessee',density:64,gdp:52150,airports:240,pop:7050},
-  {name:'Indiana',density:73,gdp:49830,airports:310,pop:6830},
-  {name:'Maryland',density:243,gdp:65120,airports:100,pop:6180},
-  {name:'Missouri',density:35,gdp:48950,airports:350,pop:6180},
-  {name:'Wisconsin',density:42,gdp:53190,airports:320,pop:5900},
-  {name:'Colorado',density:22,gdp:67530,airports:230,pop:5840},
-  {name:'Minnesota',density:28,gdp:62070,airports:380,pop:5710},
-  {name:'South Carolina',density:67,gdp:44430,airports:160,pop:5280},
-  {name:'Alabama',density:38,gdp:42090,airports:200,pop:5070},
-  {name:'Louisiana',density:41,gdp:48350,airports:230,pop:4620},
-  {name:'Kentucky',density:44,gdp:43390,airports:180,pop:4510},
-  {name:'Oregon',density:17,gdp:56420,airports:260,pop:4240},
-  {name:'Oklahoma',density:23,gdp:47410,airports:260,pop:4020},
-  {name:'Connecticut',density:286,gdp:76340,airports:50,pop:3630},
-  {name:'Utah',density:15,gdp:55170,airports:130,pop:3370},
-  {name:'Iowa',density:22,gdp:54810,airports:290,pop:3200},
-  {name:'Nevada',density:11,gdp:52430,airports:80,pop:3180},
-  {name:'Arkansas',density:23,gdp:40780,airports:200,pop:3040},
-  {name:'Mississippi',density:24,gdp:36150,airports:190,pop:2960},
-  {name:'Kansas',density:14,gdp:53890,airports:310,pop:2940},
-  {name:'New Mexico',density:7,gdp:44950,airports:140,pop:2120},
-  {name:'Nebraska',density:10,gdp:60310,airports:230,pop:1970},
-  {name:'Idaho',density:9,gdp:43810,airports:160,pop:1940},
-  {name:'West Virginia',density:29,gdp:37890,airports:80,pop:1770},
-  {name:'Hawaii',density:90,gdp:56950,airports:50,pop:1440},
-  {name:'New Hampshire',density:60,gdp:60640,airports:50,pop:1400},
-  {name:'Maine',density:17,gdp:46370,airports:80,pop:1390},
-  {name:'Montana',density:3,gdp:48150,airports:210,pop:1110},
-  {name:'Rhode Island',density:394,gdp:56710,airports:20,pop:1100},
-  {name:'Delaware',density:194,gdp:69010,airports:20,pop:1010},
-  {name:'South Dakota',density:5,gdp:57780,airports:150,pop:900},
-  {name:'North Dakota',density:4,gdp:62290,airports:180,pop:780},
-  {name:'Alaska',density:0.5,gdp:65430,airports:750,pop:740},
-  {name:'Vermont',density:27,gdp:49190,airports:30,pop:650},
-  {name:'Wyoming',density:2,gdp:66960,airports:100,pop:580},
-  {name:'District of Columbia',density:4433,gdp:207600,airports:3,pop:670}
+  {name:'California',density:97,gdp:93000,airports:189,pop:3903},
+  {name:'Texas',density:43,gdp:79000,airports:210,pop:3050},
+  {name:'Florida',density:154,gdp:68000,airports:100,pop:2260},
+  {name:'New York',density:159,gdp:108000,airports:78,pop:1957},
+  {name:'Pennsylvania',density:115,gdp:73000,airports:63,pop:1302},
+  {name:'Illinois',density:87,gdp:84000,airports:82,pop:1255},
+  {name:'Ohio',density:109,gdp:72000,airports:99,pop:1179},
+  {name:'Georgia',density:72,gdp:75000,airports:97,pop:1092},
+  {name:'North Carolina',density:80,gdp:70000,airports:70,pop:1084},
+  {name:'Michigan',density:67,gdp:65000,airports:95,pop:1004},
+  {name:'New Jersey',density:467,gdp:90000,airports:24,pop:929},
+  {name:'Virginia',density:82,gdp:78000,airports:47,pop:872},
+  {name:'Washington',density:44,gdp:92000,airports:65,pop:781},
+  {name:'Arizona',density:25,gdp:65000,airports:59,pop:736},
+  {name:'Massachusetts',density:336,gdp:105000,airports:28,pop:702},
+  {name:'Tennessee',density:64,gdp:65000,airports:69,pop:713},
+  {name:'Indiana',density:73,gdp:70000,airports:65,pop:683},
+  {name:'Maryland',density:243,gdp:85000,airports:18,pop:616},
+  {name:'Missouri',density:35,gdp:65000,airports:76,pop:618},
+  {name:'Wisconsin',density:42,gdp:70000,airports:87,pop:591},
+  {name:'Colorado',density:22,gdp:85000,airports:49,pop:590},
+  {name:'Minnesota',density:28,gdp:80000,airports:97,pop:571},
+  {name:'South Carolina',density:67,gdp:58000,airports:53,pop:537},
+  {name:'Alabama',density:38,gdp:57500,airports:73,pop:507},
+  {name:'Louisiana',density:41,gdp:70000,airports:55,pop:457},
+  {name:'Kentucky',density:44,gdp:60000,airports:56,pop:451},
+  {name:'Oregon',density:17,gdp:72000,airports:55,pop:427},
+  {name:'Oklahoma',density:23,gdp:60000,airports:100,pop:405},
+  {name:'Connecticut',density:286,gdp:90000,airports:11,pop:363},
+  {name:'Utah',density:15,gdp:72000,airports:35,pop:345},
+  {name:'Iowa',density:22,gdp:75000,airports:79,pop:320},
+  {name:'Nevada',density:11,gdp:68000,airports:30,pop:319},
+  {name:'Arkansas',density:23,gdp:54000,airports:76,pop:307},
+  {name:'Mississippi',density:24,gdp:49000,airports:73,pop:294},
+  {name:'Kansas',density:14,gdp:70000,airports:80,pop:294},
+  {name:'New Mexico',density:7,gdp:58000,airports:50,pop:211},
+  {name:'Nebraska',density:10,gdp:78000,airports:72,pop:198},
+  {name:'Idaho',density:9,gdp:60000,airports:36,pop:196},
+  {name:'West Virginia',density:29,gdp:56000,airports:23,pop:177},
+  {name:'Hawaii',density:90,gdp:78000,airports:23,pop:144},
+  {name:'New Hampshire',density:60,gdp:78000,airports:15,pop:141},
+  {name:'Maine',density:17,gdp:65000,airports:35,pop:138},
+  {name:'Montana',density:3,gdp:60000,airports:70,pop:113},
+  {name:'Rhode Island',density:394,gdp:72000,airports:6,pop:110},
+  {name:'Delaware',density:194,gdp:85000,airports:4,pop:104},
+  {name:'South Dakota',density:5,gdp:72000,airports:58,pop:91},
+  {name:'North Dakota',density:4,gdp:80000,airports:54,pop:78},
+  {name:'Alaska',density:0.5,gdp:85000,airports:250,pop:74},
+  {name:'Vermont',density:27,gdp:65000,airports:12,pop:65},
+  {name:'Wyoming',density:2,gdp:82000,airports:33,pop:58},
+  {name:'District of Columbia',density:4433,gdp:263220,airports:0,pop:68}
 ];
 
 // ===== MAP LAYER LOGIC =====
@@ -1950,19 +2020,30 @@ function renderChinaMap(){
       var sn=CN_SHORT[p.name]||p.name;
       var prov=cnProvinces.find(function(x){return x.name===sn});
       if(!prov) return p.name+': '+p.value;
-      return '<b>'+sn+'</b><br>人口密度: '+prov.density+' 人/km²<br>GDP人均: ¥'+prov.gdp.toLocaleString()+'<br>通航机场: '+prov.airports+'个';
+      return '<b>'+sn+'</b><br>人口密度: '+prov.density+' 人/km²<br>人均 GDP: ¥'+prov.gdp.toLocaleString()+'<br>民用机场 (通航+运输): '+prov.airports+' 个<br>常住人口: '+prov.pop.toFixed(0)+' 万';
     }},
     visualMap:{min:range.min,max:range.max,text:['高','低'],inRange:{color:['#fee2e2','#fca5a5','#f87171','#ef4444','#dc2626','#b91c1c']},left:'left',bottom:20,textStyle:{fontSize:11}},
     geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}}},
     series:[
       {type:'map',map:'china',geoIndex:0,data:data},
+      // 胡焕庸线 (黑河 → 腾冲): 地理-人口-经济分界线
+      {type:'lines',coordinateSystem:'geo',silent:false,polyline:false,
+       lineStyle:{color:'#0f172a',width:2.5,type:'dashed',opacity:0.85},
+       effect:{show:false},zlevel:5,z:20,
+       data:[{coords:[[127.5,50.2],[98.5,25.0]],name:'胡焕庸线',lineStyle:{color:'#0f172a',width:2.5,type:'dashed',opacity:0.85}}],
+       tooltip:{formatter:'<b>胡焕庸线</b><br>1935 年地理学家胡焕庸提出<br>黑河(瑷珲)-腾冲线<br>线东侧 36% 国土容纳 96% 人口<br>线西侧 64% 国土仅 4% 人口'}
+      },
+      {type:'scatter',coordinateSystem:'geo',
+       data:[{value:[105,36],symbolSize:0,name:'胡焕庸线',label:{show:true,formatter:'胡焕庸线\n(黑河-腾冲)',fontSize:10,color:'#0f172a',fontWeight:700,backgroundColor:'rgba(255,255,255,.9)',padding:[4,8],borderRadius:4,borderColor:'#0f172a',borderWidth:1,lineHeight:14}}],
+       zlevel:10,z:30,silent:true
+      },
       {type:'scatter',coordinateSystem:'geo',
        data:cnAirports.map(function(a){
          return{value:[a[0],a[1]],name:a[2],airportType:a[3],cargo:a[4],
            symbolSize:airportSize(a[3]),itemStyle:{color:airportColor(a[3]),borderColor:'#fff',borderWidth:1.5}};
        }),
-       symbol:'circle',
-       label:{show:false},emphasis:{label:{show:true,position:'right',fontSize:10,fontWeight:600},itemStyle:{borderWidth:3}}}
+       symbol:'circle',zlevel:3,
+       label:{show:false,formatter:function(p){return p.data.name}},emphasis:{label:{show:true,position:'right',fontSize:10,fontWeight:600,formatter:function(p){return p.data.name},backgroundColor:'rgba(255,255,255,.9)',padding:[2,6],borderRadius:3},itemStyle:{borderWidth:3}}}
     ]
   };
   if(charts['map-cn']){charts['map-cn'].setOption(opt,true)}
@@ -1987,7 +2068,7 @@ function renderUSMap(){
       }
       var st=usStates.find(function(x){return x.name===p.name});
       if(!st) return p.name;
-      return '<b>'+p.name+'</b><br>Density: '+st.density+' /km2<br>GDP/capita: $'+(st.gdp).toLocaleString()+'<br>GA Airports: '+st.airports;
+      return '<b>'+p.name+'</b><br>Density: '+st.density+' /km²<br>GDP/capita: $'+(st.gdp).toLocaleString()+'<br>NPIAS Airports: '+st.airports+'<br>Population: '+st.pop.toFixed(0)+' 万 ('+(st.pop/100).toFixed(1)+' million)';
     }},
     visualMap:{min:range.min,max:range.max,text:['High','Low'],inRange:{color:['#dbeafe','#93c5fd','#60a5fa','#3b82f6','#2563eb','#1d4ed8']},left:'left',bottom:20,textStyle:{fontSize:11}},
     geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:1,areaColor:'#f1f5f9'},emphasis:{itemStyle:{areaColor:'#bfdbfe'},label:{show:true,fontSize:10}}},
@@ -2006,9 +2087,93 @@ function renderUSMap(){
   else{initC('map-us',opt)}
 }
 
+// ===== Geo polygon utilities for area-weighted coverage =====
+function pointInRing(point, ring){
+  // ray casting algorithm
+  var x=point[0], y=point[1], inside=false;
+  for(var i=0, j=ring.length-1; i<ring.length; j=i++){
+    var xi=ring[i][0], yi=ring[i][1];
+    var xj=ring[j][0], yj=ring[j][1];
+    var intersect = ((yi>y) !== (yj>y)) && (x < (xj-xi)*(y-yi)/(yj-yi)+xi);
+    if(intersect) inside = !inside;
+  }
+  return inside;
+}
+function pointInGeometry(point, geom){
+  if(!geom) return false;
+  if(geom.type==='Polygon'){
+    var rings=geom.coordinates;
+    if(!pointInRing(point, rings[0])) return false;
+    for(var k=1;k<rings.length;k++){ if(pointInRing(point, rings[k])) return false; }
+    return true;
+  } else if(geom.type==='MultiPolygon'){
+    for(var p=0;p<geom.coordinates.length;p++){
+      var rings=geom.coordinates[p];
+      if(pointInRing(point, rings[0])){
+        var hole=false;
+        for(var k=1;k<rings.length;k++){ if(pointInRing(point, rings[k])){hole=true;break;} }
+        if(!hole) return true;
+      }
+    }
+  }
+  return false;
+}
+function bboxOf(geom){
+  var minLon=999,maxLon=-999,minLat=999,maxLat=-999;
+  function walk(arr){
+    if(typeof arr[0]==='number'){
+      if(arr[0]<minLon)minLon=arr[0]; if(arr[0]>maxLon)maxLon=arr[0];
+      if(arr[1]<minLat)minLat=arr[1]; if(arr[1]>maxLat)maxLat=arr[1];
+    } else { for(var i=0;i<arr.length;i++) walk(arr[i]); }
+  }
+  walk(geom.coordinates);
+  return [minLon,minLat,maxLon,maxLat];
+}
+// Sample points inside polygon on a fixed lat/lon grid; weight = cos(lat) for equal-area approximation
+function sampleGeometry(geom, gridDeg){
+  var bb=bboxOf(geom);
+  var pts=[];
+  for(var lat=bb[1]; lat<=bb[3]; lat+=gridDeg){
+    for(var lon=bb[0]; lon<=bb[2]; lon+=gridDeg){
+      if(pointInGeometry([lon,lat], geom)){
+        pts.push([lon, lat, Math.cos(lat*Math.PI/180)]);
+      }
+    }
+  }
+  // ensure at least one sample (for tiny shapes use centroid of bbox)
+  if(pts.length===0){
+    var clon=(bb[0]+bb[2])/2, clat=(bb[1]+bb[3])/2;
+    pts.push([clon, clat, Math.cos(clat*Math.PI/180)]);
+  }
+  return pts;
+}
+// Coverage fraction of one province's samples
+function coverageFraction(samples, hubs, radiusKm){
+  var coveredW=0, totalW=0;
+  for(var i=0;i<samples.length;i++){
+    var s=samples[i]; totalW += s[2];
+    var minD=Infinity;
+    for(var h=0;h<hubs.length;h++){
+      var d=haversine(s[1],s[0],hubs[h][1],hubs[h][0]);
+      if(d<minD){ minD=d; if(minD<=radiusKm) break; }
+    }
+    if(minD<=radiusKm) coveredW += s[2];
+  }
+  return totalW>0 ? coveredW/totalW : 0;
+}
+
+// Province / state sample storage (filled after GeoJSON load)
+var cnSamples={}, usSamples={};
+
 // Register China map (DataV GeoJSON)
 fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json').then(function(r){return r.json()}).then(function(d){
   EC.registerMap('china',d);
+  // Pre-compute samples for each province (0.4° grid ≈ 44 km)
+  d.features.forEach(function(f){
+    var fullName=f.properties&&f.properties.name;
+    var shortName=CN_SHORT[fullName]||fullName;
+    cnSamples[shortName]=sampleGeometry(f.geometry, 0.4);
+  });
   cnMapReady=true;
   renderChinaMap();
 });
@@ -2016,39 +2181,64 @@ fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json').then(funct
 // Register USA map
 fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json').then(function(r){return r.json()}).then(function(d){
   EC.registerMap('USA',d);
+  // Pre-compute samples for each state (0.5° grid ≈ 55 km)
+  d.features.forEach(function(f){
+    var name=f.properties&&(f.properties.name||f.properties.NAME);
+    if(name) usSamples[name]=sampleGeometry(f.geometry, 0.5);
+  });
   usMapReady=true;
   renderUSMap();
 });
 
-// ===== SCATTER: GDP vs Airports per Million People =====
+// ===== SCATTER: 人口密度 vs 机场密度 =====
+// X: 人口密度 (人/km²), Y: 机场 (通航+运输) 每百万人, bubble size: 人口
 (function(){
   var cnD=cnProvinces.filter(function(p){return p.area>5000&&p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
-    return[p.gdp, p.airports/(p.pop/100), p.pop, p.name]; // airports per million people (pop is in 万, so /100 = 百万)
+    // [density人/km², airports per million people, pop in 万, name, gdp]
+    return[p.density, p.airports/(p.pop/100), p.pop, p.name, p.gdp];
   });
   var usD=usStates.filter(function(s){return s.name!=='District of Columbia'}).map(function(s){
-    return[s.gdp*7.27, s.airports/(s.pop/100), s.pop, s.name]; // airports per million people
+    return[s.density, s.airports/(s.pop/100), s.pop, s.name, s.gdp];
   });
+  // 统一气泡大小公式: 两边用同一 multiplier (pop 已都为万单位)
+  var bubbleSize=function(d){return Math.max(6,Math.min(28,Math.sqrt(d[2])*0.22))};
   initC('chart-scatter',{
     tooltip:{trigger:'item',formatter:function(p){
-      var isCN=p.data[0]<300000;
-      return '<b>'+p.data[3]+'</b><br>GDP人均: '+(isCN?'¥'+Math.round(p.data[0]).toLocaleString():'$'+Math.round(p.data[0]/7.27).toLocaleString()+' (¥'+Math.round(p.data[0]).toLocaleString()+')')+'<br>机场/百万人: '+p.data[1].toFixed(1)+'<br>人口: '+p.data[2]+'万';
+      var isCN=p.seriesName==='中国省份';
+      var gdpStr=isCN?'¥'+Math.round(p.data[4]).toLocaleString():'$'+Math.round(p.data[4]).toLocaleString();
+      return '<b>'+p.data[3]+'</b><br>人口密度: '+Math.round(p.data[0]).toLocaleString()+' 人/km²<br>机场/百万人: '+p.data[1].toFixed(2)+'<br>人口: '+p.data[2].toFixed(0)+' 万<br>人均 GDP: '+gdpStr;
     }},
     legend:{data:['中国省份','美国州'],top:10},
-    xAxis:{name:'GDP人均 (元)',type:'value',axisLabel:{formatter:function(v){return v>=10000?(v/10000)+'万':v}}},
-    yAxis:{name:'通航机场/百万人',type:'log',min:0.1},
+    grid:{left:70,right:40,top:50,bottom:90},
+    toolbox:{feature:{dataZoom:{title:{zoom:'框选放大',back:'还原'}},restore:{title:'全部还原'}},right:20,top:10},
+    dataZoom:[
+      {type:'inside',xAxisIndex:0,filterMode:'none',start:0,end:100},
+      {type:'inside',yAxisIndex:0,filterMode:'none',start:0,end:100},
+      {type:'slider',xAxisIndex:0,bottom:30,height:16,filterMode:'none',start:0,end:100,fillerColor:'rgba(100,116,139,.15)',handleSize:'100%'},
+      {type:'slider',yAxisIndex:0,right:10,width:16,filterMode:'none',start:0,end:100,fillerColor:'rgba(100,116,139,.15)',handleSize:'100%'}
+    ],
+    xAxis:{name:'人口密度 (人/km²)',nameLocation:'middle',nameGap:35,type:'log',min:0.3,max:5000,axisLabel:{formatter:function(v){return v>=1000?(v/1000)+'k':v}}},
+    yAxis:{name:'民用机场 (通航+运输) / 百万人',nameLocation:'middle',nameGap:45,type:'log',min:0.05,max:400},
     series:[
-      {name:'中国省份',type:'scatter',data:cnD,symbolSize:function(d){return Math.max(5,Math.min(22,Math.sqrt(d[2])*0.3))},itemStyle:{color:'rgba(220,38,38,.6)'},label:{show:true,formatter:function(p){return p.data[3]},position:'right',fontSize:9,color:'#666'},emphasis:{label:{show:true,fontSize:11}}},
-      {name:'美国州',type:'scatter',data:usD,symbolSize:function(d){return Math.max(4,Math.min(20,Math.sqrt(d[2])*0.12))},itemStyle:{color:'rgba(37,99,235,.6)'},label:{show:true,formatter:function(p){return p.data[3]},position:'right',fontSize:9,color:'#666'},emphasis:{label:{show:true,fontSize:11}}}
+      {name:'中国省份',type:'scatter',data:cnD,symbolSize:bubbleSize,itemStyle:{color:'rgba(220,38,38,.55)',borderColor:'#dc2626',borderWidth:1},label:{show:true,formatter:function(p){
+        // 仅为大省/西藏等关键省标签; 其余悬浮时显示
+        var keyNames=['北京','上海','广东','四川','新疆','西藏','内蒙古','江苏','河南','山东','甘肃','云南','青海'];
+        return keyNames.indexOf(p.data[3])>=0?p.data[3]:'';
+      },position:'right',fontSize:9,color:'#7f1d1d',fontWeight:600},emphasis:{label:{show:true,formatter:function(p){return p.data[3]},fontSize:12,fontWeight:700,backgroundColor:'rgba(255,255,255,.9)',padding:[2,6],borderRadius:3}}},
+      {name:'美国州',type:'scatter',data:usD,symbolSize:bubbleSize,itemStyle:{color:'rgba(37,99,235,.55)',borderColor:'#2563eb',borderWidth:1},label:{show:true,formatter:function(p){
+        var keyNames=['California','Texas','Alaska','New York','Florida','Wyoming','Montana','Mississippi','New Jersey','Hawaii'];
+        return keyNames.indexOf(p.data[3])>=0?p.data[3]:'';
+      },position:'right',fontSize:9,color:'#1e3a8a',fontWeight:600},emphasis:{label:{show:true,formatter:function(p){return p.data[3]},fontSize:12,fontWeight:700,backgroundColor:'rgba(255,255,255,.9)',padding:[2,6],borderRadius:3}}}
     ]
   });
 })();
 
 // ===== GAP CHARTS =====
 initC('chart-gap1',{
-  tooltip:{},
+  tooltip:{formatter:'{b}<br>{c} 个民用机场/百万人'},
   xAxis:{type:'category',data:['中国','美国']},
   yAxis:{type:'value',name:'个/百万人'},
-  series:[{type:'bar',data:[{value:0.34,itemStyle:{color:'#dc2626'}},{value:60.5,itemStyle:{color:'#2563eb'}}],barWidth:60,label:{show:true,position:'top',fontWeight:700}}]
+  series:[{type:'bar',data:[{value:0.52,itemStyle:{color:'#dc2626'}},{value:9.81,itemStyle:{color:'#2563eb'}}],barWidth:60,label:{show:true,position:'top',fontWeight:700,formatter:'{c}'}}]
 });
 initC('chart-gap2',{
   tooltip:{},
@@ -2904,6 +3094,52 @@ var usCentroids={'Alabama':[-86.9,32.3],'Alaska':[-153.4,64.2],'Arizona':[-111.1
 var cnCargoHubs=[[121.805,31.143],[113.299,23.392],[113.811,22.639],[116.584,40.080],[114.942,30.346],[113.841,34.520],[120.434,30.229],[103.947,30.578],[102.929,25.102],[118.128,24.544]];
 var usCargoHubs=[[-89.976,35.044],[-149.993,61.179],[-85.735,38.171],[-80.290,25.796],[-118.408,33.943],[-87.905,41.979],[-84.668,39.049],[-73.779,40.639],[-86.294,39.717],[-97.038,32.897]];
 
+// Top 35 China cities by GDP (2024 亿元) — 数据源: 各市统计局 2024 国民经济和社会发展统计公报
+// 累计覆盖全国 GDP 约 60% (剩余 40% 分布在 ~290 个其他地级市/县级市)
+var cnCities=[
+  {name:'上海',lon:121.47,lat:31.23,gdp:53927},{name:'北京',lon:116.40,lat:39.90,gdp:49843},
+  {name:'深圳',lon:114.06,lat:22.55,gdp:36802},{name:'重庆',lon:106.55,lat:29.56,gdp:32193},
+  {name:'广州',lon:113.27,lat:23.13,gdp:31033},{name:'苏州',lon:120.62,lat:31.32,gdp:26727},
+  {name:'成都',lon:104.07,lat:30.67,gdp:23512},{name:'杭州',lon:120.16,lat:30.27,gdp:21860},
+  {name:'武汉',lon:114.30,lat:30.59,gdp:21106},{name:'南京',lon:118.78,lat:32.07,gdp:18500},
+  {name:'宁波',lon:121.55,lat:29.87,gdp:18147},{name:'天津',lon:117.20,lat:39.13,gdp:18024},
+  {name:'青岛',lon:120.38,lat:36.07,gdp:16719},{name:'无锡',lon:120.30,lat:31.57,gdp:16188},
+  {name:'长沙',lon:112.94,lat:28.23,gdp:14716},{name:'郑州',lon:113.62,lat:34.75,gdp:14535},
+  {name:'西安',lon:108.95,lat:34.27,gdp:13317},{name:'佛山',lon:113.13,lat:23.02,gdp:13276},
+  {name:'合肥',lon:117.27,lat:31.86,gdp:13507},{name:'济南',lon:117.00,lat:36.65,gdp:13527},
+  {name:'福州',lon:119.30,lat:26.08,gdp:14236},{name:'泉州',lon:118.68,lat:24.88,gdp:13059},
+  {name:'东莞',lon:113.75,lat:23.04,gdp:12000},{name:'南通',lon:120.86,lat:32.01,gdp:12400},
+  {name:'常州',lon:119.97,lat:31.78,gdp:11000},{name:'烟台',lon:121.45,lat:37.46,gdp:10800},
+  {name:'沈阳',lon:123.43,lat:41.81,gdp:9300},{name:'大连',lon:121.62,lat:38.92,gdp:9500},
+  {name:'昆明',lon:102.71,lat:25.04,gdp:8500},{name:'厦门',lon:118.10,lat:24.46,gdp:8500},
+  {name:'长春',lon:125.32,lat:43.82,gdp:7400},{name:'哈尔滨',lon:126.53,lat:45.80,gdp:5930},
+  {name:'乌鲁木齐',lon:87.62,lat:43.83,gdp:4500},{name:'兰州',lon:103.83,lat:36.07,gdp:3800},
+  {name:'拉萨',lon:91.13,lat:29.65,gdp:980}
+];
+
+// Top 35 US metros (MSA) by GDP (2023, $B) — 数据源: BEA Real GDP by MSA Table 1
+// 累计覆盖全国 GDP 约 65%
+var usMetros=[
+  {name:'New York',lon:-74.00,lat:40.71,gdp:2283},{name:'Los Angeles',lon:-118.24,lat:34.05,gdp:1245},
+  {name:'Chicago',lon:-87.63,lat:41.88,gdp:897},{name:'San Francisco',lon:-122.42,lat:37.77,gdp:782},
+  {name:'Dallas-Fort Worth',lon:-96.80,lat:32.78,gdp:735},{name:'Washington DC',lon:-77.04,lat:38.91,gdp:701},
+  {name:'Houston',lon:-95.36,lat:29.76,gdp:668},{name:'Boston',lon:-71.06,lat:42.36,gdp:613},
+  {name:'Atlanta',lon:-84.39,lat:33.75,gdp:546},{name:'Philadelphia',lon:-75.16,lat:39.95,gdp:542},
+  {name:'Miami-Fort Lauderdale',lon:-80.19,lat:25.76,gdp:500},{name:'Seattle',lon:-122.33,lat:47.61,gdp:495},
+  {name:'Phoenix',lon:-112.07,lat:33.45,gdp:361},{name:'Detroit',lon:-83.05,lat:42.33,gdp:325},
+  {name:'San Diego',lon:-117.16,lat:32.72,gdp:312},{name:'Minneapolis',lon:-93.27,lat:44.98,gdp:310},
+  {name:'Denver',lon:-104.99,lat:39.74,gdp:294},{name:'Riverside-San Bernardino',lon:-117.40,lat:34.00,gdp:267},
+  {name:'Charlotte',lon:-80.84,lat:35.23,gdp:244},{name:'Baltimore',lon:-76.61,lat:39.29,gdp:234},
+  {name:'Tampa',lon:-82.46,lat:27.95,gdp:230},{name:'St. Louis',lon:-90.20,lat:38.63,gdp:222},
+  {name:'Portland OR',lon:-122.68,lat:45.52,gdp:215},{name:'Orlando',lon:-81.38,lat:28.54,gdp:206},
+  {name:'Austin',lon:-97.74,lat:30.27,gdp:200},{name:'Sacramento',lon:-121.49,lat:38.58,gdp:190},
+  {name:'Cincinnati',lon:-84.51,lat:39.10,gdp:185},{name:'Pittsburgh',lon:-79.99,lat:40.44,gdp:180},
+  {name:'Indianapolis',lon:-86.16,lat:39.77,gdp:176},{name:'Las Vegas',lon:-115.14,lat:36.17,gdp:175},
+  {name:'Nashville',lon:-86.78,lat:36.16,gdp:170},{name:'Columbus OH',lon:-83.00,lat:39.96,gdp:170},
+  {name:'Kansas City',lon:-94.58,lat:39.10,gdp:158},{name:'Honolulu',lon:-157.86,lat:21.31,gdp:74},
+  {name:'Anchorage',lon:-149.90,lat:61.22,gdp:33}
+];
+
 function haversine(lat1,lon1,lat2,lon2){
   var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLon=(lon2-lon1)*Math.PI/180;
   var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
@@ -2929,26 +3165,50 @@ function switchRadius(hours){
   renderRadiusMaps();
 }
 
-// Province GDP totals (billion RMB)
+// Province GDP totals (used for province shading only — coverage % uses cities)
 var cnProvGDP={};cnProvinces.forEach(function(p){cnProvGDP[p.name]=p.gdp*p.pop/10000;}); // gdp per capita * pop(万) / 10000 = 亿元
 var cnTotalGDP=0;cnProvinces.forEach(function(p){if(p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门') cnTotalGDP+=cnProvGDP[p.name]});
-// US state GDP totals
-var usStateGDP={};usStates.forEach(function(s){usStateGDP[s.name]=s.gdp*s.pop/10000;}); // gdp per capita * pop(万) / 10000 = 亿美元
+var usStateGDP={};usStates.forEach(function(s){usStateGDP[s.name]=s.gdp*s.pop/10000;});
 var usTotalGDP=0;usStates.forEach(function(s){if(s.name!=='District of Columbia') usTotalGDP+=usStateGDP[s.name]});
+// City GDP totals (this is the denominator for coverage % since 2026.04 fix)
+var cnCitiesTotalGDP=cnCities.reduce(function(a,c){return a+c.gdp},0);
+var usMetrosTotalGDP=usMetros.reduce(function(a,c){return a+c.gdp},0);
 
-function calcCoverage(centroids,hubs,radiusKm,provGDP,totalGDP,excludeList){
-  var coveredGDP=0;var covered={};
-  Object.keys(centroids).forEach(function(name){
-    if(excludeList&&excludeList.indexOf(name)>=0) return;
-    var c=centroids[name];
+// City-weighted coverage: a city is "covered" if any hub is within radiusKm
+// Returns covered city list + GDP %, used to compute province shading too
+function calcCityCoverage(cities,hubs,radiusKm){
+  var coveredGDP=0; var coveredCities=[];
+  cities.forEach(function(city){
     var minDist=Infinity;
     hubs.forEach(function(h){
-      var d=haversine(c[1],c[0],h[1],h[0]);
+      var d=haversine(city.lat,city.lon,h[1],h[0]);
       if(d<minDist) minDist=d;
     });
-    if(minDist<=radiusKm){covered[name]=true;coveredGDP+=provGDP[name]||0;}
+    var isCov=minDist<=radiusKm;
+    coveredCities.push({name:city.name,lon:city.lon,lat:city.lat,gdp:city.gdp,covered:isCov,distKm:Math.round(minDist)});
+    if(isCov) coveredGDP+=city.gdp;
   });
-  return{pct:totalGDP>0?Math.round(coveredGDP/totalGDP*1000)/10:0,covered:covered};
+  var totalGDP=cities.reduce(function(a,c){return a+c.gdp},0);
+  return{pct:totalGDP>0?Math.round(coveredGDP/totalGDP*1000)/10:0,cities:coveredCities,coveredGDP:coveredGDP};
+}
+
+// Coverage gradient: 0%=red(220,38,38) → 50%=amber(245,158,11) → 100%=green(22,163,74)
+function coverageColor(frac, gdpShare){
+  var r,g,b;
+  if(frac<0.5){
+    var t=frac*2;
+    r=Math.round(220+(245-220)*t);
+    g=Math.round(38+(158-38)*t);
+    b=Math.round(38+(11-38)*t);
+  } else {
+    var t=(frac-0.5)*2;
+    r=Math.round(245+(22-245)*t);
+    g=Math.round(158+(163-158)*t);
+    b=Math.round(11+(74-11)*t);
+  }
+  var intensity=Math.min(1,Math.sqrt(gdpShare)*3.5);
+  var alpha=0.18+intensity*0.55;
+  return 'rgba('+r+','+g+','+b+','+alpha.toFixed(3)+')';
 }
 
 function renderRadiusMaps(){
@@ -2957,120 +3217,164 @@ function renderRadiusMaps(){
   var usRadius=currentRadiusHours*80; // 80 km/h
   $('radius-info').textContent='半径: 中国'+cnRadius+'km / 美国'+usRadius+'km';
 
-  var cnResult=calcCoverage(cnCentroids,cnCargoHubs,cnRadius,cnProvGDP,cnTotalGDP,['台湾','香港','澳门']);
-  var usResult=calcCoverage(usCentroids,usCargoHubs,usRadius,usStateGDP,usTotalGDP,['District of Columbia']);
+  // (A) City-weighted GDP coverage
+  var cnResult=calcCityCoverage(cnCities,cnCargoHubs,cnRadius);
+  var usResult=calcCityCoverage(usMetros,usCargoHubs,usRadius);
+
+  // (B) Province / state area-weighted GDP coverage
+  var cnAreaCovByName={};
+  var cnAreaWeightedGDP=0, cnAreaTotalGDP=0;
+  cnProvinces.forEach(function(p){
+    if(p.name==='台湾'||p.name==='香港'||p.name==='澳门') return;
+    var samples=cnSamples[p.name]||[];
+    var frac= samples.length ? coverageFraction(samples,cnCargoHubs,cnRadius) : 0;
+    cnAreaCovByName[p.name]=frac;
+    var pgdp=cnProvGDP[p.name]||0;
+    cnAreaWeightedGDP += frac*pgdp;
+    cnAreaTotalGDP += pgdp;
+  });
+  var cnAreaPct = cnAreaTotalGDP>0 ? Math.round(cnAreaWeightedGDP/cnAreaTotalGDP*1000)/10 : 0;
+
+  var usAreaCovByName={};
+  var usAreaWeightedGDP=0, usAreaTotalGDP=0;
+  usStates.forEach(function(s){
+    if(s.name==='District of Columbia') return;
+    var samples=usSamples[s.name]||[];
+    var frac= samples.length ? coverageFraction(samples,usCargoHubs,usRadius) : 0;
+    usAreaCovByName[s.name]=frac;
+    var sgdp=usStateGDP[s.name]||0;
+    usAreaWeightedGDP += frac*sgdp;
+    usAreaTotalGDP += sgdp;
+  });
+  var usAreaPct = usAreaTotalGDP>0 ? Math.round(usAreaWeightedGDP/usAreaTotalGDP*1000)/10 : 0;
 
   $('cn-gdp-cover').textContent=cnResult.pct;
   $('us-gdp-cover').textContent=usResult.pct;
+  $('cn-area-cover').textContent=cnAreaPct;
+  $('us-area-cover').textContent=usAreaPct;
 
-  // Insight text
+  // Insight text — use city metric as primary
   var diff=usResult.pct-cnResult.pct;
+  var areaNote=' (面积加权口径: 中国 '+cnAreaPct+'% / 美国 '+usAreaPct+'%)';
   if(diff>0){
-    $('radius-insight').textContent=currentRadiusHours+'小时公路覆盖: 美国领先'+diff.toFixed(1)+'个百分点';
-    $('radius-insight-text').textContent=' — 美国货运枢纽布局更均匀, 公路网络更密集。中国西部大片区域超出任何枢纽'+cnRadius+'km辐射范围, 这正是航空物流的结构性机会。';
+    $('radius-insight').textContent=currentRadiusHours+'小时公路覆盖: 美国 Top35 MSA GDP 领先 '+diff.toFixed(1)+' 个百分点';
+    $('radius-insight-text').textContent=' — 美国货运枢纽布局更均匀, 公路网络更密集。中国未覆盖区域主要在西北/西南/东北, 这正是航空物流的结构性机会。'+areaNote;
   } else {
-    $('radius-insight').textContent=currentRadiusHours+'小时公路覆盖: 中国领先'+(-diff).toFixed(1)+'个百分点';
-    $('radius-insight-text').textContent=' — 在较长运输时间下, 中国沿海枢纽密集布局的优势显现。但GDP覆盖率接近不代表物流效率等价 — 中国西部地形复杂, 实际运输时间远超理论值。';
+    $('radius-insight').textContent=currentRadiusHours+'小时公路覆盖: 中国 Top35 城市 GDP 领先 '+(-diff).toFixed(1)+' 个百分点';
+    $('radius-insight-text').textContent=' — 中国主要城市集中沿海, 头部 10 个货运枢纽密度高。但城市覆盖率接近不代表物流效率等价 — 中国西部地形复杂, 实际运输时间远超理论值。'+areaNote;
   }
 
-  // Generate circle data for all hubs
-  var cnCircles=[];
-  cnCargoHubs.forEach(function(h){cnCircles.push(geoCircle(h[1],h[0],cnRadius,48))});
-  var usCircles=[];
-  usCargoHubs.forEach(function(h){usCircles.push(geoCircle(h[1],h[0],usRadius,48))});
+  // Generate circle data for all hubs (Anchorage gets a separate prominent style)
+  function buildCircleSeries(hubs,radiusKm,isAlaska){
+    return hubs.map(function(h,i){
+      var isAk=isAlaska&&isAlaska(h,i);
+      return{type:'lines',coordinateSystem:'geo',polyline:true,silent:true,
+        lineStyle:isAk
+          ?{color:'rgba(220,38,38,.85)',width:3.5,type:'solid'}
+          :{color:'rgba(245,158,11,.55)',width:2,type:'solid'},
+        effect:{show:false},
+        zlevel:isAk?2:1,
+        data:[{coords:geoCircle(h[1],h[0],radiusKm,72)}]};
+    });
+  }
+  var cnCircleSeries=buildCircleSeries(cnCargoHubs,cnRadius,null);
+  var usCircleSeries=buildCircleSeries(usCargoHubs,usRadius,function(h){return h[0]<-140&&h[1]>50});
 
-  // CN coverage map — color by GDP share, green=covered, red=uncovered
-  var cnMaxGDP=0;cnProvinces.forEach(function(p){if(p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门') cnMaxGDP=Math.max(cnMaxGDP,cnProvGDP[p.name]||0)});
+  // Province/state coloring: gradient by area coverage fraction × GDP share intensity
   var cnMapData=cnProvinces.filter(function(p){return p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
     var fn=CN_FULL[p.name]||p.name;
-    var isCovered=cnResult.covered[p.name];
     var gdpShare=cnTotalGDP>0?(cnProvGDP[p.name]||0)/cnTotalGDP:0;
-    var intensity=Math.min(1,Math.sqrt(gdpShare)*4); // sqrt scale for better visual spread
-    var color=isCovered
-      ?'rgba(22,163,74,'+(.15+intensity*.55)+')' // green: 0.15-0.70 opacity
-      :'rgba(220,38,38,'+(.1+intensity*.6)+')';   // red: 0.10-0.70 opacity
-    return{name:fn,value:Math.round((cnProvGDP[p.name]||0)),itemStyle:{areaColor:color}};
+    var frac=cnAreaCovByName[p.name]||0;
+    return{name:fn,value:Math.round((cnProvGDP[p.name]||0)),itemStyle:{areaColor:coverageColor(frac,gdpShare)},_frac:frac};
+  });
+  var usMapData=usStates.filter(function(s){return s.name!=='District of Columbia'}).map(function(s){
+    var gdpShare=usTotalGDP>0?(usStateGDP[s.name]||0)/usTotalGDP:0;
+    var frac=usAreaCovByName[s.name]||0;
+    return{name:s.name,value:Math.round((usStateGDP[s.name]||0)),itemStyle:{areaColor:coverageColor(frac,gdpShare)},_frac:frac};
   });
 
-  var cnCircleSeries=cnCircles.map(function(circle,i){
-    return{type:'lines',coordinateSystem:'geo',polyline:true,silent:true,
-      lineStyle:{color:'rgba(245,158,11,.5)',width:2,type:'solid'},
-      effect:{show:false},
-      data:[{coords:circle}]};
-  });
-  // Hub markers
-  var cnHubScatter={type:'scatter',coordinateSystem:'geo',
+  // City scatter — green=covered, red=uncovered, size by sqrt(GDP)
+  function citySize(gdp,maxGdp){return Math.max(5,Math.min(22,Math.sqrt(gdp/maxGdp)*22))}
+  var cnMaxCityGDP=Math.max.apply(null,cnCities.map(function(c){return c.gdp}));
+  var usMaxCityGDP=Math.max.apply(null,usMetros.map(function(c){return c.gdp}));
+  var cnCityScatter={type:'scatter',coordinateSystem:'geo',zlevel:5,
+    data:cnResult.cities.map(function(c){
+      return{value:[c.lon,c.lat],name:c.name,gdpVal:c.gdp,covered:c.covered,distKm:c.distKm,
+        symbolSize:citySize(c.gdp,cnMaxCityGDP),
+        itemStyle:{color:c.covered?'rgba(22,163,74,.75)':'rgba(220,38,38,.85)',borderColor:'#fff',borderWidth:1.5}};
+    }),
+    label:{show:false},
+    emphasis:{label:{show:true,formatter:function(p){return p.name},position:'right',fontSize:10,fontWeight:600,backgroundColor:'rgba(255,255,255,.9)',padding:[2,5],borderRadius:3}}
+  };
+  var usCityScatter={type:'scatter',coordinateSystem:'geo',zlevel:5,
+    data:usResult.cities.map(function(c){
+      return{value:[c.lon,c.lat],name:c.name,gdpVal:c.gdp,covered:c.covered,distKm:c.distKm,
+        symbolSize:citySize(c.gdp,usMaxCityGDP),
+        itemStyle:{color:c.covered?'rgba(22,163,74,.75)':'rgba(220,38,38,.85)',borderColor:'#fff',borderWidth:1.5}};
+    }),
+    label:{show:false},
+    emphasis:{label:{show:true,formatter:function(p){return p.name},position:'right',fontSize:10,fontWeight:600,backgroundColor:'rgba(255,255,255,.9)',padding:[2,5],borderRadius:3}}
+  };
+
+  // Hub markers (orange diamonds, on top of cities)
+  var cnHubScatter={type:'scatter',coordinateSystem:'geo',zlevel:8,
     data:cnCargoHubs.map(function(h,i){
       var names=['上海浦东','广州白云','深圳宝安','北京首都','鄂州花湖','郑州新郑','杭州萧山','成都双流','昆明长水','厦门高崎'];
-      return{value:[h[0],h[1]],name:names[i]};
+      return{value:[h[0],h[1]],name:names[i],isHub:true};
     }),
-    symbol:'diamond',symbolSize:10,itemStyle:{color:'#f59e0b',borderColor:'#fff',borderWidth:2},
-    label:{show:true,formatter:'{b}',position:'right',fontSize:9,color:'#92400e'},
-    z:10
+    symbol:'diamond',symbolSize:13,itemStyle:{color:'#f59e0b',borderColor:'#fff',borderWidth:2.5},
+    label:{show:true,formatter:'{b}',position:'top',fontSize:10,fontWeight:700,color:'#92400e',backgroundColor:'rgba(255,255,255,.85)',padding:[1,4],borderRadius:2}
+  };
+  var usHubScatter={type:'scatter',coordinateSystem:'geo',zlevel:8,
+    data:usCargoHubs.map(function(h,i){
+      var names=['Memphis','Anchorage','Louisville','Miami','LAX','Chicago','Cincinnati','JFK','Indianapolis','Dallas'];
+      return{value:[h[0],h[1]],name:names[i],isHub:true};
+    }),
+    symbol:'diamond',symbolSize:13,itemStyle:{color:'#f59e0b',borderColor:'#fff',borderWidth:2.5},
+    label:{show:true,formatter:'{b}',position:'top',fontSize:10,fontWeight:700,color:'#92400e',backgroundColor:'rgba(255,255,255,.85)',padding:[1,4],borderRadius:2}
   };
 
   var cnOpt={
     tooltip:{trigger:'item',formatter:function(p){
-      if(p.seriesType==='scatter') return '<b>'+p.name+'</b><br>货运枢纽';
+      if(p.seriesType==='scatter'){
+        if(p.data.isHub) return '<b>'+p.name+'</b><br>货运枢纽';
+        return '<b>'+p.name+'</b><br>'+(p.data.covered?'<span style="color:#16a34a">✓ '+currentRadiusHours+'小时圈内</span>':'<span style="color:#dc2626">✗ 超出 '+currentRadiusHours+'小时圈</span>')+'<br>GDP: '+p.data.gdpVal.toLocaleString()+' 亿元<br>距最近枢纽: '+p.data.distKm+' km';
+      }
       if(p.seriesType==='lines') return '';
       var sn=CN_SHORT[p.name]||p.name;
-      var isCov=cnResult.covered[sn];
       var prov=cnProvinces.find(function(x){return x.name===sn});
       if(!prov) return p.name;
       var gdp=(cnProvGDP[sn]||0);
       var pct=cnTotalGDP>0?(gdp/cnTotalGDP*100).toFixed(1):0;
-      return '<b>'+sn+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ 在覆盖范围内</span>':'<span style="color:#dc2626">✗ 超出覆盖范围</span>')+'<br>GDP: '+Math.round(gdp).toLocaleString()+'亿元 (占全国'+pct+'%)';
+      var fr=(cnAreaCovByName[sn]||0)*100;
+      return '<b>'+sn+'</b><br>GDP: '+Math.round(gdp).toLocaleString()+' 亿元 (占全国 '+pct+'%)<br>面积覆盖: '+fr.toFixed(1)+'%<br>覆盖 GDP: '+Math.round(gdp*fr/100).toLocaleString()+' 亿元';
     }},
-    geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#eee'},emphasis:{itemStyle:{areaColor:'#fecaca'},label:{show:true,fontSize:11}},
+    geo:{map:'china',roam:true,zoom:1.2,label:{show:false},itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#f8fafc'},emphasis:{itemStyle:{areaColor:'#fde68a'},label:{show:true,fontSize:11}},
       regions:cnMapData.map(function(d){return{name:d.name,itemStyle:d.itemStyle}})
     },
-    series:cnCircleSeries.concat([cnHubScatter,{type:'map',map:'china',geoIndex:0,data:cnMapData,silent:true}])
+    series:cnCircleSeries.concat([{type:'map',map:'china',geoIndex:0,data:cnMapData,silent:true},cnCityScatter,cnHubScatter])
   };
   if(charts['map-cn-radius']){charts['map-cn-radius'].setOption(cnOpt,true)}
   else{initC('map-cn-radius',cnOpt)}
 
-  // US coverage map — color by GDP share
-  var usMapData=usStates.filter(function(s){return s.name!=='District of Columbia'}).map(function(s){
-    var isCovered=usResult.covered[s.name];
-    var gdpShare=usTotalGDP>0?(usStateGDP[s.name]||0)/usTotalGDP:0;
-    var intensity=Math.min(1,Math.sqrt(gdpShare)*4);
-    var color=isCovered
-      ?'rgba(22,163,74,'+(.15+intensity*.55)+')'
-      :'rgba(220,38,38,'+(.1+intensity*.6)+')';
-    return{name:s.name,value:Math.round((usStateGDP[s.name]||0)),itemStyle:{areaColor:color}};
-  });
-
-  var usCircleSeries=usCircles.map(function(circle){
-    return{type:'lines',coordinateSystem:'geo',polyline:true,silent:true,
-      lineStyle:{color:'rgba(245,158,11,.5)',width:2,type:'solid'},
-      effect:{show:false},
-      data:[{coords:circle}]};
-  });
-  var usHubScatter={type:'scatter',coordinateSystem:'geo',
-    data:usCargoHubs.map(function(h,i){
-      var names=['Memphis','Anchorage','Louisville','Miami','LAX','Chicago','Cincinnati','JFK','Indianapolis','Dallas'];
-      return{value:[h[0],h[1]],name:names[i]};
-    }),
-    symbol:'diamond',symbolSize:10,itemStyle:{color:'#f59e0b',borderColor:'#fff',borderWidth:2},
-    label:{show:true,formatter:'{b}',position:'right',fontSize:9,color:'#92400e'},
-    z:10
-  };
-
   var usOpt={
     tooltip:{trigger:'item',formatter:function(p){
-      if(p.seriesType==='scatter') return '<b>'+p.name+'</b><br>Cargo Hub';
+      if(p.seriesType==='scatter'){
+        if(p.data.isHub) return '<b>'+p.name+'</b><br>Cargo Hub';
+        return '<b>'+p.name+'</b><br>'+(p.data.covered?'<span style="color:#16a34a">✓ Within '+currentRadiusHours+'h</span>':'<span style="color:#dc2626">✗ Outside '+currentRadiusHours+'h</span>')+'<br>GDP: $'+p.data.gdpVal.toLocaleString()+'B<br>Nearest hub: '+p.data.distKm+' km';
+      }
       if(p.seriesType==='lines') return '';
-      var isCov=usResult.covered[p.name];
       var st=usStates.find(function(x){return x.name===p.name});
       if(!st) return p.name;
       var gdp=(usStateGDP[p.name]||0);
       var pct=usTotalGDP>0?(gdp/usTotalGDP*100).toFixed(1):0;
-      return '<b>'+p.name+'</b><br>'+(isCov?'<span style="color:#16a34a">✓ Covered</span>':'<span style="color:#dc2626">✗ Outside range</span>')+'<br>GDP: $'+Math.round(gdp).toLocaleString()+'亿 ('+pct+'% of total)';
+      var fr=(usAreaCovByName[p.name]||0)*100;
+      return '<b>'+p.name+'</b><br>State GDP: $'+Math.round(gdp).toLocaleString()+' 亿 ('+pct+'%)<br>Area coverage: '+fr.toFixed(1)+'%<br>Covered GDP: $'+Math.round(gdp*fr/100).toLocaleString()+' 亿';
     }},
-    geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#eee'},emphasis:{itemStyle:{areaColor:'#bfdbfe'},label:{show:true,fontSize:10}},
+    geo:{map:'USA',roam:true,zoom:1.1,label:{show:false},itemStyle:{borderColor:'#ccc',borderWidth:0.5,areaColor:'#f8fafc'},emphasis:{itemStyle:{areaColor:'#fde68a'},label:{show:true,fontSize:10}},
       regions:usMapData.map(function(d){return{name:d.name,itemStyle:d.itemStyle}})
     },
-    series:usCircleSeries.concat([usHubScatter,{type:'map',map:'USA',geoIndex:0,data:usMapData,silent:true}])
+    series:usCircleSeries.concat([{type:'map',map:'USA',geoIndex:0,data:usMapData,silent:true},usCityScatter,usHubScatter])
   };
   if(charts['map-us-radius']){charts['map-us-radius'].setOption(usOpt,true)}
   else{initC('map-us-radius',usOpt)}

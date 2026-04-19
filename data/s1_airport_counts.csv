@@ -1,0 +1,8 @@
+﻿metric,current_value_in_html,label_in_html,what_it_actually_measures,recommended_value,recommended_label,source_url,primary_source,status,notes
+中国通航机场总数,475,CAAC 2024.12,"已注册在册的通用航空机场（不含运输机场）",475,"CAAC 通用机场 (2024.12)",http://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202505/P020250515367555717699.pdf,CAAC 2024年民航行业发展统计公报,verified,"口径: 仅通航机场, 不含 259 个运输机场"
+中国运输机场总数,未使用,-,"商业运输机场（旅客和货运定期航班）",259,"CAAC 运输机场 (2024)",https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202503/t20250314_226932.html,CAAC 2024年民用运输机场生产统计公报,verified,"当前未纳入计算, 但用户方法论要求加入"
+中国民用机场总数（通航+运输）,未使用,-,"所有民用机场（通航 + 运输）",734,"CAAC 民用机场 (2024.12)",,CAAC 2024 两份公报合并,verified,"当前未使用, 但新方法论应使用此数字"
+美国GA/通航机场（当前口径）,19969,FAA NPIAS 2025,"实际是 FAA AIS 全部民用机场（含私用/农场草地跑道/直升机场）",,"",https://www.faa.gov/airports,FAA Aeronautical Information System,wrong_label,"标注错误！19969 不是 NPIAS. NPIAS 2025-2029 只有 3,287 个"
+美国NPIAS机场（联邦认证的重要机场）,未使用,-,"FAA NPIAS 2025-2029 认证的对公众开放、有联邦资金支持的机场",3287,"FAA NPIAS 2025-2029",https://www.faa.gov/sites/faa.gov/files/airports/planning_capacity/npias/current/ARP-NPIAS-2025-2029-Narrative.pdf,FAA NPIAS Report 2025-2029,verified,"含 395 商业运输 + ~2892 通航, 排除农场/私用跑道 - 与中国口径可比"
+美国公共民用机场（Public-use）,未使用,-,"对公众开放的机场（含非NPIAS）",5170,"FAA AIS Public-use",https://www.faa.gov/airports,FAA AIS 2024,verified,"含 NPIAS 外的小型公共机场"
+美国全部民用机场（AIS Total）,19969,-,"所有民用机场含14852个私用（农场草地等）+ 5170 公共用",20031,"FAA AIS Total (含私用)",https://medium.com/faa/airports-by-the-numbers-823b54863f18,FAA Medium / AIS 2024,verified,"含私用机场 / 农场简易跑道 - 与中国口径不对等"

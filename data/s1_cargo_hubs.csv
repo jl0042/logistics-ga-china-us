@@ -1,0 +1,22 @@
+﻿country,rank,airport_code,airport_name,longitude,latitude,cargo_2024_wan_tons,current_value_in_html,source_url,primary_source,status
+China,1,PVG,上海浦东,121.805,31.143,377.83,377.8,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024 Preliminary World Airport Traffic,verified
+China,2,CAN,广州白云,113.299,23.392,237.37,238.2,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024,verified
+China,3,SZX,深圳宝安,113.811,22.639,,188.1,待核对,ACI 2024,unverified
+China,4,PEK,北京首都,116.584,40.080,,144.3,待核对,ACI 2024,unverified
+China,5,EHU,鄂州花湖,114.942,30.346,102,102,顺丰控股 2024年报,顺丰控股,verified
+China,6,CGO,郑州新郑,113.841,34.520,,82.5,待核对,ACI 2024,unverified
+China,7,HGH,杭州萧山,120.434,30.229,,73.5,待核对,ACI 2024,unverified
+China,8,CTU,成都双流,103.947,30.578,,64.3,待核对,ACI 2024,unverified
+China,9,KMG,昆明长水,102.929,25.102,,38.6,待核对,ACI 2024,unverified
+China,10,XMN,厦门高崎,118.128,24.544,,37.6,待核对,ACI 2024,unverified
+China,特例,HKG,香港国际,113.914,22.308,493.82,未使用,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024,unverified,"全球第一货运机场, 但当前未列入中国大陆统计"
+US,1,MEM,Memphis,-89.976,35.044,375.42,375.4,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024,verified
+US,2,ANC,Anchorage,-149.993,61.179,369.93,369.9,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024,verified
+US,3,SDF,Louisville,-85.735,38.171,315.30,315.3,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024,verified
+US,4,MIA,Miami,-80.290,25.796,275.35,275.3,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,ACI 2024,verified
+US,5,LAX,Los Angeles,-118.408,33.943,,217.4,ACI 2024,ACI 2024,unverified
+US,6,ORD,Chicago O'Hare,-87.905,41.979,,207.4,ACI 2024,ACI 2024,unverified
+US,7,CVG,Cincinnati,-84.668,39.049,,169.6,ACI 2024,ACI 2024,unverified
+US,8,JFK,New York JFK,-73.779,40.639,,168,ACI 2024,ACI 2024,unverified
+US,9,IND,Indianapolis,-86.294,39.717,,110,ACI 2024,ACI 2024,unverified
+US,10,DFW,Dallas,-97.038,32.897,,81.8,ACI 2024,ACI 2024,unverified
