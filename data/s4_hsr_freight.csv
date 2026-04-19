@@ -1,0 +1,27 @@
+﻿item,value,unit,year,source_org,source_doc,source_url,status,notes
+全国铁路营业里程,16.2,万 km,2024,国铁集团,2024 年统计公报,http://www.china-railway.com.cn/xwzx/zhxw/202503/t20250305_143296.html,verified,2024 末; 同比 +3000 km
+全国高铁营业里程,4.8,万 km,2024,国铁集团 / 国家铁路局,2024 年铁道统计公报,https://www.nra.gov.cn/xwzx/zlzx/hytj/202506/t20250606_348988.shtml,verified,占全球 70%+; 2024 新增 2457 km
+国家铁路货物发送量,39.9,亿吨,2024,国铁集团,2024 年统计公报,http://www.china-railway.com.cn/xwzx/zhxw/202503/t20250305_143296.html,verified,同比 +1.9%; 连续 8 年增长
+国铁集团运输总收入,9901.8,亿元,2024,国铁集团,2024 年度业绩公告,https://finance.sina.com.cn/stock/wbstock/2025-01-02/doc-inecqxcv2260354.shtml,verified,同比 +2.7%
+国铁集团物流总包合同累计,5.3-5.4,亿吨,2024,国铁集团,2024 年公告,http://www.china-railway.com.cn/xwzx/zhxw/202503/t20250305_143296.html,verified,推动公转铁
+高铁快运覆盖高铁站,252,个,2024,交通运输部,'十四五' 铁路高质量发展综述,https://www.mot.gov.cn/jiaotongyaowen/202512/t20251225_4182845.html,verified,2024 末数; 比 2022 末 293 站略减 (口径调整)
+高铁急送覆盖城市,196,个,2024,交通运输部,'十四五' 铁路高质量发展综述,https://www.mot.gov.cn/jiaotongyaowen/202512/t20251225_4182845.html,verified,4 小时门到门服务
+高铁快运 2024 业务量,300-600,万吨,2024,综合估算 (无官方汇总),—,—,unverified,'国铁未单独公布; 单线如成昆 2024 全年估算 5-7 万吨; 全国汇总区间 300-600 万吨'
+成昆线高铁货运 2024 累计 (截至 11.18),3.8,万吨,2024,人民日报,'当高铁开始送快递' 2024-11,http://paper.people.com.cn/zgjjzk/pc/content/202411/30/content_30046120.html,verified,'395 万件 / 38000 吨; 每日 2 列双向; 平均 50 吨/列'
+成昆线高铁货运车型,改装 CRH2A,—,2024,人民日报,'当高铁开始送快递' 2024-11,http://paper.people.com.cn/zgjjzk/pc/content/202411/30/content_30046120.html,verified,'最大 70 吨/列; 运营 250 km/h; 距离 1127 km'
+350 km/h 高速货运动车组下线,2020.12.23,—,2020,中车 / 国铁集团,新华网 / 中车唐山,https://baike.baidu.com/item/复兴号动车组,verified,'CRRC 唐山下线; 时速 350 km/h; 全国具体投入运营列数未公开'
+CR200JS-G 实际生产数,3,组,2021-2024,中车,慧伊创新 / Wikipedia,https://www.china-emu.cn/Trains/Model/Detail-10058-106-1.html,verified,'CR200JS-G 是高原双源动力客运车 (拉林/拉日铁路用), 不是货运动车组; 我们之前网页车型搞错'
+高铁急送 600km 内 5kg,150,元,2023-2024,中铁快运,中铁快运官方价表,https://www.95572.com/news/202305/t20230531_8880.html,verified,'分档定价: 600km 内 5kg 内 150 / 5-20kg 200'
+高铁急送 600-1000km 5kg,230,元,2023-2024,中铁快运,中铁快运官方价表,https://www.95572.com/news/202305/t20230531_8880.html,verified,'601-1000km 5kg 内 230 / 5-20kg 290'
+高铁急送 1000km+ 5kg,280,元,2023-2024,中铁快运,中铁快运官方价表,https://www.95572.com/news/202305/t20230531_8880.html,verified,'1000km+ 5kg 内 280 / 5-20kg 340'
+高铁急送 600km 5kg 折单价,50,元/吨km,2024,推算,150 元 / 5kg / 600km,—,verified,'150/5/600 = 50 元/(kg·km)'
+高铁急送 1000km 5kg 折单价,46,元/吨km,2024,推算,230 元 / 5kg / 1000km,—,verified,'230/5/1000 = 46 元/(kg·km)'
+高铁急送 1500km 5kg 折单价,37.3,元/吨km,2024,推算,280 元 / 5kg / 1500km,—,verified,'280/5/1500 = 37.3 元/(kg·km)'
+内蒙古高铁里程,880,km,2024,内蒙古自治区交通运输厅,内蒙古综合交通规划 + 包银/集大原 2024 通车,https://www.mot.gov.cn/jiaotongyaowen/202404/t20240417_4129573.html,verified,'2024 末 880 km / 5 城接入 (呼/包/乌兰察布/通辽/赤峰)'
+甘肃 250 km/h 高铁,兰新高铁河西走廊段,—,2014-2023,国铁集团,兰新客专 (2014 通) + 2023 提速 250,https://zh.wikipedia.org/wiki/兰新客运专线,verified,'兰州-武威-嘉峪关-哈密 全段 250 km/h'
+青海 250 km/h 高铁,兰新高铁西宁段,—,2014-2023,国铁集团,兰新客专 (2014 通) + 2023 提速,https://zh.wikipedia.org/wiki/兰新客运专线,verified,'兰州-西宁段 250 km/h; 西宁有高铁站'
+新疆 250 km/h 高铁,兰新高铁乌鲁木齐段,—,2014-2023,国铁集团,兰新客专 (2014 通) + 2023 全线提速 250,https://www.ts.cn/xwzx/jjxw/202307/t20230701_14418802.shtml,verified,'乌鲁木齐-哈密段 250 km/h; 乌鲁木齐有高铁站'
+宁夏高铁,银西高铁 + 包银高铁,—,2019/2024,国铁集团,银西 (2019) + 包银惠农-银川段 (2024 末),https://m.gmw.cn/2025-07/10/content_1304079369.htm,verified,'银川-石嘴山 接入高铁网'
+真正完全无高铁省份,1,个,2024,综合,—,—,verified,'仅西藏; 西藏有铁路 1188 km 但都是普速 ≤160 km/h'
+高铁运营里程 2030 规划,6,万 km,2030,国铁集团,《中长期铁路网规划》,https://cn.chinadaily.com.cn/a/202501/02/WS677605baa310b59111dac08f.html,verified,'2030 全国 18 万 km 铁路 / 6 万 km 高铁'
+Cessna 208 Caravan 巡航速度,175 KTAS / 324 km/h,—,—,Cessna / Textron,Cessna 208 Caravan Specs,https://en.wikipedia.org/wiki/Cessna_208_Caravan,verified,'PT6A-114A 巡航; 最大巡航 186 kts/344 km/h; 网页之前 227 km/h 错'

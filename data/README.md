@@ -37,6 +37,13 @@
 | `s3_alaska_bypass.csv` | 阿拉斯加 Bypass Mail 完整事实清单: 起源 1972 / Rural Service Improvement Act 2002 / 1000 lb 最低 / FY2010-FY2024 补贴 / 苏打水托盘 $485 / Bethel 薯片例 / 主要承运人 / 货物类型 + 阿拉斯加 FAA 注册 761 起降设施 / 82% 社区无路 | 22 |
 | `s3_comparison_analysis.md` | S3 完整 review: 17 项数据修正前后对比 + 西部 12 省 verified 表 + 阿拉斯加面粉故事完整版 + radar 删除理由 + 红色省份名单论证 + 400-600 架估算下调论证 | (markdown) |
 
+### Section 4 — 高铁货运竞争分析
+
+| 文件 | 内容 | 行数 |
+|---|---|---|
+| `s4_hsr_freight.csv` | 高铁货运 + 阿拉斯加机场 + Caravan 速度 verified 数据: 全国 4.8 万 km 高铁 / 高铁快运覆盖 252 站 + 高铁急送 196 城 / 350 km/h 复兴号货运动车组 (CR200JS-G 张冠李戴 修正) / 中铁急送实际分档定价 150-340 元/件 / 各省 250+ km/h 高铁覆盖 (西藏唯一无) / Cessna 208 Caravan 巡航 175 KTAS = 324 km/h | 26 |
+| `s4_comparison_analysis.md` | S4 完整 review: 20 项修正前后对比 + 高铁货运动车组车型澄清 + 中铁快运实际定价 verified + 各省高铁覆盖修正 (6 省错→1 省) + chart-tonkm 速度修正 + S2/S6/S7 连带引用清单 | (markdown) |
+
 ### 辅助文件
 
 | 文件 | 内容 |
