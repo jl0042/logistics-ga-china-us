@@ -1,0 +1,9 @@
+﻿region,highway_km_2024_wan,share_of_national,land_area_share,population_billion,density_km_per_thousand_km2,per_capita_km_per_million,source_url,source_doc,status,notes
+全国,19.07,100%,100%,14.08,~20,~135,https://www.lhratings.com/file/fa36b9d237e.pdf,联合资信《2024 年收费公路行业分析》(基于交通运输部 2024 公报),verified,2024 年底全国高速公路总里程; 同比 +0.70 万 km
+东部地区(11省),~5.15,27%,~14%,~6.0,~38,~86,同上,联合资信《2024 年收费公路行业分析》,partial,基于占比反算; 含京津冀+长三角+珠三角+山东+福建+辽宁+海南
+中部地区,~5.91,31%,~30%,~3.6,~21,~164,同上,联合资信《2024 年收费公路行业分析》,partial,基于占比反算; 含晋豫鄂湘皖赣
+西部地区(12省),~8.01,42%,~56%,~3.7,~15,~217,同上,联合资信《2024 年收费公路行业分析》,partial,基于占比反算; 西部 12 省含川滇黔渝桂藏陕甘宁青新疆+内蒙古
+广东,1.17,6.1%,N/A,1.28,N/A,~91,https://news.ycwb.com/2024-12/31/content_53155717.htm,广东省交通运输厅 2024,verified,连续 11 年全国第一
+云南,1.0758,5.6%,N/A,0.47,N/A,~229,https://www.yicai.com/news/102630899.html,云南省交通运输厅 2024,verified,西部, 第二名
+四川,1.0310,5.4%,N/A,0.84,N/A,~123,同上,四川省交通运输厅 2024,verified,西部, 第三名
+广西,1.0000,5.2%,N/A,0.50,N/A,~200,同上,广西交通运输厅 2024,verified,西部, 第四名
