@@ -393,56 +393,69 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="thesis-line">中国西部能稳定打中"地面到不了"这一条；部分时段（冬季封路）还能打中"太慢"。但靠"便宜"这条路在中国走不通。</div>
       <ul class="thesis-evidence">
         <li>三问框架：覆盖 / 速度 / 成本，至少打中一条才有航空</li>
-        <li>西部 12 省公路密度 0.17 km/km²（全国均 0.47）；拉萨-林芝冬季封路是常态</li>
-        <li>阿拉斯加可作为<b>技术可行性</b>参考，但商业模式不能照搬（USPS 补贴 ~$80M/yr）</li>
+        <li>西部 12 省 (3.82 亿人 / 685 万 km²) 公路密度 0.32 km/km²（全国均 0.57，西藏最低 0.10）；拉萨-林芝冬季封路是常态</li>
+        <li>阿拉斯加可作为<b>技术可行性</b>参考，但商业模式不能照搬 (USPS Bypass Mail FY2024 净亏 $119M)</li>
       </ul>
     </div>
 
     <div class="grid3 fade-in">
       <div class="analysis-card"><span class="tag" style="background:#f0fdf4;color:#16a34a">三问框架</span><h4>物流公司的三个根本问题</h4><p>1. <b>覆盖</b>：地面运输到不了的地方怎么办？<br>2. <b>速度</b>：时敏货物能否比地面快？<br>3. <b>成本</b>：单位成本能否与地面竞争？<br><br>三个条件至少打中一个，飞机才有得做。三个都不打中，再多政策补贴也撑不起来。</p></div>
-      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国西部</span><h4>"覆盖"这一条最稳</h4><p>西部 55% 国土公路密度 0.17 km/km²（全国均 0.47）。西藏铁路目前已超 1,400 km（青藏 + 拉日 + 拉林），但覆盖 122 万 km² 仍稀疏。1,750 亿件快递，农村末端配送 5-7 天。<br><br>电商对"次日达"的预期，已经渗透到三四线城市。西部基础设施跟不上 — 这是"地面到不了"这一条最实在的需求。</p><div class="source">交通运输部 2024 统计; 国家邮政局 2024</div></div>
-      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国阿拉斯加</span><h4>仅作技术可行性参考</h4><p>170 万 km² 中 91% 无公路。~80% 远端社区靠航空物流。3,500+ 简易跑道，Caravan 级飞机是主力。<br><br><b>但要小心这个类比</b>：阿拉斯加的航空物流之所以经济，主要靠 USPS Bypass Mail 补贴（~$80M/yr），让 50 美元就能寄一袋 70 磅面粉到偏远村庄。中国西部没有对应机制。我们引用阿拉斯加是为了证明<b>技术可行</b>，不是证明商业模式可复制。</p><div class="source">Alaska DOT&PF; FAA Alaska Region; USPS Bypass Mail Program</div></div>
+      <div class="analysis-card"><span class="tag" style="background:#fef2f2;color:#dc2626">中国西部</span><h4>"覆盖"这一条最稳</h4><p>西部 12 省占 71% 国土，公路密度 0.32 km/km² (全国均 0.57; 西藏 0.10、青海 0.13、新疆 0.14 是全国最稀疏的三个)。西藏铁路 1,188 km (青藏藏内段 + 拉日 253 + 拉林 435)，覆盖 122 万 km² 仍稀疏。<br><br>1,750 亿件快递的电商对"次日达"的预期已经渗透到三四线城市，西部末端配送时长比城市显著更长 — 这是"地面到不了"这一条最实在的需求。</p><div class="source">交通运输部 2024 统计; 国家邮政局 2024; 西藏自治区政府 2025-01 公告; 见 <code>data/s3_west_china_geo.csv</code></div></div>
+      <div class="analysis-card"><span class="tag" style="background:#eff6ff;color:#2563eb">美国阿拉斯加</span><h4>仅作技术可行性参考</h4><p>172 万 km² 中 91% 国土无公路、82% 社区不通公路 (Alaska DOT 2021)。FAA 注册 761 个起降设施 (其中 391 个公用机场)，外加数千处未注册的 bush strip，Caravan / Beech 1900 级飞机是主力。<br><br><b>但要小心这个类比</b>：阿拉斯加的航空物流之所以经济，靠的是 USPS Bypass Mail 补贴 (FY2024 净亏 $119M)。中国邮政没有等同的法定补贴机制 — 详见下方"阿拉斯加面粉的故事"。引用阿拉斯加是为了证明<b>技术可行</b>，不是证明商业模式可复制。</p><div class="source">Alaska DOT&PF Transportation Assessment 2021; FAA AAL 2022 Aviation Fact Sheet; USPS OIG / Alaska Beacon 2025; 见 <code>data/s3_alaska_bypass.csv</code></div></div>
     </div>
 
-    <div class="grid2" style="margin-top:20px">
-      <div class="card"><div class="chart-title">中美需求因素雷达图</div><div class="chart-desc">六维度对比</div><div id="chart-radar" class="chart-box"></div><div class="source">综合分析: 国家邮政局、CAAC、FAA、IATA 2024</div></div>
-      <div class="card"><div class="chart-title">中国西部覆盖缺口</div><div class="chart-desc">红色=航空物流机会区域</div><div id="chart-coverage" class="chart-box"></div><div class="source">CAAC通航机场数据(2024.12); 交通运输部路网密度</div></div>
+    <div style="margin-top:20px">
+      <div class="card"><div class="chart-title">中国西部覆盖缺口分布</div><div class="chart-desc">红色 = "公路 OR 铁路 OR 通航机场" 至少一项稀疏的省份 (覆盖缺口 = 任一稀疏即标红)</div><div id="chart-coverage" class="chart-box" style="height:520px"></div><div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#475569;padding:8px 0 0 4px"><span><span style="display:inline-block;width:14px;height:10px;background:rgba(220,38,38,.5);vertical-align:middle;margin-right:4px;border:1px solid #b91c1c"></span>公路稀疏 (西藏 0.10 / 青海 0.13 / 新疆 0.14 / 内蒙 0.18 km/km²)</span><span><span style="display:inline-block;width:14px;height:10px;background:rgba(220,38,38,.5);vertical-align:middle;margin-right:4px;border:1px solid #b91c1c"></span>边境 / 高原 / 通航少 (甘肃 / 宁夏 / 云南 / 贵州)</span><span><span style="display:inline-block;width:14px;height:10px;background:#e2e8f0;vertical-align:middle;margin-right:4px;border:1px solid #cbd5e1"></span>覆盖相对完善</span></div><div class="source">公路密度: 各省交通运输厅 2024 公报; 通航机场: CAAC 2024.12; 见 <code>data/s3_west_china_geo.csv</code></div></div>
     </div>
 
     <!-- Western coverage gap explanation -->
     <div class="text-block fade-in" style="margin-top:20px">
-      <h4>西部覆盖缺口详细说明</h4>
-      <h5>红色省份判定标准（满足任一即标红）：</h5>
+      <h4>西部覆盖缺口 — 各省具体数据</h4>
+      <h5>红色省份判定 (复合标准，满足任一即标红)：</h5>
       <ul>
-        <li>公路密度 &lt; 0.3 km/km2</li>
-        <li>通航机场 &lt; 1个/10万km2</li>
-        <li>铁路密度低于全国均值50%</li>
+        <li>公路密度 &lt; 0.30 km/km² (含村道口径，全国均 0.57)</li>
+        <li>通航机场密度 &lt; 1 个/10 万 km²</li>
+        <li>边境 / 高原 / 季节封路等地理性瓶颈 (即使公路指标过线)</li>
       </ul>
-      <h5>具体省区及原因：</h5>
+      <h5>各省具体情况 (2024 数据)：</h5>
       <ul>
-        <li><b>西藏</b>：公路密度 0.10；铁路目前已超 1,400 km（含拉日+拉林），但覆盖 122 万 km² 仍稀疏；通航机场 0 个/10万km²</li>
-        <li><b>新疆</b>：公路密度 0.12，面积 166 万 km²，但通航机场极少</li>
-        <li><b>青海</b>：公路密度 0.13，72 万 km² 仅数个机场</li>
-        <li><b>内蒙古</b>：公路密度 0.18，面积 118 万 km²，铁路密度低</li>
-        <li><b>甘肃</b>：公路密度 0.22，地形复杂，铁路覆盖不足</li>
-        <li><b>四川西部（甘孜/阿坝）</b>：局部公路密度 &lt;0.15，高原地形</li>
-        <li><b>云南边境</b>：局部公路密度 0.25，山地地形</li>
-        <li><b>宁夏/贵州</b>：通航机场密度极低</li>
+        <li><b>西藏</b>：公路 12.49 万 km / 122.8 万 km² = 密度 <b>0.10 km/km²</b> (全国最低)；铁路 1,188 km (青藏藏内段 + 拉日 253 + 拉林 435)，G4218 拉萨-日喀则段 2024 通车；5 个通航机场覆盖 122 万 km²</li>
+        <li><b>新疆</b>：公路 23.19 万 km / 166 万 km² = 密度 <b>0.14 km/km²</b> (含兵团 3.83 万 km)；22 个通航机场全国第一，但分布稀疏</li>
+        <li><b>青海</b>：公路 9.12 万 km / 72.2 万 km² = 密度 <b>0.13 km/km²</b>；高速 5,150 km，76% 县城通高速；6 个通航机场</li>
+        <li><b>内蒙古</b>：公路 21.45 万 km / 118.3 万 km² = 密度 <b>0.18 km/km²</b>；东西 2,400 km 跨度大；25 个通航机场全国第一</li>
+        <li><b>甘肃</b>：公路 15.85 万 km / 42.6 万 km² = 密度 0.37 km/km² (高于阈值)，但 80 县通高速、地形复杂、河西走廊狭长是季节性瓶颈</li>
+        <li><b>宁夏</b>：公路密度 0.74，但通航机场仅 3 个</li>
+        <li><b>云南</b>：公路密度 0.84 (全国前列)，但 4,061 km 边境线 + 横断山脉地形 + 边境县通航少</li>
+        <li><b>贵州</b>：公路密度 1.20 (全国第二)，"县县通高速" 已实现，但喀斯特山地 + 通航机场仅 11 个</li>
       </ul>
-      <h5>阿拉斯加：一个有限的参考</h5>
-      <p>美国阿拉斯加（170 万 km²）跟中国西藏+青海（194 万 km²）面积差不多。阿拉斯加 91% 地区无公路，靠 3,500+ 简易跑道和数百架 Caravan 级飞机维持物流。中国西部在地理条件上确实跟阿拉斯加相似。</p>
-      <div style="background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:6px;padding:12px 16px;margin-top:8px">
-        <b style="color:#b91c1c">⚠ 这个类比有重要限制</b><br>
-        <span style="font-size:13px;color:#7f1d1d;line-height:1.7">阿拉斯加 ~80% 边远社区航空物流的经济性，来自 <b>USPS Bypass Mail 联邦补贴（~$80M/yr）</b> — 让 50 美元就能寄一袋 70 磅面粉到偏远村庄。中国西部没有对应的政策性补贴机制。阿拉斯加证明了"用 Caravan 级飞机服务无路区"<b>技术可行</b>，但<b>不证明商业模式可以照搬</b>到中国西部。这是这一节最大的论证局限，我们诚实承认。</span>
-      </div>
+      <p style="font-size:13px;color:#64748b;margin-top:8px"><b>注</b>：云南、贵州、广西、四川等省虽然公路密度不低，但因"边境 / 高原 / 山区 / 通航稀疏" 等结构性瓶颈仍被列入红色。真正"公路绝对稀疏"的只有西藏、青海、新疆、内蒙古四省。</p>
+      <div class="source">各省 2024 公路通车里程公报 (西藏自治区政府 2025-01; 新疆交通运输厅 2025-12; 青海省 2025-01); 见 <code>data/s3_west_china_geo.csv</code></div>
+    </div>
+
+    <!-- Alaska Bypass Mail full story -->
+    <div class="text-block fade-in" style="margin-top:20px;background:#fffbeb;border-left:4px solid #f59e0b">
+      <h4>阿拉斯加面粉的故事 — 为什么"无路区航空物流"在美国跑得通，但模式不能简单照搬到中国</h4>
+      <p><b>1972 年的偶然解决方案。</b>阿拉斯加州 172 万 km²，<b>82% 社区不通公路</b>。Bethel、Nome、Kotzebue、Dillingham 这些偏远村庄的所有日用品 — 米、面、罐头、冷冻肉、奶粉、医药、燃油、建材 — 都得靠飞机运。1972 年 USPS 与航空公司创立 "Bypass Mail" 机制：商家在 Anchorage / Fairbanks 把 1,000 磅 (~454 kg) 整托货物 (shrink-wrap 缠膜 pallet) 直接交给航空公司，<b>绕过邮政中心</b>，飞机直接送到村庄收货人门口。2002 年《Rural Service Improvement Act》将其法律化。</p>
+      <p><b>商家按"地面包裹邮政费率" (Parcel Post) 付款，USPS 用补贴差价支付航空公司实际飞行成本。</b>规则：每单最低 1,000 磅、最低 $365。USPS 补贴金额近 5 年区间 $73-133M：FY2010 $73M、FY2013 $77M、FY2022 ~$133M、<b>FY2024 净亏 $119M</b> (收入 $38M / 实际成本 $158M)。40 年累计 ~$30 亿。</p>
+      <p><b>具体例子。</b>一个 1,366 磅的苏打水托盘，USPS 要付航空公司 <b>$485</b> (折合 $0.36/磅)。村庄终端价格仍然显著高于城市：Anchorage 卖 $4.29 一袋的薯片，到 Bethel 卖 $9.99 — 但其中 Bypass 飞行成本只占 35 cents，其余 $5 是中间商和零售加价。承运人包括 Alaska Airlines、Era Alaska、Penair (干线大型客机货舱) 和 ACE Air Cargo、Ryan Air (bush carrier 用 Caravan / Beech 1900)。<b>部分 bush carrier 60% 营收来自 Bypass Mail</b>，反过来支撑了客运班次的频次。</p>
+      <p><b>对中国的启示 (重要 caveat)。</b>(1) <b>政策机制不可比</b>：阿拉斯加靠的是 USPS 法定 "universal service at universal rates" 义务 — 中国邮政没有等同的法定补贴体系。(2) <b>人口密度差距 140 倍</b>：阿拉斯加 73 万人 / 172 万 km² = 0.4 人/km²；中国西部 3.82 亿人 / 685 万 km² = 56 人/km²。(3) <b>公路覆盖差距 6 倍</b>：阿拉斯加全州约 2 万 km 公路；西藏 12.49 万 km。(4) <b>替代方案</b>：阿拉斯加村庄几乎只有空运一条路；中国西部多数有铁路 / 长途客车 / 藏区运输车队等替代。<b>结论</b>：阿拉斯加证明 Caravan 级飞机服务无路区<b>技术可行</b>，但 USPS 补贴模式<b>商业上无法照搬</b>到中国。中国西部要做通航货运，要么找到内生商业需求 (电商时效 / 冷链 / 应急医疗)，要么需要新的政策机制 (西部交通补贴 / 应急航运储备)。</p>
+      <div class="source">USPS OIG "Alaska Bypass: Beyond Its Original Purpose" (RARC-WP-12-005, 2011); US Congress 113th Hearing CHRG-113hhrg87203 (2013); Alaska Beacon 2025-03; Rural Service Improvement Act of 2002 (H.R. 4661); 见 <code>data/s3_alaska_bypass.csv</code></div>
     </div>
 
     <div class="insight fade-in" style="margin-top:20px">
-      <b>需求规模粗算 — 注意不确定性</b>
-      中国西部 12 省区面积约 680 万 km²，人口约 3.2 亿。如果勉强参照阿拉斯加密度（每万 km² 约 2 个起降点），理论需要 1,360 个起降点。按每条航线需要 2-3 架飞机、覆盖 200 条主要航线推算：潜在飞机需求 <b>400-600 架（Caravan 级或同等 UAV）</b>。<br><br>
-      <b>这个数字的不确定性是 ±50%</b>。关键变量是：中国西部有没有阿拉斯加那样的"航空必需性"（无替代方案、季节封路、人口分散到无法集中卡车配送）。如果商业模式需要补贴撑起来，实际能跑起来的航线可能只有 200 条；如果电商真的能在西部做出生鲜+医药+时敏的支付意愿，也可能扩到 800 架。<br><br>
-      <b>没有讨论的事</b>：京东、淘宝、顺丰在西部农村的"次日达"真实覆盖率是多少？有多少人愿意为"快"多付 8 元/kg？这些是真正的需求端数据，我们没找到公开来源 — 这是这个估算最大的留白。
-      <div class="source">推算基于: 阿拉斯加 3,500 跑道/170万 km² 密度; 中国西部面积来自国家统计局; USPS Bypass Mail 数据来自 USPS Office of Inspector General 报告</div>
+      <b>运力需求估算 — 用"满足多少需求"代替"需要多少架飞机"</b><br><br>
+      中国西部 12 省 <b>3.82 亿人 / 685 万 km²</b> (国土 71%)。从需求侧反推每年需要多少航空货运能力 (吨/年)，区分两阶段：<br><br>
+
+      <b>2026-2030 政府主导阶段 (5-15 万吨/年)</b><br>
+      应急救援、边防补给、高原医疗物资、林业 / 矿区机要件 — 西部 12 省每省每年估算 0.5-1.5 万吨级公共服务空运需求。这一阶段的载体多数是政府采购 / 国企央企招标，预算上限来自地方财政而非市场支付意愿。<br><br>
+
+      <b>2030+ 商业可能起量阶段 (10-80 万吨/年)</b><br>
+      关键变量是西部"无替代地面方案"人口的航空消费意愿。以西部 3.82 亿人中 5% (~1,900 万人) 处于"季节封路 / 公路绕远 / 高原孤岛" 场景估算，若人均年航空消费 5-40 kg (生鲜、时效药品、电商时效件)，对应总需求 10-80 万吨/年。<br><br>
+
+      <b>合计区间：20-100 万吨/年</b>。这个区间宽度本身就是诚实承认的"需求端公开数据极少" — 京东、淘宝、顺丰在西部农村的"次日达"真实覆盖率、西部居民为时效多付意愿，均无公开统计。区间下限对应"商业模式没起来"，上限对应"电商时效在西部跟内地拉平"。<br><br>
+
+      <b>不在这一节做的事</b>：把这个吨位换算成具体机型架数 (Caravan / Beech 1900 / W5000 / CY-8 等)。机型选择取决于平均运距、载荷分布、航线密度 — 我们留到 S6 (运营成本) 和 S10 (需求矩阵) 再做映射。
+      <div class="source">人口 / 面积: s1_cn_provinces.csv 各省 2024 公报加总; 政府需求估算基于 应急管理部 / 卫健委 / 林草局 公开预算; 商业需求基于 国家邮政局 1750 亿件 × 西部人口比 27% × 时效航空渗透 假设; 见 <code>data/s3_west_china_geo.csv</code></div>
     </div>
   </div>
 </section>
@@ -2333,19 +2346,6 @@ simpleBar('chart-logcost-pct',['中国','美国'],[14.1,8.8],['#dc2626','#2563eb
 simpleBar('chart-logcost-abs',['中国','美国'],[19.0,18.6],['#dc2626','#2563eb'],'万亿元');
 
 // ===== RADAR =====
-initC('chart-radar',{
-  tooltip:{},
-  legend:{data:['中国','美国'],top:10},
-  radar:{indicator:[
-    {name:'快递需求',max:100},{name:'西部覆盖缺口',max:100},{name:'电商渗透率',max:100},
-    {name:'通航基础设施',max:100},{name:'空域开放度',max:100},{name:'政策支持',max:100}
-  ]},
-  series:[{type:'radar',data:[
-    {value:[95,90,85,10,30,80],name:'中国',areaStyle:{color:'rgba(220,38,38,.15)'},lineStyle:{color:'#dc2626'},itemStyle:{color:'#dc2626'}},
-    {value:[40,30,75,95,90,70],name:'美国',areaStyle:{color:'rgba(37,99,235,.15)'},lineStyle:{color:'#2563eb'},itemStyle:{color:'#2563eb'}}
-  ]}]
-});
-
 // ===== COVERAGE GAP MAP =====
 (function(){
   if(!cnMapReady){setTimeout(arguments.callee,500);return}

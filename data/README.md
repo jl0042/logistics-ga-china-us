@@ -29,6 +29,14 @@
 | `s2_highway_distribution.csv` | 中国高速公路 19.07 万 km 东/中/西部分布 + 4 大省细节 | 8 |
 | `s2_comparison_analysis.md` | S2 完整对比分析 + 6 项交叉验证 + 修正前后对比 + 数据局限 | (markdown) |
 
+### Section 3 — 第一性原理需求分析
+
+| 文件 | 内容 | 行数 |
+|---|---|---|
+| `s3_west_china_geo.csv` | 中国西部 12 省 (含 4 红 + 4 边缘红色) 面积 / 人口 / 公路里程 / 公路密度 / 通航机场 / 铁路 + 西部合计 + 全国对比, 各省 2024 公报 | 16 |
+| `s3_alaska_bypass.csv` | 阿拉斯加 Bypass Mail 完整事实清单: 起源 1972 / Rural Service Improvement Act 2002 / 1000 lb 最低 / FY2010-FY2024 补贴 / 苏打水托盘 $485 / Bethel 薯片例 / 主要承运人 / 货物类型 + 阿拉斯加 FAA 注册 761 起降设施 / 82% 社区无路 | 22 |
+| `s3_comparison_analysis.md` | S3 完整 review: 17 项数据修正前后对比 + 西部 12 省 verified 表 + 阿拉斯加面粉故事完整版 + radar 删除理由 + 红色省份名单论证 + 400-600 架估算下调论证 | (markdown) |
+
 ### 辅助文件
 
 | 文件 | 内容 |
