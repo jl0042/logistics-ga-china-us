@@ -1,9 +1,16 @@
 ﻿country,metric,value,unit,year,source_org,source_doc,source_url,status,notes
-China,民航货邮运输总量(航空公司口径),898.16,万吨,2024,交通运输部/CAAC,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,航空公司承运量;不重复计算;同比+22.1%
+China,民航货邮运输总量(国内+国际, 航空公司口径),898.16,万吨,2024,交通运输部/CAAC,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,航空公司承运量;不重复计算;同比+22.1%
+China,国内航线货邮运输量,537.56,万吨,2024,中国民用航空局,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,占总量60%;同比+17.8%
+China,国际航线货邮运输量,360.60,万吨,2024,中国民用航空局,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,占总量40%;同比+29.3%(全球增量贡献30%+)
 China,民航货邮吞吐量(机场口径),2006.19,万吨,2024,中国民用航空局,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,全国民航运输机场货邮吞吐量;同比+19.2%;一票货可在多机场计算
 China,货邮周转量,353.89,亿吨公里,2024,交通运输部/CAAC,2024年交通运输行业发展统计公报,https://xxgk.mot.gov.cn/jigou/zhghs/202506/t20250610_4170228.html,verified,同比+24.8%
 China,Top10机场货邮吞吐量合计,1426.4,万吨,2024,ACI World Airport Traffic 2024,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,verified,PVG377.83+CAN237.37+SZX188.1+PEK144.3+EHU102+CGO82.5+HGH73.5+CTU64.3+KMG38.6+XMN37.6
 China(含港),HKG单独,493.82,万吨,2024,ACI World Airport Traffic 2024,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,verified,香港单独全球第一货运机场;若计入大陆吞吐量则总~2500万吨
+US,民航货邮总量(国内+国际, 估算),~3000,万吨,2024,综合估算 (BTS T-100 + ACI),https://www.bts.gov/topics/freight-transportation/air-cargo,unverified,Top10机场吞吐2199万吨+其他;BTS T-100精确总量未抓到
+US,国内航线货邮运输量(估算),~1250,万吨,2024,综合估算 (BTS 2020 baseline + Statista carriers),https://www.bts.gov/topics/freight-transportation/air-cargo,unverified,2020 BTS: 25.1B lbs = 1140万吨;2021 boom~1400万吨;2023-10%;2024略复苏估算1200-1300万吨;range 1100-1400
+US,国内 vs 国际比例,~43% domestic,%,2023,BTS GAO Report,https://files.gao.gov/reports/GAO-25-107334/index.html,partial,GAO: 'more than half of all U.S. air cargo volume was transported domestically each year from 2004 through 2023';实际domestic约40-55%
+US,国际航线货邮运输量(估算),~1750,万吨,2024,综合估算,https://www.bts.gov/topics/freight-transportation/air-cargo,unverified,~3000总-1250国内估算;美国是全球最大air cargo进出口国
+US,FedEx Express 国内 (2021),6.7,十亿吨英里,2021,Statista (BTS T-100),https://www.statista.com/statistics/525678/us-airlines-for-domestic-cargo-transported/,verified,FedEx domestic 2021;为US 2021 estimate的baseline
+US,UPS Air 国内 (2021),5.2,十亿吨英里,2021,Statista (BTS T-100),https://www.statista.com/statistics/525678/us-airlines-for-domestic-cargo-transported/,verified,UPS domestic 2021
+US,2020 air carriers domestic freight,25.1,十亿磅,2020,BTS,https://www.statista.com/statistics/1174886/domestic-air-freight-enplaned-us/,verified,= 11.4 million metric tons = 1140万吨
 US,Top10机场货邮吞吐量合计,2199,万吨,2024,ACI World Airport Traffic 2024,https://en.wikipedia.org/wiki/List_of_busiest_airports_by_cargo_traffic,verified,MEM375.4+ANC369.9+SDF315.3+MIA275.3+LAX217.4+ORD207.4+CVG169.6+JFK168+IND110+DFW81.8
-US,landed weight Top10合计,~528,亿磅,2023,FAA Cargo Airport Rankings via Wikipedia,https://en.wikipedia.org/wiki/List_of_largest_cargo_airports_in_the_United_States,verified,landed weight≠cargo throughput(含飞机+燃油+货);ANC25.6B+MEM23B+SDF17B+MIA11.5B+CVG10.7B+LAX8.6B+ORD7.3B+IND5.2B+JFK4.9B+ONT4.6B
-US,全国民航货邮(估算),~3000,万吨,2023,综合估算,BTS Air Cargo / ICAO Statistics,https://www.bts.gov/topics/freight-transportation/air-cargo,unverified,Top10机场吞吐量2199万吨+其他机场;BTS T-100精确总量未抓到
