@@ -1,0 +1,11 @@
+﻿category,value,unit,year,source_org,source_doc,source_url,status,notes
+Total Active GA Fleet,214222,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,verified,CY2024 survey预计2025年底发布
+Single-Engine Piston,128000,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,verified,占比~60% Alliance for Aviation Across America引用FAA
+Multi-Engine Piston,11000,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,verified,占比~5%
+Turboprop,11000,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,verified,含King Air/Caravan/PC-12/TBM等 Part 135货运实际在役约1000架级
+Turbojet Business Jet,16000,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,verified,"2012年11793架 十年增长35%"
+Piston Rotorcraft,3500,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,partial,估算 Airworthy引用"helicopters 10000"合计
+Turbine Rotorcraft,6500,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,partial,估算 含EMS/offshore/utility
+Experimental,33000,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,verified,含~3000 S-LSA
+Light Sport Other,5000,架,2023,FAA,General Aviation and Part 135 Activity Survey CY2023,https://www.faa.gov/data_research/aviation_data_statistics/general_aviation/cy2023,partial,LSA + Gliders
+Part 135支线货运涡桨,约1000,架,2023,行业估算,Ameriflight/FedEx Feeder/Alpine Air/Martinaire 合计,,partial,不是11000涡桨全部跑货运 是其中一个子集

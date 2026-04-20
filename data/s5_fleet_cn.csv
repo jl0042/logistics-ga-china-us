@@ -1,0 +1,14 @@
+﻿category,value,unit,year,source_org,source_doc,source_url,status,notes
+总在册航空器,3232,架,2024,CAAC,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,2024年12月31日在册口径
+教学训练用飞机,1252,架,2024,CAAC,2024年民航行业发展统计公报,https://www.caac.gov.cn/XXGK/XXGK/TJSJ/202505/t20250515_227513.html,verified,CAAC公报唯一公开的分类数字
+单发活塞,1025,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分 依AOPA年报口径
+多发活塞,96,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分
+单发涡桨,150,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分 含Cessna 208约30架
+多发涡桨,96,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分
+公务机,321,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分
+活塞直升机,495,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分
+涡轮直升机,705,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分
+其他,344,架,2024,AOPA(估算),中国通用航空发展报告2024(推算),,partial,CAAC公报未公开此细分
+直升机合计占比,37.1,%,2024,算术,活塞495+涡轮705=1200 / 3232,,verified,"活塞+涡轮直升机合计1200架"
+涡桨合计,246,架,2024,算术,单发150+多发96,,verified,"其中Cessna 208系列约30架是支线货运主力 其余公务/训练/作业"
+Cessna 208系列,约30,架,2024,planespotters/ch-aviation,大陆注册Cessna 208机队,,partial,2022年约24架 后续缓慢增长

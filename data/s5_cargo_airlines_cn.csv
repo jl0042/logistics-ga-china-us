@@ -1,0 +1,10 @@
+﻿airline,iata,fleet_2024_eoy,fleet_2025_current,fleet_types,source_org,source_url,status,notes
+顺丰航空,O3,88,90,B737 x18 + B757F x43 + B767F x25 + B747F x4,Xinhua/Air Cargo News,https://www.aircargonews.net/airlines/2025/03/sf-airlines-freighter-fleet-reaches-90/,verified,90架是2025年3月 2024年底约88架
+中邮航空,CF,35,37,B737-300F x7 + B737-400F x8 + B737-800F x7 + B757-200F x7 + B777F x2,ch-aviation,https://www.ch-aviation.com/news/125612-china-postal-airlines-takes-first-b777-200f,verified,B777F于2025年接收
+圆通航空,YG,13,14,B757-200F x10 + B767-300F x2 + ARJ21-700F x1,ch-aviation,https://www.ch-aviation.com/news/141393-chinas-yto-cargo-airlines-inducts-first-arj21f-into-service,verified,原网页17架偏高
+China Cargo Airlines,CK,16,18,B777F x14 + B747-400F x2,Cargo Facts,https://cargofacts.com/allposts/fleets/china-cargo-to-resume-777f-expansion-in-2025/,verified,东航物流子公司
+Air China Cargo,CA,约15,约17,A330P2F + B747-400F + B777F,Wikipedia/2024 IPO prospectus,https://en.wikipedia.org/wiki/Air_China_Cargo,partial,具体机型数未公开
+China Southern Cargo,CZ,17,19,B777F主力,Cargo Facts,https://cargofacts.com/allposts/fleets/china-southern-to-grow-to-20-777fs/,verified,2027年规划20架
+京东航空,JD,10,约12,B737-800BCF,AerCap/Air Cargo News,https://www.aircargonews.net/jd-airlines-to-lease-four-737-800bcf-from-aercap/1071296.article,verified,2022年成立 2024年底约10架
+顺丰+中邮+圆通合计,—,136,141,头部3家,—,—,verified,原网页142偏高
+全产业合计,—,约200,约215,含国航/东航/南航/京东等,—,—,partial,全部B737/B757/B767/B777改装货机 通航段几乎空白

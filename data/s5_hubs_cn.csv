@@ -1,0 +1,13 @@
+﻿rank,airport,iata,value,unit,year,source_org,source_doc,source_url,status,notes
+1,上海浦东,PVG,377.83,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+2,广州白云,CAN,238.19,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+3,深圳宝安,SZX,188.15,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+4,北京首都,PEK,144.33,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+5,鄂州花湖,EHU,86.52,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,中国唯一专用货运枢纽 同比+252.63% 全货邮(含地面中转)102.5万吨
+6,郑州新郑,CGO,82.51,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+7,杭州萧山,HGH,73.49,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,菜鸟货运网络枢纽
+8,成都双流,CTU,64.26,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+9,重庆江北,CKG,46.95,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+10,上海虹桥,SHA,42.77,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,综合客货枢纽
+12,昆明长水,KMG,38.56,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,原网页误列为第9
+14,厦门高崎,XMN,37.57,万吨,2024,CAAC,2024年全国民用运输机场货邮吞吐量排名,https://www.caac.gov.cn/PHONE/XXGK_17/XXGK/TJSJ/202503/P020250314353470214193.xlsx,verified,原网页误列为第10
