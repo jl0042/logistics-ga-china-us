@@ -1,0 +1,738 @@
+{
+  "metadata": {
+    "compiled": "2026-04-14",
+    "purpose": "Comprehensive data for logistics aviation and China HSR freight comparison",
+    "notes": "All specifications from manufacturer data, industry databases, and official sources. Prices in USD unless noted. Ranges and payloads may vary by configuration."
+  },
+
+  "topic1_cargo_utility_aircraft": {
+
+    "category1_single_engine_turboprop": [
+      {
+        "name": "Cessna 208 Caravan",
+        "manufacturer": "Textron Aviation (USA)",
+        "mtow_kg": 3629,
+        "useful_payload_kg": 1645,
+        "max_range_km": 1982,
+        "cruise_speed_kmh": 313,
+        "takeoff_distance_m": 426,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "620-845 (variable); 950-1700 (all-in)",
+        "price_new_usd": 2000000,
+        "engine": "Pratt & Whitney PT6A-114A (675 shp)",
+        "pressurized": false,
+        "production_status": "In production. 3000+ delivered (all 208 variants by 2022)",
+        "notes": "Workhorse of bush/cargo aviation. FedEx feeder aircraft. Unpressurized."
+      },
+      {
+        "name": "Cessna 208B Grand Caravan EX",
+        "manufacturer": "Textron Aviation (USA)",
+        "mtow_kg": 3969,
+        "useful_payload_kg": 1588,
+        "max_range_km": 1689,
+        "cruise_speed_kmh": 340,
+        "takeoff_distance_m": 660,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "600-800 (variable)",
+        "price_new_usd": 2600000,
+        "engine": "Pratt & Whitney PT6A-140 (867 shp)",
+        "pressurized": false,
+        "production_status": "In production. 500+ Grand Caravan EX delivered by 2019",
+        "notes": "Stretched Caravan. Optional cargo pod adds volume. Most popular variant."
+      },
+      {
+        "name": "Daher Kodiak 100 Series III",
+        "manufacturer": "Daher (France/USA)",
+        "mtow_kg": 3290,
+        "useful_payload_kg": 1601,
+        "max_range_km": 2096,
+        "cruise_speed_kmh": 339,
+        "takeoff_distance_m": 284,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "550-750 (variable)",
+        "price_new_usd": 2950000,
+        "engine": "Pratt & Whitney PT6A-34 (750 shp)",
+        "pressurized": false,
+        "production_status": "In production. 300+ delivered",
+        "notes": "Excellent STOL. Popular for humanitarian/mission aviation. Acquired by Daher from Quest Aircraft in 2019."
+      },
+      {
+        "name": "Pilatus PC-6 Turbo Porter",
+        "manufacturer": "Pilatus (Switzerland)",
+        "mtow_kg": 2800,
+        "useful_payload_kg": 1200,
+        "max_range_km": 1612,
+        "cruise_speed_kmh": 222,
+        "takeoff_distance_m": 195,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "400-600 (estimated)",
+        "price_new_usd": null,
+        "engine": "Pratt & Whitney PT6A-27 (550 shp)",
+        "pressurized": false,
+        "production_status": "Production ended December 2022. 604 built over 63 years",
+        "notes": "Legendary STOL performer. Landing distance 130m. No longer available new but significant used market."
+      },
+      {
+        "name": "PAC P-750 XSTOL",
+        "manufacturer": "Pacific Aerospace (New Zealand)",
+        "mtow_kg": 3311,
+        "useful_payload_kg": 1310,
+        "max_range_km": 2184,
+        "cruise_speed_kmh": 259,
+        "takeoff_distance_m": 244,
+        "service_ceiling_ft": 20000,
+        "operating_cost_usd_hr": "450-650 (estimated)",
+        "price_new_usd": 1750000,
+        "engine": "Pratt & Whitney PT6A-34 (750 shp)",
+        "pressurized": false,
+        "production_status": "In production. ~250 delivered",
+        "notes": "Extremely Short Take-Off and Landing capability. Multiple configurations: cargo, passenger, skydive, agricultural."
+      },
+      {
+        "name": "Daher TBM 960",
+        "manufacturer": "Daher (France)",
+        "mtow_kg": 3454,
+        "useful_payload_kg": 656,
+        "max_range_km": 2667,
+        "cruise_speed_kmh": 604,
+        "takeoff_distance_m": 823,
+        "service_ceiling_ft": 31000,
+        "operating_cost_usd_hr": "700-900 (variable)",
+        "price_new_usd": 3800000,
+        "engine": "Pratt & Whitney PT6E-66XT (895 shp)",
+        "pressurized": true,
+        "production_status": "In production. 1000+ TBM family delivered",
+        "notes": "Fastest single-engine turboprop (330 KTAS). Primarily executive/personal transport. Limited cargo role due to low payload with full fuel (403kg)."
+      },
+      {
+        "name": "Epic E1000 GX",
+        "manufacturer": "Epic Aircraft (USA)",
+        "mtow_kg": 3629,
+        "useful_payload_kg": 1297,
+        "max_range_km": 2565,
+        "cruise_speed_kmh": 617,
+        "takeoff_distance_m": 564,
+        "service_ceiling_ft": 34000,
+        "operating_cost_usd_hr": "700-900 (estimated)",
+        "price_new_usd": 4200000,
+        "engine": "Pratt & Whitney PT6A-67A (1200 shp)",
+        "pressurized": true,
+        "production_status": "In production. ~100 delivered. E1000 AX variant from 2025 ($4.7M-$4.85M)",
+        "notes": "Carbon fiber composite airframe. Very fast (333 KTAS). 6 passengers + 1 pilot. Executive focus, not cargo."
+      }
+    ],
+
+    "category2_twin_engine_turboprop": [
+      {
+        "name": "Beechcraft King Air C90GTx",
+        "manufacturer": "Textron Aviation (USA)",
+        "mtow_kg": 4756,
+        "useful_payload_kg": 907,
+        "max_range_km": 2446,
+        "cruise_speed_kmh": 500,
+        "takeoff_distance_m": 588,
+        "service_ceiling_ft": 30000,
+        "operating_cost_usd_hr": "1200-1600",
+        "price_new_usd": 4600000,
+        "engine": "2x Pratt & Whitney PT6A-135A (550 shp each)",
+        "pressurized": true,
+        "production_status": "In production (as King Air 260). 2000+ of 90-series built",
+        "notes": "Current production model is King Air 260. Entry-level pressurized twin turboprop. Limited cargo capacity."
+      },
+      {
+        "name": "Beechcraft King Air 260",
+        "manufacturer": "Textron Aviation (USA)",
+        "mtow_kg": 5670,
+        "useful_payload_kg": 1043,
+        "max_range_km": 3148,
+        "cruise_speed_kmh": 574,
+        "takeoff_distance_m": 646,
+        "service_ceiling_ft": 35000,
+        "operating_cost_usd_hr": "1400-1800",
+        "price_new_usd": 6800000,
+        "engine": "2x Pratt & Whitney PT6A-52 (850 shp each)",
+        "pressurized": true,
+        "production_status": "In production. Replaces King Air 250. 900+ of 200-series built",
+        "notes": "Mid-range King Air. Good range and speed. Successor to King Air 200/250 line."
+      },
+      {
+        "name": "Beechcraft King Air 360",
+        "manufacturer": "Textron Aviation (USA)",
+        "mtow_kg": 6804,
+        "useful_payload_kg": 1155,
+        "max_range_km": 3345,
+        "cruise_speed_kmh": 578,
+        "takeoff_distance_m": 1006,
+        "service_ceiling_ft": 35000,
+        "operating_cost_usd_hr": "1800-2400",
+        "price_new_usd": 8500000,
+        "engine": "2x Pratt & Whitney PT6A-60A (1050 shp each)",
+        "pressurized": true,
+        "production_status": "In production. 360ER at $8.9M. 800+ of 350/360-series built. 7600+ total all King Air variants",
+        "notes": "Top-of-line King Air. Replaces King Air 350i. Longest production run of any civilian turboprop family (since 1964)."
+      },
+      {
+        "name": "Viking Air DHC-6-400 Twin Otter",
+        "manufacturer": "Viking Air / De Havilland Canada (Canada)",
+        "mtow_kg": 5670,
+        "useful_payload_kg": 1940,
+        "max_range_km": 1120,
+        "cruise_speed_kmh": 338,
+        "takeoff_distance_m": 366,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "1000-1400",
+        "price_new_usd": 5900000,
+        "engine": "2x Pratt & Whitney PT6A-34 (750 shp each)",
+        "pressurized": false,
+        "production_status": "In production. 950+ delivered (all variants since 1965). Series 400 since 2010",
+        "notes": "STOL legend. Operates from unpaved strips, floats, skis. 19 passenger seats. Widely used in remote/island logistics."
+      },
+      {
+        "name": "Piaggio P.180 Avanti EVO",
+        "manufacturer": "Piaggio Aerospace (Italy)",
+        "mtow_kg": 5489,
+        "useful_payload_kg": 907,
+        "max_range_km": 2611,
+        "cruise_speed_kmh": 744,
+        "takeoff_distance_m": 998,
+        "service_ceiling_ft": 41000,
+        "operating_cost_usd_hr": "1500-2000",
+        "price_new_usd": 7200000,
+        "engine": "2x Pratt & Whitney PT6A-66B (850 shp each)",
+        "pressurized": true,
+        "production_status": "Production paused/uncertain. ~230 built. Company restructured multiple times",
+        "notes": "Fastest turboprop (402 KTAS). Unique three-surface design with pusher propellers. Executive only, not practical for cargo."
+      },
+      {
+        "name": "Let L-410 UVP-E20",
+        "manufacturer": "Aircraft Industries (Czech Republic, UZGA/Russia ownership)",
+        "mtow_kg": 6600,
+        "useful_payload_kg": 1800,
+        "max_range_km": 1500,
+        "cruise_speed_kmh": 388,
+        "takeoff_distance_m": 510,
+        "service_ceiling_ft": 22960,
+        "operating_cost_usd_hr": "800-1200",
+        "price_new_usd": 5000000,
+        "engine": "2x GE H80-200 (800 shp each)",
+        "pressurized": false,
+        "production_status": "In production. 1200+ built (all variants). L-410 NG variant: MTOW 7000kg, payload 2150kg, range 2570km",
+        "notes": "Unpressurized. Rugged design for unprepared strips. Very popular in developing countries and Russian regions. L-410 NG is upgraded version."
+      },
+      {
+        "name": "Dornier 228-212 NG",
+        "manufacturer": "RUAG (Switzerland) / HAL (India)",
+        "mtow_kg": 6400,
+        "useful_payload_kg": 2340,
+        "max_range_km": 2363,
+        "cruise_speed_kmh": 432,
+        "takeoff_distance_m": 700,
+        "service_ceiling_ft": 28000,
+        "operating_cost_usd_hr": "1000-1400",
+        "price_new_usd": 8300000,
+        "engine": "2x Honeywell TPE331-10 (776 shp each)",
+        "pressurized": false,
+        "production_status": "In production (limited). 270+ built (all variants). HAL produces in India under license",
+        "notes": "STOL capable. New glass cockpit in NG variant. Also produced by HAL in India as HAL Do 228. Landing distance 450m."
+      },
+      {
+        "name": "CASA C-212-400 Aviocar",
+        "manufacturer": "Airbus Defence & Space (Spain)",
+        "mtow_kg": 8000,
+        "useful_payload_kg": 2720,
+        "max_range_km": 1811,
+        "cruise_speed_kmh": 298,
+        "takeoff_distance_m": 490,
+        "service_ceiling_ft": 26000,
+        "operating_cost_usd_hr": "1200-1600 (estimated)",
+        "price_new_usd": null,
+        "engine": "2x Honeywell TPE331-12JR (925 shp each)",
+        "pressurized": false,
+        "production_status": "Production ended ~2015. 483+ built for 92 operators. Used market only",
+        "notes": "Military/utility transport. Rear cargo ramp. 21-28 passengers or 6000 lbs cargo. Popular military trainer and coastal patrol."
+      }
+    ],
+
+    "category3_regional_turboprop_freighters": [
+      {
+        "name": "ATR 42-600 (Freighter)",
+        "manufacturer": "ATR (France/Italy - Airbus/Leonardo JV)",
+        "mtow_kg": 18600,
+        "useful_payload_kg": 5380,
+        "max_range_km": 1326,
+        "cruise_speed_kmh": 556,
+        "takeoff_distance_m": 1050,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "2800-3500",
+        "price_new_usd": 19500000,
+        "engine": "2x Pratt & Whitney PW127M (2160 shp each)",
+        "pressurized": true,
+        "production_status": "In production. 500+ ATR 42 delivered (all variants). ATR 42-600S STOL variant in development",
+        "notes": "Smaller ATR variant. Freighter conversion available. 48-seat passenger version. Operating costs 45% less than regional jets."
+      },
+      {
+        "name": "ATR 72-600F (Purpose-built freighter)",
+        "manufacturer": "ATR (France/Italy)",
+        "mtow_kg": 23000,
+        "useful_payload_kg": 9200,
+        "max_range_km": 1528,
+        "cruise_speed_kmh": 510,
+        "takeoff_distance_m": 1333,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "3000-4000",
+        "price_new_usd": 27000000,
+        "engine": "2x Pratt & Whitney PW127XT-M (2750 shp each)",
+        "pressurized": true,
+        "production_status": "In production. 1700+ ATR 72 delivered (all variants). FedEx is major 72-600F customer",
+        "notes": "Purpose-built freighter with large 2.95x1.80m cargo door. 7x LD3 containers. Dominant regional freighter worldwide."
+      },
+      {
+        "name": "De Havilland Dash 8-400 (Freighter conversion)",
+        "manufacturer": "De Havilland Canada",
+        "mtow_kg": 30481,
+        "useful_payload_kg": 10200,
+        "max_range_km": 2880,
+        "cruise_speed_kmh": 667,
+        "takeoff_distance_m": 1402,
+        "service_ceiling_ft": 27000,
+        "operating_cost_usd_hr": "3500-4500",
+        "price_new_usd": 35000000,
+        "engine": "2x Pratt & Whitney PW150A (5071 shp each)",
+        "pressurized": true,
+        "production_status": "Production paused/resumed on order basis. 600+ Dash 8-400 built. Cargo conversion programs active",
+        "notes": "Fastest turboprop airliner (360 KTAS). Package Freighter max payload 10.2t. 8x LD3 containers in F-LCD variant. Range 1555-1640nm with cargo."
+      },
+      {
+        "name": "Saab 340B (Freighter conversion)",
+        "manufacturer": "Saab (Sweden) - no longer in production",
+        "mtow_kg": 13155,
+        "useful_payload_kg": 3850,
+        "max_range_km": 1850,
+        "cruise_speed_kmh": 467,
+        "takeoff_distance_m": 1220,
+        "service_ceiling_ft": 31000,
+        "operating_cost_usd_hr": "2000-2800",
+        "price_new_usd": null,
+        "engine": "2x GE CT7-9B (1870 shp each)",
+        "pressurized": true,
+        "production_status": "Production ended 1999. 459 built. Active freighter conversion market",
+        "notes": "Used market only. 35-40 m3 cargo volume. Range 420nm with 9400lb cargo or 1000nm with 7500lb. Popular for regional cargo feeders."
+      }
+    ],
+
+    "category4_chinese_made": [
+      {
+        "name": "Harbin Y-12F",
+        "manufacturer": "Harbin Aircraft Industry Group / AVIC (China)",
+        "mtow_kg": 8400,
+        "useful_payload_kg": 2700,
+        "max_range_km": 2400,
+        "cruise_speed_kmh": 390,
+        "takeoff_distance_m": 600,
+        "service_ceiling_ft": 23000,
+        "operating_cost_usd_hr": "600-900 (estimated)",
+        "price_new_usd": 4000000,
+        "engine": "2x Pratt & Whitney PT6A-65B (1100 shp each)",
+        "pressurized": false,
+        "production_status": "In production. Y-12 family: 200+ built. Y-12F is latest with wider fuselage, retractable gear, 3x LD3 containers",
+        "notes": "First Chinese aircraft to receive FAA type certificate (Y-12 in 1995). 19 passengers or cargo. Y-12-II: MTOW 5700kg, payload 1500kg, range 1340km."
+      },
+      {
+        "name": "Harbin Y-12-II / Y-12-IV",
+        "manufacturer": "AVIC / HAIG (China)",
+        "mtow_kg": 5700,
+        "useful_payload_kg": 1500,
+        "max_range_km": 1340,
+        "cruise_speed_kmh": 292,
+        "takeoff_distance_m": 620,
+        "service_ceiling_ft": 23000,
+        "operating_cost_usd_hr": "400-600 (estimated)",
+        "price_new_usd": 2500000,
+        "engine": "2x Pratt & Whitney PT6A-27 (620 shp each)",
+        "pressurized": false,
+        "production_status": "In production. Earlier variant still actively sold to developing nations",
+        "notes": "Basic utility transport. 17 passengers. Range with max payload only 300km. Widely exported to Africa, Asia, Latin America."
+      },
+      {
+        "name": "Shijiazhuang Y-5B (An-2 derivative)",
+        "manufacturer": "Shijiazhuang Aircraft (China)",
+        "mtow_kg": 5250,
+        "useful_payload_kg": 1500,
+        "max_range_km": 845,
+        "cruise_speed_kmh": 190,
+        "takeoff_distance_m": 235,
+        "service_ceiling_ft": 14760,
+        "operating_cost_usd_hr": "200-400 (estimated, very low)",
+        "price_new_usd": 300000,
+        "engine": "Shvetsov ASh-62 piston (1000 hp)",
+        "pressurized": false,
+        "production_status": "Production effectively ended. 1100+ built in China (Y-5 + Y-5B). Used in agriculture and light cargo",
+        "notes": "Chinese copy of Soviet An-2 biplane. Extremely low cost. STOL from unprepared strips. Piston engine. Still in wide agricultural use."
+      },
+      {
+        "name": "AVIC AG600 Kunlong",
+        "manufacturer": "AVIC (China)",
+        "mtow_kg": 53500,
+        "useful_payload_kg": 12000,
+        "max_range_km": 4500,
+        "cruise_speed_kmh": 480,
+        "takeoff_distance_m": 1500,
+        "service_ceiling_ft": 20000,
+        "operating_cost_usd_hr": "N/A - not yet in commercial service",
+        "price_new_usd": null,
+        "engine": "4x Dongan WJ-6 turboprop (5100 shp each)",
+        "pressurized": true,
+        "production_status": "In development/testing. First flight 2017, water maiden flight 2018, sea maiden 2020. Not yet certified",
+        "notes": "World's largest amphibious aircraft. Designed for firefighting and maritime rescue. Cargo variant not yet confirmed. Too large for Caravan-class comparison."
+      }
+    ],
+
+    "category5_large_cargo_drones": [
+      {
+        "name": "W5000 (Air White Whale)",
+        "manufacturer": "Air White Whale / Sichuan Woyao (China)",
+        "mtow_kg": 10800,
+        "useful_payload_kg": 5000,
+        "max_range_km": 2600,
+        "cruise_speed_kmh": 526,
+        "takeoff_distance_m": 500,
+        "service_ceiling_ft": 19685,
+        "operating_cost_usd_hr": "N/A - pre-commercial",
+        "price_new_usd": null,
+        "engine": "Turboprop (details not disclosed)",
+        "pressurized": false,
+        "production_status": "Prototype rolled out Oct 2024. Certification submitted to CAAC. Commercial service planned H2 2026",
+        "notes": "65 m3 cargo hold. 22.7m wingspan, 22.9m length. Currently the largest cargo drone by payload. Unmanned/autonomous."
+      },
+      {
+        "name": "CY-8 Changying-8 (Norinco)",
+        "manufacturer": "Norinco (China)",
+        "mtow_kg": 7000,
+        "useful_payload_kg": 3500,
+        "max_range_km": 3000,
+        "cruise_speed_kmh": 350,
+        "takeoff_distance_m": 500,
+        "service_ceiling_ft": 26000,
+        "operating_cost_usd_hr": "N/A - pre-commercial",
+        "price_new_usd": null,
+        "engine": "Twin turboprop",
+        "pressurized": false,
+        "production_status": "First flight completed March 2026. Pre-production testing",
+        "notes": "17m length, 25m wingspan. Designed for remote, high-altitude, and island logistics. Military/dual-use potential."
+      },
+      {
+        "name": "Feihong FH-98",
+        "manufacturer": "China Academy of Aerospace Electronics Technology + SF Express (China)",
+        "mtow_kg": 5250,
+        "useful_payload_kg": 1500,
+        "max_range_km": 1200,
+        "cruise_speed_kmh": 180,
+        "takeoff_distance_m": 600,
+        "service_ceiling_ft": 14764,
+        "operating_cost_usd_hr": "N/A",
+        "price_new_usd": null,
+        "engine": "Shvetsov ASh-62 piston (converted Y-5B/An-2)",
+        "pressurized": false,
+        "production_status": "First public flight 2018. SF Express partnership. Limited production",
+        "notes": "Based on Y-5B/An-2 biplane. Autonomous conversion of existing airframe. Slow but proven platform."
+      },
+      {
+        "name": "Sichuan Tengden Cargo UAV (2-ton class)",
+        "manufacturer": "Sichuan Tengden (China)",
+        "mtow_kg": 5000,
+        "useful_payload_kg": 2000,
+        "max_range_km": 2000,
+        "cruise_speed_kmh": 300,
+        "takeoff_distance_m": 800,
+        "service_ceiling_ft": 26000,
+        "operating_cost_usd_hr": "N/A",
+        "price_new_usd": null,
+        "engine": "Twin piston/turboprop",
+        "pressurized": false,
+        "production_status": "First flight 2024. Rolling off production line in Shenyang. JD Logistics and China Post LOIs",
+        "notes": "General-purpose transport drone. 800m rough runway requirement. TB-001 military variant has 3200kg MTOW, 1500kg payload."
+      },
+      {
+        "name": "CM100",
+        "manufacturer": "Shenyang-based aircraft maker (China)",
+        "mtow_kg": null,
+        "useful_payload_kg": 10000,
+        "max_range_km": null,
+        "cruise_speed_kmh": null,
+        "takeoff_distance_m": null,
+        "service_ceiling_ft": null,
+        "operating_cost_usd_hr": "N/A",
+        "price_new_usd": null,
+        "engine": "Multi-engine (details pending)",
+        "pressurized": false,
+        "production_status": "In development. China Post Group and JD Logistics have signed LOIs",
+        "notes": "10-ton payload class. One of the largest cargo drones in development globally."
+      },
+      {
+        "name": "Dronamics Black Swan",
+        "manufacturer": "Dronamics (Bulgaria/UK)",
+        "mtow_kg": 1200,
+        "useful_payload_kg": 350,
+        "max_range_km": 2500,
+        "cruise_speed_kmh": 200,
+        "takeoff_distance_m": 400,
+        "service_ceiling_ft": 15000,
+        "operating_cost_usd_hr": "N/A - pre-revenue",
+        "price_new_usd": null,
+        "engine": "Single piston engine (Rotax-class)",
+        "pressurized": false,
+        "production_status": "EU drone airline license (LUC) secured. Pre-revenue as of 2025. 16m wingspan",
+        "notes": "First large UAV to receive EU drone airline license. Long range but small payload (350kg). Designed for same-day e-commerce delivery."
+      },
+      {
+        "name": "Natilus N3.8T (Kona)",
+        "manufacturer": "Natilus (USA)",
+        "mtow_kg": 8618,
+        "useful_payload_kg": 3855,
+        "max_range_km": 1667,
+        "cruise_speed_kmh": 370,
+        "takeoff_distance_m": 600,
+        "service_ceiling_ft": 20000,
+        "operating_cost_usd_hr": "Claims 50% lower than conventional air freight",
+        "price_new_usd": null,
+        "engine": "Twin turboprop",
+        "pressurized": false,
+        "production_status": "Prototype (Kona) flight tested 2023. Blended wing body design. Deliveries targeted 2025-2026",
+        "notes": "Blended wing body increases volume 60%. Carries LD3 containers. Carbon fiber/fiberglass composite. Autonomous."
+      },
+      {
+        "name": "Elroy Air Chaparral C1",
+        "manufacturer": "Elroy Air (USA)",
+        "mtow_kg": 600,
+        "useful_payload_kg": 136,
+        "max_range_km": 483,
+        "cruise_speed_kmh": 240,
+        "takeoff_distance_m": 0,
+        "service_ceiling_ft": 10000,
+        "operating_cost_usd_hr": "N/A",
+        "price_new_usd": null,
+        "engine": "Hybrid-electric (turbine generator + electric VTOL motors)",
+        "pressurized": false,
+        "production_status": "First transition flight achieved. 1500 preorders from FedEx, US military. Production targeted 2026",
+        "notes": "VTOL capability (no runway needed). 8 vertical + 4 forward propellers. 300 lbs payload over 300 miles. Autonomous."
+      },
+      {
+        "name": "Reliable Robotics (Cessna 208B Caravan conversion)",
+        "manufacturer": "Reliable Robotics (USA) - autonomous retrofit",
+        "mtow_kg": 3969,
+        "useful_payload_kg": 1361,
+        "max_range_km": 1689,
+        "cruise_speed_kmh": 340,
+        "takeoff_distance_m": 660,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "Target: lower than piloted Caravan (~$500-700)",
+        "price_new_usd": null,
+        "engine": "Pratt & Whitney PT6A-140 (same as standard Grand Caravan)",
+        "pressurized": false,
+        "production_status": "Part 135 certificate held. FedEx cargo flights active (Albuquerque). $17.4M USAF contract. Uncrewed flight Nov 2023",
+        "notes": "Not a new aircraft - autonomous conversion of existing Cessna 208B. Remote pilot monitors from 50mi away. FedEx feeder operations."
+      },
+      {
+        "name": "Merlin Labs (Cessna 208 Caravan autonomous)",
+        "manufacturer": "Merlin Labs (USA) - autonomous retrofit",
+        "mtow_kg": 3969,
+        "useful_payload_kg": 1361,
+        "max_range_km": 1689,
+        "cruise_speed_kmh": 340,
+        "takeoff_distance_m": 660,
+        "service_ceiling_ft": 25000,
+        "operating_cost_usd_hr": "Target: lower than piloted ops",
+        "price_new_usd": null,
+        "engine": "Standard Caravan PT6A",
+        "pressurized": false,
+        "production_status": "25 autonomous test flights in Alaska (FAA $1M contract). Freightways NZ partnership for cargo in New Zealand",
+        "notes": "Autonomous flight control system retrofit. Safety pilot onboard during testing. Targeting rural/remote cargo delivery."
+      }
+    ]
+  },
+
+  "topic2_china_hsr_freight": {
+    "service_overview": {
+      "brand_names": {
+        "高铁快运": "High-Speed Rail Express - general brand operated by China Railway Express (中铁快运)",
+        "高铁极速达": "HSR Ultra-Fast - premium same-day service, SF Express x China Railway Express partnership",
+        "高铁急送": "HSR Urgent Delivery - launched 2023, operated by China Railway Express, 4-hour delivery for select routes",
+        "高铁快运班列": "Dedicated HSR freight trains - full trains with seats removed for cargo, e.g., Chengdu-Kunming line"
+      },
+      "service_types": {
+        "passenger_train_cargo": "Utilizing spare capacity on passenger EMU trains (动车组). Early morning inspection trains (动检车) and low-occupancy trains used. Packages stored in designated areas.",
+        "dedicated_freight_emu": "CRH2A EMU converted to pure cargo configuration. 8 cars, all seats removed. Max speed 250 km/h. Max load 55-70 tons per train.",
+        "hybrid_combi": "Mixed passenger-cargo configurations on select routes"
+      }
+    },
+
+    "pricing_structure": {
+      "高铁快运_standard": {
+        "first_kg_rmb": 23,
+        "per_additional_kg_rmb": 10,
+        "notes": "Standard service. Minimum 1kg billing increment."
+      },
+      "高铁快运_preferential": {
+        "first_kg_rmb": 18,
+        "per_additional_kg_rmb": 6,
+        "notes": "Preferential/economy tier. Prices vary by city pair."
+      },
+      "高铁急送_pricing": {
+        "under_600km_under_5kg_rmb": 150,
+        "under_600km_5to20kg_rmb": 200,
+        "600to1600km_under_5kg_rmb": 230,
+        "600to1600km_5to20kg_rmb": 290,
+        "over_1600km_under_5kg_rmb": 280,
+        "over_1600km_5to20kg_rmb": 340,
+        "pickup_delivery_fee_rmb": "~10-15 per trip",
+        "notes": "Launched 2023. Fastest 4-hour delivery. 88 cities, 100 HSR stations."
+      },
+      "顺丰高铁极速达": {
+        "first_kg_rmb": 180,
+        "per_additional_kg_rmb": 10,
+        "max_weight_kg": 20,
+        "notes": "Premium same-day express. Beijing-Shanghai 10 hours. Coverage: 44 cities, 161 routes, 254 trains (as of 2018)."
+      },
+      "cost_per_kg_example": {
+        "route": "Guangzhou to Changsha (~670km)",
+        "air_freight_rmb_per_kg": 2.0,
+        "hsr_freight_rmb_per_kg": 1.5,
+        "truck_freight_rmb_per_kg": 0.35,
+        "notes": "HSR is ~25% cheaper than air. Truck is cheapest but slowest."
+      }
+    },
+
+    "capacity_per_train": {
+      "dedicated_freight_emu": {
+        "cars_per_train": 8,
+        "max_load_tons": 70,
+        "typical_load_tons": 50,
+        "volume_m3": "Approx 200-300 m3 per train",
+        "speed_kmh": 250
+      },
+      "passenger_train_cargo": {
+        "typical_allocation": "1-2 designated areas per train",
+        "weight_per_shipment_limit_kg": 25,
+        "value_limit_per_item_rmb": 10000,
+        "notes": "Limited to small/medium parcels. No oversized goods."
+      }
+    },
+
+    "routes_and_coverage": {
+      "高铁快运_coverage": {
+        "stations": 293,
+        "provinces": 31,
+        "daily_trains_available": 1600,
+        "高铁极速达_lines": 1764,
+        "高铁极速达_cities": 122
+      },
+      "高铁急送_coverage": {
+        "cities": 88,
+        "stations": 100,
+        "municipalities": 4,
+        "provincial_capitals": 25,
+        "prefecture_cities": 54,
+        "notes": "Covers all provinces except Hong Kong, Macau, Taiwan, Qinghai, Tibet"
+      },
+      "key_dedicated_freight_routes": [
+        {
+          "route": "Chengdu (Shuangliu West) - Kunming (Luoyang)",
+          "distance_km": 1127,
+          "trains_per_day": 2,
+          "train_numbers": "DJ882, DJ884/1",
+          "departure_time": "04:30 daily",
+          "cities_covered": 40,
+          "annual_volume_2024": "600万件 from Shuangliu (4万 tons), 400万件 to Kunming (3万 tons)",
+          "started": "July 2023"
+        },
+        {
+          "route": "Zhengzhou-Chongqing (郑渝高铁快运示范线)",
+          "status": "Operational since early 2024. Flagship demonstration line",
+          "performance": "367 days operation, ~100% on-time rate, over 1 million pieces shipped, 7000+ tons total",
+          "daily_growth": "~300% increase from initial launch"
+        }
+      ]
+    },
+
+    "annual_volume": {
+      "total_railway_freight_2024_billion_tons": 3.99,
+      "yoy_growth_pct": 1.9,
+      "consecutive_growth_years": 8,
+      "freight_turnover_2024_billion_ton_km": 3258,
+      "hsr_freight_dedicated_trains_2024": "200+ dedicated HSR freight trains operated in 2024",
+      "daily_emu_for_freight": 1600,
+      "notes": "HSR freight is still a tiny fraction of total railway freight. Most railway freight is conventional heavy cargo (coal, ore, etc.)"
+    },
+
+    "cost_per_ton_km_comparison": {
+      "waterway_rmb": 0.006,
+      "railway_conventional_rmb": 0.15,
+      "highway_truck_rmb": 0.50,
+      "air_freight_rmb": "2.0-5.0",
+      "hsr_freight_rmb": "1.5-3.0 (estimated based on pricing data)",
+      "notes": "Water:rail:road:air ratio approximately 1:2:6:50-80. HSR freight cost is between conventional rail and air.",
+      "energy_consumption_ratio": {
+        "rail_vs_road": "1:5",
+        "hsr_vs_air": "1:7"
+      }
+    },
+
+    "speed_comparison": {
+      "truck_avg_kmh": 60,
+      "truck_door_to_door_500km_hours": 10,
+      "conventional_rail_avg_kmh": 80,
+      "hsr_freight_avg_kmh": 250,
+      "hsr_door_to_door_500km_hours": 6,
+      "air_freight_avg_kmh": 800,
+      "air_door_to_door_500km_hours": 8,
+      "notes": "For 500-1000km, HSR is competitive with or faster than air (door-to-door) due to city-center station locations and no airport processing delays."
+    },
+
+    "competitive_distance_segments": {
+      "under_500km": "Highway trucking dominates. Cheapest, most flexible.",
+      "500_to_1000km": "HSR freight most competitive. Faster door-to-door than air, cheaper than air.",
+      "1000_to_1500km": "HSR and air compete. HSR ~25% cheaper, air slightly faster.",
+      "over_1500km": "Air freight dominates for time-sensitive goods. HSR too slow.",
+      "notes": "This is the key insight: HSR freight's sweet spot is 500-1500km, directly competing with domestic air cargo."
+    },
+
+    "limitations": {
+      "weight_per_item_kg": 25,
+      "value_per_item_rmb": 10000,
+      "size_restrictions": "Must fit in standard EMU storage areas. No oversized cargo.",
+      "goods_types": "Small parcels, business documents, samples, reagents, temperature-controlled pharma, fresh food, precision instruments, valuables",
+      "excluded": "Hazardous materials, liquids (most), oversized/overweight items, bulk commodities",
+      "capacity_ceiling": "Even dedicated freight EMU only carries 50-70 tons vs 200+ tons for conventional freight train or 100+ tons for cargo aircraft"
+    },
+
+    "growth_trends": {
+      "dedicated_freight_trains_growth": "200+ dedicated HSR freight trains in 2024, up from near-zero in 2022",
+      "zhengyu_demo_line": "1 million pieces shipped in first year (2024), daily volume tripled",
+      "jd_logistics_partnership": "JD Logistics became nationwide last-mile delivery partner for China Railway Express HSR packages (Nov 2024)",
+      "sf_express_expansion": "SF Express HSR extreme speed service expanded from 44 to 122+ cities",
+      "policy_support": "National railway logistics cost reduction target: 60 billion RMB savings in 2024 through rail logistics optimization",
+      "cr450_impact": "Next-gen CR450 trains at 400km/h will further improve HSR freight competitiveness vs air",
+      "河南_daily_volume": "Henan province HSR freight daily volume grew ~300% in early 2025"
+    },
+
+    "competition_with_air_cargo": {
+      "hsr_advantages": [
+        "25% lower cost than air freight on comparable routes",
+        "More environmentally friendly (1:7 energy ratio vs air)",
+        "City-center station locations reduce last-mile time",
+        "Near-100% on-time rate (not weather dependent)",
+        "No airport security/processing delays",
+        "Runs at night using inspection train slots (early morning delivery)"
+      ],
+      "hsr_disadvantages": [
+        "Limited to China domestic routes (no international)",
+        "Small per-item weight limits (25kg max)",
+        "Limited total capacity per train (50-70 tons vs 100+ tons for freighter aircraft)",
+        "Cannot serve locations without HSR stations",
+        "Slower than air for distances >1500km",
+        "Still nascent - limited dedicated infrastructure"
+      ],
+      "key_insight": "HSR freight is not a replacement for air cargo but a complementary mode that excels in the 500-1500km domestic segment for time-sensitive, small-parcel logistics. It directly threatens domestic air cargo's mid-haul market share."
+    }
+  }
+}
