@@ -1,0 +1,10 @@
+# Claude Code local settings
+.claude/settings.local.json
+
+# Research/compile artifacts
+research_data.json
+
+# Common system files
+.DS_Store
+Thumbs.db
+*.log
