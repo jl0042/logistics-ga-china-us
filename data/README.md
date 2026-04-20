@@ -53,6 +53,7 @@
 | `s5_fleet_cn.csv` | CAAC 2024 通航 3,232 架 (含教学训练 1,252, 公报直接公开) + 8 类明细 (AOPA 推算, CAAC 公报未公开) + Cessna 208 ~30 架 | 13 |
 | `s5_fleet_us.csv` | FAA GA Survey CY2023 (最新可得): 总 214,222 架 / 单发活塞 128,000 (60%) / 涡桨 11,000 / 公务机 16,000 / 实验机 33,000 / Part 135 支线货运涡桨 ~1,000 架 | 10 |
 | `s5_cargo_airlines_cn.csv` | 中国 7 家货运航司机队 2024 年底 + 2025 最新: 顺丰 88→90 / 中邮 35→37 / 圆通 13→14 / 三家合计 136 / 全产业约 200 架 | 9 |
+| `s5_feeder_us.csv` | 美国支线接驳生态: Ameriflight 125 / Empire 54 / Mountain Air Cargo 35 / Baron / CSA / Everts; FedEx 合同租赁 317 架 (231 Cessna 208B + 28 Cessna 408 SkyCourier + 58 ATR 42/72F); 全 Part 135 货运涡桨 ~480 架; 典型航线 MEM/ANC/EWR | 13 |
 | `s5_comparison_analysis.md` | S5 完整 review: 鄂州 245/102/86.5 三个数字口径澄清 + sec-title/sec-sub/thesis 三件套重写 (干线 hub 追上来/专用 hub 差代际/通航段空白) + 单发活塞 45%→60% 修正 + "涡桨跑物流"同口径改写 + chart scale 统一 400 | (markdown) |
 
 ### 辅助文件

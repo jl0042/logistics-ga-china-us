@@ -358,7 +358,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       中国营业性货运 568.75 亿公吨, 美国 ~125 亿公吨 (都不含管道, 后者按公制吨), 中国是美国 4.6 倍。但人均一拉平就反过来 — <b>中美人均货运量几乎相同</b> (中 40.4 / 美 36.8 公吨/人), 现代经济每人每年的物资移动量是同数量级的, 中国总量大主要因为人多。<br><br>
       <b>真正的反差在国内航空</b>: 中国国内航线货邮 537.56 万吨, 美国国内 ~1,250 万吨, <b>美国是中国 2.3 倍</b>。换成"国内航空占总货运比": 中国 0.0094% vs 美国 0.10%, <b>美国是中国 11 倍</b> (估算误差 ±20% 内仍是 9-13 倍)。<br><br>
       为什么用国内口径? 中国 2024 年总航空 898 万吨里有 360 万吨 (40%) 是国际航线 (跨境电商 +29.3% 推动, 跟 SHEIN/Temu 出口爆发对应)。国际航空货运反映的是跨国贸易模式, 中国凭出口型经济撑起了国际段。<b>国内航空体系才反映"国家内部物流网络成熟度"</b>。<br><br>
-      <b>缺的具体是什么?</b> 中国综合客货枢纽跟美国基本同级 (上海浦东 378 万吨 ≈ Memphis 375 万吨, 2024 CAAC / ACI-NA 同口径), 但专用货运枢纽还差一截: 鄂州花湖 86.5 万吨仅为 Memphis 的 23%, 而且美国有 6+ 个专用货运枢纽 (MEM / ANC / SDF / CVG / IND / ONT), 中国只有鄂州 1 个。学术研究 (Sci Reports 2025) 也证实中国民航货运网络已是 hub-and-spoke 形态, Shanghai 是核心 hub。<b>更缺的是"支线 feeder"</b>: 美国 FedEx Feeder 用 300+ 架 Caravan / ATR 把小机场货物运到 Memphis / Louisville / Indianapolis 干线 hub; 中国对应的"省会 hub 到县城"的支线机队几乎为零 (全大陆 Cessna 208 约 30 架)。这正是 W5000 / HH-200 / TP500 等无人货运飞机要填的位置。<br><br>
+      <b>缺的具体是什么?</b> 中国综合客货枢纽跟美国基本同级 (上海浦东 378 万吨 ≈ Memphis 375 万吨, 2024 CAAC / ACI-NA 同口径), 但大型货运枢纽还差一截: 鄂州花湖 86.5 万吨仅为 Memphis 的 23%, 而且美国有 6+ 个 (MEM / ANC / SDF / CVG / IND / ONT, 都是客货混合机场, 快递公司在既有客运机场内建大型分拨中心), 中国只有鄂州 1 个新建专用货运机场。学术研究 (Sci Reports 2025) 也证实中国民航货运网络已是轴辐形态, 上海是核心枢纽。<b>更根本缺失的是支线接驳层</b>: 美国 FedEx 一家就长期租赁给合同商 317 架支线机 (231 架 Cessna 208B + 28 架 Cessna 408 SkyCourier + 58 架 ATR 42/72F) 把小机场货物运到 Memphis / Louisville / Indianapolis 等枢纽; 中国 Cessna 208 国内保有量 30-40 架, 但几乎全在做公务 / 作业 / 训练, 专业货运用途公开记录接近零, 干线货机落地后的分拨目前主要靠卡车。W5000 / HH-200 / TP500 等国产货运无人机仍在早期阶段, 不是现成方案。<br><br>
       物流成本占 GDP 14.1% vs 美国 8.8% — 中国高 5.3pp。这里要诚实: 这 5.3pp 不全是运输结构的锅。CSCMP 口径里仓储 + 库存 + 管理成本占总物流成本约 1/3, 中美在这块也有差异 (中国仓储自动化率低、库存周转慢)。运输结构是其中一个原因, 但不是唯一原因。<br><br>
       <strong>关于"中国快递为什么不上飞机"</strong>: 中国快递 1,750 亿件按 1 kg/件估算约 1.75 亿吨, 其中航空 (国内 + 国际) 不到 0.5%, 剩余 99%+ 走公路 (公路货运 418.8 亿吨完全装得下)。美国相反, 单价更高、运距更长 (LA-NYC 4,500 km vs 上海-广州 1,200 km), 让航空在隔夜达业务里有经济性优势。中国的距离 + 单价结构, 加上高铁快运 (2024 年 600 万吨, 跟国内航空规模相当) 在 500-1,500 km 段的强竞争力, 让航空在普通快递里很难抢到份额。这一节我们先讲清"差距是什么", 后面 S3 / S5 / S7 会展开"什么场景下航空才有经济性"。
     </div>
@@ -615,28 +615,28 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s4" class="sec">
   <div class="sec-inner">
     <div class="sec-label">05 -- 机队与枢纽</div>
-    <div class="sec-title fade-in">干线枢纽追上来了，但 hub 向下的毛细血管几乎空白</div>
-    <div class="sec-sub fade-in">上海浦东 378 万吨 ≈ 孟菲斯 375 万吨（同级）；但中国唯一的专用货运枢纽鄂州花湖 86.5 万吨，只到孟菲斯的 23%。更关键的是，全国全货机约 136 架（2024 年底），全是 B737/B757/B767 改装干线机，通航段几乎空白。</div>
+    <div class="sec-title fade-in">干线追上来了，但支线接驳层几乎空白</div>
+    <div class="sec-sub fade-in">上海浦东 378 万吨 ≈ 孟菲斯 375 万吨（综合客货枢纽同级）；但中国唯一的新建专用货运机场鄂州花湖 86.5 万吨，只到孟菲斯的 23%。更关键的是，美国有 480+ 架专业支线货运涡桨把干线货机卸下的货送到小城市，中国这一层基本是空白。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
       <div class="thesis-line">综合客货枢纽已经追上来了，但专用货运枢纽差一个代际、通航货机几乎为零。</div>
       <ul class="thesis-evidence">
         <li>综合客货枢纽同级：上海浦东 378 万吨 ≈ Memphis 375 万吨（2024，CAAC / ACI-NA 同口径）</li>
-        <li>专用货运枢纽差一截：鄂州花湖 86.5 万吨 = Memphis 的 23%；美国有 6+ 个专用货运枢纽（MEM/ANC/SDF/CVG/IND/ONT），中国只有鄂州 1 个</li>
-        <li>机队断档：中国全产业全货机约 200 架（全 B737/B757/B767 改装）；中国通航队 3,232 架里，Cessna 208 仅约 30 架是支线货运主力</li>
+        <li>大型货运枢纽差一截：鄂州花湖 86.5 万吨 = Memphis 的 23%；建设模式也不同 — 美国 6+ 个大型货运枢纽（MEM / ANC / SDF / CVG / IND / ONT）都是客货混合机场，快递公司在既有客运机场内建大型分拨中心；中国选择了新建专用货运机场的路径（鄂州花湖），国内唯一</li>
+        <li>支线接驳层几乎空白：美国有 480+ 架专业支线货运涡桨（Cessna 208 / ATR 42/72 / Beech 1900 等），由 Ameriflight / Empire / Mountain Air Cargo 等合同商运营，光 FedEx 一家就长期租赁给合同商 317 架；中国对应的专业货运涡桨机队 ≈ 0 架</li>
       </ul>
     </div>
     <div class="grid2">
       <div class="card">
         <div class="chart-title">中国十大货运枢纽 (万吨, 2024)</div>
         <div id="chart-hubs-cn" class="chart-box" style="height:400px"></div>
-        <div class="source">CAAC《2024 年全国民用运输机场货邮吞吐量排名》原始 xlsx；航空货邮吞吐量口径（不含地面卡车中转）。X 轴与美国图同 scale 便于比较。</div>
+        <div class="source">CAAC《2024 年全国民用运输机场货邮吞吐量排名》原始 xlsx；航空货邮吞吐量口径（不含地面卡车中转）。X 轴与美国图同尺度便于比较。</div>
       </div>
       <div class="card">
         <div class="chart-title">美国十大货运枢纽 (万吨, 2024)</div>
         <div id="chart-hubs-us" class="chart-box" style="height:400px"></div>
-        <div class="source">ACI-NA《2024 North American Airport Traffic Rankings》（total cargo tonnage metric tonnes 口径，与 CAAC 同口径）。X 轴与中国图同 scale。</div>
+        <div class="source">ACI-NA《2024 North American Airport Traffic Rankings》（总货邮吨位公吨口径，与 CAAC 同口径）。X 轴与中国图同尺度。</div>
       </div>
     </div>
 
@@ -650,21 +650,30 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="card fade-in">
         <div class="chart-title">美国通航机队构成 (~214,000架)</div>
         <div id="chart-fleet-us" class="chart-box" style="height:400px"></div>
-        <div class="source">FAA《General Aviation and Part 135 Activity Survey CY2023》（最新可得，CY2024 survey 预计 2025 年底发布）。</div>
+        <div class="source">FAA《General Aviation and Part 135 Activity Survey CY2023》（最新可得，CY2024 年度调查预计 2025 年底发布）。</div>
       </div>
     </div>
 
     <div class="insight fade-in" style="margin-top:16px">
       <b>美国通航是金字塔，中国是梭子 — 中段空了一截</b>
       美国通航机队以单发活塞为主（约 12.8 万架，占总机队 60%，FAA GA Survey CY2023）。大部分是赛斯纳 172 这种周末飞着玩的私人飞机。中国通航队 3,232 架里，直升机占 37%（活塞 495 + 涡轮 705 = 1,200 架），干的是给电网拍照、给麦田打药 — 不是物流。<br><br>
-      <b>涡桨层级对比 — 同口径</b>：美国涡桨保有量约 11,000 架（King Air / Caravan / PC-12 / TBM 等），其中在 Part 135 实际跑支线货运的 Cessna 208 / Beech 1900 / Metroliner（Ameriflight、FedEx Feeder、Alpine Air、Martinaire 合计）约 1,000 架级。中国涡桨保有量约 246 架，其中 Cessna 208 系列约 30 架是支线货运主力，其余以公务 / 训练 / 作业为主。<br><br>
-      <b>全货机层级</b>：中国通航 3,232 架 ≠ 货运飞机。真正跑物流的是顺丰航空（约 88 架）+ 中邮航空（约 35 架）+ 圆通航空（约 13 架）≈ 136 架（2024 年底）；加上国航货运 / 东航物流 / 南航货运 / 京东航空，全产业约 200 架 — <b>全是 B737 / B757 / B767 改装干线货机，通航段几乎空白</b>。W5000 / HH-200 / TP500 这些新 UAV 正在试图填的就是通航段这一截。
+      <b>支线接驳层对比 — 干线货机卸货后由谁接手送到小城市</b><br>
+      美国有一个成熟的"干线 → 支线"接驳体系：
+      <ul style="margin:8px 0 8px 20px">
+        <li>主要合同运营商：Ameriflight（125 架）/ Empire Airlines（54 架）/ Mountain Air Cargo（35 架）/ Baron Aviation（30+）/ CSA Air（25 架）/ Everts 阿拉斯加（~20 架）等</li>
+        <li>FedEx 长期租赁给合同商 317 架支线机（231 架 Cessna 208B + 28 架 Cessna 408 SkyCourier + 58 架 ATR 42/72F），覆盖 45 国 250+ 节点</li>
+        <li>全 Part 135 货运机队约 480+ 架专业涡桨（Cessna 208 ~280 / ATR 42/72 ~60 / Beech 1900 ~40 / Beech 99 ~55 / Metroliner ~35 / Shorts 360 ~15-20）</li>
+        <li>作业模式：凌晨从小机场装货飞回枢纽 → 分拣期间停场 → 傍晚装干线货机卸下的货 → 飞回小机场次日投递；典型航段 370-930 公里</li>
+        <li>典型航线：Memphis → 370 公里内小机场（Jonesboro、Jackson 等）；Newark → Albany / Boston / Harrisburg；Anchorage → Nome / Kotzebue / Bethel（Everts 用 Caravan + DC-6）</li>
+      </ul>
+      中国对应的体系基本是空白：通航机队 3,232 架里涡桨约 246 架（AOPA 推算），其中 Cessna 208 系列国内保有量约 30-40 架（石家庄中航塞斯纳 2013 年投产以来累计；2016 年后合资线产能主要转为出口）。关键是<b>几乎全部用于公务 / 作业 / 训练，专业货运用途公开记录 ≈ 0 架</b> — 顺丰、中信海直、华夏通航机队中均无 Cessna 208。<br><br>
+      <b>全货机层级</b>：中国通航 3,232 架 ≠ 货运飞机。真正跑物流的是顺丰航空（约 88 架）+ 中邮航空（约 35 架）+ 圆通航空（约 13 架）≈ 136 架（2024 年底）；加上国航货运 / 东航物流 / 南航货运 / 京东航空，全产业约 200 架 — <b>全是 B737 / B757 / B767 改装干线货机，支线段几乎空白</b>。
     </div>
     <div class="insight green fade-in" style="margin-top:12px">
-      <b>干线 hub 接近了，但毛细血管还没长出来</b>
-      上海浦东 378 万吨 ≈ 孟菲斯 375 万吨（综合客货枢纽同级）；顺丰花湖 + 京东南宁 + 菜鸟杭州 + 中邮上海四张干线货运网络已经成型。差距在两端：<br><br>
-      <b>专用货运枢纽</b>：美国有 6+ 个（MEM / ANC / SDF / CVG / IND / ONT），中国只有鄂州 1 个（86.5 万吨, Memphis 的 23%）。<br>
-      <b>通航段毛细血管</b>：把 <span class="tip" data-t="Boeing Converted Freighter 波音改装货机">737BCF</span> 卸下来的货装到 1.5t HH-200 飞到县城乡镇的那一段 — 目前是空的。这是 S6 之后要拆的账本。
+      <b>干线枢纽接近了，但支线层还没长出来</b>
+      上海浦东 378 万吨 ≈ 孟菲斯 375 万吨（综合客货枢纽同级）；顺丰花湖 + 京东南宁 + 菜鸟杭州 + 中邮上海四张干线货运网络已经成型，干线层跟得上。差距在两端：<br><br>
+      <b>大型货运枢纽</b>：美国 6+ 个（MEM / ANC / SDF / CVG / IND / ONT，都是客货混合机场，FedEx / UPS / Amazon / DHL 在既有客运机场内建大型分拨中心）；中国鄂州花湖是全球首个规模化的新建专用货运机场（86.5 万吨，Memphis 的 23%），国内唯一。<br>
+      <b>支线接驳层</b>：美国有 480+ 架专业支线货运涡桨 + 成熟的合同运营商体系，FedEx 一家就租赁给合同商 317 架。中国 Cessna 208 国内保有量 30-40 架，但几乎全在做公务 / 作业 / 训练，专业货运用途接近为零；干线货机落地后的分拨目前主要靠卡车。W5000 / HH-200 / TP500 等国产货运无人机仍在早期阶段，不是现成方案。
     </div>
   </div>
 </section>

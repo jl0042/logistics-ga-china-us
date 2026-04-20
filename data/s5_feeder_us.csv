@@ -1,0 +1,14 @@
+﻿operator,fleet_total,aircraft_types,main_customer,source_url,status,notes
+Ameriflight,125,Beech 99 x52 / Metroliner SA227 x31 / Beech 1900C x26 / EMB-120 x12 / Saab 340B x4,UPS+FedEx+DHL Feeder,https://en.wikipedia.org/wiki/Ameriflight,verified,美国最大独立 feeder 运营商 LA 基地
+Empire Airlines,54,Cessna 208B x34 / ATR 42-320F x7 / ATR 72-212F x5 / ATR 72-600F x2 / Cessna 408 SkyCourier x6,FedEx Feeder,https://en.wikipedia.org/wiki/Empire_Airlines,verified,爱达荷州 Coeur d'Alene 基地
+Mountain Air Cargo,35,ATR 42-300/320F x9 / ATR 72-200F x10 / ATR 72-600F x4 / Cessna 408 x12,FedEx Feeder,https://en.wikipedia.org/wiki/Mountain_Air_Cargo,verified,北卡州 Kinston 基地 东部和加勒比
+Baron Aviation,30+,Cessna 208 为主,FedEx Feeder,https://en.wikipedia.org/wiki/Baron_Aviation_Services,verified,南中部区域
+CSA Air,25,Cessna 208,FedEx Feeder,https://csaair.com/fleet/,verified,上中西部 明尼苏达/威斯康星
+Everts Air Cargo,约20,C-46 / DC-6 / MD-80 / Cessna 208 / Pilatus PC-12 / Cessna 408 SkyCourier,阿拉斯加村镇 feeder,https://en.wikipedia.org/wiki/Everts_Air_Cargo,verified,阿拉斯加 Anchorage/Fairbanks 基地
+Air Cargo Carriers,—,Shorts 360 (全球最大 SD3 民用运营商),UPS Feeder 主力,https://en.wikipedia.org/wiki/Air_Cargo_Carriers,verified,威斯康星州 Milwaukee 基地
+FedEx Feeder 全机队,317,Cessna 208B x231 / Cessna 408 SkyCourier x28 / ATR 42-300F x15 / ATR 72-200F x19 / ATR 72-600F x24,FedEx 长期租赁给合同商,https://en.wikipedia.org/wiki/FedEx_Feeder,verified,覆盖 45 国 250+ 节点
+Part 135 货运涡桨总计,约485,Cessna 208 ~280 / ATR 42/72 ~60 / Beech 1900 ~40 / Beech 99 ~55 / Metroliner ~35 / Shorts 360 ~15-20,多运营商合计,—,partial,行业估算
+典型航段,—,Cessna 208 最大 ~200 nm (370 公里),—,https://www.airliners.net/forum/viewtopic.php?t=1355843,verified,FedEx 内部调度指引 Caravan 优先 ≤200 nm 1 小时内
+典型航线 MEM,—,Memphis → Jonesboro AR / Jackson TN / Tupelo MS 等 200 nm 内,FedEx Feeder,—,partial,航段 ~370 公里
+典型航线 ANC,—,Anchorage → Nome / Kotzebue / Bethel / Dillingham / Galena / McGrath,Everts,https://en.wikipedia.org/wiki/Everts_Air_Cargo,verified,阿拉斯加 Caravan + DC-6 混用 航段 200-500 nm
+典型航线 EWR,—,Newark → Albany / Boston / Harrisburg / Plattsburgh / Providence,FedEx Feeder (Caravan),—,partial,航段 200-280 nm
