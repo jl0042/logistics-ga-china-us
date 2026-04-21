@@ -112,7 +112,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 .insight.red .insight-rules>li>b:first-child{color:#b91c1c}
 .insight.green .insight-rules>li>b:first-child{color:#15803d}
 .tip{border-bottom:1px dotted #94a3b8;cursor:help;position:relative;display:inline}
-.tip:hover::after{content:attr(data-t);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:5px 12px;border-radius:6px;font-size:12px;white-space:nowrap;z-index:99;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.tip:hover::after{content:attr(data-t);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.55;white-space:normal;width:max-content;max-width:340px;z-index:99;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .tip:hover::before{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1e293b;z-index:99}
 </style>
 </head>
@@ -763,10 +763,10 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- COST COMPARISON CALCULATOR: ATR vs Caravan vs UAV -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #f59e0b">
-      <div class="chart-title">三种机型成本拆解对比 — ATR 42 / Caravan 有人 / Caravan 级无人, 滑参数实时重算</div>
-      <div class="chart-desc">从 5.5 吨涡桨支线 (ATR 42-600F) 到 1 吨涡桨 (Caravan 有人) 到同尺寸无人化 (Caravan UAV 规模化), 每行一项成本, 三列同时显示。备注列解释三者差异背后的工程或商业逻辑。滑块影响所有三列 — 燃油价/飞行员工资按各机型口径放大, 年飞行小时影响保险与折旧的摊销分母。默认参数下 Caravan 有人复现主表 5,028 元/hr, 无人规模化 (拉滑块到 1,000 hr) 复现 3,224 元/hr, ATR (拉滑块到 2,000 hr) 复现 14,500 元/hr。</div>
+      <div class="chart-title">成本对比 — ATR 42 / Caravan 有人 / Caravan 级无人</div>
+      <div class="chart-desc">每行一项成本, 三列机型并列。<b>成本项名字上悬停</b>可以看到这项是什么 + 三列差异的来源。每次起降费拆成四项子费用 (降落 / 装卸 / 停机 / 导航空管), 回答"大飞机起降是不是更贵, 装卸停机费不费"的问题 — 降落费按最大起飞重量阶梯算, 装卸费按实际业载, 停机费按时长 × 机型大小。默认参数下 Caravan 有人复现主表 5,028 元/hr; 拉年飞行小时到 1,000 UAV 复现 3,224 元/hr; 拉到 2,000 ATR 复现 14,500 元/hr。</div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; padding:14px 16px; margin-top:12px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; padding:14px 16px; margin-top:12px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0">
         <div>
           <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">飞行距离: <b id="cal-dist-val" style="color:#0f172a">800</b> km</label>
           <input type="range" id="cal-dist" min="100" max="2000" step="50" value="800" style="width:100%"/>
@@ -783,17 +783,21 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">飞行员时薪基准: <b id="cal-pilot-val" style="color:#0f172a">120</b> 美元/hr</label>
           <input type="range" id="cal-pilot" min="40" max="200" step="10" value="120" style="width:100%"/>
         </div>
+        <div>
+          <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">停机时长: <b id="cal-park-val" style="color:#0f172a">4</b> 小时/次</label>
+          <input type="range" id="cal-park" min="1" max="12" step="1" value="4" style="width:100%"/>
+        </div>
       </div>
 
       <div class="table-wrap" style="margin-top:16px; overflow-x:auto">
-        <table class="spec-table" style="font-size:12.5px; min-width:780px">
+        <table class="spec-table" style="font-size:12.5px; min-width:820px">
           <thead style="background:#f1f5f9">
             <tr>
-              <th style="text-align:left; width:22%">成本项</th>
-              <th style="text-align:right; color:#f97316">ATR 42-600F<br><span style="font-weight:400; color:#94a3b8; font-size:11px">5.5 吨 / 480 km/h / 双 PW127</span></th>
-              <th style="text-align:right; color:#dc2626">Caravan 有人<br><span style="font-weight:400; color:#94a3b8; font-size:11px">1.088 吨 / 324 km/h / 单 PT6A</span></th>
-              <th style="text-align:right; color:#16a34a">Caravan UAV<br><span style="font-weight:400; color:#94a3b8; font-size:11px">同载荷无人化 (规模化)</span></th>
-              <th style="text-align:left; width:32%">备注</th>
+              <th style="text-align:left; width:24%">成本项 <span style="color:#94a3b8; font-weight:400; font-size:11px">(悬停看含义)</span></th>
+              <th style="text-align:right; color:#f97316">ATR 42-600F<br><span style="font-weight:400; color:#94a3b8; font-size:11px">业载 5.5 t / MTOW 18.6 t<br>480 km/h / 双 PW127M</span></th>
+              <th style="text-align:right; color:#dc2626">Caravan 有人<br><span style="font-weight:400; color:#94a3b8; font-size:11px">业载 1.088 t / MTOW 3.97 t<br>324 km/h / 单 PT6A-114A</span></th>
+              <th style="text-align:right; color:#16a34a">Caravan UAV<br><span style="font-weight:400; color:#94a3b8; font-size:11px">业载 1.088 t / MTOW 3.5 t (减座椅)<br>同尺寸无人化 (规模化)</span></th>
+              <th style="text-align:left; width:30%">备注</th>
             </tr>
           </thead>
           <tbody id="cal-tbody"></tbody>
@@ -2562,82 +2566,124 @@ initC('chart-tonkm',{
 (function(){
   var USD = 7.27;
 
-  // 三个机型的速度和满载 (常数, 跟 S6 主表一致)
+  // 三个机型的速度 / 业载 / MTOW (起降费按 MTOW 算)
   var SPECS = {
-    atr:    { speed: 480, payload: 5500, color: '#f97316' },
-    manned: { speed: 324, payload: 1088, color: '#dc2626' },
-    uav:    { speed: 324, payload: 1088, color: '#16a34a' }
+    atr:    { speed: 480, payload: 5500, mtow: 18600, color: '#f97316' },
+    manned: { speed: 324, payload: 1088, mtow: 3970,  color: '#dc2626' },
+    uav:    { speed: 324, payload: 1088, mtow: 3500,  color: '#16a34a' }  // UAV 减客舱 / 减座椅
   };
 
-  // 8 项成本结构, 每行 = {label, atr(p), manned(p), uav(p), note}
-  // 每个 fn 接收 params {fuelPrice, pilotSalary, annHr}, 返回 元/hr
+  // 8 项小时变动成本, 每行 = {label, tip, atr/manned/uav 算法函数, note}
   var ROWS = [
     {
-      label: '燃油 (Jet-A1)',
-      atr:    function(p){ return 670 * p.fuelPrice; },        // ~540 kg/hr × 1.24 L/kg
+      label: '燃油',
+      tip: '烧掉的航空煤油 (Jet-A1) 按小时算。涡桨发动机的燃油消耗量主要取决于功率档位和载荷; 双发机自然是单发的 2 倍。ATR 双 PW127 约 670 L/hr, Caravan 单 PT6A 约 150 L/hr, UAV 假设混动降 30% 至 105 L/hr。',
+      atr:    function(p){ return 670 * p.fuelPrice; },
       manned: function(p){ return 150 * p.fuelPrice; },
-      uav:    function(p){ return 150 * p.fuelPrice * 0.7; }, // 混动降 30%
-      note:   '同样 Jet-A1, ATR 双发 670 L/hr 是 Caravan (150) 的 4.5 倍; UAV 假设混动只用 70%'
+      uav:    function(p){ return 150 * p.fuelPrice * 0.7; },
+      note:   '同样 Jet-A1, ATR 670 L/hr 是 Caravan 的 4.5 倍; UAV 混动降至 70%'
     },
     {
-      label: '发动机储备 (大修摊销)',
+      label: '发动机储备',
+      tip: '发动机大修 (热段 + 翻修) 的费用按每飞行小时摊销, 行话叫 engine reserve。ATR 双 PW127M (单台大修约 $1.2M); Caravan 单 PT6A-114A (单台 $400K, TBO 3,600 hr); 无人机若用电机 / 简化内燃机, 寿命可以比 PT6A 长 2-3 倍。',
       atr:    function(){ return 3200; },
       manned: function(){ return 727; },
       uav:    function(){ return 509; },
-      note:   'ATR 双 PW127M 大修费极高; Caravan 单 PT6A; UAV 电机/简化内燃机寿命更长'
+      note:   'ATR 双 PW127M 大修极贵; Caravan 单 PT6A; UAV 电机寿命更长'
     },
     {
       label: '螺旋桨储备',
+      tip: '螺旋桨大修和叶片更换摊销。螺旋桨寿命典型 6,000-8,000 飞行小时, 双桨双成本。',
       atr:    function(){ return 240; },
       manned: function(){ return 218; },
       uav:    function(){ return 182; },
-      note:   '双桨 vs 单桨; UAV 简化桨'
+      note:   '双桨 vs 单桨; UAV 可用简化复合材料桨'
     },
     {
-      label: '机体维护 (定检 + 航线)',
+      label: '机体维护',
+      tip: '航线检查 (每日) + 定期检修 (A/B/C/D check, 分别对应 500 / 3,000 / 7,500 / 15,000 飞行小时) 的工时和零件。ATR 复杂度高, 工时约是 Caravan 的 4 倍; 无人机取消客舱系统 / 应急氧气 / 客舱照明, 维护项减少 30%。',
       atr:    function(){ return 2200; },
       manned: function(){ return 509; },
       uav:    function(){ return 364; },
-      note:   'ATR 检修工时是 Caravan 的 4 倍; UAV 简化结构 + 取消客舱'
+      note:   'ATR 检修工时 4 倍; UAV 取消客舱 → 省 30%'
     },
     {
-      label: '保险 (按年分摊)',
-      atr:    function(p){ return 1200 * 2000 / p.annHr; },    // ATR base 2,000 hr
-      manned: function(p){ return 364 * 800 / p.annHr; },      // Caravan base 800 hr
-      uav:    function(p){ return 291 * 1000 / p.annHr; },     // UAV base 1,000 hr
-      note:   '保险按机身价的 ~1% / 年; ATR 机身 ¥1.4 亿 vs Caravan ¥1,454 万; UAV 首批保险通常更贵, 此处假设规模化'
+      label: '保险',
+      tip: '机身险 (按机身价值的 0.8-1.2% / 年) + 第三方责任险。保险是按年付的, 所以年飞行小时越多, 每小时摊销越低。ATR 机身 ¥1.4 亿 → 约 140 万/年; Caravan 1,454 万 → 14.5 万/年; UAV 首批通常贵 1.5-2 倍 (无理赔历史), 此处按规模化后的价格算。',
+      atr:    function(p){ return 1200 * 2000 / p.annHr; },
+      manned: function(p){ return 364 * 800 / p.annHr; },
+      uav:    function(p){ return 291 * 1000 / p.annHr; },
+      note:   '机身险按价值 ~1% / 年; 年飞行小时越多每小时越薄'
     },
     {
       label: '飞行员 / 远程操作',
-      atr:    function(p){ return p.pilotSalary * USD * 2.06; },  // 2 名机长 + 福利
+      tip: '有人机是飞行员工资 + 福利 + 培训摊销 (按小时固定, 无论飞多远或装多少货)。ATR 法规要求两名机长 (机长 + 副驾, 成本 ≈ 2.06 倍单飞基准, 含资历溢价和福利); Caravan 单飞; 无人机假设 1 人同时监控 3-5 架 (现行 CAAC 法规未允许, 属中长期假设, 首批实际还需 1 对 1 责任机长)。',
+      atr:    function(p){ return p.pilotSalary * USD * 2.06; },
       manned: function(p){ return p.pilotSalary * USD; },
-      uav:    function(){ return 30 * USD; },                      // 远程, 1 人管 3-5 架
-      note:   'ATR 必须 2 名机长 (法规); UAV 假设 1 人管多架 (现行 CAAC 法规未允许, 中长期假设)'
+      uav:    function(){ return 30 * USD; },
+      note:   'ATR 2 名机长 (法规); UAV 假设 1 人管 3-5 架'
     },
     {
       label: '通信 / 数据链',
+      tip: '无人机专有: 卫星通信 + 地面控制站 + 数据链带宽费。有人机的机载通信已经含在机体维护里, 不单列。',
       atr:    function(){ return null; },
       manned: function(){ return null; },
       uav:    function(){ return 145; },
-      note:   'UAV 特有: 卫通 + 地面站带宽费'
+      note:   'UAV 特有: 卫通 + 地面站'
     },
     {
       label: '折旧',
-      atr:    function(p){ return 30000000 / 15 / p.annHr; },    // 二手 ATR 3,000 万
-      manned: function(p){ return 14540000 / 15 / p.annHr; },    // 1,454 万 / 15 年
-      uav:    function(p){ return 7270000 / 10 / p.annHr; },     // UAV 727 万 / 10 年
-      note:   '机身价 / 寿命 / 年飞行小时三者决定折旧; 滑年飞行小时滑块, 三列折旧同步变'
+      tip: '机身购置价 / 折旧年限 / 年飞行小时。公式: 机身价 ÷ 折旧年 ÷ 年飞行小时。ATR 二手机约 3,000 万 / 15 年; Caravan 新机 1,454 万 / 15 年; 无人机 727 万 / 10 年 (同尺寸机身但省客舱)。所以年飞行小时的滑块是影响折旧 (和保险) 摊销的关键。',
+      atr:    function(p){ return 30000000 / 15 / p.annHr; },
+      manned: function(p){ return 14540000 / 15 / p.annHr; },
+      uav:    function(p){ return 7270000 / 10 / p.annHr; },
+      note:   '机身价 / 寿命 / 年飞行小时; 滑块同步影响三列'
     }
   ];
 
-  var CYCLE_FEE = { atr: 3000, manned: 600, uav: 350 };
+  // 起降费四子项 (按 MTOW / 业载 / 停机时长动态算; 系数校准到 default 4 hr 停机下三列合计贴近 S6 主表)
+  var CYCLE_ROWS = [
+    {
+      label: '降落费',
+      tip: '中国民航机场按最大起飞重量 MTOW 阶梯收费 (CAAC《民用机场收费标准》2023); 典型国内航线约 70 元 × MTOW (吨) ^ 0.85。所以 ATR (MTOW 18.6 t) 一次降落约 820 元, Caravan (MTOW 3.97 t) 约 230 元, UAV 简易跑道打 7 折。注意: 收的是 MTOW 不是业载 — 空载降落一样收这么多。',
+      atr:    function(){ return 70 * Math.pow(SPECS.atr.mtow/1000, 0.85); },
+      manned: function(){ return 70 * Math.pow(SPECS.manned.mtow/1000, 0.85); },
+      uav:    function(){ return 70 * Math.pow(SPECS.uav.mtow/1000, 0.85) * 0.7; },
+      note:   '按 MTOW 阶梯, 与业载无关; UAV 简易跑道 × 0.7'
+    },
+    {
+      label: '装卸费',
+      tip: '地面搬运 / 装载 / 卸货的费用, 典型 150 元 / 实际货运吨。这是真正跟业载有关的那笔费用 — 跟降落费不一样。ATR 5.5 t 每次 ~825 元; Caravan 1.088 t 每次 ~163 元; UAV 自动装卸 (集装袋直接吊装 / 轨道自动输送) 省 70%。',
+      atr:    function(){ return 150 * SPECS.atr.payload / 1000; },
+      manned: function(){ return 150 * SPECS.manned.payload / 1000; },
+      uav:    function(){ return 150 * SPECS.uav.payload / 1000 * 0.3; },
+      note:   '按业载吨数; UAV 自动化省 70%'
+    },
+    {
+      label: '停机费',
+      tip: '停机坪使用费, 按小时 × MTOW 阶梯。CAAC 2023 收费标准国内支线典型 10 元 / MTOW(吨) / 小时。支线航班白天常停 3-5 小时等次班 (滑块可调), UAV 翻班快能节省停场 (占位少 × 0.7)。这是回答"停机是否有费用"的那一项 — 有, 而且对大飞机不便宜。',
+      atr:    function(p){ return 10 * SPECS.atr.mtow/1000 * p.parkHr; },
+      manned: function(p){ return 10 * SPECS.manned.mtow/1000 * p.parkHr; },
+      uav:    function(p){ return 10 * SPECS.uav.mtow/1000 * p.parkHr * 0.7; },
+      note:   '按 MTOW × 小时; UAV 翻班快 × 0.7'
+    },
+    {
+      label: '导航 / 空管',
+      tip: '区调 + 进近 + 塔台的航空导航服务费。ATR 级 (大机型, 复杂空域进近) 典型 500 元; Caravan 级 (中小支线) 180 元; UAV 若进入 128U / 非管制空域可以进一步降至 100 元。',
+      atr:    function(){ return 500; },
+      manned: function(){ return 180; },
+      uav:    function(){ return 100; },
+      note:   'ATR 空域复杂; UAV 简易空域'
+    }
+  ];
 
   function getParams() {
     return {
       dist: +document.getElementById('cal-dist').value,
       annHr: +document.getElementById('cal-hr').value,
       fuelPrice: +document.getElementById('cal-fuel').value,
-      pilotSalary: +document.getElementById('cal-pilot').value
+      pilotSalary: +document.getElementById('cal-pilot').value,
+      parkHr: +document.getElementById('cal-park').value
     };
   }
 
@@ -2653,20 +2699,34 @@ initC('chart-tonkm',{
     }, 0);
   }
 
+  function calcCycleTotal(modeKey, params) {
+    return CYCLE_ROWS.reduce(function(sum, r){
+      var v = r[modeKey](params);
+      return sum + (v || 0);
+    }, 0);
+  }
+
+  function labelCell(label, tip) {
+    return '<td><span class="tip" data-t="' + tip.replace(/"/g, '&quot;') + '">' + label + '</span></td>';
+  }
+
   function renderTable(params) {
     var tbody = document.getElementById('cal-tbody');
     if (!tbody) return;
     var html = '';
+
+    // 8 项小时变动成本
     ROWS.forEach(function(r){
       html += '<tr>' +
-        '<td>' + r.label + '</td>' +
+        labelCell(r.label, r.tip) +
         '<td style="text-align:right">' + fmt(r.atr(params)) + '</td>' +
         '<td style="text-align:right">' + fmt(r.manned(params)) + '</td>' +
         '<td style="text-align:right">' + fmt(r.uav(params)) + '</td>' +
         '<td style="color:#475569; font-size:11.5px; line-height:1.5">' + r.note + '</td>' +
       '</tr>';
     });
-    // 合计行
+
+    // 合计 (小时变动成本)
     var totalATR = calcTotal('atr', params);
     var totalManned = calcTotal('manned', params);
     var totalUAV = calcTotal('uav', params);
@@ -2677,32 +2737,48 @@ initC('chart-tonkm',{
       '<td style="text-align:right; color:#16a34a">' + fmt(totalUAV) + '</td>' +
       '<td style="color:#64748b; font-size:11.5px">UAV 比 Caravan 有人省 ' + Math.round((1-totalUAV/totalManned)*100) + '%; ATR 是 Caravan 的 ' + (totalATR/totalManned).toFixed(1) + ' 倍</td>' +
     '</tr>';
-    // 起降费
-    html += '<tr style="background:#fef3c7">' +
-      '<td>每次起降费 (元/次)</td>' +
-      '<td style="text-align:right">' + fmt(CYCLE_FEE.atr) + '</td>' +
-      '<td style="text-align:right">' + fmt(CYCLE_FEE.manned) + '</td>' +
-      '<td style="text-align:right">' + fmt(CYCLE_FEE.uav) + '</td>' +
-      '<td style="color:#475569; font-size:11.5px">机场使用费按机型大小阶梯; UAV 在简易跑道, 无地面服务</td>' +
+
+    // 4 项起降地面费
+    html += '<tr style="background:#fef3c7"><td colspan="5" style="font-weight:600; color:#b45309; font-size:12px; padding:6px 10px">每次起降地面费 (按 MTOW / 业载 / 停机时长动态算)</td></tr>';
+    CYCLE_ROWS.forEach(function(r){
+      html += '<tr style="background:#fffbeb">' +
+        labelCell('&nbsp;&nbsp;↳ ' + r.label, r.tip) +
+        '<td style="text-align:right">' + fmt(r.atr(params)) + '</td>' +
+        '<td style="text-align:right">' + fmt(r.manned(params)) + '</td>' +
+        '<td style="text-align:right">' + fmt(r.uav(params)) + '</td>' +
+        '<td style="color:#475569; font-size:11.5px; line-height:1.5">' + r.note + '</td>' +
+      '</tr>';
+    });
+    var cycleATR = calcCycleTotal('atr', params);
+    var cycleManned = calcCycleTotal('manned', params);
+    var cycleUAV = calcCycleTotal('uav', params);
+    html += '<tr style="background:#fef3c7; font-weight:700">' +
+      '<td>起降地面费合计 (元/次)</td>' +
+      '<td style="text-align:right">' + fmt(cycleATR) + '</td>' +
+      '<td style="text-align:right">' + fmt(cycleManned) + '</td>' +
+      '<td style="text-align:right">' + fmt(cycleUAV) + '</td>' +
+      '<td style="color:#64748b; font-size:11.5px">四项子费用加总</td>' +
     '</tr>';
-    // 每趟成本 (按当前距离)
-    var tripATR = totalATR * params.dist / SPECS.atr.speed + CYCLE_FEE.atr;
-    var tripManned = totalManned * params.dist / SPECS.manned.speed + CYCLE_FEE.manned;
-    var tripUAV = totalUAV * params.dist / SPECS.uav.speed + CYCLE_FEE.uav;
+
+    // 每趟成本
+    var tripATR = totalATR * params.dist / SPECS.atr.speed + cycleATR;
+    var tripManned = totalManned * params.dist / SPECS.manned.speed + cycleManned;
+    var tripUAV = totalUAV * params.dist / SPECS.uav.speed + cycleUAV;
     html += '<tr style="border-top:2px solid #f59e0b; background:#fffbeb; font-weight:700">' +
       '<td>每趟成本 (' + params.dist + ' km, 元/趟)</td>' +
       '<td style="text-align:right; color:#b45309">' + fmt(tripATR) + '</td>' +
       '<td style="text-align:right; color:#b45309">' + fmt(tripManned) + '</td>' +
       '<td style="text-align:right; color:#b45309">' + fmt(tripUAV) + '</td>' +
-      '<td style="color:#475569; font-size:11.5px">小时成本 × 距离 / 速度 + 起降费</td>' +
+      '<td style="color:#475569; font-size:11.5px">小时成本 × 距离 / 速度 + 起降地面费</td>' +
     '</tr>';
+
     // 满载每吨成本
     html += '<tr style="background:#f0fdf4">' +
       '<td>满载每吨成本 (元/吨)</td>' +
       '<td style="text-align:right">' + fmt(tripATR / (SPECS.atr.payload/1000)) + '</td>' +
       '<td style="text-align:right">' + fmt(tripManned / (SPECS.manned.payload/1000)) + '</td>' +
       '<td style="text-align:right">' + fmt(tripUAV / (SPECS.uav.payload/1000)) + '</td>' +
-      '<td style="color:#475569; font-size:11.5px">每趟成本 / 最大载荷; ATR 5.5 t / Caravan 1.088 t / UAV 1.088 t</td>' +
+      '<td style="color:#475569; font-size:11.5px">每趟成本 / 最大业载; ATR 5.5 t / Caravan 1.088 t / UAV 1.088 t</td>' +
     '</tr>';
     tbody.innerHTML = html;
   }
@@ -2713,12 +2789,13 @@ initC('chart-tonkm',{
     document.getElementById('cal-hr-val').textContent = p.annHr;
     document.getElementById('cal-fuel-val').textContent = p.fuelPrice.toFixed(1);
     document.getElementById('cal-pilot-val').textContent = p.pilotSalary;
+    document.getElementById('cal-park-val').textContent = p.parkHr;
     renderTable(p);
   }
 
   function init() {
     if (!document.getElementById('cal-dist')) return;
-    ['cal-dist','cal-hr','cal-fuel','cal-pilot'].forEach(function(id){
+    ['cal-dist','cal-hr','cal-fuel','cal-pilot','cal-park'].forEach(function(id){
       var el = document.getElementById(id);
       if (el) el.addEventListener('input', update);
     });
