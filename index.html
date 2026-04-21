@@ -111,9 +111,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 .insight-rules>li>b:first-child{display:inline-block;color:#1e40af;margin-right:4px}
 .insight.red .insight-rules>li>b:first-child{color:#b91c1c}
 .insight.green .insight-rules>li>b:first-child{color:#15803d}
-.tip{border-bottom:1px dotted #94a3b8;cursor:help;position:relative;display:inline}
-.tip:hover::after{content:attr(data-t);position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.55;white-space:normal;width:max-content;max-width:340px;z-index:99;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.tip:hover::before{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1e293b;z-index:99}
+.tip{border-bottom:1px dotted #94a3b8;cursor:help;display:inline}
+#tip-popup{position:fixed;background:#0f172a;color:#fff;padding:10px 14px;border-radius:6px;font-size:12.5px;line-height:1.6;max-width:360px;min-width:120px;z-index:9999;pointer-events:none;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .12s}
+#tip-popup.show{opacity:1}
 </style>
 </head>
 <body>
@@ -802,6 +802,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </thead>
           <tbody id="cal-tbody"></tbody>
         </table>
+      </div>
+      <div class="source" style="margin-top:10px; line-height:1.7">
+        <b>数据来源:</b>
+        <b>Caravan 208B</b> 拆解: Conklin &amp; de Decker 2024 Cessna 208B Grand Caravan EX Operating Costs ($692/hr 变动成本 × 7.27 汇率 = 5,028 元); 燃油 150 L/hr 短程任务 profile。
+        <b>ATR 42-600F</b> 拆解: Aircraft Cost Calculator 2024; 燃油 540 kg/hr (PW127M 双发 60% 功率); 机身 ¥1.4 亿 (Avolon 2024 二手价)。
+        <b>Caravan 级无人机</b> 拆解: Reliable Robotics / Xwing / Natilus 行业公开成本模型 (规模化假设)。
+        <b>起降地面费公式</b>: CAAC《民用机场收费标准》2023 (民航函 [2023] 15 号); 降落费 70 元 × MTOW(吨)^0.85; 停机费 10 元/MTOW(吨)/小时; 装卸费行业典型 150 元/实际货运吨。
+        <b>飞行员薪酬</b>: 国内支线航司 2024 公开招聘行情 (ATR 机长 ¥80-120 万年薪, 含 13 薪+飞行小时津贴)。
+        <b>汇率</b>: 1 美元 = 7.27 元 (2024 年均)。
+        数据 CSV: <code>s6_cost_master.csv</code>。
       </div>
     </div>
     <div class="insight green fade-in" style="margin-top:16px">
@@ -3768,6 +3778,54 @@ var radiusInitTimer=setInterval(function(){
       {name:'年运力估算(吨)',type:'bar',data:capData,yAxisIndex:1,itemStyle:{color:'#f59e0b'},barWidth:24,label:{show:true,position:'top',fontSize:10}}
     ]
   });
+})();
+
+// ===== GLOBAL JS-CONTROLLED TOOLTIP (replaces CSS-only .tip:hover::after) =====
+(function(){
+  var popup = document.createElement('div');
+  popup.id = 'tip-popup';
+  document.body.appendChild(popup);
+
+  function showTip(el){
+    var text = el.getAttribute('data-t');
+    if (!text) return;
+    popup.textContent = text;
+    popup.classList.add('show');
+    // Measure after visible so offsetWidth/Height are real
+    var rect = el.getBoundingClientRect();
+    var pw = popup.offsetWidth;
+    var ph = popup.offsetHeight;
+    var margin = 10;
+    // Try above first
+    var top = rect.top - ph - 8;
+    var below = false;
+    if (top < margin) {
+      top = rect.bottom + 8;
+      below = true;
+    }
+    // Centered on the element but clamped to viewport
+    var left = rect.left + rect.width/2 - pw/2;
+    left = Math.max(margin, Math.min(window.innerWidth - pw - margin, left));
+    // If doesn't fit below either (rare), push to max
+    if (below && top + ph > window.innerHeight - margin) {
+      top = Math.max(margin, window.innerHeight - ph - margin);
+    }
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
+  function hideTip(){
+    popup.classList.remove('show');
+  }
+  document.body.addEventListener('mouseover', function(e){
+    var t = e.target.closest && e.target.closest('.tip');
+    if (t) showTip(t);
+  });
+  document.body.addEventListener('mouseout', function(e){
+    var t = e.target.closest && e.target.closest('.tip');
+    if (t) hideTip();
+  });
+  // Reposition on scroll when visible
+  window.addEventListener('scroll', hideTip, { passive: true });
 })();
 
 </script>
