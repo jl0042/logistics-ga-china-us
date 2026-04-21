@@ -54,7 +54,15 @@
 | `s5_fleet_us.csv` | FAA GA Survey CY2023 (最新可得): 总 214,222 架 / 单发活塞 128,000 (60%) / 涡桨 11,000 / 公务机 16,000 / 实验机 33,000 / Part 135 支线货运涡桨 ~1,000 架 | 10 |
 | `s5_cargo_airlines_cn.csv` | 中国 7 家货运航司机队 2024 年底 + 2025 最新: 顺丰 88→90 / 中邮 35→37 / 圆通 13→14 / 三家合计 136 / 全产业约 200 架 | 9 |
 | `s5_feeder_us.csv` | 美国支线接驳生态: Ameriflight 125 / Empire 54 / Mountain Air Cargo 35 / Baron / CSA / Everts; FedEx 合同租赁 317 架 (231 Cessna 208B + 28 Cessna 408 SkyCourier + 58 ATR 42/72F); 全 Part 135 货运涡桨 ~480 架; 典型航线 MEM/ANC/EWR | 13 |
+| `s5_fleet_by_payload_cn.csv` | 中国全货机机队按载荷分层 (2025 年初): ≤1t/1-3t/3-8t 全部空白; 8-10t 层仅 2 架 C909F (圆通 2024/6 首次商业货运); 18-21t 737-300/400F ~31 架; 23t 737-800BCF ~46 架; 28-39t 757-200F ~55 架; 55-60t 767-300BCF ~25 架; 80+t 747-400F/777F ~25 架 | 9 |
 | `s5_comparison_analysis.md` | S5 完整 review: 鄂州 245/102/86.5 三个数字口径澄清 + sec-title/sec-sub/thesis 三件套重写 (干线 hub 追上来/专用 hub 差代际/通航段空白) + 单发活塞 45%→60% 修正 + "涡桨跑物流"同口径改写 + chart scale 统一 400 | (markdown) |
+
+### Section 6 — 运营成本推导
+
+| 文件 | 内容 | 行数 |
+|---|---|---|
+| `s6_cost_master.csv` | S6 机型成本主表 verified 数据: Caravan 5028 (Conklin&dD 2024) / C909F ~26000 (新增, CF34-10A×2 推算) / Y-12F 9000 (第一性原理, 从原 6500 上调) / ATR 42 14500 (Aircraft Cost Calc) / 737-800BCF 35800 + 757-200F 45900 (BTS Form 41 + 国内中位; 原标"真实 顺丰/京东" 错配) + TP500/HH-200/CY-8/W5000 | 12 |
+| `s6_comparison_analysis.md` | S6 完整 review: Caravan 227→324 km/h 派生连带 (800km 例子 18,300→13,020; 和田-乌鲁木齐 4.8hr→3.9hr); thesis 改成本结构拆分 (Caravan vs ATR 七项占比对比); 737/757/Y-12F 来源标签错配修正; varHr/fix/cycle/PR 全翻; S7 line 1174 HH-200 速度比较修正 (+41% 错, 实际相当) + JS BE_SPEED 227→324; S5 载荷分层表新增 + C909F 段 | (markdown) |
 
 ### 辅助文件
 

@@ -1,0 +1,10 @@
+payload_tier_tonnes,representative_aircraft,china_cargo_fleet_count,operators,status,year,source_org,source_url,notes
+<=1,Cessna 208 / 通航涡桨,0,—,空白,2024,顺丰/中信海直/华夏通航机队公开资料,,"国内 Cessna 208 保有 30-40 架但几乎全在公务/作业/训练"
+1-3,Y-12F,0,—,空白,2024,哈飞机队公开资料,,"国内货运未见商业运营; Y-12F 主要出口"
+3-8,ATR 42/72F,0,—,空白,2024,CAAC 机队数据,,"国内无 ATR 货运运营商"
+8-10,C909F (ARJ21F 客改货),2,圆通航空,刚起步,2025,圆通 + 商飞公告,https://www.chinaerospace.com/article/show/953c4869f62547369816f1bd8e63ddab,"2023/10 首批 2 架交付; 2024/6/6 伊宁→塔什干首次商业货运; 2025/7 新疆长期稳定运营"
+18-21,737-300F / 737-400F,~31,顺丰 14+3 / 邮航 6+8,存量,2025,顺丰 2025/3 + 邮航 2025/3,https://www.sf-airlines.com/news/470.html,"Classic 一代, 部分即将退役"
+23,737-800BCF,~30,京东 10 / 邮航 18 / 顺丰 1+ / 长龙若干,增长主力,2025,京东 2025/1 + 顺丰/邮航 2025/3,https://finance.sina.com.cn/tech/digi/2025-01-10/doc-ineemwnc5705188.shtml,"国内保有 46 架 (含所有 BCF 运营商)"
+28-39,757-200F,~55,顺丰 43 / 邮航 6 / 圆通若干 / 其他,窄体骨干,2025,顺丰 2025/3,https://finance.sina.com.cn/tech/digi/2025-03-16/doc-inepwafi7313774.shtml,"中国窄体真正主力; 载荷与航程平衡最优"
+55-60,767-300BCF,~25,顺丰 25,宽体干线,2025,顺丰 2025/3,https://finance.sina.com.cn/tech/digi/2025-03-16/doc-inepwafi7313774.shtml,"顺丰独家"
+80+,747-400F / 777F,~25,顺丰 4 (747) / 国货航 11 / 东航物流 14 (777F) / 南航若干,国际干线,2025,各航司 2024-2025 公开资料,,"跨国际航线"
