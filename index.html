@@ -761,61 +761,51 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="source">Conklin &amp; de Decker 2024 Cessna 208B; Aircraft Cost Calculator 2024 ATR 42; BTS Form 41 Schedule P-5.2 / P-7 (美国航司分机型运营成本); 白鲸航线公开数据 (36Kr / 21 经济网); 中航工业 HH-200 公开规格; AOPA 中国 TP500; 圆通航空 + 商飞公告 (C909F); 第一性原理拆解见下方两张分项表。数据 CSV: s6_cost_master.csv。</div>
     </div>
 
-    <!-- CARAVAN COST CALCULATOR (interactive) -->
+    <!-- COST COMPARISON CALCULATOR: ATR vs Caravan vs UAV -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #f59e0b">
-      <div class="chart-title">Caravan 飞行成本计算器 — 调参数, 实时看有人机 vs 无人机的拆解和对比</div>
-      <div class="chart-desc">下面的滑块控制四个常见变量 (飞行距离 / 年飞行小时 / 燃油价 / 飞行员工资), 下拉框切换 Caravan 机型。左侧是 Caravan 当前参数下的七项成本拆解 (实时重算); 右图是主表全部机型在当前飞行距离下的满载每吨成本散点分布, 横轴最大载荷对数刻度, 点大小也反映最大载荷。默认参数下 Caravan 有人机复现主表 5,028 元/hr, 无人机规模化复现 3,224 元/hr。</div>
+      <div class="chart-title">三种机型成本拆解对比 — ATR 42 / Caravan 有人 / Caravan 级无人, 滑参数实时重算</div>
+      <div class="chart-desc">从 5.5 吨涡桨支线 (ATR 42-600F) 到 1 吨涡桨 (Caravan 有人) 到同尺寸无人化 (Caravan UAV 规模化), 每行一项成本, 三列同时显示。备注列解释三者差异背后的工程或商业逻辑。滑块影响所有三列 — 燃油价/飞行员工资按各机型口径放大, 年飞行小时影响保险与折旧的摊销分母。默认参数下 Caravan 有人复现主表 5,028 元/hr, 无人规模化 (拉滑块到 1,000 hr) 复现 3,224 元/hr, ATR (拉滑块到 2,000 hr) 复现 14,500 元/hr。</div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; padding:14px 16px; margin-top:12px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; padding:14px 16px; margin-top:12px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0">
         <div>
           <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">飞行距离: <b id="cal-dist-val" style="color:#0f172a">800</b> km</label>
           <input type="range" id="cal-dist" min="100" max="2000" step="50" value="800" style="width:100%"/>
         </div>
         <div>
           <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">年飞行小时: <b id="cal-hr-val" style="color:#0f172a">800</b> hr/年</label>
-          <input type="range" id="cal-hr" min="300" max="1500" step="50" value="800" style="width:100%"/>
+          <input type="range" id="cal-hr" min="300" max="2500" step="50" value="800" style="width:100%"/>
         </div>
         <div>
           <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">燃油价: <b id="cal-fuel-val" style="color:#0f172a">7.5</b> 元/L</label>
           <input type="range" id="cal-fuel" min="5" max="12" step="0.5" value="7.5" style="width:100%"/>
         </div>
         <div>
-          <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">飞行员时薪: <b id="cal-pilot-val" style="color:#0f172a">120</b> 美元/hr</label>
+          <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">飞行员时薪基准: <b id="cal-pilot-val" style="color:#0f172a">120</b> 美元/hr</label>
           <input type="range" id="cal-pilot" min="40" max="200" step="10" value="120" style="width:100%"/>
-        </div>
-        <div>
-          <label style="font-size:12.5px; color:#64748b; display:block; margin-bottom:4px">机型</label>
-          <select id="cal-mode" style="width:100%; padding:6px 8px; border:1px solid #cbd5e1; border-radius:4px; font-size:13px">
-            <option value="manned">Cessna 208B 有人机</option>
-            <option value="uav-mature">无人机 (规模化)</option>
-            <option value="uav-firstbatch">无人机 (首批工况)</option>
-          </select>
         </div>
       </div>
 
-      <div class="grid2" style="margin-top:16px">
-        <div>
-          <div style="font-size:13.5px; font-weight:700; margin-bottom:8px; color:#0f172a" id="cal-mode-label">当前机型: Cessna 208B 有人机 — 每项随参数变化</div>
-          <div id="cal-rows"></div>
-          <div class="cost-row" style="border-bottom:2px solid var(--primary); margin-top:4px"><div class="label" style="font-weight:600">小时变动成本合计</div><div class="val"><b style="font-size:17px; color:#dc2626" id="cal-total">—</b></div></div>
-          <div class="cost-row" style="background:#fef3c7"><div class="label">每次起降费</div><div class="val"><b id="cal-cycle">—</b></div></div>
-          <div class="cost-row" style="border-bottom:3px solid #f59e0b"><div class="label" style="font-weight:600">每趟成本 <span style="color:#64748b; font-weight:400; font-size:12px">(= 小时成本 × 距离 / 324 km/h + 起降费)</span></div><div class="val"><b style="font-size:15px; color:#b45309" id="cal-trip">—</b></div></div>
-          <div class="cost-row"><div class="label">满载单位成本 <span style="color:#64748b; font-size:12px">(1,088 kg 业载)</span></div><div class="val"><b id="cal-unit">—</b></div></div>
-          <div class="cost-row"><div class="label">年总成本 <span style="color:#64748b; font-size:12px">(按当前年飞行小时)</span></div><div class="val"><b id="cal-annual">—</b></div></div>
-        </div>
-        <div>
-          <div id="cal-chart" class="chart-box" style="height:440px"></div>
-          <div class="source" style="margin-top:8px">X 轴: 最大载荷 (log 刻度, 从 TP500 的 500 kg 到 757F 的 39 t); Y 轴: 当前距离下满载每吨成本 (log 刻度); 点大小: 最大载荷; 黑色粗边框 = 当前下拉框选中的 Caravan 模式。滑动飞行距离, 每个点的 y 位置实时重算 — 短距离大飞机也贵 (起降费摊薄少), 长距离小飞机才真正劣势显现。</div>
-        </div>
+      <div class="table-wrap" style="margin-top:16px; overflow-x:auto">
+        <table class="spec-table" style="font-size:12.5px; min-width:780px">
+          <thead style="background:#f1f5f9">
+            <tr>
+              <th style="text-align:left; width:22%">成本项</th>
+              <th style="text-align:right; color:#f97316">ATR 42-600F<br><span style="font-weight:400; color:#94a3b8; font-size:11px">5.5 吨 / 480 km/h / 双 PW127</span></th>
+              <th style="text-align:right; color:#dc2626">Caravan 有人<br><span style="font-weight:400; color:#94a3b8; font-size:11px">1.088 吨 / 324 km/h / 单 PT6A</span></th>
+              <th style="text-align:right; color:#16a34a">Caravan UAV<br><span style="font-weight:400; color:#94a3b8; font-size:11px">同载荷无人化 (规模化)</span></th>
+              <th style="text-align:left; width:32%">备注</th>
+            </tr>
+          </thead>
+          <tbody id="cal-tbody"></tbody>
+        </table>
       </div>
     </div>
     <div class="insight green fade-in" style="margin-top:16px">
-      <span class="insight-title">计算器背后的三个结论</span>
+      <span class="insight-title">表里读出来的三件事</span>
       <ul class="insight-rules">
-        <li><b>固定成本分摊机制</b>: 保险和折旧是按年发生的, 年飞行小时越多, 每小时分摊越低。年飞 800 hr 的有人机折旧 1,212 元/hr, 年飞 1,500 hr 只需 647 元/hr — 把滑块往右拉, 有人机和无人机的差距会显著缩小</li>
-        <li><b>三个未来假设</b>: "规模化"模式假设 1 人管 3-5 架无人机、混动量产、保险按规模价; 现行法规和首批市场都不支持, 所以"首批工况"模式加上保险 1.75 倍、责任机长 1 比 1、无混动。选下拉框看差异 — 规模化省 1,800 元/hr, 首批只省约 1,100 元/hr</li>
-        <li><b>无人化真正的优势不是单小时便宜, 是不睡觉</b>: 有人机飞到 1,000 hr/年就撞飞行员疲劳线; 无人机 1,500 hr/年没问题。这个差距在年总成本一栏里最明显, 把飞行小时滑块推到 1,200 以上就能看到无人机规模化模式的年成本反而下降, 有人机反而上升 (因为飞行员加班费)</li>
-        <li><b>怎么读右图</b>: 每个点是一架飞机在当前距离下满载的每吨成本。沿 X 轴从左 (小飞机) 往右 (大飞机) 看, 每吨成本大概率下降 — 这就是"大飞机摊薄人工/起降费/固定成本"的直观证据。Caravan 级 (有人/无人) 是 X 轴最左边的一簇; W5000 / C909F / 757F 是右下角低成本区。滑距离到 2,000 km, 小飞机 (TP500 / Caravan) 每吨成本飙升得最快 — 这就是 S7 里"Caravan 只适合短距离支线"的数学根据</li>
+        <li><b>燃油占比随机型放大</b>: ATR 38% / Caravan 22% / UAV 24% (混动只把绝对值降 30%, 占比反而升因为其他项也降了)。这就是为什么干线大飞机最受燃油价波动影响</li>
+        <li><b>飞行员是按小时固定的, 不随载荷变</b>: ATR 1,800 元/hr 飞 5.5 吨, 每吨人工 327 元; Caravan 873 元/hr 飞 1.088 吨, 每吨人工 802 元; 比 ATR 贵 2.5 倍 — 这就是"无人化在小飞机上收益最大, 大飞机上几乎可以忽略"的根本数学</li>
+        <li><b>滑年飞行小时滑块, 看保险和折旧的摊薄机制</b>: 保险和折旧都是按年发生的, 年飞行小时越多每小时摊得越薄。Caravan 800 hr/年 (默认) 折旧 1,212 元/hr, 1,500 hr/年 只 647 元/hr; ATR 拖到 2,000 hr/年 (主表口径), 折旧从默认的 2,500 降到 1,000 — 复现主表 14,500 元/hr</li>
       </ul>
     </div>
   </div>
@@ -2568,191 +2558,153 @@ initC('chart-tonkm',{
   initC('chart-fleet-us',pieOpt(usFleet,214000));
 })();
 
-// ===== CARAVAN COST CALCULATOR (S6 interactive) =====
+// ===== ATR vs CARAVAN vs UAV COST COMPARISON CALCULATOR (S6) =====
 (function(){
-  var USD=7.27, SPEED=324, PAYLOAD=1088; // 巡航 324 km/h, 满载 1,088 kg
+  var USD = 7.27;
 
-  // 计算给定 (params, mode) 的 7 项成本拆解 + 起降费
-  // params: {dist, annHr, fuelPrice, pilotSalary, mode}
-  function calcCost(p) {
-    var rows = [];
-    var cycleFee;
-    if (p.mode === 'manned') {
-      rows.push({label:'燃油 (Jet-A1, 150 L/hr × 燃油价)', val: 150 * p.fuelPrice});
-      rows.push({label:'发动机储备 (PT6A-114A 大修摊销)', val: 100 * USD});
-      rows.push({label:'螺旋桨储备', val: 30 * USD});
-      rows.push({label:'机体维护 (定检 + 航线)', val: 70 * USD});
-      rows.push({label:'保险 (按年分摊, 800 hr/年基准)', val: 50 * USD * 800 / p.annHr});
-      rows.push({label:'飞行员薪酬 (含福利)', val: p.pilotSalary * USD});
-      rows.push({label:'折旧 (1,454 万元 / 15 年)', val: 14540000 / 15 / p.annHr});
-      cycleFee = 600;
-    } else if (p.mode === 'uav-mature') {
-      rows.push({label:'燃油 / 电力 (混动降 30%)', val: 150 * p.fuelPrice * 0.7});
-      rows.push({label:'发动机 / 电机储备 (电机寿命更长)', val: 70 * USD});
-      rows.push({label:'螺旋桨储备', val: 25 * USD});
-      rows.push({label:'机体维护 (简化结构)', val: 50 * USD});
-      rows.push({label:'保险 (规模化, 有人机 0.8 倍)', val: 50 * USD * 0.8 * 1000 / p.annHr});
-      rows.push({label:'远程操作员 (1 人管 3-5 架)', val: 30 * USD});
-      rows.push({label:'通信 / 数据链', val: 145});
-      rows.push({label:'折旧 (727 万元 / 10 年)', val: 7270000 / 10 / p.annHr});
-      cycleFee = 350;
-    } else { // uav-firstbatch
-      rows.push({label:'燃油 (无混动, 内燃机)', val: 150 * p.fuelPrice});
-      rows.push({label:'发动机 / 电机储备', val: 70 * USD});
-      rows.push({label:'螺旋桨储备', val: 25 * USD});
-      rows.push({label:'机体维护', val: 50 * USD});
-      rows.push({label:'保险 (首批 1.75 倍, 无理赔历史)', val: 50 * USD * 1.75 * 800 / p.annHr});
-      rows.push({label:'1 对 1 责任机长 (首批法规要求)', val: p.pilotSalary * USD * 0.55});
-      rows.push({label:'通信 / 数据链', val: 145});
-      rows.push({label:'折旧 (727 万元 / 10 年)', val: 7270000 / 10 / p.annHr});
-      cycleFee = 450;
+  // 三个机型的速度和满载 (常数, 跟 S6 主表一致)
+  var SPECS = {
+    atr:    { speed: 480, payload: 5500, color: '#f97316' },
+    manned: { speed: 324, payload: 1088, color: '#dc2626' },
+    uav:    { speed: 324, payload: 1088, color: '#16a34a' }
+  };
+
+  // 8 项成本结构, 每行 = {label, atr(p), manned(p), uav(p), note}
+  // 每个 fn 接收 params {fuelPrice, pilotSalary, annHr}, 返回 元/hr
+  var ROWS = [
+    {
+      label: '燃油 (Jet-A1)',
+      atr:    function(p){ return 670 * p.fuelPrice; },        // ~540 kg/hr × 1.24 L/kg
+      manned: function(p){ return 150 * p.fuelPrice; },
+      uav:    function(p){ return 150 * p.fuelPrice * 0.7; }, // 混动降 30%
+      note:   '同样 Jet-A1, ATR 双发 670 L/hr 是 Caravan (150) 的 4.5 倍; UAV 假设混动只用 70%'
+    },
+    {
+      label: '发动机储备 (大修摊销)',
+      atr:    function(){ return 3200; },
+      manned: function(){ return 727; },
+      uav:    function(){ return 509; },
+      note:   'ATR 双 PW127M 大修费极高; Caravan 单 PT6A; UAV 电机/简化内燃机寿命更长'
+    },
+    {
+      label: '螺旋桨储备',
+      atr:    function(){ return 240; },
+      manned: function(){ return 218; },
+      uav:    function(){ return 182; },
+      note:   '双桨 vs 单桨; UAV 简化桨'
+    },
+    {
+      label: '机体维护 (定检 + 航线)',
+      atr:    function(){ return 2200; },
+      manned: function(){ return 509; },
+      uav:    function(){ return 364; },
+      note:   'ATR 检修工时是 Caravan 的 4 倍; UAV 简化结构 + 取消客舱'
+    },
+    {
+      label: '保险 (按年分摊)',
+      atr:    function(p){ return 1200 * 2000 / p.annHr; },    // ATR base 2,000 hr
+      manned: function(p){ return 364 * 800 / p.annHr; },      // Caravan base 800 hr
+      uav:    function(p){ return 291 * 1000 / p.annHr; },     // UAV base 1,000 hr
+      note:   '保险按机身价的 ~1% / 年; ATR 机身 ¥1.4 亿 vs Caravan ¥1,454 万; UAV 首批保险通常更贵, 此处假设规模化'
+    },
+    {
+      label: '飞行员 / 远程操作',
+      atr:    function(p){ return p.pilotSalary * USD * 2.06; },  // 2 名机长 + 福利
+      manned: function(p){ return p.pilotSalary * USD; },
+      uav:    function(){ return 30 * USD; },                      // 远程, 1 人管 3-5 架
+      note:   'ATR 必须 2 名机长 (法规); UAV 假设 1 人管多架 (现行 CAAC 法规未允许, 中长期假设)'
+    },
+    {
+      label: '通信 / 数据链',
+      atr:    function(){ return null; },
+      manned: function(){ return null; },
+      uav:    function(){ return 145; },
+      note:   'UAV 特有: 卫通 + 地面站带宽费'
+    },
+    {
+      label: '折旧',
+      atr:    function(p){ return 30000000 / 15 / p.annHr; },    // 二手 ATR 3,000 万
+      manned: function(p){ return 14540000 / 15 / p.annHr; },    // 1,454 万 / 15 年
+      uav:    function(p){ return 7270000 / 10 / p.annHr; },     // UAV 727 万 / 10 年
+      note:   '机身价 / 寿命 / 年飞行小时三者决定折旧; 滑年飞行小时滑块, 三列折旧同步变'
     }
-    var total = rows.reduce(function(s, r){ return s + r.val; }, 0);
-    var tripCost = total * p.dist / SPEED + cycleFee;
-    return { rows: rows, total: total, cycleFee: cycleFee, tripCost: tripCost };
-  }
+  ];
 
-  function fmt(n) { return Math.round(n).toLocaleString(); }
+  var CYCLE_FEE = { atr: 3000, manned: 600, uav: 350 };
 
-  var modeColors = {
-    'manned': '#dc2626',
-    'uav-mature': '#16a34a',
-    'uav-firstbatch': '#f59e0b'
-  };
-  var modeLabels = {
-    'manned': 'Cessna 208B 有人机',
-    'uav-mature': '无人机 (规模化)',
-    'uav-firstbatch': '无人机 (首批工况)'
-  };
-
-  // 获取当前参数 from DOM
   function getParams() {
     return {
       dist: +document.getElementById('cal-dist').value,
       annHr: +document.getElementById('cal-hr').value,
       fuelPrice: +document.getElementById('cal-fuel').value,
-      pilotSalary: +document.getElementById('cal-pilot').value,
-      mode: document.getElementById('cal-mode').value
+      pilotSalary: +document.getElementById('cal-pilot').value
     };
   }
 
-  // 渲染左侧拆解面板
-  function renderRows(params) {
-    var r = calcCost(params);
-    var rowsHtml = r.rows.map(function(row){
-      return '<div class="cost-row"><div class="label">' + row.label + '</div><div class="val"><b>' + fmt(row.val) + ' 元/hr</b></div></div>';
-    }).join('');
-    document.getElementById('cal-rows').innerHTML = rowsHtml;
-    document.getElementById('cal-total').textContent = fmt(r.total) + ' 元/hr';
-    document.getElementById('cal-total').style.color = modeColors[params.mode];
-    document.getElementById('cal-cycle').textContent = fmt(r.cycleFee) + ' 元/次';
-    document.getElementById('cal-trip').textContent = fmt(r.tripCost) + ' 元/趟';
-    document.getElementById('cal-unit').textContent = (r.tripCost / PAYLOAD).toFixed(2) + ' 元/kg';
-    document.getElementById('cal-annual').textContent = fmt(r.total * params.annHr / 10000) + ' 万元/年';
-    document.getElementById('cal-mode-label').textContent = '当前机型: ' + modeLabels[params.mode] + ' — 每项随参数变化';
+  function fmt(v) {
+    if (v === null || v === undefined) return '<span style="color:#cbd5e1">—</span>';
+    return Math.round(v).toLocaleString();
   }
 
-  var calChart = null;
+  function calcTotal(modeKey, params) {
+    return ROWS.reduce(function(sum, r){
+      var v = r[modeKey](params);
+      return sum + (v || 0);
+    }, 0);
+  }
 
-  // 其他机型 (非 Caravan) 的静态参数, 全部取自 S6 主表
-  var STATIC_AIRCRAFT = [
-    {name:'TP500 (壹通)',      varHr:900,  fix:200,  maxP:500,   speed:260, color:'#06b6d4', state:'取证中'},
-    {name:'HH-200 (中航)',      varHr:6000, fix:500,  maxP:1500,  speed:320, color:'#9333ea', state:'取证中'},
-    {name:'Y-12F',              varHr:9000, fix:800,  maxP:1700,  speed:328, color:'#ea580c', state:'已运营'},
-    {name:'CY-8 (长鹰)',        varHr:11000,fix:1200, maxP:3500,  speed:380, color:'#db2777', state:'研制中'},
-    {name:'W5000 (白鲸)',       varHr:11000,fix:2000, maxP:5000,  speed:526, color:'#10b981', state:'取证中'},
-    {name:'ATR 42-600F',        varHr:14500,fix:3000, maxP:5500,  speed:480, color:'#f97316', state:'已运营'},
-    {name:'C909F (ARJ21F)',     varHr:26000,fix:3500, maxP:10000, speed:825, color:'#8b5cf6', state:'已运营'},
-    {name:'Boeing 737-800BCF',  varHr:35800,fix:4500, maxP:23900, speed:833, color:'#7c3aed', state:'已运营'},
-    {name:'Boeing 757-200F',    varHr:45900,fix:5500, maxP:39000, speed:850, color:'#0891b2', state:'已运营'}
-  ];
-
-  // 渲染跨机型每吨成本散点图: X=最大载荷 (log), Y=当前距离下每吨成本 (log), 点大小=最大载荷
-  function renderChart(params) {
-    if (!calChart) {
-      var dom = document.getElementById('cal-chart');
-      if (!dom || !window.echarts) return;
-      calChart = window.echarts.init(dom);
-    }
-
-    // 构建 Caravan 三种模式 (varHr/fix 随 slider 实时算)
-    var caravanVariants = ['manned','uav-mature','uav-firstbatch'].map(function(m){
-      var p2 = Object.assign({}, params, {mode: m});
-      var r = calcCost(p2);
-      return {
-        name: 'Caravan ' + (m==='manned' ? '有人' : m==='uav-mature' ? '无人 (规模化)' : '无人 (首批)'),
-        varHr: r.total, fix: r.cycleFee, maxP: 1088, speed: 324,
-        color: modeColors[m], state: m==='manned' ? '已运营' : '改装中',
-        isCurrent: m === params.mode
-      };
+  function renderTable(params) {
+    var tbody = document.getElementById('cal-tbody');
+    if (!tbody) return;
+    var html = '';
+    ROWS.forEach(function(r){
+      html += '<tr>' +
+        '<td>' + r.label + '</td>' +
+        '<td style="text-align:right">' + fmt(r.atr(params)) + '</td>' +
+        '<td style="text-align:right">' + fmt(r.manned(params)) + '</td>' +
+        '<td style="text-align:right">' + fmt(r.uav(params)) + '</td>' +
+        '<td style="color:#475569; font-size:11.5px; line-height:1.5">' + r.note + '</td>' +
+      '</tr>';
     });
-
-    var allAC = caravanVariants.concat(STATIC_AIRCRAFT);
-
-    // 每吨成本 = (小时成本 × 距离/速度 + 起降费) / 载荷 (吨)
-    var data = allAC.map(function(ac){
-      var tripCost = ac.varHr * params.dist / ac.speed + ac.fix;
-      var costPerTonne = tripCost / (ac.maxP / 1000);
-      // 点大小: 按载荷对数映射到 12-55 像素
-      var size = Math.max(12, Math.min(55, 12 + Math.log10(ac.maxP) * 10));
-      return {
-        name: ac.name,
-        value: [ac.maxP, Math.round(costPerTonne)],
-        symbolSize: size,
-        itemStyle: {
-          color: ac.color,
-          borderColor: ac.isCurrent ? '#0f172a' : (ac.state === '已运营' ? 'rgba(255,255,255,.6)' : 'rgba(100,116,139,.4)'),
-          borderWidth: ac.isCurrent ? 3 : 1.5,
-          opacity: ac.state === '已运营' ? 1 : 0.75
-        },
-        label: {
-          show: true, position: 'right', distance: 8,
-          formatter: ac.name,
-          fontSize: 10.5,
-          color: '#0f172a',
-          fontWeight: ac.isCurrent ? 700 : 400
-        },
-        _meta: { maxP: ac.maxP, varHr: ac.varHr, state: ac.state, tripCost: tripCost }
-      };
-    });
-
-    calChart.setOption({
-      grid: { top: 30, right: 110, bottom: 55, left: 70 },
-      tooltip: { trigger: 'item', formatter: function(p){
-        var m = p.data._meta;
-        return '<b>' + p.data.name + '</b><br>' +
-               '状态: ' + m.state + '<br>' +
-               '最大载荷: ' + m.maxP.toLocaleString() + ' kg<br>' +
-               '小时成本: ' + m.varHr.toLocaleString() + ' 元/hr<br>' +
-               '每趟成本 (' + params.dist + ' km 满载): ' + Math.round(m.tripCost).toLocaleString() + ' 元<br>' +
-               '<b>每吨成本: ' + p.data.value[1].toLocaleString() + ' 元/吨</b>';
-      }},
-      xAxis: {
-        type: 'log', name: '最大载荷 (kg)', nameLocation: 'middle', nameGap: 30,
-        min: 300, max: 60000,
-        axisLabel: { fontSize: 10, formatter: function(v){
-          if (v >= 1000) return (v/1000) + 't';
-          return v + 'kg';
-        }}
-      },
-      yAxis: {
-        type: 'log', name: '满载每吨成本 (元/吨)', nameLocation: 'middle', nameGap: 50,
-        axisLabel: { fontSize: 10, formatter: function(v){
-          if (v >= 1000) return (v/1000) + 'k';
-          return v;
-        }}
-      },
-      series: [{
-        type: 'scatter', data: data,
-        animationDuration: 300,
-        animationDurationUpdate: 250,
-        labelLayout: { hideOverlap: true }
-      }],
-      graphic: [{
-        type: 'text', left: 10, top: 8,
-        style: { text: '当前飞行距离: ' + params.dist + ' km (满载计算)', fontSize: 11.5, fill: '#475569', fontWeight: 600 }
-      }]
-    });
+    // 合计行
+    var totalATR = calcTotal('atr', params);
+    var totalManned = calcTotal('manned', params);
+    var totalUAV = calcTotal('uav', params);
+    html += '<tr style="border-top:2px solid #cbd5e1; background:#f8fafc; font-weight:700">' +
+      '<td>小时变动成本合计 (元/hr)</td>' +
+      '<td style="text-align:right; color:#f97316">' + fmt(totalATR) + '</td>' +
+      '<td style="text-align:right; color:#dc2626">' + fmt(totalManned) + '</td>' +
+      '<td style="text-align:right; color:#16a34a">' + fmt(totalUAV) + '</td>' +
+      '<td style="color:#64748b; font-size:11.5px">UAV 比 Caravan 有人省 ' + Math.round((1-totalUAV/totalManned)*100) + '%; ATR 是 Caravan 的 ' + (totalATR/totalManned).toFixed(1) + ' 倍</td>' +
+    '</tr>';
+    // 起降费
+    html += '<tr style="background:#fef3c7">' +
+      '<td>每次起降费 (元/次)</td>' +
+      '<td style="text-align:right">' + fmt(CYCLE_FEE.atr) + '</td>' +
+      '<td style="text-align:right">' + fmt(CYCLE_FEE.manned) + '</td>' +
+      '<td style="text-align:right">' + fmt(CYCLE_FEE.uav) + '</td>' +
+      '<td style="color:#475569; font-size:11.5px">机场使用费按机型大小阶梯; UAV 在简易跑道, 无地面服务</td>' +
+    '</tr>';
+    // 每趟成本 (按当前距离)
+    var tripATR = totalATR * params.dist / SPECS.atr.speed + CYCLE_FEE.atr;
+    var tripManned = totalManned * params.dist / SPECS.manned.speed + CYCLE_FEE.manned;
+    var tripUAV = totalUAV * params.dist / SPECS.uav.speed + CYCLE_FEE.uav;
+    html += '<tr style="border-top:2px solid #f59e0b; background:#fffbeb; font-weight:700">' +
+      '<td>每趟成本 (' + params.dist + ' km, 元/趟)</td>' +
+      '<td style="text-align:right; color:#b45309">' + fmt(tripATR) + '</td>' +
+      '<td style="text-align:right; color:#b45309">' + fmt(tripManned) + '</td>' +
+      '<td style="text-align:right; color:#b45309">' + fmt(tripUAV) + '</td>' +
+      '<td style="color:#475569; font-size:11.5px">小时成本 × 距离 / 速度 + 起降费</td>' +
+    '</tr>';
+    // 满载每吨成本
+    html += '<tr style="background:#f0fdf4">' +
+      '<td>满载每吨成本 (元/吨)</td>' +
+      '<td style="text-align:right">' + fmt(tripATR / (SPECS.atr.payload/1000)) + '</td>' +
+      '<td style="text-align:right">' + fmt(tripManned / (SPECS.manned.payload/1000)) + '</td>' +
+      '<td style="text-align:right">' + fmt(tripUAV / (SPECS.uav.payload/1000)) + '</td>' +
+      '<td style="color:#475569; font-size:11.5px">每趟成本 / 最大载荷; ATR 5.5 t / Caravan 1.088 t / UAV 1.088 t</td>' +
+    '</tr>';
+    tbody.innerHTML = html;
   }
 
   function update() {
@@ -2761,21 +2713,14 @@ initC('chart-tonkm',{
     document.getElementById('cal-hr-val').textContent = p.annHr;
     document.getElementById('cal-fuel-val').textContent = p.fuelPrice.toFixed(1);
     document.getElementById('cal-pilot-val').textContent = p.pilotSalary;
-    // 飞行员工资滑块在无人机规模化模式下灰掉 (不影响)
-    var pilotRow = document.getElementById('cal-pilot');
-    if (pilotRow) {
-      pilotRow.style.opacity = (p.mode === 'uav-mature') ? 0.35 : 1;
-    }
-    renderRows(p);
-    renderChart(p);
+    renderTable(p);
   }
 
   function init() {
-    if (!document.getElementById('cal-dist')) return; // S6 未加载
-    ['cal-dist','cal-hr','cal-fuel','cal-pilot','cal-mode'].forEach(function(id){
+    if (!document.getElementById('cal-dist')) return;
+    ['cal-dist','cal-hr','cal-fuel','cal-pilot'].forEach(function(id){
       var el = document.getElementById(id);
       if (el) el.addEventListener('input', update);
-      if (el && el.tagName === 'SELECT') el.addEventListener('change', update);
     });
     update();
   }
