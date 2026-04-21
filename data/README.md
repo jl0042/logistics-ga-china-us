@@ -55,6 +55,7 @@
 | `s5_cargo_airlines_cn.csv` | 中国 7 家货运航司机队 2024 年底 + 2025 最新: 顺丰 88→90 / 中邮 35→37 / 圆通 13→14 / 三家合计 136 / 全产业约 200 架 | 9 |
 | `s5_feeder_us.csv` | 美国支线接驳生态: Ameriflight 125 / Empire 54 / Mountain Air Cargo 35 / Baron / CSA / Everts; FedEx 合同租赁 317 架 (231 Cessna 208B + 28 Cessna 408 SkyCourier + 58 ATR 42/72F); 全 Part 135 货运涡桨 ~480 架; 典型航线 MEM/ANC/EWR | 13 |
 | `s5_fleet_by_payload_cn.csv` | 中国全货机机队按载荷分层 (2025 年初): ≤1t/1-3t/3-8t 全部空白; 8-10t 层仅 2 架 C909F (圆通 2024/6 首次商业货运); 18-21t 737-300/400F ~31 架; 23t 737-800BCF ~46 架; 28-39t 757-200F ~55 架; 55-60t 767-300BCF ~25 架; 80+t 747-400F/777F ~25 架 | 9 |
+| `s5_fleet_by_payload_us.csv` | 美国全货机机队按载荷分层 (2024) 用于中美对比: ≤1t ~280 (FedEx Feeder 主力); 1-3t ~80 (Beech 1900 / Metroliner); 3-8t ~100 (ATR 42/72F / Cessna 408 / Saab 340F); 18-23t ~40 (Amazon 737-800BCF); 28-39t ~200 (757F FedEx+UPS); 55-60t ~310 (767F FedEx+UPS+Amazon); 60-100t ~130 (A300/A330F); 80+t ~235 (747/777/MD-11F). 合计 ~1,475 架 (中国 7 倍) | 10 |
 | `s5_comparison_analysis.md` | S5 完整 review: 鄂州 245/102/86.5 三个数字口径澄清 + sec-title/sec-sub/thesis 三件套重写 (干线 hub 追上来/专用 hub 差代际/通航段空白) + 单发活塞 45%→60% 修正 + "涡桨跑物流"同口径改写 + chart scale 统一 400 | (markdown) |
 
 ### Section 6 — 运营成本推导

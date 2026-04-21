@@ -1,0 +1,11 @@
+payload_tier_tonnes,representative_aircraft,us_cargo_fleet_count,main_operators,year,source_org,source_url,notes
+<=1,Cessna 208B / Caravan 级,~280,FedEx Feeder 合同商 (Ameriflight 125 / Empire / Mountain Air Cargo / Baron / CSA / Everts),2024,FedEx Feeder + Part 135 运营商公开机队,https://en.wikipedia.org/wiki/FedEx_Feeder,"FedEx 长期租赁 317 架支线机 (231 Cessna 208B + 28 Cessna 408 + 58 ATR 42/72F); 231 Cessna 208B 在此层"
+1-3,Beech 1900 / Metroliner,~80,Ameriflight / Alpine Air / 其他 Part 135,2024,Part 135 货运运营商公开机队,,"Beech 1900 约 40-55 架; Metroliner SA227 约 30-35 架"
+3-8,Cessna 408 SkyCourier / ATR 42/72F / Saab 340F,~100,FedEx Feeder (Empire 54 / Mountain Air Cargo 35 / West Air Sweden) / Air Cargo Carriers,2024,FedEx Feeder 合同运营商,https://en.wikipedia.org/wiki/FedEx_Feeder,"FedEx Feeder: 28 Cessna 408 + 58 ATR 42/72F = 86; 另加 Saab 340F / 其他 ~15"
+8-10,Dash 8 / Saab 340F 大型支线,少量 (<30),Air Cargo Carriers / FreightRunners 等,2024,行业估算,,"此层美国也罕见, Saab 340F 主要是 FedEx Feeder 备用"
+18-23,737 Classic / 737-800F,~40,Amazon Air 30 × 737-800BCF (ASL / Sun Country / Atlas 运营) + Cargojet 少量,2024,Amazon Air 2024-2025 公开披露,https://en.wikipedia.org/wiki/Amazon_Air,"美国 737 货运比中国少, 因为美国更倾向 757/767 宽体"
+28-39,757-200F,~200,FedEx 92 + UPS 75 + Atlas/DHL 若干,2024,FedEx 2024/5 + UPS 2024,https://simpleflying.com/fedex-modernizing-fleet/,"中美窄体骨干 — 美国 4 倍中国规模"
+55-60,767-300F,~310,FedEx 138 + UPS 84 + Amazon 60 + Atlas 30,2024,FedEx + UPS + Amazon 2024 fleet data,https://simpleflying.com/fedex-modernizing-fleet/,"中美宽体差距最大层 — 美国 12 倍中国"
+60-100,A300F / A310F / A330F,~130,FedEx 65 × A300 + UPS 52 × A300 + Amazon ~10 × A330F,2024,FedEx 2024/5 + UPS 2024 + Amazon 2024,https://simpleflying.com/fedex-modernizing-fleet/,"中国完全空白 — 没有一架 A300/A330 货机"
+80+,747F / 777F / MD-11F,~235,FedEx 57 × 777 + 37 × MD-11 / UPS 41 × 747 + 40 × MD-11 / Atlas 40 × 747-777 / Polar 20,2024,FedEx + UPS + Atlas Air 2024 fleet,https://en.wikipedia.org/wiki/FedEx_Express,"UPS 全球最大 747-8F 运营商 (30 架); MD-11 计划 2025 年底退役"
+合计,,~1475,,,,,"不含 FedEx Feeder 中 ≤1 吨那 231 架 Cessna 208B 已计入首行"
