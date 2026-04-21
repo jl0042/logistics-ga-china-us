@@ -764,7 +764,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- CARAVAN COST CALCULATOR (interactive) -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #f59e0b">
       <div class="chart-title">Caravan 飞行成本计算器 — 调参数, 实时看有人机 vs 无人机的拆解和对比</div>
-      <div class="chart-desc">下面的滑块控制四个常见变量 (飞行距离 / 年飞行小时 / 燃油价 / 飞行员工资), 下拉框切换机型。左侧七项成本拆解随参数实时重算, 右图展示 3 种机型在 200-2,000 km 距离区间的每趟成本曲线。默认参数下有人机复现主表 5,028 元/hr, 无人机复现 3,224 元/hr。</div>
+      <div class="chart-desc">下面的滑块控制四个常见变量 (飞行距离 / 年飞行小时 / 燃油价 / 飞行员工资), 下拉框切换 Caravan 机型。左侧是 Caravan 当前参数下的七项成本拆解 (实时重算); 右图是主表全部机型在当前飞行距离下的满载每吨成本散点分布, 横轴最大载荷对数刻度, 点大小也反映最大载荷。默认参数下 Caravan 有人机复现主表 5,028 元/hr, 无人机规模化复现 3,224 元/hr。</div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; padding:14px 16px; margin-top:12px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0">
         <div>
@@ -805,7 +805,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </div>
         <div>
           <div id="cal-chart" class="chart-box" style="height:440px"></div>
-          <div class="source" style="margin-top:8px">横轴飞行距离, 纵轴每趟成本。三条线即三种机型, 黑色虚线标出滑块选中的当前距离。滑动任何参数, 三条曲线全部实时重算。</div>
+          <div class="source" style="margin-top:8px">X 轴: 最大载荷 (log 刻度, 从 TP500 的 500 kg 到 757F 的 39 t); Y 轴: 当前距离下满载每吨成本 (log 刻度); 点大小: 最大载荷; 黑色粗边框 = 当前下拉框选中的 Caravan 模式。滑动飞行距离, 每个点的 y 位置实时重算 — 短距离大飞机也贵 (起降费摊薄少), 长距离小飞机才真正劣势显现。</div>
         </div>
       </div>
     </div>
@@ -815,7 +815,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <li><b>固定成本分摊机制</b>: 保险和折旧是按年发生的, 年飞行小时越多, 每小时分摊越低。年飞 800 hr 的有人机折旧 1,212 元/hr, 年飞 1,500 hr 只需 647 元/hr — 把滑块往右拉, 有人机和无人机的差距会显著缩小</li>
         <li><b>三个未来假设</b>: "规模化"模式假设 1 人管 3-5 架无人机、混动量产、保险按规模价; 现行法规和首批市场都不支持, 所以"首批工况"模式加上保险 1.75 倍、责任机长 1 比 1、无混动。选下拉框看差异 — 规模化省 1,800 元/hr, 首批只省约 1,100 元/hr</li>
         <li><b>无人化真正的优势不是单小时便宜, 是不睡觉</b>: 有人机飞到 1,000 hr/年就撞飞行员疲劳线; 无人机 1,500 hr/年没问题。这个差距在年总成本一栏里最明显, 把飞行小时滑块推到 1,200 以上就能看到无人机规模化模式的年成本反而下降, 有人机反而上升 (因为飞行员加班费)</li>
-        <li><b>怎么读右图</b>: 曲线斜率 = 小时成本 / 324 (每公里多少钱), 截距 = 起降费 (一次起降成本)。无人机起降费低 (350 元/次), 所以短距离优势特别大。有人机的斜率也比无人机陡, 所以长距离也省。两种机型在所有距离上无人机都便宜, 但最短距离 (≤500 km) 绝对金额差最小</li>
+        <li><b>怎么读右图</b>: 每个点是一架飞机在当前距离下满载的每吨成本。沿 X 轴从左 (小飞机) 往右 (大飞机) 看, 每吨成本大概率下降 — 这就是"大飞机摊薄人工/起降费/固定成本"的直观证据。Caravan 级 (有人/无人) 是 X 轴最左边的一簇; W5000 / C909F / 757F 是右下角低成本区。滑距离到 2,000 km, 小飞机 (TP500 / Caravan) 每吨成本飙升得最快 — 这就是 S7 里"Caravan 只适合短距离支线"的数学根据</li>
       </ul>
     </div>
   </div>
@@ -2654,80 +2654,104 @@ initC('chart-tonkm',{
 
   var calChart = null;
 
-  // 渲染右侧散点线图 (三条线 + 当前距离垂直标记)
+  // 其他机型 (非 Caravan) 的静态参数, 全部取自 S6 主表
+  var STATIC_AIRCRAFT = [
+    {name:'TP500 (壹通)',      varHr:900,  fix:200,  maxP:500,   speed:260, color:'#06b6d4', state:'取证中'},
+    {name:'HH-200 (中航)',      varHr:6000, fix:500,  maxP:1500,  speed:320, color:'#9333ea', state:'取证中'},
+    {name:'Y-12F',              varHr:9000, fix:800,  maxP:1700,  speed:328, color:'#ea580c', state:'已运营'},
+    {name:'CY-8 (长鹰)',        varHr:11000,fix:1200, maxP:3500,  speed:380, color:'#db2777', state:'研制中'},
+    {name:'W5000 (白鲸)',       varHr:11000,fix:2000, maxP:5000,  speed:526, color:'#10b981', state:'取证中'},
+    {name:'ATR 42-600F',        varHr:14500,fix:3000, maxP:5500,  speed:480, color:'#f97316', state:'已运营'},
+    {name:'C909F (ARJ21F)',     varHr:26000,fix:3500, maxP:10000, speed:825, color:'#8b5cf6', state:'已运营'},
+    {name:'Boeing 737-800BCF',  varHr:35800,fix:4500, maxP:23900, speed:833, color:'#7c3aed', state:'已运营'},
+    {name:'Boeing 757-200F',    varHr:45900,fix:5500, maxP:39000, speed:850, color:'#0891b2', state:'已运营'}
+  ];
+
+  // 渲染跨机型每吨成本散点图: X=最大载荷 (log), Y=当前距离下每吨成本 (log), 点大小=最大载荷
   function renderChart(params) {
     if (!calChart) {
       var dom = document.getElementById('cal-chart');
       if (!dom || !window.echarts) return;
       calChart = window.echarts.init(dom);
     }
-    var distances = [];
-    for (var d = 200; d <= 2000; d += 100) distances.push(d);
-    var series = [];
-    ['manned', 'uav-mature', 'uav-firstbatch'].forEach(function(m){
-      var lineData = distances.map(function(d){
-        var p2 = Object.assign({}, params, { mode: m, dist: d });
-        return Math.round(calcCost(p2).tripCost);
-      });
-      series.push({
-        name: modeLabels[m],
-        type: 'line',
-        data: lineData,
-        smooth: true,
-        symbol: 'none',
-        lineStyle: { color: modeColors[m], width: params.mode === m ? 3.5 : 1.8 },
-        itemStyle: { color: modeColors[m] },
-        z: params.mode === m ? 5 : 2
-      });
+
+    // 构建 Caravan 三种模式 (varHr/fix 随 slider 实时算)
+    var caravanVariants = ['manned','uav-mature','uav-firstbatch'].map(function(m){
+      var p2 = Object.assign({}, params, {mode: m});
+      var r = calcCost(p2);
+      return {
+        name: 'Caravan ' + (m==='manned' ? '有人' : m==='uav-mature' ? '无人 (规模化)' : '无人 (首批)'),
+        varHr: r.total, fix: r.cycleFee, maxP: 1088, speed: 324,
+        color: modeColors[m], state: m==='manned' ? '已运营' : '改装中',
+        isCurrent: m === params.mode
+      };
     });
+
+    var allAC = caravanVariants.concat(STATIC_AIRCRAFT);
+
+    // 每吨成本 = (小时成本 × 距离/速度 + 起降费) / 载荷 (吨)
+    var data = allAC.map(function(ac){
+      var tripCost = ac.varHr * params.dist / ac.speed + ac.fix;
+      var costPerTonne = tripCost / (ac.maxP / 1000);
+      // 点大小: 按载荷对数映射到 12-55 像素
+      var size = Math.max(12, Math.min(55, 12 + Math.log10(ac.maxP) * 10));
+      return {
+        name: ac.name,
+        value: [ac.maxP, Math.round(costPerTonne)],
+        symbolSize: size,
+        itemStyle: {
+          color: ac.color,
+          borderColor: ac.isCurrent ? '#0f172a' : (ac.state === '已运营' ? 'rgba(255,255,255,.6)' : 'rgba(100,116,139,.4)'),
+          borderWidth: ac.isCurrent ? 3 : 1.5,
+          opacity: ac.state === '已运营' ? 1 : 0.75
+        },
+        label: {
+          show: true, position: 'right', distance: 8,
+          formatter: ac.name,
+          fontSize: 10.5,
+          color: '#0f172a',
+          fontWeight: ac.isCurrent ? 700 : 400
+        },
+        _meta: { maxP: ac.maxP, varHr: ac.varHr, state: ac.state, tripCost: tripCost }
+      };
+    });
+
     calChart.setOption({
-      grid: { top: 40, right: 30, bottom: 60, left: 70 },
-      tooltip: { trigger: 'axis', formatter: function(ps){
-        var dist = ps[0].axisValue;
-        var lines = ps.map(function(p){ return p.marker + ' ' + p.seriesName + ': ' + p.value.toLocaleString() + ' 元'; });
-        return '距离 ' + dist + ' km<br>' + lines.join('<br>');
+      grid: { top: 30, right: 110, bottom: 55, left: 70 },
+      tooltip: { trigger: 'item', formatter: function(p){
+        var m = p.data._meta;
+        return '<b>' + p.data.name + '</b><br>' +
+               '状态: ' + m.state + '<br>' +
+               '最大载荷: ' + m.maxP.toLocaleString() + ' kg<br>' +
+               '小时成本: ' + m.varHr.toLocaleString() + ' 元/hr<br>' +
+               '每趟成本 (' + params.dist + ' km 满载): ' + Math.round(m.tripCost).toLocaleString() + ' 元<br>' +
+               '<b>每吨成本: ' + p.data.value[1].toLocaleString() + ' 元/吨</b>';
       }},
-      legend: {
-        data: [modeLabels.manned, modeLabels['uav-mature'], modeLabels['uav-firstbatch']],
-        top: 0, textStyle: { fontSize: 11.5 }
-      },
       xAxis: {
-        type: 'category', data: distances,
-        name: '距离 (km)', nameLocation: 'middle', nameGap: 30,
-        axisLabel: { fontSize: 10 }
+        type: 'log', name: '最大载荷 (kg)', nameLocation: 'middle', nameGap: 30,
+        min: 300, max: 60000,
+        axisLabel: { fontSize: 10, formatter: function(v){
+          if (v >= 1000) return (v/1000) + 't';
+          return v + 'kg';
+        }}
       },
       yAxis: {
-        type: 'value', name: '每趟成本 (元)', nameLocation: 'middle', nameGap: 50,
-        axisLabel: { fontSize: 10, formatter: function(v){ return (v/1000) + 'k'; } }
+        type: 'log', name: '满载每吨成本 (元/吨)', nameLocation: 'middle', nameGap: 50,
+        axisLabel: { fontSize: 10, formatter: function(v){
+          if (v >= 1000) return (v/1000) + 'k';
+          return v;
+        }}
       },
-      series: series,
+      series: [{
+        type: 'scatter', data: data,
+        animationDuration: 300,
+        animationDurationUpdate: 250,
+        labelLayout: { hideOverlap: true }
+      }],
       graphic: [{
-        type: 'group',
-        left: 'center', top: 'middle',
-        invisible: true
+        type: 'text', left: 10, top: 8,
+        style: { text: '当前飞行距离: ' + params.dist + ' km (满载计算)', fontSize: 11.5, fill: '#475569', fontWeight: 600 }
       }]
-    });
-    // 在当前距离画 vertical 虚线
-    var xIdx = distances.indexOf(params.dist);
-    if (xIdx < 0) {
-      // 找最接近的
-      xIdx = Math.round((params.dist - 200) / 100);
-      xIdx = Math.max(0, Math.min(distances.length - 1, xIdx));
-    }
-    calChart.setOption({
-      series: series.map(function(s, i){
-        if (i === 0) {
-          return Object.assign({}, s, {
-            markLine: {
-              symbol: 'none',
-              lineStyle: { type: 'dashed', color: '#475569', width: 1.5 },
-              label: { formatter: params.dist + ' km', color: '#475569', fontSize: 11, position: 'end' },
-              data: [{ xAxis: xIdx }]
-            }
-          });
-        }
-        return s;
-      })
     });
   }
 
