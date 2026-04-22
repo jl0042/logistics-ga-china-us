@@ -1275,51 +1275,17 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s7b" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">07b -- 机型主导</div>
-    <div class="sec-title fade-in">在（载荷，距离）平面上，谁最便宜？</div>
-    <div class="sec-sub fade-in">用 S6 主表的数据，把 9 款机型放到同一个（载荷，距离）平面上算单位成本。每格写出最便宜的机型。你会发现 Caravan 已经在这张图上看不到了。</div>
+    <div class="sec-title fade-in">把 S7a 的数据摊到平面上 — 谁主导哪一格, 哪些设计空间还是白的?</div>
+    <div class="sec-sub fade-in">S7a 算清了每款机型每个场景的不亏本价, 这一节用 3 张图把同一份数据可视化: ① 机型主导图 (业载×距离每格最便宜机型) + ② 盈利可行域 (给定运价看哪些格子能赚) + ③ Pareto 前沿 (速度×业载找设计白空间)。机型成本数据来自 <a href="#s7" style="color:var(--primary)">S7a 机型成本主表</a>, 默认"运营初期"口径, 可切换到"正常运营"。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">Caravan 在最便宜机型对比图上已经看不到。5 吨的 W5000 在中国市场能压倒 ATR42，但前提是它的 PR 数据成立。</div>
+      <div class="thesis-line">主导图上 Caravan 完全消失, W5000 / C909F 瓜分中型, 干线段 737BCF / 757F 锁死; Pareto 前沿在通航中型 UAV 区 (350-500 km/h × 1.5-3.5 t) 留下一块设计白空间, 等待国产更高效率涡轴 + 更轻机体填补。</div>
       <ul class="thesis-evidence">
-        <li>主导图：Caravan / Caravan UAV 已无最优格子，被 HH-200（1.5t）和 W5000（5t）双向夹击</li>
-        <li>跨 9 机型一致口径单位成本表：W5000 PR 工况下吨km 2.5 元，ATR42 5.9 元</li>
-        <li>W5000 PR 与工况推测差 1.5-2 倍 — 这是本节最大的留白，商业化首批是关键验证</li>
+        <li>主导图: 10 机型 (加 C909F), Caravan 系列从全局消失; W5000 占 3-5t 中长距, 737BCF 干线 24t, 757F 超长 4000km+</li>
+        <li>盈利可行域: 8 元/kg 电商时敏价位下, 只 W5000 长距 + 干线机能赚, "普通货物 <2 元" 全红</li>
+        <li>Pareto: 通航中型 UAV (350-500 km/h × 1.5-3.5 t) 是白空间, 需要 varHr 降到 ¥5,500-6,000 才能占住</li>
       </ul>
-    </div>
-
-    <!-- Multi-aircraft interactive breakeven -->
-    <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">多机型成本对比：距离 × 业载 → 单位成本（含 737/757 干线货机）</div>
-      <div class="chart-desc">非线性模型：<b>每飞行成本 = 固定起降费 + 时间成本率 × 飞行时间</b> → 短途起降费占比高，大飞机不一定便宜。拖动滑块从 200kg 一直调到 39t，观察小型 UAV（TP500/HH-200/CY-8/W5000）与干线喷气（737BCF/757F）何时切换主导地位</div>
-      <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
-        <label style="font-weight:600;font-size:14px">货运需求:
-          <span id="payload-val" style="color:var(--primary);font-size:18px;font-weight:800">1,088</span> kg
-        </label>
-        <input type="range" min="200" max="40000" step="100" value="1088" id="payload-slider" oninput="updateBreakeven(this.value)" style="flex:1;min-width:200px;cursor:pointer">
-        <div style="font-size:12px;color:var(--text2)">200kg — 40,000kg (含737/757干线货机)</div>
-      </div>
-      <div id="ac-status" style="font-size:13px;margin-bottom:8px;color:#64748b"></div>
-      <div id="chart-breakeven" class="chart-box" style="height:500px"></div>
-      <div class="econ-explain" style="margin-top:8px;padding:14px 18px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px">
-        <span class="insight-title" style="color:#92400e">成本模型说明</span>
-        <ul class="insight-rules" style="font-size:13px;color:#64748b">
-          <li><b>每飞成本</b> = 固定起降费（与距离无关）+ 时间成本率 × 距离 ÷ 速度（与距离成正比）。<b>单位成本</b>（元/kg）= 每飞成本 ÷ 货运需求量。当需求超过机型最大业载时，该机型不显示 — 无法单次承运。</li>
-          <li><b>载荷-航程权衡（Payload-Range Tradeoff）</b>：MTOW = 空重 + 燃油 + 业载。多装 1 kg 货 → 少装 1 kg 油 → 航程缩短。每条线的截止点随滑块变化：载荷越轻，可用航程越长。例如 W5000：满载 5 吨 → 2,600 km；装 1 吨 → ~3,600 km；空载转场 → ~3,800 km。</li>
-          <li><b>为什么曲线不是直线？</b>固定起降费在短途占比很高、长途被摊薄。W5000 起降费 ~2,000 元 → 100 km 航线上，起降费占总成本 60%；2,000 km 航线上仅占 8%。</li>
-          <li><b>为什么大飞机短途不一定便宜？</b>737BCF 起降费（4,500 元）是 Caravan UAV（350 元）的 13 倍，但只装 500 kg 时无法分摊。同样，W5000 起降费（2,000 元）是 Caravan（600 元）的 3.3 倍，只装 500 kg 时也分摊不掉。</li>
-        </ul>
-
-        <span class="insight-title" style="color:#92400e;margin-top:14px">切换规律（注意是硬切换，非平滑交叉）</span>
-        <ul class="insight-rules" style="font-size:13px;color:#64748b">
-          <li><b>① W5000 ↔ Caravan UAV 在 ~635 km 交叉</b>：W5000 时间成本率 ¥11.6/km vs Caravan UAV ¥14.2/km；W5000 多出 ¥1,650 起降费 → 分界点 1,650/2.6 ≈ 635 km。短于此距离，Caravan UAV 更优。</li>
-          <li><b>② W5000 在 5,000 kg 处硬切到 ATR42 / 737BCF</b>：这不是经济性交叉，而是 W5000 物理业载上限。<strong>5,000-5,500 kg 区间唯一选择是 ATR 42</strong>（单位成本 ~5.9 元/吨 km），<strong>5,500-23,900 kg 区间则跳到 737-800BCF</strong>（干线喷气，但需装满才能压低单位成本）。</li>
-          <li><b>③ 737BCF ↔ 757F 在 ~3,750 km 距离 / 23.9 t 载荷处硬切换</b>：在 737BCF 可达范围内（≤3,750 km × ≤23.9 t），757F 单位成本始终高于 737BCF。<strong>757F 仅在距离 &gt; 3,750 km（中亚/欧洲国际）或载荷 &gt; 23.9 t 时才启用</strong>。</li>
-          <li><b>④ "载荷越大越便宜"在通航段不一定成立</b>：例如 1,500 kg 货 + 800 km 航线，HH-200 单趟 ¥12,550 = ¥10.5/kg，比 W5000（¥11,275/趟，但要装满 5 t 才能摊到 ¥2.3/kg）在小货量上反而更优 — 关键是<strong>需求量是否能撑满更大机型的腹舱</strong>。</li>
-        </ul>
-        <p style="margin-top:10px;font-size:13px;color:#64748b"><b>参考线</b>：生鲜溢价 12 元/kg = 40 元/kg 货值 × 3%/hr 损耗 × 10 hr 时效差；电商溢价 8 元/kg = 次日达 vs 标准快递价差。</p>
-      </div>
-      <div class="source">机型成本数据 (varHr 元/hr): Caravan 5,028 / Caravan UAV 3,224 (规模化, 首批 3,750) / TP500 650 (厂商目标, 首批 900) / HH-200 4,820 (拆解, 首批 6,000) / CY-8 8,530 (拆解, 首批 10,750) / W5000 6,100 (PR, 首批 10,500) / ATR42 14,500 (国际, 中国首批 19,500) / 737-800BCF 35,800 / 757-200F 45,900。本主导图当前用厂商目标/拆解值, 跟 S7a 主表的"首批运营"列存在差异 — 在 S7b review 时会切换到首批运营。详细拆解见 <a href="#s7" style="color:var(--primary)">S7a 机型成本主表</a>。公路: 满帮2024 (0.5元/吨km)。</div>
     </div>
 
     <!-- =========================== -->
@@ -1328,8 +1294,12 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- Chart 1: Aircraft Dominance Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">① 机型主导图：（业载 × 距离）平面上，谁最便宜？</div>
-      <div class="chart-desc">每格颜色=该（业载，距离）组合下<b>单位成本最低的机型</b>，数字=最低成本（元/kg）。计算考虑了载荷-航程权衡。<b>红色pin</b>=典型实际航线</div>
+      <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
+      <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。计算考虑载荷-航程权衡。<b>红色 pin</b> = 典型实际航线。成本口径 toggle: <b>运营初期</b> (首批 2-3 年, 跟 S7a 主表小时合计同) vs <b>正常运营</b> (规模化稳态, 厂商目标/国际基准)。</div>
+      <div class="toggle-group" style="margin:10px 0">
+        <button class="toggle-btn active" data-mode="initial" onclick="s7bSetMode('initial')">运营初期</button>
+        <button class="toggle-btn" data-mode="normal" onclick="s7bSetMode('normal')">正常运营</button>
+      </div>
       <div id="chart-dominance" class="chart-box" style="height:500px"></div>
       <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;font-size:12px">
         <span><span style="display:inline-block;width:14px;height:14px;background:#06b6d4;vertical-align:middle;margin-right:4px"></span>TP500(壹通)</span>
@@ -1339,67 +1309,62 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <span><span style="display:inline-block;width:14px;height:14px;background:#db2777;vertical-align:middle;margin-right:4px"></span>长鹰-8(CY-8)</span>
         <span><span style="display:inline-block;width:14px;height:14px;background:#10b981;vertical-align:middle;margin-right:4px"></span>W5000(白鲸)</span>
         <span><span style="display:inline-block;width:14px;height:14px;background:#f97316;vertical-align:middle;margin-right:4px"></span>ATR42-600F</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:#eab308;vertical-align:middle;margin-right:4px"></span>C909F(圆通)</span>
         <span><span style="display:inline-block;width:14px;height:14px;background:#7c3aed;vertical-align:middle;margin-right:4px"></span>737-800BCF</span>
         <span><span style="display:inline-block;width:14px;height:14px;background:#0891b2;vertical-align:middle;margin-right:4px"></span>757-200F</span>
         <span><span style="display:inline-block;width:14px;height:14px;background:#e5e7eb;vertical-align:middle;margin-right:4px"></span>无机型可服务</span>
       </div>
       <div class="insight" style="margin-top:12px">
-        <b>主导图核心 insight（覆盖通航 + 干线货运全谱）：</b>
-        <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>TP500 守住"小货短途"角落</strong>：业载≤500kg + 距离≤500km，单位成本 ~2-3元/kg，是 last-mile / 高原小货的唯一选择</li>
-          <li><strong>HH-200 vs Caravan 级 UAV 对比 (待 S6/S7 review 重审)</strong>：同样 1-1.5 吨级，HH-200 (320 km/h, payload fraction 45%) 跟 Caravan (修正后 324 km/h, PF 30%) 速度其实持平，HH-200 优势主要来自更大业载 (1.5 vs 1 吨)；之前网页假设 Caravan 速度 227 km/h 算出 HH-200 速度 +41% 优势，是错的。修正后 Caravan 14.7 元/吨km vs HH-200 10.4，HH-200 仍单位成本低 ~30%，主要来自业载差。"原生货运设计 vs Caravan 改装" 论点需在 S6/S7 完整 review 时基于 verified 速度重新评估</li>
-          <li><strong>CY-8 几乎抢不到格子</strong>：第一性原理算下来 varHr ¥8,530/hr（双发1,100hp涡桨+折旧），每吨小时成本 ¥2.44 — 而 W5000 仅 ¥1.22，是 CY-8 的一半。<strong>除非 CY-8 折旧或燃油效率显著优化，否则在（业载，距离）平面上长期被 W5000 压制</strong></li>
-          <li><strong>W5000 是通航中长途主导者</strong>：占据 5 吨级所有中长途格子 — "大就是经济"在航空货运成立，但前提是<strong>装满</strong></li>
-          <li><strong>737-800BCF 主宰干线（8-25t × 1,000-4,000km）</strong>：单位成本 ~1.5-2.5元/kg（满载），比 W5000 还低 → 这是为什么顺丰/京东/中邮的主力是 737BCF，而不是新建 W5000 干线机队</li>
-          <li><strong>757-200F 锁定超长航 + 重载（39t × 4,000-5,500km）</strong>：中亚/欧洲国际段几乎无对手，单位成本可压到 ~1.6元/kg</li>
-          <li><strong>ATR42 被夹在中间</strong>：速度不如喷气、载荷不如 W5000、UAV 化无路径 → <strong>老式有人涡桨货机面临淘汰</strong></li>
-          <li><strong>Caravan 有人/无人 双双从主导图消失</strong>：改装路线在通航段输给原生 UAV（HH-200），在干线段输给规模化喷气（737BCF）→ 中国市场需要的是<strong>新设计</strong>，不是改装</li>
-        </ol>
-        <div style="margin-top:10px;padding:8px 12px;background:#fef3c7;border-left:3px solid #f59e0b;border-radius:3px;font-size:12px;line-height:1.6">
-          <strong style="color:#b45309">⚠ 关键不确定性：</strong>HH-200 和 CY-8 的运营成本<strong>均未公开披露</strong>，本图采用第一性原理拆解（详见上方"成本组件明细"表）。CY-8 的成本对燃油+发动机储备非常敏感 — 若实际 varHr 能压到 ¥6,000/hr（例如采用更高效的国产涡桨 + 摊薄折旧），CY-8 在 2,000-3,500kg × 1,000-2,500km 的格子上会反超 W5000。<strong>这意味着 CY-8 的商业可行性高度依赖国产涡桨能否实现 <span class="tip" data-t="Specific Fuel Consumption 耗油率">SFC</span> ≤ 0.45 lb/shp/hr 的水平</strong>。
-        </div>
+        <span class="insight-title">主导图的 4 件事</span>
+        <ul class="insight-rules">
+          <li><b>Caravan 系列从全局消失</b>: 有人版被 UAV 压制, Caravan UAV 又被更大业载的 HH-200 / CY-8 压制, 干线段被 737BCF / 757F / C909F 压制 — 改装路线在国内输给原生设计</li>
+          <li><b>中型段 (3-5t × 1,500-2,500 km) 是 W5000 的领地</b>: 速度 + 规模双优势, 成本只靠装满才能兑现。CY-8 在这一段被 W5000 压制, 除非国产涡桨效率大幅降本</li>
+          <li><b>C909F 新占 6-10t × 1,000-3,700 km 格子</b> (圆通 2 架 2024.6 首飞): 喷气支线速度 825 km/h + 载荷 9t, 在这一格压倒 737BCF (载荷过剩) 和 W5000 (载荷不够)</li>
+          <li><b>干线 (24t+ × 1,500-5,500 km) 是 737BCF / 757F 的锁定领地</b>: 吨公里成本 1.4-1.8 元 (满载), 但仅在 4D/4E 机场两端适用 (S7a 跑道约束块); 想到县级末端必须换小机型</li>
+        </ul>
+        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>切换 toggle 观察</b>: "运营初期 → 正常运营" 切换时, W5000 / CY-8 / HH-200 等取证中机型的领地会扩大 ~20-40% (因为成本降到厂商目标值); 干线机 / Caravan 有人的格子基本不变 (已大规模运营)。</p>
       </div>
     </div>
 
     <!-- Chart 2: Profitability/Margin Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">② 盈利可行域：在不同运价下，哪些路线能赚钱？</div>
-      <div class="chart-desc">用每格的<b>最优机型成本</b>对比目标运价。<span style="color:#16a34a">绿=有利润</span> · <span style="color:#ef4444">红=亏损</span> · 灰=无机型可服务。拖动滑块切换市场段</div>
+      <div class="chart-title">② 盈利可行域: 给定运价下, 哪些 (业载, 距离) 格子能赚?</div>
+      <div class="chart-desc">每格颜色 = 最优机型成本 vs 目标运价的差 (毛利, 元/kg)。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。成本口径跟 Chart ① 同步, 用上方 toggle 切换运营初期/正常运营。</div>
       <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
         <label style="font-weight:600;font-size:14px">目标运价:
           <span id="margin-price-val" style="color:var(--primary);font-size:18px;font-weight:800">8</span> 元/kg
         </label>
         <input type="range" min="3" max="30" step="1" value="8" id="margin-price-slider" oninput="updateMargin(this.value)" style="flex:1;min-width:200px;cursor:pointer">
-        <div style="font-size:12px;color:var(--text2)">3=一般快递 · 8=电商时敏 · 12=生鲜 · 20=高价生鲜 · 25-30=医疗</div>
+        <div style="font-size:12px;color:var(--text2)">&lt;2 普通货 (航空不该抢) · 3-8 标准时敏 · 8-20 电商 / 生鲜 · 20-50 高价生鲜 / 玉石 · 50+ 医疗急件</div>
       </div>
       <div id="margin-status" style="font-size:13px;margin-bottom:8px;color:#64748b"></div>
       <div id="chart-margin" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
-        <b>关键发现：</b>
-        <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>3-5元/kg（一般快递）</strong>：几乎全红 → <strong>航空不该跟卡车抢一般货物</strong>，公路永远更便宜</li>
-          <li><strong>8元/kg（电商时敏）</strong>：仅 W5000 长途 + 大载领域有利润 → <strong>规模化 UAV 才能切入大众市场</strong></li>
-          <li><strong>12元/kg（生鲜冷链）</strong>：可行域显著扩大，Caravan UAV 等中型机也能进入</li>
-          <li><strong>25元/kg（医疗急件）</strong>：几乎全可行 → 但市场规模小，难以支撑大舰队 → 只能作为补充</li>
-        </ol>
+        <span class="insight-title">盈利域的 4 件事</span>
+        <ul class="insight-rules">
+          <li><b>&lt; 2 元/kg 普通货物</b>: 全红, 任何机型都亏本 — <b>航空不能跟公路抢普通货</b> (公路 0.5-0.7 元/吨km, 航空最低 1.4-1.8)</li>
+          <li><b>3-8 元/kg 标准时敏快递</b>: 只有干线机 (757F / 737BCF / C909F) + W5000 长距能盈利 — <b>覆盖市场大头, 但只有 4 款机型能进</b></li>
+          <li><b>8-20 元/kg 电商 + 生鲜</b>: 可行域显著扩大, 中型 UAV (CY-8 / HH-200) 也能进入; W5000 全谱盈利</li>
+          <li><b>20+ 元/kg 医疗急件 / 玉石</b>: 几乎全绿, 但市场规模小, 难以支撑日班 — 只能作为补充业务, 不是主力</li>
+        </ul>
+        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>参考线</b>: 生鲜溢价 ~12 元/kg = 货值 40 元/kg × 3%/hr 损耗 × 10 hr 时效差; 电商溢价 ~8 元/kg = 次日达 vs 标准快递价差。</p>
       </div>
     </div>
 
     <!-- Chart 3: Pareto Frontier -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">③ Pareto前沿：飞机设计空间的白点</div>
-      <div class="chart-desc">每个机型在（速度 × 业载）平面的位置，气泡大小 ∝ 1/吨公里成本（越大=越经济）。<span style="color:#2563eb"><b>蓝色虚线</b></span>=Pareto前沿（在（速度，成本）空间未被任何机型压制的设计）。<span style="color:#16a34a"><b>绿色矩形</b></span>=设计白空间</div>
+      <div class="chart-title">③ Pareto 前沿: 飞机设计空间的白点</div>
+      <div class="chart-desc">每个机型在 (速度 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本 (越大 = 越经济)。<span style="color:#2563eb"><b>蓝色虚线</b></span> = Pareto 前沿 (没有机型同时在速度和载荷上都压过它)。<span style="color:#16a34a"><b>绿色矩形</b></span> = 设计白空间。本图基于<b>运营初期</b>数据 (跟 S7a 主表一致); 正常运营口径下 W5000/CY-8 成本会降 ~40%, 但 Pareto 结构不变。</div>
       <div id="chart-pareto" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
-        <b>Pareto 分析（基于第一性原理重新拆解后的成本）：</b>
-        <ol style="margin:8px 0 0 22px;padding:0">
-          <li><strong>W5000（5吨/526km/h，2.47元/吨km）</strong>：在（速度↑，成本↓）平面唯一处于 Pareto 前沿的中型机。速度+规模双优势让吨公里成本压到 ¥2.47，比 CY-8（¥6.53）低 62%</li>
-          <li><strong>CY-8（3.5吨/380km/h，6.53元/吨km）</strong>：落在通航中型 UAV 设计区正中，但成本反而比 W5000 高一倍 — 双发 1,100hp 涡桨的燃油+发动机储备 ¥4,180/hr 是主因。<strong>除非将 CY-8 推向更大载荷或更高速度，否则 W5000 是更优选择</strong></li>
-          <li><strong>HH-200（1.5吨/320km/h，10.38元/吨km）</strong>：位于设计区下沿，在（速度↑，载荷↑）平面上被 CY-8 严格压制。但 HH-200 唯一的优势是它是<strong>通航段唯一已首飞、有公开 TC 路径的中型机</strong> — 时间换空间</li>
-          <li><strong>737-800BCF 与 757-200F 占据干线右上角</strong>：速度 833-850km/h，载荷 24-39t。它们的吨公里成本在<strong>满载长航</strong>下可降至 1.5-2.0 元（757F 5,000km满载 ≈ 1.6元/吨km），比 W5000 还低 — 但只在干线主航道经济，通航支线无法覆盖</li>
-          <li><strong>Caravan 系列被双重淘汰</strong>：有人版被 UAV 压制，Caravan UAV 又被 HH-200 压制 → <strong>"改 Caravan" 路线在国内输给"原生 HH-200 设计"</strong></li>
-          <li><strong>真正的设计空白</strong>：通航中型 UAV 区（350-500km/h × 1.5-3.5t）内，若有机型能将吨公里成本压到 ¥3-4，就能从 W5000（短跑道劣势）和 HH-200（载荷劣势）之间夺得一块独立领地。<strong>关键变量是"是否能用更高效率的国产涡轴/涡扇 + 更轻机体"把 varHr 从 ¥8,500 降到 ¥5,500-6,000</strong></li>
-        </ol>
+        <span class="insight-title">Pareto 的 5 件事 (运营初期口径)</span>
+        <ul class="insight-rules">
+          <li><b>W5000 首批 (5t / 526 km/h / 4.2 元/吨km)</b>: 是中型段唯一接近 Pareto 前沿的机型。速度 + 规模双优势把吨公里压到 4.2 元 (正常运营进一步降到 2.7)</li>
+          <li><b>C909F (9t / 825 km/h / 3.6 元/吨km)</b>: 喷气支线, 速度快 + 载荷中等 + 成本低, 在 Pareto 前沿上; 但跑道需求 1,700m 锁死在中大型机场</li>
+          <li><b>CY-8 首批 (3.5t / 380 km/h / 8.2 元/吨km)</b>: 落在通航中型 UAV 设计区正中, 成本比 W5000 高 95% — 双发 1,100hp 涡桨的燃油 + 大修摊销是主因。除非国产涡桨效率大幅降本, W5000 更优</li>
+          <li><b>737-800BCF / 757-200F 占据干线右上角</b>: 吨公里 1.4-1.8 元满载最低, 但只能在 4D/4E 大型机场起降, 通航支线无法覆盖 (S7a 跑道约束)</li>
+          <li><b>真正的设计空白</b>: 通航中型 UAV 区 (350-500 km/h × 1.5-3.5 t) 还没有成本低于 ¥5/吨km 的机型。变量是国产涡桨/涡扇能否把 varHr 从 ¥10,750 (CY-8 首批) 降到 ¥5,500-6,000 — 这是 S8 机型目录和 S11 工程规格讨论的起点</li>
+        </ul>
       </div>
       <div class="source">吨公里成本基于"满载+设计航程"组合计算, 即每个机型最优工况下的理论值。Pareto判断: 在 (速度↑, 成本↓) 二维平面上是否存在另一机型同时优于本机型. HH-200/CY-8/737BCF/757F 成本均按本节"成本组件明细"表的第一性原理拆解</div>
     </div>
@@ -2874,145 +2839,46 @@ initC('chart-tonkm',{
   }
 })();
 
-// ===== BREAKEVEN (multi-aircraft non-linear model) =====
-var BE_MANNED=5028,BE_UAV=3224,BE_SPEED=324,BE_TRUCK_RATE=0.5; // kept for heatmap; Caravan 巡航 175 KTAS
+// ===== S7b ECONOMIC FRONTIER (3 charts with mode toggle) =====
 
-// Aircraft database
+// Aircraft database — S7b uses S7a master table data with toggle for 运营初期 vs 正常运营
 // rFull = range at max payload (MTOW limited); rEmpty = ferry range at zero payload (fuel tank limited)
 // Payload-range tradeoff: effectiveRange = rEmpty - (rEmpty - rFull) × payload / maxP
-// MTOW = OEW + Fuel + Payload → more payload = less fuel = shorter range
-// 所有机型 varHr / fix 均基于第一性原理成本拆解 (见文中"成本组件明细"表)
-// 公式: cost(d) = fix + varHr × d / spd
-// varHr = 燃油 + 发动机/螺旋桨储备 + 机体维护 + 保险 + 人员/远程操作 + 数据链 + 折旧
-// fix = 单次起降费 + 地勤 + 签派 (与距离无关, 每飞一次发生)
-var AIRCRAFT=[
-  // Caravan 有人 5,028 元/hr 源于 S6 拆解 (燃油 1125 + 发动机 727 + 螺旋桨 218 + 机体 509 + 保险 364 + 飞行员 873 + 折旧 1212)
-  // 速度 324 km/h (175 KTAS, Cessna 官方典型巡航); 极速 185 knots ≈ 344 km/h
+// 公式: cost(d) = fix + varHr × d / spd; 单位成本(元/kg) = cost(d) / payload
+// 两套数据: AIRCRAFT_INITIAL = 运营初期 (首批 2-3 年), AIRCRAFT_NORMAL = 规模化稳态
+
+// 运营初期 (S7a 主表"小时合计"+"起降合计"列)
+var AIRCRAFT_INITIAL=[
   {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:5028,fix:600,color:'#dc2626',lw:2.5},
-  // Caravan UAV 3,224 元/hr = 去飞行员 + 降折旧 + 简化结构 (详见 S6 右栏)
-  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:3224,fix:350,color:'#2563eb',lw:2.5},
-  // TP500 (壹通): 500kg/500km/260km/h, 轻型活塞/涡轴UAV, AOPA实际运营 ~5元/吨km (PR)
-  // 反推: 5 × 260 × 0.5 = 650元/hr — 与首原理 (50kW级, 20L/hr燃油 ~150元 + 电机/结构维护 ~200 + 折旧 200 + 操作 100) 吻合
-  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:260,varHr:650,fix:200,color:'#06b6d4',lw:2},
-  // HH-200 (中航工业): 1.5t/1000km/320km/h, MTOW 3.3t, 双发涡桨 (类WJ-9 / AES100衍生)
-  // 第一性原理: 燃油180kg/hr×9 = 1,620 + 2×AES100储备 700 + 螺旋桨 120 + 机体 600 + 保险 350 + 远程 60 + 数据链 120 + 折旧(¥1,500万/10yr/1200hr)1,250 = ~4,820元/hr
-  {name:'HH-200(中航)',maxP:1500,rFull:1000,rEmpty:1500,spd:320,varHr:4820,fix:500,color:'#9333ea',lw:2.5},
-  // 长鹰-8 (CY-8): 3.5t/3000km/~380km/h (估算), MTOW 7t, 双发~1100hp涡桨
-  // 第一性原理: 燃油320kg/hr×9 = 2,880 + 发动机储备 1,300 + 螺旋桨 200 + 机体 800 + 保险 600 + 远程 100 + 数据链 150 + 折旧(¥3,000万/10yr/1200hr)2,500 = ~8,530元/hr
-  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,varHr:8530,fix:1200,color:'#db2777',lw:2.5},
-  // W5000 (白鲸航线): 5t/2,600km/526km/h, PR吨公里成本 2.69元/km
-  // 反推 varHr≈6,100 / fix≈2,000 吻合 PR (2,000 + 6100×4.94) / (5×2600) = 2.47元/吨km
-  // 白鲸 PR 是理想值 (满载 + 零空驶 + 批量生产), 首原理保守估算会更高, 此处沿用官方
-  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,varHr:6100,fix:2000,color:'#10b981',lw:3},
-  // ATR 42-600F: 5.5t/1,326km/480km/h, Aircraft Cost Calculator 2024 数据
-  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,varHr:14500,fix:3000,color:'#f97316',lw:2},
-  // B737-800BCF (顺丰/京东/中邮航空主力): 23.9t/3,750km/833km/h
-  // 第一性原理: 燃油2×1,180kg/hr×8 = 18,880 + 2×CFM56储备 6,000 + 机体 3,000 + 保险 1,500 + 2飞行员+装卸 3,500 + 折旧(BCF改装后 ¥1.1亿/15yr/2,500hr) 2,933 = ~35,813元/hr
+  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:3750,fix:350,color:'#2563eb',lw:2.5},
+  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:260,varHr:900,fix:200,color:'#06b6d4',lw:2},
+  {name:'HH-200(中航)',maxP:1500,rFull:1000,rEmpty:1500,spd:320,varHr:6000,fix:500,color:'#9333ea',lw:2.5},
+  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,varHr:10750,fix:1200,color:'#db2777',lw:2.5},
+  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,varHr:10500,fix:2000,color:'#10b981',lw:3},
+  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,varHr:19500,fix:3000,color:'#f97316',lw:2},
+  {name:'C909F(圆通)',maxP:9000,rFull:3700,rEmpty:4800,spd:825,varHr:26000,fix:3500,color:'#eab308',lw:2.5},
   {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,varHr:35800,fix:4500,color:'#7c3aed',lw:2.5},
-  // B757-200F (中航货运/中国邮政): 39t/5,800km/850km/h
-  // 第一性原理: 燃油2×1,650kg/hr×8 = 26,400 + 发动机储备 6,500 + 机体 3,500 + 保险 2,000 + 3员 3,500 + 折旧(¥1.8亿/15yr/3,000hr) 4,000 = ~45,900元/hr
   {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,varHr:45900,fix:5500,color:'#0891b2',lw:2.5}
 ];
 
-var beDistances=[];
-for(var bd=50;bd<=3500;bd+=50) beDistances.push(bd);
+// 正常运营 (厂商目标 / 规模化 / 国际基准; 已大规模运营机型跟初期一样)
+var AIRCRAFT_NORMAL=[
+  {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:5028,fix:600,color:'#dc2626',lw:2.5},
+  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:3224,fix:350,color:'#2563eb',lw:2.5},
+  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:260,varHr:650,fix:200,color:'#06b6d4',lw:2},
+  {name:'HH-200(中航)',maxP:1500,rFull:1000,rEmpty:1500,spd:320,varHr:4820,fix:500,color:'#9333ea',lw:2.5},
+  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,varHr:8530,fix:1200,color:'#db2777',lw:2.5},
+  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,varHr:6100,fix:2000,color:'#10b981',lw:3},
+  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,varHr:14500,fix:3000,color:'#f97316',lw:2},
+  {name:'C909F(圆通)',maxP:9000,rFull:3700,rEmpty:4800,spd:825,varHr:26000,fix:3500,color:'#eab308',lw:2.5},
+  {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,varHr:35800,fix:4500,color:'#7c3aed',lw:2.5},
+  {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,varHr:45900,fix:5500,color:'#0891b2',lw:2.5}
+];
 
-function renderBreakeven(payload){
-  var series=[];
-  var avail=0;
+var AIRCRAFT = AIRCRAFT_INITIAL; // default 运营初期
+window.__s7bMode = 'initial';
 
-  // Background shading on first series
-  var firstAC=true;
-
-  AIRCRAFT.forEach(function(ac){
-    if(payload>ac.maxP) return; // can't carry this payload at all — hide aircraft
-    avail++;
-    // Payload-range tradeoff: lighter load → more fuel → longer range
-    var effRange=Math.round(ac.rEmpty-(ac.rEmpty-ac.rFull)*payload/ac.maxP);
-    var data=beDistances.map(function(d){
-      if(d>effRange) return null;
-      return Math.round((ac.fix+ac.varHr*d/ac.spd)/payload*100)/100;
-    });
-    var s={
-      name:ac.name,type:'line',data:data,
-      lineStyle:{color:ac.color,width:ac.lw},itemStyle:{color:ac.color},
-      symbol:'none',connectNulls:false,
-      endLabel:{show:true,formatter:'{a}',fontSize:11,color:ac.color,distance:8}
-    };
-    if(firstAC){
-      s.markArea={silent:true,data:[
-        [{yAxis:0,itemStyle:{color:'rgba(34,197,94,.06)'}},{yAxis:8}],
-        [{yAxis:8,itemStyle:{color:'rgba(251,191,36,.06)'}},{yAxis:12}]
-      ]};
-      firstAC=false;
-    }
-    series.push(s);
-  });
-
-  // Truck baseline
-  series.push({
-    name:'公路',type:'line',
-    data:beDistances.map(function(d){return Math.round(BE_TRUCK_RATE*d/1000*100)/100}),
-    lineStyle:{color:'#16a34a',width:2,type:'dashed'},itemStyle:{color:'#16a34a'},symbol:'none',
-    endLabel:{show:true,formatter:'公路',fontSize:11,color:'#16a34a',distance:8}
-  });
-
-  // Threshold lines
-  series.push({
-    name:'生鲜溢价12',type:'line',
-    data:beDistances.map(function(){return 12}),
-    lineStyle:{color:'#f59e0b',width:1.2,type:'dotted'},itemStyle:{color:'#f59e0b'},symbol:'none',
-    endLabel:{show:true,formatter:'生鲜 12元/kg',fontSize:9,color:'#f59e0b',distance:4}
-  });
-  series.push({
-    name:'电商溢价8',type:'line',
-    data:beDistances.map(function(){return 8}),
-    lineStyle:{color:'#8b5cf6',width:1.2,type:'dotted'},itemStyle:{color:'#8b5cf6'},symbol:'none',
-    endLabel:{show:true,formatter:'电商 8元/kg',fontSize:9,color:'#8b5cf6',distance:4}
-  });
-
-  // Status text
-  var statusEl=$('ac-status');
-  if(avail===0){
-    statusEl.innerHTML='<span style="color:#ef4444;font-weight:700">⚠ 当前对比机型中无机型可承载 '+payload.toLocaleString()+'kg — 已超出 757F 满载 39t 上限</span>';
-  } else {
-    var tags=[];
-    AIRCRAFT.forEach(function(ac){
-      if(payload<=ac.maxP){
-        var lf=Math.round(payload/ac.maxP*100);
-        var er=Math.round(ac.rEmpty-(ac.rEmpty-ac.rFull)*payload/ac.maxP);
-        tags.push('<span style="color:'+ac.color+';font-weight:600">'+ac.name+'</span> <span style="color:#94a3b8">('+lf+'%载, '+er.toLocaleString()+'km)</span>');
-      }
-    });
-    statusEl.innerHTML='可用机型 ('+avail+'/'+AIRCRAFT.length+'): '+tags.join(' · ');
-  }
-
-  var opt={
-    tooltip:{trigger:'axis',formatter:function(ps){
-      var s='<b>'+ps[0].axisValue+'km</b><br>';
-      ps.forEach(function(p){
-        if(p.value!=null && p.seriesName.indexOf('溢价')<0)
-          s+=p.marker+p.seriesName+': <b>'+p.value+'</b>元/kg<br>';
-      });
-      return s;
-    }},
-    legend:{show:false},
-    xAxis:{type:'category',data:beDistances,name:'航线距离(km)',axisLabel:{fontSize:10,interval:4}},
-    yAxis:{type:'value',name:'单位成本(元/kg)',max:function(v){return Math.min(50,Math.ceil(v.max/5)*5+5)}},
-    series:series,
-    grid:{top:30,bottom:40,right:130}
-  };
-  if(charts['chart-breakeven']){charts['chart-breakeven'].setOption(opt,true)}
-  else{initC('chart-breakeven',opt)}
-}
-function updateBreakeven(val){
-  var p=parseInt(val);
-  $('payload-val').textContent=p.toLocaleString();
-  renderBreakeven(p);
-}
-renderBreakeven(1088);
-
-// ===== ECONOMIC FRONTIER: 3 CHARTS =====
+// ===== ECONOMIC FRONTIER: 3 CHARTS (with 运营初期/正常运营 toggle) =====
 (function(){
   // Helper: cost per kg for a given aircraft at (payload, distance)
   function acCostAt(ac, payload, distance){
@@ -3033,25 +2899,7 @@ renderBreakeven(1088);
   var EF_PAYLOADS = [200, 500, 750, 1088, 1500, 2000, 3000, 5000, 8000, 15000, 25000, 39000];
   var EF_DISTS = [100, 300, 500, 750, 1000, 1500, 2000, 2500, 3000, 4000, 5500];
 
-  // ---- Build dominance grid: ONE SERIES PER AIRCRAFT to control colors ----
-  // (heatmap default value-gradient overrides per-point itemStyle, so use series-level color)
-  var dominanceSeriesData = AIRCRAFT.map(function(ac){return {ac:ac, data:[]};});
-  var noServiceData = [];
-  EF_DISTS.forEach(function(d, di){
-    EF_PAYLOADS.forEach(function(p, pi){
-      var b = findBest(p, d);
-      if(b){
-        dominanceSeriesData[b.idx].data.push({
-          value: [di, pi, Math.round(b.cost*10)/10],
-          acName: b.ac.name
-        });
-      } else {
-        noServiceData.push({value: [di, pi, null]});
-      }
-    });
-  });
-
-  // ---- Routes overlay for dominance map ----
+  // ---- Routes overlay (static) ----
   var routes = [
     {d: 400, p: 750, name: '拉萨-林芝', t: '高原医疗/松茸'},
     {d: 500, p: 750, name: '广州-海口', t: '快电商'},
@@ -3071,107 +2919,106 @@ renderBreakeven(1088);
   var routeData = routes.map(function(r, i){
     var pi = nearestIdx(EF_PAYLOADS, r.p);
     var di = nearestIdx(EF_DISTS, r.d);
-    // Position label above for low rows, below for high rows so it doesn't fly off chart
     var labelAbove = pi < EF_PAYLOADS.length - 2;
-    // For two routes in same cell, offset horizontally
-    var hOffset = 0;
     return {
       value: [di, pi],
       name: r.name, t: r.t, d: r.d, p: r.p, no: i+1,
       label: {
-        show: true,
-        formatter: '✈ '+r.name,
+        show: true, formatter: '✈ '+r.name,
         position: labelAbove ? 'top' : 'bottom',
-        offset: [hOffset, labelAbove ? -4 : 4],
-        fontSize: 10,
-        color: '#fff',
-        fontWeight: 700,
-        backgroundColor: '#dc2626',
-        padding: [3, 7],
-        borderRadius: 4,
-        borderColor: '#fff',
-        borderWidth: 1.5,
-        shadowBlur: 4,
-        shadowColor: 'rgba(0,0,0,0.3)'
+        offset: [0, labelAbove ? -4 : 4],
+        fontSize: 10, color: '#fff', fontWeight: 700,
+        backgroundColor: '#dc2626', padding: [3, 7], borderRadius: 4,
+        borderColor: '#fff', borderWidth: 1.5,
+        shadowBlur: 4, shadowColor: 'rgba(0,0,0,0.3)'
       }
     };
   });
 
-  // ---- CHART 1: Dominance Map ----
-  var domSeries = dominanceSeriesData.filter(function(g){return g.data.length>0}).map(function(g){
-    return {
-      name: g.ac.name,
-      type: 'heatmap',
-      data: g.data,
-      itemStyle: {color: g.ac.color, borderColor:'#fff', borderWidth:1},
-      label: {
-        show: true,
-        formatter: function(p){
-          return p.value[2]!=null ? p.value[2].toFixed(1) : '';
-        },
-        fontSize: 11,
-        color: '#fff',
-        fontWeight: 700,
-        textShadowColor: 'rgba(0,0,0,0.5)',
-        textShadowBlur: 2
-      }
-    };
-  });
-  if(noServiceData.length>0){
-    domSeries.push({
-      name: '无可用',
-      type: 'heatmap',
-      data: noServiceData,
-      itemStyle: {color: '#e5e7eb', borderColor:'#fff', borderWidth:1},
-      label: {show:true, formatter:'—', fontSize:11, color:'#94a3b8'}
-    });
-  }
-  domSeries.push({
-    name: '典型航线',
-    type: 'scatter',
-    data: routeData,
-    symbol: 'circle',
-    symbolSize: 11,
-    itemStyle: {color: '#dc2626', borderColor:'#fff', borderWidth:2, shadowBlur:6, shadowColor:'rgba(220,38,38,0.6)'},
-    z: 10
-  });
-
-  initC('chart-dominance', {
-    tooltip: {
-      formatter: function(p){
-        if(p.seriesType==='scatter'){
-          return '<b>路线 '+p.data.no+': '+p.data.name+'</b><br>('+p.data.t+')<br>'+p.data.d+'km × '+p.data.p+'kg';
-        }
-        var d = p.data.value;
-        if(d[2]==null){
-          return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br><span style="color:#94a3b8">无机型可服务</span>';
-        }
-        return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br>最优机型: <b>'+p.data.acName+'</b><br>单位成本: <b>'+d[2].toFixed(2)+'元/kg</b>';
-      }
-    },
-    grid: {top:30, bottom:50, left:80, right:30},
-    xAxis: {type:'category', data: EF_DISTS.map(function(d){return d+'km'}), name:'航线距离', splitArea:{show:true}},
-    yAxis: {type:'category', data: EF_PAYLOADS.map(function(p){return p+'kg'}), name:'业载', splitArea:{show:true}},
-    series: domSeries
-  });
-
-  // Append route legend below chart (route names are shown on chart, this gives货种 details)
-  var domLegendDiv = document.createElement('div');
-  domLegendDiv.style.cssText = 'font-size:11px;color:#64748b;margin-top:6px;display:flex;flex-wrap:wrap;gap:14px;padding:6px 8px;background:#fff7f7;border-left:3px solid #dc2626;border-radius:3px';
-  domLegendDiv.innerHTML = '<b style="color:#dc2626">航线货种:</b> ' + routes.map(function(r){
-    return '<span><b style="color:#dc2626">'+r.name+'</b> — '+r.t+'</span>';
-  }).join('');
-  var domEl = document.getElementById('chart-dominance');
-  if(domEl && domEl.parentNode){ domEl.parentNode.insertBefore(domLegendDiv, domEl.nextSibling); }
-
-  // ---- CHART 2: Margin Map (with slider) ----
+  // Shared state (recomputed on mode change)
   var bestCostGrid = [];
-  EF_DISTS.forEach(function(d, di){
-    EF_PAYLOADS.forEach(function(p, pi){
-      var b = findBest(p, d);
-      bestCostGrid.push({di:di, pi:pi, cost: b?b.cost:null, acName: b?b.ac.name:null});
+  var currentPrice = 8;
+
+  // Compute dominance + bestCostGrid based on current AIRCRAFT
+  function computeGrids() {
+    var dominanceSeriesData = AIRCRAFT.map(function(ac){return {ac:ac, data:[]};});
+    var noServiceData = [];
+    bestCostGrid = [];
+    EF_DISTS.forEach(function(d, di){
+      EF_PAYLOADS.forEach(function(p, pi){
+        var b = findBest(p, d);
+        if(b){
+          dominanceSeriesData[b.idx].data.push({
+            value: [di, pi, Math.round(b.cost*10)/10], acName: b.ac.name
+          });
+        } else {
+          noServiceData.push({value: [di, pi, null]});
+        }
+        bestCostGrid.push({di:di, pi:pi, cost: b?b.cost:null, acName: b?b.ac.name:null});
+      });
     });
-  });
+    return {dominanceSeriesData: dominanceSeriesData, noServiceData: noServiceData};
+  }
+
+  function renderChart1() {
+    var g = computeGrids();
+    var domSeries = g.dominanceSeriesData.filter(function(s){return s.data.length>0}).map(function(s){
+      return {
+        name: s.ac.name, type: 'heatmap', data: s.data,
+        itemStyle: {color: s.ac.color, borderColor:'#fff', borderWidth:1},
+        label: {
+          show: true,
+          formatter: function(p){ return p.value[2]!=null ? p.value[2].toFixed(1) : '' },
+          fontSize: 11, color: '#fff', fontWeight: 700,
+          textShadowColor: 'rgba(0,0,0,0.5)', textShadowBlur: 2
+        }
+      };
+    });
+    if(g.noServiceData.length>0){
+      domSeries.push({
+        name: '无可用', type: 'heatmap', data: g.noServiceData,
+        itemStyle: {color: '#e5e7eb', borderColor:'#fff', borderWidth:1},
+        label: {show:true, formatter:'—', fontSize:11, color:'#94a3b8'}
+      });
+    }
+    domSeries.push({
+      name: '典型航线', type: 'scatter', data: routeData,
+      symbol: 'circle', symbolSize: 11,
+      itemStyle: {color: '#dc2626', borderColor:'#fff', borderWidth:2, shadowBlur:6, shadowColor:'rgba(220,38,38,0.6)'},
+      z: 10
+    });
+    var opt = {
+      tooltip: {
+        formatter: function(p){
+          if(p.seriesType==='scatter'){
+            return '<b>路线 '+p.data.no+': '+p.data.name+'</b><br>('+p.data.t+')<br>'+p.data.d+'km × '+p.data.p+'kg';
+          }
+          var d = p.data.value;
+          if(d[2]==null) return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br><span style="color:#94a3b8">无机型可服务</span>';
+          return '距离: '+EF_DISTS[d[0]]+'km<br>业载: '+EF_PAYLOADS[d[1]]+'kg<br>最优机型: <b>'+p.data.acName+'</b><br>单位成本: <b>'+d[2].toFixed(2)+'元/kg</b>';
+        }
+      },
+      grid: {top:30, bottom:50, left:80, right:30},
+      xAxis: {type:'category', data: EF_DISTS.map(function(d){return d+'km'}), name:'航线距离', splitArea:{show:true}},
+      yAxis: {type:'category', data: EF_PAYLOADS.map(function(p){return p+'kg'}), name:'业载', splitArea:{show:true}},
+      series: domSeries
+    };
+    if(charts['chart-dominance']) charts['chart-dominance'].setOption(opt, true);
+    else initC('chart-dominance', opt);
+  }
+
+  // Legend div (append once)
+  function appendLegendOnce() {
+    if(document.getElementById('s7b-route-legend')) return;
+    var domLegendDiv = document.createElement('div');
+    domLegendDiv.id = 's7b-route-legend';
+    domLegendDiv.style.cssText = 'font-size:11px;color:#64748b;margin-top:6px;display:flex;flex-wrap:wrap;gap:14px;padding:6px 8px;background:#fff7f7;border-left:3px solid #dc2626;border-radius:3px';
+    domLegendDiv.innerHTML = '<b style="color:#dc2626">航线货种:</b> ' + routes.map(function(r){
+      return '<span><b style="color:#dc2626">'+r.name+'</b> — '+r.t+'</span>';
+    }).join('');
+    var domEl = document.getElementById('chart-dominance');
+    if(domEl && domEl.parentNode){ domEl.parentNode.insertBefore(domLegendDiv, domEl.nextSibling); }
+  }
 
   function renderMargin(price){
     var data = bestCostGrid.map(function(c){
@@ -3246,142 +3093,124 @@ renderBreakeven(1088);
 
   window.updateMargin = function(val){
     var p = parseInt(val);
+    currentPrice = p;
     document.getElementById('margin-price-val').textContent = p;
     renderMargin(p);
   };
-  renderMargin(8);
 
   // ---- CHART 3: Pareto Frontier ----
-  // Compute ton-km cost for each aircraft at (full payload + design range)
-  var paretoData = AIRCRAFT.map(function(ac){
-    var tkmCost = (ac.fix + ac.varHr * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
-    return {
-      name: ac.name, spd: ac.spd, payload: ac.maxP,
-      tkmCost: tkmCost, color: ac.color
+  function renderChart3() {
+    var paretoData = AIRCRAFT.map(function(ac){
+      var tkmCost = (ac.fix + ac.varHr * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
+      return {name: ac.name, spd: ac.spd, payload: ac.maxP, tkmCost: tkmCost, color: ac.color};
+    });
+    paretoData.forEach(function(a){
+      a.dominatedSP = paretoData.some(function(b){
+        return b!==a && b.spd >= a.spd && b.payload >= a.payload && (b.spd > a.spd || b.payload > a.payload);
+      });
+      a.dominatedSC = paretoData.some(function(b){
+        return b!==a && b.spd >= a.spd && b.tkmCost <= a.tkmCost && (b.spd > a.spd || b.tkmCost < a.tkmCost);
+      });
+    });
+    var inverses = paretoData.map(function(a){return 1/a.tkmCost});
+    var maxInv = Math.max.apply(null, inverses);
+    var minInv = Math.min.apply(null, inverses);
+    function bubbleSize(tkmCost){
+      var inv = 1/tkmCost;
+      if(maxInv===minInv) return 50;
+      return 25 + (inv - minInv)/(maxInv - minInv) * 65;
+    }
+    var displayCoords = paretoData.map(function(a){return [a.spd, a.payload];});
+    paretoData.forEach(function(a, i){
+      for(var j=0; j<i; j++){
+        if(paretoData[j].spd===a.spd && paretoData[j].payload===a.payload){
+          displayCoords[i] = [a.spd - 18, a.payload - 200];
+          break;
+        }
+      }
+    });
+    var scatterData = paretoData.map(function(a, i){
+      var isPareto = !a.dominatedSP;
+      var dc = displayCoords[i];
+      return {
+        name: a.name,
+        value: [dc[0], dc[1], a.tkmCost.toFixed(2)],
+        realSpd: a.spd, realPayload: a.payload, tkmCost: a.tkmCost.toFixed(2),
+        symbolSize: bubbleSize(a.tkmCost),
+        itemStyle: {
+          color: a.color,
+          opacity: isPareto ? 0.85 : 0.6,
+          borderColor: isPareto ? '#1e293b' : '#94a3b8',
+          borderWidth: isPareto ? 2.5 : 1,
+          borderType: isPareto ? 'solid' : 'dashed'
+        },
+        label: {
+          show: true,
+          formatter: a.name + '\n' + a.tkmCost.toFixed(2) + '元/吨km',
+          fontSize: 11, color: '#0f172a', fontWeight: 700, position: 'top',
+          backgroundColor: 'rgba(255,255,255,0.85)', padding: [3, 6], borderRadius: 4
+        }
+      };
+    });
+    var frontier = paretoData.filter(function(a){return !a.dominatedSP}).sort(function(a,b){return a.spd-b.spd});
+    var frontierLine = frontier.map(function(a){return [a.spd, a.payload]});
+    var opt = {
+      tooltip: {
+        trigger: 'item',
+        formatter: function(p){
+          if(p.seriesName!=='机型') return '';
+          return '<b>'+p.data.name+'</b><br>速度: '+p.data.realSpd+'km/h<br>载荷: '+p.data.realPayload.toLocaleString()+'kg<br>吨公里成本: <b>'+p.data.tkmCost+'元</b>';
+        }
+      },
+      grid: {top: 60, bottom: 60, left: 80, right: 50},
+      xAxis: {type:'value', name:'速度(km/h)', min: 150, max: 900, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11}},
+      yAxis: {type:'log', name:'载荷(kg, 对数)', min: 200, max: 50000, logBase: 10, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
+      series: [
+        {name: 'Pareto前沿', type: 'line', data: frontierLine,
+         lineStyle: {color: '#2563eb', width: 2, type: 'dashed'},
+         itemStyle: {color: '#2563eb'}, symbol: 'none', z: 2, silent: true},
+        {name: '机型', type: 'scatter', data: scatterData, z: 5,
+         markArea: {
+           silent: true,
+           itemStyle: {color: 'rgba(34,197,94,0.10)', borderColor:'#16a34a', borderWidth:1.5, borderType:'dashed'},
+           label: {show:true, position:'inside', color:'#16a34a', fontSize:11, fontWeight:700, formatter:'通航中型 UAV 设计区\n350-500km/h · 1.5-3.5t'},
+           data: [[{coord: [350, 1500]}, {coord: [500, 3500]}]]
+         }},
+        {name: '干线分割线', type: 'line', data: [[600, 200], [600, 50000]],
+         lineStyle: {color: '#94a3b8', width: 1, type: 'dotted'},
+         symbol: 'none', silent: true,
+         markPoint: {
+           silent: true, symbol: 'rect', symbolSize: [80, 18],
+           data: [{coord: [750, 35000], itemStyle:{color:'rgba(8,145,178,0.15)', borderColor:'#0891b2'}, label:{show:true, formatter:'干线喷气区', color:'#0891b2', fontSize:11, fontWeight:700}}]
+         }}
+      ]
     };
-  });
-
-  // Pareto in (speed↑, payload↑) — buyer's two desires
-  paretoData.forEach(function(a){
-    a.dominatedSP = paretoData.some(function(b){
-      return b!==a && b.spd >= a.spd && b.payload >= a.payload && (b.spd > a.spd || b.payload > a.payload);
-    });
-    // Pareto in (speed↑, cost↓) — efficiency frontier
-    a.dominatedSC = paretoData.some(function(b){
-      return b!==a && b.spd >= a.spd && b.tkmCost <= a.tkmCost && (b.spd > a.spd || b.tkmCost < a.tkmCost);
-    });
-  });
-
-  var inverses = paretoData.map(function(a){return 1/a.tkmCost});
-  var maxInv = Math.max.apply(null, inverses);
-  var minInv = Math.min.apply(null, inverses);
-  function bubbleSize(tkmCost){
-    var inv = 1/tkmCost;
-    if(maxInv===minInv) return 50;
-    return 25 + (inv - minInv)/(maxInv - minInv) * 65;
+    if(charts['chart-pareto']) charts['chart-pareto'].setOption(opt, true);
+    else initC('chart-pareto', opt);
   }
 
-  // Detect overlap & nudge: if two aircraft have identical (spd, payload), offset second one
-  // so both remain visible. We track display coords separately from real data.
-  var displayCoords = paretoData.map(function(a){return [a.spd, a.payload];});
-  paretoData.forEach(function(a, i){
-    for(var j=0; j<i; j++){
-      if(paretoData[j].spd===a.spd && paretoData[j].payload===a.payload){
-        // Nudge i to the LEFT and DOWN so it doesn't overlap j
-        displayCoords[i] = [a.spd - 18, a.payload - 200];
-        break;
-      }
-    }
-  });
+  // ---- Full re-render on mode change ----
+  window.s7bRenderAll = function() {
+    renderChart1();
+    appendLegendOnce();
+    renderMargin(currentPrice);
+    renderChart3();
+  };
 
-  var scatterData = paretoData.map(function(a, i){
-    var isPareto = !a.dominatedSP;
-    var dc = displayCoords[i];
-    return {
-      name: a.name,
-      value: [dc[0], dc[1], a.tkmCost.toFixed(2)],
-      realSpd: a.spd,
-      realPayload: a.payload,
-      tkmCost: a.tkmCost.toFixed(2),
-      symbolSize: bubbleSize(a.tkmCost),
-      itemStyle: {
-        color: a.color,
-        opacity: isPareto ? 0.85 : 0.6,
-        borderColor: isPareto ? '#1e293b' : '#94a3b8',
-        borderWidth: isPareto ? 2.5 : 1,
-        borderType: isPareto ? 'solid' : 'dashed'
-      },
-      label: {
-        show: true,
-        formatter: a.name + '\n' + a.tkmCost.toFixed(2) + '元/吨km',
-        fontSize: 11,
-        color: '#0f172a',
-        fontWeight: 700,
-        position: 'top',
-        backgroundColor: 'rgba(255,255,255,0.85)',
-        padding: [3, 6],
-        borderRadius: 4
-      }
-    };
-  });
-
-  var frontier = paretoData.filter(function(a){return !a.dominatedSP}).sort(function(a,b){return a.spd-b.spd});
-  var frontierLine = frontier.map(function(a){return [a.spd, a.payload]});
-
-  initC('chart-pareto', {
-    tooltip: {
-      trigger: 'item',
-      formatter: function(p){
-        if(p.seriesName!=='机型') return '';
-        return '<b>'+p.data.name+'</b><br>速度: '+p.data.realSpd+'km/h<br>载荷: '+p.data.realPayload.toLocaleString()+'kg<br>吨公里成本: <b>'+p.data.tkmCost+'元</b>';
-      }
-    },
-    grid: {top: 60, bottom: 60, left: 80, right: 50},
-    xAxis: {type:'value', name:'速度(km/h)', min: 150, max: 900, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11}},
-    yAxis: {type:'log', name:'载荷(kg, 对数)', min: 200, max: 50000, logBase: 10, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
-    series: [
-      {
-        name: 'Pareto前沿',
-        type: 'line',
-        data: frontierLine,
-        lineStyle: {color: '#2563eb', width: 2, type: 'dashed'},
-        itemStyle: {color: '#2563eb'},
-        symbol: 'none',
-        z: 2,
-        silent: true
-      },
-      {
-        name: '机型',
-        type: 'scatter',
-        data: scatterData,
-        z: 5,
-        markArea: {
-          silent: true,
-          itemStyle: {color: 'rgba(34,197,94,0.10)', borderColor:'#16a34a', borderWidth:1.5, borderType:'dashed'},
-          label: {show:true, position:'inside', color:'#16a34a', fontSize:11, fontWeight:700, formatter:'通航中型 UAV 设计区\n350-500km/h · 1.5-3.5t'},
-          data: [[
-            {coord: [350, 1500]},
-            {coord: [500, 3500]}
-          ]]
-        }
-      },
-      {
-        name: '干线分割线',
-        type: 'line',
-        data: [[600, 200], [600, 50000]],
-        lineStyle: {color: '#94a3b8', width: 1, type: 'dotted'},
-        symbol: 'none',
-        silent: true,
-        markPoint: {
-          silent: true,
-          symbol: 'rect',
-          symbolSize: [80, 18],
-          data: [{coord: [750, 35000], itemStyle:{color:'rgba(8,145,178,0.15)', borderColor:'#0891b2'}, label:{show:true, formatter:'干线喷气区', color:'#0891b2', fontSize:11, fontWeight:700}}]
-        }
-      }
-    ]
-  });
+  // Initial render
+  window.s7bRenderAll();
 })();
+
+// Mode toggle: 运营初期 vs 正常运营
+window.s7bSetMode = function(mode) {
+  if(mode === window.__s7bMode) return;
+  window.__s7bMode = mode;
+  AIRCRAFT = (mode === 'initial') ? AIRCRAFT_INITIAL : AIRCRAFT_NORMAL;
+  document.querySelectorAll('.toggle-btn[data-mode]').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+  });
+  if(window.s7bRenderAll) window.s7bRenderAll();
+};
 
 // ===== AIRCRAFT RADAR =====
 (function(){
