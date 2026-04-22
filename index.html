@@ -1355,22 +1355,32 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
-    <!-- Chart 3: Pareto Frontier -->
+    <!-- Chart 3: Aircraft Economic Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">③ Pareto 前沿: 飞机设计空间的白点</div>
-      <div class="chart-desc">每个机型在 (速度 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本 (越大 = 越经济)。<span style="color:#2563eb"><b>蓝色虚线</b></span> = Pareto 前沿 (没有机型同时在速度和载荷上都压过它)。<span style="color:#16a34a"><b>绿色矩形</b></span> = 设计白空间。本图基于<b>运营初期</b>数据 (跟 S7a 主表一致); 正常运营口径下 W5000/CY-8 成本会降 ~40%, 但 Pareto 结构不变。</div>
+      <div class="chart-title">③ 机型经济性分布: (航程 × 业载) 平面上的设计位置</div>
+      <div class="chart-desc">每个机型在 (航程 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本 (越大 = 越经济, 满载工况)。本图基于<b>运营初期</b>数据 (跟 S7a 主表一致); 正常运营口径下 W5000/CY-8 成本会降 ~40%, 气泡会更大, 但位置和结构不变。</div>
+      <div class="econ-explain" style="margin-top:12px">
+        <h4 style="margin-bottom:6px">怎么读这张图</h4>
+        <p style="margin:0;font-size:13px;line-height:1.8">两个维度都是买飞机的人想要的: <b>航程越长</b> (能飞越远) 和 <b>业载越大</b> (能装越多) 都更好, 而气泡越大代表吨公里成本越低。理想设计是 "航程长 + 业载大 + 气泡大" 同时满足, 也就是图的右上角 + 大气泡。</p>
+        <div class="step" style="margin-top:10px">
+          <b>图上怎么看</b>:<br>
+          <span style="display:inline-block;width:14px;height:14px;border:1.5px solid #1e293b;border-radius:50%;background:#fff;vertical-align:middle"></span> <b>气泡位置</b> = 机型设计航程 × 业载; <b>气泡大小</b> ∝ 1/吨公里成本, 越大越经济<br>
+          <span style="display:inline-block;width:22px;height:12px;background:rgba(34,197,94,0.15);border:1.5px dashed #16a34a;vertical-align:middle"></span> <b style="color:#16a34a">绿色矩形</b> = 设计白空间 (1,500-2,500 km × 1.5-3.5 t), 这个区间没有机型覆盖 — 新设计的国产中型 UAV 落在这里才有独立生存空间
+        </div>
+        <p style="margin-top:10px;font-size:13px;color:#475569"><b>为什么重要</b>: 读者一眼看到哪些机型占哪些位置, 哪里拥挤 (通航 1-5t / 短到中程扎堆), 哪里稀疏 (中长航程 × 中等业载留白)。白空间不是 Pareto 意义上的"最优"缺口 (严格 Pareto 只有 757F 一个点, 没分析价值), 而是"已有机型组合覆盖不到的 payload×range 需求区间" — 这是 S8 机型目录和 S11 工程规格讨论新设计切入点的起点。</p>
+      </div>
       <div id="chart-pareto" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
-        <span class="insight-title">Pareto 的 5 件事 (运营初期口径)</span>
+        <span class="insight-title">机型经济性分布的 5 件事 (运营初期口径)</span>
         <ul class="insight-rules">
-          <li><b>W5000 首批 (5t / 526 km/h / 4.2 元/吨km)</b>: 是中型段唯一接近 Pareto 前沿的机型。速度 + 规模双优势把吨公里压到 4.2 元 (正常运营进一步降到 2.7)</li>
-          <li><b>C909F (9t / 825 km/h / 3.6 元/吨km)</b>: 喷气支线, 速度快 + 载荷中等 + 成本低, 在 Pareto 前沿上; 但跑道需求 1,700m 锁死在中大型机场</li>
-          <li><b>CY-8 首批 (3.5t / 380 km/h / 8.2 元/吨km)</b>: 落在通航中型 UAV 设计区正中, 成本比 W5000 高 95% — 双发 1,100hp 涡桨的燃油 + 大修摊销是主因。除非国产涡桨效率大幅降本, W5000 更优</li>
-          <li><b>737-800BCF / 757-200F 占据干线右上角</b>: 吨公里 1.4-1.8 元满载最低, 但只能在 4D/4E 大型机场起降, 通航支线无法覆盖 (S7a 跑道约束)</li>
-          <li><b>真正的设计空白</b>: 通航中型 UAV 区 (350-500 km/h × 1.5-3.5 t) 还没有成本低于 ¥5/吨km 的机型。变量是国产涡桨/涡扇能否把 varHr 从 ¥10,750 (CY-8 首批) 降到 ¥5,500-6,000 — 这是 S8 机型目录和 S11 工程规格讨论的起点</li>
+          <li><b>W5000 首批 (5 t / 2,600 km / 4.2 元/吨km)</b>: 中型段里气泡最大 (最经济) 的机型。规模 + 速度 + 航程的均衡让吨公里压到 4.2 元; 正常运营进一步降到 2.7</li>
+          <li><b>C909F (9 t / 3,700 km / 3.6 元/吨km)</b>: 喷气支线的位置独特 — 航程 ≥ 737BCF 3,750km 但业载只有 9 t, 占据"9t 级中长航程" 这格。跑道 1,700m 锁死在 4C 及以上机场</li>
+          <li><b>CY-8 首批 (3.5 t / 3,000 km / 8.2 元/吨km)</b>: 落在 3.5 t × 3,000 km 位置, 气泡比 W5000 小很多 — 双发 1,100hp 涡桨的燃油 + 大修摊销是主因。除非国产涡桨效率大幅降本, W5000 在同航程上更优</li>
+          <li><b>737-800BCF / 757-200F 占据右上角</b>: 23.9-39 t × 3,750-5,800 km, 吨公里 1.4-1.8 元最低 (气泡最大), 但只能在 4D/4E 大型机场起降 (S7a 跑道约束)</li>
+          <li><b>真正的设计空白</b>: <b>1,500-2,500 km × 1.5-3.5 t</b> 这一格没机型覆盖 — HH-200 只到 1,000 km, Caravan 系列到 1,300 km, ATR42 是 1,326 km 但 5.5 t 过大, CY-8/W5000 起步都在 2,600 km+。国产中型 UAV 如果能覆盖 1,500-2,500 km + 2-3 t + 成本低于 5 元/吨km, 就能独占这块 — 这是 S8 机型目录和 S11 工程规格讨论的起点</li>
         </ul>
       </div>
-      <div class="source">吨公里成本基于"满载+设计航程"组合计算, 即每个机型最优工况下的理论值。Pareto判断: 在 (速度↑, 成本↓) 二维平面上是否存在另一机型同时优于本机型. HH-200/CY-8/737BCF/757F 成本均按本节"成本组件明细"表的第一性原理拆解</div>
+      <div class="source">吨公里成本基于"满载 + 设计航程"组合计算, 即每个机型最优工况下的理论值 (元/吨km)。数据口径: S7a 机型成本主表的"运营初期"列。</div>
     </div>
   </div>
 </section>
@@ -3109,21 +3119,13 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
     renderMargin(p);
   };
 
-  // ---- CHART 3: Pareto Frontier (fixed on 运营初期) ----
+  // ---- CHART 3: 机型经济性分布图 (航程 × 业载, bubble size = 1/tkmCost) ----
   function renderChart3() {
-    var paretoData = AIRCRAFT_INITIAL.map(function(ac){
+    var data = AIRCRAFT_INITIAL.map(function(ac){
       var tkmCost = (ac.fix + ac.varHr * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
-      return {name: ac.name, spd: ac.spd, payload: ac.maxP, tkmCost: tkmCost, color: ac.color};
+      return {name: ac.name, range: ac.rFull, payload: ac.maxP, tkmCost: tkmCost, color: ac.color};
     });
-    paretoData.forEach(function(a){
-      a.dominatedSP = paretoData.some(function(b){
-        return b!==a && b.spd >= a.spd && b.payload >= a.payload && (b.spd > a.spd || b.payload > a.payload);
-      });
-      a.dominatedSC = paretoData.some(function(b){
-        return b!==a && b.spd >= a.spd && b.tkmCost <= a.tkmCost && (b.spd > a.spd || b.tkmCost < a.tkmCost);
-      });
-    });
-    var inverses = paretoData.map(function(a){return 1/a.tkmCost});
+    var inverses = data.map(function(a){return 1/a.tkmCost});
     var maxInv = Math.max.apply(null, inverses);
     var minInv = Math.min.apply(null, inverses);
     function bubbleSize(tkmCost){
@@ -3131,29 +3133,28 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
       if(maxInv===minInv) return 50;
       return 25 + (inv - minInv)/(maxInv - minInv) * 65;
     }
-    var displayCoords = paretoData.map(function(a){return [a.spd, a.payload];});
-    paretoData.forEach(function(a, i){
+    // Detect overlap & nudge (Caravan 有人 + UAV share range=1300, payload=1088)
+    var displayCoords = data.map(function(a){return [a.range, a.payload];});
+    data.forEach(function(a, i){
       for(var j=0; j<i; j++){
-        if(paretoData[j].spd===a.spd && paretoData[j].payload===a.payload){
-          displayCoords[i] = [a.spd - 18, a.payload - 200];
+        if(data[j].range===a.range && data[j].payload===a.payload){
+          displayCoords[i] = [a.range * 0.94, a.payload * 0.88];
           break;
         }
       }
     });
-    var scatterData = paretoData.map(function(a, i){
-      var isPareto = !a.dominatedSP;
+    var scatterData = data.map(function(a, i){
       var dc = displayCoords[i];
       return {
         name: a.name,
         value: [dc[0], dc[1], a.tkmCost.toFixed(2)],
-        realSpd: a.spd, realPayload: a.payload, tkmCost: a.tkmCost.toFixed(2),
+        realRange: a.range, realPayload: a.payload, tkmCost: a.tkmCost.toFixed(2),
         symbolSize: bubbleSize(a.tkmCost),
         itemStyle: {
           color: a.color,
-          opacity: isPareto ? 0.85 : 0.6,
-          borderColor: isPareto ? '#1e293b' : '#94a3b8',
-          borderWidth: isPareto ? 2.5 : 1,
-          borderType: isPareto ? 'solid' : 'dashed'
+          opacity: 0.85,
+          borderColor: '#1e293b',
+          borderWidth: 1.5
         },
         label: {
           show: true,
@@ -3163,36 +3164,24 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
         }
       };
     });
-    var frontier = paretoData.filter(function(a){return !a.dominatedSP}).sort(function(a,b){return a.spd-b.spd});
-    var frontierLine = frontier.map(function(a){return [a.spd, a.payload]});
     var opt = {
       tooltip: {
         trigger: 'item',
         formatter: function(p){
           if(p.seriesName!=='机型') return '';
-          return '<b>'+p.data.name+'</b><br>速度: '+p.data.realSpd+'km/h<br>载荷: '+p.data.realPayload.toLocaleString()+'kg<br>吨公里成本: <b>'+p.data.tkmCost+'元</b>';
+          return '<b>'+p.data.name+'</b><br>满载航程: '+p.data.realRange.toLocaleString()+' km<br>业载: '+p.data.realPayload.toLocaleString()+' kg<br>吨公里成本: <b>'+p.data.tkmCost+' 元</b>';
         }
       },
       grid: {top: 60, bottom: 60, left: 80, right: 50},
-      xAxis: {type:'value', name:'速度(km/h)', min: 150, max: 900, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11}},
-      yAxis: {type:'log', name:'载荷(kg, 对数)', min: 200, max: 50000, logBase: 10, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
+      xAxis: {type:'value', name:'满载航程 (km)', min: 300, max: 6500, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'k' : v;}}},
+      yAxis: {type:'log', name:'业载 (kg, 对数)', min: 200, max: 50000, logBase: 10, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
       series: [
-        {name: 'Pareto前沿', type: 'line', data: frontierLine,
-         lineStyle: {color: '#2563eb', width: 2, type: 'dashed'},
-         itemStyle: {color: '#2563eb'}, symbol: 'none', z: 2, silent: true},
         {name: '机型', type: 'scatter', data: scatterData, z: 5,
          markArea: {
            silent: true,
-           itemStyle: {color: 'rgba(34,197,94,0.10)', borderColor:'#16a34a', borderWidth:1.5, borderType:'dashed'},
-           label: {show:true, position:'inside', color:'#16a34a', fontSize:11, fontWeight:700, formatter:'通航中型 UAV 设计区\n350-500km/h · 1.5-3.5t'},
-           data: [[{coord: [350, 1500]}, {coord: [500, 3500]}]]
-         }},
-        {name: '干线分割线', type: 'line', data: [[600, 200], [600, 50000]],
-         lineStyle: {color: '#94a3b8', width: 1, type: 'dotted'},
-         symbol: 'none', silent: true,
-         markPoint: {
-           silent: true, symbol: 'rect', symbolSize: [80, 18],
-           data: [{coord: [750, 35000], itemStyle:{color:'rgba(8,145,178,0.15)', borderColor:'#0891b2'}, label:{show:true, formatter:'干线喷气区', color:'#0891b2', fontSize:11, fontWeight:700}}]
+           itemStyle: {color: 'rgba(34,197,94,0.12)', borderColor:'#16a34a', borderWidth:1.8, borderType:'dashed'},
+           label: {show:true, position:'inside', color:'#15803d', fontSize:12, fontWeight:700, formatter:'设计白空间\n1,500-2,500 km × 1.5-3.5 t'},
+           data: [[{coord: [1500, 1500]}, {coord: [2500, 3500]}]]
          }}
       ]
     };
