@@ -1295,7 +1295,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Chart 1: Aircraft Dominance Map -->
     <div class="card fade-in" style="margin-top:16px">
       <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
-      <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。计算考虑载荷-航程权衡。<b>红色 pin</b> = 典型实际航线。成本口径 toggle: <b>运营初期</b> (首批 2-3 年, 跟 S7a 主表小时合计同) vs <b>正常运营</b> (规模化稳态, 厂商目标/国际基准)。</div>
+      <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。机型在业载超过 maxP 或距离超过满载航程 rFull 时不可用 (灰格)。<b>红色 pin</b> = 典型实际航线。成本口径 toggle: <b>运营初期</b> (首批 2-3 年, 跟 S7a 主表小时合计同) vs <b>正常运营</b> (规模化稳态, 厂商目标/国际基准)。</div>
       <div class="toggle-group" style="margin:10px 0">
         <button class="toggle-btn active" data-chart="1" data-mode="initial" onclick="s7bSetMode(1, 'initial')">运营初期</button>
         <button class="toggle-btn" data-chart="1" data-mode="normal" onclick="s7bSetMode(1, 'normal')">正常运营</button>
@@ -2897,10 +2897,11 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
 // ===== ECONOMIC FRONTIER: 3 CHARTS (独立 toggle: Chart ① 和 Chart ② 各自切换) =====
 (function(){
   // Helper: cost per kg for a given aircraft at (payload, distance)
+  // 硬上限: 超过最大业载 (maxP) 或满载航程 (rFull) 即不可用
+  // 不用 payload-range 权衡延伸 (决策视角下业务不会拿大飞机装小载荷去飞远程)
   function acCostAt(ac, payload, distance){
     if(payload > ac.maxP) return null;
-    var effRange = ac.rEmpty - (ac.rEmpty - ac.rFull) * payload / ac.maxP;
-    if(distance > effRange) return null;
+    if(distance > ac.rFull) return null;
     return (ac.fix + ac.varHr * distance / ac.spd) / payload;
   }
   function findBest(aircraftArr, payload, distance){
