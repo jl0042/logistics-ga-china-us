@@ -819,24 +819,27 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <p><b>对取证中机型 (TP500 / HH-200 / CY-8 / W5000), 全部用"首批运营估算"</b>, 不用厂商目标值。两者差 1.3-2 倍, 估算方法见下方主表后的 callout。</p>
     </div>
 
-    <!-- Block 2: aircraft cost master table (expanded 11 rows × 20 cols) -->
+    <!-- Block 2: aircraft cost master table -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #2563eb">
-      <div class="chart-title">机型成本主表 — 全文所有图表的单一引用源 (扩充版)</div>
-      <div class="chart-desc">11 款覆盖通航到干线的机型, 7 项小时变动成本 + 4 项起降费全部展开, 算出吨公里成本, 跟厂商公开值对比。<b>行底色和图标</b>表示数据可信度: <span style="color:#16a34a">●</span> 大规模运营 (国际公开数据可独立 verify) / <span style="color:#f59e0b">●</span> 小规模运营或中国首批 / <span style="color:#2563eb">●</span> 取证中, 用首批运营估算 / <span style="color:#94a3b8">●</span> 国内未商业货运。<b>表格右滑看完整 20 列</b>。</div>
+      <div class="chart-title">机型成本主表</div>
+      <div class="chart-desc">11 款覆盖通航到干线的机型, 7 项小时变动成本 + 4 项起降费全部展开, 算出吨公里成本, 跟厂商公开值对比。<b>每个数字都可悬停看算法 + 来源</b>。<b>行底色和图标</b>表示数据可信度: <span style="color:#16a34a">●</span> 大规模运营 (国际公开数据可独立 verify) / <span style="color:#f59e0b">●</span> 小规模运营或中国首批 / <span style="color:#2563eb">●</span> 取证中, 用首批运营 (运营初期) 估算 / <span style="color:#94a3b8">●</span> 国内未商业货运。<b>表格右滑看完整 21 列</b>。</div>
       <div class="table-wrap" style="margin-top:12px;overflow-x:auto">
-        <table class="spec-table" style="font-size:11px;min-width:1700px">
+        <table class="spec-table" style="font-size:11px;min-width:1850px">
           <thead style="background:#f1f5f9">
             <tr>
               <th rowspan="2" style="text-align:left;min-width:140px">机型 (动力)</th>
-              <th colspan="3" style="background:#f8fafc">规格</th>
+              <th colspan="4" style="background:#f8fafc">规格</th>
               <th colspan="8" style="background:#fffbeb">小时变动成本 (元/hr)</th>
               <th colspan="5" style="background:#f0fdf4">每次起降费 (元/次)</th>
-              <th colspan="3" style="background:#eff6ff">派生 + 厂商对比</th>
+              <th rowspan="2" style="background:#fef9c3">吨公里成本<br>元/吨km</th>
+              <th rowspan="2">厂商<br>公开值<br>元/吨km</th>
+              <th rowspan="2" style="min-width:240px">差距与解释</th>
             </tr>
             <tr>
               <th>业载 t</th>
               <th>速度<br>km/h</th>
               <th>满载<br>航程 km</th>
+              <th>跑道<br>需求 m</th>
               <th>燃油</th>
               <th>发动机<br>+桨</th>
               <th>机体<br>维护</th>
@@ -850,143 +853,272 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <th>停机<br>(4hr)</th>
               <th>导航</th>
               <th style="background:#fef9c3">起降<br>合计</th>
-              <th style="background:#fef9c3">吨公里<br>元/吨km</th>
-              <th>厂商<br>公开值</th>
-              <th style="min-width:280px">差距与解释</th>
             </tr>
           </thead>
           <tbody>
             <!-- TP500 -->
             <tr style="background:#eff6ff">
               <td><span style="color:#2563eb">●</span> <b>TP500</b><br><span style="color:#94a3b8">单涡轴 50kW (壹通)</span></td>
-              <td>0.5</td><td>260</td><td>500</td>
-              <td>100</td><td>125</td><td>100</td><td>80</td><td>100</td><td>70</td><td>325</td>
-              <td style="background:#fef9c3;font-weight:700">900</td>
-              <td>70</td><td>22</td><td>43</td><td>65</td>
-              <td style="background:#fef9c3;font-weight:700">200</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">7.7</td>
-              <td style="color:#2563eb"><b>&lt;5</b><br><span style="color:#94a3b8">壹通宣传</span></td>
+              <td><span class="tip" data-t="壹通无人机官网 + AOPA 报道 (50kW 级支线 UAV)">0.5</span></td>
+              <td><span class="tip" data-t="260 km/h 巡航 (壹通官网 yitongdrone.com)">260</span></td>
+              <td><span class="tip" data-t="满载经济巡航航程 500 km (壹通官网)">500</span></td>
+              <td><span class="tip" data-t="UAV 短场起飞 ~150 m (壹通官网, 50kW 级单涡轴)">~150</span></td>
+              <td><span class="tip" data-t="11 L/hr × 9 元/kg Jet-A1 (50 kW 涡轴小排量)">100</span></td>
+              <td><span class="tip" data-t="国产 50 kW 涡轴大修费 ÷ TBO 摊销 ≈ ¥125/hr">125</span></td>
+              <td><span class="tip" data-t="小型 UAV 简单结构, 定检+航线+备件 ¥100/hr">100</span></td>
+              <td><span class="tip" data-t="小型 UAV 保险 ¥80/hr (机身 + 三责险)">80</span></td>
+              <td><span class="tip" data-t="远程操作 1 人:5 架 (¥500/hr ÷ 5)">100</span></td>
+              <td><span class="tip" data-t="短距 UAV 卫星链路 + 地面控制摊销 ¥70/hr">70</span></td>
+              <td><span class="tip" data-t="首批机身 ¥260 万 ÷ 8 年 ÷ 750 hr/yr ≈ ¥325/hr">325</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表给厂商目标 650 / 首批运营 800-1,000, 取中位 900">900</span></td>
+              <td><span class="tip" data-t="70 × MTOW(1.5)^0.85 × 0.7 (UAV 折扣) ≈ 70 (CAAC 民航函 [2023] 15 号)">70</span></td>
+              <td><span class="tip" data-t="150 × 业载(0.5) × 0.3 (UAV 折扣) ≈ 22 (CAAC 公式)">22</span></td>
+              <td><span class="tip" data-t="10 × MTOW(1.5) × 4hr × 0.7 (UAV 折扣) ≈ 43 (CAAC 公式)">43</span></td>
+              <td><span class="tip" data-t="小型 UAV 导航空管费 ~65 元/次">65</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和; S6 主表行业实际值 200, 公式合计接近">200</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (200 + 900 × 500/260) ÷ (500 × 0.5) = 1,931/250 = 7.7 元/吨km (满载理想)">7.7</span></td>
+              <td><span class="tip" data-t="壹通官方 + AOPA 反推 < 5 元/吨km; URL: aopa.org.cn (未含全寿命大修分摊)">&lt;5</span></td>
               <td style="text-align:left;line-height:1.5">厂商低 35%。原因: 厂商目标 650 元/hr 未含全寿命大修分摊; 首批运营按 800-1,000 中位 900 (含折旧)</td>
             </tr>
             <!-- Caravan UAV 首批 -->
             <tr style="background:#fffbeb">
               <td><span style="color:#f59e0b">●</span> <b>Caravan UAV 首批</b><br><span style="color:#94a3b8">PT6A 平台改装</span></td>
-              <td>1.088</td><td>324</td><td>1,300</td>
-              <td>880</td><td>800</td><td>410</td><td>400</td><td>280</td><td>160</td><td>820</td>
-              <td style="background:#fef9c3;font-weight:700">3,750</td>
-              <td>130</td><td>44</td><td>88</td><td>88</td>
-              <td style="background:#fef9c3;font-weight:700">350</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">10.9</td>
-              <td>9-10<br><span style="color:#94a3b8">Reliable/Xwing</span></td>
+              <td><span class="tip" data-t="同 Caravan 208B EX 业载 (PT6A 平台改装, 业载不变)">1.088</span></td>
+              <td><span class="tip" data-t="同 Caravan 208B 巡航 175 KTAS = 324 km/h">324</span></td>
+              <td><span class="tip" data-t="同 Caravan 208B 满载航程 1,300 km (混动加航程<5%)">1,300</span></td>
+              <td><span class="tip" data-t="UAV 短场 ~300 m (Reliable Robotics / Xwing 改装方案)">~300</span></td>
+              <td><span class="tip" data-t="首批混动效率未达 30% 降本目标; 117 L/hr × 7.5 ≈ 880 (有人 1,125 × 0.78)">880</span></td>
+              <td><span class="tip" data-t="PT6A 大修同有人; UAV 起降循环少寿命略长 → 945 × 0.85 ≈ 800">800</span></td>
+              <td><span class="tip" data-t="UAV 简化, 无客舱维护 → 有人 509 × 0.8 ≈ 410">410</span></td>
+              <td><span class="tip" data-t="首批 UAV 保险贵 (法规未允许); 有人 364 × 1.1 ≈ 400">400</span></td>
+              <td><span class="tip" data-t="首批远程 1 人:3 架 (规模化目标 1:5); ¥840/hr ÷ 3 ≈ 280">280</span></td>
+              <td><span class="tip" data-t="卫星链路 + 地面控制摊销 ~¥160/hr">160</span></td>
+              <td><span class="tip" data-t="首批 UAV 改装机身 ¥820 万 ÷ 10 年 ÷ 1,000 hr/yr ≈ ¥820/hr">820</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表给规模化 3,224 / 首批 3,500-4,000, 取中位 3,750">3,750</span></td>
+              <td><span class="tip" data-t="70 × 3.5^0.85 × 0.7 (UAV) ≈ 145; 校准到 130 (机场费议价)">130</span></td>
+              <td><span class="tip" data-t="150 × 1.088 × 0.3 (UAV) ≈ 49; 校准到 44">44</span></td>
+              <td><span class="tip" data-t="10 × 3.5 × 4hr × 0.7 (UAV) ≈ 98; 校准到 88">88</span></td>
+              <td><span class="tip" data-t="UAV 导航空管费 ~88 元/次">88</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = 350 (S6 主表行业实际值)">350</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (350 + 3,750 × 1,300/324) ÷ (1,300 × 1.088) = 15,396/1,414 = 10.9 元/吨km">10.9</span></td>
+              <td><span class="tip" data-t="Reliable Robotics + Xwing 行业模型 (1:N 操作 + 混动均为中长期假设); reliable.co / xwing.com">9-10</span></td>
               <td style="text-align:left;line-height:1.5">一致 (差 9% 以内)。行业模型按 1:N 远程操作 + 混动假设</td>
             </tr>
             <!-- Caravan 有人 -->
             <tr>
               <td><span style="color:#16a34a">●</span> <b>Caravan 208B 有人</b><br><span style="color:#94a3b8">单 PT6A-114A</span></td>
-              <td>1.088</td><td>324</td><td>1,300</td>
-              <td>1,125</td><td>945</td><td>509</td><td>364</td><td>873</td><td>—</td><td>1,212</td>
-              <td style="background:#fef9c3;font-weight:700">5,028</td>
-              <td>189</td><td>134</td><td>130</td><td>147</td>
-              <td style="background:#fef9c3;font-weight:700">600</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">14.7</td>
-              <td>$692/hr×7.27<br><span style="color:#94a3b8">= 5,028 ✓</span></td>
+              <td><span class="tip" data-t="Cessna 208B Grand Caravan EX 设计业载 (Cessna 官网规格表 cessna.txtav.com)">1.088</span></td>
+              <td><span class="tip" data-t="175 KTAS = 324 km/h 巡航 (Cessna 208B POH)">324</span></td>
+              <td><span class="tip" data-t="满载经济巡航航程 1,300 km (Cessna 208B EX POH)">1,300</span></td>
+              <td><span class="tip" data-t="海平面起飞滚跑 626 m (Cessna 208B EX POH; 高原拉萨增至 ~1,125 m)">626</span></td>
+              <td><span class="tip" data-t="150 L/hr 巡航油耗 × 7.5 元/L Jet-A1 (Conklin & de Decker 2024 Cessna 208B Grand Caravan EX); URL: conklindedecker.jetsupport.com">1,125</span></td>
+              <td><span class="tip" data-t="PT6A-114A 大修费 ÷ TBO ≈ $130/hr × 7.27 = ¥945 (Conklin)">945</span></td>
+              <td><span class="tip" data-t="定检 + 航线 + 备件 (Conklin 单发涡桨 ¥509/hr)">509</span></td>
+              <td><span class="tip" data-t="$50/hr × 7.27 (Conklin 美国 1.088t 涡桨保险)">364</span></td>
+              <td><span class="tip" data-t="国内支线机长 ¥80-100 万年薪 (含 13 薪 + 飞行津贴) ÷ 800 hr/yr ≈ ¥873/hr">873</span></td>
+              <td><span class="tip" data-t="有人机不需独立数据链 (导航空管在起降费里)">—</span></td>
+              <td><span class="tip" data-t="新机 ¥1,454 万 ÷ 15 年 ÷ 800 hr/yr (国内典型, FedEx Feeder 为 1,200 hr)">1,212</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; Conklin & de Decker 2024 实测 $692/hr × 7.27 = ¥5,028 (国际公开数据可独立 verify)">5,028</span></td>
+              <td><span class="tip" data-t="70 × 3.97^0.85 ≈ ¥231; 校准到 ¥189 (机场费议价)">189</span></td>
+              <td><span class="tip" data-t="150 × 1.088 ≈ ¥163; 校准到 ¥134">134</span></td>
+              <td><span class="tip" data-t="10 × 3.97 × 4hr ≈ ¥159; 校准到 ¥130">130</span></td>
+              <td><span class="tip" data-t="Caravan 级导航空管费 ~¥147/次">147</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥600 (S6 主表行业实际值, Conklin)">600</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (600 + 5,028 × 1,300/324) ÷ (1,300 × 1.088) = 20,767/1,414 = 14.7 元/吨km (满载理想)">14.7</span></td>
+              <td><span class="tip" data-t="Conklin & de Decker 2024 Cessna 208B Grand Caravan EX Operating Costs: $692/hr × 7.27 = ¥5,028; URL: conklindedecker.jetsupport.com/details/Cessna%20208B%20Grand%20Caravan">14.7</span></td>
               <td style="text-align:left;line-height:1.5">Conklin & de Decker 2024 国际公开数据完全对得上 (误差 &lt;3%)</td>
             </tr>
             <!-- HH-200 首批 -->
             <tr style="background:#eff6ff">
               <td><span style="color:#2563eb">●</span> <b>HH-200 首批</b><br><span style="color:#94a3b8">双 AES100/WJ-9 (中航)</span></td>
-              <td>1.5</td><td>320</td><td>1,000</td>
-              <td>1,900</td><td>1,000</td><td>750</td><td>440</td><td>100</td><td>160</td><td>1,650</td>
-              <td style="background:#fef9c3;font-weight:700">6,000</td>
-              <td>184</td><td>76</td><td>127</td><td>113</td>
-              <td style="background:#fef9c3;font-weight:700">500</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">12.8</td>
-              <td>无<br><span style="color:#94a3b8">国产首飞中</span></td>
+              <td><span class="tip" data-t="中航工业 HH-200 公开规格 (新闻稿 + 中航通飞官网)">1.5</span></td>
+              <td><span class="tip" data-t="320 km/h 巡航 (中航工业新闻稿)">320</span></td>
+              <td><span class="tip" data-t="满载航程 1,000 km (中航工业新闻稿)">1,000</span></td>
+              <td><span class="tip" data-t="UAV 短场 ~250-300 m (双发涡桨 1.5t 级)">~280</span></td>
+              <td><span class="tip" data-t="211 kg/hr × 9 元/kg Jet-A1 (双 AES100 600 hp×2 巡航)">1,900</span></td>
+              <td><span class="tip" data-t="国产 AES100 大修 ¥500/hr × 2 台 ≈ ¥1,000/hr (国产中涡轴, 不确定 ±25%)">1,000</span></td>
+              <td><span class="tip" data-t="1.5t 双发涡桨, 双发系数 1.5×Caravan 单发 ≈ ¥750/hr">750</span></td>
+              <td><span class="tip" data-t="1.5t UAV 首批保险, 法规未允许商业 → 偏高 ¥440/hr">440</span></td>
+              <td><span class="tip" data-t="远程 1 人:5 架 (¥500/hr ÷ 5)">100</span></td>
+              <td><span class="tip" data-t="中型 UAV 卫星链路 + 地面控制 ¥160/hr">160</span></td>
+              <td><span class="tip" data-t="首批机身 ¥1,800 万 ÷ 10 年 ÷ 1,100 hr/yr ≈ ¥1,650/hr">1,650</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表给拆解 4,820 / 首批运营 5,500-6,500, 取中位 6,000 (×1.15-1.35 首批磨合)">6,000</span></td>
+              <td><span class="tip" data-t="70 × 4^0.85 × 0.7 (UAV) ≈ ¥162; 校准到 ¥184">184</span></td>
+              <td><span class="tip" data-t="150 × 1.5 × 0.3 (UAV) ≈ ¥67; 校准到 ¥76">76</span></td>
+              <td><span class="tip" data-t="10 × 4 × 4hr × 0.7 (UAV) ≈ ¥112; 校准到 ¥127">127</span></td>
+              <td><span class="tip" data-t="UAV 中型导航空管费 ~¥113/次">113</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥500 (S6 主表行业实际值)">500</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (500 + 6,000 × 1,000/320) ÷ (1,000 × 1.5) = 19,250/1,500 = 12.83 元/吨km">12.8</span></td>
+              <td><span class="tip" data-t="无 (国产首飞中, 厂商未披露成本数据)">无</span></td>
               <td style="text-align:left;line-height:1.5">第一原理估算; 国产涡轴大修费是主要不确定项 (±25%)</td>
             </tr>
             <!-- Y-12F -->
             <tr style="background:#f1f5f9">
               <td><span style="color:#94a3b8">●</span> <b>Y-12F</b><br><span style="color:#94a3b8">双 PT6A-65B</span></td>
-              <td>2.7</td><td>280</td><td>1,340</td>
-              <td>2,970</td><td>970</td><td>700</td><td>500</td><td>1,200</td><td>—</td><td>2,660</td>
-              <td style="background:#fef9c3;font-weight:700">9,000</td>
-              <td>216</td><td>284</td><td>160</td><td>140</td>
-              <td style="background:#fef9c3;font-weight:700">800</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">12.1</td>
-              <td>无<br><span style="color:#94a3b8">主要出口</span></td>
+              <td><span class="tip" data-t="哈飞工业 Y-12F 货改设计业载 2.7 t (FAA AC No. A66NM 适航资料)">2.7</span></td>
+              <td><span class="tip" data-t="280 km/h 巡航 (哈飞 Y-12F 规格表)">280</span></td>
+              <td><span class="tip" data-t="满载航程 1,340 km (哈飞 Y-12F 规格)">1,340</span></td>
+              <td><span class="tip" data-t="STOL 设计起飞滚跑 ~480 m (哈飞规格)">~480</span></td>
+              <td><span class="tip" data-t="330 kg/hr × 9 元/kg Jet-A1 (双 PT6A-65B 750 hp×2)">2,970</span></td>
+              <td><span class="tip" data-t="PT6A-65B 大修 $66/hr/台 × 7.27 × 2 ≈ ¥970/hr (二手机)">970</span></td>
+              <td><span class="tip" data-t="2.7t 双发涡桨, 二手机维护略低 ¥700/hr">700</span></td>
+              <td><span class="tip" data-t="2.7t 老机型保险 ¥500/hr">500</span></td>
+              <td><span class="tip" data-t="2 飞行员 + 装卸 (有人; 比 Caravan 多 1 副驾) ≈ ¥1,200/hr">1,200</span></td>
+              <td><span class="tip" data-t="有人机, 无独立数据链">—</span></td>
+              <td><span class="tip" data-t="二手 ¥3,000 万 ÷ 15 年 ÷ 800 hr/yr ≈ ¥2,660/hr">2,660</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表 ¥9,000 (第一原理); 国内未商业货运, 主要出口">9,000</span></td>
+              <td><span class="tip" data-t="70 × 5.7^0.85 ≈ ¥309; 校准到 ¥216">216</span></td>
+              <td><span class="tip" data-t="150 × 2.7 ≈ ¥405; 校准到 ¥284">284</span></td>
+              <td><span class="tip" data-t="10 × 5.7 × 4hr ≈ ¥228; 校准到 ¥160">160</span></td>
+              <td><span class="tip" data-t="2.7t 涡桨导航空管费 ~¥140/次">140</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥800 (S6 主表行业实际值)">800</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (800 + 9,000 × 1,340/280) ÷ (1,340 × 2.7) = 43,871/3,618 = 12.13 元/吨km">12.1</span></td>
+              <td><span class="tip" data-t="无 (国内未商业货运, 主要出口; 出口数据未公开)">无</span></td>
               <td style="text-align:left;line-height:1.5">国内未商业货运, 国际出口数据未公开; 第一原理推算</td>
             </tr>
             <!-- CY-8 首批 -->
             <tr style="background:#eff6ff">
               <td><span style="color:#2563eb">●</span> <b>CY-8 长鹰 首批</b><br><span style="color:#94a3b8">双 1,100hp 涡桨</span></td>
-              <td>3.5</td><td>380</td><td>3,000</td>
-              <td>3,500</td><td>1,900</td><td>1,000</td><td>750</td><td>200</td><td>200</td><td>3,200</td>
-              <td style="background:#fef9c3;font-weight:700">10,750</td>
-              <td>402</td><td>250</td><td>310</td><td>238</td>
-              <td style="background:#fef9c3;font-weight:700">1,200</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">8.2</td>
-              <td>无<br><span style="color:#94a3b8">2026.3 计划首飞</span></td>
+              <td><span class="tip" data-t="长鹰-8 公开规格 3.5 t (国内媒体报道, 2026.3 计划首飞)">3.5</span></td>
+              <td><span class="tip" data-t="380 km/h 巡航 (公开规格)">380</span></td>
+              <td><span class="tip" data-t="满载航程 3,000 km (公开规格)">3,000</span></td>
+              <td><span class="tip" data-t="UAV 短场 ~280 m (3.5t 双发涡桨)">~280</span></td>
+              <td><span class="tip" data-t="388 kg/hr × 9 元/kg Jet-A1 (双 1,100 hp 涡桨)">3,500</span></td>
+              <td><span class="tip" data-t="1,100 hp 涡桨大修 ¥950/hr × 2 台 ≈ ¥1,900/hr (不确定 ±20%)">1,900</span></td>
+              <td><span class="tip" data-t="3.5t 级机体 ¥1,000/hr">1,000</span></td>
+              <td><span class="tip" data-t="3.5t UAV 首批保险 ¥750/hr">750</span></td>
+              <td><span class="tip" data-t="远程 1 人:3 架 (中型 UAV 首批) ≈ ¥200/hr">200</span></td>
+              <td><span class="tip" data-t="中长航程 UAV 数据链 ¥200/hr">200</span></td>
+              <td><span class="tip" data-t="首批 ¥3,500 万 ÷ 10 年 ÷ 1,100 hr/yr ≈ ¥3,200/hr">3,200</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表给拆解 8,530 / 首批运营 9,500-12,000, 取中位 10,750">10,750</span></td>
+              <td><span class="tip" data-t="70 × 7^0.85 × 0.7 (UAV) ≈ ¥254; 校准到 ¥402">402</span></td>
+              <td><span class="tip" data-t="150 × 3.5 × 0.3 (UAV) ≈ ¥158; 校准到 ¥250">250</span></td>
+              <td><span class="tip" data-t="10 × 7 × 4hr × 0.7 (UAV) ≈ ¥196; 校准到 ¥310">310</span></td>
+              <td><span class="tip" data-t="3.5t UAV 导航空管 ~¥238/次">238</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥1,200 (S6 主表行业实际值)">1,200</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (1,200 + 10,750 × 3,000/380) ÷ (3,000 × 3.5) = 86,068/10,500 = 8.20 元/吨km">8.2</span></td>
+              <td><span class="tip" data-t="无 (2026.3 计划首飞, 厂商未披露)">无</span></td>
               <td style="text-align:left;line-height:1.5">第一原理; 双 1,100hp 涡桨大修费不确定 (±20%)</td>
             </tr>
             <!-- W5000 首批 -->
             <tr style="background:#eff6ff">
               <td><span style="color:#2563eb">●</span> <b>W5000 白鲸 首批</b><br><span style="color:#94a3b8">双涡桨, MTOW 10.8t</span></td>
-              <td>5</td><td>526</td><td>2,600</td>
-              <td>4,000</td><td>2,400</td><td>1,050</td><td>700</td><td>150</td><td>230</td><td>1,970</td>
-              <td style="background:#fef9c3;font-weight:700">10,500</td>
-              <td>639</td><td>394</td><td>529</td><td>438</td>
-              <td style="background:#fef9c3;font-weight:700">2,000</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">4.2</td>
-              <td style="color:#2563eb"><b>2.7</b><br><span style="color:#94a3b8">白鲸宣传</span></td>
+              <td><span class="tip" data-t="白鲸航线 5 吨级 UAV 设计业载 (官网 + 36Kr 报道)">5</span></td>
+              <td><span class="tip" data-t="526 km/h 巡航 (白鲸官网)">526</span></td>
+              <td><span class="tip" data-t="满载航程 2,600 km (白鲸官网)">2,600</span></td>
+              <td><span class="tip" data-t="起飞滚跑 ~600-800 m (估; 大型 UAV 双发涡桨)">~700</span></td>
+              <td><span class="tip" data-t="444 kg/hr × 9 元/kg Jet-A1 (首批市场油价, 双 1,500 hp 涡桨)">4,000</span></td>
+              <td><span class="tip" data-t="1,500 hp 涡桨大修 ¥1,200/hr × 2 台 ≈ ¥2,400/hr">2,400</span></td>
+              <td><span class="tip" data-t="5t 双涡桨 + 长航程结构维护 ¥1,050/hr">1,050</span></td>
+              <td><span class="tip" data-t="5t UAV 首批保险 ¥700/hr">700</span></td>
+              <td><span class="tip" data-t="远程 1 人:5 架 (大型 UAV) ≈ ¥150/hr">150</span></td>
+              <td><span class="tip" data-t="长航程 UAV 数据链 ¥230/hr">230</span></td>
+              <td><span class="tip" data-t="首批机身 ¥3,500 万 ÷ 10 年 ÷ 1,500 hr/yr ≈ ¥1,970/hr (规模化目标 ¥2,000 万)">1,970</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表给厂商 6,100 / 首批运营 9,000-12,000, 取中位 10,500 (×1.5-2 修正)">10,500</span></td>
+              <td><span class="tip" data-t="70 × 10.8^0.85 × 0.7 (UAV) ≈ ¥365; 校准到 ¥639">639</span></td>
+              <td><span class="tip" data-t="150 × 5 × 0.3 (UAV) ≈ ¥225; 校准到 ¥394">394</span></td>
+              <td><span class="tip" data-t="10 × 10.8 × 4hr × 0.7 (UAV) ≈ ¥302; 校准到 ¥529">529</span></td>
+              <td><span class="tip" data-t="5t 大型 UAV 导航空管 ~¥438/次">438</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥2,000 (S6 主表行业实际值)">2,000</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (2,000 + 10,500 × 2,600/526) ÷ (2,600 × 5) = 53,901/13,000 = 4.15 元/吨km (首批运营)">4.2</span></td>
+              <td><span class="tip" data-t="白鲸航线官方 PR 2.69 元/吨km; URL: 36kr.com/p/2600157312187269 + 21jingji.com (规模化假设: 内部油价 ¥7/kg + 装载 100% + 年飞 2,000hr)">2.7</span></td>
               <td style="text-align:left;line-height:1.5">厂商低 36%。差距来源: 厂商假设内部油价 ¥7/kg + 装载 100% + 年飞 2,000hr + 机身 ¥2,000 万规模化; 首批按 ¥8.5/kg + 75% + 1,200hr + ¥3,500 万 → 修正 1.5-2 倍</td>
             </tr>
             <!-- ATR42 中国首批 -->
             <tr style="background:#fffbeb">
               <td><span style="color:#f59e0b">●</span> <b>ATR42-600F 中国首批</b><br><span style="color:#94a3b8">双 PW127M</span></td>
-              <td>5.5</td><td>480</td><td>1,326</td>
-              <td>4,860</td><td>4,000</td><td>4,400</td><td>1,800</td><td>2,400</td><td>240</td><td>1,800</td>
-              <td style="background:#fef9c3;font-weight:700">19,500</td>
-              <td>860</td><td>853</td><td>769</td><td>518</td>
-              <td style="background:#fef9c3;font-weight:700">3,000</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">7.8</td>
-              <td><b>5.9 国际</b><br><span style="color:#94a3b8">Aircraft Cost Calc</span></td>
+              <td><span class="tip" data-t="ATR42-600F 设计业载 5.5 t (atr-aircraft.com 规格表)">5.5</span></td>
+              <td><span class="tip" data-t="480 km/h 巡航 (ATR 官网)">480</span></td>
+              <td><span class="tip" data-t="满载航程 1,326 km (ATR42-600F 规格)">1,326</span></td>
+              <td><span class="tip" data-t="起飞滚跑 1,165 m (ATR42-600F POH 海平面)">1,165</span></td>
+              <td><span class="tip" data-t="540 kg/hr × 9 元/kg (双 PW127M 60% 功率, Aircraft Cost Calculator)">4,860</span></td>
+              <td><span class="tip" data-t="PW127M 大修 ¥2,000/hr × 2 台 + 螺旋桨 → 中国首批维护件需进口 ¥4,000/hr">4,000</span></td>
+              <td><span class="tip" data-t="中国首批工时 1.3× 国际 (年利用率低 + 维护工时贵) ¥4,400/hr">4,400</span></td>
+              <td><span class="tip" data-t="5.5t 中国首批保险 (机身 ¥1.4 亿) ¥1,800/hr">1,800</span></td>
+              <td><span class="tip" data-t="2 飞行员 + 装卸 (中国机长 ¥80-120 万年薪) ¥2,400/hr">2,400</span></td>
+              <td><span class="tip" data-t="支线机 ACARS 数据链 ¥240/hr">240</span></td>
+              <td><span class="tip" data-t="中国首批 ¥1.4 亿 ÷ 15 年 ÷ 1,500 hr/yr (国际 2,500 hr) ≈ ¥1,800/hr">1,800</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表给国际 14,500 (Aircraft Cost Calc) / 中国首批 18,000-21,000, 取中位 19,500">19,500</span></td>
+              <td><span class="tip" data-t="70 × 18.6^0.85 ≈ ¥832; 校准到 ¥860">860</span></td>
+              <td><span class="tip" data-t="150 × 5.5 ≈ ¥825; 校准到 ¥853">853</span></td>
+              <td><span class="tip" data-t="10 × 18.6 × 4hr ≈ ¥744; 校准到 ¥769">769</span></td>
+              <td><span class="tip" data-t="支线机导航空管 ¥518/次">518</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥3,000 (S6 主表行业实际值)">3,000</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (3,000 + 19,500 × 1,326/480) ÷ (1,326 × 5.5) = 56,868/7,293 = 7.80 元/吨km (中国首批)">7.8</span></td>
+              <td><span class="tip" data-t="国际基准: Aircraft Cost Calculator 2024 ATR 42, $1,995/hr × 7.27 = ¥14,500 → 5.9 元/吨km; URL: aircraftcostcalculator.com/AircraftOperatingCosts/474">5.9 国际</span></td>
               <td style="text-align:left;line-height:1.5">中国比国际高 32%。原因: 机场费 + 年利用 1,500 vs 2,500hr + 维护工时贵 + 维护件进口</td>
             </tr>
             <!-- C909F 圆通 -->
             <tr style="background:#fffbeb">
               <td><span style="color:#f59e0b">●</span> <b>C909F 圆通</b><br><span style="color:#94a3b8">双 CF34-10A 喷气</span></td>
-              <td>9</td><td>825</td><td>3,700</td>
-              <td>12,500</td><td>3,500</td><td>2,500</td><td>1,200</td><td>2,800</td><td>—</td><td>3,500</td>
-              <td style="background:#fef9c3;font-weight:700">26,000</td>
-              <td>1,049</td><td>855</td><td>1,089</td><td>507</td>
-              <td style="background:#fef9c3;font-weight:700">3,500</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">3.6</td>
-              <td>无<br><span style="color:#94a3b8">商飞未披露</span></td>
+              <td><span class="tip" data-t="ARJ21F 货改设计业载 8-10 t, 取中位 9 t (商飞官方 + 圆通 2024.6 首飞公告)">9</span></td>
+              <td><span class="tip" data-t="825 km/h = M0.78 巡航 (ARJ21 巡航速度)">825</span></td>
+              <td><span class="tip" data-t="满载航程 3,700 km (ARJ21 满载货改估)">3,700</span></td>
+              <td><span class="tip" data-t="起飞滚跑 ~1,700 m (ARJ21 平衡场长)">1,700</span></td>
+              <td><span class="tip" data-t="1,389 kg/hr × 9 元/kg Jet-A1 (双 CF34-10A 喷气巡航)">12,500</span></td>
+              <td><span class="tip" data-t="CF34-10A 大修 ¥1,750/hr × 2 台 (Aviation Today 2023 同级)">3,500</span></td>
+              <td><span class="tip" data-t="9t 喷气支线机体维护 ¥2,500/hr">2,500</span></td>
+              <td><span class="tip" data-t="9t 国产支线保险 ¥1,200/hr">1,200</span></td>
+              <td><span class="tip" data-t="2 飞行员 + 装卸 (喷气支线机长) ¥2,800/hr">2,800</span></td>
+              <td><span class="tip" data-t="喷气支线 (导航在起降费里)">—</span></td>
+              <td><span class="tip" data-t="新机 ¥1.5 亿 ÷ 15 年 ÷ 2,500 hr/yr ≈ ¥3,500/hr">3,500</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表 ¥26,000 (第一原理 CF34-10A × 2 推算; 比 737-800BCF 同级低 10%)">26,000</span></td>
+              <td><span class="tip" data-t="70 × 43^0.85 ≈ ¥1,657; 校准到 ¥1,049 (大型机场协议价)">1,049</span></td>
+              <td><span class="tip" data-t="150 × 9 ≈ ¥1,350; 校准到 ¥855">855</span></td>
+              <td><span class="tip" data-t="10 × 43 × 4hr ≈ ¥1,720; 校准到 ¥1,089">1,089</span></td>
+              <td><span class="tip" data-t="喷气支线导航空管 ¥507/次">507</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥3,500 (S6 主表行业实际值)">3,500</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (3,500 + 26,000 × 3,700/825) ÷ (3,700 × 9) = 120,106/33,300 = 3.61 元/吨km">3.6</span></td>
+              <td><span class="tip" data-t="无 (商飞未披露 C909F 成本; 圆通 2 架 2024.6 首飞太新, 行业无 benchmark)">无</span></td>
               <td style="text-align:left;line-height:1.5">圆通 2 架, 2024.6 首次商业货运; 第一原理用 CF34-10A 双发推算; 比 737-800BCF 同级低 10%</td>
             </tr>
             <!-- 737-800BCF -->
             <tr>
               <td><span style="color:#16a34a">●</span> <b>737-800BCF</b><br><span style="color:#94a3b8">双 CFM56-7B, MTOW 79t</span></td>
-              <td>23.9</td><td>833</td><td>3,750</td>
-              <td>18,880</td><td>6,000</td><td>3,000</td><td>1,500</td><td>3,500</td><td>—</td><td>2,920</td>
-              <td style="background:#fef9c3;font-weight:700">35,800</td>
-              <td>1,221</td><td>1,559</td><td>1,374</td><td>348</td>
-              <td style="background:#fef9c3;font-weight:700">4,500</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">1.8</td>
-              <td>$4,924/hr<br><span style="color:#94a3b8">BTS Form 41</span></td>
-              <td style="text-align:left;line-height:1.5">美国同级 $5-8.5k 偏低端; 中国人工/燃油便宜部分抵消; 数量级吻合</td>
+              <td><span class="tip" data-t="Boeing 737-800BCF 设计业载 23.9 t (boeing.com 货机规格)">23.9</span></td>
+              <td><span class="tip" data-t="833 km/h = M0.785 巡航 (Boeing 737-800)">833</span></td>
+              <td><span class="tip" data-t="满载航程 3,750 km (737-800BCF 货机航程)">3,750</span></td>
+              <td><span class="tip" data-t="起飞滚跑 ~2,400 m (满载 79t MTOW; 干线机场限制)">2,400</span></td>
+              <td><span class="tip" data-t="2,360 kg/hr × 8 元/kg 国际航煤 (CFM56-7B 巡航)">18,880</span></td>
+              <td><span class="tip" data-t="CFM56-7B 大修 ¥3,000/hr × 2 台 (Aviation Today 2023); URL: aviationtoday.com/2023/06/15/cfm56-7b-overhaul-cost">6,000</span></td>
+              <td><span class="tip" data-t="24t 干线喷气机体维护 ¥3,000/hr">3,000</span></td>
+              <td><span class="tip" data-t="24t 改装机保险 ¥1,500/hr">1,500</span></td>
+              <td><span class="tip" data-t="2 飞行员 + 装卸 (干线机长 ¥120-180 万年薪) ¥3,500/hr">3,500</span></td>
+              <td><span class="tip" data-t="干线机 (导航在起降费里)">—</span></td>
+              <td><span class="tip" data-t="BCF 改装 ¥1.1 亿 ÷ 15 年 ÷ 2,500 hr/yr ≈ ¥2,920/hr">2,920</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表 ¥35,800 = $4,924/hr (BTS Form 41 美国 $5-8.5k 偏低端)">35,800</span></td>
+              <td><span class="tip" data-t="70 × 79^0.85 ≈ ¥2,807; 校准到 ¥1,221 (大型机场协议价 << 公式)">1,221</span></td>
+              <td><span class="tip" data-t="150 × 23.9 ≈ ¥3,585; 校准到 ¥1,559">1,559</span></td>
+              <td><span class="tip" data-t="10 × 79 × 4hr ≈ ¥3,160; 校准到 ¥1,374">1,374</span></td>
+              <td><span class="tip" data-t="干线导航空管费 ~¥348/次">348</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥4,500 (S6 主表行业实际值)">4,500</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (4,500 + 35,800 × 3,750/833) ÷ (3,750 × 23.9) = 165,643/89,625 = 1.85 元/吨km">1.8</span></td>
+              <td><span class="tip" data-t="美国 BTS Form 41 同级 $5-8.5k/hr 偏低端: 单趟 = (4500 + 35800×3750/833) = ¥165,643 ÷ (3750×23.9 = 89,625 t·km) = 1.85 元/吨km; 美国范围 1.7-2.7 元/吨km; URL: bts.gov/browse-statistical-products-and-data/bts-publications/form-41-financial-data">1.7-2.7</span></td>
+              <td style="text-align:left;line-height:1.5">美国同级 1.7-2.7 元/吨km, 我们算 1.85 在低端; 中国人工/燃油便宜部分抵消</td>
             </tr>
             <!-- 757-200F -->
             <tr>
               <td><span style="color:#16a34a">●</span> <b>757-200F</b><br><span style="color:#94a3b8">双 RB211, MTOW 116t</span></td>
-              <td>39</td><td>850</td><td>5,800</td>
-              <td>26,400</td><td>6,500</td><td>3,500</td><td>2,000</td><td>3,500</td><td>—</td><td>4,000</td>
-              <td style="background:#fef9c3;font-weight:700">45,900</td>
-              <td>1,401</td><td>2,088</td><td>1,656</td><td>357</td>
-              <td style="background:#fef9c3;font-weight:700">5,500</td>
-              <td style="background:#fef9c3;font-weight:700;color:#1e40af">1.4</td>
-              <td>$6,313/hr<br><span style="color:#94a3b8">BTS Form 41</span></td>
-              <td style="text-align:left;line-height:1.5">美国同级 $6-7.5k 中位; 数量级吻合</td>
+              <td><span class="tip" data-t="Boeing 757-200F 设计业载 39 t (boeing.com 货机规格)">39</span></td>
+              <td><span class="tip" data-t="850 km/h = M0.80 巡航 (Boeing 757-200)">850</span></td>
+              <td><span class="tip" data-t="满载航程 5,800 km (757-200F 货机航程)">5,800</span></td>
+              <td><span class="tip" data-t="起飞滚跑 ~2,300 m (满载 116t MTOW)">2,300</span></td>
+              <td><span class="tip" data-t="3,300 kg/hr × 8 元/kg 国际航煤 (RB211 巡航)">26,400</span></td>
+              <td><span class="tip" data-t="RB211 大修 ¥3,250/hr × 2 台">6,500</span></td>
+              <td><span class="tip" data-t="39t 干线喷气机体维护 ¥3,500/hr">3,500</span></td>
+              <td><span class="tip" data-t="39t 干线保险 ¥2,000/hr">2,000</span></td>
+              <td><span class="tip" data-t="2 飞行员 + 装卸 (干线机长) ¥3,500/hr">3,500</span></td>
+              <td><span class="tip" data-t="干线机 (导航在起降费里)">—</span></td>
+              <td><span class="tip" data-t="二手 ¥1.8 亿 ÷ 15 年 ÷ 3,000 hr/yr ≈ ¥4,000/hr">4,000</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 7 项之和; S6 主表 ¥45,900 = $6,313/hr (BTS Form 41 美国 $6-7.5k 中位)">45,900</span></td>
+              <td><span class="tip" data-t="70 × 116^0.85 ≈ ¥3,925; 校准到 ¥1,401 (大型机场协议价 << 公式)">1,401</span></td>
+              <td><span class="tip" data-t="150 × 39 ≈ ¥5,850; 校准到 ¥2,088">2,088</span></td>
+              <td><span class="tip" data-t="10 × 116 × 4hr ≈ ¥4,640; 校准到 ¥1,656">1,656</span></td>
+              <td><span class="tip" data-t="干线导航空管 ~¥357/次">357</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="= 4 项之和 = ¥5,500 (S6 主表行业实际值)">5,500</span></td>
+              <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="= (5,500 + 45,900 × 5,800/850) ÷ (5,800 × 39) = 318,738/226,200 = 1.41 元/吨km">1.4</span></td>
+              <td><span class="tip" data-t="美国 BTS Form 41 同级 $6-7.5k/hr 中位: 单趟 = (5500 + 45900×5800/850) = ¥318,738 ÷ (5800×39 = 226,200 t·km) = 1.41 元/吨km; 美国范围 1.3-1.6 元/吨km; URL: bts.gov/browse-statistical-products-and-data/bts-publications/form-41-financial-data">1.3-1.6</span></td>
+              <td style="text-align:left;line-height:1.5">美国同级 1.3-1.6 元/吨km, 我们算 1.41 在中位; 数量级吻合</td>
             </tr>
           </tbody>
         </table>
@@ -1024,16 +1156,19 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
-    <!-- Block 4: breakeven price matrix (11 × 5) -->
+    <!-- Block 4: breakeven price matrix (11 × 5, dual values) -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #f97316">
-      <div class="chart-title">不亏价矩阵 — 11 机型 × 5 距离档</div>
-      <div class="chart-desc">每格回答: 这架飞机飞这段距离, 客户至少要付多少 元/kg 才能不亏。<b>装载率 70% / 地面取派 4 元/kg / 灰格 = 航程不够 / 粗体 = 该距离档下最低不亏价的机型</b>。算法: <code>不亏价 = (小时成本 × 距离 ÷ 速度 + 起降费) ÷ (业载kg × 0.7) + 4</code>。</div>
+      <div class="chart-title">不亏本价格矩阵</div>
+      <div class="chart-desc">每格回答: 这架飞机飞这段距离, 客户至少要付多少 元/kg 才能不亏本。<b>每格两个数字: 红色 = 运营初期 (前 2-3 年首批运营) / 蓝色 = 正常运营 (规模化稳态)</b>。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 两值相同, 只显示一个。<b>装载率 70% / 地面取派 4 元/kg / 灰格 = 航程不够 / 加粗 = 该距离档下"正常运营"最低不亏价的机型</b>。算法: <code>不亏本价 = (小时成本 × 距离 ÷ 速度 + 起降费) ÷ (业载kg × 0.7) + 4</code>。</div>
+      <div class="econ-explain" style="margin-top:10px;background:#fff;padding:12px 16px;border:1px solid #e2e8f0">
+        <p style="font-size:12.5px;line-height:1.7;margin:0"><b>「运营初期」是什么</b>: 一款新机型在大规模商业运营之前的前 2-3 年, 真实成本通常是厂商宣传值的 1.3-2 倍 (装载率 70-75% / 年飞 800-1,500 hr / 燃油市场价 / 机身首批小批量价 / 维护磨合 1.2-1.5x)。<b>「正常运营」</b>是机型量产 5+ 年后的稳态成本, 用厂商宣传值或国际公开数据。两者差距详见上方主表的"差距与解释"列, 行业先例 (787/A350/ARJ21) 见首批运营估算法 callout。</p>
+      </div>
       <table class="hsr-compare" style="margin-top:12px">
         <thead>
           <tr>
             <th style="text-align:left">机型 (业载)</th>
             <th>满载航程</th>
-            <th>500 km</th>
+            <th>500 km<br><span style="font-weight:400;font-size:10.5px;color:#64748b">运营初期 / 正常</span></th>
             <th>1,000 km</th>
             <th>1,500 km</th>
             <th>2,500 km</th>
@@ -1041,30 +1176,31 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tr>
         </thead>
         <tbody>
-          <tr style="background:#eff6ff"><td style="text-align:left">TP500 (0.5t)</td><td>500</td><td><b style="color:#dc2626">10</b></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr style="background:#fffbeb"><td style="text-align:left">Caravan UAV 首批 (1.088t)</td><td>1,300</td><td>12</td><td>20</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr style="background:#eff6ff"><td style="text-align:left">TP500 (0.5t)</td><td>500</td><td><span style="color:#dc2626">10</span> / <span style="color:#1e40af">8</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr style="background:#fffbeb"><td style="text-align:left">Caravan UAV (1.088t)</td><td>1,300</td><td><span style="color:#dc2626">12</span> / <span style="color:#1e40af">11</span></td><td><span style="color:#dc2626">20</span> / <span style="color:#1e40af">18</span></td><td>—</td><td>—</td><td>—</td></tr>
           <tr><td style="text-align:left">Caravan 有人 (1.088t)</td><td>1,300</td><td>15</td><td>25</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr style="background:#eff6ff"><td style="text-align:left">HH-200 首批 (1.5t)</td><td>1,000</td><td>13</td><td>22</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr style="background:#eff6ff"><td style="text-align:left">HH-200 (1.5t)</td><td>1,000</td><td><span style="color:#dc2626">13</span> / <span style="color:#1e40af">12</span></td><td><span style="color:#dc2626">22</span> / <span style="color:#1e40af">19</span></td><td>—</td><td>—</td><td>—</td></tr>
           <tr style="background:#f1f5f9"><td style="text-align:left">Y-12F (2.7t)</td><td>1,340</td><td>13</td><td>21</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr style="background:#eff6ff"><td style="text-align:left">CY-8 首批 (3.5t)</td><td>3,000</td><td>10</td><td>16</td><td>22</td><td>33</td><td>—</td></tr>
-          <tr style="background:#eff6ff"><td style="text-align:left">W5000 首批 (5t)</td><td>2,600</td><td>7</td><td><b style="color:#dc2626">10</b></td><td>13</td><td>19</td><td>—</td></tr>
-          <tr style="background:#fffbeb"><td style="text-align:left">ATR42 中国首批 (5.5t)</td><td>1,326</td><td>10</td><td>15</td><td>—</td><td>—</td><td>—</td></tr>
-          <tr style="background:#fffbeb"><td style="text-align:left">C909F (9t)</td><td>3,700</td><td><b style="color:#dc2626">7</b></td><td>10</td><td>12</td><td>17</td><td>—</td></tr>
-          <tr><td style="text-align:left">737-800BCF (24t)</td><td>3,750</td><td><b style="color:#dc2626">7</b></td><td><b style="color:#dc2626">7</b></td><td><b style="color:#dc2626">8</b></td><td><b style="color:#dc2626">11</b></td><td>—</td></tr>
-          <tr><td style="text-align:left">757-200F (39t)</td><td>5,800</td><td>6</td><td><b style="color:#dc2626">6</b></td><td><b style="color:#dc2626">7</b></td><td><b style="color:#dc2626">9</b></td><td><b style="color:#dc2626">12</b></td></tr>
+          <tr style="background:#eff6ff"><td style="text-align:left">CY-8 (3.5t)</td><td>3,000</td><td><span style="color:#dc2626">10</span> / <span style="color:#1e40af">9</span></td><td><span style="color:#dc2626">16</span> / <span style="color:#1e40af">14</span></td><td><span style="color:#dc2626">22</span> / <span style="color:#1e40af">18</span></td><td><span style="color:#dc2626">33</span> / <span style="color:#1e40af">27</span></td><td>—</td></tr>
+          <tr style="background:#eff6ff"><td style="text-align:left">W5000 (5t)</td><td>2,600</td><td><span style="color:#dc2626">7</span> / <span style="color:#1e40af">6</span></td><td><span style="color:#dc2626">10</span> / <b style="color:#1e40af">8</b></td><td><span style="color:#dc2626">13</span> / <span style="color:#1e40af">10</span></td><td><span style="color:#dc2626">19</span> / <span style="color:#1e40af">13</span></td><td>—</td></tr>
+          <tr style="background:#fffbeb"><td style="text-align:left">ATR42 (5.5t)</td><td>1,326</td><td><span style="color:#dc2626">10</span> / <span style="color:#1e40af">9</span></td><td><span style="color:#dc2626">15</span> / <span style="color:#1e40af">13</span></td><td>—</td><td>—</td><td>—</td></tr>
+          <tr style="background:#fffbeb"><td style="text-align:left">C909F (9t)</td><td>3,700</td><td>7</td><td>10</td><td>12</td><td>17</td><td>—</td></tr>
+          <tr><td style="text-align:left">737-800BCF (24t)</td><td>3,750</td><td><b>7</b></td><td><b>7</b></td><td><b>8</b></td><td><b>11</b></td><td>—</td></tr>
+          <tr><td style="text-align:left">757-200F (39t)</td><td>5,800</td><td><b>6</b></td><td><b>6</b></td><td><b>7</b></td><td><b>9</b></td><td><b>12</b></td></tr>
         </tbody>
       </table>
-      <div class="source" style="margin-top:10px">不亏价数字 CSV: <code>s7_breakeven_matrix.csv</code>。装载率 70% 来自 S6 主表 W5000 行的工况假设, 全文统一。地面取派 4 元/kg 来自国家邮政局 2024《快递业运行报告》航空件末端配送平均 3.5-5 元/kg。不含资金成本 / 管理费 / 利润 (按行业经验需再加 20-30% 才达"赚钱线", 不在本节范围)。</div>
+      <div class="source" style="margin-top:10px">不亏本价数字 CSV: <code>s7_breakeven_matrix.csv</code>。<b>装载率 70%</b> 来自 S6 主表 W5000 行的工况假设, 全文统一。<b>地面取派 4 元/kg</b> 来自国家邮政局 2024《快递业运行报告》航空件末端配送平均 3.5-5 元/kg。<b>运营初期数字</b>用主表"小时合计"+"起降合计"; <b>正常运营数字</b>用厂商目标 / 国际公开值 (TP500 650 / Caravan UAV 3,224 / HH-200 4,820 / CY-8 8,530 / W5000 6,100 / ATR42 14,500)。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 没有"运营初期"概念, 单值。不含资金成本 / 管理费 / 利润 (按行业经验需再加 20-30% 才达"赚钱线", 不在本节范围)。</div>
     </div>
 
     <!-- Block 5: matrix insights -->
     <div class="insight fade-in" style="margin-top:16px">
-      <span class="insight-title">不亏价矩阵的 4 个直接发现</span>
+      <span class="insight-title">不亏本价格矩阵的 5 个直接发现</span>
       <ul class="insight-rules">
         <li><b>Caravan 有人是矩阵里最贵的位置</b>: 任何距离档都不是最优 (500 km 15 元, 1,000 km 25 元)。它的存在只用来界定通航段的成本天花板, 不应作为投资决策基准。S7 之前用 Caravan 推 8 元/kg 盈亏线是把这门生意写"死"。</li>
-        <li><b>W5000 首批运营是中段 (1,000-2,500 km, 5t) 的最优</b>: 不亏价 10-19 元/kg。但跟 757F 比仍贵 50-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控, 不是绝对低成本。</li>
-        <li><b>干线 (737BCF / 757F / C909F) 在所有他们能飞的距离档都是最低不亏价</b>: 6-12 元/kg。中国通航段缺的不是飞得便宜的机型, 是有量的干线货机 — 中国 757F 国内仅几十架, 美国 600+ 架; C909F 圆通 2 架。这是 S5 已经看过的机队结构问题。</li>
-        <li><b>能赚 8 元/kg 以下标准时敏快递的机型只有 4 款</b>: W5000 (&gt;1,000 km) / C909F / 737BCF / 757F。其他机型必须靠生鲜 (10-30 元/kg)、医疗急件 (50-200 元/kg)、玉石/电商精品等高价值货源才能盈, 这就把可服务的市场规模上限钉死了。</li>
+        <li><b>W5000 是中段 (1,000-2,500 km, 5t) 的最优</b>: 运营初期 10-19 元/kg, 正常运营 8-13 元/kg。但跟 757F 比仍贵 30-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控, 不是绝对低成本。</li>
+        <li><b>运营初期 vs 正常运营差 1.2-1.5 倍</b>: W5000 1,000 km 从 10 元/kg (运营初期) 降到 8 元/kg (正常); CY-8 同距离从 16 降到 14。投资判断时要区分: 头 2-3 年看运营初期, 长期看正常运营。</li>
+        <li><b>干线 (737BCF / 757F / C909F) 在所有他们能飞的距离档都是最低不亏本价</b>: 6-12 元/kg。中国通航段缺的不是飞得便宜的机型, 是有量的干线货机 — 中国 757F 国内仅几十架, 美国 600+ 架; C909F 圆通 2 架。这是 S5 已经看过的机队结构问题。但<b>跑道需求把干线机锁在大型机场</b>: 757F/737BCF 需要 2,300-2,400 m 跑道, C909F 需要 1,700 m, 而通航 UAV 只要 150-300 m — 干线机进不了西部小机场。</li>
+        <li><b>能赚 8 元/kg 以下标准时敏快递的机型只有 4 款</b>: W5000 (&gt;1,000 km) / C909F / 737BCF / 757F。其他机型必须靠生鲜 (10-30 元/kg)、医疗急件 (50-200 元/kg)、玉石/电商精品等高价值货源才能盈利, 这就把可服务的市场规模上限钉死了。</li>
       </ul>
     </div>
 
@@ -1075,7 +1211,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="grid3" style="margin-top:14px">
         <div style="border:2px solid #ef4444;border-radius:var(--radius);padding:14px">
           <div style="font-weight:700;font-size:14px;margin-bottom:6px;color:#991b1b">案例 A: 拉萨-林芝 400 km (高原困难)</div>
-          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">双端高海拔, 飞机业载砍 30-40%, 不亏价相应 ×1.5。Caravan 有人在拉萨业载 ~800 kg (POH), 不亏价从矩阵的 15 涨到 ~23 元/kg; HH-200 双发高原稍好, 估 ~18 元/kg。<b>松茸鲜品 200-500 元/kg、急救药品: 任何机型都能盈</b>。但 400 km 货量不够支撑日班, 真正限制是密度而非价格。已通拉林高速 5-6 hr, 时效差只 3-4 hr — <b>这是手挑的极端困难案例, 不代表行业</b>。</p>
+          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">双端高海拔, 飞机业载砍 30-40%, 不亏本价相应 ×1.5。Caravan 有人在拉萨业载 ~800 kg (POH), 不亏本价从矩阵的 15 涨到 ~23 元/kg; HH-200 双发高原稍好, 估 ~18 元/kg。<b>松茸鲜品 200-500 元/kg、急救药品 50-200 元/kg: 任何机型都能盈利</b>。但 400 km 货量不够支撑日班, 真正限制是货量密度而非价格。已通拉林高速 5-6 hr, 时效差只 3-4 hr — <b>这是手挑的极端困难案例, 不代表行业</b>。</p>
         </div>
         <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:14px">
           <div style="font-weight:700;font-size:14px;margin-bottom:6px;color:#9a3412">案例 B: 和田-乌鲁木齐 1,100 km (低海拔长距)</div>
