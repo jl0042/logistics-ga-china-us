@@ -1192,15 +1192,48 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="source" style="margin-top:10px">不亏本价数字 CSV: <code>s7_breakeven_matrix.csv</code>。<b>装载率 70%</b> 来自 S6 主表 W5000 行的工况假设, 全文统一。<b>地面取派 4 元/kg</b> 来自国家邮政局 2024《快递业运行报告》航空件末端配送平均 3.5-5 元/kg。<b>运营初期数字</b>用主表"小时合计"+"起降合计"; <b>正常运营数字</b>用厂商目标 / 国际公开值 (TP500 650 / Caravan UAV 3,224 / HH-200 4,820 / CY-8 8,530 / W5000 6,100 / ATR42 14,500)。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 没有"运营初期"概念, 单值。不含资金成本 / 管理费 / 利润 (按行业经验需再加 20-30% 才达"赚钱线", 不在本节范围)。</div>
     </div>
 
+    <!-- Block 4b: runway constraint callout -->
+    <div class="card fade-in" style="margin-top:16px;border-left:5px solid #ef4444;background:#fef2f2">
+      <div class="chart-title" style="color:#991b1b">跑道约束 — 干线机的"最低不亏本价"只在大型机场适用</div>
+      <div class="chart-desc">不亏本价格矩阵假设两端机场都能容纳所列机型。但中国机场跑道分布不均, 干线机进不了大部分通航末端机场。</div>
+      <table class="hsr-compare" style="margin-top:12px">
+        <thead>
+          <tr>
+            <th style="text-align:left">机场分类 (CAAC/ICAO)</th>
+            <th>跑道长度</th>
+            <th>全国数量 (CAAC 2024)</th>
+            <th>可起降机型</th>
+            <th>典型代表</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="text-align:left"><b>4D/4E 干线运输</b></td><td>2,500 m+</td><td>~80 个</td><td>全机型 (含 757F 2,300m / 737BCF 2,400m)</td><td>北京/上海/广州/鄂州/南通</td></tr>
+          <tr><td style="text-align:left"><b>4C 支线运输</b></td><td>1,800-2,500 m</td><td>~170 个</td><td>除 757F/737BCF 外 (C909F 1,700m 可降, 干线机减载勉强)</td><td>大部分省会 + 地州枢纽</td></tr>
+          <tr style="background:#fef9c3"><td style="text-align:left"><b>3C 小型支线 / 通航大场</b></td><td>1,200-1,800 m</td><td>~50 个</td><td>除 C909F 外 (ATR42 1,165m 可降); 干线机不行</td><td>那曲达孜 / 部分县级</td></tr>
+          <tr style="background:#fef2f2"><td style="text-align:left"><b>2B/2C 通用机场</b></td><td>800-1,200 m</td><td>~400+ 个</td><td>仅通航 UAV + Caravan / Y-12F (STOL 480m); ATR42 减载勉强</td><td>新疆兵团 / 西藏边境</td></tr>
+          <tr style="background:#fef2f2"><td style="text-align:left"><b>1B 简易跑道</b></td><td>&lt;800 m</td><td>大量 (含临时)</td><td>仅 TP500 (150m) / Caravan UAV (300m) / HH-200 (280m) / CY-8 (280m)</td><td>边境/草原临时点</td></tr>
+        </tbody>
+      </table>
+      <div class="insight" style="margin-top:14px;background:#fff;border-left:4px solid #ef4444;padding:14px 18px">
+        <span class="insight-title" style="color:#991b1b">这意味着</span>
+        <ul class="insight-rules">
+          <li><b>干线机 (757F/737BCF) "1.4-1.8 元/吨km" 的低不亏本价只在 ~80 个 4D/4E 机场两端都满足时成立</b> — 占全国机场数的 ~12%, 占货量大头但是覆盖范围窄</li>
+          <li><b>到县级/边境/通航末端必须换通航机型</b>, 不亏本价被锁定在 10-22 元/kg (Caravan UAV / HH-200 / CY-8 等) — 跑道把成本锁高了 7-10 倍</li>
+          <li><b>枢纽 + 末端两段联运的总不亏本价</b>: 干线段 (757F 1.5 元/kg × 5,000 km = 7.5 元/kg 干线货成本) + 末端段 (Caravan UAV 200 km 不亏价 7-10 元/kg) + 转运费 ~2 元/kg ≈ 17-20 元/kg, 仍比全程 Caravan (25 元/kg+) 优, 这是 hub-and-spoke 模式经济性的来源</li>
+          <li><b>中国 ~250 个民航运输机场 + 400+ 通用机场的双层机场结构</b>, 决定了任何 "全国通航货运" 的故事都必须分两段算: 干线段拼规模 (757F/737BCF), 末端段拼通达性 (UAV) — 单一机型走天下不成立</li>
+        </ul>
+      </div>
+      <div class="source">机场跑道分类: ICAO Annex 14 + CAAC《民用机场分类标准》(MH/T 7003)。机场数量: CAAC《2024 年民航行业发展统计公报》(运输机场 250+) + 通航机场司公开数据 (通用机场 400+, 含临时跑道)。机型跑道需求: 见上方机型成本主表"跑道需求"列。</div>
+    </div>
+
     <!-- Block 5: matrix insights -->
     <div class="insight fade-in" style="margin-top:16px">
-      <span class="insight-title">不亏本价格矩阵的 5 个直接发现</span>
+      <span class="insight-title">不亏本价格矩阵的 4 个直接发现</span>
       <ul class="insight-rules">
         <li><b>Caravan 有人是矩阵里最贵的位置</b>: 任何距离档都不是最优 (500 km 15 元, 1,000 km 25 元)。它的存在只用来界定通航段的成本天花板, 不应作为投资决策基准。S7 之前用 Caravan 推 8 元/kg 盈亏线是把这门生意写"死"。</li>
-        <li><b>W5000 是中段 (1,000-2,500 km, 5t) 的最优</b>: 运营初期 10-19 元/kg, 正常运营 8-13 元/kg。但跟 757F 比仍贵 30-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控, 不是绝对低成本。</li>
+        <li><b>W5000 是中段 (1,000-2,500 km, 5t) 的最优</b>: 运营初期 10-19 元/kg, 正常运营 8-13 元/kg。但跟 757F 比仍贵 30-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控 + 跑道需求 ~700m 能进 3C 机场, 不是绝对低成本。</li>
         <li><b>运营初期 vs 正常运营差 1.2-1.5 倍</b>: W5000 1,000 km 从 10 元/kg (运营初期) 降到 8 元/kg (正常); CY-8 同距离从 16 降到 14。投资判断时要区分: 头 2-3 年看运营初期, 长期看正常运营。</li>
-        <li><b>干线 (737BCF / 757F / C909F) 在所有他们能飞的距离档都是最低不亏本价</b>: 6-12 元/kg。中国通航段缺的不是飞得便宜的机型, 是有量的干线货机 — 中国 757F 国内仅几十架, 美国 600+ 架; C909F 圆通 2 架。这是 S5 已经看过的机队结构问题。但<b>跑道需求把干线机锁在大型机场</b>: 757F/737BCF 需要 2,300-2,400 m 跑道, C909F 需要 1,700 m, 而通航 UAV 只要 150-300 m — 干线机进不了西部小机场。</li>
-        <li><b>能赚 8 元/kg 以下标准时敏快递的机型只有 4 款</b>: W5000 (&gt;1,000 km) / C909F / 737BCF / 757F。其他机型必须靠生鲜 (10-30 元/kg)、医疗急件 (50-200 元/kg)、玉石/电商精品等高价值货源才能盈利, 这就把可服务的市场规模上限钉死了。</li>
+        <li><b>能盈利 8 元/kg 以下标准时敏快递的机型只有 4 款</b>: W5000 (&gt;1,000 km) / C909F / 737BCF / 757F。其他机型必须靠生鲜 (10-30 元/kg)、医疗急件 (50-200 元/kg)、玉石/电商精品等高价值货源才能盈利, 这就把可服务的市场规模上限钉死了。<b>叠加跑道约束</b>: 干线机的低价只在 ~250 个 4C+ 机场两端适用 (见上方跑道约束块) — 想到县级/边境末端必须换通航机型, 不亏本价跳到 10-22 元/kg。</li>
       </ul>
     </div>
 
