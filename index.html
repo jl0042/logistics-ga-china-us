@@ -1297,8 +1297,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
       <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。计算考虑载荷-航程权衡。<b>红色 pin</b> = 典型实际航线。成本口径 toggle: <b>运营初期</b> (首批 2-3 年, 跟 S7a 主表小时合计同) vs <b>正常运营</b> (规模化稳态, 厂商目标/国际基准)。</div>
       <div class="toggle-group" style="margin:10px 0">
-        <button class="toggle-btn active" data-mode="initial" onclick="s7bSetMode('initial')">运营初期</button>
-        <button class="toggle-btn" data-mode="normal" onclick="s7bSetMode('normal')">正常运营</button>
+        <button class="toggle-btn active" data-chart="1" data-mode="initial" onclick="s7bSetMode(1, 'initial')">运营初期</button>
+        <button class="toggle-btn" data-chart="1" data-mode="normal" onclick="s7bSetMode(1, 'normal')">正常运营</button>
       </div>
       <div id="chart-dominance" class="chart-box" style="height:500px"></div>
       <div style="display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;font-size:12px">
@@ -1329,7 +1329,11 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Chart 2: Profitability/Margin Map -->
     <div class="card fade-in" style="margin-top:16px">
       <div class="chart-title">② 盈利可行域: 给定运价下, 哪些 (业载, 距离) 格子能赚?</div>
-      <div class="chart-desc">每格颜色 = 最优机型成本 vs 目标运价的差 (毛利, 元/kg)。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。成本口径跟 Chart ① 同步, 用上方 toggle 切换运营初期/正常运营。</div>
+      <div class="chart-desc">每格颜色 = 最优机型成本 vs 目标运价的差 (毛利, 元/kg)。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。<b>成本口径 toggle 独立于 Chart ①</b>: 这里看"在当前运价下, X 口径成本是否能盈利"。</div>
+      <div class="toggle-group" style="margin:10px 0">
+        <button class="toggle-btn active" data-chart="2" data-mode="initial" onclick="s7bSetMode(2, 'initial')">运营初期</button>
+        <button class="toggle-btn" data-chart="2" data-mode="normal" onclick="s7bSetMode(2, 'normal')">正常运营</button>
+      </div>
       <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
         <label style="font-weight:600;font-size:14px">目标运价:
           <span id="margin-price-val" style="color:var(--primary);font-size:18px;font-weight:800">8</span> 元/kg
@@ -2875,10 +2879,12 @@ var AIRCRAFT_NORMAL=[
   {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,varHr:45900,fix:5500,color:'#0891b2',lw:2.5}
 ];
 
-var AIRCRAFT = AIRCRAFT_INITIAL; // default 运营初期
-window.__s7bMode = 'initial';
+// Per-chart mode state (独立 toggle: Chart ① 和 Chart ② 各自 switch, Chart ③ 固定 initial)
+window.__s7bMode1 = 'initial';
+window.__s7bMode2 = 'initial';
+function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRCRAFT_INITIAL; }
 
-// ===== ECONOMIC FRONTIER: 3 CHARTS (with 运营初期/正常运营 toggle) =====
+// ===== ECONOMIC FRONTIER: 3 CHARTS (独立 toggle: Chart ① 和 Chart ② 各自切换) =====
 (function(){
   // Helper: cost per kg for a given aircraft at (payload, distance)
   function acCostAt(ac, payload, distance){
@@ -2887,9 +2893,9 @@ window.__s7bMode = 'initial';
     if(distance > effRange) return null;
     return (ac.fix + ac.varHr * distance / ac.spd) / payload;
   }
-  function findBest(payload, distance){
+  function findBest(aircraftArr, payload, distance){
     var best=null, bestCost=Infinity, bestIdx=-1;
-    AIRCRAFT.forEach(function(ac, idx){
+    aircraftArr.forEach(function(ac, idx){
       var c = acCostAt(ac, payload, distance);
       if(c!=null && c<bestCost){ bestCost=c; best=ac; bestIdx=idx; }
     });
@@ -2935,18 +2941,18 @@ window.__s7bMode = 'initial';
     };
   });
 
-  // Shared state (recomputed on mode change)
-  var bestCostGrid = [];
+  // Per-chart state
   var currentPrice = 8;
+  var chart2BestCostGrid = []; // recomputed when Chart ② mode changes
 
-  // Compute dominance + bestCostGrid based on current AIRCRAFT
-  function computeGrids() {
-    var dominanceSeriesData = AIRCRAFT.map(function(ac){return {ac:ac, data:[]};});
+  // Compute dominance + bestCostGrid based on given aircraft array
+  function computeGrids(aircraftArr) {
+    var dominanceSeriesData = aircraftArr.map(function(ac){return {ac:ac, data:[]};});
     var noServiceData = [];
-    bestCostGrid = [];
+    var bestCostGrid = [];
     EF_DISTS.forEach(function(d, di){
       EF_PAYLOADS.forEach(function(p, pi){
-        var b = findBest(p, d);
+        var b = findBest(aircraftArr, p, d);
         if(b){
           dominanceSeriesData[b.idx].data.push({
             value: [di, pi, Math.round(b.cost*10)/10], acName: b.ac.name
@@ -2957,11 +2963,12 @@ window.__s7bMode = 'initial';
         bestCostGrid.push({di:di, pi:pi, cost: b?b.cost:null, acName: b?b.ac.name:null});
       });
     });
-    return {dominanceSeriesData: dominanceSeriesData, noServiceData: noServiceData};
+    return {dominanceSeriesData: dominanceSeriesData, noServiceData: noServiceData, bestCostGrid: bestCostGrid};
   }
 
   function renderChart1() {
-    var g = computeGrids();
+    var aircraftArr = s7bGetAircraft(window.__s7bMode1);
+    var g = computeGrids(aircraftArr);
     var domSeries = g.dominanceSeriesData.filter(function(s){return s.data.length>0}).map(function(s){
       return {
         name: s.ac.name, type: 'heatmap', data: s.data,
@@ -3021,7 +3028,11 @@ window.__s7bMode = 'initial';
   }
 
   function renderMargin(price){
-    var data = bestCostGrid.map(function(c){
+    // Recompute grid for Chart ②'s independent mode
+    var aircraftArr = s7bGetAircraft(window.__s7bMode2);
+    chart2BestCostGrid = computeGrids(aircraftArr).bestCostGrid;
+
+    var data = chart2BestCostGrid.map(function(c){
       if(c.cost==null) return {value:[c.di, c.pi, null], itemStyle:{color:'#e5e7eb', borderColor:'#fff', borderWidth:1}, costStr:'—', acName:'—'};
       var margin = price - c.cost;
       return {
@@ -3031,8 +3042,8 @@ window.__s7bMode = 'initial';
       };
     });
 
-    var feasible=0, total=bestCostGrid.length, served=0;
-    bestCostGrid.forEach(function(c){
+    var feasible=0, total=chart2BestCostGrid.length, served=0;
+    chart2BestCostGrid.forEach(function(c){
       if(c.cost!=null){ served++; if(price > c.cost) feasible++; }
     });
     var pct = served>0 ? Math.round(feasible/served*100) : 0;
@@ -3098,9 +3109,9 @@ window.__s7bMode = 'initial';
     renderMargin(p);
   };
 
-  // ---- CHART 3: Pareto Frontier ----
+  // ---- CHART 3: Pareto Frontier (fixed on 运营初期) ----
   function renderChart3() {
-    var paretoData = AIRCRAFT.map(function(ac){
+    var paretoData = AIRCRAFT_INITIAL.map(function(ac){
       var tkmCost = (ac.fix + ac.varHr * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
       return {name: ac.name, spd: ac.spd, payload: ac.maxP, tkmCost: tkmCost, color: ac.color};
     });
@@ -3189,7 +3200,9 @@ window.__s7bMode = 'initial';
     else initC('chart-pareto', opt);
   }
 
-  // ---- Full re-render on mode change ----
+  // ---- Per-chart render (independent mode) ----
+  window.s7bRenderChart1 = renderChart1;
+  window.s7bRenderChart2 = function(){ renderMargin(currentPrice); };
   window.s7bRenderAll = function() {
     renderChart1();
     appendLegendOnce();
@@ -3201,15 +3214,19 @@ window.__s7bMode = 'initial';
   window.s7bRenderAll();
 })();
 
-// Mode toggle: 运营初期 vs 正常运营
-window.s7bSetMode = function(mode) {
-  if(mode === window.__s7bMode) return;
-  window.__s7bMode = mode;
-  AIRCRAFT = (mode === 'initial') ? AIRCRAFT_INITIAL : AIRCRAFT_NORMAL;
-  document.querySelectorAll('.toggle-btn[data-mode]').forEach(function(b){
+// Per-chart mode toggle: Chart ① 和 Chart ② 独立
+// chartN: 1 或 2; mode: 'initial' 或 'normal'
+window.s7bSetMode = function(chartN, mode) {
+  var key = '__s7bMode' + chartN;
+  if(window[key] === mode) return;
+  window[key] = mode;
+  // Update buttons only for this chart
+  document.querySelectorAll('.toggle-btn[data-chart="'+chartN+'"]').forEach(function(b){
     b.classList.toggle('active', b.getAttribute('data-mode') === mode);
   });
-  if(window.s7bRenderAll) window.s7bRenderAll();
+  // Re-render only the affected chart
+  if(chartN === 1 && window.s7bRenderChart1) window.s7bRenderChart1();
+  else if(chartN === 2 && window.s7bRenderChart2) window.s7bRenderChart2();
 };
 
 // ===== AIRCRAFT RADAR =====
