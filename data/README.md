@@ -58,12 +58,20 @@
 | `s5_fleet_by_payload_us.csv` | 美国全货机机队按载荷分层 (2024) 用于中美对比: ≤1t ~280 (FedEx Feeder 主力); 1-3t ~80 (Beech 1900 / Metroliner); 3-8t ~100 (ATR 42/72F / Cessna 408 / Saab 340F); 18-23t ~40 (Amazon 737-800BCF); 28-39t ~200 (757F FedEx+UPS); 55-60t ~310 (767F FedEx+UPS+Amazon); 60-100t ~130 (A300/A330F); 80+t ~235 (747/777/MD-11F). 合计 ~1,475 架 (中国 7 倍) | 10 |
 | `s5_comparison_analysis.md` | S5 完整 review: 鄂州 245/102/86.5 三个数字口径澄清 + sec-title/sec-sub/thesis 三件套重写 (干线 hub 追上来/专用 hub 差代际/通航段空白) + 单发活塞 45%→60% 修正 + "涡桨跑物流"同口径改写 + chart scale 统一 400 | (markdown) |
 
-### Section 6 — 运营成本推导
+### Section 6 — 成本算法 (拆解原理 + 计算器)
 
 | 文件 | 内容 | 行数 |
 |---|---|---|
-| `s6_cost_master.csv` | S6 机型成本主表 verified 数据: Caravan 5028 (Conklin&dD 2024) / C909F ~26000 (新增, CF34-10A×2 推算) / Y-12F 9000 (第一性原理, 从原 6500 上调) / ATR 42 14500 (Aircraft Cost Calc) / 737-800BCF 35800 + 757-200F 45900 (BTS Form 41 + 国内中位; 原标"真实 顺丰/京东" 错配) + TP500/HH-200/CY-8/W5000 | 12 |
 | `s6_comparison_analysis.md` | S6 完整 review: Caravan 227→324 km/h 派生连带 (800km 例子 18,300→13,020; 和田-乌鲁木齐 4.8hr→3.9hr); thesis 改成本结构拆分 (Caravan vs ATR 七项占比对比); 737/757/Y-12F 来源标签错配修正; varHr/fix/cycle/PR 全翻; S7 line 1174 HH-200 速度比较修正 (+41% 错, 实际相当) + JS BE_SPEED 227→324; S5 载荷分层表新增 + C909F 段 | (markdown) |
+
+注: S6 主表已扩充并搬至 S7a, 详见 `s7_aircraft_cost_master.csv`。
+
+### Section 7a — 机型成本主表 + 不亏价矩阵
+
+| 文件 | 内容 | 行数 |
+|---|---|---|
+| `s7_aircraft_cost_master.csv` | 11 机型成本主表 (扩充版): TP500 / Caravan UAV 首批 / Caravan 有人 / HH-200 首批 / Y-12F / CY-8 首批 / W5000 首批 / ATR42 中国首批 / C909F / 737-800BCF / 757-200F. 每行 22 列: 业载/速度/航程/MTOW + 7 项小时变动成本 (燃油/发动机+桨/机体维护/保险/人员/数据链/折旧) + 4 项起降费 (降落/装卸/停机/导航) + 吨公里成本 + 厂商公开值 + 差距解释。取证中机型 (TP500/HH-200/CY-8/W5000) 全部用首批运营估算 (×1.3-2 修正系数, 行业先例: 787/A350/ARJ21 早期入役成本) | 12 |
+| `s7_breakeven_matrix.csv` | 11 机型 × 5 距离档 (500/1000/1500/2500/4000 km) 不亏价矩阵: 装载率 70% + 地面取派 4 元/kg 中位; 灰格 = 航程不够 | 12 |
 
 ### 辅助文件
 
