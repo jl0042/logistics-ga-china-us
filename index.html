@@ -1545,7 +1545,91 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </div>
       </div>
       <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:8px;padding:12px 16px;margin-top:8px">
-        <div style="font-size:12px;color:#fca5a5;line-height:1.7"><b style="color:#f87171">5,700 kg 分界线:</b> <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> ≤5,700 kg 走正常类或中型标准 (AC-92-AA-2024-02 中型 UAS 试行 2024-07 + 2026-02-25 正常类征求意见稿); 动力提升类 (eVTOL) 走 AC-21-AA-2026-45 (2026-02-12); 限用类走 AC-21-AA-2026-44. &gt;5,700 kg 运输类仍无通用标准 -- 2019-08 发布过 《大型货运无人机适航标准》 征求意见稿, 迄今未推进到正式 AC, 机型需逐项走专用条件 (SC). W5000 (10.8t) 和 CY-8 (7t) 均在这条 SC 路径上.</div>
+        <div style="font-size:12px;color:#fca5a5;line-height:1.7"><b style="color:#f87171">5,700 kg 分界线:</b> &gt;5,700 kg 运输类尚无通用 AC, 必须走"专用条件" (Special Conditions) 单案审定。完整监管层级见下方卡片。</div>
+      </div>
+    </div>
+
+    <!-- 监管架构: 上位法 → 标准 → 专用条件 -->
+    <div class="card fade-in" style="margin-top:16px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">
+      <div class="chart-title" style="color:#fff">中国货运 UAV 监管架构: 法律 → 标准 → 专用条件 → 当前机型位置</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:14px">
+        读懂这四层嵌套, 才能看清为什么 W5000 没有"通用标准可依"却仍在走审定, 为什么 HH-200 的审查进度比预期快, 为什么 TP500 会成为"第一个拿 TC 的货运 UAV"。
+      </div>
+
+      <!-- ① 上位法 -->
+      <div style="margin-bottom:14px;padding:12px 14px;background:rgba(96,165,250,.08);border-left:3px solid #60a5fa;border-radius:0 6px 6px 0">
+        <div style="font-size:14px;color:#93c5fd;font-weight:700;margin-bottom:8px">① 上位法 — 法律与核心行政法规</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.9">
+          UAV 监管不是凭空出现, 它有两个法源根基。<br><br>
+          <b style="color:#fff">法律层 (全国人大常委会):</b> <a href="http://www.caac.gov.cn/XXGK/XXGK/FLFG/FL/201511/t20151102_2830.html" target="_blank" style="color:#60a5fa;text-decoration:underline">《中华人民共和国民用航空法》</a> (1995 年颁布, 最新 2021 年修订). 所有民用航空活动的母法, 规定了适航审定制度、运行人资质、事故调查、航空保险等基本框架. 不针对 UAV 单独立法, UAV 通过"民用航空器"范畴被覆盖。<br><br>
+          <b style="color:#fff">行政法规层 (国务院 + 中央军委):</b> <a href="http://www.gov.cn/zhengce/content/2023-06/28/content_5789124.htm" target="_blank" style="color:#60a5fa;text-decoration:underline">《无人驾驶航空器飞行管理暂行条例》</a> (2023-06-28 公布, 2024-01-01 起施行). 这是 UAV 领域第一部、也是目前最高层级的专门法规. 三件关键事: 确立"微型/轻型/小型/中型/大型"五类分级; 规定飞行活动与运营许可的基本要求; 明确"民用 UAV 适航管理由国务院民用航空主管部门 (即 CAAC) 负责"。<br><br>
+          换句话说, 暂行条例把"该归谁管"这个问题封闭了 — CAAC 的适航审定司成为货运 UAV 取证的唯一主管机关。
+        </div>
+      </div>
+
+      <!-- ② 适航标准 -->
+      <div style="margin-bottom:14px;padding:12px 14px;background:rgba(34,197,94,.08);border-left:3px solid #4ade80;border-radius:0 6px 6px 0">
+        <div style="font-size:14px;color:#86efac;font-weight:700;margin-bottom:8px">② 适航标准 — CAAC 按"构型 + 量级"分成五类</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.8;margin-bottom:10px">
+          CAAC 不给所有 UAV 写一份通用标准, 而是按构型 (固定翼 / 动力提升 / 限用) 和量级 (按 MTOW 分段) 分别制定。下表是截至 2026-04 的全景。
+        </div>
+        <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
+          <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:11.5px">
+            <thead>
+              <tr style="background:rgba(255,255,255,.1)">
+                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">类别</th>
+                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">覆盖范围</th>
+                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">标准文件</th>
+                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">典型机型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">中型 UAS</td><td style="border-color:rgba(255,255,255,.08)">中等量级固定翼 UAV</td><td style="border-color:rgba(255,255,255,.08)"><a href="http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202407/" target="_blank" style="color:#86efac;text-decoration:underline">AC-92-AA-2024-02</a><br><span style="font-size:10px;color:rgba(255,255,255,.5)">(2024-07-23 试行)</span></td><td style="border-color:rgba(255,255,255,.08)">TP500 (配合 SC)</td></tr>
+              <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">限用类</td><td style="border-color:rgba(255,255,255,.08)">特定用途 UAS (农业、测绘、气象等)</td><td style="border-color:rgba(255,255,255,.08)"><a href="http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202602/" target="_blank" style="color:#86efac;text-decoration:underline">AC-21-AA-2026-44</a><br><span style="font-size:10px;color:rgba(255,255,255,.5)">(2026-02-12 发布)</span></td><td style="border-color:rgba(255,255,255,.08)">翼龙-2 气象型</td></tr>
+              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">动力提升类</td><td style="border-color:rgba(255,255,255,.08)">多旋翼 + 固定翼混合 (eVTOL)</td><td style="border-color:rgba(255,255,255,.08)"><a href="http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202602/" target="_blank" style="color:#86efac;text-decoration:underline">AC-21-AA-2026-45</a><br><span style="font-size:10px;color:rgba(255,255,255,.5)">(2026-02-12 发布)</span></td><td style="border-color:rgba(255,255,255,.08)">V2000CG</td></tr>
+              <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">正常类</td><td style="border-color:rgba(255,255,255,.08)">固定翼 UAS, 150-5,700 kg</td><td style="border-color:rgba(255,255,255,.08)"><a href="http://www.caac.gov.cn/PHONE/HDJL/YJZJ/202602/t20260225_230112.html" target="_blank" style="color:#fbbf24;text-decoration:underline">征求意见稿 (2026-02-25)</a><br><span style="font-size:10px;color:rgba(255,255,255,.5)">尚未正式发布</span></td><td style="border-color:rgba(255,255,255,.08)">HH-200 (未来对齐)</td></tr>
+              <tr style="border-color:rgba(255,255,255,.08);background:rgba(239,68,68,.1)"><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fca5a5">运输类 (空白)</b></td><td style="border-color:rgba(255,255,255,.08)">固定翼 UAS, MTOW &gt;5,700 kg</td><td style="border-color:rgba(255,255,255,.08)"><a href="http://www.caac.gov.cn/HDJL/YJZJ/201908/t20190807_197964.html" target="_blank" style="color:#fca5a5;text-decoration:underline">2019-08 征求意见稿</a><br><span style="font-size:10px;color:rgba(255,255,255,.5)">停滞六年未转化为 AC</span></td><td style="border-color:rgba(255,255,255,.08)">W5000, CY-8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:8px;font-size:11.5px;color:rgba(255,255,255,.55);line-height:1.7">
+          读法一: 动力提升类 (eVTOL) 与限用类在 2026-02 刚刚补齐标准, 这是 V2000CG 能三证齐全的直接原因。<br>
+          读法二: 正常类 150-5,700 kg 至今仍停在征求意见稿, 发布后 HH-200 等机型才能"对标准做审定"; 在此之前 HH-200 只能走专用条件 (见下一层)。<br>
+          读法三: 运输类 &gt;5,700 kg 的标准缺失已经持续六年, 是 W5000 / CY-8 这类大载重机型规模化的结构性制约。
+        </div>
+      </div>
+
+      <!-- ③ 专用条件 -->
+      <div style="margin-bottom:14px;padding:12px 14px;background:rgba(245,158,11,.08);border-left:3px solid #fbbf24;border-radius:0 6px 6px 0">
+        <div style="font-size:14px;color:#fcd34d;font-weight:700;margin-bottom:8px">③ 没有标准怎么办 — 专用条件 (Special Conditions, SC)</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.9">
+          <b style="color:#fff">原理</b>: 当现有适航标准不覆盖某个机型 (构型特殊, 或量级超出), CAAC 不会"等标准出台再说", 而是为这一具体机型起草一份"专用条件", 作为它的审定基础。这是 FAA、EASA、CAAC 三方共通的国际惯例, 不是中国独有。美国 FAA 审定波音 787 的电驱动架构时也用过 SC。<br><br>
+          <b style="color:#fff">流程四步</b>: <br>
+          <span style="padding-left:14px;display:block">一、申请人向 CAAC 提交型号合格证申请书 + 技术方案;<br>
+          二、CAAC 适航审定司组织专家组, 起草针对该机型的"专用条件" (SC), 列出所有需要满足的安全要求;<br>
+          三、SC 进入公开征求意见期 (通常 30-60 天);<br>
+          四、SC 发布后, 申请人按 SC 的要求进行适航验证, 通过后取得 TC。</span><br>
+          <b style="color:#fff">特点</b>: 一事一议, 针对性强; 但成本高 (每家独立谈), 时间表不可控 (SC 起草 + 评估通常 12-24 个月), 不同机型的 SC 可能不一致, 不利于同量级规模化。<br><br>
+          <b style="color:#fff">已公开的典型案例</b>:<br>
+          <span style="padding-left:14px;display:block">• <a href="http://www.caac.gov.cn/HDJL/YJZJ/202305/t20230519_219954.html" target="_blank" style="color:#fbbf24;text-decoration:underline">TP500 专用条件</a> (2023-05, 中型 UAS 配合使用);<br>
+          • 翼龙-2 气象型 SC-92-001 (2025-02, 限用类特定用途)。</span><br>
+          <b style="color:#fca5a5">对大载重货运 UAV 的含义</b>: W5000 (10.8 t) 与 CY-8 (7 t) 都在运输类范围, 通用标准缺失。每家厂商独立谈 SC, 意味着审定周期与费用分别计算, 不能复用。这也是本报告把"5,700 kg 以上标准持续延迟" 列为论点压力测试情景之一的原因。
+        </div>
+      </div>
+
+      <!-- ④ 当前谁在哪 -->
+      <div style="padding:12px 14px;background:rgba(147,51,234,.08);border-left:3px solid #c084fc;border-radius:0 6px 6px 0">
+        <div style="font-size:14px;color:#d8b4fe;font-weight:700;margin-bottom:8px">④ 当前谁在哪条路径上 (截至 2026-04)</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.9">
+          • <b style="color:#fff">V2000CG (载人 eVTOL, 2 t)</b>: 走动力提升类 <a href="http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202602/" target="_blank" style="color:#c084fc;text-decoration:underline">AC-21-AA-2026-45</a>。2024-03 TC + 2024-12 PC + 2025-07 AC, 三证齐全已交付 Falcon Aviation。<br>
+          • <b style="color:#fff">TP500 (货运, 500 kg)</b>: 中型 UAS 标准 <a href="http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202407/" target="_blank" style="color:#c084fc;text-decoration:underline">AC-92-AA-2024-02</a> + <a href="http://www.caac.gov.cn/HDJL/YJZJ/202305/t20230519_219954.html" target="_blank" style="color:#c084fc;text-decoration:underline">专用条件 (2023-05)</a>。取证试飞中 (2025-02-27 首飞 2002 架机), TC 目标 2026 年中。<br>
+          • <b style="color:#fff">HH-200 (货运, 1.5 t)</b>: 对应 <a href="http://www.caac.gov.cn/PHONE/HDJL/YJZJ/202602/t20260225_230112.html" target="_blank" style="color:#c084fc;text-decoration:underline">正常类 150-5,700 kg 征求意见稿</a> (2026-02-25); 标准正式发布前先行走审查。2025-09-15 适航首审会已开 (西北审定中心), 2025-12-29 首架机下线, 审查中。<br>
+          • <b style="color:#fff">W5000 (货运, 10.8 t)</b>: 运输类通用标准空白, 必须走专用条件 SC。2024-10 适航受理, 厂商目标 TC 2026-09, 现实 2027-2028。<br>
+          • <b style="color:#fff">CY-8 (货运, 7 t)</b>: 公开 CAAC 档案未见对应 TC 受理记录, 可能走军用路径 (GJB 军标, 不经过 CAAC 民航适航)。2026-03 有首飞报道, 但民航商业航线落地前提仍是 CAAC 取证。
+        </div>
+      </div>
+      <div class="source" style="color:rgba(255,255,255,.4);margin-top:10px">
+        来源: 国务院令 761 号, CAAC 适航审定司公告 (XXGK/XXGK/GFXWJ), CAAC 征求意见专栏 (HDJL/YJZJ), 中国人大网. 文件日期以 CAAC 官网公告为准, 本节引用的 URL 在 2026-04-23 可访问。
       </div>
     </div>
 
