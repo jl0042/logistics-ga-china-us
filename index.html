@@ -1481,10 +1481,10 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="card fade-in">
-      <div class="chart-title">六款主流机型雷达图对比</div>
-      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>注意 ATR 42 航程偏短</b>：虽然它是六款中最大的飞机（5.5 吨载荷），但作为支线货机设计，航程只有 1,326 公里——比 Caravan（1,685 公里）还短。这是因为它优先了载荷和跑道性能，牺牲了航程。</div>
-      <div id="chart-aircraft-radar" class="chart-box" style="height:480px"></div>
-      <div class="source">基于上表数据标准化计算</div>
+      <div class="chart-title">有人机 + UAV 雷达图对比 (10 款, 5+5)</div>
+      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>实线为有人机, 虚线为 UAV</b>。观察: 同尺寸对照下 UAV 性价比全面领先 (Caravan UAV 改装 ≈ 3× Grand Caravan EX 新机; W5000 ≈ 3× ATR 42-600F); UAV 短跑道能力持平或略优 (TP500 609m, CY-8 &lt;500m); 但 ATR 42 在载荷/增压/速度复合维度仍占优。Y-12F / L-410 是有人机里单位性价比最高的, 但航程有限。</div>
+      <div id="chart-aircraft-radar" class="chart-box" style="height:560px"></div>
+      <div class="source">基于上表数据标准化计算; 有人机价格 = 新机报价 (2024 Q4); UAV 价格 = 行业估价 / 改装报价; 性价比 = 载荷 kg ÷ 价格 万元</div>
     </div>
   </div>
 </section>
@@ -3223,39 +3223,55 @@ window.s7bSetMode = function(chartN, mode) {
   else if(chartN === 2 && window.s7bRenderChart2) window.s7bRenderChart2();
 };
 
-// ===== AIRCRAFT RADAR =====
+// ===== AIRCRAFT RADAR (manned + UAV) =====
 (function(){
-  // Normalize: payload 0-10000, range 0-3500, speed 0-700, STOL 1500-100 (inverted), value 30000-1000
+  // Normalization bounds cover: payload 300-6000 kg, range 400-3500 km, speed 180-600 km/h,
+  // STOL 100-1500 m (inverted), 性价比 0.2-3.5 kg/万元
   function norm(v,min,max){return Math.round(((v-min)/(max-min))*100)}
   function normInv(v,min,max){return Math.round(((max-v)/(max-min))*100)}
 
-  var models=[
+  var manned=[
     {name:'Grand Caravan EX',payload:1587,range:1685,speed:344,stol:610,price:1890},
     {name:'Kodiak 100',payload:1088,range:2445,speed:338,stol:305,price:2610},
-    {name:'DHC-6 Twin Otter',payload:1134,range:1480,speed:337,stol:366,price:4290},
     {name:'Y-12F 运十二F',payload:1700,range:1400,speed:328,stol:620,price:2908},
     {name:'L-410 UVP-E20',payload:1800,range:1500,speed:388,stol:510,price:3635},
     {name:'ATR 42-600F',payload:5500,range:1326,speed:556,stol:1050,price:14177}
   ];
+  var uavs=[
+    {name:'TP500 (UAV)',payload:500,range:500,speed:200,stol:609,price:150},
+    {name:'Caravan UAV 改装',payload:1088,range:1982,speed:344,stol:625,price:600},
+    {name:'HH-200 (UAV)',payload:1500,range:2360,speed:310,stol:500,price:1500},
+    {name:'CY-8 (UAV)',payload:3500,range:3000,speed:380,stol:500,price:3000},
+    {name:'W5000 (UAV)',payload:5000,range:2600,speed:526,stol:1200,price:4500}
+  ];
 
-  var radarData=models.map(function(m){
+  function toRadar(m){
+    var ratio=m.payload/m.price; // kg/万元
     return{
-      value:[norm(m.payload,500,6000),norm(m.range,800,3000),norm(m.speed,200,600),normInv(m.stol,100,1200),normInv(m.price,1000,15000)],
+      value:[norm(m.payload,300,6000),norm(m.range,400,3500),norm(m.speed,180,600),normInv(m.stol,100,1500),norm(ratio,0.2,3.5)],
       name:m.name
     };
-  });
-  var rColors=['#dc2626','#2563eb','#16a34a','#f59e0b','#8b5cf6','#ec4899'];
+  }
+
+  var mannedData=manned.map(toRadar);
+  var uavData=uavs.map(toRadar);
+  var mColors=['#dc2626','#ea580c','#ca8a04','#65a30d','#16a34a']; // warm 系: 有人机
+  var uColors=['#06b6d4','#0891b2','#2563eb','#7c3aed','#c026d3']; // cool 系: UAV
+  var allNames=manned.map(function(m){return m.name}).concat(uavs.map(function(m){return m.name}));
+
+  var series=[{type:'radar',data:[]
+    .concat(mannedData.map(function(d,i){return{value:d.value,name:d.name,lineStyle:{color:mColors[i],type:'solid',width:2.2},itemStyle:{color:mColors[i]},areaStyle:{color:mColors[i],opacity:0.04}}}))
+    .concat(uavData.map(function(d,i){return{value:d.value,name:d.name,lineStyle:{color:uColors[i],type:'dashed',width:2.2},itemStyle:{color:uColors[i]},areaStyle:{color:uColors[i],opacity:0.04}}}))
+  }];
 
   initC('chart-aircraft-radar',{
     tooltip:{},
-    legend:{data:models.map(function(m){return m.name}),top:10,textStyle:{fontSize:11}},
+    legend:{data:allNames,top:8,textStyle:{fontSize:11},type:'scroll'},
     radar:{indicator:[
       {name:'载荷',max:100},{name:'航程',max:100},{name:'速度',max:100},
       {name:'短跑道能力',max:100},{name:'性价比',max:100}
-    ],radius:'60%'},
-    series:[{type:'radar',data:radarData.map(function(d,i){
-      return{value:d.value,name:d.name,lineStyle:{color:rColors[i]},itemStyle:{color:rColors[i]},areaStyle:{color:rColors[i],opacity:0.05}};
-    })}]
+    ],radius:'60%',center:['50%','58%']},
+    series:series
   });
 })();
 
