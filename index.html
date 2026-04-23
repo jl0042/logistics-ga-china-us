@@ -123,7 +123,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="links">
     <a href="#hero">首页</a><a href="#s1">地理经济</a><a href="#s2">基础设施</a><a href="#s3">需求分析</a>
     <a href="#s5">高铁竞争</a><a href="#s4">机队枢纽</a><a href="#s6">成本推导</a><a href="#s7">经济边界</a><a href="#s7b">机型主导</a>
-    <a href="#s8">机型目录</a><a href="#s9">UAV角色</a><a href="#s10">设计哲学</a><a href="#s11">工程规格</a>
+    <a href="#s8">机型目录</a><a href="#s9">UAV角色</a><a href="#s10">设计哲学</a><a href="#s11">AI 总设计</a>
     <a href="#s12">未来场景</a><a href="#s13">结论</a>
   </div>
 </nav>
@@ -1369,7 +1369,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <span style="display:inline-block;width:14px;height:14px;border:1.5px solid #1e293b;border-radius:50%;background:#fff;vertical-align:middle"></span> <b>气泡位置</b> = 机型设计航程 × 业载; <b>气泡大小</b> ∝ 1/吨公里成本, 越大越经济<br>
           <span style="display:inline-block;width:22px;height:12px;background:rgba(34,197,94,0.15);border:1.5px dashed #16a34a;vertical-align:middle"></span> <b style="color:#16a34a">绿色矩形</b> = 设计白空间 (1,500-2,500 km × 1.5-3.5 t), 这个区间没有机型覆盖 — 新设计的国产中型 UAV 落在这里才有独立生存空间
         </div>
-        <p style="margin-top:10px;font-size:13px;color:#475569"><b>白空间的含义</b>: 已有机型组合覆盖不到的 (航程 × 业载) 需求区间, 通航 1-5t / 短到中程扎堆, 中长航程 × 中等业载留白。这是 S8 机型目录和 S11 工程规格讨论新设计切入点的起点。</p>
+        <p style="margin-top:10px;font-size:13px;color:#475569"><b>白空间的含义</b>: 已有机型组合覆盖不到的 (航程 × 业载) 需求区间, 通航 1-5t / 短到中程扎堆, 中长航程 × 中等业载留白。这是 S8 机型目录和 S11 AI 总设计讨论新设计切入点的起点。</p>
       </div>
       <div id="chart-pareto" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
@@ -1381,7 +1381,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <b>涡桨发动机为什么是降本关键</b>: varHr 7 项里燃油 + 发动机储备占 50% (CY-8 燃油 3,100 + 发动机 1,900 = 5,000/9,877 ≈ 51%), 两项都由涡桨决定 — 燃油看耗油率 (SFC), 发动机储备 = 大修费 ÷ TBO。国产 1,100-1,500 hp 涡桨 (W5000 配装 AECC AEP100 900 kW 级, 新华网 2024-10-29) 首批大修费 ¥950-1,200/hr/台, 跟进口 PT6A ($130/hr/台 × 7.27 = ¥945) 基本持平 — 没降本。<br>
           <b>W5000 也用中航涡桨, 为啥 PR 能降到 ¥6,100</b>: 白鲸宣传是"规模化目标"口径 — 假设单机年飞 2,000 hr (首批只 1,200) + 发动机累计运营时长够长让大修费摊薄到 ¥800/hr/台 + 内部协议油价 ¥7/kg (市场 ¥8.5) + 机身量产降到 ¥2,000 万 (首批 ¥3,500 万)。目前 CY-8 跟 W5000 发动机层面降本都没兑现, 都是 "首批工况"。真正的降本空间不在机身, 在**国产涡桨量产 + 稳定油源 + 飞够 TBO 小时数** — 这 3 个条件成熟后, varHr 能降到 5,500-6,500 区间, 吨公里进入 3-4 元</li>
           <li><b>737-800BCF / 757-200F 占据右上角</b>: 23.9-39 t × 3,750-5,800 km, 吨公里 1.4-2.0 元最低 (气泡最大), 但只能在 4D/4E 大型机场起降 (S7a 跑道约束)</li>
-          <li><b>真正的设计空白</b>: <b>1,500-2,500 km × 1.5-3.5 t</b> 这一格没机型覆盖 — HH-200 只到 1,000 km, Caravan 系列到 1,300 km, ATR42 是 1,326 km 但 5.5 t 过大, CY-8/W5000 起步都在 2,600 km+。国产中型 UAV 如果能覆盖 1,500-2,500 km + 2-3 t + 成本低于 5 元/吨km, 就能独占这块 — 这是 S8 机型目录和 S11 工程规格讨论的起点</li>
+          <li><b>真正的设计空白</b>: <b>1,500-2,500 km × 1.5-3.5 t</b> 这一格没机型覆盖 — HH-200 只到 1,000 km, Caravan 系列到 1,300 km, ATR42 是 1,326 km 但 5.5 t 过大, CY-8/W5000 起步都在 2,600 km+。国产中型 UAV 如果能覆盖 1,500-2,500 km + 2-3 t + 成本低于 5 元/吨km, 就能独占这块 — 这是 S8 机型目录和 S11 AI 总设计讨论的起点</li>
         </ul>
       </div>
       <div class="source">吨公里成本基于"满载 + 设计航程"组合计算, 即每个机型最优工况下的理论值 (元/吨km)。数据口径: S7a 机型成本主表的"运营初期"列。</div>
@@ -1776,134 +1776,20 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <!-- S11: 工程规格 -->
 <section id="s11" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
   <div class="sec-inner" style="color:#fff">
-    <div class="sec-label" style="color:#60a5fa">11 -- 工程规格</div>
-    <div class="sec-title fade-in" style="color:#fff">5 大规格卡: 从载荷 × 航程反推每架飞机该长什么样</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">翼型、发动机、<span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span>、<span class="tip" data-t="Bill of Materials 物料成本">BOM</span> 都可以从需求反推。最难的不是画图纸，是发动机和取证。</div>
+    <div class="sec-label" style="color:#60a5fa">11 -- AI 总设计</div>
+    <div class="sec-title fade-in" style="color:#fff">AI 总设计师: 从业载 × 航程面积反推最优规格</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">前面章节盘点了现有产品各自占据什么位置。这一章做一个反推: 如果把设计交给只看商业回报的总设计师, 目标是"在业载 × 距离平面上占据最大的经济可行面积", 反推出的规格长什么样。</div>
 
     <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
-      <div class="thesis-line" style="color:rgba(255,255,255,.95)">5 类 UAV 都能从第一性原理推导出来。前 4 类有产品但还在取证，第 5 类（10t）需要一台中国还没有的发动机。</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">面积最大化反推出的最优机型, 是贴 5,700 kg 线的"空档填补型": 2.2-2.4 t 载荷 × 2,500 km 航程, 双发国产 AES100 涡桨, 吨公里约 4.2 元。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">TP500：取证试飞中，可能是首个货运 UAV TC，但仍需 PC 才能量产</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">10t 级 <span class="tip" data-t="Bill of Materials 物料成本">BOM</span> 约 6,350 万，吨公里 3.77 元 -- 与 737BCF 半载（3.72）持平，满载（1.86）差一倍</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">2,000-3,000 <span class="tip" data-t="Shaft Horsepower 轴马力">SHP</span> 国产涡桨不存在，初期必须进口 <span class="tip" data-t="Pratt & Whitney Canada PW127 涡桨发动机">PW127</span></li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">payload-range 梯形约 3,600 吨·千米, 是 HH-200 的 1.8 倍; <span class="tip" data-t="Bill of Materials 物料成本">BOM</span> ¥1,800-2,200 万, 只有 W5000 的 1/2</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">贴 5,700 kg 线走正常类标准, 不走 SC 单案审定 — 规模化速度有代际优势</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">双风险避险: 适航不依赖"5,700 kg+ 标准发布", 动力不依赖"PW127 出口管制"</li>
       </ul>
     </div>
 
-    <!-- 5 大规格卡 -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));gap:16px">
-      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
-        <div class="tag" style="background:rgba(96,165,250,.2);color:#60a5fa">1 | eVTOL 货运</div>
-        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">V2000CG 类 | 400kg / 300km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">多旋翼+固定翼, 纯电, MTOW ~2,000 kg<br>BOM: ~¥250 万 | 无需跑道<br><b style="color:#fbbf24">载人版已三证齐全</b></div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 10px;line-height:1.6">
-          <b>挑战 1 — 航程虚标：</b>标称 300 km 实际运营约 50-120 km（三重折损：放电深度 + 软包转圆柱 + 垂起额外能耗）<br>
-          <b>挑战 2 — 电池供应链：</b>航空级 7-10C 高倍率电池由比克、Molicel 等小众厂供应，pack 价 ¥3,000-5,000/kWh（动力电池的 5-7 倍），规模降本走不通<br>
-          <b>挑战 3 — 电池更换成本高：</b>200 kWh pack 约 ¥60-100 万，寿命 <500 循环，摊销约 ¥1,200-2,000/飞行小时——占纯电 eVTOL 运营成本的 30-40%
-        </div>
-      </div>
-      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
-        <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">2 | 微型支线</div>
-        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">TP500 类 | 500kg / 500km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼，<span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 8-9，单发油动活塞<br>MTOW ~1,500 kg | <span class="tip" data-t="Empty Weight Fraction 空重占比">EWF</span> 0.53 | PF 0.33<br>起飞 577 / 降落 609 m | BOM ~¥150 万 | varHr ~¥935/hr</div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战：TC 预计 2026 中；单发无冗余；国内涡轴 <span class="tip" data-t="Time Between Overhaul 翻修间隔">TBO</span> 数据不足</div>
-      </div>
-      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
-        <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">3 | 省内主力</div>
-        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">HH-200 类 | 1.5t / 2,360km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼，AR 10-11，双涡桨 600 SHP×2<br>MTOW ~3,300 kg | EWF 0.45 | PF 0.45<br>起飞 500m（高原 4,200m 起降）<br>BOM ~¥1,170 万 | varHr ¥5,500-6,500/hr</div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战：2025-09 适航首审会已开 (西北审定中心)，2025-12 首架机下线，审查中；<span class="tip" data-t="中国航发 AES100 涡轴发动机">AES100</span> TBO 数据需 2+ 年积累</div>
-      </div>
-      <div class="fade-in" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
-        <div class="tag" style="background:rgba(248,113,113,.2);color:#f87171">4 | 中长途干线</div>
-        <h4 style="color:#fff;font-size:14px;margin:6px 0 10px">CY-8/W5000 类 | 3.5-5t / 2,600-3,000km</h4>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.8">高翼，AR 11-12，双涡桨 1,100-1,500 SHP×2<br>W5000: MTOW 10,800 kg | EWF 0.35 | PF 0.46<br>CY-8 起降 &lt;500m，W5000 &lt;1,200m<br>BOM ¥3,000-4,500 万 | varHr: PR ¥6,100 → 工况 ¥9,877-10,861</div>
-        <div style="margin-top:8px;font-size:11px;color:#fca5a5;background:rgba(239,68,68,.1);border-radius:4px;padding:6px 8px;line-height:1.5">挑战：MTOW >5,700kg，无通用适航标准 (2019 草案停滞)，需逐项走专用条件 (SC)。W5000 目标 2026.09，现实 2027-2028；CY-8 公开 CAAC 档案无 TC 记录，可能走军用路径</div>
-      </div>
-      <!-- 卡5: 重载干线 ⭐ -->
-      <div class="fade-in" style="background:rgba(245,158,11,.08);border:2px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:18px;grid-column:1/-1">
-        <div class="tag" style="background:rgba(245,158,11,.3);color:#fbbf24">5 | 重载干线 -- 商业成立的四个条件</div>
-        <h4 style="color:#fff;font-size:15px;margin:6px 0 10px">10t 级 | 载荷 10,000kg / 航程 3,000km</h4>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
-          <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.9">
-            <b style="color:rgba(255,255,255,.85)">气动:</b> 高翼, AR 11-12, 低后掠 10-15°<br>
-            <b style="color:rgba(255,255,255,.85)">动力:</b> 双涡桨 2,500 SHP×2 (PW127 级)<br>
-            <b style="color:rgba(255,255,255,.85)"><span class="tip" data-t="Specific Fuel Consumption 耗油率">SFC</span>:</b> 0.225 kg/kW/hr | 燃油 720 kg/hr<br>
-            <b style="color:rgba(255,255,255,.85)">MTOW:</b> ~28,000 kg | 空重 ~14,000 kg (EWF 0.50)<br>
-            <b style="color:rgba(255,255,255,.85)">燃油:</b> ~4,000 kg | <b>载荷 10,000 kg</b> (PF 0.357)<br>
-            <b style="color:rgba(255,255,255,.85)">起飞:</b> ~1,200m 平衡场长 (ISA SL, MTOW 满载满油)
-          </div>
-          <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.9">
-            <b style="color:rgba(255,255,255,.85)">BOM:</b> ~¥6,350 万 (<span class="tip" data-t="Non-Recurring Engineering 非经常性研发费用">NRE</span> ¥45 亿/200 架 + 直接 ¥4,100 万)<br>
-            <b style="color:rgba(255,255,255,.85)">varHr:</b> ~¥16,583/hr<br>
-            <b style="color:rgba(255,255,255,.85)">吨公里:</b> 3.77 元<br>
-            <b style="color:rgba(255,255,255,.85)">对比:</b> 737BCF 满载 1.86 元 | 半载 3.72 元<br>
-            <b style="color:#fbbf24">→ 只在 737BCF 半载航线 (二线城市 50-60% 装载率) 有空间</b>
-          </div>
-        </div>
-        <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px">
-          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>发动机空白：</b>2,000-3,000 SHP 国产涡桨不存在。AES100 太小，AEP500 太大。初期必须进口 PW127</div>
-          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>CAAC：</b>28t MTOW 远超 5,700 kg 线，取证可能 4-6 年</div>
-          <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b><span class="tip" data-t="Non-Recurring Engineering 非经常性研发费用">NRE</span>：</b>¥45 亿研发需国家级项目。200 架量产，每架需利润 >¥2,000 万才能回收</div>
-        </div>
-        <div style="margin-top:14px;padding:12px 14px;background:rgba(0,0,0,.25);border-left:3px solid #fbbf24;border-radius:4px">
-          <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:8px">商业化能否成立, 取决于四件可观察的事</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.75">
-            <b style="color:#fff">条件 1 — 二线对二线横向货量能否形成稳定需求。</b>737BCF 半载状态出现在"沿海-内陆单向流"场景下返程运力过剩。如果郑州-成都、西安-昆明、长沙-乌鲁木齐这类二线对二线线路能跑出每日 30 吨以上的稳定货量, 10t UAV 在这条腔上的吨公里 3.77 元就是有意义的成本点。跑不出则这个载量级没有独立航线经济学, 只能在 737BCF 空余运力里做补充。<br><br>
-            <b style="color:#fff">条件 2 — 装载率能否长期维持在 80% 以上。</b>敏感性分析显示装载率从 100% 降到 60%, 吨公里从 3.77 跳到 6.29, 直接失去相对于 737BCF 半载的成本优势。这意味着 10t UAV 的商业成败不是工程问题 (发动机、取证、气动都能解决), 是航线规划与揽货能力问题。<br><br>
-            <b style="color:#fff">条件 3 — 首批客户是否带着稳定订单进场。</b>顺丰/京东的直接航线投资属于商业验证, 国家应急储备或军采属于政策订单。政策订单不等于市场验证, 规模不可线性外推。W5000 的 60 架 LOI 里两种客户混在一起, 本报告无法区分。<br><br>
-            <b style="color:#fff">条件 4 (供给侧) — 发动机是否可得。</b>10t 级双发需要 2,000-3,000 SHP 级涡桨, 国内此功率段无量产型号 (AES100 约 1,000 SHP 太小; AEP500 约 5,000 SHP 且为大涵道比涡扇不是涡桨)。初期必须进口 PW127。脱钩情景下 PW127 对华出口受限就直接锁死供给侧, 前三个条件都无意义。增程式不能绕过这个约束: 8-15t 级系统重量惩罚 30-40%, PF 从 0.36 降到 0.25 以下, 吨公里恶化。增程式只在 1-3t 级有效。<br><br>
-            <span style="color:#fbbf24"><b>结论口径：</b>本报告在 2028-2035 商业市场规模预测中, 10t 级需要四个条件全部满足才按有意义份额计入。任一条件不满足, 10t 级只按军采/战略储备口径单列, 不进商业规模线。</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 敏感性分析 + 737BCF 半载诊断 -->
-    <div class="fade-in" style="margin-top:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
-      <div style="font-size:14px;color:#fff;font-weight:700;margin-bottom:10px">敏感性分析: 10t UAV 吨公里 3.77 元 对六个输入的弹性</div>
-      <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
-        <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:12px">
-          <thead>
-            <tr style="background:rgba(255,255,255,.1)">
-              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">变量</th>
-              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">基准</th>
-              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">悲观值</th>
-              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">吨公里 基准 → 悲观</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">BOM 单机成本</td><td style="border-color:rgba(255,255,255,.08)">6,350 万</td><td style="border-color:rgba(255,255,255,.08)">7,620 万 (+20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 4.21</td></tr>
-            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">燃油价 Jet-A1</td><td style="border-color:rgba(255,255,255,.08)">8 元/kg</td><td style="border-color:rgba(255,255,255,.08)">9.6 元/kg (+20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 4.08</td></tr>
-            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">年利用率</td><td style="border-color:rgba(255,255,255,.08)">1,200 hr/yr</td><td style="border-color:rgba(255,255,255,.08)">960 hr/yr (-20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 4.32</td></tr>
-            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">PW127 维护储备</td><td style="border-color:rgba(255,255,255,.08)">1,800 元/hr</td><td style="border-color:rgba(255,255,255,.08)">2,160 元/hr (+20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 3.90</td></tr>
-            <tr style="border-color:rgba(255,255,255,.08);background:rgba(248,113,113,.1)"><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fca5a5">装载率</b></td><td style="border-color:rgba(255,255,255,.08)">100%</td><td style="border-color:rgba(255,255,255,.08)">60%</td><td style="color:#fca5a5;border-color:rgba(255,255,255,.08)"><b>3.77 → 6.29</b></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="margin-top:10px;padding:10px 14px;background:rgba(251,191,36,.08);border-left:3px solid #fbbf24;border-radius:4px;font-size:12.5px;color:rgba(255,255,255,.82);line-height:1.75">
-        <b style="color:#fcd34d">结论: 装载率是唯一一个能把 10t UAV 推过 737BCF 半载线的变量。</b>其他变量 ±20% 都不破坏吨公里 3.77 → 737BCF 半载 3.72 的相对关系。工程因素 (发动机维护、BOM、燃油) 可以逐步压缩, 装载率却直接取决于航线能否揽到稳定货量 — 所以 10t 级商业成败不决定于工程, 决定于货量能否跟上。
-      </div>
-      <div style="margin-top:14px;padding:12px 14px;background:rgba(0,0,0,.2);border-radius:4px">
-        <div style="font-size:13px;color:#fff;font-weight:700;margin-bottom:6px">737BCF 为什么常出现半载</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.75">
-          一部分原因是近年全货机运力扩张 (顺丰、邮政、圆通、央企机队增速), 一部分原因是货流结构本身不对称 — 沿海制造业向内陆输出的货物类型与体积密度, 与内陆向沿海的回程货物不匹配, 返程装载难以补满。具体的综合装载率在航司公开报表里不易拿到, 这里是方向性判断不是精确数字。<br><br>
-          含义: 10t UAV 真实能拿到的市场空间是"二线对二线"横向流 (郑州-成都、西安-昆明、长沙-乌鲁木齐这类), 这条流在 737BCF 上本就不经济, 才出现半载。这给 W5000 / 10t 级留出了真实空间, 但空间上限是"二线横向货量", 不是整条干线货运市场, 需要 2027-2028 首批运营数据验证。
-        </div>
-      </div>
-    </div>
-
-    <!-- 增程式 + VTOL callout -->
-    <div class="grid2 fade-in" style="margin-top:16px">
-      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:14px 16px">
-        <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:4px">增程式 -- 不是万能药</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">YH-1000S（1.2t，混动）证明 1-2t 级可行。但 8-15t 级系统重量惩罚 30-40% vs 直驱涡桨。<b style="color:rgba(255,255,255,.85)">增程式是 1-3t 级备选，不是 8-15t 级解决方案。</b></div>
-      </div>
-      <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);border-radius:8px;padding:14px 16px">
-        <div style="font-size:13px;color:#93c5fd;font-weight:700;margin-bottom:4px">VTOL 货运 -- 中国空白</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">纯电 eVTOL：&lt;500kg/&lt;300km。混动 VTOL：Sabrewing（美，2.4t/1,800km），中国无对标。<b style="color:rgba(255,255,255,.85)">>500kg VTOL 货运在中国完全空白。</b></div>
-      </div>
-    </div>
 
     <!-- AI 总设计师: 从商业回报反推设计规格 -->
     <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:linear-gradient(135deg,rgba(147,51,234,.1),rgba(96,165,250,.08));border:1px solid rgba(147,51,234,.3);border-radius:var(--radius)">
