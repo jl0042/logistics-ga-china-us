@@ -1775,6 +1775,40 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
+    <!-- 敏感性分析 + 737BCF 半载诊断 -->
+    <div class="fade-in" style="margin-top:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px">
+      <div style="font-size:14px;color:#fff;font-weight:700;margin-bottom:10px">敏感性分析: 10t UAV 吨公里 3.77 元 对六个输入的弹性</div>
+      <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
+        <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:12px">
+          <thead>
+            <tr style="background:rgba(255,255,255,.1)">
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">变量</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">基准</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">悲观值</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">吨公里 基准 → 悲观</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">BOM 单机成本</td><td style="border-color:rgba(255,255,255,.08)">6,350 万</td><td style="border-color:rgba(255,255,255,.08)">7,620 万 (+20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 4.21</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">燃油价 Jet-A1</td><td style="border-color:rgba(255,255,255,.08)">8 元/kg</td><td style="border-color:rgba(255,255,255,.08)">9.6 元/kg (+20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 4.08</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">年利用率</td><td style="border-color:rgba(255,255,255,.08)">1,200 hr/yr</td><td style="border-color:rgba(255,255,255,.08)">960 hr/yr (-20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 4.32</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">PW127 维护储备</td><td style="border-color:rgba(255,255,255,.08)">1,800 元/hr</td><td style="border-color:rgba(255,255,255,.08)">2,160 元/hr (+20%)</td><td style="border-color:rgba(255,255,255,.08)">3.77 → 3.90</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(248,113,113,.1)"><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fca5a5">装载率</b></td><td style="border-color:rgba(255,255,255,.08)">100%</td><td style="border-color:rgba(255,255,255,.08)">60%</td><td style="color:#fca5a5;border-color:rgba(255,255,255,.08)"><b>3.77 → 6.29</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:10px;padding:10px 14px;background:rgba(251,191,36,.08);border-left:3px solid #fbbf24;border-radius:4px;font-size:12.5px;color:rgba(255,255,255,.82);line-height:1.75">
+        <b style="color:#fcd34d">结论: 装载率是唯一一个能把 10t UAV 推过 737BCF 半载线的变量。</b>其他变量 ±20% 都不破坏吨公里 3.77 → 737BCF 半载 3.72 的相对关系。工程因素 (发动机维护、BOM、燃油) 可以逐步压缩, 装载率却直接取决于航线能否揽到稳定货量 — 所以 10t 级商业成败不决定于工程, 决定于货量能否跟上。
+      </div>
+      <div style="margin-top:14px;padding:12px 14px;background:rgba(0,0,0,.2);border-radius:4px">
+        <div style="font-size:13px;color:#fff;font-weight:700;margin-bottom:6px">737BCF 为什么常出现半载</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.75">
+          一部分原因是近年全货机运力扩张 (顺丰、邮政、圆通、央企机队增速), 一部分原因是货流结构本身不对称 — 沿海制造业向内陆输出的货物类型与体积密度, 与内陆向沿海的回程货物不匹配, 返程装载难以补满。具体的综合装载率在航司公开报表里不易拿到, 这里是方向性判断不是精确数字。<br><br>
+          含义: 10t UAV 真实能拿到的市场空间是"二线对二线"横向流 (郑州-成都、西安-昆明、长沙-乌鲁木齐这类), 这条流在 737BCF 上本就不经济, 才出现半载。这给 W5000 / 10t 级留出了真实空间, 但空间上限是"二线横向货量", 不是整条干线货运市场, 需要 2027-2028 首批运营数据验证。
+        </div>
+      </div>
+    </div>
+
     <!-- 增程式 + VTOL callout -->
     <div class="grid2 fade-in" style="margin-top:16px">
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:14px 16px">
@@ -1823,6 +1857,17 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </table>
       </div>
       <div class="source">注：绝大部分 LOI 无法律约束力。仅 V2000CG 已向付费客户交付认证机型（载人型）。</div>
+      <!-- LOI 转化概率排名 -->
+      <div style="margin-top:12px;padding:12px 14px;background:#fafafa;border:1px solid #e5e7eb;border-left:3px solid #2563eb;border-radius:4px">
+        <div style="font-size:13px;color:#1e3a8a;font-weight:700;margin-bottom:8px">LOI 转化为真实订单的概率排序</div>
+        <ul style="margin:0;padding-left:18px;font-size:12.5px;color:#334155;line-height:1.85">
+          <li><b>TP500 / 中通 30 架 — 高 (70-80%)。</b>取证临近且走正常类 150-5,700 kg 标准路径, 中通仓配网络已有可验证需求, 单机载荷对应的商业航线门槛低。</li>
+          <li><b>W5000 / 跨越 60 架 — 中 (35-50%)。</b>量大, 但取证路径走专用条件 (SC) 单案审定, 时间表不可控; 跨越速运自身财务状况需持续观察。这个 LOI 下到单件订单之间有 2-3 年的不确定窗口。</li>
+          <li><b>V2000CG / Falcon Aviation 15 架 — 已交付。</b>载人型已取证并交付, 不计入货运 UAV LOI。</li>
+          <li><b>CY-8 / 军采 — 另一赛道。</b>公开 CAAC 档案无对应受理记录, 可能走 GJB 军采路径。三年内不进入商业物流市场规模口径。</li>
+          <li><b>HH-200 — 无公开 LOI。</b>适航审查 2025-09 已启动, 2028 前有可能取证, 但尚无已披露的客户意向订单。</li>
+        </ul>
+      </div>
     </div>
 
     <!-- 三时间窗 -->
