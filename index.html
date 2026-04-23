@@ -767,7 +767,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
       <div class="source" style="margin-top:10px; line-height:1.7">
         <b>数据来源:</b>
-        <b>Caravan 208B</b> 拆解: Conklin &amp; de Decker 2024 Cessna 208B Grand Caravan EX Operating Costs ($692/hr 变动成本 × 7.27 汇率 = 5,028 元, 本表按 Jet-A1 ¥8/kg 统一油价后 5,103 元); 燃油约 150 kg/hr 短程任务 profile。
+        <b>Caravan 208B</b> 拆解: Conklin &amp; de Decker 2024 Cessna 208B Grand Caravan EX Operating Costs ($692/hr 变动成本 × 7.27 汇率 ≈ 5,103 元, Jet-A1 ¥8/kg); 燃油约 150 kg/hr 短程任务 profile。
         <b>ATR 42-600F</b> 拆解: Aircraft Cost Calculator 2024; 燃油 540 kg/hr (PW127M 双发 60% 功率); 机身 ¥1.4 亿 (Avolon 2024 二手价)。
         <b>Caravan 级无人机</b> 拆解: Reliable Robotics / Xwing / Natilus 行业公开成本模型 (规模化假设)。
         <b>起降地面费公式</b>: CAAC《民用机场收费标准》2023 (民航函 [2023] 15 号); 降落费 70 元 × MTOW(吨)^0.85; 停机费 10 元/MTOW(吨)/小时; 装卸费行业典型 150 元/实际货运吨。
@@ -781,7 +781,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <ul class="insight-rules">
         <li><b>燃油占比随机型放大</b>: ATR 38% / Caravan 22% / UAV 24% (混动只把绝对值降 30%, 占比反而升因为其他项也降了)。这就是为什么干线大飞机最受燃油价波动影响</li>
         <li><b>飞行员是按小时固定的, 不随载荷变</b>: ATR 1,800 元/hr 飞 5.5 吨, 每吨人工 327 元; Caravan 873 元/hr 飞 1.088 吨, 每吨人工 802 元; 比 ATR 贵 2.5 倍 — 这就是"无人化在小飞机上收益最大, 大飞机上几乎可以忽略"的根本数学</li>
-        <li><b>滑年飞行小时滑块, 看保险和折旧的摊薄机制</b>: 保险和折旧都是按年发生的, 年飞行小时越多每小时摊得越薄。Caravan 800 hr/年 (默认) 折旧 1,212 元/hr, 1,500 hr/年 只 647 元/hr; ATR 拖到 2,000 hr/年 (S7a 主表国际基准口径), 折旧从默认的 2,500 降到 1,000 — 复现 14,500 元/hr (中国首批工况是 19,500 元/hr, 见 S7a)</li>
+        <li><b>年飞行小时决定折旧摊销</b>: 保险和折旧按年发生, 年飞行小时越多每小时摊得越薄。Caravan 800 hr/年折旧 1,212 元/hr, 1,500 hr/年仅 647 元/hr; ATR 从 800 hr/年的 2,500 元/hr 降到 2,000 hr/年的 1,000 元/hr。中国支线 ATR 实际年利用率低, 折旧拉高整体小时成本</li>
       </ul>
     </div>
   </div>
@@ -816,7 +816,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <b>不亏价 (元/kg) = (小时成本 × 距离 ÷ 速度 + 起降费) ÷ (业载kg × 装载率) + 地面取派</b><br>
         <span style="color:#64748b;font-size:12px">装载率取 70% (现实运营典型值, 跟 S6 主表 W5000 行假设一致); 地面取派 4 元/kg 中位 (国家邮政局 2024《快递业运行报告》航空件末端 3.5-5 元/kg)。不含资金成本和管理费 (那部分按行业经验需再加 20-30% 才能"赚钱", 不在本节范围)。</span>
       </div>
-      <p><b>对取证中机型 (TP500 / HH-200 / CY-8 / W5000), 全部用"首批运营估算"</b>, 不用厂商目标值。两者差 1.3-2 倍, 估算方法见下方主表后的 callout。</p>
+      <p><b>取证中机型 (TP500 / HH-200 / CY-8 / W5000) 用"首批运营估算"</b>, 不用厂商目标值 (首批比目标高 1.3-2 倍, 详见主表后 callout)。</p>
     </div>
 
     <!-- Block 2: aircraft cost master table -->
@@ -881,7 +881,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 4 项之和 200 元/次; 跟 S6 主表行业推算吻合, 但无单次起降实运营收费单据">200</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 200 + 小时 935 × 航程 500 / 速度 200) ÷ (航程 500 × 业载 0.5t) = 2,538 / 250 = 10.2 元/吨km (满载)">10.2</span></td>
               <td><span class="tip" data-t="⚠️ 估算: 壹通官方 + AOPA 反推 < 5 元/吨km (aopa.org.cn); 厂商目标口径未含全寿命大修分摊, 且按 260 km/h 最大速度而非 ~200 km/h 巡航">&lt;5</span></td>
-              <td style="text-align:left;line-height:1.5">厂商低 50%+。原因: 厂商口径按最大速度 260 km/h 反算 + 未含全寿命大修; 首批按巡航 ~200 km/h + 含折旧 → 10.2</td>
+              <td style="text-align:left;line-height:1.5">首批 10.2 元/吨km 含折旧 + 全寿命大修; 厂商口径 &lt; 5 不含</td>
             </tr>
             <!-- Caravan UAV 首批 -->
             <tr style="background:#fffbeb">
@@ -898,9 +898,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: 卫星链路 + 地面控制摊销 ~¥160/hr (Reliable/Xwing 数据链典型)">160</span></td>
               <td><span class="tip" data-t="🔢 派生: 首批 UAV 改装机身 ¥820 万 ÷ 10 年 ÷ 1,000 hr/yr ≈ ¥820/hr (3 个输入均为估算; 机身价参考 Reliable 改装报价)">820</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 7 项之和 3,720 元/hr (Reliable Robotics + Xwing 行业模型; 首批运营)">3,720</span></td>
-              <td><span class="tip" data-t="🔢 派生: 国内 2C 类机场 1-3t UAV 降落费 100-160 元区间中位 (CAAC 2023 公式 70×MTOW^0.85 × UAV 折扣 0.7 给 145; 无实运营收费数据, 总 350 元反推到 130)">130</span></td>
+              <td><span class="tip" data-t="🔢 派生: 国内 2C 类机场 1-3t UAV 降落费区间 (CAAC 2023 公式 70×MTOW^0.85 × UAV 折扣 0.7; 无实运营收费数据)">130</span></td>
               <td><span class="tip" data-t="🔢 派生: 业载 1.088t × ¥40/吨 ≈ 44 (国内通航 1t UAV 装卸行业典型 ¥35-50/吨; 无实运营单据, 总 350 元反推)">44</span></td>
-              <td><span class="tip" data-t="🔢 派生: CAAC 2023 公式 ¥10 × 3.5t × 4hr × 0.7 UAV 折扣 给 98; 总 350 元反推到 88">88</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr × 0.7 UAV 折扣">88</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》通航 1-3t UAV 档区间 60-120 元/次, 取 88">88</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表行业推算 ¥350/次 (Reliable/Xwing 行业模型; 无 Caravan UAV 实运营收费单据, 4 项细分从此总数派生)">350</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 350 + 小时 3,720 × 航程 1,300 / 速度 324) ÷ (航程 1,300 × 业载 1.088) = 15,276 / 1,414 = 10.8 元/吨km (满载理想)">10.8</span></td>
@@ -921,7 +921,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: 国内支线机长 ¥80-100 万年薪 (含 13 薪 + 飞行津贴) ÷ 800 hr/yr ≈ ¥873/hr (Conklin 美国原值不同, 国内调整; 无单一航司分项披露)">873</span></td>
               <td><span class="tip" data-t="有人机不需独立数据链 (导航空管在起降费里)">—</span></td>
               <td><span class="tip" data-t="🔢 派生: 新机 ¥1,454 万 ÷ 15 年 ÷ 800 hr/yr (国内典型, FedEx Feeder 为 1,200 hr); 3 个输入 — 机身价/年限/年小时 — 均来自行业估算">1,212</span></td>
-              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="🔢 派生: = 上方 7 项之和 5,103 元/hr (Conklin & de Decker 2024 $692/hr = ¥5,028, 本表燃油按 Jet-A1 ¥8/kg 统一口径微调到 5,103)">5,103</span></td>
+              <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="✅ 实测: = 上方 7 项之和 5,103 元/hr (Conklin & de Decker 2024 Cessna 208B $692/hr × 7.27; 燃油按 Jet-A1 ¥8/kg 计)">5,103</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥600 按 CAAC 公式比例拆分; Conklin 给总数不给 4 项细分. 参考: Conklin 美国同级单次降落费 ~$26 × 7.27 = ¥189">189</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥600 按业载拆分; 业载 1.088t × ¥123/吨 (Conklin 国际数据反推, 无国内实运营装卸费单据)">134</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥600 按 CAAC 停机公式 ¥10 × 3.97t × 4hr 比例拆分; 单项无独立数据">130</span></td>
@@ -929,7 +929,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="✅ 实测: Conklin & de Decker 2024 $82/次 × 7.27 = ¥600/次 (国际公开数据; 4 项细分无独立数据, 从此总数派生)">600</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 600 + 小时 5,103 × 航程 1,300 / 速度 324) ÷ (航程 1,300 × 业载 1.088) = 21,077 / 1,414 = 14.9 元/吨km (满载理想)">14.9</span></td>
               <td><span class="tip" data-t="✅ 实测: Conklin & de Decker 2024 Cessna 208B Grand Caravan EX Operating Costs: $692/hr × 7.27 = ¥5,028 → 14.7 元/吨km; URL: conklindedecker.jetsupport.com/details/Cessna%20208B%20Grand%20Caravan">14.7</span></td>
-              <td style="text-align:left;line-height:1.5">Conklin & de Decker 2024 国际公开数据误差 &lt;2% (本表按 Jet-A1 ¥8/kg 统一口径)</td>
+              <td style="text-align:left;line-height:1.5">Conklin & de Decker 2024 国际公开数据 (误差 &lt;2%)</td>
             </tr>
             <!-- HH-200 首批 -->
             <tr style="background:#eff6ff">
@@ -946,9 +946,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: 中型 UAV 卫星链路 + 地面控制 ¥160/hr (行业典型)">160</span></td>
               <td><span class="tip" data-t="🔢 派生: 首批机身 ¥1,800 万 ÷ 10 年 ÷ 1,100 hr/yr ≈ ¥1,650/hr (3 个输入均为估算; 中航未披露 HH-200 售价)">1,650</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 7 项之和 5,790 元/hr (首批运营)">5,790</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥500 按 CAAC 公式拆 (公式 70×4^0.85×0.7 给 162, 反推到 184); 无实运营收费数据">184</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 降落公式 70×MTOW^0.85 × UAV 折扣 0.7; 无实运营收费数据">184</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥500 按业载拆 (业载 1.5t × ¥51/吨); 无独立装卸费数据">76</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥500 按停机公式拆 (¥10 × 4t × 4hr × 0.7 给 112, 反推到 127)">127</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr × 0.7 UAV 折扣">127</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》通航 1-3t UAV 档区间 100-150 元/次, 取 113">113</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表行业推算 ¥500/次 (国内 2C 类机场 1.5t UAV 首批运营); 无实运营单据, 4 项细分从此总数派生">500</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 500 + 小时 5,790 × 航程 2,360/速度 310) ÷ (航程 2,360 × 业载 1.5) = 44,572/3,540 = 12.6 元/吨km">12.6</span></td>
@@ -970,9 +970,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="有人机, 无独立数据链">—</span></td>
               <td><span class="tip" data-t="🔢 派生: 二手 ¥3,000 万 ÷ 15 年 ÷ 800 hr/yr ≈ ¥2,660/hr (3 输入均为估算, 哈飞未披露 Y-12F 售价)">2,660</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 6 项之和 8,670 元/hr (第一原理拆解; 国内未商业货运, 主要出口)">8,670</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥800 按 CAAC 公式拆 (公式 70×5.7^0.85 给 309, 反推到 216); 无实运营收费">216</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 降落公式 70×MTOW^0.85; 无实运营收费">216</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥800 按业载拆 (业载 2.7t × ¥105/吨); 无独立装卸数据">284</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥800 按停机公式拆 (¥10 × 5.7t × 4hr 给 228, 反推到 160)">160</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr">160</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》通航 3-6t 涡桨档区间 130-180 元/次, 取 140">140</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表推算 ¥800/次 (国内 3C 类机场 2.7t 双发涡桨; 无实运营单据, 4 项细分从此总数派生)">800</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 800 + 小时 8,670 × 航程 1,340/速度 280) ÷ (航程 1,340 × 业载 2.7) = 42,294/3,618 = 11.69 元/吨km">11.7</span></td>
@@ -994,9 +994,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: 中长航程 UAV 数据链 ¥200/hr (行业典型)">200</span></td>
               <td><span class="tip" data-t="🔢 派生: 首批机身 ¥3,000 万 ÷ 10 年 ÷ 1,100 hr/yr ≈ ¥2,727/hr (MTOW 7t 尺度对应机身价; 3 输入均为估算)">2,727</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 7 项之和 9,877 元/hr (首批运营)">9,877</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥1,200 按 CAAC 公式拆 (公式 70×7^0.85×0.7 给 254, 反推到 402)">402</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 降落公式 70×MTOW^0.85 × UAV 折扣 0.7">402</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥1,200 按业载拆 (业载 3.5t × ¥71/吨)">250</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥1,200 按停机公式拆 (¥10 × 7t × 4hr × 0.7 给 196, 反推到 310)">310</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr × 0.7 UAV 折扣">310</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》通航 3-6t UAV 档区间 200-280 元/次, 取 238">238</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表推算 ¥1,200/次 (国内 3C 类机场 3.5t UAV 首批运营); 无实运营单据, 4 项细分从此总数派生">1,200</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 1,200 + 小时 9,877 × 航程 3,000/速度 380) ÷ (航程 3,000 × 业载 3.5) = 79,171/10,500 = 7.54 元/吨km">7.5</span></td>
@@ -1018,14 +1018,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: 长航程 UAV 数据链 ¥230/hr (行业典型)">230</span></td>
               <td><span class="tip" data-t="🔢 派生: 首批机身 ¥4,500 万 ÷ 10 年 ÷ 1,100 hr/yr ≈ ¥4,091/hr (MTOW 10.8t 尺度, 约 CY-8 机身价的 1.5x; 3 输入均为估算, 白鲸未披露售价)">4,091</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 7 项之和 10,861 元/hr (首批运营)">10,861</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥2,000 按 CAAC 公式拆 (公式 70×10.8^0.85×0.7 给 365, 反推到 639); 无实运营收费">639</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 降落公式 70×MTOW^0.85 × UAV 折扣 0.7; 无实运营收费">639</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥2,000 按业载拆 (业载 5t × ¥79/吨); 大型 UAV 货代议价">394</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥2,000 按停机公式拆 (¥10 × 10.8t × 4hr × 0.7 给 302, 反推到 529)">529</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr × 0.7 UAV 折扣">529</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》通航 6-15t UAV 档区间 400-500 元/次, 取 438">438</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表推算 ¥2,000/次 (国内 4C 类机场 5t UAV; 跟白鲸 PR 对应的规模化假设同口径); 无实运营单据, 4 项细分从此总数派生">2,000</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 2,000 + 小时 10,861 × 航程 2,600/速度 526) ÷ (航程 2,600 × 业载 5) = 55,686/13,000 = 4.28 元/吨km (首批运营)">4.3</span></td>
               <td><span class="tip" data-t="✅ 实测: 白鲸航线官方 PR 2.69 元/吨km (URL: 36kr.com/p/2600157312187269 + 21jingji.com); 规模化假设: 内部油价 ¥7/kg + 装载 100% + 年飞 2,000hr + 机身 ¥2,000 万">2.7</span></td>
-              <td style="text-align:left;line-height:1.5">厂商低 37%。差距来源: 厂商假设内部油价 ¥7/kg + 装载 100% + 年飞 2,000hr + 机身 ¥2,000 万规模化; 首批按 ¥8/kg + 75% + 1,100hr + ¥4,500 万 → 修正 1.5-1.6 倍</td>
+              <td style="text-align:left;line-height:1.5">首批 4.3 按市场油价 ¥8/kg + 装载 75% + 年飞 1,100hr + 机身 ¥4,500 万; 厂商 2.7 按内部 ¥7/kg + 100% + 2,000hr + ¥2,000 万规模化</td>
             </tr>
             <!-- ATR42 中国首批 -->
             <tr style="background:#fffbeb">
@@ -1049,7 +1049,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表 ¥3,000/次 (Aircraft Cost Calc 国际基准 + 中国机场费调整); 4 项细分无独立数据, 从此总数派生">3,000</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 3,000 + 小时 18,960 × 航程 1,326/速度 480) ÷ (航程 1,326 × 业载 5.5) = 55,377/7,293 = 7.59 元/吨km (中国首批)">7.6</span></td>
               <td><span class="tip" data-t="✅ 实测: Aircraft Cost Calculator 2024 ATR 42, $1,995/hr × 7.27 = ¥14,500 → 5.9 元/吨km (国际基准); URL: aircraftcostcalculator.com/AircraftOperatingCosts/474">5.9 国际</span></td>
-              <td style="text-align:left;line-height:1.5">中国比国际高 32%。原因: 机场费 + 年利用 1,500 vs 2,500hr + 维护工时贵 + 维护件进口</td>
+              <td style="text-align:left;line-height:1.5">中国首批 7.6 高于国际基准 5.9: 机场费 + 年利用 1,500 vs 2,500hr + 维护工时贵 + 维护件进口</td>
             </tr>
             <!-- C909F 圆通 -->
             <tr style="background:#fffbeb">
@@ -1066,9 +1066,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="喷气支线 (导航在起降费里, 无独立数据链项)">—</span></td>
               <td><span class="tip" data-t="🔢 派生: 新机 ¥1.5 亿 ÷ 15 年 ÷ 2,500 hr/yr ≈ ¥3,500/hr (商飞未披露 C909F 售价; 3 输入均为估算)">3,500</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 6 项之和 24,612 元/hr (第一原理拆解 + 类比 737-800BCF × 0.85; 商飞 + 圆通均未披露运营成本)">24,612</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥3,500 按 CAAC 公式拆 (公式 70×43^0.85 给 1,657, 大型机场议价反推到 1,049)">1,049</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 降落公式 70×MTOW^0.85 (大型机场议价低于公式值)">1,049</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥3,500 按业载拆 (业载 9t × ¥95/吨; 大型机场货站议价)">855</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥3,500 按停机公式拆 (¥10 × 43t × 4hr 给 1,720, 大型机场议价反推到 1,089)">1,089</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr (大型机场议价)">1,089</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》喷气支线 30-50t 档区间 450-580 元/次, 取 507">507</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表 ¥3,500/次 (圆通伊宁实运营 + 类比 737BCF 大型机场协议价); 圆通未披露实际起降费; 4 项细分从此总数派生">3,500</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 3,500 + 小时 24,612 × 航程 3,700/速度 825) ÷ (航程 3,700 × 业载 9) = 113,891/33,300 = 3.42 元/吨km">3.4</span></td>
@@ -1092,7 +1092,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: = 上方 6 项之和 38,520 元/hr (BTS Form 41 美国同级 $5-8.5k/hr 偏中位; 顺丰/京东未披露分机型小时成本)">38,520</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥4,500 按 CAAC 公式 + 大型机场议价拆 (公式 70×79^0.85 给 2,807, 顺丰/京东大型枢纽协议价 <40% 公式值); BTS 美国同级单次 ~$170 × 7.27 = ¥1,236 对应">1,221</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥4,500 按业载拆 (业载 23.9t × ¥65/吨); 顺丰/京东自营货站议价">1,559</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥4,500 按停机公式拆 (¥10 × 79t × 4hr 给 3,160, 大型枢纽议价反推到 1,374)">1,374</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr (大型枢纽议价)">1,374</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》干线机 75-100t 档区间 300-450 元/次 (大型枢纽议价), 取 348">348</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表 ¥4,500/次 (BTS Form 41 美国同级 ~$200 + 国内大型枢纽议价调整; 顺丰/京东未披露协议价); 4 项细分从此总数派生">4,500</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 4,500 + 小时 38,520 × 航程 3,750/速度 833) ÷ (航程 3,750 × 业载 23.9) = 177,877/89,625 = 1.98 元/吨km">2.0</span></td>
@@ -1116,7 +1116,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表 ¥45,900 = $6,313/hr (BTS Form 41 美国 $6-7.5k 中位 + 国内中位推算; 顺丰/邮航未披露分机型小时成本)">45,900</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥5,500 按 CAAC 公式 + 大型机场议价拆 (公式 70×116^0.85 给 3,925, 顺丰/京东大型枢纽协议价 <36% 公式值); BTS 美国同级单次 ~$190 × 7.27 = ¥1,381 对应">1,401</span></td>
               <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥5,500 按业载拆 (业载 39t × ¥54/吨); 顺丰/京东自营货站规模化降本">2,088</span></td>
-              <td><span class="tip" data-t="🔢 派生: 从起降合计 ¥5,500 按停机公式拆 (¥10 × 116t × 4hr 给 4,640, 大型枢纽议价反推到 1,656)">1,656</span></td>
+              <td><span class="tip" data-t="🔢 派生: CAAC 2023 停机公式 ¥10 × MTOW × 4hr (大型枢纽议价)">1,656</span></td>
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》干线机 100-150t 档区间 300-450 元/次 (大型枢纽议价), 取 357">357</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表 ¥5,500/次 (BTS Form 41 美国同级 ~$240 + 国内大型枢纽议价调整; 顺丰/邮航未披露协议价); 4 项细分从此总数派生">5,500</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 5,500 + 小时 45,900 × 航程 5,800/速度 850) ÷ (航程 5,800 × 业载 39) = 318,738/226,200 = 1.41 元/吨km">1.4</span></td>
@@ -1235,8 +1235,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <span class="insight-title">不亏本价格矩阵的 4 个直接发现</span>
       <ul class="insight-rules">
         <li><b>Caravan 有人是矩阵里最贵的位置</b>: 任何距离档都不是最优 (500 km 15 元, 1,000 km 25 元)。它的存在只用来界定通航段的成本天花板, 不应作为投资决策基准。S7 之前用 Caravan 推 8 元/kg 盈亏线是把这门生意写"死"。</li>
-        <li><b>W5000 是中段 (1,000-2,500 km, 5t) 的最优</b>: 运营初期 10-19 元/kg, 正常运营 8-13 元/kg。但跟 757F 比仍贵 30-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控 + 跑道需求 &lt;1,200m 能进 3C/4C 机场, 不是绝对低成本。</li>
-        <li><b>运营初期 vs 正常运营差 1.2-1.5 倍</b>: W5000 1,000 km 从 10 元/kg (运营初期) 降到 8 元/kg (正常); CY-8 同距离从 16 降到 14。投资判断时要区分: 头 2-3 年看运营初期, 长期看正常运营。</li>
+        <li><b>W5000 是中段 (1,000-2,500 km, 5t) 的最优</b>: 不亏本价 10-19 元/kg。但跟 757F 比仍贵 30-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控 + 跑道需求 &lt;1,200m 能进 3C/4C 机场, 不是绝对低成本。</li>
+        <li><b>规模化后能降 1.2-1.5 倍</b>: W5000 1,000 km 从 10 元/kg 降到 8 元/kg; CY-8 同距离从 16 降到 14。</li>
         <li><b>能盈利 8 元/kg 以下标准时敏快递的机型只有 4 款</b>: W5000 (&gt;1,000 km) / C909F / 737BCF / 757F。其他机型必须靠生鲜 (10-30 元/kg)、医疗急件 (50-200 元/kg)、电商精品等高价值货源才能盈利, 这就把可服务的市场规模上限钉死了。<b>叠加跑道约束</b>: 干线机的低价只在 ~250 个 4C+ 机场两端适用 (见上方跑道约束块) — 想到县级/边境末端必须换通航机型, 不亏本价跳到 10-22 元/kg。</li>
       </ul>
     </div>
@@ -1277,15 +1277,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner">
     <div class="sec-label">07b -- 机型主导</div>
     <div class="sec-title fade-in">把 S7a 的数据摊到平面上 — 谁主导哪一格, 哪些设计空间还是白的?</div>
-    <div class="sec-sub fade-in">S7a 算清了每款机型每个场景的不亏本价, 这一节用 3 张图把同一份数据可视化: ① 机型主导图 (业载×距离每格最便宜机型) + ② 盈利可行域 (给定运价看哪些格子能赚) + ③ Pareto 前沿 (速度×业载找设计白空间)。机型成本数据来自 <a href="#s7" style="color:var(--primary)">S7a 机型成本主表</a>, 默认"运营初期"口径, 可切换到"正常运营"。</div>
+    <div class="sec-sub fade-in">3 张图把 11 款机型的 (业载 × 距离 × 吨公里) 数据铺到平面: ① 机型主导图 (业载×距离每格最便宜机型) + ② 盈利可行域 (给定运价看哪些格子能赚) + ③ 经济性分布 (航程×业载气泡图, 气泡大小 ∝ 1/吨公里)。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">主导图上 Caravan 完全消失, W5000 / C909F 瓜分中型, 干线段 737BCF / 757F 锁死; Pareto 前沿在通航中型 UAV 区 (350-500 km/h × 1.5-3.5 t) 留下一块设计白空间, 等待国产更高效率涡轴 + 更轻机体填补。</div>
+      <div class="thesis-line">主导图上 Caravan 完全消失, W5000 / C909F 瓜分中型, 干线段 737BCF / 757F 锁死; 通航中型 UAV 区 (350-500 km/h × 1.5-3.5 t) 留下一块设计白空间, 等待国产更高效率涡轴 + 更轻机体填补。</div>
       <ul class="thesis-evidence">
         <li>主导图: 10 机型 (加 C909F), Caravan 系列从全局消失; W5000 占 3-5t 中长距, 737BCF 干线 24t, 757F 超长 4000km+</li>
         <li>盈利可行域: 8 元/kg 电商时敏价位下, 只 W5000 长距 + 干线机能赚, "普通货物 <2 元" 全红</li>
-        <li>Pareto: 通航中型 UAV (350-500 km/h × 1.5-3.5 t) 是白空间, 需要 varHr 降到 ¥5,500-6,000 才能占住</li>
+        <li>设计白空间: 通航中型 UAV (350-500 km/h × 1.5-3.5 t) 无机型覆盖, varHr 需降到 ¥5,500-6,000 才能占住</li>
       </ul>
     </div>
 
@@ -1296,7 +1296,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Chart 1: Aircraft Dominance Map -->
     <div class="card fade-in" style="margin-top:16px">
       <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
-      <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。机型在业载超过 maxP 或距离超过满载航程 rFull 时不可用 (灰格)。<b>红色 pin</b> = 典型实际航线。成本口径 toggle: <b>运营初期</b> (首批 2-3 年, 跟 S7a 主表小时合计同) vs <b>正常运营</b> (规模化稳态, 厂商目标/国际基准)。</div>
+      <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。机型在业载超过 maxP 或距离超过满载航程 rFull 时不可用 (灰格)。<b>红色 pin</b> = 典型实际航线。</div>
       <div class="toggle-group" style="margin:10px 0">
         <button class="toggle-btn active" data-chart="1" data-mode="initial" onclick="s7bSetMode(1, 'initial')">运营初期</button>
         <button class="toggle-btn" data-chart="1" data-mode="normal" onclick="s7bSetMode(1, 'normal')">正常运营</button>
@@ -1323,14 +1323,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <li><b>C909F 新占 6-10t × 1,000-3,700 km 格子</b> (圆通 2 架 2024.6 首飞): 喷气支线速度 825 km/h + 载荷 9t, 在这一格压倒 737BCF (载荷过剩) 和 W5000 (载荷不够)</li>
           <li><b>干线 (24t+ × 1,500-5,500 km) 是 737BCF / 757F 的锁定领地</b>: 吨公里成本 1.4-2.0 元 (满载), 但仅在 4D/4E 机场两端适用 (S7a 跑道约束块); 想到县级末端必须换小机型</li>
         </ul>
-        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>切换 toggle 观察</b>: "运营初期 → 正常运营" 切换时, W5000 / CY-8 / HH-200 等取证中机型的领地会扩大 ~20-40% (因为成本降到厂商目标值); 干线机 / Caravan 有人的格子基本不变 (已大规模运营)。</p>
+        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>规模化以后</b>: W5000 / CY-8 / HH-200 等取证中机型的领地扩大 ~20-40%; 干线机 / Caravan 有人的格子基本不变。</p>
       </div>
     </div>
 
     <!-- Chart 2: Profitability/Margin Map -->
     <div class="card fade-in" style="margin-top:16px">
       <div class="chart-title">② 盈利可行域: 给定运价下, 哪些 (业载, 距离) 格子能赚?</div>
-      <div class="chart-desc">每格颜色 = 最优机型成本 vs 目标运价的差 (毛利, 元/kg)。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。<b>成本口径 toggle 独立于 Chart ①</b>: 这里看"在当前运价下, X 口径成本是否能盈利"。</div>
+      <div class="chart-desc">每格颜色 = 最优机型成本 vs 目标运价的差 (毛利, 元/kg)。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。</div>
       <div class="toggle-group" style="margin:10px 0">
         <button class="toggle-btn active" data-chart="2" data-mode="initial" onclick="s7bSetMode(2, 'initial')">运营初期</button>
         <button class="toggle-btn" data-chart="2" data-mode="normal" onclick="s7bSetMode(2, 'normal')">正常运营</button>
@@ -1360,7 +1360,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Chart 3: Aircraft Economic Map -->
     <div class="card fade-in" style="margin-top:16px">
       <div class="chart-title">③ 机型经济性分布: (航程 × 业载) 平面上的设计位置</div>
-      <div class="chart-desc">每个机型在 (航程 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本 (越大 = 越经济, 满载工况)。本图基于<b>运营初期</b>数据 (跟 S7a 主表一致); 正常运营口径下 W5000/CY-8 成本会降 ~40%, 气泡会更大, 但位置和结构不变。</div>
+      <div class="chart-desc">每个机型在 (航程 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本 (越大 = 越经济, 满载工况)。</div>
       <div class="econ-explain" style="margin-top:12px">
         <h4 style="margin-bottom:6px">怎么读这张图</h4>
         <p style="margin:0;font-size:13px;line-height:1.8">两个维度都是买飞机的人想要的: <b>航程越长</b> (能飞越远) 和 <b>业载越大</b> (能装越多) 都更好, 而气泡越大代表吨公里成本越低。理想设计是 "航程长 + 业载大 + 气泡大" 同时满足, 也就是图的右上角 + 大气泡。</p>
@@ -1369,7 +1369,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <span style="display:inline-block;width:14px;height:14px;border:1.5px solid #1e293b;border-radius:50%;background:#fff;vertical-align:middle"></span> <b>气泡位置</b> = 机型设计航程 × 业载; <b>气泡大小</b> ∝ 1/吨公里成本, 越大越经济<br>
           <span style="display:inline-block;width:22px;height:12px;background:rgba(34,197,94,0.15);border:1.5px dashed #16a34a;vertical-align:middle"></span> <b style="color:#16a34a">绿色矩形</b> = 设计白空间 (1,500-2,500 km × 1.5-3.5 t), 这个区间没有机型覆盖 — 新设计的国产中型 UAV 落在这里才有独立生存空间
         </div>
-        <p style="margin-top:10px;font-size:13px;color:#475569"><b>为什么重要</b>: 读者一眼看到哪些机型占哪些位置, 哪里拥挤 (通航 1-5t / 短到中程扎堆), 哪里稀疏 (中长航程 × 中等业载留白)。白空间不是 Pareto 意义上的"最优"缺口 (严格 Pareto 只有 757F 一个点, 没分析价值), 而是"已有机型组合覆盖不到的 payload×range 需求区间" — 这是 S8 机型目录和 S11 工程规格讨论新设计切入点的起点。</p>
+        <p style="margin-top:10px;font-size:13px;color:#475569"><b>白空间的含义</b>: 已有机型组合覆盖不到的 (航程 × 业载) 需求区间, 通航 1-5t / 短到中程扎堆, 中长航程 × 中等业载留白。这是 S8 机型目录和 S11 工程规格讨论新设计切入点的起点。</p>
       </div>
       <div id="chart-pareto" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
