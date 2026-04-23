@@ -1400,9 +1400,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="thesis-tag">本章一句话</div>
       <div class="thesis-line">这一节是字典，给所有比较机型的具体数字 — 价格、运营成本、状态。论证看 S7。</div>
       <ul class="thesis-evidence">
-        <li>有人机 15 款 + UAV 14 款规格表</li>
+        <li>有人机 16 款 + 大型货运 UAV 14 款 (+ 参数未公开 3 款) 规格表</li>
         <li>价格、运营成本数据与 S6 主表口径一致 (Jet-A1 ¥8/kg, 汇率 7.27)</li>
-        <li>雷达图：6 款主流机型 6 维度对比（"性价比" = 载荷 ÷ 价格 kg/万元）</li>
+        <li>雷达图: 10 款 (有人机 5 + UAV 5) 五维度对比 — 同尺寸对照下 UAV 性价比 2-3× 于有人机</li>
       </ul>
     </div>
 
@@ -1482,7 +1482,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <div class="card fade-in">
       <div class="chart-title">有人机 + UAV 雷达图对比 (10 款, 5+5)</div>
-      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>实线为有人机, 虚线为 UAV</b>。观察: 同尺寸对照下 UAV 性价比全面领先 (Caravan UAV 改装 ≈ 3× Grand Caravan EX 新机; W5000 ≈ 3× ATR 42-600F); UAV 短跑道能力持平或略优 (TP500 609m, CY-8 &lt;500m); 但 ATR 42 在载荷/增压/速度复合维度仍占优。Y-12F / L-410 是有人机里单位性价比最高的, 但航程有限。</div>
+      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>实线 = 有人机 (暖色), 虚线 = UAV (冷色)</b>。观察: (1) UAV 性价比全面领先, 同尺寸对比 W5000 ≈ 2.8× ATR 42-600F, Caravan UAV 改装 ≈ 2.2× Grand Caravan EX 新机; TP500 以 3.33 kg/万元居首; (2) 短跑道能力 Kodiak 100 (305m) 最强, UAV 中 HH-200 / CY-8 (500m) 并列第二梯队, W5000 (1,200m) 和 ATR 42 (1,050m) 反而受限; (3) ATR 42 在速度维度 (556 km/h) 单项封顶, W5000 (526 km/h) 紧随; (4) 航程 CY-8 (3,000+ km) > 所有有人机; 有人机最长航程 Kodiak 100 (2,445 km) 仍输给 HH-200 (2,360 km) 与 CY-8; (5) 有人机里性价比最高的是 Grand Caravan EX (0.84 kg/万元), 但仍只有 TP500 的 1/4。</div>
       <div id="chart-aircraft-radar" class="chart-box" style="height:560px"></div>
       <div class="source">基于上表数据标准化计算; 有人机价格 = 新机报价 (2024 Q4); UAV 价格 = 行业估价 / 改装报价; 性价比 = 载荷 kg ÷ 价格 万元</div>
     </div>
@@ -3266,11 +3266,24 @@ window.s7bSetMode = function(chartN, mode) {
 
   initC('chart-aircraft-radar',{
     tooltip:{},
-    legend:{data:allNames,top:8,textStyle:{fontSize:11},type:'scroll'},
-    radar:{indicator:[
-      {name:'载荷',max:100},{name:'航程',max:100},{name:'速度',max:100},
-      {name:'短跑道能力',max:100},{name:'性价比',max:100}
-    ],radius:'60%',center:['50%','58%']},
+    legend:{
+      data:allNames,
+      orient:'vertical',
+      left:10,
+      top:'middle',
+      itemWidth:18,
+      itemHeight:10,
+      textStyle:{fontSize:12,lineHeight:18},
+      itemGap:8
+    },
+    radar:{
+      indicator:[
+        {name:'载荷',max:100},{name:'航程',max:100},{name:'速度',max:100},
+        {name:'短跑道能力',max:100},{name:'性价比',max:100}
+      ],
+      radius:'65%',
+      center:['62%','52%']
+    },
     series:series
   });
 })();
