@@ -1518,7 +1518,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(34,197,94,.2);color:#4ade80">角色 2</div>
         <h4 style="color:#fff;font-size:15px;margin-top:4px">跨越式发展</h4>
-        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通航有人机队 3,232 架（美国 21 万）。要补齐这个差距需 20+ 年。UAV 提供了跳过整个阶段的可能 -- 直接部署无人货机，不经过"先建有人通航机队"这一步。</p>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通用航空有人机队 3,232 架, 美国 21 万架. 按近十年年均净增 150-200 架的实际速度, 即使政策加码到年增 500 架, 追平美国存量仍需三十年以上. UAV 提供的不是"加速追平", 而是在三件事上改变边际: 飞行员与驾驶舱完全绕过, 机场部分绕过 (500 m 短跑道把门槛从数亿压到千万级, 但仍需选址征地), 低空空域不绕过 (<span class="tip" data-t="Beyond Visual Line of Sight 超视距运行">BVLOS</span> 运行仍需空管、低空开放、通信避障配套). UAV 解决的是"机上成本"和"短跑道适配", 不解决"低空空域能不能用"。未来五年真正的宏观边际瓶颈在空域政策落地速度, 与机型数量关系不大。</p>
       </div>
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(245,158,11,.2);color:#fbbf24">角色 3</div>
@@ -1569,10 +1569,32 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.7"><b>截至 2026.04，没有任何中国货运 UAV 完成全部适航取证。</b>军方/应急采购走 <span class="tip" data-t="国家军用标准">GJB</span> 军标，不需完整 <span class="tip" data-t="Civil Aviation Administration of China 中国民用航空局">CAAC</span> 取证——这是大载重货运 UAV 在民航取证未落地前的一条可能通路, 但具体型号是否真正走了这条路径需以公开档案为准, CY-8 目前公开 CAAC 档案未见对应受理记录。</div>
     </div>
 
-    <!-- 适航资源马太效应 -->
+    <!-- 试飞与取证时间线 -->
     <div class="fade-in" style="margin-top:16px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:14px 16px">
-      <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:6px">适航资源分配正在形成马太效应</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">民航局适航司已公开表态："适航资源要向完成了完整飞行的厂家倾斜。"背景是大量 eVTOL 企业提交了适航材料但后续不了了之，浪费了审核资源。这形成了一个正反馈循环：先飞成的公司获得更多适航资源→适航进度更快→更容易完成下一代→获得更多资源。<b style="color:rgba(255,255,255,.85)">适航审定不是排队等号，而是资源分配越来越不均匀的过程。先飞成的公司（沃飞、峰飞）会获得不成比例的加速，还没飞成的公司即使技术路线更优，在适航进度上也可能被拉开差距。</b></div>
+      <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:6px">审定带宽集中在已进入活跃试飞阶段的机型</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7">整体行业取证速度不快, 但资源正在向有试飞能力与运营能力的厂商集中。这不是政策倾向, 是审定带宽有限时的自然结果。投资含义: 已进入活跃试飞阶段的机型, 后续迭代速度会系统性快于还在地面阶段的机型。下表按首飞、审定路径、适航进展三个可观察指标横向对比当前主要货运 UAV 机型。</div>
+      <div class="table-wrap" style="margin-top:10px;border-color:rgba(255,255,255,.1)">
+        <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:11.5px">
+          <thead>
+            <tr style="background:rgba(255,255,255,.1)">
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">机型</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">量级</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">首飞</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">审定路径</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">最新公开节点</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">预计 TC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>TP500</b></td><td style="border-color:rgba(255,255,255,.08)">1.5t / 500kg</td><td style="border-color:rgba(255,255,255,.08)">2025-02-27 (2002 架机, 瑞城)</td><td style="border-color:rgba(255,255,255,.08)">2023-05 专用条件已发布</td><td style="border-color:rgba(255,255,255,.08)">~150 架次排期 10 个月</td><td style="color:#86efac;border-color:rgba(255,255,255,.08)">2025-2026</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>V2000CG</b></td><td style="border-color:rgba(255,255,255,.08)">2t eVTOL 载人</td><td style="border-color:rgba(255,255,255,.08)">—</td><td style="border-color:rgba(255,255,255,.08)">AC-21-AA-2026-45 动力提升</td><td style="border-color:rgba(255,255,255,.08)">2024-03 TC, 2024-12 PC, 2025-07 AC</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08)">已取证</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>HH-200</b></td><td style="border-color:rgba(255,255,255,.08)">3.3t / 1.5t</td><td style="border-color:rgba(255,255,255,.08)">2022-10 原型; 2026-04 审定构型</td><td style="border-color:rgba(255,255,255,.08)">正常类 150-5,700kg 征求意见稿</td><td style="border-color:rgba(255,255,255,.08)">2025-09-15 适航首审会; 2025-12 首架机下线</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08)">审查中</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>W5000</b></td><td style="border-color:rgba(255,255,255,.08)">10.8t / 5t</td><td style="border-color:rgba(255,255,255,.08)">未首飞 (2024-10 下线)</td><td style="border-color:rgba(255,255,255,.08)">&gt;5,700kg 无通用标准, 走专用条件</td><td style="border-color:rgba(255,255,255,.08)">2024-10 适航受理</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08)">现实 2027-2028</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>CY-8</b></td><td style="border-color:rgba(255,255,255,.08)">7t / 3.5t</td><td style="border-color:rgba(255,255,255,.08)">2026-03 首飞</td><td style="border-color:rgba(255,255,255,.08)">公开档案未见 cert 记录</td><td style="border-color:rgba(255,255,255,.08)">可能走军用路径 (GJB)</td><td style="color:#f87171;border-color:rgba(255,255,255,.08)">未知</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:6px;font-size:10.5px;color:rgba(255,255,255,.4);line-height:1.5">来源: CAAC 官网 (AC-21-AA-2026-44/45, 2026-02-25 正常类征求意见稿, TP500 专用条件 2023-05); 中新网 TP500 首飞报道 (2025-02-27); 中国航空新闻 HH-200 适航首审会 (2025-09-15); 经济观察网 HH-200 首架机下线 (2025-12-29); 新浪财经 W5000 总装下线 (2024-10-20).</div>
     </div>
 
     <!-- 中美路径对比 -->
@@ -1716,7 +1738,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
       <!-- 卡5: 重载干线 ⭐ -->
       <div class="fade-in" style="background:rgba(245,158,11,.08);border:2px solid rgba(245,158,11,.3);border-radius:var(--radius);padding:18px;grid-column:1/-1">
-        <div class="tag" style="background:rgba(245,158,11,.3);color:#fbbf24">5 | 重载干线 -- 概念设计, 全球空白</div>
+        <div class="tag" style="background:rgba(245,158,11,.3);color:#fbbf24">5 | 重载干线 -- 商业成立的四个条件</div>
         <h4 style="color:#fff;font-size:15px;margin:6px 0 10px">10t 级 | 载荷 10,000kg / 航程 3,000km</h4>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
           <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.9">
@@ -1739,6 +1761,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>发动机空白：</b>2,000-3,000 SHP 国产涡桨不存在。AES100 太小，AEP500 太大。初期必须进口 PW127</div>
           <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b>CAAC：</b>28t MTOW 远超 5,700 kg 线，取证可能 4-6 年</div>
           <div style="font-size:11px;color:#fca5a5;background:rgba(239,68,68,.12);border-radius:4px;padding:6px 8px;line-height:1.5"><b><span class="tip" data-t="Non-Recurring Engineering 非经常性研发费用">NRE</span>：</b>¥45 亿研发需国家级项目。200 架量产，每架需利润 >¥2,000 万才能回收</div>
+        </div>
+        <div style="margin-top:14px;padding:12px 14px;background:rgba(0,0,0,.25);border-left:3px solid #fbbf24;border-radius:4px">
+          <div style="font-size:13px;color:#fcd34d;font-weight:700;margin-bottom:8px">商业化能否成立, 取决于四件可观察的事</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.75">
+            <b style="color:#fff">条件 1 — 二线对二线横向货量能否形成稳定需求。</b>737BCF 半载状态出现在"沿海-内陆单向流"场景下返程运力过剩。如果郑州-成都、西安-昆明、长沙-乌鲁木齐这类二线对二线线路能跑出每日 30 吨以上的稳定货量, 10t UAV 在这条腔上的吨公里 3.77 元就是有意义的成本点。跑不出则这个载量级没有独立航线经济学, 只能在 737BCF 空余运力里做补充。<br><br>
+            <b style="color:#fff">条件 2 — 装载率能否长期维持在 80% 以上。</b>敏感性分析显示装载率从 100% 降到 60%, 吨公里从 3.77 跳到 6.29, 直接失去相对于 737BCF 半载的成本优势。这意味着 10t UAV 的商业成败不是工程问题 (发动机、取证、气动都能解决), 是航线规划与揽货能力问题。<br><br>
+            <b style="color:#fff">条件 3 — 首批客户是否带着稳定订单进场。</b>顺丰/京东的直接航线投资属于商业验证, 国家应急储备或军采属于政策订单。政策订单不等于市场验证, 规模不可线性外推。W5000 的 60 架 LOI 里两种客户混在一起, 本报告无法区分。<br><br>
+            <b style="color:#fff">条件 4 (供给侧) — 发动机是否可得。</b>10t 级双发需要 2,000-3,000 SHP 级涡桨, 国内此功率段无量产型号 (AES100 约 1,000 SHP 太小; AEP500 约 5,000 SHP 且为大涵道比涡扇不是涡桨)。初期必须进口 PW127。脱钩情景下 PW127 对华出口受限就直接锁死供给侧, 前三个条件都无意义。增程式不能绕过这个约束: 8-15t 级系统重量惩罚 30-40%, PF 从 0.36 降到 0.25 以下, 吨公里恶化。增程式只在 1-3t 级有效。<br><br>
+            <span style="color:#fbbf24"><b>结论口径：</b>本报告在 2028-2035 商业市场规模预测中, 10t 级需要四个条件全部满足才按有意义份额计入。任一条件不满足, 10t 级只按军采/战略储备口径单列, 不进商业规模线。</span>
+          </div>
         </div>
       </div>
     </div>
