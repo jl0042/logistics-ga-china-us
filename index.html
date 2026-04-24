@@ -131,8 +131,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="links">
     <a href="#hero">首页</a><a href="#s1">地理经济</a><a href="#s2">基础设施</a><a href="#s3">需求分析</a>
     <a href="#s5">高铁竞争</a><a href="#s4">机队枢纽</a><a href="#s6">成本推导</a><a href="#s7">经济边界</a><a href="#s7b">机型主导</a>
-    <a href="#s8">机型目录</a><a href="#s9">UAV角色</a><a href="#s10">设计哲学</a><a href="#s11">AI 总设计</a>
-    <a href="#s12">未来场景</a><a href="#s13">结论</a>
+    <a href="#s8">机型目录</a><a href="#s9">UAV角色</a><a href="#s10">未来场景</a><a href="#s11">AI 总设计</a>
+    <a href="#s12">结论</a>
   </div>
 </nav>
 
@@ -1788,177 +1788,10 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   </div>
 </section>
 
-<!-- S10: 设计哲学 -->
+<!-- S10: 未来场景与需求规模 -->
 <section id="s10" class="sec" style="background:#fff">
   <div class="sec-inner">
-    <div class="sec-label">10 -- 设计哲学</div>
-    <div class="sec-title fade-in">从需求出发：中国需要哪几类无人货运飞机，每类面对什么挑战？</div>
-    <div class="sec-sub fade-in">从需求反推设计：去驾驶舱省 800-1,100kg，不增压减重 15%，高翼后开门免地面设备，<span class="tip" data-t="Short Take-Off and Landing 短距起降">STOL</span> 要求大展弦比。每一条设计选择都有代价。</div>
-
-    <div class="thesis-card fade-in">
-      <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">中国需要 5 类无人货运飞机，对应 5 段需求。4 类仅处于早期或取证中，第 5 类（8-15t）全球空白。每类都有取证、发动机和商业化障碍。</div>
-      <ul class="thesis-evidence">
-        <li>去掉驾驶舱：同 <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 下 <span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 从 0.30 提到 0.36-0.46，单位成本降 15-25%</li>
-        <li>增程式（series-hybrid）在 1-2t 级可行（YH-1000S），但 8-15t 级效率惩罚太大</li>
-        <li>eVTOL 货运：V2000CG 载人版已取证，但中国 >500kg <span class="tip" data-t="Vertical Take-Off and Landing 垂直起降">VTOL</span> 货运完全空白</li>
-      </ul>
-    </div>
-
-    <!-- 需求矩阵 -->
-    <div class="card fade-in">
-      <div class="chart-title">需求矩阵：5 段载荷 × 跑道 × 取证状态</div>
-      <div class="table-wrap">
-        <table class="spec-table">
-          <thead><tr><th>段位</th><th>载荷</th><th>航程</th><th>跑道</th><th>典型任务</th><th>代表产品</th><th>取证状态</th><th>商业化 (预估)</th></tr></thead>
-          <tbody>
-            <tr><td><b>eVTOL 货运</b></td><td>200-400kg</td><td>标称 150-300km<br><span style="color:#dc2626;font-size:11px">实际运营约 50-120km</span></td><td>无需跑道</td><td>城市内/近郊配送</td><td>V2000CG <span style="color:#b45309;font-size:11px">(载人版已取证)</span></td><td style="color:#b45309">载人 &#10003; / 货运 &#10067;</td><td>2025-2027</td></tr>
-            <tr style="background:#f8fafc"><td><b>微型支线</b></td><td>500kg</td><td>500km</td><td>~600m</td><td>县-县 last-mile</td><td>TP500</td><td style="color:#b45309">取证中</td><td>2026-2027</td></tr>
-            <tr><td><b>省内主力</b></td><td>1-2t</td><td>500-1,500km</td><td>300-500m</td><td>省会-地州, 生鲜</td><td>HH-200</td><td style="color:#b45309">审查中 (2025-09)</td><td>2027-2029</td></tr>
-            <tr style="background:#f8fafc"><td><b>中长途干线</b></td><td>3-5t</td><td>2,600-3,000km</td><td>500-1,200m</td><td>西部-沿海</td><td>CY-8 / W5000</td><td style="color:#dc2626">标准制定中</td><td>2028-2030</td></tr>
-            <tr style="background:#fef3c7"><td><b>重载干线</b></td><td><b>8-15t</b></td><td><b>2,000-4,000km</b></td><td><b>1,200m+</b></td><td><b>二线城市电商</b></td><td><b>全球空白</b></td><td style="color:#dc2626"><b>标准不存在</b></td><td><b>2030+</b></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 设计哲学 4 条 -->
-    <div class="fade-in" style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
-      <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:16px">
-        <div style="font-size:13px;font-weight:700;color:#0369a1;margin-bottom:6px">去掉驾驶舱</div>
-        <div style="font-size:12.5px;color:#075985;line-height:1.7">省 800-1,100 kg 结构重量 + 15m³ 容积 + 尾翼可缩小。<span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 从 0.30 提到 0.36-0.46。单位成本降 15-25%（仅结构优势，不含人员节省）。</div>
-      </div>
-      <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px">
-        <div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:6px">不需增压</div>
-        <div style="font-size:12.5px;color:#14532d;line-height:1.7">机身结构减重 10-15%。允许非圆截面货舱（矩形更利于装载）。巡航高度 3,000-6,000m 够用，货物不怕减压。</div>
-      </div>
-      <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;padding:16px">
-        <div style="font-size:13px;font-weight:700;color:#92400e;margin-bottom:6px">高翼后开门</div>
-        <div style="font-size:12.5px;color:#78350f;line-height:1.7">机翼不穿过货舱 → 全通式货仓。后开门尾坡道 → 地面装卸不需叉车或升降平台，在简易跑道旁即可完成。</div>
-      </div>
-      <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:16px">
-        <div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:6px"><span class="tip" data-t="Short Take-Off and Landing 短距起降">STOL</span> 权衡</div>
-        <div style="font-size:12.5px;color:#7f1d1d;line-height:1.7">大展弦比（<span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 10-12）+ 大面积襟翼 → 短跑道能力。代价：巡航速度低 10-15%，结构重量增加。</div>
-      </div>
-    </div>
-
-    <!-- 增程式 + eVTOL -->
-    <div class="grid2 fade-in" style="margin-top:16px">
-      <div class="insight" style="background:#fffbeb;border-left-color:#f59e0b">
-        <span class="insight-title" style="color:#92400e">增程式（series-hybrid）：在航空场景中可能长期优于纯电</span>
-        <ul class="insight-rules">
-          <li><b>航空和汽车的经济逻辑完全相反。</b>汽车行业的经验是"电便宜油贵，电池寿命长→纯电取代增程"。但航空的成本结构不同：航空级高 C 率电池极其昂贵（一个 pack 几十万元），寿命极短（不到 500 次循环——<span class="tip" data-t="electric Vertical Take-Off and Landing 电动垂直起降">eVTOL</span> 几乎每飞一次就要深度充放一次），而航空燃油相对便宜。所以在航空场景里，<b>电池损耗才是运营成本的大头，油反而是小钱</b>。</li>
-          <li><b>增程式的隐藏优势是电池 pack 更小。</b>纯电 eVTOL 电池占 <span class="tip" data-t="Maximum Take-Off Weight 最大起飞重量">MTOW</span> 30-40%（200 kWh pack，¥60-100 万），500 循环摊销约 <b>¥1,200-2,000/飞行小时</b>。增程式电池仅占 MTOW 8-15%（50 kWh pack，¥15-25 万），摊销约 <b>¥300-500/飞行小时</b>——差 3-4 倍。</li>
-          <li><b>纯电改增程几乎等于重新研制一架飞机。</b>飞行器的重心必须在压心的稳定裕度范围内，增程器不能像汽车那样随便放一个位置。Joby 的增程版就是在纯电机型上直接改的，增程器只能塞进客舱，"这个飞机就没有用处了"。要真正做增程式，必须从总体设计阶段就把增程器纳入重心计算。</li>
-          <li><b>竞争含义：</b>沃飞、峰飞等纯电头部如果要转增程路线，几乎要从头来过。一开始就做增程的公司（蓝霄、追梦空天）有结构性先发优势。</li>
-          <li><b>已验证规模：</b>YH-1000S（CASC，1.2t 载荷，2026.02 首飞）是中国最大混动货运 UAV。5-10t 级仍使用传统涡桨（CY-8、W5000），增程式在此级别的重量惩罚（30-40%）仍然过大。</li>
-        </ul>
-      </div>
-      <div class="insight" style="background:#f0f9ff;border-left-color:#2563eb">
-        <span class="insight-title" style="color:#1e40af">纯电 eVTOL 货运：航程虚标是行业性问题</span>
-        <ul class="insight-rules">
-          <li><b>航程数据需要大幅打折。</b>官方标称航程用的是软包电池 260 Wh/kg 在地面上算"用光"的理论值。实际飞行中有三重折损：放电深度限制（低电量放不出功率）、软包转圆柱的能量密度下降（航空安全要求）、以及垂起阶段的额外能耗。叠加下来，美国第三方对 Joby 的实测是 60-80 km 运营里程。<b>标称 300 km 的纯电 eVTOL，实际运营半径可能只有 50-120 km</b>。</li>
-          <li><b>适用场景因此大幅缩小。</b>50-120 km 的运营半径意味着纯电 eVTOL 基本只能做城市内短途和近郊配送，城际场景几乎不成立。</li>
-          <li><b>航空电池供应链是瓶颈。</b>eVTOL 需要 7-10C 大倍率放电的电池，宁德时代这些大厂没有这种产品。能做的供应商是比克、Molicel 等小众电动赛车电池厂，产能小、价格极高（pack 价格 ¥3,000-5,000/kWh，远高于动力电池 ¥600-800/kWh）。动力电池的降本路径（规模效应）在航空电池上走不通。</li>
-          <li><b>V2000CG（AutoFlight）：</b>全球首款取证 eVTOL（标称 400 kg / 300 km），但为载人型号。考虑航程折损后，实际货运运营半径可能仅 50-100 km。</li>
-          <li><b>中国 &gt;500 kg <span class="tip" data-t="Vertical Take-Off and Landing 垂直起降">VTOL</span> 货运完全空白。</b>Sabrewing（美，2.4t / 1,800 km，混动 VTOL）目前无中国对标。</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- S11: 工程规格 -->
-<section id="s11" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
-  <div class="sec-inner" style="color:#fff">
-    <div class="sec-label" style="color:#60a5fa">11 -- AI 总设计</div>
-    <div class="sec-title fade-in" style="color:#fff">AI 总设计师: 从业载 × 航程面积反推最优规格</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">前面章节盘点了现有产品各自占据什么位置。这一章做一个反推: 如果把设计交给只看商业回报的总设计师, 目标是"在业载 × 距离平面上占据最大的经济可行面积", 反推出的规格长什么样。</div>
-
-    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
-      <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
-      <div class="thesis-line" style="color:rgba(255,255,255,.95)">面积最大化反推出的最优机型, 是贴 5,700 kg 线的"空档填补型": 2.2-2.4 t 载荷 × 2,500 km 航程, 双发国产 AES100 涡桨, 吨公里约 4.2 元。</div>
-      <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">payload-range 梯形约 3,600 吨·千米, 是 HH-200 的 1.8 倍; <span class="tip" data-t="Bill of Materials 物料成本">BOM</span> ¥1,800-2,200 万, 只有 W5000 的 1/2</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">贴 5,700 kg 线走正常类标准, 不走 SC 单案审定 — 规模化速度有代际优势</li>
-        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">双风险避险: 适航不依赖"5,700 kg+ 标准发布", 动力不依赖"PW127 出口管制"</li>
-      </ul>
-    </div>
-
-
-    <!-- AI 总设计师: 从商业回报反推设计规格 -->
-    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:linear-gradient(135deg,rgba(147,51,234,.1),rgba(96,165,250,.08));border:1px solid rgba(147,51,234,.3);border-radius:var(--radius)">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-        <div style="background:rgba(147,51,234,.25);color:#d8b4fe;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">思维实验</div>
-        <h4 style="color:#fff;font-size:17px;margin:0">AI 总设计师: 如果目标是"在业载 × 距离平面上占据最大的经济可行面积", 应该怎么设计?</h4>
-      </div>
-      <div style="font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:14px">
-        前面五张规格卡讲的是现有产品各自占据了什么位置。把镜头拉远一步: <b style="color:rgba(255,255,255,.9)">业载 × 距离是商业机会的坐标系, 一架飞机在这个平面上能覆盖多大的梯形面积, 就决定了它能填多少格子。</b>如果把设计交给一个只看商业回报、不看工程舒适度的总设计师, 他会怎么反推规格?
-      </div>
-
-      <!-- 第一层: 设计准则 -->
-      <div style="margin-bottom:14px;padding:14px 16px;background:rgba(0,0,0,.2);border-left:3px solid #c084fc;border-radius:0 6px 6px 0">
-        <div style="font-size:13.5px;color:#d8b4fe;font-weight:700;margin-bottom:8px">四条设计准则 — 覆盖面积最大化, 不是单点最优化</div>
-        <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.9">
-          <b style="color:#fff">准则 1: 面积优先于峰值。</b>payload-range 曲线下的梯形面积比单点最大载荷或单点最大航程更值钱。一架"载满时能飞 1,000 km、少载一半时能飞 3,000 km"的飞机, 比"载满时飞 3,000 km、少载一半时还是 3,000 km"的飞机覆盖更多商业格子。载荷-航程交换弹性是核心设计目标。<br><br>
-          <b style="color:#fff">准则 2: 适航路径决定产能爬坡速度, 不决定性能。</b>MTOW 5,700 kg 是一条关键分割线。贴近但不跨过这条线可以使用正常类 150-5,700 kg 标准路径, 不用走专用条件 (SC) 单案审定; 跨过这条线意味着多 2-3 年审定 + 更慢的产能爬坡 + 每家独立谈判。贴线设计比超线设计在规模化速度上有代际优势。<br><br>
-          <b style="color:#fff">准则 3: 发动机约束优于气动约束。</b>气动构型可以选高翼 / 低后掠 / 常规翼身融合, 各有 5-10% 吨公里差异; 但发动机决定能不能造出来。国内能用的涡桨只有 AES100 级 (约 1,000 SHP), 进口 PW127 级 (约 2,500 SHP) 受出口管制。一台飞机需要的动力方案必须从"哪台发动机能实际拿到"反推, 而不是从"气动最优点"正推。<br><br>
-          <b style="color:#fff">准则 4: BOM 上限决定规模化门槛。</b>航空器要想做到年产 30 架以上, 单机 BOM 最好压在 ¥2,000-3,000 万级。BOM 越高, 产线投入与资金周转要求越苛刻, 爬坡越慢 (参考 C919 的节奏)。BOM 不是越低越好 — 过低意味着载荷/航程被砍, 覆盖面积缩小 — 但它是规模化的隐性门槛。
-        </div>
-      </div>
-
-      <!-- 第二层: 最优规格反推 -->
-      <div style="margin-bottom:14px;padding:14px 16px;background:rgba(0,0,0,.25);border-left:3px solid #60a5fa;border-radius:0 6px 6px 0">
-        <div style="font-size:13.5px;color:#93c5fd;font-weight:700;margin-bottom:8px">最优规格 — 贴着 5,700 kg 线的"空档填补型"</div>
-        <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:10px">
-          四个准则叠加后, 反推出的最优规格不是 HH-200 (偏小, 1.5 t × 2,360 km), 也不是 W5000 (偏大, 跨 SC 线, 5 t × 2,600 km), 而是一架贴着 5,700 kg 线的"空档填补型"机型:
-        </div>
-        <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
-          <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:12px">
-            <thead>
-              <tr style="background:rgba(255,255,255,.1)">
-                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">参数</th>
-                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">建议值</th>
-                <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">理由</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">MTOW</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">5,700 kg (贴线)</b></td><td style="border-color:rgba(255,255,255,.08)">避开专用条件审定, 走正常类 150-5,700 kg 标准路径</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">气动</td><td style="border-color:rgba(255,255,255,.08)">高翼, AR 11-12, EWF 0.45, PF 0.42</td><td style="border-color:rgba(255,255,255,.08)">成熟构型, 制造供应链现成; PF 0.42 = 载荷 2.4 t</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">动力</td><td style="border-color:rgba(255,255,255,.08)">双发 AES100 级涡桨, 1,000 SHP × 2</td><td style="border-color:rgba(255,255,255,.08)">国产可得, 已在 HH-200 验证; 避开 PW127 进口风险</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">最大载荷</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">2.2-2.4 t</b></td><td style="border-color:rgba(255,255,255,.08)">介于 HH-200 (1.5 t) 与 CY-8 (3.5 t) 之间, 填关键空档</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">航程 (典型 2 t 载荷)</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">2,200-2,500 km</b></td><td style="border-color:rgba(255,255,255,.08)">覆盖所有国内省会-省会干支线, 含新疆-华东</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">航程 (最大燃油, 载 1.2 t)</td><td style="border-color:rgba(255,255,255,.08)">3,200 km</td><td style="border-color:rgba(255,255,255,.08)">长距离低载时打开出口运营场景</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">跑道 (STOL)</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">500-600 m</b></td><td style="border-color:rgba(255,255,255,.08)">与 HH-200 / CY-8 同级, 覆盖简易跑道县级节点</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">BOM</td><td style="border-color:rgba(255,255,255,.08)">¥1,800-2,200 万</td><td style="border-color:rgba(255,255,255,.08)">位于产能爬坡敏感区间, 年产 30-50 架现实可达</td></tr>
-              <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">吨公里 (典型工况)</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">~4.2 元</b></td><td style="border-color:rgba(255,255,255,.08)">优于 HH-200 (6.2 元), 接近 W5000 (4.3 元)</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 第三层: 覆盖面积与商业回报 -->
-      <div style="padding:14px 16px;background:rgba(0,0,0,.25);border-left:3px solid #4ade80;border-radius:0 6px 6px 0">
-        <div style="font-size:13.5px;color:#86efac;font-weight:700;margin-bottom:8px">覆盖面积与商业回报 — 为什么这个规格能赢</div>
-        <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.9">
-          在 S7b 机型主导图 (业载 × 距离平面) 上, 这款机型的 payload-range 梯形覆盖:
-          <b style="color:#fff">(1.2 t, 3,200 km) → (2.4 t, 1,500 km) → (2.4 t, 500 km) → (1.2 t, 500 km)</b>
-          合计面积约 <b style="color:#86efac">3,600 吨·千米</b> 量级, 是 HH-200 (约 2,000 吨·千米) 的 1.8 倍, W5000 (约 4,500 吨·千米) 的 0.8 倍, 但 BOM 只有 W5000 的 1/2。<br><br>
-          <b style="color:#fff">填的是 S7b 里明示的空白格</b>: 1,500-2,500 km × 1.5-3.5 t 这一格当前在国产机型中没有产品覆盖 — HH-200 只到 1.5 t, Caravan 系列只到 1.3 t, ATR 42 的 5.5 t 又过大, CY-8 / W5000 起步都要 2,600 km+。这款贴线机型正好卡进这一格, 同时向下兼容 500-1,500 km (省内干线), 向上延伸到 3,200 km (对外出口长距低载)。<br><br>
-          <b style="color:#fff">适航 + 发动机双线避险</b>: MTOW 贴 5,700 kg 避 SC, 用 AES100 级国产双发避 PW127 进口风险。两条路径都是"现在就能走", 不依赖未来 2-3 年的标准发布或发动机突破。这意味着论点不依赖"5,700 kg 以上通用标准何时发布"或"中美是否继续允许 PW127 出口"这两个不可控变量。<br><br>
-          <b style="color:#fff">商业回报模型</b>: 假设 BOM ¥2,000 万, 售价 ¥2,800 万, 年产能爬坡到 50 架/年 (TC 后第 4 年), 单架毛利 ¥500 万。5 年累计交付 150 架对应飞机销售毛利约 ¥7.5 亿; 叠加运营服务 (飞行小时/MRO) 约 ¥3-5 亿, 单一型号 5 年商业回报约 ¥10-13 亿。这个数量级在 UAV 领域意味着头部玩家, 不是细分市场。<br><br>
-          <b style="color:#fca5a5">现实约束</b>: 这是"纸上的总设计师"给出的理论最优。实际要落地还需要 (a) 一个敢于把 MTOW 控制在 5,700 kg 以内的技术团队 (多数厂商会为了性能超线), (b) 双发 AES100 的集成工程成熟度, (c) 愿意承担 3-4 年商业化爬坡的资本。目前 HH-200 已经在这个窗口里, 把它的 MTOW 从 3,300 kg 推到 5,700 kg 是演进路径; 或者有新玩家从零设计这一规格。
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- S12: 未来场景与需求规模 -->
-<section id="s12" class="sec" style="background:#fff">
-  <div class="sec-inner">
-    <div class="sec-label">12 -- 未来场景与需求规模</div>
+    <div class="sec-label">10 -- 未来场景与需求规模</div>
     <div class="sec-title fade-in">短期 TP500 + FP-98，中期 W5000/CY-8，出口要等 2033</div>
     <div class="sec-sub fade-in"><span class="tip" data-t="Letter of Intent 意向书">LOI</span> 不是订单。目前仅 V2000CG（载人）向付费客户交付了认证机型。市场规模需要分三个时间窗来看。</div>
 
@@ -2050,7 +1883,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <li><b>中期 ¥75-160 亿</b>: 下限 = W5000 推迟至 2029 + HH-200 产能爬坡慢于预期; 上限 = W5000 2028 H1 取证 + HH-200 产能正常爬坡 + 10t 级按四条件部分满足计入战略储备口径。装机量 300-600 架对应四款主力机型累计, 军采 CY-8 占 1/3-1/2。</li>
           <li><b>长期 ¥250-650 亿</b>: 下限 = 西部试点月吞吐 &lt;5,000 吨 + 10t 级商业化条件未成立; 上限 = 西部月吞吐达标 + 一带一路出口窗口按高铁类比 2033 打开。10t 级不单独进入商业物流口径, 只按战略储备单列。按 C919 TC 后 10 年累计 ~100 架的规律外推: 2035 四款主力累计 800-1,800 架已经是乐观情形。</li>
         </ul>
-        <div style="margin-top:8px;font-size:11px;color:#64748b">口径一致性: 装机量仅含 1 t 以上货运 UAV + 载人 eVTOL (V2000CG), 不含 FP-98 类小型快递无人机。吨公里均按工况值, 不混入 PR 口径。10t 级计入条件见 S10 卡 5 四条件分析。</div>
+        <div style="margin-top:8px;font-size:11px;color:#64748b">口径一致性: 装机量仅含 1 t 以上货运 UAV + 载人 eVTOL (V2000CG), 不含 FP-98 类小型快递无人机。吨公里均按工况值, 不混入 PR 口径。10t 级计入条件见 S11 三条升级路径 (小→大)。</div>
       </div>
     </div>
 
@@ -2104,10 +1937,339 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   </div>
 </section>
 
-<!-- S13: 最终结论 -->
-<section id="s13" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f)">
+<!-- S11: AI 总设计师, 逐子系统设计 -->
+<section id="s11" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
   <div class="sec-inner" style="color:#fff">
-    <div class="sec-label" style="color:#60a5fa">13 -- 最终结论</div>
+    <div class="sec-label" style="color:#60a5fa">11 -- AI 总设计</div>
+    <div class="sec-title fade-in" style="color:#fff">如果把设计交给只看商业回报的总设计师, 逐子系统该怎么画?</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">业载 × 距离平面最大化是商业目标, 2026 CAAC 规则是当前的门, 政策三轴 (货→人 / 郊→城 / 小→大) 是未来的升级路径. 六个子系统逐项设计, 每项说明当下选择与未来接口.</div>
+
+    <!-- 本章一句话 -->
+    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+      <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">反推的最优机型是贴 5,700 kg 线的"空档填补型": 2.2-2.4 t 载荷 × 2,500 km 航程, 双发国产 AES100 涡桨, 吨公里约 4.2 元. 六个子系统按演进接口设计, 追求的不是点最优而是路径最优.</div>
+      <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">payload-range 梯形约 3,600 吨·千米, 是 HH-200 的 1.8 倍; <span class="tip" data-t="Bill of Materials 物料成本">BOM</span> ¥1,800-2,200 万, 只有 W5000 的 1/2</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">贴 5,700 kg 线走正常类标准, 不走 SC 单案审定 — 规模化速度有代际优势</li>
+        <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)">子系统同时服务三条演进: 载客 (货→人) / 城区 (郊→城) / 10 t (小→大)</li>
+      </ul>
+    </div>
+
+    <!-- 块 1: 设计任务书 -->
+    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:rgba(147,51,234,.08);border:1px solid rgba(147,51,234,.25);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(147,51,234,.25);color:#d8b4fe;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">设计任务书</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">商业目标, 三条约束, 三条演进轴</h4>
+      </div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.7);line-height:1.9">
+        <b style="color:#fff">商业目标</b>: 在业载 × 距离平面上占最大的经济可行面积. 一架飞机能在这个平面上画多大的 payload-range 梯形, 就决定了它能填多少商业格子 (S7b 坐标系).<br><br>
+        <b style="color:#fff">三条当前约束 (2026)</b>:
+        <span style="color:#fca5a5">①</span> 适航走 CAAC 2026-02-25 正常类 150-5,700 kg 标准, 不走专用条件 SC 单案审定 (S9 幕二).
+        <span style="color:#fca5a5">②</span> 动力用国产可得发动机, 不依赖 PW127 进口 (美国出口管制风险).
+        <span style="color:#fca5a5">③</span> 单机 BOM 控制在 ¥2,000-3,000 万级, 以支持 TC 后第 4-5 年爬到 30-50 架/年产能 (S10 三时间窗 + C919/ARJ21 交付节奏锚定).<br><br>
+        <b style="color:#fff">三条未来演进轴 (政策趋势, 5-10 年)</b>:
+        <span style="color:#86efac">货→人</span> BVLOS 载人审定成熟后, 同机体可派生载人变型.
+        <span style="color:#86efac">郊→城</span> CAAC 城区 BVLOS 许可成熟后, 减配版可进城区配送.
+        <span style="color:#86efac">小→大</span> 5,700 kg+ 运输类通用标准发布后, 同平台可延伸到 10 t 级.<br><br>
+        每个子系统都要在"今天可造可证"与"未来可演进"之间做取舍. 下面六个子系统逐项展开.
+      </div>
+    </div>
+
+    <!-- 块 2: 四条顶层决策 -->
+    <div class="fade-in" style="margin-top:16px;padding:20px 24px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="background:rgba(96,165,250,.25);color:#93c5fd;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">顶层决策</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">四条决定骨架的选择</h4>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+        <div style="background:rgba(255,255,255,.04);border-left:3px solid #86efac;border-radius:0 6px 6px 0;padding:12px 14px">
+          <div style="font-size:12px;color:#86efac;font-weight:700;margin-bottom:4px">决策 1 | MTOW 5,700 kg 贴线</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.7">走正常类 150-5,700 kg 审定路径, 避开专用条件 SC 单案审定. 跨线意味着多 2-3 年审定周期 + 产能爬坡更慢. 代价: 载荷上限限制在 2.4 t 左右, 不能进一步扩大.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border-left:3px solid #93c5fd;border-radius:0 6px 6px 0;padding:12px 14px">
+          <div style="font-size:12px;color:#93c5fd;font-weight:700;margin-bottom:4px">决策 2 | 常规高翼构型</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.7">不选 <span class="tip" data-t="Blended Wing Body 翼身融合">BWB</span>. BWB 的 L/D 提升 15-20% 是真实的, 但国内复合材料异形承压舱 + 异形装卸口供应链尚未成熟. 留给二代机型.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border-left:3px solid #fcd34d;border-radius:0 6px 6px 0;padding:12px 14px">
+          <div style="font-size:12px;color:#fcd34d;font-weight:700;margin-bottom:4px">决策 3 | 双发 AES100 涡桨</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.7">国产可得 (中航动力 AES100, 约 1,000 SHP). 不选 PW127 单发以避免出口管制; 不选增程式因 8 t 以上系统重量惩罚 30-40% 不经济. 代价: 维护成本比单发高 15-20%.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.04);border-left:3px solid #c084fc;border-radius:0 6px 6px 0;padding:12px 14px">
+          <div style="font-size:12px;color:#c084fc;font-weight:700;margin-bottom:4px">决策 4 | 无人机体 + 载人接口预留</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.7">完全无人运营, 但机身截面、飞控架构、结构受力点按未来可改载人预留. 代价: 研发成本增 10-15%, 但一次投入覆盖货→人演进.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 块 3: 子系统 1 气动与结构 -->
+    <div class="fade-in" style="margin-top:16px;padding:18px 22px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);border-radius:var(--radius)">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(96,165,250,.25);color:#93c5fd;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">子系统 1</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">气动与结构</h4>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">
+        <div>
+          <div style="font-size:11.5px;color:#93c5fd;font-weight:700;margin-bottom:4px">设计选择</div>
+          高翼 (无机翼穿舱); 展弦比 <span class="tip" data-t="Aspect Ratio 展弦比">AR</span> 11-12; 常规圆/椭圆截面机身 (预留改矩形空间); <span class="tip" data-t="Empty Weight Fraction 空机重量占比">EWF</span> 0.45, <span class="tip" data-t="Payload Fraction 有效载荷占比">PF</span> 0.42.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#fcd34d;font-weight:700;margin-bottom:4px">挑战</div>
+          <span class="tip" data-t="Short Take-Off and Landing 短距起降">STOL</span> 要求 500-600 m 跑道 (对应西部县级简易跑道), 与巡航效率 (L/D 14+) 是对冲目标 — 大展弦比升阻比更高但过载能力降低; 大面积襟翼增加结构重量.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">取舍</div>
+          大展弦比 + 大面积襟翼 → 跑道缩短 30-40%, 但巡航速度降 5-10%, 结构增重 3-5%. 综合后单位燃油消耗增 4-7%, 换来覆盖西部 70%+ 县级节点的能力.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">演进接口</div>
+          货舱截面按矩形化预留 (便于改客舱座椅布置); 机翼-机身结合面模块化, 未来 10 t 变型换更大机翼时不动机身中部主承力框.
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.65">
+        <b style="color:rgba(255,255,255,.8)">对比现有</b>: HH-200 (3.3 t MTOW) 载荷偏小; W5000 (5 t MTOW 但跨 SC 线) 走专用条件; Natilus Kona BWB 在国内无复合材料供应链对标.
+        <br>
+        <b style="color:rgba(255,255,255,.8)">来源</b>: CAAC AC-21-AA-2026-45 正常类 150-5,700 kg 征求意见稿 (2026-02-25); S7b 业载×距离坐标系; S8 吨公里成本表.
+      </div>
+    </div>
+
+    <!-- 块 4: 子系统 2 动力系统 -->
+    <div class="fade-in" style="margin-top:16px;padding:18px 22px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:var(--radius)">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(251,191,36,.25);color:#fcd34d;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">子系统 2</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">动力系统</h4>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">
+        <div style="font-size:11.5px;color:#fcd34d;font-weight:700;margin-bottom:4px">设计选择</div>
+        双发 AES100 级国产涡桨 (各约 1,000 SHP), 机械驱动螺旋桨, 标准 Jet-A1 燃油, 无增程发电机、无锂电储能.<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">挑战</div>
+        AES100 是国内现役最成熟的同功率级涡桨 (已装 HH-200), 但累计飞行小时 + TBO 数据相比 PW127 (TBO 10,000 小时级, 全球 2 万+ 台服役) 仍有一代差距. 双发配置比单发 PW127 维护成本高 15-20%, 但换来两项关键优势: 不受美国出口管制 + 单发失效仍可安全着陆 (CAAC 对 5,700 kg 级航空器适航要求之一).<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">为什么不选增程式</div>
+        在 8 t 以上 MTOW, 系统重量惩罚 30-40% 会让 PF 从 0.36 降到 0.25 以下, 吨公里严重恶化. 1-3 t 级 UAV (如 YH-1000S) 增程式可行, 但不匹配本设计 5,700 kg + 2.4 t 载荷目标. 航空场景的核心动力成本是电池摊销 (纯电 eVTOL ¥1,200-2,000/飞行小时, 500 次循环寿命), 不是燃油; 增程式能压到 ¥300-500/飞行小时, 但只在 eVTOL 或轻型固定翼有效.<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">为什么不选纯电</div>
+        航空级 7-10C 高倍率电池 pack 价格 ¥3,000-5,000/kWh, 远高于动力电池 ¥600-800/kWh. 标称 300 km 航程的纯电 eVTOL 实际运营半径 50-120 km (Joby 第三方实测), 在货运场景不经济. 电池供应链 (比克/Molicel 等) 产能远小于动力电池.<br><br>
+        <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">演进接口</div>
+        发动机安装架按 1,500 SHP 级国产未来机型 (预期 AEP500 减推力变型 2030+) 预留几何尺寸和承载; 燃油系统按 <span class="tip" data-t="Sustainable Aviation Fuel 可持续航空燃料">SAF</span> 兼容性设计, 未来可直接接入. 10 t 变型 (小→大演进) 时换 PW127 级单发或双发 1,500 SHP 级发动机, 机翼油箱容量需同步放大.
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.65">
+        <b style="color:rgba(255,255,255,.8)">对比现有</b>: HH-200 双发 AES100 (已验证); W5000 进口 PW127 (出口管制风险敞口); CY-8 动力方案无公开档案; YH-1000S 增程式 (1.2 t 级可行).
+        <br>
+        <b style="color:rgba(255,255,255,.8)">来源</b>: 中航动力 AES100 公开资料; Pratt & Whitney PW127 TBO 数据 (公开); S8 燃油成本表; Joby eVTOL 航程第三方实测 (Forbes 2024).
+      </div>
+    </div>
+
+    <!-- 块 5: 子系统 3 飞控冗余 -->
+    <div class="fade-in" style="margin-top:16px;padding:18px 22px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius)">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(239,68,68,.25);color:#fca5a5;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">子系统 3</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">飞控与冗余架构</h4>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">
+        <div>
+          <div style="font-size:11.5px;color:#fca5a5;font-weight:700;margin-bottom:4px">设计选择</div>
+          三余度电传飞控 (<span class="tip" data-t="Fly-by-Wire 电传飞控">FBW</span>), 符合 ARP4754A / DO-178C / DO-254 航电符合性要求, 架构与 Part 23 / CCAR-23 载人小型飞机同构.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#fcd34d;font-weight:700;margin-bottom:4px">挑战</div>
+          CAAC 对全自主 UAV 飞控的审定细则仍在试行. 2024-07 AC-92-AA-2024-02 中型 UAS 适航标准为过渡文件, 2026-02-25 正常类征求意见稿覆盖载人但对无人运行关键要件 (自主决策逻辑/失效回退) 的描述较粗.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">取舍</div>
+          与载人机同构的三余度架构让研发成本高 30-40% (相比两余度常规 UAV 飞控), 但未来转 Part 23/CCAR-23 载人变型时可直接复用, 避免重新研制飞控.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">演进接口</div>
+          飞控软件模块化 (按 DO-178C A 级认证包), 保留 Part 23 载人符合性升级路径. 货→人演进时只需叠加载人专属的操纵律和应急策略, 不动底层硬件.
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.65">
+        <b style="color:rgba(255,255,255,.8)">对比现有</b>: HH-200 为机械 + 电传混合架构, 跨载人门槛时需重做; W5000 飞控架构信息未公开; TP500 走常规两余度 UAV 飞控, 难以支撑载人升级.
+        <br>
+        <b style="color:rgba(255,255,255,.8)">来源</b>: SAE ARP4754A (航空电子系统开发), RTCA DO-178C (软件认证), RTCA DO-254 (硬件认证), CAAC CCAR-23 (小型航空器适航标准), S9 幕二 CAAC 监管架构.
+      </div>
+    </div>
+
+    <!-- 块 6: 子系统 4 自主与感知 -->
+    <div class="fade-in" style="margin-top:16px;padding:18px 22px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:var(--radius)">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(168,85,247,.25);color:#c084fc;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">子系统 4</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">自主与感知</h4>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">
+        <div style="font-size:11.5px;color:#c084fc;font-weight:700;margin-bottom:4px">设计选择</div>
+        多传感器融合: <span class="tip" data-t="Global Navigation Satellite System 全球导航卫星系统">GNSS</span> (双频 + 伽利略备份) + 惯导 (IMU) + 气压高度表 + 激光高度表 + 前视/侧视光电相机 + 毫米波雷达. 自主能力覆盖: 自动滑行 → 自主起飞 → 航路巡航 → 自主进近与非精密着陆.<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">挑战</div>
+        美国 Reliable Robotics 2023 已在 Cessna 208 Caravan 改装平台完成含自动 <span class="tip" data-t="Air Traffic Control 空中交通管制">ATC</span> 通信的全程无人飞行 demo — 覆盖自主滑行、起降、巡航、进近、非精密着陆全环节, 且含语音/数据链 ATC 交互. 国内货运 UAV 公开无对标完整 demo. 自主飞行技术集成度是中国货运 UAV 最显著的技术差距 (不是单项能力, 是集成度).<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">取舍</div>
+        与 <span class="tip" data-t="Advanced Air Mobility 先进空中交通">AAM</span> (V2000CG / eVTOL 载人) 产业链共用飞控 + 感知 + 算法栈, 减少研发摊销约 40-50%. 代价: 传感器架构对货运而言略冗余 (载人要求的冗余度高于货运), 但一次投入覆盖货→人演进.<br><br>
+        <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">演进接口</div>
+        感知架构按未来"郊→城"演进预留 — 城区飞行需要更高精度避障 (LiDAR + 视觉识别行人/车辆) + 更密集的空域协调通信. 软件架构按模块化设计, 城区场景加配高精度传感器即可.
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.65">
+        <b style="color:rgba(255,255,255,.8)">对比现有</b>: 国内货运 UAV 自主飞行主要依赖 AAM 产业链技术外溢 (彩虹/翼龙军用 → 峰飞 V2000CG → 货运 UAV), 非自建完整栈. Reliable Robotics + Merlin Labs 美国方案已做到 Part 91 商飞 demo 的自动化程度.
+        <br>
+        <b style="color:rgba(255,255,255,.8)">来源</b>: Reliable Robotics 2023 新闻稿 + FAA 无人飞行证明; Merlin Labs 2024 融资披露; CAAC 《民用航空器交通管理和空管设备审定有关工作管理办法》.
+      </div>
+    </div>
+
+    <!-- 块 7: 子系统 5 通信与链路 -->
+    <div class="fade-in" style="margin-top:16px;padding:18px 22px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:var(--radius)">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(34,197,94,.25);color:#86efac;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">子系统 5</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">通信与链路</h4>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">
+        <div>
+          <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">设计选择</div>
+          双冗余 C-band + Ku-band 数据链, <span class="tip" data-t="Automatic Dependent Surveillance-Broadcast 广播式自动相关监视">ADS-B</span> Out/In, 语音 + 数据 ATC 通信能力, 支持超视距 (<span class="tip" data-t="Beyond Visual Line of Sight 超视距运行">BVLOS</span>) 商业运行.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#fcd34d;font-weight:700;margin-bottom:4px">挑战</div>
+          CAAC 对 UAV BVLOS 的运行规则 (不是设计规则) 在 2026 仍为试行阶段. 跨省 UAV 航线需要通信中继基础设施 (卫星/4G/5G 混合回传), 西部部分地区已建, 东部密集空域仍在协调.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">取舍</div>
+          通信带宽 vs 成本 — 全视频回传成本显著高于遥测 + 关键事件视频. 设计选后者: 常规遥测 10 kbps, 异常时自动抓关键视频流 (5 Mbps 短时段). 折中方案月带宽成本 ¥2,000-5,000/架.
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">演进接口</div>
+          链路能力按未来城区飞行所需的更密集空域协调预留带宽余量; 支持 <span class="tip" data-t="Command and Control 指令与控制">C2</span> 链路冗余增至三路 (4G + 5G + 卫星) 以满足载人审定标准.
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.65">
+        <b style="color:rgba(255,255,255,.8)">对比现有</b>: Reliable Robotics Cessna 208 改装方案含自动 ATC 语音 + 数据通信集成. 国内货运 UAV 公开无对标方案.
+        <br>
+        <b style="color:rgba(255,255,255,.8)">来源</b>: FAA Part 108 BVLOS <span class="tip" data-t="Notice of Proposed Rulemaking 拟议规则通告">NPRM</span> 2024-09 (Docket No. FAA-2024-2246); Reliable Robotics 2023 技术披露; CAAC 《无人驾驶航空器飞行管理暂行条例》2024.
+      </div>
+    </div>
+
+    <!-- 块 8: 子系统 6 起落架 + 货舱 + 装卸 -->
+    <div class="fade-in" style="margin-top:16px;padding:18px 22px;background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.2);border-radius:var(--radius)">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(251,146,60,.25);color:#fdba74;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">子系统 6</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">起落架、货舱、装卸接口</h4>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">
+        <div style="font-size:11.5px;color:#fdba74;font-weight:700;margin-bottom:4px">设计选择</div>
+        前三点起落架 (高减震行程支持 500-600 m 土跑道); 高翼后开门 + 尾坡道 (不依赖叉车/升降平台即可装卸); 矩形截面货舱, 容积 15-18 m³; 巡航 3,000-6,000 m 无需增压.<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">挑战</div>
+        STOL (500-600 m 跑道) 要求起落架承载 + 减震行程比常规同级飞机高 20-25%, 结构增重 150-200 kg. 矩形货舱相比圆截面巡航阻力增加 2-3%. 西部支线机场地面装卸设备普遍缺乏, 后开门尾坡道必须支持散货 + 标准集装器 (ULD) 同时. 大量县级机场没有地面加油车, 要求机内燃油快速加注接口.<br><br>
+        <div style="font-size:11.5px;color:#f87171;font-weight:700;margin-bottom:4px">取舍</div>
+        矩形货舱 2-3% 阻力代价换来两项关键收益: 地面装卸效率翻倍 + 不增压机身减重 10-15%. 后开门成本比侧门高 8-10% 但装卸速度快 + 散货兼容, 适合西部县级散杂货场景.<br><br>
+        <div style="font-size:11.5px;color:#86efac;font-weight:700;margin-bottom:4px">演进接口</div>
+        矩形货舱截面尺寸按未来改客舱预留 (标配 36-42 座等效的内部净高 + 净宽); 货舱地板载荷强度按未来加装延程油箱 (小→大变型) 预留; 起落架主承力框预留 10 t 级变型的承载余量.
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.65">
+        <b style="color:rgba(255,255,255,.8)">对比现有</b>: HH-200 尾坡道后开门 (与本设计同向); TP500 侧开门 (装卸效率较低); Cessna 208 Caravan 为后开门小侧门; W5000 货舱细节未公开.
+        <br>
+        <b style="color:rgba(255,255,255,.8)">来源</b>: HH-200 / TP500 公开结构图; Cessna 208 Caravan 技术规格; S8 吨公里成本比较 (矩形货舱容积对比).
+      </div>
+    </div>
+
+    <!-- 块 9: 最终规格表 -->
+    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:linear-gradient(135deg,rgba(96,165,250,.1),rgba(147,51,234,.08));border:1px solid rgba(96,165,250,.3);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(96,165,250,.25);color:#93c5fd;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">最终规格</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">六个子系统叠加反推出的机型规格</h4>
+      </div>
+      <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
+        <table class="spec-table freeze-col" style="color:rgba(255,255,255,.85);font-size:12px;--freeze-bg:#2b3a52;--freeze-header-bg:#3a4a66">
+          <thead>
+            <tr style="background:rgba(255,255,255,.1)">
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">参数</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">建议值</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">理由</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">未来接口</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">MTOW</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">5,700 kg 贴线</b></td><td style="border-color:rgba(255,255,255,.08)">避开专用条件审定, 走正常类标准路径</td><td style="border-color:rgba(255,255,255,.08)">主承力框为 10 t 变型预留</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">气动构型</td><td style="border-color:rgba(255,255,255,.08)">高翼 + AR 11-12</td><td style="border-color:rgba(255,255,255,.08)">成熟供应链; STOL 500-600 m 跑道</td><td style="border-color:rgba(255,255,255,.08)">机翼-机身界面模块化</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">动力</td><td style="border-color:rgba(255,255,255,.08)">双发 AES100 涡桨 2×1,000 SHP</td><td style="border-color:rgba(255,255,255,.08)">国产可得; 避 PW127 出口风险</td><td style="border-color:rgba(255,255,255,.08)">安装架按 1,500 SHP 预留</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">飞控</td><td style="border-color:rgba(255,255,255,.08)">三余度 FBW + DO-178C A 级</td><td style="border-color:rgba(255,255,255,.08)">与 Part 23 载人同构</td><td style="border-color:rgba(255,255,255,.08)">直接复用到载人变型</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">自主能力</td><td style="border-color:rgba(255,255,255,.08)">全程自主 + 自动 ATC 通信</td><td style="border-color:rgba(255,255,255,.08)">与 AAM 产业链共用栈</td><td style="border-color:rgba(255,255,255,.08)">加配高精度传感器即可进城区</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">货舱</td><td style="border-color:rgba(255,255,255,.08)">矩形 15-18 m³ 无增压</td><td style="border-color:rgba(255,255,255,.08)">地面装卸不依赖叉车</td><td style="border-color:rgba(255,255,255,.08)">截面按 36-42 座客舱预留</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">最大载荷</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">2.2-2.4 t</b></td><td style="border-color:rgba(255,255,255,.08)">填 HH-200 (1.5 t) 与 CY-8 (3.5 t) 之间空档</td><td style="border-color:rgba(255,255,255,.08)">—</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">航程 (典型 2 t)</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">2,200-2,500 km</b></td><td style="border-color:rgba(255,255,255,.08)">覆盖国内省会-省会干支线</td><td style="border-color:rgba(255,255,255,.08)">燃油系统 SAF 兼容</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">航程 (低载延程)</td><td style="border-color:rgba(255,255,255,.08)">3,200 km (载 1.2 t)</td><td style="border-color:rgba(255,255,255,.08)">出口长距低载场景</td><td style="border-color:rgba(255,255,255,.08)">—</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">跑道 (STOL)</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">500-600 m</b></td><td style="border-color:rgba(255,255,255,.08)">覆盖西部县级简易跑道</td><td style="border-color:rgba(255,255,255,.08)">—</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)">BOM</td><td style="border-color:rgba(255,255,255,.08)">¥1,800-2,200 万</td><td style="border-color:rgba(255,255,255,.08)">年产 30-50 架爬坡现实可达</td><td style="border-color:rgba(255,255,255,.08)">—</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)">吨公里 (典型工况)</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">约 4.2 元</b></td><td style="border-color:rgba(255,255,255,.08)">优于 HH-200 (6.2 元), 接近 W5000 (4.3 元)</td><td style="border-color:rgba(255,255,255,.08)">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.7">
+        payload-range 梯形: (1.2 t, 3,200 km) → (2.4 t, 1,500 km) → (2.4 t, 500 km) → (1.2 t, 500 km), 合计面积约 <b style="color:#86efac">3,600 吨·千米</b>量级 — 是 HH-200 的 1.8 倍, 约 W5000 的 0.8 倍, BOM 只有 W5000 的 1/2. 填 S7b 里 1,500-2,500 km × 1.5-3.5 t 的明示空白格.
+      </div>
+    </div>
+
+    <!-- 块 10: 三条升级路径 -->
+    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(251,191,36,.25);color:#fcd34d;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">演进路径</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">一个平台, 三条升级路径</h4>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:12px">
+        子系统预留的接口决定了基础机型可以沿三条路径派生, 而不用重新研制底层. 每条路径有明确的触发条件, 触发前不宜动手, 触发后 12-48 个月可落地.
+      </div>
+      <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
+        <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:12px">
+          <thead>
+            <tr style="background:rgba(255,255,255,.1)">
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">演进方向</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">触发条件</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">要改的子系统</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">研发周期</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">保留不动</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">货→人</b><br><span style="font-size:11px;color:rgba(255,255,255,.6)">5,700 kg 载人变型</span></td><td style="border-color:rgba(255,255,255,.08)">BVLOS 载人审定细则发布 + Part 23 同构 FBW 审定路径成熟 (预估 2030+)</td><td style="border-color:rgba(255,255,255,.08)">加增压系统 + 客舱内饰 + 应急疏散通道 + 载人专属操纵律</td><td style="border-color:rgba(255,255,255,.08)">24-36 个月</td><td style="border-color:rgba(255,255,255,.08)">飞控硬件、动力、气动、起落架</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b style="color:#93c5fd">郊→城</b><br><span style="font-size:11px;color:rgba(255,255,255,.6)">3,000 kg BVLOS 城配减配版</span></td><td style="border-color:rgba(255,255,255,.08)">CAAC 城区 BVLOS 许可 + 最后一公里对接基础设施就绪 (预估 2028+)</td><td style="border-color:rgba(255,255,255,.08)">减 MTOW 与载荷 + 加 LiDAR + 高精度避障 + 城区空管集成</td><td style="border-color:rgba(255,255,255,.08)">12-18 个月</td><td style="border-color:rgba(255,255,255,.08)">飞控、自主栈、货舱结构</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fdba74">小→大</b><br><span style="font-size:11px;color:rgba(255,255,255,.6)">10 t 运输类变型</span></td><td style="border-color:rgba(255,255,255,.08)">5,700 kg+ 通用标准发布, 或 SC 快速路径成熟 (预估 2029+)</td><td style="border-color:rgba(255,255,255,.08)">换更大机翼 + 换 PW127 级单发或 1,500 SHP 双发 + 加大起落架承载</td><td style="border-color:rgba(255,255,255,.08)">36-48 个月</td><td style="border-color:rgba(255,255,255,.08)">自主栈、通信链路、飞控软件</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 块 11: 商业回报估算 -->
+    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(34,197,94,.25);color:#86efac;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">商业回报</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">基础机型 + 三条演进路径的潜在价值</h4>
+      </div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.9">
+        <b style="color:#fff">基础机型 (5,700 kg 贴线货运) 5 年回报</b>: BOM ¥2,000 万, 售价 ¥2,800 万, 年产能按 C919/ARJ21 规律爬坡到 TC 后第 4 年 50 架/年. 5 年累计交付 150 架对应飞机销售毛利约 <b style="color:#86efac">¥7.5 亿</b>; 叠加飞行小时服务 + MRO 约 <b style="color:#86efac">¥3-5 亿</b>. 单一基础型号 5 年商业回报 <b style="color:#86efac">¥10-13 亿</b> (UAV 领域头部玩家规模).<br><br>
+        <b style="color:#fff">三条演进路径的选择性回报</b> (触发时才激活, 不作基础假设): 载人变型 (货→人) 如果 2030+ 成立, 对标 Cessna Caravan 载人型全球 600+ 架市场, 中国市场份额 20-30% 的 5-8 年销售毛利 <b style="color:#86efac">¥15-25 亿</b>; 城区减配版 (郊→城) 如果 2028+ BVLOS 许可落地, 城配物流 (顺丰/京东/美团) 5 年订单 100-300 架毛利 <b style="color:#86efac">¥5-10 亿</b>; 10 t 变型 (小→大) 如果 2029+ 标准发布, 对标 ATR 42F / C-212 运输类货运市场 5-8 年毛利 <b style="color:#86efac">¥15-30 亿</b>.<br><br>
+        <b style="color:#fca5a5">路径概率备注</b>: 三条演进各自独立触发, 一家公司不需要全部押中, 但子系统接口预留的一次性投入摊分在基础型号上. 基础型号成功是前提 — 如果基础机型 TC 推迟或产能爬坡失败, 三条演进路径都失去载体.
+      </div>
+    </div>
+
+    <!-- 块 12: 现实约束 + 对比现有玩家 -->
+    <div class="fade-in" style="margin-top:20px;padding:18px 22px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="background:rgba(239,68,68,.25);color:#fca5a5;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">现实约束</div>
+        <h4 style="color:#fff;font-size:17px;margin:0">纸上的总设计师, 落地要看三件事 + 谁来造</h4>
+      </div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.85">
+        <b style="color:#fff">这是"纸上的总设计师"给出的理论最优, 实际落地还需要三件事到位:</b><br>
+        <b style="color:#fca5a5">①</b> 一个敢于把 MTOW 控制在 5,700 kg 以内的技术团队 — 多数厂商会为了性能指标超线, 结果掉进专用条件审定通道.
+        <b style="color:#fca5a5">②</b> 双发 AES100 的系统集成工程成熟度 — AES100 单机已在 HH-200 验证, 但双发配平、控制律、故障切换的工程细节仍是门槛.
+        <b style="color:#fca5a5">③</b> 愿意承担 3-4 年产能爬坡周期的资本 — C919 / ARJ21 规律表明 TC 后第 1 年只交付 1-5 架, 第 3 年累计 10-20 架, 现金流承压.<br><br>
+        <b style="color:#fff">现有玩家中谁最接近这一规格:</b><br>
+        <b style="color:#93c5fd">HH-200 (3.3 t MTOW)</b> 是最接近的演进路径 — MTOW 从 3.3 t 推到 5.7 t 贴线, 载荷从 1.5 t 提到 2.4 t, 航程从 1,000 km 延到 2,500 km 是顺理成章的增长. 双发 AES100、尾坡道后开门、适航路径 (走 2026-02-25 正常类征求意见稿) 都已对应. 哈飞 (HH-200 研制方) 是概率最大的实际候选.<br>
+        <b style="color:#fdba74">W5000 (5 t MTOW)</b> 已跨 SC 线, 无法回到贴线设计. W5000 走的是"大载荷 + SC 单案审定"路径, 与本设计目标方向相反.<br>
+        <b style="color:#fcd34d">TP500 (0.5 t 载荷)</b> 规模太小, 放大到 2.4 t 相当于重新研制.<br>
+        <b style="color:#c084fc">从零设计的新玩家</b> 也是可能的 — 需要 ¥3-5 亿 A 轮 + 4-5 年研制周期, 与央企 (哈飞) 路径对撞. 新玩家优势在于不背 HH-200 存量架构的历史包袱, 劣势在央企采购订单池准入.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- S12: 最终结论 -->
+<section id="s12" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f)">
+  <div class="sec-inner" style="color:#fff">
+    <div class="sec-label" style="color:#60a5fa">12 -- 最终结论</div>
     <div class="sec-title fade-in" style="color:#fff">中国正在跳过 "有人通航" 这一页</div>
     <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">能不能成功翻到下一页，取决于三件事。</div>
 
