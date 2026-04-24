@@ -2348,6 +2348,48 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
+    <!-- 国际参照: 成熟子系统 + 平台化 -->
+    <div class="fade-in" style="margin-bottom:24px;padding:18px 22px;background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.25);border-radius:var(--radius)">
+      <h4 style="color:#fff;font-size:16px;margin:0 0 10px">国际参照: 成熟子系统 + 平台化思维 = 快速取证</h4>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:12px">
+        航空史上新机型快速获得适航的共同经验: <b style="color:#fff">大量采用成熟分系统、部件、构型、零部件, 让审查员可以"引用已证"而非"从头论证"</b>. FAA/EASA/CAAC 都有对应机制 (presumed compliance / compliance by similarity) — 子系统已有 TC/STC 证据时, 新机型上同款安装可援引. 核心几例:
+      </div>
+      <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
+        <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:12px">
+          <thead>
+            <tr style="background:rgba(255,255,255,.1)">
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">机型</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">TC 时间</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">关键成熟子系统</th>
+              <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">研制到 TC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>Cessna 408 SkyCourier</b></td><td style="border-color:rgba(255,255,255,.08)">2022</td><td style="border-color:rgba(255,255,255,.08)">PT6A 涡桨 (50+ 年服役) + Garmin G1000 NXi 航电 + Caravan 共用件</td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#86efac">~3 年</b></td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>Embraer E190-E2</b></td><td style="border-color:rgba(255,255,255,.08)">2018</td><td style="border-color:rgba(255,255,255,.08)">复用 E1 代 FBW 软件 + 航电平台 + PW1900G (PW1000G 家族)</td><td style="border-color:rgba(255,255,255,.08)">~5 年</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>Airbus A220</b> (Bombardier CSeries)</td><td style="border-color:rgba(255,255,255,.08)">2016</td><td style="border-color:rgba(255,255,255,.08)">PW1500G 发动机 (PW1100G 家族) + 通用航电</td><td style="border-color:rgba(255,255,255,.08)">~8 年 (含曲折)</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>COMAC C919</b></td><td style="border-color:rgba(255,255,255,.08)">2022</td><td style="border-color:rgba(255,255,255,.08)">LEAP-1C + Rockwell Collins + Honeywell 成熟供应链</td><td style="border-color:rgba(255,255,255,.08)">~10 年 (本体设计仍新)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px;padding:12px 14px;background:rgba(0,0,0,.2);border-left:3px solid #fdba74;border-radius:0 6px 6px 0">
+        <div style="font-size:13px;color:#fdba74;font-weight:700;margin-bottom:4px">适用性边界</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.8">
+          子系统成熟度 ≠ 取证免审. 如果基本构型新颖 (BWB / 混合动力 / VTOL), 或子系统本身无历史 (UAV 自主飞行栈 / BVLOS C2 链路), 仍要承担较长审定周期. CAAC 对供应商的熟悉度 &gt; 国际品牌光环 — 同一厂商在 ARJ21/C919 有历史的比国际大牌首次进入要快.
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:14px 16px;background:rgba(147,51,234,.12);border-left:3px solid #c084fc;border-radius:0 6px 6px 0">
+        <div style="font-size:13px;color:#d8b4fe;font-weight:700;margin-bottom:6px">对 Gen 1 → Gen 3 路线图的含义: 系统性工程规划能力是核心</div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.85">
+          <b style="color:#fff">① Gen 1 子系统选型就是战略决定, 不是工程细节</b>. 选 AES100 / 选有 CAAC 型号数据的飞控板 / 选有 ARJ21 或 C919 供应背景的航电, 意味着 Gen 1 审定每个 compliance item 都能找到历史参照.<br><br>
+          <b style="color:#fff">② Gen 2 要在 Gen 1 子系统基础上升级, 不是另起炉灶</b>. 发动机用 AES100 → AEP500 家族延伸 (同一厂商, 同一 certification baseline); 飞控软件从 CCAR-23 A 级 → CCAR-25 A 级 升级版本, 不换厂商. <b>每代保持 70%+ 子系统 carry-over, 12-18 个月取证周期才可能</b> (参照 Embraer E2).<br><br>
+          <b style="color:#fff">③ 这是"平台化思维"不是"产品化思维"</b>. Gen 1 不是点最优的"唯一产品", 是"系列的起点". 不做平台化的公司在 Gen 2 每个子系统都要重新证明, 多 1-2 年审定周期, 叠加后 Gen 3 可能永远到不了.<br><br>
+          <b style="color:#fca5a5">一个实用筛选问题</b>: 尽调时直接问创始人 / CTO — "如果 Gen 2 取证要在 Gen 1 TC 后 3 年内完成, 你计划复用哪些 Gen 1 子系统? 具体发动机型号、航电平台、飞控软件版本、关键结构件?" 答不出具体清单的公司, 没有系统性工程规划.
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:10.5px;color:rgba(255,255,255,.4);line-height:1.5">来源: Cessna 408 SkyCourier 官方 TC 文件 (FAA 2022); Embraer E190-E2 EASA TC 2018; Airbus A220 EASA TC 2016 (原 Bombardier CSeries CS100); COMAC C919 CAAC TC 2022-09. FAA 14 CFR Part 21 "Certification Procedures for Products and Articles" 对 presumed compliance 有明文机制; CAAC CCAR-21 对照.</div>
+    </div>
+
     <!-- 验证里程碑仪表盘 -->
     <div class="fade-in" style="margin-bottom:24px;padding:16px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius)">
       <h4 style="color:#fff;font-size:16px;margin:0 0 12px">验证里程碑仪表盘 (可逐节点对照)</h4>
