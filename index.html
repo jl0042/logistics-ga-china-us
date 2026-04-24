@@ -2337,15 +2337,21 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </div>
         </div>
         <div style="background:rgba(255,255,255,.04);border-left:3px solid #93c5fd;border-radius:0 8px 8px 0;padding:14px 18px">
-          <div style="font-size:14px;color:#93c5fd;font-weight:700;margin-bottom:6px">能力 2 | 设计容易论证安全</div>
+          <div style="font-size:14px;color:#93c5fd;font-weight:700;margin-bottom:6px">能力 2 | 设计容易论证安全, 不追求边际最优</div>
           <div style="font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.8">
-            技术决策不追求边际最优, 追求<b style="color:#fff">容易论证安全 + 降低审查员审核压力</b>. 气动构型选常规成熟; 发动机选已有 CAAC 型号证据的; 飞控选有 DO-178C 认证先例的; 子系统按已验证供应链选型. 审查员的工作是"判断此设计是否落在已知可证范围内" — 用已验证子系统让每一步都能找到参照. <b style="color:#fca5a5">但设计不能只服务取证, 还要服务远期运营</b> — 不能为了近期 TC 放弃跨代升级空间 (见能力 3).
+            审查员的工作是判断"此设计是否落在已知可证范围内". 降低审核压力有两条路:<br><br>
+            <b style="color:#fff">① 子系统选有 CAAC 历史的</b>. 气动构型选常规成熟 (高翼 / 低后掠); 发动机选已有型号证据的 (AES100 已上 HH-200; PW127 上过 MA600); 飞控选有 DO-178C A 级先例的 (Rockwell / Honeywell 等 ARJ21/C919 供应商); 起落架、航电按已验证供应链. 每个 compliance item 有历史参照, 审定时间可压缩 — SkyCourier 3 年 vs C919 10 年的核心差别就在这里.<br><br>
+            <b style="color:#fff">② 构型不新颖, 放弃边际优化</b>. BWB (Natilus Kona) / 混合动力 (Elroy Air) / 倾转旋翼 (Joby S5) 在全球都没有取证先例, 审查员没有参照, 周期 10 年起. 放弃 6% 升阻比、1% 马赫数的优化换 2-3 年审定节省, 直接转化为资本效率.<br><br>
+            <b style="color:#fca5a5">"容易论证" ≠ "极端保守"</b>. 设计必须同时服务 Gen 2-3 跨代需求 (见能力 3) — 纯取证导向的最小设计会在 3 年后发现无法放大, 也是失败.
           </div>
         </div>
         <div style="background:rgba(255,255,255,.04);border-left:3px solid #86efac;border-radius:0 8px 8px 0;padding:14px 18px">
-          <div style="font-size:14px;color:#86efac;font-weight:700;margin-bottom:6px">能力 3 | 设计预留跨代迭代</div>
+          <div style="font-size:14px;color:#86efac;font-weight:700;margin-bottom:6px">能力 3 | 设计预留跨代迭代, Gen 1 不是终点</div>
           <div style="font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.8">
-            Gen 1 机身承力框按 10 t 级预留 + 飞控软件按 CCAR-23 → CCAR-25 升级预留 + 发动机安装架按 1,500 SHP+ 预留 + 货舱截面按未来客舱布置预留. 这些决定了 Gen 2-3 能否低成本派生. <b style="color:#fff">Gen 1 取证不是终点</b>, 是为 Gen 2 积累团队经验 + 供应链 + 审定信任 + 运营数据. 今天取证 ≠ 未来运营.
+            Gen 1 每个设计决定都在"今天可证"和"未来可扩"之间权衡, 不能只押一边:<br><br>
+            <b style="color:#fff">① 物理接口预留</b>. 机身承力框按 10 t MTOW 预留 + 机翼-机身结合面模块化 (换更大机翼不动中央翼盒) + 发动机安装架按 1,500 SHP+ 预留 + 货舱截面按未来客舱布置预留 (净高净宽) + 系统总线电流容量按双倍冗余. 每项多花 3-8% BOM, 省下 Gen 2 重新论证底层结构的 12-18 个月.<br><br>
+            <b style="color:#fff">② 子系统 certification baseline 延续性</b>. 发动机用 AES100 → AEP500 家族延伸 (同一厂商同一 baseline); 飞控从 CCAR-23 A 级 → CCAR-25 A 级 升级版本, 不换厂商; 航电平台支持后续扩展 (硬件不换软件 OTA). Gen 2 适航证据可"引用 Gen 1 + 增量证明", 不"从零论证".<br><br>
+            <b style="color:#fca5a5">没有预留的公司 Gen 1 省 200-300 万, Gen 2 多 1-2 年 + 全新审定</b>. 10 年窗口只够做 1-2 代不是 3 代, 价值上限锁死. 这是不投"只看 Gen 1 BOM 成本"公司的原因.
           </div>
         </div>
       </div>
