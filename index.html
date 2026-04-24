@@ -41,8 +41,16 @@ nav .links a:hover{color:#fff;background:rgba(255,255,255,.1)}
 .spec-table{width:100%;border-collapse:collapse;font-size:12px}
 .spec-table th{background:#f1f5f9;font-weight:600;text-align:left;padding:7px 10px;border-bottom:2px solid var(--border);font-size:11px;position:sticky;top:0;z-index:2}
 .spec-table td{padding:6px 10px;border-bottom:1px solid var(--border)}
-.spec-table tr:hover td{background:#f8fafc}
+/* Hover: subtle blue tint overlay via inset shadow, preserves cell backgrounds and works in both light/dark contexts */
+.spec-table tbody tr:hover td{box-shadow:inset 0 0 0 9999px rgba(96,165,250,.12)}
 .spec-table .hl{background:#dcfce7;font-weight:600}
+/* Opt-in: freeze first row (header) and first column for wide tables. Use --freeze-bg / --freeze-header-bg inline to override default light theme (#fff / #f1f5f9) for dark sections. */
+.spec-table.freeze-col tbody td:first-child,
+.spec-table.freeze-col thead th:first-child{position:sticky;left:0;background-clip:padding-box;border-right:1px solid rgba(127,127,127,.18)}
+.spec-table.freeze-col tbody td:first-child{z-index:1;background-color:var(--freeze-bg,#fff) !important}
+.spec-table.freeze-col thead th:first-child{z-index:3}
+/* Sticky headers need opaque background; the !important overrides inline 'background:transparent' seen on dark-section th */
+.spec-table.freeze-col thead th{background-color:var(--freeze-header-bg,#f1f5f9) !important}
 .insight{border-left:4px solid var(--primary);background:#eff6ff;padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:13px;line-height:1.8}
 .insight.red{border-left-color:var(--cn);background:#fef2f2}
 .insight.green{border-left-color:#16a34a;background:#f0fdf4}
@@ -752,7 +760,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
 
       <div class="table-wrap" style="margin-top:16px; overflow-x:auto">
-        <table class="spec-table" style="font-size:12.5px; min-width:820px">
+        <table class="spec-table freeze-col" style="font-size:12.5px; min-width:820px">
           <thead style="background:#f1f5f9">
             <tr>
               <th style="text-align:left; width:24%">成本项 <span style="color:#94a3b8; font-weight:400; font-size:11px">(悬停看含义)</span></th>
@@ -827,7 +835,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <b>Cell 可信度图标</b> (每个 tooltip 开头): <b style="color:#16a34a">✅ 实测</b> — 公开权威源 (Conklin & de Decker / Aircraft Cost Calculator / BTS Form 41 / POH / 厂商官方规格); <b style="color:#b45309">⚠️ 估算</b> — 第一原理推算 / 行业类比 / 首批运营修正; <b style="color:#1e40af">🔢 派生</b> — 从同表其他数据按公式/比例计算 (例: 吨公里成本 / 4 项起降细分 / 折旧摊销); <b style="color:#64748b">❓ 未知</b> — 无公开数据, 用代理来源或空缺。<br>
       <b>表格右滑看完整 21 列</b>。</div>
       <div class="table-wrap" style="margin-top:12px;overflow-x:auto">
-        <table class="spec-table" style="font-size:11px;min-width:1850px">
+        <table class="spec-table freeze-col" style="font-size:11px;min-width:1850px">
           <thead style="background:#f1f5f9">
             <tr>
               <th rowspan="2" style="text-align:left;min-width:140px">机型 (动力)</th>
@@ -1596,7 +1604,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           CAAC 不给所有 UAV 写一份通用标准, 而是按构型 (固定翼 / 动力提升 / 限用) 和量级 (按 MTOW 分段) 分别制定。下表是截至 2026-04 的全景。
         </div>
         <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
-          <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:11.5px">
+          <table class="spec-table freeze-col" style="color:rgba(255,255,255,.85);font-size:11.5px;--freeze-bg:#2a3544;--freeze-header-bg:#2a3544">
             <thead>
               <tr style="background:rgba(255,255,255,.1)">
                 <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">类别</th>
@@ -1660,7 +1668,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="chart-title" style="color:#fff">中国货运 UAV 取证状态与试飞时间线 (截至 2026.04)</div>
       <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:10px">整体行业取证速度不快, 但审定带宽正在向已进入活跃试飞阶段的机型集中 — 这不是政策倾向, 是资源有限时的自然结果。投资含义: 先飞成的机型, 后续迭代速度会系统性快于还在地面阶段的机型。</div>
       <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
-        <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:11.5px">
+        <table class="spec-table freeze-col" style="color:rgba(255,255,255,.85);font-size:11.5px;--freeze-bg:#2a3544;--freeze-header-bg:#2a3544">
           <thead>
             <tr style="background:rgba(255,255,255,.15)">
               <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">机型</th>
@@ -1715,7 +1723,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div style="margin-top:16px">
         <div style="font-size:12.5px;color:rgba(255,255,255,.65);font-weight:600;margin-bottom:6px">附表: 美国主要货运 UAV 公司取证进度 (截至 2026-04)</div>
         <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
-          <table class="spec-table" style="color:rgba(255,255,255,.85);font-size:11.5px">
+          <table class="spec-table freeze-col" style="color:rgba(255,255,255,.85);font-size:11.5px;--freeze-bg:#2a3544;--freeze-header-bg:#2a3544">
             <thead>
               <tr style="background:rgba(255,255,255,.1)">
                 <th style="color:#fff;border-color:rgba(255,255,255,.15);background:transparent">公司</th>
