@@ -654,12 +654,12 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
     <div class="grid2">
       <div class="card">
-        <div class="chart-title">中国十大货运枢纽 (万吨, 2024)</div>
+        <div class="chart-title">中国十大货运枢纽（万吨，2024）</div>
         <div id="chart-hubs-cn" class="chart-box" style="height:400px"></div>
         <div class="source">CAAC《2024 年全国民用运输机场货邮吞吐量排名》原始 xlsx；航空货邮吞吐量口径（不含地面卡车中转）。X 轴与美国图同尺度便于比较。</div>
       </div>
       <div class="card">
-        <div class="chart-title">美国十大货运枢纽 (万吨, 2024)</div>
+        <div class="chart-title">美国十大货运枢纽（万吨，2024）</div>
         <div id="chart-hubs-us" class="chart-box" style="height:400px"></div>
         <div class="source">ACI-NA《2024 North American Airport Traffic Rankings》（总货邮吨位公吨口径，与 CAAC 同口径）。X 轴与中国图同尺度。</div>
       </div>
@@ -668,22 +668,22 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     <!-- Fleet composition -->
     <div class="grid2" style="margin-top:20px">
       <div class="card fade-in">
-        <div class="chart-title">中国通航机队构成 (3,232架)</div>
+        <div class="chart-title">中国通航机队构成（3,232 架）</div>
         <div id="chart-fleet-cn" class="chart-box" style="height:400px"></div>
         <div class="source">总数与教学训练数取自 CAAC《2024 年民航行业发展统计公报》（2024/12/31 在册）；8 类明细依 AOPA《中国通用航空发展报告》口径推算。</div>
       </div>
       <div class="card fade-in">
-        <div class="chart-title">美国通航机队构成 (~214,000架)</div>
+        <div class="chart-title">美国通航机队构成（约 214,000 架）</div>
         <div id="chart-fleet-us" class="chart-box" style="height:400px"></div>
         <div class="source">FAA《General Aviation and Part 135 Activity Survey CY2023》（最新可得，CY2024 年度调查预计 2025 年底发布）。</div>
       </div>
     </div>
 
     <div class="insight fade-in" style="margin-top:16px">
-      <b>美国通航是金字塔，中国是梭子 —— 中段空了一截</b>
-      美国通航机队以单发活塞为主（约 12.8 万架，占总机队 60%，FAA GA Survey CY2023）。大部分是赛斯纳 172 这种周末飞着玩的私人飞机。中国通航队 3,232 架里，直升机占 37%（活塞 495 + 涡轮 705 = 1,200 架），干的是给电网拍照、给麦田打药 —— 不是物流。<br><br>
+      <b>美国通航是金字塔，中国是哑铃 —— 两端有，中段空了一截</b>
+      美国通航机队以单发活塞为主（约 12.8 万架，占总机队 60%，FAA GA Survey CY2023）。大部分是赛斯纳 172 这种周末私人飞行的小飞机。中国通航队 3,232 架里，直升机占 37%（活塞 495 + 涡轮 705 = 1,200 架），做的是给电网拍照、给麦田打药——不是物流。<br><br>
       <b>支线接驳层对比 —— 干线货机卸货后由谁接手送到小城市</b><br>
-      美国有一个成熟的"干线 → 支线"接驳体系：
+      美国有一个成熟的「干线 → 支线」接驳体系：
       <ul style="margin:8px 0 8px 20px">
         <li>主要合同运营商：Ameriflight（125 架）/ Empire Airlines（54 架）/ Mountain Air Cargo（35 架）/ Baron Aviation（30+）/ CSA Air（25 架）/ Everts 阿拉斯加（~20 架）等</li>
         <li>FedEx 长期租赁给合同商 317 架支线机（231 架 Cessna 208B + 28 架 Cessna 408 SkyCourier + 58 架 ATR 42/72F），覆盖 45 国 250+ 节点</li>
@@ -719,8 +719,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      这张对比的关键观察: <b>中国差距不在干线机队数量</b>(窄体 18-23 吨中国甚至比美国多, 因为还在用 737 Classic 存量), <b>而是 ≤8 吨支线层完全空白 + 60-100 吨空客系列宽体完全空白 + 宽体干线 4-12 倍差距</b>。美国 FedEx Feeder 一家的 ~280 架 Cessna 208B, 覆盖了中国完全没有的"最后一公里"层。<br><br>
-      <b>C909F 填的是窄体下沿, 不是毛细血管</b>：圆通航空 2023/10 接收首批 2 架 ARJ21F 客改货, 2024/6/6 伊宁至塔什干完成首次商业货运, 2025/7 在新疆开启长期稳定运营 —— 这把中国最小专业货机载荷从 18 吨 (737-300F) 下探到 10 吨, 是近两年支线货运的一个正面信号。但 10 吨是"窄体下沿", 不是 0.5-3 吨级末端配送那个真正的空白层。W5000 / HH-200 / TP500 等国产货运无人机仍在早期阶段, 不是现成方案。
+      这张对比的关键观察：中国的差距集中在三层：
+      <ul style="margin:8px 0 8px 20px">
+        <li>≤8 吨支线层完全空白</li>
+        <li>60-100 吨空客系列宽体完全空白</li>
+        <li>宽体干线 4-12 倍差距</li>
+      </ul>
+      窄体 18-23 吨中国甚至比美国多（因为还在用 737 Classic 存量），差距不在干线数量。美国 FedEx Feeder 一家的约 280 架 Cessna 208B，覆盖了中国完全没有的「最后一公里」层。<br><br>
+      <b>C909F 填的是窄体下沿，不是末端毛细血管</b>：圆通航空 2023 年 10 月接收首批 2 架 ARJ21F 客改货，2024 年 6 月 6 日伊宁至塔什干完成首次商业货运，2025 年 7 月在新疆开启长期稳定运营——这把中国最小专业货机载荷从 18 吨（737-300F）下探到 10 吨，是近两年支线货运的一个正面信号。但 10 吨已经接近窄体客改货的下限，不是 0.5-3 吨级末端配送那个真正的空白层。W5000、HH-200、TP500 等国产货运无人机仍在早期阶段，不是现成方案。
     </div>
   </div>
 </section>
