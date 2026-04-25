@@ -194,7 +194,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="chart-title">人口密度 vs 机场密度</div>
       <div class="chart-desc"><b>美国人均机场密度比中国高 10-100 倍</b>：人口密度越高，机场/人口比越低（一个机场能服务的人口更多），这一规律在中美都成立。关键在纵轴的绝对位置：美国所有州都在 1 个/百万人以上，阿拉斯加达 338；中国 27/31 省在 1 以下，仅西部 4 省（西藏 3.54、青海 2.19、新疆 1.92、内蒙古 1.84）超过 1——人均机场密度，中国西部反而比东部高，因为人口稀疏。每个气泡 = 一个省 / 一个州，大小代表人口规模。横轴是人口密度 (人/km²，对数刻度)，纵轴是每百万人民用机场 (通航 + 运输，对数刻度)。<br><span style="color:#94a3b8;font-size:12px">交互提示：鼠标滚轮在图中缩放；右上角工具条可框选放大 / 还原；下方/右侧滑块拖拽平移。</span></div>
       <div id="chart-scatter" class="chart-box"></div>
-      <div class="source">数据来源：中国人均 GDP 来自各省 2024 统计公报 (NBS); 美国来自 BEA 2023; 机场数采用口径 A (民用机场全集, 不含私用) —— 中国 734 (CAAC 475 通航 + 259 运输, 2024.12), 美国 3,287 (FAA NPIAS 2025-2029). 详细数据: <a href="data/s1_cn_provinces.csv">s1_cn_provinces.csv</a> · <a href="data/s1_us_states.csv">s1_us_states.csv</a> · <a href="data/s1_airport_counts.csv">s1_airport_counts.csv</a></div>
+      <div class="source">数据来源：中国人均 GDP 来自各省 2024 统计公报 (NBS); 美国来自 BEA 2023; 机场数采用口径 A (民用机场全集, 不含私用) —— 中国 734 (CAAC 475 通航 + 259 运输, 2024 年 12 月), 美国 3,287 (FAA NPIAS 2025-2029). 详细数据: <a href="data/s1_cn_provinces.csv">s1_cn_provinces.csv</a> · <a href="data/s1_us_states.csv">s1_us_states.csv</a> · <a href="data/s1_airport_counts.csv">s1_airport_counts.csv</a></div>
     </div>
 
     <!-- Truck Radius GDP Coverage Analysis -->
@@ -302,7 +302,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div class="grid2">
-      <div class="card"><div class="chart-title">每百万人民用机场 (口径 A)</div><div id="chart-gap1" class="chart-box" style="height:280px"></div><div class="source">数据来源：中国 734 (CAAC 2024.12: 475 通航 + 259 运输) / 美国 3,287 (FAA NPIAS 2025-2029 Narrative); 人口: 国家统计局 2024 公报 14.08 亿 / US Census 2024 estimate 3.40 亿. 详细数据: <a href="data/s2_aircraft_fleet.csv">s2_aircraft_fleet.csv</a></div></div>
+      <div class="card"><div class="chart-title">每百万人民用机场 (口径 A)</div><div id="chart-gap1" class="chart-box" style="height:280px"></div><div class="source">数据来源：中国 734 (CAAC 2024 年 12 月: 475 通航 + 259 运输) / 美国 3,287 (FAA NPIAS 2025-2029 Narrative); 人口: 国家统计局 2024 公报 14.08 亿 / US Census 2024 estimate 3.40 亿. 详细数据: <a href="data/s2_aircraft_fleet.csv">s2_aircraft_fleet.csv</a></div></div>
       <div class="card"><div class="chart-title">每百万人通航飞机</div><div id="chart-gap2" class="chart-box" style="height:280px"></div><div class="source">数据来源：中国 3,232 架通航航空器 (CAAC 民航行业发展统计公报); 美国 ~204,000 架 GA active aircraft (FAA General Aviation Survey CY2023). 详细数据: <a href="data/s2_aircraft_fleet.csv">s2_aircraft_fleet.csv</a></div></div>
     </div>
 
@@ -412,7 +412,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <div style="margin-top:20px">
-      <div class="card"><div class="chart-title">中国西部覆盖缺口分布</div><div class="chart-desc">红色 = 公路、铁路、通航机场任一项稀疏的省份（任一稀疏即标红）</div><div id="chart-coverage" class="chart-box" style="height:520px"></div><div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#475569;padding:8px 0 0 4px"><span><span style="display:inline-block;width:14px;height:10px;background:rgba(220,38,38,.5);vertical-align:middle;margin-right:4px;border:1px solid #b91c1c"></span>公路稀疏 (西藏 0.10 / 青海 0.13 / 新疆 0.14 / 内蒙 0.18 km/km²)</span><span><span style="display:inline-block;width:14px;height:10px;background:rgba(220,38,38,.5);vertical-align:middle;margin-right:4px;border:1px solid #b91c1c"></span>边境 / 高原 / 通航少 (甘肃 / 宁夏 / 云南 / 贵州)</span><span><span style="display:inline-block;width:14px;height:10px;background:#e2e8f0;vertical-align:middle;margin-right:4px;border:1px solid #cbd5e1"></span>覆盖相对完善</span></div><div class="source">公路密度: 各省交通运输厅 2024 公报; 通航机场: CAAC 2024.12; 见 <code>data/s3_west_china_geo.csv</code></div></div>
+      <div class="card"><div class="chart-title">中国西部覆盖缺口分布</div><div class="chart-desc">红色 = 公路、铁路、通航机场任一项稀疏的省份（任一稀疏即标红）</div><div id="chart-coverage" class="chart-box" style="height:520px"></div><div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#475569;padding:8px 0 0 4px"><span><span style="display:inline-block;width:14px;height:10px;background:rgba(220,38,38,.5);vertical-align:middle;margin-right:4px;border:1px solid #b91c1c"></span>公路稀疏 (西藏 0.10 / 青海 0.13 / 新疆 0.14 / 内蒙 0.18 km/km²)</span><span><span style="display:inline-block;width:14px;height:10px;background:rgba(220,38,38,.5);vertical-align:middle;margin-right:4px;border:1px solid #b91c1c"></span>边境 / 高原 / 通航少 (甘肃 / 宁夏 / 云南 / 贵州)</span><span><span style="display:inline-block;width:14px;height:10px;background:#e2e8f0;vertical-align:middle;margin-right:4px;border:1px solid #cbd5e1"></span>覆盖相对完善</span></div><div class="source">公路密度: 各省交通运输厅 2024 公报; 通航机场: CAAC 2024 年 12 月; 见 <code>data/s3_west_china_geo.csv</code></div></div>
     </div>
 
     <!-- Western coverage gap explanation -->
@@ -1030,7 +1030,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》通航 3-6t UAV 档区间 200-280 元/次, 取 238">238</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表推算 ¥1,200/次 (国内 3C 类机场 3.5t UAV 首批运营); 无实运营单据, 4 项细分从此总数派生">1,200</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 1,200 + 小时 9,877 × 航程 3,000/速度 380) ÷ (航程 3,000 × 业载 3.5) = 79,171/10,500 = 7.54 元/吨km">7.5</span></td>
-              <td><span class="tip" data-t="❓ 未知: 2026.3 首飞, 厂商未披露运营成本数据">无</span></td>
+              <td><span class="tip" data-t="❓ 未知: 2026 年 3 月 首飞, 厂商未披露运营成本数据">无</span></td>
               <td style="text-align:left;line-height:1.5">第一原理; 双发国产涡桨大修费不确定 (±20%)</td>
             </tr>
             <!-- W5000 首批 -->
@@ -1084,7 +1084,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
             <!-- C909F 圆通 -->
             <tr style="background:#fffbeb">
               <td><span style="color:#f59e0b">●</span> <b>C909F 圆通</b><br><span style="color:#94a3b8">双 CF34-10A 喷气</span></td>
-              <td><span class="tip" data-t="✅ 实测: ARJ21F 货改设计业载 8-10 t, 取中位 9 t (商飞官方 + 圆通 2024.6 首飞公告)">9</span></td>
+              <td><span class="tip" data-t="✅ 实测: ARJ21F 货改设计业载 8-10 t, 取中位 9 t (商飞官方 + 圆通 2024 年 6 月 首飞公告)">9</span></td>
               <td><span class="tip" data-t="✅ 实测: 825 km/h = M0.78 巡航 (ARJ21 巡航速度, 商飞规格)">825</span></td>
               <td><span class="tip" data-t="✅ 实测: 满载航程 3,700 km (ARJ21 满载货改, 商飞规格)">3,700</span></td>
               <td><span class="tip" data-t="✅ 实测: 起飞滚跑 ~1,700 m (ARJ21 平衡场长, 商飞 POH)">1,700</span></td>
@@ -1102,8 +1102,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
               <td><span class="tip" data-t="⚠️ 估算: ATMB《民航空管收费标准》喷气支线 30-50t 档区间 450-580 元/次, 取 507">507</span></td>
               <td style="background:#fef9c3;font-weight:700"><span class="tip" data-t="⚠️ 估算: S6 主表 ¥3,500/次 (圆通伊宁实运营 + 类比 737BCF 大型机场协议价); 圆通未披露实际起降费; 4 项细分从此总数派生">3,500</span></td>
               <td style="background:#fef9c3;font-weight:700;color:#1e40af"><span class="tip" data-t="🔢 派生: = (起降 3,500 + 小时 24,612 × 航程 3,700/速度 825) ÷ (航程 3,700 × 业载 9) = 113,891/33,300 = 3.42 元/吨km">3.4</span></td>
-              <td><span class="tip" data-t="❓ 未知: 商飞未披露 C909F 成本, 圆通 2 架 2024.6 首飞太新, 行业无 benchmark">无</span></td>
-              <td style="text-align:left;line-height:1.5">圆通 2 架, 2024.6 首次商业货运; 第一原理用 CF34-10A 双发推算; 比 737-800BCF 同级低 10%</td>
+              <td><span class="tip" data-t="❓ 未知: 商飞未披露 C909F 成本, 圆通 2 架 2024 年 6 月 首飞太新, 行业无 benchmark">无</span></td>
+              <td style="text-align:left;line-height:1.5">圆通 2 架, 2024 年 6 月 首次商业货运; 第一原理用 CF34-10A 双发推算; 比 737-800BCF 同级低 10%</td>
             </tr>
             <!-- 737-800BCF -->
             <tr>
@@ -1406,17 +1406,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner">
     <div class="sec-label">08 -- 机型目录</div>
     <div class="sec-title fade-in">有人机与无人机：全部可比较机型的参数和价格</div>
-    <div class="sec-sub fade-in">如果你想找一架飞机的真实参数（价格、载荷、运营成本、状态），翻这一节。论证看 S7a / S7b。数据口径与 S6 主表一致。</div>
-
-    <div class="thesis-card fade-in">
-      <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">这一节是字典，给所有比较机型的具体数字 —— 价格、运营成本、状态。论证看 S7。</div>
-      <ul class="thesis-evidence">
-        <li>有人机 16 款 + 大型货运 UAV 14 款 (+ 参数未公开 3 款) 规格表</li>
-        <li>价格、运营成本数据与 S6 主表口径一致 (Jet-A1 ¥8/kg, 汇率 7.27)</li>
-        <li>雷达图: 10 款 (有人机 5 + UAV 5) 五维度对比 —— 同尺寸对照下 UAV 性价比 2-3× 于有人机</li>
-      </ul>
-    </div>
+    <div class="sec-sub fade-in">这是一份机型字典，列出可比较机型的真实参数：价格、载荷、运营成本、状态。</div>
 
     <div class="card fade-in" style="margin-bottom:20px">
       <div class="chart-title">有人机型综合比较</div>
@@ -1445,35 +1435,35 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           </tbody>
         </table>
       </div>
-      <div class="source">价格来源: 各制造商 2024 年报价单/公开信息 (公务/通航机价格透明度低, 误差可能 ±30%); 运营成本: Conklin & de Decker 2024 + 中国 GACA 2024 实际运营 (ATR42 双数据); 汇率 1 USD = 7.27 RMB. 注: 此表未列入运 5 (1957 设计) 与运 7 (停产), 故只列 Y-12F/II</div>
+      <div class="source">价格来源: 各制造商 2024 年报价单/公开信息 (公务/通航机价格透明度低, 误差可能 ±30%); 运营成本: Conklin & de Decker 2024 + 中国 GACA 2024 实际运营 (ATR42 双数据); 数据口径与 S6 主表一致 (Jet-A1 ¥8/kg, 汇率 1 USD = 7.27 RMB). 注: 此表未列入运 5 (1957 设计) 与运 7 (停产), 故只列 Y-12F/II</div>
     </div>
 
     <div class="card fade-in" style="margin-bottom:20px">
-      <div class="chart-title">大型货运无人机 (在研 / 试飞 / 已认证, ≥350kg 载荷)</div>
-      <div class="chart-desc">按载荷由大到小排序；中美欧主要在研 / 已部分认证机型；数据截至 2026.04</div>
+      <div class="chart-title">大型货运无人机（在研 / 试飞 / 已认证，≥350 kg 载荷）</div>
+      <div class="chart-desc">按载荷由大到小排序；中美欧主要在研 / 已部分认证机型；数据截至 2026 年 4 月</div>
       <div class="table-wrap">
         <table class="spec-table" style="font-size:13px">
           <thead>
-            <tr><th>名称 (制造商)</th><th>国家</th><th>载荷(kg)</th><th>航程(km)</th><th>速度(km/h)</th><th>MTOW(kg)</th><th>起降方式</th><th>动力</th><th>预估价格(万元)</th><th>状态 (2026.04)</th></tr>
+            <tr><th>名称 (制造商)</th><th>国家</th><th>载荷(kg)</th><th>航程(km)</th><th>速度(km/h)</th><th>MTOW(kg)</th><th>起降方式</th><th>动力</th><th>预估价格(万元)</th><th>状态 (2026 年 4 月)</th></tr>
           </thead>
           <tbody>
-            <tr style="background:#f0fdf4"><td><b>W5000</b> (白鲸航线)</td><td>中国</td><td><b>5,000</b></td><td>2,600</td><td>526</td><td>10,800</td><td>&lt;1,200m</td><td>双 AEP100 涡桨 (AECC)</td><td>~4,500</td><td>2024.10 首次低空飞行; 2026 H2 适航取证, 客户京东/顺丰已签 LOI</td></tr>
-            <tr style="background:#fdf2f8"><td><b>CY-8 (长鹰-8)</b> (北方长鹰)</td><td>中国</td><td><b>3,500</b></td><td>3,000+</td><td>~380*</td><td>7,000</td><td>&lt;500m</td><td>双发国产涡桨</td><td>~3,000</td><td>2026.03 首飞成功; 18m³货舱; 中邮已意向</td></tr>
-            <tr><td>Natilus Kona 3.8T</td><td>美国</td><td>3,800</td><td>1,667</td><td>~480</td><td>~8,500</td><td>常规跑道</td><td>双涡桨 (PT6A级)</td><td>~5,000</td><td>原型建造中; 2026.02 累计订单 $24B / 570+ 架 (Ameriflight / Volatus 等)</td></tr>
-            <tr><td>Sabrewing Rhaegal-A</td><td>美国</td><td>2,400</td><td>1,800</td><td>360</td><td>5,400</td><td>VTOL</td><td>混合动力涡桨</td><td>~5,500</td><td>2022.09 首次 tethered hover 成功; 原型试飞中</td></tr>
-            <tr style="background:#faf5ff"><td><b>HH-200</b> (中航工业)</td><td>中国</td><td><b>1,500</b></td><td>2,360</td><td>310</td><td>3,300</td><td>500m</td><td>双发涡桨</td><td>~1,500</td><td>2026.04 首飞成功; 适航取证中; 可在 4,200m 高高原起降</td></tr>
+            <tr style="background:#f0fdf4"><td><b>W5000</b> (白鲸航线)</td><td>中国</td><td><b>5,000</b></td><td>2,600</td><td>526</td><td>10,800</td><td>&lt;1,200m</td><td>双 AEP100 涡桨 (AECC)</td><td>~4,500</td><td>2024 年 10 月 首次低空飞行; 2026 H2 适航取证, 客户京东/顺丰已签 LOI</td></tr>
+            <tr style="background:#fdf2f8"><td><b>CY-8 (长鹰-8)</b> (北方长鹰)</td><td>中国</td><td><b>3,500</b></td><td>3,000+</td><td>~380*</td><td>7,000</td><td>&lt;500m</td><td>双发国产涡桨</td><td>~3,000</td><td>2026 年 3 月 首飞成功; 18m³货舱; 中邮已意向</td></tr>
+            <tr><td>Natilus Kona 3.8T</td><td>美国</td><td>3,800</td><td>1,667</td><td>~480</td><td>~8,500</td><td>常规跑道</td><td>双涡桨 (PT6A级)</td><td>~5,000</td><td>原型建造中; 2026 年 2 月 累计订单 $24B / 570+ 架 (Ameriflight / Volatus 等)</td></tr>
+            <tr><td>Sabrewing Rhaegal-A</td><td>美国</td><td>2,400</td><td>1,800</td><td>360</td><td>5,400</td><td>VTOL</td><td>混合动力涡桨</td><td>~5,500</td><td>2022 年 9 月 首次 tethered hover 成功; 原型试飞中</td></tr>
+            <tr style="background:#faf5ff"><td><b>HH-200</b> (中航工业)</td><td>中国</td><td><b>1,500</b></td><td>2,360</td><td>310</td><td>3,300</td><td>500m</td><td>双发涡桨</td><td>~1,500</td><td>2026 年 4 月 首飞成功; 适航取证中; 可在 4,200m 高高原起降</td></tr>
             <tr><td>FP-98 狮子座 (飞鹏 Phoenix Wings)</td><td>中国</td><td>1,500</td><td>1,200</td><td>280</td><td>5,250</td><td>STOL ~500m</td><td>单涡桨 (基于 Y-5B 改装)</td><td>~1,200</td><td>2018 首飞; 已完成多批次试运营 (顺丰/京东)</td></tr>
-            <tr><td>HH-100 (中航工业)</td><td>中国</td><td>700</td><td>520</td><td>280</td><td>2,000</td><td>常规跑道</td><td>单涡桨</td><td>~800</td><td>2024.06 首飞; 民航局已申请 TC 立项</td></tr>
-            <tr style="background:#ecfeff"><td><b>TP500</b> (壹通无人机)</td><td>中国</td><td>500</td><td>500</td><td>~200 (巡航)</td><td>1,500</td><td>577/609m</td><td>单发油动活塞</td><td>~150</td><td><b>2024.12 已获 CAAC TC + PC</b> (中国首张大型货运UAV适航证)</td></tr>
+            <tr><td>HH-100 (中航工业)</td><td>中国</td><td>700</td><td>520</td><td>280</td><td>2,000</td><td>常规跑道</td><td>单涡桨</td><td>~800</td><td>2024 年 6 月 首飞; 民航局已申请 TC 立项</td></tr>
+            <tr style="background:#ecfeff"><td><b>TP500</b> (壹通无人机)</td><td>中国</td><td>500</td><td>500</td><td>~200 (巡航)</td><td>1,500</td><td>577/609m</td><td>单发油动活塞</td><td>~150</td><td><b>2024 年 12 月 已获 CAAC TC + PC</b> (中国首张大型货运UAV适航证)</td></tr>
             <tr><td>AutoFlight CarryAll (沃飞长空)</td><td>中国</td><td>400</td><td>250</td><td>200</td><td>2,000</td><td>VTOL (eVTOL)</td><td>电动多旋翼+固定翼</td><td>~250</td><td>2024 已获 CAAC TC + PC; 顺丰已签 LOI, 数量未公开</td></tr>
             <tr><td>Reliable Robotics (Caravan改装)</td><td>美国</td><td>1,088</td><td>1,982</td><td>344</td><td>3,985</td><td>常规跑道 (~625m)</td><td>单PT6A-114A (沿用)</td><td>改装 ~600</td><td>FAA STC 进行中; 目标 2027-2028 取证</td></tr>
             <tr><td>Merlin Labs (Caravan/King Air改装)</td><td>美国</td><td>1,088</td><td>1,982</td><td>344</td><td>3,985</td><td>常规跑道</td><td>沿用原机</td><td>改装 ~550</td><td>2026 估值轮 $200M (IPO 时间未定); FAA认证目标 2028</td></tr>
-            <tr><td>Dronamics Black Swan</td><td>保加利亚</td><td>350</td><td>2,500</td><td>200</td><td>1,200</td><td>STOL ~400m</td><td>单活塞 (Rotax 915)</td><td>~750</td><td>2023.04 首飞; 2025 EASA STC 进行中</td></tr>
-            <tr><td>Elroy Air Chaparral C1</td><td>美国</td><td>230</td><td>480</td><td>185</td><td>~1,250</td><td>VTOL (混动)</td><td>混合动力 (涡轴+电)</td><td>~400</td><td>2023.11 首次过渡飞行; 2025.09 与 Kratos 签 5 年制造协议; LCI 已下 40 架订单</td></tr>
+            <tr><td>Dronamics Black Swan</td><td>保加利亚</td><td>350</td><td>2,500</td><td>200</td><td>1,200</td><td>STOL ~400m</td><td>单活塞 (Rotax 915)</td><td>~750</td><td>2023 年 4 月 首飞; 2025 EASA STC 进行中</td></tr>
+            <tr><td>Elroy Air Chaparral C1</td><td>美国</td><td>230</td><td>480</td><td>185</td><td>~1,250</td><td>VTOL (混动)</td><td>混合动力 (涡轴+电)</td><td>~400</td><td>2023 年 11 月 首次过渡飞行; 2025 年 9 月 与 Kratos 签 5 年制造协议; LCI 已下 40 架订单</td></tr>
             <tr><td>Pyka Pelican Cargo</td><td>美国</td><td>180</td><td>320</td><td>160</td><td>660</td><td>STOL ~200m</td><td>纯电动</td><td>~250</td><td>2023 起商业运营 (Dole 中美洲香蕉园喷药 + 小批量货运); 2025 Series B $40M 扩产</td></tr>
             <tr style="background:#fffbeb"><td colspan="10" style="font-size:12px;color:#94a3b8;text-align:center;font-style:italic">—— 以下为已立项但参数尚未公开的中国机型 ——</td></tr>
             <tr><td>CM100 / 京东远程货运</td><td>中国</td><td>~10,000</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>京东/中国邮政已签 LOI; 公开参数不详</td></tr>
-            <tr><td>御风未来 M1B (Matrix1)</td><td>中国</td><td>~1,000</td><td>~250</td><td>~250</td><td>~2,500</td><td>VTOL</td><td>多旋翼+固定翼</td><td>~280</td><td>2024.07 首飞; 主打城际短途</td></tr>
+            <tr><td>御风未来 M1B (Matrix1)</td><td>中国</td><td>~1,000</td><td>~250</td><td>~250</td><td>~2,500</td><td>VTOL</td><td>多旋翼+固定翼</td><td>~280</td><td>2024 年 7 月 首飞; 主打城际短途</td></tr>
             <tr><td>峰飞航空 V2000CG (盛世龙)</td><td>中国</td><td>400</td><td>250</td><td>180</td><td>2,000</td><td>VTOL</td><td>电动倾转</td><td>~200</td><td>2024 已获 CAAC TC + PC</td></tr>
           </tbody>
         </table>
@@ -1487,14 +1477,22 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <a href="https://reliable.co/" style="color:var(--primary)">Reliable Robotics</a>,
         <a href="https://www.dronamics.com/" style="color:var(--primary)">Dronamics</a>,
         <a href="https://www.pyka.aero/" style="color:var(--primary)">Pyka</a>,
-        AOPA中国大型货运无人机适航管理白皮书 (2024.06),
+        AOPA中国大型货运无人机适航管理白皮书 (2024 年 6 月),
         及各厂商 2024-2026 公开 PR / 媒体报道. 价格为行业估算
       </div>
     </div>
 
     <div class="card fade-in">
-      <div class="chart-title">有人机 + UAV 雷达图对比 (10 款, 5+5)</div>
-      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>实线 = 有人机 (暖色), 虚线 = UAV (冷色)</b>。观察: (1) UAV 性价比全面领先, 同尺寸对比 W5000 ≈ 2.8× ATR 42-600F, Caravan UAV 改装 ≈ 2.2× Grand Caravan EX 新机; TP500 以 3.33 kg/万元居首; (2) 短跑道能力 Kodiak 100 (305m) 最强, UAV 中 HH-200 / CY-8 (500m) 并列第二梯队, W5000 (1,200m) 和 ATR 42 (1,050m) 反而受限; (3) ATR 42 在速度维度 (556 km/h) 单项封顶, W5000 (526 km/h) 紧随; (4) 航程 CY-8 (3,000+ km) > 所有有人机; 有人机最长航程 Kodiak 100 (2,445 km) 仍输给 HH-200 (2,360 km) 与 CY-8; (5) 有人机里性价比最高的是 Grand Caravan EX (0.84 kg/万元), 但仍只有 TP500 的 1/4。</div>
+      <div class="chart-title">有人机 + UAV 雷达图对比（10 款，5+5）</div>
+      <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>实线 = 有人机（暖色），虚线 = UAV（冷色）</b>。<br>主要观察：
+        <ul style="margin:6px 0 6px 20px">
+          <li>UAV 性价比全面领先，同尺寸对比 W5000 ≈ 2.8× ATR 42-600F，Caravan UAV 改装 ≈ 2.2× Grand Caravan EX 新机；TP500 以 3.33 kg/万元居首</li>
+          <li>短跑道能力 Kodiak 100（305m）最强，UAV 中 HH-200 / CY-8（500m）并列第二梯队，W5000（1,200m）和 ATR 42（1,050m）反而受限</li>
+          <li>ATR 42 在速度维度（556 km/h）单项封顶，W5000（526 km/h）紧随</li>
+          <li>航程 CY-8（3,000+ km）> 所有有人机；有人机最长航程 Kodiak 100（2,445 km）仍输给 HH-200（2,360 km）与 CY-8</li>
+          <li>有人机里性价比最高的是 Grand Caravan EX（0.84 kg/万元），但仍只有 TP500 的 1/4</li>
+        </ul>
+      </div>
       <div id="chart-aircraft-radar" class="chart-box" style="height:560px"></div>
       <div class="source">基于上表数据标准化计算; 有人机价格 = 新机报价 (2024 Q4); UAV 价格 = 行业估价 / 改装报价; 性价比 = 载荷 kg ÷ 价格 万元</div>
     </div>
@@ -1506,7 +1504,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">09 -- 无人货运飞机在中国扮演什么角色</div>
     <div class="sec-title fade-in" style="color:#fff">UAV 在中国：填空白、跳阶段、降门槛</div>
-    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">截至 2026.04，没有任何中国货运 UAV 完成全部适航取证。V2000CG 是载人 <span class="tip" data-t="electric Vertical Take-Off and Landing 电动垂直起降">eVTOL</span>，不算在内。所有产品都还在取证路上 —— 但路上的东西已经够多了。</div>
+    <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">截至 2026 年 4 月，没有任何中国货运 UAV 完成全部适航取证。V2000CG 是载人 <span class="tip" data-t="electric Vertical Take-Off and Landing 电动垂直起降">eVTOL</span>，不算在内。所有产品都还在取证路上 —— 但路上的东西已经够多了。</div>
 
     <!-- NEW S9 CONTENT -->
 
@@ -1669,7 +1667,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- 取证状态 + 试飞时间线 合表 -->
     <div class="card fade-in" style="margin-top:16px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">
-      <div class="chart-title" style="color:#fff">中国货运 UAV 取证状态与试飞时间线 (截至 2026.04)</div>
+      <div class="chart-title" style="color:#fff">中国货运 UAV 取证状态与试飞时间线 (截至 2026 年 4 月)</div>
       <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:10px">整体行业取证速度不快, 但审定带宽正在向已进入活跃试飞阶段的机型集中 —— 这不是政策倾向, 是资源有限时的自然结果。投资含义: 先飞成的机型, 后续迭代速度会系统性快于还在地面阶段的机型。</div>
       <div class="table-wrap" style="border-color:rgba(255,255,255,.1)">
         <table class="spec-table freeze-col" style="color:rgba(255,255,255,.85);font-size:11.5px;--freeze-bg:#2a3544;--freeze-header-bg:#2a3544">
@@ -1684,7 +1682,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
             </tr>
           </thead>
           <tbody>
-            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>V2000CG</b></td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fbbf24">载人</b> eVTOL / 2,000 kg / 400 kg</td><td style="border-color:rgba(255,255,255,.08)">——</td><td style="border-color:rgba(255,255,255,.08)">AC-21-AA-2026-45 动力提升类</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08);font-size:11px">&#10003; 2024.03 / &#10003; 2024.12 / &#10003; 2025.07</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08);font-size:11px"><b>已三证齐全</b> + 已交付 Falcon Aviation (UAE) 15 架 —— 载人型, 非货运</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>V2000CG</b></td><td style="border-color:rgba(255,255,255,.08)"><b style="color:#fbbf24">载人</b> eVTOL / 2,000 kg / 400 kg</td><td style="border-color:rgba(255,255,255,.08)">——</td><td style="border-color:rgba(255,255,255,.08)">AC-21-AA-2026-45 动力提升类</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08);font-size:11px">&#10003; 2024 年 3 月 / &#10003; 2024 年 12 月 / &#10003; 2025 年 7 月</td><td style="color:#4ade80;border-color:rgba(255,255,255,.08);font-size:11px"><b>已三证齐全</b> + 已交付 Falcon Aviation (UAE) 15 架 —— 载人型, 非货运</td></tr>
             <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>TP500</b></td><td style="border-color:rgba(255,255,255,.08)">货运 STOL / ~1,500 kg / 500 kg</td><td style="border-color:rgba(255,255,255,.08)">2025-02-27 (2002 架机, 瑞城机场)</td><td style="border-color:rgba(255,255,255,.08)">2023-05 专用条件 (SC) 已发布; 中型 UAS AC-92-AA-2024-02 框架</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08);font-size:11px">取证试飞中 / —— / ——</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08);font-size:11px">~150 架次排期约 10 个月; <b>预计 TC 2026 H2</b>; 中通 30 架预取证订单</td></tr>
             <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>HH-200</b></td><td style="border-color:rgba(255,255,255,.08)">货运 STOL / 3,300 kg / 1,500 kg</td><td style="border-color:rgba(255,255,255,.08)">2022-10 原型; 2026-04 审定构型</td><td style="border-color:rgba(255,255,255,.08)">正常类 150-5,700 kg 征求意见稿 (2026-02-25)</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08);font-size:11px">审查中 / —— / ——</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08);font-size:11px">2025-09-15 适航首审会 (西北审定中心); 2025-12-29 首架机下线; <b>审查中</b></td></tr>
             <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>W5000</b></td><td style="border-color:rgba(255,255,255,.08)">货运 STOL / 10,800 kg / 5,000 kg</td><td style="border-color:rgba(255,255,255,.08)">未首飞 (2024-10-18 总装下线)</td><td style="border-color:rgba(255,255,255,.08)">&gt;5,700 kg 无通用标准, 走专用条件 (SC)</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08);font-size:11px">已受理 / —— / ——</td><td style="color:#fbbf24;border-color:rgba(255,255,255,.08);font-size:11px">2024-10 适航受理; 厂商目标 2026-09 (激进); <b>现实 2027-2028</b>; 跨越 60 架 LOI</td></tr>
@@ -1811,14 +1809,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- LOI/订单表 -->
     <div class="card fade-in">
-      <div class="chart-title">LOI / 订单汇总（截至 2026.04）</div>
+      <div class="chart-title">LOI / 订单汇总（截至 2026 年 4 月）</div>
       <div class="table-wrap">
         <table class="spec-table">
           <thead><tr><th>机型</th><th>客户</th><th>数量</th><th>状态</th><th>备注</th></tr></thead>
           <tbody>
-            <tr><td><b>W5000</b></td><td>跨越速运</td><td>60 架 (初批)</td><td style="color:#b45309">LOI</td><td style="font-size:11px">2025.02 签署, Aviation Week</td></tr>
+            <tr><td><b>W5000</b></td><td>跨越速运</td><td>60 架 (初批)</td><td style="color:#b45309">LOI</td><td style="font-size:11px">2025 年 2 月 签署, Aviation Week</td></tr>
             <tr style="background:#f8fafc"><td>W5000</td><td>沙特 / 约旦</td><td>未公开</td><td style="color:#94a3b8">意向</td><td style="font-size:11px">~2024, 21经济网</td></tr>
-            <tr><td>CM100</td><td>中国邮政 + 京东物流</td><td>未公开</td><td style="color:#b45309">LOI</td><td style="font-size:11px">2025.12, 新华社</td></tr>
+            <tr><td>CM100</td><td>中国邮政 + 京东物流</td><td>未公开</td><td style="color:#b45309">LOI</td><td style="font-size:11px">2025 年 12 月, 新华社</td></tr>
             <tr style="background:#f8fafc"><td>V2000CG</td><td>Falcon Aviation (UAE)</td><td>15 架</td><td style="color:#16a34a"><b>确认订单</b></td><td style="font-size:11px">载人型; 已交付</td></tr>
             <tr><td>TP500</td><td>中通快递</td><td>30 架</td><td style="color:#b45309">预取证订单</td><td style="font-size:11px">~2025</td></tr>
             <tr style="background:#f0fdf4"><td>FP-98</td><td>顺丰 (丰翼)</td><td>小批量</td><td style="color:#16a34a"><b>运营中</b></td><td style="font-size:11px">2017 起至今</td></tr>
@@ -3797,9 +3795,20 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
           return '<b>'+p.data.name+'</b><br>满载航程: '+p.data.realRange.toLocaleString()+' km<br>业载: '+p.data.realPayload.toLocaleString()+' kg<br>吨公里成本: <b>'+p.data.tkmCost+' 元</b>';
         }
       },
-      grid: {top: 60, bottom: 60, left: 80, right: 50},
-      xAxis: {type:'value', name:'满载航程 (km)', min: 300, max: 6500, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'k' : v;}}},
-      yAxis: {type:'log', name:'业载 (kg, 对数)', min: 200, max: 50000, logBase: 10, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
+      grid: {top: 70, bottom: 70, left: 80, right: 90},
+      toolbox: {
+        feature: {
+          restore: {title: '复位'}
+        },
+        right: 20, top: 5
+      },
+      dataZoom: [
+        {type:'inside', xAxisIndex:0, filterMode:'none', startValue: 0, endValue: 6500},
+        {type:'inside', yAxisIndex:0, filterMode:'none', startValue: 0, endValue: 45000},
+        {type:'slider', yAxisIndex:0, right: 20, width: 22, filterMode:'none', showDetail: true, handleSize: '80%', startValue: 0, endValue: 45000}
+      ],
+      xAxis: {type:'value', name:'满载航程 (km)', min: 0, max: 6500, nameGap: 30, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'k' : v;}}},
+      yAxis: {type:'value', name:'业载 (kg)', min: 0, max: 45000, nameGap: 60, nameLocation:'middle', axisLabel:{fontSize:11, formatter: function(v){return v>=1000 ? (v/1000)+'t' : v+'kg';}}},
       series: [
         {name: '机型', type: 'scatter', data: scatterData, z: 5,
          markArea: {
@@ -4078,7 +4087,7 @@ var cnProvGDP={};cnProvinces.forEach(function(p){cnProvGDP[p.name]=p.gdp*p.pop/1
 var cnTotalGDP=0;cnProvinces.forEach(function(p){if(p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门') cnTotalGDP+=cnProvGDP[p.name]});
 var usStateGDP={};usStates.forEach(function(s){usStateGDP[s.name]=s.gdp*s.pop/10000;});
 var usTotalGDP=0;usStates.forEach(function(s){if(s.name!=='District of Columbia') usTotalGDP+=usStateGDP[s.name]});
-// City GDP totals (this is the denominator for coverage % since 2026.04 fix)
+// City GDP totals (this is the denominator for coverage % since 2026 年 4 月 fix)
 var cnCitiesTotalGDP=cnCities.reduce(function(a,c){return a+c.gdp},0);
 var usMetrosTotalGDP=usMetros.reduce(function(a,c){return a+c.gdp},0);
 
