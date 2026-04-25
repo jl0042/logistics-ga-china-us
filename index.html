@@ -830,7 +830,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <ul class="thesis-evidence">
         <li><b>11 机型吨公里跨度 10 倍</b>：757F 1.4 元，Caravan 有人 14.9 元</li>
         <li><b>厂商公开值通常比首批运营低 30-50%</b>：假设满载、高利用、内部油价、规模化；取证中机型必须用首批运营估算</li>
-        <li><b>8 元/kg 以下标准时敏快递只有 4 款机型能赚</b>：W5000 / C909F / 737BCF / 757F</li>
+        <li><b>8 元/kg 以下标准时敏快递只有 4 款机型能赚钱</b>：W5000 / C909F / 737BCF / 757F</li>
       </ul>
     </div>
 
@@ -1301,16 +1301,16 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <section id="s7b" class="sec" style="background:#fff">
   <div class="sec-inner">
     <div class="sec-label">07b -- 机型主导</div>
-    <div class="sec-title fade-in">把 S7a 的数据摊到平面上 —— 谁主导哪一格, 哪些设计空间还是白的?</div>
-    <div class="sec-sub fade-in">3 张图把 11 款机型的 (业载 × 距离 × 吨公里) 数据铺到平面: ① 机型主导图 (业载×距离每格最便宜机型) + ② 盈利可行域 (给定运价看哪些格子能赚) + ③ 经济性分布 (航程×业载气泡图, 气泡大小 ∝ 1/吨公里)。</div>
+    <div class="sec-title fade-in">（业载 × 距离）平面上谁主导哪一格，哪些设计空间还是白的?</div>
+    <div class="sec-sub fade-in">3 张图把 11 款机型的（业载 × 距离 × 吨公里）数据铺到平面：① 机型主导图（业载×距离每格最便宜机型）+ ② 盈利可行域（给定运价看哪些格子能赚钱）+ ③ 经济性分布（航程×业载气泡图，气泡大小 ∝ 1/吨公里）。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">主导图上 Caravan 完全消失, W5000 / C909F 瓜分中型, 干线段 737BCF / 757F 锁死; 通航中型 UAV 区 (350-500 km/h × 1.5-3.5 t) 留下一块设计白空间, 等待国产更高效率涡轴 + 更轻机体填补。</div>
+      <div class="thesis-line">主导图分三段：W5000 / C909F 瓜分中型，干线段 737BCF / 757F 锁死；通航中型 UAV 区（1,500-2,500 km × 1.5-3.5 吨）留下一块设计白空间，等待国产更高效率涡轴 + 更轻机体填补。</div>
       <ul class="thesis-evidence">
-        <li>主导图: 10 机型 (加 C909F), Caravan 系列从全局消失; W5000 占 3-5t 中长距, 737BCF 干线 24t, 757F 超长 4000km+</li>
-        <li>盈利可行域: 8 元/kg 电商时敏价位下, 只 W5000 长距 + 干线机能赚, "普通货物 <2 元" 全红</li>
-        <li>设计白空间: 通航中型 UAV (350-500 km/h × 1.5-3.5 t) 无机型覆盖, varHr 需降到 ¥5,500-6,000 才能占住</li>
+        <li><b>机型主导分三段</b>：W5000 占 3-5 吨中长距，737BCF 干线 24 吨，757F 超长 4000 km+</li>
+        <li><b>8 元/kg 电商时敏价位下只有 4 款机型能赚钱</b>：W5000 长距 + 757F + 737BCF + C909F；普通货 &lt;2 元/kg 全机型亏本</li>
+        <li><b>通航中型 UAV 区有设计白空间</b>：1,500-2,500 km × 1.5-3.5 吨没有现役机型，小时变动成本需降到 ¥5,500-6,000（参考 W5000 规模化目标 ¥6,100）才能占住</li>
       </ul>
     </div>
 
@@ -1320,8 +1320,8 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- Chart 1: Aircraft Dominance Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">① 机型主导图: (业载 × 距离) 平面上, 谁最便宜?</div>
-      <div class="chart-desc">每格颜色 = 该 (业载, 距离) 组合下<b>单位成本最低的机型</b>, 数字 = 最低成本 (元/kg)。机型在业载超过 maxP 或距离超过满载航程 rFull 时不可用 (灰格)。<b>红色 pin</b> = 典型实际航线。</div>
+      <div class="chart-title">① 机型主导图：（业载 × 距离）平面上，谁最便宜?</div>
+      <div class="chart-desc">每格颜色 = 该（业载，距离）组合下<b>单位成本最低的机型</b>，数字 = 最低成本（元/kg）。机型在业载超过 maxP 或距离超过满载航程 rFull 时不可用（灰格）。<b>红色 pin</b> = 典型实际航线。</div>
       <div class="toggle-group" style="margin:10px 0">
         <button class="toggle-btn active" data-chart="1" data-mode="initial" onclick="s7bSetMode(1, 'initial')">运营初期</button>
         <button class="toggle-btn" data-chart="1" data-mode="normal" onclick="s7bSetMode(1, 'normal')">正常运营</button>
@@ -1343,73 +1343,60 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="insight" style="margin-top:12px">
         <span class="insight-title">主导图的 4 件事</span>
         <ul class="insight-rules">
-          <li><b>Caravan 系列在成本维度上消失, 但价值不是最便宜, 是"能到达"</b>: 主导图只展示 (业载, 距离) × 单位成本, 没画 Caravan 的核心优势 —— 起飞滚跑 300-626 m 能进 2B/2C 通用机场 + 简易跑道 + 已取证 + 全球供应链成熟 + 单发 / 小机组低门槛运营。把轻泡货送到县城 / 边远地区 / 简易机场, 目前实际能飞的就只有 Caravan 级 (以及未来的 TP500/HH-200), 干线机和中型 UAV 都进不去这些机场 (见 S7a 跑道约束)。主导图看不见 Caravan 只说明它在"吨公里最便宜" 这一维上输了, 不意味着 Caravan 没角色</li>
-          <li><b>中型段 (3-5t × 1,500-2,500 km) 是 W5000 的领地</b>: 速度 + 规模双优势, 成本只靠装满才能兑现。CY-8 在这一段被 W5000 压制, 除非国产涡桨效率大幅降本</li>
-          <li><b>C909F 新占 6-10t × 1,000-3,700 km 格子</b> (圆通 2 架 2024.6 首飞): 喷气支线速度 825 km/h + 载荷 9t, 在这一格压倒 737BCF (载荷过剩) 和 W5000 (载荷不够)</li>
-          <li><b>干线 (24t+ × 1,500-5,500 km) 是 737BCF / 757F 的锁定领地</b>: 吨公里成本 1.4-2.0 元 (满载), 但仅在 4D/4E 机场两端适用 (S7a 跑道约束块); 想到县级末端必须换小机型</li>
+          <li><b>通航段成本维度看不见，但跑道约束让小型货机是必需的</b>：主导图只展示（业载，距离）× 单位成本，没画小型货机的核心优势——起飞滚跑 300-626 m 能进 2B/2C 通用机场 + 简易跑道。把轻泡货送到县城、边远地区、简易机场这些毛细血管运输路线，干线机和中型 UAV 都进不去（见 S7a 跑道约束），小型货机本来就是为这种任务设计的</li>
+          <li><b>中型段（3-5t × 1,500-2,500 km）是 W5000 的领地</b>：更大的业载有助于摊低单位成本，但前提是装满</li>
+          <li><b>C909F 新占 6-10t × 1,000-3,700 km 格子</b>（圆通 2 架 2024 年 6 月首飞）：喷气支线速度 825 km/h + 载荷 9t；但是否存在这个量级的货运需求难讲，737BCF 作为更大的飞机业载更大，单位成本有优势</li>
+          <li><b>干线（24t+ × 1,500-5,500 km）是 737BCF / 757F 的锁定领地</b>：吨公里成本 1.4-2.0 元（满载），但仅在 4D/4E 机场两端适用（S7a 跑道约束块）；想到县级末端必须换小机型</li>
         </ul>
-        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>规模化以后</b>: W5000 / CY-8 / HH-200 等取证中机型的领地扩大 ~20-40%; 干线机 / Caravan 有人的格子基本不变。</p>
       </div>
     </div>
 
     <!-- Chart 2: Profitability/Margin Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">② 盈利可行域: 给定运价下, 哪些 (业载, 距离) 格子能赚?</div>
-      <div class="chart-desc">每格颜色 = 最优机型成本 vs 目标运价的差 (毛利, 元/kg)。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。</div>
+      <div class="chart-title">② 盈利可行域：给定运价下，哪些（业载，距离）格子能赚钱?</div>
+      <div class="chart-desc">每格颜色 = 最优机型成本对目标运价的差（毛利，元/kg）。<span style="color:#16a34a">绿 = 有利润</span> · <span style="color:#ef4444">红 = 亏损</span> · 灰 = 无机型可服务。拖滑块切换市场段。</div>
       <div class="toggle-group" style="margin:10px 0">
         <button class="toggle-btn active" data-chart="2" data-mode="initial" onclick="s7bSetMode(2, 'initial')">运营初期</button>
         <button class="toggle-btn" data-chart="2" data-mode="normal" onclick="s7bSetMode(2, 'normal')">正常运营</button>
       </div>
       <div style="display:flex;align-items:center;gap:16px;margin:12px 0;flex-wrap:wrap">
-        <label style="font-weight:600;font-size:14px">目标运价:
+        <label style="font-weight:600;font-size:14px">目标运价：
           <span id="margin-price-val" style="color:var(--primary);font-size:18px;font-weight:800">8</span> 元/kg
         </label>
         <input type="range" min="3" max="30" step="1" value="8" id="margin-price-slider" oninput="updateMargin(this.value)" style="flex:1;min-width:200px;cursor:pointer">
-        <div style="font-size:12px;color:var(--text2)">&lt;2 普通货 (航空不该抢) · 3-8 标准时敏 · 8-20 电商 / 生鲜 · 20-50 高价生鲜 · 50+ 医疗急件</div>
+        <div style="font-size:12px;color:var(--text2)">&lt;2 普通货（航空不该抢）· 3-8 标准时敏 · 8-20 电商 / 生鲜 · 20-50 高价生鲜 · 50+ 医疗急件</div>
       </div>
       <div id="margin-status" style="font-size:13px;margin-bottom:8px;color:#64748b"></div>
       <div id="chart-margin" class="chart-box" style="height:500px"></div>
       <div class="insight" style="margin-top:12px">
         <span class="insight-title">盈利域的 4 件事</span>
         <ul class="insight-rules">
-          <li><b>&lt; 2 元/kg 普通货物</b>: 全红, 任何机型都亏本 —— <b>航空不能跟公路抢普通货</b> (公路 0.5-0.7 元/吨km, 航空最低 1.4-2.0)</li>
-          <li><b>3-8 元/kg 标准时敏快递</b>: 只有干线机 (757F / 737BCF / C909F) + W5000 长距能盈利 —— <b>覆盖市场大头, 但只有 4 款机型能进</b></li>
-          <li><b>8-20 元/kg 电商 + 生鲜</b>: 可行域显著扩大, 中型 UAV (CY-8 / HH-200) 也能进入; W5000 全谱盈利。<b>生鲜/医药需扣冷链溢价 +¥3-11/kg 或 +15-50%</b> (本图成本不含冷链; Freightos 2024 行业典型: 温控 ULD + 凝胶袋/干冰 + 优先地面处理 + 温度监控), 扣完后可行域会明显收窄</li>
-          <li><b>20+ 元/kg 医疗急件</b>: 几乎全绿, 但市场规模小, 难以支撑日班 —— 只能作为补充业务, 不是主力</li>
+          <li><b>&lt; 2 元/kg 普通货物</b>：全红，任何机型都亏本——<b>航空不能跟公路抢普通货</b>（公路 0.5-0.7 元/吨km，航空最低 1.4-2.0）</li>
+          <li><b>3-8 元/kg 标准时敏快递</b>：只有干线机（757F / 737BCF / C909F）+ W5000 长距能盈利——<b>覆盖市场大头，但只有 4 款机型能进</b></li>
+          <li><b>8-20 元/kg 电商 + 生鲜</b>：可行域显著扩大，中型 UAV（CY-8 / HH-200）也能进入；W5000 全谱盈利。<b>生鲜、医药需扣冷链溢价 +¥3-11/kg 或 +15-50%</b>（本图成本不含冷链；Freightos 2024 行业典型：温控 ULD + 凝胶袋 / 干冰 + 优先地面处理 + 温度监控），扣完后可行域会明显收窄</li>
+          <li><b>20+ 元/kg 医疗急件</b>：几乎全绿，但市场规模小，难以支撑日班——只能作为补充业务，不是主力</li>
         </ul>
-        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>参考线</b>: 生鲜溢价 ~12 元/kg = 货值 40 元/kg × 3%/hr 损耗 × 10 hr 时效差; 电商溢价 ~8 元/kg = 次日达 vs 标准快递价差。</p>
-        <p style="margin-top:6px;font-size:12px;color:#64748b"><b>运价参考来源</b> (2024 中国市场): 顺丰航空特快 23 元/kg 起 (含取派); 顺丰航空冷运 25-40 元/kg; 圆通航空快递 12-18 元/kg 次日达; 中通快运时效件 10-15 元/kg; 中国邮政航空 EMS 标准 15-25 元/kg; 器官/急救药品 50-200 元/kg 行业典型; 普通货物公路 0.5-0.7 元/吨km (满帮 2024 全国均价) 换算单位成本 &lt; 2 元/kg。</p>
+        <p style="margin-top:10px;font-size:12px;color:#64748b"><b>参考线</b>：生鲜溢价约 12 元/kg = 货值 40 元/kg × 3%/hr 损耗 × 10 hr 时效差；电商溢价约 8 元/kg = 次日达对标准快递价差。</p>
+        <p style="margin-top:6px;font-size:12px;color:#64748b"><b>运价参考来源</b>（2024 中国市场）：顺丰航空特快 23 元/kg 起（含取派）；顺丰航空冷运 25-40 元/kg；圆通航空快递 12-18 元/kg 次日达；中通快运时效件 10-15 元/kg；中国邮政航空 EMS 标准 15-25 元/kg；器官、急救药品 50-200 元/kg 行业典型；普通货物公路 0.5-0.7 元/吨km（满帮 2024 全国均价）换算单位成本 &lt; 2 元/kg。</p>
       </div>
     </div>
 
     <!-- Chart 3: Aircraft Economic Map -->
     <div class="card fade-in" style="margin-top:16px">
-      <div class="chart-title">③ 机型经济性分布: (航程 × 业载) 平面上的设计位置</div>
-      <div class="chart-desc">每个机型在 (航程 × 业载) 平面的位置, 气泡大小 ∝ 1/吨公里成本 (越大 = 越经济, 满载工况)。</div>
+      <div class="chart-title">③ 机型经济性分布：（航程 × 业载）平面上的设计位置</div>
+      <div class="chart-desc">每个机型在（航程 × 业载）平面的位置，气泡大小 ∝ 1/吨公里成本（越大 = 越经济，满载工况）。</div>
       <div class="econ-explain" style="margin-top:12px">
         <h4 style="margin-bottom:6px">怎么读这张图</h4>
-        <p style="margin:0;font-size:13px;line-height:1.8">两个维度都是买飞机的人想要的: <b>航程越长</b> (能飞越远) 和 <b>业载越大</b> (能装越多) 都更好, 而气泡越大代表吨公里成本越低。理想设计是 "航程长 + 业载大 + 气泡大" 同时满足, 也就是图的右上角 + 大气泡。</p>
+        <p style="margin:0;font-size:13px;line-height:1.8">两个维度都是买飞机的人想要的：<b>航程越长</b>（能飞越远）和 <b>业载越大</b>（能装越多）都更好，而气泡越大代表吨公里成本越低。理想设计是「航程长 + 业载大 + 气泡大」同时满足，也就是图的右上角 + 大气泡。</p>
         <div class="step" style="margin-top:10px">
-          <b>图上怎么看</b>:<br>
-          <span style="display:inline-block;width:14px;height:14px;border:1.5px solid #1e293b;border-radius:50%;background:#fff;vertical-align:middle"></span> <b>气泡位置</b> = 机型设计航程 × 业载; <b>气泡大小</b> ∝ 1/吨公里成本, 越大越经济<br>
-          <span style="display:inline-block;width:22px;height:12px;background:rgba(34,197,94,0.15);border:1.5px dashed #16a34a;vertical-align:middle"></span> <b style="color:#16a34a">绿色矩形</b> = 设计白空间 (1,500-2,500 km × 1.5-3.5 t), 这个区间没有机型覆盖 —— 新设计的国产中型 UAV 落在这里才有独立生存空间
+          <b>图上怎么看</b>：<br>
+          <span style="display:inline-block;width:14px;height:14px;border:1.5px solid #1e293b;border-radius:50%;background:#fff;vertical-align:middle"></span> <b>气泡位置</b> = 机型设计航程 × 业载；<b>气泡大小</b> ∝ 1/吨公里成本，越大越经济<br>
+          <span style="display:inline-block;width:22px;height:12px;background:rgba(34,197,94,0.15);border:1.5px dashed #16a34a;vertical-align:middle"></span> <b style="color:#16a34a">绿色矩形</b> = 设计白空间（1,500-2,500 km × 1.5-3.5 t），这个区间没有机型覆盖——新设计的国产中型 UAV 落在这里才有独立生存空间
         </div>
-        <p style="margin-top:10px;font-size:13px;color:#475569"><b>白空间的含义</b>: 已有机型组合覆盖不到的 (航程 × 业载) 需求区间, 通航 1-5t / 短到中程扎堆, 中长航程 × 中等业载留白。这是 S8 机型目录和 S11 AI 总设计讨论新设计切入点的起点。</p>
+        <p style="margin-top:10px;font-size:13px;color:#475569"><b>白空间的含义</b>：已有机型组合覆盖不到的（航程 × 业载）需求区间，通航 1-5t / 短到中程扎堆，中长航程 × 中等业载留白。这是 S8 机型目录和 S11 AI 总设计讨论新设计切入点的起点。</p>
       </div>
       <div id="chart-pareto" class="chart-box" style="height:500px"></div>
-      <div class="insight" style="margin-top:12px">
-        <span class="insight-title">机型经济性分布的 5 件事 (运营初期口径)</span>
-        <ul class="insight-rules">
-          <li><b>W5000 首批 (5 t / 2,600 km / 4.3 元/吨km)</b>: 中型段里气泡最大 (最经济) 的机型。规模 + 速度 + 航程的均衡让吨公里压到 4.3 元; 正常运营进一步降到 2.7</li>
-          <li><b>C909F (9 t / 3,700 km / 3.4 元/吨km)</b>: 喷气支线的位置独特 —— 航程 ≥ 737BCF 3,750km 但业载只有 9 t, 占据"9t 级中长航程" 这格。跑道 1,700m 锁死在 4C 及以上机场</li>
-          <li><b>CY-8 vs W5000: 小时成本接近, 差距全在 outputs</b>: CY-8 首批 9,877 元/hr vs W5000 首批 10,861 元/hr (差 10%), 但 CY-8 只载 3.5 t × 380 km/h, W5000 载 5 t × 526 km/h → 吨公里 CY-8 7.5 元 vs W5000 4.3 元, 差 74%。核心是 W5000 同成本下载得更多 + 飞得更快。<br>
-          <b>涡桨发动机为什么是降本关键</b>: varHr 7 项里燃油 + 发动机储备占 50% (CY-8 燃油 3,100 + 发动机 1,900 = 5,000/9,877 ≈ 51%), 两项都由涡桨决定 —— 燃油看耗油率 (SFC), 发动机储备 = 大修费 ÷ TBO。国产 1,100-1,500 hp 涡桨 (W5000 配装 AECC AEP100 900 kW 级, 新华网 2024-10-29) 首批大修费 ¥950-1,200/hr/台, 跟进口 PT6A ($130/hr/台 × 7.27 = ¥945) 基本持平 —— 没降本。<br>
-          <b>W5000 也用中航涡桨, 为啥 PR 能降到 ¥6,100</b>: 白鲸宣传是"规模化目标"口径 —— 假设单机年飞 2,000 hr (首批只 1,200) + 发动机累计运营时长够长让大修费摊薄到 ¥800/hr/台 + 内部协议油价 ¥7/kg (市场 ¥8.5) + 机身量产降到 ¥2,000 万 (首批 ¥3,500 万)。目前 CY-8 跟 W5000 发动机层面降本都没兑现, 都是 "首批工况"。真正的降本空间不在机身, 在**国产涡桨量产 + 稳定油源 + 飞够 TBO 小时数** —— 这 3 个条件成熟后, varHr 能降到 5,500-6,500 区间, 吨公里进入 3-4 元</li>
-          <li><b>737-800BCF / 757-200F 占据右上角</b>: 23.9-39 t × 3,750-5,800 km, 吨公里 1.4-2.0 元最低 (气泡最大), 但只能在 4D/4E 大型机场起降 (S7a 跑道约束)</li>
-          <li><b>真正的设计空白</b>: <b>1,500-2,500 km × 1.5-3.5 t</b> 这一格没机型覆盖 —— HH-200 只到 1,000 km, Caravan 系列到 1,300 km, ATR42 是 1,326 km 但 5.5 t 过大, CY-8/W5000 起步都在 2,600 km+。国产中型 UAV 如果能覆盖 1,500-2,500 km + 2-3 t + 成本低于 5 元/吨km, 就能独占这块 —— 这是 S8 机型目录和 S11 AI 总设计讨论的起点</li>
-        </ul>
-      </div>
-      <div class="source">吨公里成本基于"满载 + 设计航程"组合计算, 即每个机型最优工况下的理论值 (元/吨km)。数据口径: S7a 机型成本主表的"运营初期"列。</div>
+      <div class="source">吨公里成本基于「满载 + 设计航程」组合计算，即每个机型最优工况下的理论值（元/吨km）。数据口径：S7a 机型成本主表的「运营初期」列。</div>
     </div>
   </div>
 </section>
@@ -3495,35 +3482,35 @@ initC('chart-tonkm',{
 // Aircraft database —— S7b uses S7a master table data with toggle for 运营初期 vs 正常运营
 // rFull = range at max payload (MTOW limited); rEmpty = ferry range at zero payload (fuel tank limited)
 // Payload-range tradeoff: effectiveRange = rEmpty - (rEmpty - rFull) × payload / maxP
-// 公式: cost(d) = fix + varHr × d / spd; 单位成本(元/kg) = cost(d) / payload
+// 公式: cost(d) = fix + 小时变动成本 × d / spd; 单位成本(元/kg) = cost(d) / payload
 // 两套数据: AIRCRAFT_INITIAL = 运营初期 (首批 2-3 年), AIRCRAFT_NORMAL = 规模化稳态
 
 // 运营初期 (S7a 主表"小时合计"+"起降合计"列)
 var AIRCRAFT_INITIAL=[
-  {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:5103,fix:600,color:'#dc2626',lw:2.5},
-  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:3720,fix:350,color:'#2563eb',lw:2.5},
-  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:200,varHr:935,fix:200,color:'#06b6d4',lw:2},
-  {name:'HH-200(中航)',maxP:1500,rFull:2360,rEmpty:3000,spd:310,varHr:5790,fix:500,color:'#9333ea',lw:2.5},
-  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,varHr:9877,fix:1200,color:'#db2777',lw:2.5},
-  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,varHr:10861,fix:2000,color:'#10b981',lw:3},
-  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,varHr:18960,fix:3000,color:'#f97316',lw:2},
-  {name:'C909F(圆通)',maxP:9000,rFull:3700,rEmpty:4800,spd:825,varHr:24612,fix:3500,color:'#eab308',lw:2.5},
-  {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,varHr:38520,fix:4500,color:'#334155',lw:2.5},
-  {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,varHr:45900,fix:5500,color:'#0891b2',lw:2.5}
+  {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:324,小时变动成本:5103,fix:600,color:'#dc2626',lw:2.5},
+  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,小时变动成本:3720,fix:350,color:'#2563eb',lw:2.5},
+  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:200,小时变动成本:935,fix:200,color:'#06b6d4',lw:2},
+  {name:'HH-200(中航)',maxP:1500,rFull:2360,rEmpty:3000,spd:310,小时变动成本:5790,fix:500,color:'#9333ea',lw:2.5},
+  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,小时变动成本:9877,fix:1200,color:'#db2777',lw:2.5},
+  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,小时变动成本:10861,fix:2000,color:'#10b981',lw:3},
+  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,小时变动成本:18960,fix:3000,color:'#f97316',lw:2},
+  {name:'C909F(圆通)',maxP:9000,rFull:3700,rEmpty:4800,spd:825,小时变动成本:24612,fix:3500,color:'#eab308',lw:2.5},
+  {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,小时变动成本:38520,fix:4500,color:'#334155',lw:2.5},
+  {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,小时变动成本:45900,fix:5500,color:'#0891b2',lw:2.5}
 ];
 
 // 正常运营 (厂商目标 / 规模化 / 国际基准; 已大规模运营机型跟初期一样)
 var AIRCRAFT_NORMAL=[
-  {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:5103,fix:600,color:'#dc2626',lw:2.5},
-  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,varHr:3224,fix:350,color:'#2563eb',lw:2.5},
-  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:200,varHr:650,fix:200,color:'#06b6d4',lw:2},
-  {name:'HH-200(中航)',maxP:1500,rFull:2360,rEmpty:3000,spd:310,varHr:4820,fix:500,color:'#9333ea',lw:2.5},
-  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,varHr:8530,fix:1200,color:'#db2777',lw:2.5},
-  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,varHr:6100,fix:2000,color:'#10b981',lw:3},
-  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,varHr:14500,fix:3000,color:'#f97316',lw:2},
-  {name:'C909F(圆通)',maxP:9000,rFull:3700,rEmpty:4800,spd:825,varHr:24612,fix:3500,color:'#eab308',lw:2.5},
-  {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,varHr:38520,fix:4500,color:'#334155',lw:2.5},
-  {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,varHr:45900,fix:5500,color:'#0891b2',lw:2.5}
+  {name:'Caravan有人',maxP:1088,rFull:1300,rEmpty:1980,spd:324,小时变动成本:5103,fix:600,color:'#dc2626',lw:2.5},
+  {name:'Caravan级UAV',maxP:1088,rFull:1300,rEmpty:1980,spd:324,小时变动成本:3224,fix:350,color:'#2563eb',lw:2.5},
+  {name:'TP500(壹通)',maxP:500,rFull:500,rEmpty:700,spd:200,小时变动成本:650,fix:200,color:'#06b6d4',lw:2},
+  {name:'HH-200(中航)',maxP:1500,rFull:2360,rEmpty:3000,spd:310,小时变动成本:4820,fix:500,color:'#9333ea',lw:2.5},
+  {name:'长鹰-8(CY-8)',maxP:3500,rFull:3000,rEmpty:4000,spd:380,小时变动成本:8530,fix:1200,color:'#db2777',lw:2.5},
+  {name:'W5000(白鲸)',maxP:5000,rFull:2600,rEmpty:3800,spd:526,小时变动成本:6100,fix:2000,color:'#10b981',lw:3},
+  {name:'ATR42-600F',maxP:5500,rFull:1326,rEmpty:2200,spd:480,小时变动成本:14500,fix:3000,color:'#f97316',lw:2},
+  {name:'C909F(圆通)',maxP:9000,rFull:3700,rEmpty:4800,spd:825,小时变动成本:24612,fix:3500,color:'#eab308',lw:2.5},
+  {name:'737-800BCF',maxP:23900,rFull:3750,rEmpty:5500,spd:833,小时变动成本:38520,fix:4500,color:'#334155',lw:2.5},
+  {name:'757-200F',maxP:39000,rFull:5800,rEmpty:7200,spd:850,小时变动成本:45900,fix:5500,color:'#0891b2',lw:2.5}
 ];
 
 // Per-chart mode state (独立 toggle: Chart ① 和 Chart ② 各自 switch, Chart ③ 固定 initial)
@@ -3539,7 +3526,7 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
   function acCostAt(ac, payload, distance){
     if(payload > ac.maxP) return null;
     if(distance > ac.rFull) return null;
-    return (ac.fix + ac.varHr * distance / ac.spd) / payload;
+    return (ac.fix + ac.小时变动成本 * distance / ac.spd) / payload;
   }
   function findBest(aircraftArr, payload, distance){
     var best=null, bestCost=Infinity, bestIdx=-1;
@@ -3760,7 +3747,7 @@ function s7bGetAircraft(mode){ return mode === 'normal' ? AIRCRAFT_NORMAL : AIRC
   // ---- CHART 3: 机型经济性分布图 (航程 × 业载, bubble size = 1/tkmCost) ----
   function renderChart3() {
     var data = AIRCRAFT_INITIAL.map(function(ac){
-      var tkmCost = (ac.fix + ac.varHr * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
+      var tkmCost = (ac.fix + ac.小时变动成本 * ac.rFull / ac.spd) / (ac.rFull * ac.maxP / 1000);
       return {name: ac.name, range: ac.rFull, payload: ac.maxP, tkmCost: tkmCost, color: ac.color};
     });
     var inverses = data.map(function(a){return 1/a.tkmCost});
