@@ -820,41 +820,41 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 <!-- S7a: ECONOMIC BOUNDARY -->
 <section id="s7" class="sec">
   <div class="sec-inner">
-    <div class="sec-label">07a -- 机型成本与不亏价</div>
-    <div class="sec-title fade-in">每种机型在每段距离上, 客户至少要付多少钱才能不亏?</div>
-    <div class="sec-sub fade-in">这一节把 11 款覆盖通航到干线的机型一字铺开, 把 S6 讲过的 7 项小时变动成本 + 4 项起降费的算法填进去, 算出每架的吨公里成本和不亏价。下一节 (S7b) 用同一份数据画机型主导图。</div>
+    <div class="sec-label">07a -- 机型成本与盈亏平衡价</div>
+    <div class="sec-title fade-in">每种机型在每段距离上，客户至少要付多少钱才能盈亏平衡?</div>
+    <div class="sec-sub fade-in">11 款覆盖通航到干线的机型，用 S6 的 7 项小时变动成本 + 4 项起降费算法逐一拆解，输出吨公里成本和盈亏平衡价。但价格不是唯一制约——机场跑道分布决定干线机能不能落地，下方矩阵 + 跑道约束块给出完整图景。S7b 用这份数据画机型主导图。</div>
 
     <div class="thesis-card fade-in">
       <div class="thesis-tag">本章一句话</div>
-      <div class="thesis-line">航空货运没有单一盈亏线。通航段 (0.5-1.5 吨 / &lt;1500 km) 不亏价 10-22 元/kg, 中型段 (3-5 吨 / 1500-2500 km) 13-19 元/kg (W5000 主导, CY-8 偏高), 干线 (9 吨+ / 1500 km+) 7-12 元/kg。Caravan 是矩阵里最贵的位置, 用它推全行业盈亏线会把这门生意写"死"。</div>
+      <div class="thesis-line">航空货运没有单一盈亏平衡价：通航段（0.5-1.5 吨 / &lt;1500 km）10-22 元/kg，中型段（3-5 吨 / 1500-2500 km）13-19 元/kg，干线（9 吨+ / 1500 km+）7-12 元/kg。除了价格，机场跑道分布也是制约——干线机只能进 80+ 个大型机场，到县级末端必须换通航机型。</div>
       <ul class="thesis-evidence">
-        <li>11 机型吨公里跨度: 757F 1.4 元 → Caravan 有人 14.9 元, 10 倍尺度</li>
-        <li>厂商公开值通常比首批运营低 30-50% (假设满载 / 高利用 / 内部油价 / 规模化), 取证中机型必须用首批运营估算</li>
-        <li>能赚 8 元/kg 以下标准时敏快递的机型只有 4 款: W5000 / C909F / 737BCF / 757F</li>
+        <li><b>11 机型吨公里跨度 10 倍</b>：757F 1.4 元，Caravan 有人 14.9 元</li>
+        <li><b>厂商公开值通常比首批运营低 30-50%</b>：假设满载、高利用、内部油价、规模化；取证中机型必须用首批运营估算</li>
+        <li><b>8 元/kg 以下标准时敏快递只有 4 款机型能赚</b>：W5000 / C909F / 737BCF / 757F</li>
       </ul>
     </div>
 
     <!-- Block 1: formula intro -->
     <div class="econ-explain fade-in">
-      <h4>两个公式: 吨公里成本 + 不亏价</h4>
-      <p>S6 已经把一架飞机的小时成本拆成 7 项 (燃油 / 发动机+桨 / 机体维护 / 保险 / 人员 / 数据链 / 折旧), 起降费拆成 4 项 (降落 / 装卸 / 停机 / 导航)。这一节直接拿这两个数当原料, 算两件事:</p>
+      <h4>两个公式：吨公里成本 + 盈亏平衡价</h4>
+      <p>S6 把一架飞机的小时成本拆成 7 项（燃油、发动机+桨、机体维护、保险、人员、数据链、折旧），起降费拆成 4 项（降落、装卸、停机、导航）。本节用这两个数算两件事：</p>
       <div class="step">
-        <b>吨公里成本 (元/吨km) = (起降费 + 小时成本 × 满载航程 ÷ 速度) ÷ (满载航程 × 业载吨数)</b><br>
-        <span style="color:#64748b;font-size:12px">满载理想工况, 用来跟厂商公开值对比 —— 厂商通常报这个数。</span>
+        <b>吨公里成本（元/吨km）=（起降费 + 小时成本 × 满载航程 ÷ 速度）÷（满载航程 × 业载吨数）</b><br>
+        <span style="color:#64748b;font-size:12px">满载理想工况，用来跟厂商公开值对比——厂商通常报这个数。</span>
       </div>
       <div class="step">
-        <b>不亏价 (元/kg) = (小时成本 × 距离 ÷ 速度 + 起降费) ÷ (业载kg × 装载率) + 地面取派</b><br>
-        <span style="color:#64748b;font-size:12px">装载率取 70% (现实运营典型值, 跟 S6 主表 W5000 行假设一致); 地面取派 4 元/kg 中位 (国家邮政局 2024《快递业运行报告》航空件末端 3.5-5 元/kg)。不含资金成本和管理费 (那部分按行业经验需再加 20-30% 才能"赚钱", 不在本节范围)。</span>
+        <b>盈亏平衡价（元/kg）=（小时成本 × 距离 ÷ 速度 + 起降费）÷（业载kg × 装载率）+ 地面取派</b><br>
+        <span style="color:#64748b;font-size:12px">装载率取 70%（现实运营典型值，跟 S6 主表 W5000 行假设一致）；地面取派 4 元/kg 中位（国家邮政局 2024《快递业运行报告》航空件末端 3.5-5 元/kg）。不含资金成本和管理费（那部分按行业经验需再加 20-30% 才能「赚钱」，不在本节范围）。</span>
       </div>
-      <p><b>取证中机型 (TP500 / HH-200 / CY-8 / W5000) 用"首批运营估算"</b>, 不用厂商目标值 (首批比目标高 1.3-2 倍, 详见主表后 callout)。</p>
+      <p><b>取证中机型（TP500 / HH-200 / CY-8 / W5000）用「首批运营估算」</b>，不用厂商目标值（首批比目标高 1.3-2 倍，详见主表后 callout）。</p>
     </div>
 
     <!-- Block 2: aircraft cost master table -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #2563eb">
       <div class="chart-title">机型成本主表</div>
-      <div class="chart-desc">11 款覆盖通航到干线的机型, 7 项小时变动成本 + 4 项起降费全部展开, 算出吨公里成本, 跟厂商公开值对比。<b>每个数字都可悬停看来源 + 算法 + 可信度</b>。<br>
-      <b>行底色 = 机型运营阶段</b>: <span style="color:#16a34a">●</span> 大规模运营 / <span style="color:#f59e0b">●</span> 小规模或中国首批 / <span style="color:#2563eb">●</span> 取证中用首批运营估算 / <span style="color:#94a3b8">●</span> 国内未商业货运。<br>
-      <b>Cell 可信度图标</b> (每个 tooltip 开头): <b style="color:#16a34a">✅ 实测</b> —— 公开权威源 (Conklin & de Decker / Aircraft Cost Calculator / BTS Form 41 / POH / 厂商官方规格); <b style="color:#b45309">⚠️ 估算</b> —— 第一原理推算 / 行业类比 / 首批运营修正; <b style="color:#1e40af">🔢 派生</b> —— 从同表其他数据按公式/比例计算 (例: 吨公里成本 / 4 项起降细分 / 折旧摊销); <b style="color:#64748b">❓ 未知</b> —— 无公开数据, 用代理来源或空缺。<br>
+      <div class="chart-desc">11 款覆盖通航到干线的机型，7 项小时变动成本 + 4 项起降费全部展开，算出吨公里成本，跟厂商公开值对比。<b>每个数字都可悬停看来源 + 算法 + 可信度</b>。<br>
+      <b>行底色 = 机型运营阶段</b>：<span style="color:#16a34a">●</span> 大规模运营 / <span style="color:#f59e0b">●</span> 小规模或中国首批 / <span style="color:#2563eb">●</span> 取证中用首批运营估算 / <span style="color:#94a3b8">●</span> 国内未商业货运。<br>
+      <b>格子可信度图标</b>（每个 tooltip 开头）：<b style="color:#16a34a">✅ 实测</b>——公开权威源（Conklin & de Decker / Aircraft Cost Calculator / BTS Form 41 / POH / 厂商官方规格）；<b style="color:#b45309">⚠️ 估算</b>——第一原理推算 / 行业类比 / 首批运营修正；<b style="color:#1e40af">🔢 派生</b>——从同表其他数据按公式 / 比例计算（例：吨公里成本 / 4 项起降细分 / 折旧摊销）；<b style="color:#64748b">❓ 未知</b>——无公开数据，用代理来源或空缺。<br>
       <b>表格右滑看完整 21 列</b>。</div>
       <div class="table-wrap" style="margin-top:12px;overflow-x:auto">
         <table class="spec-table freeze-col" style="font-size:11px;min-width:1850px">
@@ -1176,7 +1176,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         <table class="hsr-compare" style="margin-top:8px">
           <thead><tr><th>维度</th><th>厂商宣传值假设</th><th>首批运营典型值</th><th>对小时成本的影响</th></tr></thead>
           <tbody>
-            <tr><td>装载率</td><td>100%</td><td>70-75%</td><td>派生; 见不亏价矩阵</td></tr>
+            <tr><td>装载率</td><td>100%</td><td>70-75%</td><td>派生; 见盈亏平衡价矩阵</td></tr>
             <tr><td>年飞行小时</td><td>2,000 hr</td><td>800-1,500 hr</td><td>折旧 ÷ 年小时 ↑ 1.3-2.5x</td></tr>
             <tr><td>燃油价</td><td>内部协议 ¥7/kg</td><td>市场 ¥8.5/kg</td><td>燃油 +21%</td></tr>
             <tr><td>机身价</td><td>规模化 (例 W5000 ¥2,000 万)</td><td>首批小批量 (例 W5000 ¥4,500 万)</td><td>折旧 +125%</td></tr>
@@ -1185,15 +1185,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
         </table>
         <p style="margin-top:10px;color:#475569;font-size:12.5px"><b>行业先例</b>: 787 / A350 早期入役 2-3 年实际运营成本比厂商目标高 30-40% (Aviation Week / IATA Airline Cost Conference 历年数据)。中国 ARJ21 早期运营成本是厂商目标的 ~1.5 倍 (商飞 2018-2020 数据)。</p>
         <p style="margin-top:8px;font-size:12.5px"><b>取值方法</b>: 对每款取证中机型, 我们要么 (1) 拿厂商宣传值乘以 1.3-2 倍区间, 要么 (2) 第一原理拆解 7 项 + 加 1.15-1.35 倍首批磨合系数。两种方法结果相互校验, 取中位作为本表数字。</p>
-        <p style="margin-top:8px;font-size:12.5px"><b>不确定性</b>: 即便如此, 首批运营估算的误差仍在 ±20-25% 之内。这意味着 W5000 的真实首批吨公里可能在 3.5-5.0 元之间 (本表写 4.3 取中位)。下方"不亏价矩阵"和 S7b 的"机型主导图"都基于这个 4.3, 读者可以自己代入 3.5 或 5.0 看主导边界变化。</p>
+        <p style="margin-top:8px;font-size:12.5px"><b>不确定性</b>: 即便如此, 首批运营估算的误差仍在 ±20-25% 之内。这意味着 W5000 的真实首批吨公里可能在 3.5-5.0 元之间 (本表写 4.3 取中位)。下方"盈亏平衡价矩阵"和 S7b 的"机型主导图"都基于这个 4.3, 读者可以自己代入 3.5 或 5.0 看主导边界变化。</p>
         <div class="source" style="margin-top:8px">行业先例数据: Aviation Week 2014 (787-8 入役 3 年成本数据); IATA Airline Cost Conference 2017 (A350 入役 2 年); 商飞 ARJ21 公开年报 2018-2020。</div>
       </div>
     </div>
 
     <!-- Block 4: breakeven price matrix (11 × 5, dual values) -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #f97316">
-      <div class="chart-title">不亏本价格矩阵</div>
-      <div class="chart-desc">每格回答: 这架飞机飞这段距离, 客户至少要付多少 元/kg 才能不亏本。<b>每格两个数字: 红色 = 运营初期 (前 2-3 年首批运营) / 蓝色 = 正常运营 (规模化稳态)</b>。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 两值相同, 只显示一个。<b>装载率 70% / 地面取派 4 元/kg / 灰格 = 航程不够 / 加粗 = 该距离档下"正常运营"最低不亏价的机型</b>。算法: <code>不亏本价 = (小时成本 × 距离 ÷ 速度 + 起降费) ÷ (业载kg × 0.7) + 4</code>。</div>
+      <div class="chart-title">盈亏平衡价矩阵</div>
+      <div class="chart-desc">每格回答: 这架飞机飞这段距离, 客户至少要付多少 元/kg 才能盈亏平衡。<b>每格两个数字: 红色 = 运营初期 (前 2-3 年首批运营) / 蓝色 = 正常运营 (规模化稳态)</b>。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 两值相同, 只显示一个。<b>装载率 70% / 地面取派 4 元/kg / 灰格 = 航程不够 / 加粗 = 该距离档下"正常运营"最低盈亏平衡价的机型</b>。算法: <code>盈亏平衡价 = (小时成本 × 距离 ÷ 速度 + 起降费) ÷ (业载kg × 0.7) + 4</code>。</div>
       <div class="econ-explain" style="margin-top:10px;background:#fff;padding:12px 16px;border:1px solid #e2e8f0">
         <p style="font-size:12.5px;line-height:1.7;margin:0"><b>「运营初期」是什么</b>: 一款新机型在大规模商业运营之前的前 2-3 年, 真实成本通常是厂商宣传值的 1.3-2 倍 (装载率 70-75% / 年飞 800-1,500 hr / 燃油市场价 / 机身首批小批量价 / 维护磨合 1.2-1.5x)。<b>「正常运营」</b>是机型量产 5+ 年后的稳态成本, 用厂商宣传值或国际公开数据。两者差距详见上方主表的"差距与解释"列, 行业先例 (787/A350/ARJ21) 见首批运营估算法 callout。</p>
       </div>
@@ -1223,13 +1223,13 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
           <tr><td style="text-align:left">757-200F (39t)</td><td>5,800</td><td><b>6</b></td><td><b>6</b></td><td><b>7</b></td><td><b>9</b></td><td><b>12</b></td></tr>
         </tbody>
       </table>
-      <div class="source" style="margin-top:10px">不亏本价数字 CSV: <code>s7_breakeven_matrix.csv</code>。<b>装载率 70%</b> 来自 S6 主表 W5000 行的工况假设, 全文统一。<b>地面取派 4 元/kg</b> 来自国家邮政局 2024《快递业运行报告》航空件末端配送平均 3.5-5 元/kg。<b>运营初期数字</b>用主表"小时合计"+"起降合计"; <b>正常运营数字</b>用厂商目标 / 国际公开值 (TP500 650 / Caravan UAV 3,224 / HH-200 4,820 / CY-8 8,530 / W5000 6,100 / ATR42 14,500)。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 没有"运营初期"概念, 单值。<br><b>本矩阵不含冷链额外成本</b>: 航空冷链 (温控 ULD + 凝胶袋 / 干冰 / PCM 温控包装 + 优先地面处理 + 温度监控 + 合规文档) 的行业典型溢价是 +¥3-11/kg 或 +15-50% (Freightos 2024: +$0.5-1.5/kg 绝对溢价 × 7.27 汇率; 制药 2-8°C 或 -20°C 超低温偏上限)。生鲜 / 医药运输实际不亏本价在矩阵数字基础上再加这一溢价。<br>不含资金成本 / 管理费 / 利润 (按行业经验需再加 20-30% 才达"赚钱线", 不在本节范围)。</div>
+      <div class="source" style="margin-top:10px">盈亏平衡价数字 CSV: <code>s7_breakeven_matrix.csv</code>。<b>装载率 70%</b> 来自 S6 主表 W5000 行的工况假设, 全文统一。<b>地面取派 4 元/kg</b> 来自国家邮政局 2024《快递业运行报告》航空件末端配送平均 3.5-5 元/kg。<b>运营初期数字</b>用主表"小时合计"+"起降合计"; <b>正常运营数字</b>用厂商目标 / 国际公开值 (TP500 650 / Caravan UAV 3,224 / HH-200 4,820 / CY-8 8,530 / W5000 6,100 / ATR42 14,500)。已大规模运营的机型 (Caravan 有人 / Y-12F / C909F / 737BCF / 757F) 没有"运营初期"概念, 单值。<br><b>本矩阵不含冷链额外成本</b>: 航空冷链 (温控 ULD + 凝胶袋 / 干冰 / PCM 温控包装 + 优先地面处理 + 温度监控 + 合规文档) 的行业典型溢价是 +¥3-11/kg 或 +15-50% (Freightos 2024: +$0.5-1.5/kg 绝对溢价 × 7.27 汇率; 制药 2-8°C 或 -20°C 超低温偏上限)。生鲜 / 医药运输实际盈亏平衡价在矩阵数字基础上再加这一溢价。<br>不含资金成本 / 管理费 / 利润 (按行业经验需再加 20-30% 才达"赚钱线", 不在本节范围)。</div>
     </div>
 
     <!-- Block 4b: runway constraint callout -->
     <div class="card fade-in" style="margin-top:16px;border-left:5px solid #ef4444;background:#fef2f2">
-      <div class="chart-title" style="color:#991b1b">跑道约束 —— 干线机的"最低不亏本价"只在大型机场适用</div>
-      <div class="chart-desc">不亏本价格矩阵假设两端机场都能容纳所列机型。但中国机场跑道分布不均, 干线机进不了大部分通航末端机场。</div>
+      <div class="chart-title" style="color:#991b1b">跑道约束 —— 干线机的"最低盈亏平衡价"只在大型机场适用</div>
+      <div class="chart-desc">盈亏平衡价矩阵假设两端机场都能容纳所列机型。但中国机场跑道分布不均, 干线机进不了大部分通航末端机场。</div>
       <table class="hsr-compare" style="margin-top:12px">
         <thead>
           <tr>
@@ -1251,9 +1251,9 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       <div class="insight" style="margin-top:14px;background:#fff;border-left:4px solid #ef4444;padding:14px 18px">
         <span class="insight-title" style="color:#991b1b">这意味着</span>
         <ul class="insight-rules">
-          <li><b>干线机 (757F/737BCF) "1.4-2.0 元/吨km" 的低不亏本价只在 ~80 个 4D/4E 机场两端都满足时成立</b> —— 占全国机场数的 ~12%, 占货量大头但是覆盖范围窄</li>
-          <li><b>到县级/边境/通航末端必须换通航机型</b>, 不亏本价被锁定在 10-22 元/kg (Caravan UAV / HH-200 / CY-8 等) —— 跑道把成本锁高了 7-10 倍</li>
-          <li><b>枢纽 + 末端两段联运的总不亏本价</b>: 干线段 (757F 1.5 元/kg × 5,000 km = 7.5 元/kg 干线货成本) + 末端段 (Caravan UAV 200 km 不亏价 7-10 元/kg) + 转运费 ~2 元/kg ≈ 17-20 元/kg, 仍比全程 Caravan (25 元/kg+) 优, 这是 hub-and-spoke 模式经济性的来源</li>
+          <li><b>干线机 (757F/737BCF) "1.4-2.0 元/吨km" 的低盈亏平衡价只在 ~80 个 4D/4E 机场两端都满足时成立</b> —— 占全国机场数的 ~12%, 占货量大头但是覆盖范围窄</li>
+          <li><b>到县级/边境/通航末端必须换通航机型</b>, 盈亏平衡价被锁定在 10-22 元/kg (Caravan UAV / HH-200 / CY-8 等) —— 跑道把成本锁高了 7-10 倍</li>
+          <li><b>枢纽 + 末端两段联运的总盈亏平衡价</b>：干线段（757F 1.5 元/kg × 5,000 km = 7.5 元/kg 干线货成本）+ 末端段（Caravan UAV 200 km 盈亏平衡价 7-10 元/kg）+ 转运费约 2 元/kg ≈ 17-20 元/kg，仍比全程 Caravan（25 元/kg+）优，这是「轴辐」（hub-and-spoke）模式经济性的来源</li>
           <li><b>中国 ~250 个民航运输机场 + 400+ 通用机场的双层机场结构</b>, 决定了任何 "全国通航货运" 的故事都必须分两段算: 干线段拼规模 (757F/737BCF), 末端段拼通达性 (UAV) —— 单一机型走天下不成立</li>
         </ul>
       </div>
@@ -1262,31 +1262,31 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- Block 5: matrix insights -->
     <div class="insight fade-in" style="margin-top:16px">
-      <span class="insight-title">不亏本价格矩阵的 4 个直接发现</span>
+      <span class="insight-title">盈亏平衡价矩阵的 4 个直接发现</span>
       <ul class="insight-rules">
-        <li><b>Caravan 有人是矩阵里最贵的位置</b>: 任何距离档都不是最优 (500 km 15 元, 1,000 km 25 元)。它的存在只用来界定通航段的成本天花板, 不应作为投资决策基准。S7 之前用 Caravan 推 8 元/kg 盈亏线是把这门生意写"死"。</li>
-        <li><b>W5000 是中段 (1,000-2,500 km, 5t) 的最优</b>: 不亏本价 10-19 元/kg。但跟 757F 比仍贵 30-100% (757F 同距离 6-9 元/kg)。它的真正卖点是中国可造 + 取证可控 + 跑道需求 &lt;1,200m 能进 3C/4C 机场, 不是绝对低成本。</li>
-        <li><b>规模化后能降 1.2-1.5 倍</b>: W5000 1,000 km 从 10 元/kg 降到 8 元/kg; CY-8 同距离从 16 降到 14。</li>
-        <li><b>能盈利 8 元/kg 以下标准时敏快递的机型只有 4 款</b>: W5000 (&gt;1,000 km) / C909F / 737BCF / 757F。其他机型必须靠生鲜 (10-30 元/kg)、医疗急件 (50-200 元/kg)、电商精品等高价值货源才能盈利, 这就把可服务的市场规模上限钉死了。<b>叠加跑道约束</b>: 干线机的低价只在 ~250 个 4C+ 机场两端适用 (见上方跑道约束块) —— 想到县级/边境末端必须换通航机型, 不亏本价跳到 10-22 元/kg。</li>
+        <li><b>Caravan 有人是矩阵里最贵的位置</b>：任何距离档都不是最优（500 km 15 元，1,000 km 25 元）。它的存在只用来界定通航段的成本天花板，不应作为投资决策基准。</li>
+        <li><b>W5000 是中段（1,000-2,500 km，5t）的最优</b>：盈亏平衡价 10-19 元/kg。但跟 757F 比仍贵 30-100%（757F 同距离 6-9 元/kg）。它的真正卖点是中国可造 + 取证可控 + 跑道需求 &lt;1,200m 能进 3C/4C 机场，不是绝对低成本。</li>
+        <li><b>规模化后能降 1.2-1.5 倍</b>：W5000 1,000 km 从 10 元/kg 降到 8 元/kg；CY-8 同距离从 16 降到 14。</li>
+        <li><b>能盈利 8 元/kg 以下标准时敏快递的机型只有 4 款</b>：W5000（&gt;1,000 km）/ C909F / 737BCF / 757F。其他机型必须靠生鲜（10-30 元/kg）、医疗急件（50-200 元/kg）、电商精品等高价值货源才能盈利，这就把可服务的市场规模上限钉死了。<b>叠加跑道约束</b>：干线机的低价只在约 250 个 4C+ 机场两端适用（见上方跑道约束块）——想到县级/边境末端必须换通航机型，盈亏平衡价跳到 10-22 元/kg。</li>
       </ul>
     </div>
 
     <!-- Block 6: case studies A/B/C (short verification) -->
     <div class="card fade-in" style="margin-top:16px;border-left:4px solid #16a34a">
       <div class="chart-title">3 个案例 —— 矩阵在真实航线上对得上吗?</div>
-      <div class="chart-desc">从矩阵抽 3 条西部代表航线, 跟可承受运费交叉验证。</div>
+      <div class="chart-desc">从矩阵抽 3 条西部代表航线，跟可承受运费交叉验证。</div>
       <div class="grid3" style="margin-top:14px">
         <div style="border:2px solid #ef4444;border-radius:var(--radius);padding:14px">
           <div style="font-weight:700;font-size:14px;margin-bottom:6px;color:#991b1b">案例 A: 拉萨-林芝 400 km (高原困难)</div>
-          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">双端高海拔, 飞机业载砍 30-40%, 不亏本价相应 ×1.5。Caravan 有人在拉萨业载 ~800 kg (POH), 不亏本价从矩阵的 15 涨到 ~23 元/kg; HH-200 双发高原稍好, 估 ~18 元/kg。<b>松茸鲜品 200-500 元/kg、急救药品 50-200 元/kg: 任何机型都能盈利</b>。但 400 km 货量不够支撑日班, 真正限制是货量密度而非价格。已通拉林高速 5-6 hr, 时效差只 3-4 hr —— <b>这是手挑的极端困难案例, 不代表行业</b>。</p>
+          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">双端高海拔, 飞机业载砍 30-40%, 盈亏平衡价相应 ×1.5。Caravan 有人在拉萨业载 ~800 kg (POH), 盈亏平衡价从矩阵的 15 涨到 ~23 元/kg; HH-200 双发高原稍好, 估 ~18 元/kg。<b>松茸鲜品 200-500 元/kg、急救药品 50-200 元/kg: 任何机型都能盈利</b>。但 400 km 货量不够支撑日班, 真正限制是货量密度而非价格。已通拉林高速 5-6 hr, 时效差只 3-4 hr —— <b>这是手挑的极端困难案例, 不代表行业</b>。</p>
         </div>
         <div style="border:2px solid #f59e0b;border-radius:var(--radius);padding:14px">
           <div style="font-weight:700;font-size:14px;margin-bottom:6px;color:#9a3412">案例 B: 和田-乌鲁木齐 1,100 km (低海拔长距)</div>
-          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">沙漠公路 18-22 hr, 时效差 15-19 hr 极大。1,100 km 航段算: <b>Caravan 有人 ~28 元/kg (接近 1,300 km 航程极限不经济); CY-8 ~17 元/kg; W5000 ~11 元/kg</b>。和田红枣 30-80 元/kg、香梨/苹果旺季损耗 3-5%/天 → 18 hr 损耗 9-13% 货值, 对 50 元/kg 的鲜果损耗 4.5-6.5 元/kg, 接近航空溢价。<b>CY-8 / W5000 是这条航线的合理选型, 不是 Caravan</b>。</p>
+          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">沙漠公路 18-22 hr，时效差 15-19 hr 极大。1,100 km 航段算：<b>Caravan 有人约 28 元/kg（接近 1,300 km 航程极限不经济）；CY-8 约 17 元/kg；W5000 约 11 元/kg</b>。和田红枣 30-80 元/kg、香梨 / 苹果旺季损耗 3-5%/天 → 18 hr 损耗 9-13% 货值，对 50 元/kg 的鲜果损耗 4.5-6.5 元/kg，接近航空溢价。<b>CY-8 / W5000 是这条航线的合理选型</b>。</p>
         </div>
         <div style="border:2px solid #2563eb;border-radius:var(--radius);padding:14px">
           <div style="font-weight:700;font-size:14px;margin-bottom:6px;color:#1e40af">案例 C: 喀什-郑州 2,800 km (干线场景)</div>
-          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">2,800 km 航段算: <b>757F ~10 元/kg / 737BCF ~11 元 / C909F ~19 元 (载荷小, 单位高)</b>。ATR42 / W5000 / CY-8 全都飞不到 2,800 km。标准时敏快递可承受 8-20 元/kg → 757F / 737BCF 正好打到这个价位。<b>这是 C909F 圆通 2 架 (2024.6 首飞) 进入的市场</b>, 但目前主力是 757F / 737BCF —— 跟 S5 看过的中国干线货机机队结构吻合。</p>
+          <p style="font-size:12.5px;line-height:1.7;color:#475569;margin:0">2,800 km 航段算：<b>757F 约 10 元/kg / 737BCF 约 11 元 / C909F 约 19 元（载荷小，单位高）</b>。ATR42 / W5000 / CY-8 全都飞不到 2,800 km。标准时敏快递可承受 8-20 元/kg → 757F / 737BCF 正好打到这个价位。<b>这是 C909F 圆通 2 架（2024 年 6 月首飞）进入的市场</b>，但目前主力是 757F / 737BCF——跟 S5 看过的中国干线货机机队结构吻合。</p>
         </div>
       </div>
       <div class="insight" style="margin-top:14px">
@@ -1294,11 +1294,6 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
-    <!-- Transition to S7b -->
-    <div class="insight green fade-in" style="margin-top:16px;background:#f0fdf4;border-left:4px solid #16a34a;padding:14px 18px">
-      <b>知道了每段距离最便宜的机型, 下一节就能画机型主导图</b><br>
-      S7b 把这 11 款机型铺到 (载荷, 距离) 平面, 每格画出哪款机型不亏价最低。Caravan 在主导图上几乎看不到, W5000 / C909F / 737BCF 各占哪一片格子, 全部基于这一节的不亏价矩阵。
-    </div>
   </div>
 </section>
 
