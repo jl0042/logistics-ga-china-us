@@ -64,7 +64,7 @@ body{font-family:var(--font-serif-zh);color:var(--ink);background:var(--paper);l
 .sec-inner{max-width:var(--max-w);margin:0 auto}
 .sec-title{font-family:var(--font-serif-zh);font-size:clamp(24px,4vw,38px);font-weight:700;letter-spacing:-.02em;margin-bottom:6px;line-height:1.3;color:var(--ink)}
 .sec-sub{font-family:var(--font-serif-zh);font-size:clamp(14px,2vw,17px);color:var(--gray-2);margin-bottom:28px;line-height:1.85;font-weight:400}
-.sec-label{font-family:var(--font-mono);font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:3px;color:var(--gray-3);margin-bottom:14px}
+.sec-label{font-family:var(--font-mono);font-size:13px;font-weight:400;text-transform:uppercase;letter-spacing:3px;color:var(--gray-3);margin-bottom:16px}
 .source{font-family:var(--font-sans-zh);font-size:11px;color:var(--gray-3);margin-top:6px;font-weight:300;line-height:1.7}
 .card{background:var(--warm-white);border:1px solid var(--gray-5);border-radius:var(--radius);padding:24px}
 .chart-box{width:100%;height:450px;min-height:320px}
@@ -72,7 +72,7 @@ body{font-family:var(--font-serif-zh);color:var(--ink);background:var(--paper);l
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
 @media(max-width:900px){.grid2{grid-template-columns:1fr}}
 .chart-title{font-family:var(--font-serif-zh);font-size:15px;font-weight:600;margin-bottom:2px;color:var(--ink)}
-.chart-desc{font-family:var(--font-sans-zh);font-size:12px;color:var(--gray-2);margin-bottom:12px;font-weight:300;line-height:1.7}
+.chart-desc{font-family:var(--font-sans-zh);font-size:13.5px;color:var(--gray-2);margin-bottom:14px;font-weight:300;line-height:1.8}
 .toggle-group{display:inline-flex;gap:3px;background:var(--gray-6);border-radius:8px;padding:3px;margin-bottom:16px}
 .toggle-btn{padding:5px 12px;border:none;border-radius:6px;font-family:var(--font-sans-zh);font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--gray-2);transition:all .2s var(--ease-out)}
 .toggle-btn.active{background:var(--ink);color:var(--paper)}
@@ -86,7 +86,9 @@ body{font-family:var(--font-serif-zh);color:var(--ink);background:var(--paper);l
 .spec-table.freeze-col tbody td:first-child{z-index:1;background-color:var(--freeze-bg,var(--warm-white)) !important}
 .spec-table.freeze-col thead th:first-child{z-index:3}
 .spec-table.freeze-col thead th{background-color:var(--freeze-header-bg,var(--gray-6)) !important}
-.insight{border-left:3px solid var(--accent);background:var(--accent-soft);padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:13px;line-height:1.85;color:var(--ink)}
+.insight{border-left:3px solid var(--accent);background:var(--accent-soft);padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:14px;line-height:1.9;color:var(--ink)}
+.insight h4,.insight h5{font-family:var(--font-serif-zh);font-size:15px;font-weight:600;color:var(--ink);margin:0 0 6px}
+.insight p{font-size:14px;line-height:1.9;color:var(--ink);margin:0 0 8px}
 .insight.red{border-left-color:#A86464;background:rgba(168,100,100,.06)}
 .insight.green{border-left-color:var(--ext-sage);background:rgba(138,155,144,.08)}
 .insight b:first-child{display:block;margin-bottom:3px;font-size:14px;color:var(--ink)}
@@ -124,7 +126,7 @@ body{font-family:var(--font-serif-zh);color:var(--ink);background:var(--paper);l
 .hero-title{font-family:var(--font-serif-zh);font-size:clamp(40px,7vw,84px);font-weight:900;letter-spacing:-.02em;line-height:1.18;color:var(--paper);margin-bottom:48px}
 .hero-title .paren{font-family:var(--font-serif-en);color:var(--accent);font-weight:400}
 .hero-title .or{display:block;color:var(--gray-3);font-weight:300;font-size:.4em;letter-spacing:8px;margin:14px 0;font-family:var(--font-mono);text-transform:uppercase}
-.hero-tag{font-family:var(--font-mono);font-size:12px;font-weight:300;letter-spacing:6px;color:var(--gray-3);text-transform:uppercase;margin-bottom:48px;text-align:center}
+.hero-tag{font-family:var(--font-mono);font-size:14px;font-weight:300;letter-spacing:6px;color:var(--gray-3);text-transform:uppercase;margin-bottom:48px;text-align:center}
 .hero-sub{font-family:var(--font-serif-zh);font-size:clamp(15px,1.55vw,18px);font-weight:400;line-height:2;color:rgba(247,243,238,.78);max-width:680px;margin:0 auto;text-align:left}
 .hero-sub .accent{color:var(--accent);font-family:var(--font-serif-en);font-weight:400;font-style:italic}
 .hero-sub b{font-weight:600;color:var(--paper)}
@@ -688,7 +690,7 @@ footer .meta{font-family:var(--font-mono);font-size:11px;color:rgba(247,243,238,
           </tbody>
         </table>
       </div>
-      <div class="insight" style="margin-top:12px;font-size:12px">
+      <div class="insight" style="margin-top:12px">
         <h5 style="margin:0 0 8px 0">三种运输方式各司其职</h5>
         <p style="margin:0 0 8px 0">公路件最便宜但最慢，靠陆运干线 + 末端三轮车，3-7 天送达。航空件溢价 3-4 倍买「次日达」，靠 737BCF 全货机 / 客机货舱 + 末端汽配。高铁件溢价 2-3 倍买「4 小时门到门」，全程高铁 + 城市快递人员上下车。</p>
         <p style="margin:0 0 8px 0">在 200-1500 km 距离段，普通时效需求被公路 + 航空件覆盖。高铁件切的是「4 小时刚需」细分（高价值时效件 / 紧急医疗 / 加急公文），价格上没法跟航空件竞争——高铁件的护城河是绝对速度，不是性价比。</p>
