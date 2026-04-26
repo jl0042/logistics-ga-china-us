@@ -5,129 +5,165 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>物流通航：中美需求对比分析</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --primary:#1a56db;--cn:#dc2626;--us:#2563eb;
-  --bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;
-  --border:#e2e8f0;--shadow:0 1px 3px rgba(0,0,0,.1);
-  --radius:12px;--max-w:1280px;
+  /* Neo brand tokens */
+  --paper:#F7F3EE;--warm-white:#FDFBF8;--ink:#2A2520;
+  --gray-1:#4A4440;--gray-2:#6E6660;--gray-3:#958D85;
+  --gray-4:#B5AEA6;--gray-5:#D4CEC7;--gray-6:#E8E3DC;
+  --accent:#B8584A;--accent-fade:rgba(184,88,74,.35);
+  --accent-mid:rgba(184,88,74,.15);--accent-soft:rgba(184,88,74,.08);
+  --ext-sage:#8A9B90;--ext-slate:#7A8B94;--ext-sand:#C8B99A;--ext-plum:#8A7080;
+  /* Fonts */
+  --font-serif-zh:'Noto Serif SC','Songti SC','STSong',Georgia,serif;
+  --font-serif-en:'Source Serif 4','Source Serif Pro',Georgia,'Noto Serif SC',serif;
+  --font-sans-zh:'Noto Sans SC',-apple-system,'PingFang SC','Helvetica Neue',sans-serif;
+  --font-mono:'IBM Plex Mono','SF Mono',Menlo,Consolas,monospace;
+  --ease-out:cubic-bezier(0.2,0.7,0.2,1);
+  /* Legacy aliases — keep existing class names working */
+  --primary:var(--accent);--cn:#A86464;--us:var(--ext-slate);
+  --bg:var(--paper);--card:var(--warm-white);
+  --text:var(--ink);--text2:var(--gray-2);
+  --border:var(--gray-5);--shadow:none;
+  --radius:10px;--max-w:1280px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter','Noto Sans SC',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden;overflow-wrap:break-word;line-break:strict;word-break:normal}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,23,42,.95);backdrop-filter:blur(12px);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
-nav .logo{color:#fff;font-weight:700;font-size:14px;white-space:nowrap}
+body{font-family:var(--font-serif-zh);color:var(--ink);background:var(--paper);line-height:1.9;overflow-x:hidden;overflow-wrap:break-word;line-break:strict;word-break:normal}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--ink);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gray-1)}
+nav .logo{color:var(--paper);font-family:var(--font-serif-en);font-weight:600;font-size:13px;letter-spacing:.3px;white-space:nowrap}
+nav .logo .paren{color:var(--accent);font-family:var(--font-serif-en);font-weight:400}
 nav .links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 nav .links::-webkit-scrollbar{display:none}
-nav .links a{color:rgba(255,255,255,.5);font-size:11px;font-weight:500;text-decoration:none;padding:5px 7px;border-radius:5px;white-space:nowrap;transition:all .2s}
-nav .links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav .links a{color:rgba(247,243,238,.5);font-family:var(--font-mono);font-size:11px;font-weight:400;letter-spacing:.5px;text-decoration:none;padding:5px 7px;border-radius:4px;white-space:nowrap;transition:all .2s var(--ease-out)}
+nav .links a:hover{color:var(--paper);background:rgba(247,243,238,.08)}
 .sec{padding:80px 24px 60px}
 .sec-inner{max-width:var(--max-w);margin:0 auto}
-.sec-title{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-.03em;margin-bottom:6px;line-height:1.2}
-.sec-sub{font-size:clamp(14px,2vw,17px);color:var(--text2);margin-bottom:28px;max-width:720px}
-.sec-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin-bottom:10px}
-.source{font-size:11px;color:#94a3b8;margin-top:6px;font-style:italic}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.sec-title{font-family:var(--font-serif-zh);font-size:clamp(24px,4vw,38px);font-weight:700;letter-spacing:-.02em;margin-bottom:6px;line-height:1.3;color:var(--ink)}
+.sec-sub{font-family:var(--font-serif-zh);font-size:clamp(14px,2vw,17px);color:var(--gray-2);margin-bottom:28px;max-width:720px;line-height:1.85;font-weight:400}
+.sec-label{font-family:var(--font-mono);font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:3px;color:var(--gray-3);margin-bottom:14px}
+.source{font-family:var(--font-sans-zh);font-size:11px;color:var(--gray-3);margin-top:6px;font-weight:300;line-height:1.7}
+.card{background:var(--warm-white);border:1px solid var(--gray-5);border-radius:var(--radius);padding:24px}
 .chart-box{width:100%;height:450px;min-height:320px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
 @media(max-width:900px){.grid2{grid-template-columns:1fr}}
-.chart-title{font-size:15px;font-weight:700;margin-bottom:2px}
-.chart-desc{font-size:12px;color:var(--text2);margin-bottom:12px}
-.toggle-group{display:inline-flex;gap:3px;background:var(--bg);border-radius:8px;padding:3px;margin-bottom:16px}
-.toggle-btn{padding:5px 12px;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--text2);font-family:inherit;transition:all .2s}
-.toggle-btn.active{background:var(--primary);color:#fff}
+.chart-title{font-family:var(--font-serif-zh);font-size:15px;font-weight:600;margin-bottom:2px;color:var(--ink)}
+.chart-desc{font-family:var(--font-sans-zh);font-size:12px;color:var(--gray-2);margin-bottom:12px;font-weight:300;line-height:1.7}
+.toggle-group{display:inline-flex;gap:3px;background:var(--gray-6);border-radius:8px;padding:3px;margin-bottom:16px}
+.toggle-btn{padding:5px 12px;border:none;border-radius:6px;font-family:var(--font-sans-zh);font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--gray-2);transition:all .2s var(--ease-out)}
+.toggle-btn.active{background:var(--ink);color:var(--paper)}
 .spec-table{width:100%;border-collapse:collapse;font-size:12px}
-.spec-table th{background:#f1f5f9;font-weight:600;text-align:left;padding:7px 10px;border-bottom:2px solid var(--border);font-size:11px;position:sticky;top:0;z-index:2}
-.spec-table td{padding:6px 10px;border-bottom:1px solid var(--border)}
-/* Hover: subtle blue tint overlay via inset shadow, preserves cell backgrounds and works in both light/dark contexts */
-.spec-table tbody tr:hover td{box-shadow:inset 0 0 0 9999px rgba(96,165,250,.12)}
-.spec-table .hl{background:#dcfce7;font-weight:600}
-/* Opt-in: freeze first row (header) and first column for wide tables. Use --freeze-bg / --freeze-header-bg inline to override default light theme (#fff / #f1f5f9) for dark sections. */
+.spec-table th{background:var(--gray-6);color:var(--ink);font-family:var(--font-sans-zh);font-weight:600;text-align:left;padding:7px 10px;border-bottom:2px solid var(--gray-5);font-size:11px;position:sticky;top:0;z-index:2}
+.spec-table td{padding:6px 10px;border-bottom:1px solid var(--gray-5);font-family:var(--font-serif-zh)}
+.spec-table tbody tr:hover td{box-shadow:inset 0 0 0 9999px rgba(184,88,74,.06)}
+.spec-table .hl{background:rgba(138,155,144,.18);font-weight:600}
 .spec-table.freeze-col tbody td:first-child,
 .spec-table.freeze-col thead th:first-child{position:sticky;left:0;background-clip:padding-box;border-right:1px solid rgba(127,127,127,.18)}
-.spec-table.freeze-col tbody td:first-child{z-index:1;background-color:var(--freeze-bg,#fff) !important}
+.spec-table.freeze-col tbody td:first-child{z-index:1;background-color:var(--freeze-bg,var(--warm-white)) !important}
 .spec-table.freeze-col thead th:first-child{z-index:3}
-/* Sticky headers need opaque background; the !important overrides inline 'background:transparent' seen on dark-section th */
-.spec-table.freeze-col thead th{background-color:var(--freeze-header-bg,#f1f5f9) !important}
-.insight{border-left:4px solid var(--primary);background:#eff6ff;padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:13px;line-height:1.8}
-.insight.red{border-left-color:var(--cn);background:#fef2f2}
-.insight.green{border-left-color:#16a34a;background:#f0fdf4}
-.insight b:first-child{display:block;margin-bottom:3px;font-size:14px}
-.analysis-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-.analysis-card h4{font-size:15px;font-weight:700;margin-bottom:6px}
-.analysis-card p{font-size:13px;color:var(--text2);line-height:1.8}
-.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:6px}
-.timeline{position:relative;padding:16px 0 16px 36px;border-left:3px solid rgba(255,255,255,.15)}
+.spec-table.freeze-col thead th{background-color:var(--freeze-header-bg,var(--gray-6)) !important}
+.insight{border-left:3px solid var(--accent);background:var(--accent-soft);padding:14px 18px;border-radius:0 var(--radius) var(--radius) 0;margin:16px 0;font-size:13px;line-height:1.85;color:var(--ink)}
+.insight.red{border-left-color:#A86464;background:rgba(168,100,100,.06)}
+.insight.green{border-left-color:var(--ext-sage);background:rgba(138,155,144,.08)}
+.insight b:first-child{display:block;margin-bottom:3px;font-size:14px;color:var(--ink)}
+.analysis-card{background:var(--warm-white);border:1px solid var(--gray-5);border-radius:var(--radius);padding:24px}
+.analysis-card h4{font-family:var(--font-serif-zh);font-size:15px;font-weight:600;margin-bottom:6px;color:var(--ink)}
+.analysis-card p{font-size:13px;color:var(--gray-2);line-height:1.85}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:1.5px;padding:2px 7px;border-radius:4px;margin-bottom:6px}
+.timeline{position:relative;padding:16px 0 16px 36px;border-left:2px solid rgba(247,243,238,.18)}
 .tl-item{position:relative;margin-bottom:22px;padding-left:16px}
-.tl-item::before{content:'';position:absolute;left:-28px;top:5px;width:12px;height:12px;border-radius:50%;border:3px solid #fff}
-.tl-item.cn::before{background:var(--cn)}.tl-item.us::before{background:var(--us)}
-.tl-item .yr{font-size:11px;font-weight:700;margin-bottom:1px}
-.tl-item .yr.cn{color:#f87171}.tl-item .yr.us{color:#60a5fa}
-.tl-item .ds{font-size:13px;color:rgba(255,255,255,.55)}
-.cost-row{display:grid;grid-template-columns:220px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
-.cost-row .label{font-weight:600;color:var(--text)}
-.cost-row .val{color:var(--text2)}
-.cost-row .val b{color:var(--text);font-weight:700}
+.tl-item::before{content:'';position:absolute;left:-28px;top:5px;width:12px;height:12px;border-radius:50%;border:3px solid var(--paper)}
+.tl-item.cn::before{background:#A86464}.tl-item.us::before{background:var(--ext-slate)}
+.tl-item .yr{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:1px;margin-bottom:1px}
+.tl-item .yr.cn{color:#C97878}.tl-item .yr.us{color:#9AB0BB}
+.tl-item .ds{font-size:13px;color:rgba(247,243,238,.55);font-family:var(--font-serif-zh)}
+.cost-row{display:grid;grid-template-columns:220px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--gray-5);font-size:13px}
+.cost-row .label{font-weight:500;color:var(--ink)}
+.cost-row .val{color:var(--gray-2)}
+.cost-row .val b{color:var(--ink);font-weight:600}
 .decision-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
 @media(max-width:768px){.decision-row{grid-template-columns:1fr};.sec{padding:68px 16px 40px};nav .links{display:none};.cost-row{grid-template-columns:1fr}}
-.phase-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-.phase-card h4{font-size:16px;font-weight:700;margin-bottom:3px;text-align:center}
-.phase-card .period{font-size:12px;color:var(--text2);margin-bottom:12px;text-align:center}
-.phase-card ul{font-size:13px;color:var(--text2);list-style:none;padding:0}
+.phase-card{background:var(--warm-white);border:1px solid var(--gray-5);border-radius:var(--radius);padding:24px}
+.phase-card h4{font-family:var(--font-serif-zh);font-size:16px;font-weight:600;margin-bottom:3px;text-align:center;color:var(--ink)}
+.phase-card .period{font-family:var(--font-mono);font-size:12px;color:var(--gray-2);margin-bottom:12px;text-align:center;letter-spacing:1.5px}
+.phase-card ul{font-size:13px;color:var(--gray-2);list-style:none;padding:0}
 .phase-card li{padding:3px 0 3px 18px;position:relative}
-.phase-card li::before{content:'>';position:absolute;left:0;color:var(--primary);font-weight:700}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.phase-card li::before{content:'·';position:absolute;left:6px;color:var(--accent);font-weight:700}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
 .fade-in.visible{opacity:1;transform:translateY(0)}
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#0f172a,#1e3a5f,#0f172a);color:#fff;padding:80px 24px;position:relative}
-.hero-title{font-size:clamp(28px,5vw,50px);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:14px}
-.hero-sub{font-size:clamp(14px,2.5vw,19px);color:rgba(255,255,255,.55);margin-bottom:40px;max-width:600px}
-.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:720px;width:100%}
-.stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px 16px;opacity:0;transform:translateY(24px);transition:all .5s}
-.stat-card.visible{opacity:1;transform:translateY(0)}
-.stat-card .num{font-size:clamp(18px,2.8vw,28px);font-weight:800;margin-bottom:3px;white-space:nowrap}
-.stat-card .num .cn{color:#f87171}.stat-card .num .us{color:#60a5fa}.stat-card .num .vs{color:rgba(255,255,255,.25);font-size:.5em;margin:0 4px}
-.stat-card .lbl{font-size:12px;color:rgba(255,255,255,.4)}
-@media(max-width:500px){.stat-grid{grid-template-columns:1fr}.stat-card .num{font-size:clamp(16px,5vw,24px)}}
-footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-align:center;font-size:12px}
-.text-block{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);font-size:14px;line-height:2;color:var(--text)}
-.text-block h4{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text)}
-.text-block h5{font-size:14px;font-weight:600;margin:12px 0 4px;color:var(--text)}
+/* Hero — dark surface (manifesto exception per brand) */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);padding:96px 32px 80px;position:relative;font-family:var(--font-serif-zh)}
+.hero-meta{position:absolute;top:78px;left:0;right:0;max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:3px;text-transform:uppercase}
+.hero-monogram{font-family:var(--font-serif-en);font-size:18px;font-weight:600;color:var(--paper);letter-spacing:0;text-transform:none}
+.hero-monogram .paren{color:var(--accent);font-weight:400}
+.hero-body{max-width:880px;margin:0 auto;text-align:center;width:100%}
+.hero-title{font-family:var(--font-serif-zh);font-size:clamp(40px,7vw,84px);font-weight:900;letter-spacing:-.02em;line-height:1.18;color:var(--paper);margin-bottom:48px}
+.hero-title .paren{font-family:var(--font-serif-en);color:var(--accent);font-weight:400}
+.hero-title .or{display:block;color:var(--gray-3);font-weight:300;font-size:.4em;letter-spacing:8px;margin:14px 0;font-family:var(--font-mono);text-transform:uppercase}
+.hero-sub{font-family:var(--font-serif-zh);font-size:clamp(15px,1.55vw,18px);font-weight:400;line-height:2;color:rgba(247,243,238,.78);max-width:680px;margin:0 auto;text-align:left}
+.hero-sub .accent{color:var(--accent);font-family:var(--font-serif-en);font-weight:400;font-style:italic}
+.hero-sub b{font-weight:600;color:var(--paper)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:3px;text-transform:uppercase}
+@media(max-width:600px){
+  .hero-meta{position:static;flex-direction:column;gap:8px;align-items:flex-start;margin-bottom:48px;padding:0}
+  .hero-title{font-size:clamp(36px,9vw,56px);margin-bottom:32px}
+  .hero-sub{font-size:14px;line-height:1.85}
+}
+footer{background:var(--ink);color:rgba(247,243,238,.4);padding:56px 24px 36px;text-align:center;font-family:var(--font-serif-zh)}
+footer .monogram{font-family:var(--font-serif-en);font-size:24px;font-weight:600;color:var(--paper);margin-bottom:6px;letter-spacing:0}
+footer .monogram .paren{color:var(--accent);font-weight:400}
+footer .tagline{font-family:var(--font-serif-en);font-style:italic;font-size:13px;color:var(--gray-3);margin-bottom:28px}
+footer .meta{font-family:var(--font-mono);font-size:11px;color:rgba(247,243,238,.4);letter-spacing:2px;line-height:1.85}
+.text-block{background:var(--warm-white);border:1px solid var(--gray-5);border-radius:var(--radius);padding:24px;font-family:var(--font-serif-zh);font-size:14px;line-height:1.95;color:var(--ink)}
+.text-block h4{font-size:16px;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.text-block h5{font-size:14px;font-weight:600;margin:12px 0 4px;color:var(--ink)}
 .text-block p{margin-bottom:8px}
-.text-block ul{margin:4px 0 8px 20px;font-size:13px;color:var(--text2)}
+.text-block ul{margin:4px 0 8px 20px;font-size:13px;color:var(--gray-2)}
 .text-block li{margin-bottom:2px}
-.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--gray-5)}
 .hsr-compare th,.hsr-compare td{text-align:center;padding:8px 12px}
 .hsr-compare{width:100%;border-collapse:collapse;font-size:13px}
-.hsr-compare th{background:#f1f5f9;font-weight:600;border-bottom:2px solid var(--border)}
-.hsr-compare td{border-bottom:1px solid var(--border)}
-.econ-explain{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border:1px solid #bfdbfe;border-radius:var(--radius);padding:24px;margin:16px 0;font-size:13px;line-height:2}
-.econ-explain h4{font-size:15px;font-weight:700;margin-bottom:8px}
-.econ-explain .step{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:8px 0}
-.thesis-card{background:linear-gradient(135deg,#fefce8,#fef9c3);border:1px solid #fde68a;border-left:5px solid #f59e0b;border-radius:var(--radius);padding:18px 22px;margin:0 0 28px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.thesis-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#b45309;background:#fffbeb;border:1px solid #fde68a;padding:2px 8px;border-radius:3px;margin-bottom:8px}
-.thesis-line{font-size:17px;font-weight:700;line-height:1.5;color:#451a03;margin-bottom:10px}
+.hsr-compare th{background:var(--gray-6);font-family:var(--font-sans-zh);font-weight:600;border-bottom:2px solid var(--gray-5)}
+.hsr-compare td{border-bottom:1px solid var(--gray-5);font-family:var(--font-serif-zh)}
+.econ-explain{background:var(--accent-soft);border:1px solid var(--accent-fade);border-radius:var(--radius);padding:24px;margin:16px 0;font-family:var(--font-serif-zh);font-size:13px;line-height:1.95;color:var(--ink)}
+.econ-explain h4{font-size:15px;font-weight:600;margin-bottom:8px}
+.econ-explain .step{background:var(--warm-white);border:1px solid var(--gray-5);border-radius:8px;padding:12px 16px;margin:8px 0}
+.thesis-card{background:var(--warm-white);border:1px solid var(--gray-5);border-left:3px solid var(--accent);border-radius:var(--radius);padding:20px 24px;margin:0 0 28px 0}
+.thesis-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);background:transparent;border:none;padding:0;margin-bottom:10px}
+.thesis-line{font-family:var(--font-serif-zh);font-size:17px;font-weight:600;line-height:1.7;color:var(--ink);margin-bottom:14px}
+.thesis-line .paren{font-family:var(--font-serif-en);color:var(--accent);font-weight:400}
 .thesis-evidence{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px}
-.thesis-evidence li{font-size:13px;color:#7c2d12;line-height:1.55;padding-left:18px;position:relative;background:rgba(255,255,255,.5);border-radius:4px;padding:8px 12px 8px 26px}
-.thesis-evidence li::before{content:'→';position:absolute;left:8px;top:8px;color:#d97706;font-weight:700}
+.thesis-evidence li{font-family:var(--font-serif-zh);font-size:13px;color:var(--gray-1);line-height:1.7;padding:10px 14px 10px 28px;position:relative;background:var(--paper);border-radius:6px}
+.thesis-evidence li::before{content:'·';position:absolute;left:14px;top:8px;color:var(--accent);font-weight:700;font-size:18px;line-height:1}
 @media(max-width:600px){.thesis-evidence{grid-template-columns:1fr}}
-.insight-title{display:block;font-size:14px;font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed rgba(0,0,0,.1)}
+.insight-title{display:block;font-family:var(--font-serif-zh);font-size:14px;font-weight:600;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed var(--gray-5);color:var(--ink)}
 .insight-rules{list-style:none;padding:0;margin:0}
-.insight-rules>li{padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.07);font-size:13px;line-height:1.7}
+.insight-rules>li{padding:8px 0;border-bottom:1px dashed var(--gray-6);font-size:13px;line-height:1.7;color:var(--ink)}
 .insight-rules>li:last-child{border-bottom:none}
-.insight-rules>li>b:first-child{display:inline-block;color:#1e40af;margin-right:4px}
-.insight.red .insight-rules>li>b:first-child{color:#b91c1c}
-.insight.green .insight-rules>li>b:first-child{color:#15803d}
-.tip{border-bottom:1px dotted #94a3b8;cursor:help;display:inline}
-#tip-popup{position:fixed;background:#0f172a;color:#fff;padding:10px 14px;border-radius:6px;font-size:12.5px;line-height:1.6;max-width:360px;min-width:120px;z-index:9999;pointer-events:none;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .12s}
+.insight-rules>li>b:first-child{display:inline-block;color:var(--accent);margin-right:4px;font-weight:600}
+.insight.red .insight-rules>li>b:first-child{color:#A86464}
+.insight.green .insight-rules>li>b:first-child{color:var(--ext-sage)}
+.tip{border-bottom:1px dotted var(--gray-3);cursor:help;display:inline}
+#tip-popup{position:fixed;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:6px;font-family:var(--font-serif-zh);font-size:12.5px;line-height:1.6;max-width:360px;min-width:120px;z-index:9999;pointer-events:none;box-shadow:0 6px 24px rgba(42,37,32,.18);opacity:0;transition:opacity .12s}
 #tip-popup.show{opacity:1}
+.paren{font-family:var(--font-serif-en);color:var(--accent);font-weight:400}
+/* Nutrition label — square corners, FDA-style */
+.nutrition{background:var(--warm-white);border:2px solid var(--ink);border-radius:0;padding:18px 22px;margin:32px auto;max-width:480px;font-family:var(--font-sans-zh);color:var(--ink)}
+.nutrition h4{font-family:var(--font-serif-zh);font-size:18px;font-weight:700;margin:0 0 4px;border-bottom:6px solid var(--ink);padding-bottom:8px;letter-spacing:-.5px}
+.nutrition .sub{font-size:11px;color:var(--gray-2);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--gray-5);line-height:1.6}
+.nutrition .row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;padding:5px 0;border-bottom:1px solid var(--gray-6)}
+.nutrition .row:last-of-type{border-bottom:2px solid var(--ink)}
+.nutrition .row .label{color:var(--ink);font-weight:500}
+.nutrition .row .val{color:var(--accent);font-family:var(--font-mono);font-weight:600;letter-spacing:1px;font-size:12px}
+.nutrition .footnote{font-family:var(--font-sans-zh);font-size:10.5px;color:var(--gray-2);margin-top:10px;line-height:1.65;font-weight:300}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">物流通航 | 中国无人货运飞机分析</div>
+  <div class="logo">物流通航 <span class="paren">(</span> 中美无人货运对比 <span class="paren">)</span></div>
   <div class="links">
     <a href="#hero">首页</a><a href="#s1">地理经济</a><a href="#s2">基础设施</a><a href="#s3">需求分析</a>
     <a href="#s5">高铁竞争</a><a href="#s4">机队枢纽</a><a href="#s6">成本推导</a><a href="#s7">经济边界</a><a href="#s7b">机型主导</a>
@@ -138,15 +174,15 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
 <!-- HERO -->
 <section id="hero" class="sec">
-  <div class="hero-title">中国物流通航：无人货运飞机能改变什么？</div>
-  <div class="hero-sub">从地理、成本、需求出发，用第一性原理推导中国需要什么样的无人货运飞机，以及这门生意能不能做</div>
-  <div class="stat-grid">
-    <div class="stat-card" style="transition-delay:0s"><div class="num"><span class="cn">14 亿</span><span class="vs">vs</span><span class="us">3.3 亿</span></div><div class="lbl">人口</div></div>
-    <div class="stat-card" style="transition-delay:.12s"><div class="num"><span class="cn">734</span><span class="vs">vs</span><span class="us">3,287</span></div><div class="lbl">民用机场 (含运输+通航)</div></div>
-    <div class="stat-card" style="transition-delay:.24s"><div class="num"><span class="cn">3,232</span><span class="vs">vs</span><span class="us">21 万</span></div><div class="lbl">通航飞机</div></div>
-    <div class="stat-card" style="transition-delay:.36s"><div class="num"><span class="cn">14.1%</span><span class="vs">vs</span><span class="us">8.8%</span></div><div class="lbl">物流成本/GDP</div></div>
+  <div class="hero-meta">
+    <div class="hero-monogram">N<span class="paren">(</span>e<span class="paren">)</span>O · INFERENCE</div>
+    <div>2026 · 04 · 26 &nbsp;·&nbsp; ( 001 )</div>
   </div>
-  <div style="position:absolute;bottom:28px;color:rgba(255,255,255,.25);font-size:12px">&#8595; 向下滚动</div>
+  <div class="hero-body">
+    <h1 class="hero-title">乘风起<span class="or">还是</span>等风来<span class="paren">.</span></h1>
+    <p class="hero-sub">飞机不是单点技术能赢的赛道，是<b>系统性工程</b>。问题不是设计能造多大的飞机，而是怎样在当前适航框架里做出能尽快上天、持续积累飞行小时的方案——并且这个方案要是长期路径的起点，能够一代代迭代下去。<br><br>TC 到规模商运是 5-10 年的部署曲线。中间没有捷径，只有六项叠加的能力：<b>长期计划、商业敏感、整合资源、影响监管、飞行飞轮、持续融资</b>。每一项都需要数年。<br><br><span class="accent">乘风起，还是等风来</span>，问的不是市场是否到来，而是谁能在风来之前把帆缝好。</p>
+  </div>
+  <div class="hero-scroll">↓ 向下滚动</div>
 </section>
 
 <!-- S1: GEOGRAPHY + ECONOMY -->
@@ -245,7 +281,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S2: INFRASTRUCTURE GAP -->
-<section id="s2" class="sec" style="background:#fff">
+<section id="s2" class="sec">
   <div class="sec-inner">
     <div class="sec-label">02 -- 基础设施差距</div>
     <div class="sec-title fade-in">机场差 19 倍，飞机差 261 倍</div>
@@ -496,7 +532,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S5: HSR COMPETITION (NEW SECTION) -->
-<section id="s5" class="sec" style="background:#fff">
+<section id="s5" class="sec">
   <div class="sec-inner">
     <div class="sec-label">04 -- 高铁货运竞争分析</div>
     <div class="sec-title fade-in">高铁不是好的货运方式</div>
@@ -732,7 +768,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S6: COST DERIVATION -->
-<section id="s6" class="sec" style="background:#fff">
+<section id="s6" class="sec">
   <div class="sec-inner">
     <div class="sec-label">06 -- 成本算法</div>
     <div class="sec-title fade-in">一小时飞行的钱花在哪里，七项成本不是平均分布</div>
@@ -1298,7 +1334,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S7b: AIRCRAFT DOMINANCE -->
-<section id="s7b" class="sec" style="background:#fff">
+<section id="s7b" class="sec">
   <div class="sec-inner">
     <div class="sec-label">07b -- 机型主导</div>
     <div class="sec-title fade-in">（业载 × 距离）平面上谁主导哪一格，哪些设计空间还是白的?</div>
@@ -1402,7 +1438,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S8: AIRCRAFT CATALOG -->
-<section id="s8" class="sec" style="background:#fff">
+<section id="s8" class="sec">
   <div class="sec-inner">
     <div class="sec-label">08 -- 机型目录</div>
     <div class="sec-title fade-in">有人机与无人机：全部可比较机型的参数和价格</div>
@@ -1500,7 +1536,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S9: UAV ROLE IN CHINA -->
-<section id="s9" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
+<section id="s9" class="sec" style="background:var(--ink);">
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">09 -- 中国货运 UAV 现状与中美对照</div>
     <div class="sec-title fade-in" style="color:#fff">中国货运 UAV：5 款主力机型在审，监管框架成型，中美各走各的节奏</div>
@@ -1508,7 +1544,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 
     <!-- NEW S9 CONTENT -->
 
-    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+    <div class="thesis-card fade-in" style="background:rgba(247,243,238,.05);border-color:rgba(247,243,238,.15);border-left-color:var(--accent)">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章三幕</div>
       <div class="thesis-line" style="color:rgba(255,255,255,.95)">中国货运 UAV 从地理、机队、干线三个层面看都有产品方向：补西部支线、改变机队成本结构（但不解决空域）、把干线机场要求降到县级跑道。从产品到规模商运之间，最长的等待项是适航审批。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
@@ -1812,7 +1848,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S10: 未来场景与需求规模 -->
-<section id="s10" class="sec" style="background:#fff">
+<section id="s10" class="sec">
   <div class="sec-inner">
     <div class="sec-label">10 -- 未来场景与需求规模</div>
     <div class="sec-title fade-in">参照 C919 与高铁的节奏：商业化路还很长，市场体量预估要谨慎</div>
@@ -1931,14 +1967,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S11: AI 总设计师, 逐子系统设计 -->
-<section id="s11" class="sec" style="background:linear-gradient(135deg,#1e293b,#334155);">
+<section id="s11" class="sec" style="background:var(--ink);">
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">11 -- AI 总设计</div>
     <div class="sec-title fade-in" style="color:#fff">如果把设计交给只看商业回报的总设计师, 逐子系统该怎么画?</div>
     <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">业载 × 距离平面最大化是商业目标，2026 CAAC 规则是当前的门。先把贴近 5,700 kg 上限的主线做出来，再按顺序向 8-10 t 货运衍生型、12-15 t 可扩展平台演进。六个子系统逐项设计，每项写清楚当下选择与跨代承接接口。</div>
 
     <!-- 本章一句话 -->
-    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+    <div class="thesis-card fade-in" style="background:rgba(247,243,238,.05);border-color:rgba(247,243,238,.15);border-left-color:var(--accent)">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
       <div class="thesis-line" style="color:rgba(255,255,255,.95)">反推的最优机型是贴近 5,700 kg 上限的「空档填补型」：2.2-2.4 t 载荷 × 2,500 km 航程，双发国产 AEP100 涡桨，吨公里约 4.2 元。六个子系统按演进接口设计，追求的不是点最优而是路径最优。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
@@ -2226,7 +2262,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
     </div>
 
     <!-- 块 9: 最终规格表 -->
-    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:linear-gradient(135deg,rgba(96,165,250,.1),rgba(147,51,234,.08));border:1px solid rgba(96,165,250,.3);border-radius:var(--radius)">
+    <div class="fade-in" style="margin-top:20px;padding:20px 24px;background:rgba(247,243,238,.04);border:1px solid rgba(247,243,238,.15);border-radius:var(--radius)">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
         <div style="background:rgba(96,165,250,.25);color:#93c5fd;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700">最终规格</div>
         <h4 style="color:#fff;font-size:17px;margin:0">六个子系统叠加反推出的机型规格</h4>
@@ -2318,13 +2354,13 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
 </section>
 
 <!-- S12: 最终结论 -->
-<section id="s12" class="sec" style="background:linear-gradient(135deg,#0f172a,#1e3a5f)">
+<section id="s12" class="sec" style="background:var(--ink)">
   <div class="sec-inner" style="color:#fff">
     <div class="sec-label" style="color:#60a5fa">12 -- 最终结论</div>
     <div class="sec-title fade-in" style="color:#fff">哪些公司有机会走到长期</div>
     <div class="sec-sub fade-in" style="color:rgba(255,255,255,.5)">飞机是 5-10 年的系统性工程，不是某一项技术突破能跑出来。能走到长期的公司，共享四类能力——长期计划、商业敏感、影响监管、飞行飞轮，再加上一项穿透始终的资本耐力。</div>
 
-    <div class="thesis-card fade-in" style="background:linear-gradient(135deg,rgba(254,252,232,.12),rgba(254,249,195,.08));border-color:rgba(253,230,138,.3);border-left-color:#f59e0b">
+    <div class="thesis-card fade-in" style="background:rgba(247,243,238,.05);border-color:rgba(247,243,238,.15);border-left-color:var(--accent)">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
       <div class="thesis-line" style="color:rgba(255,255,255,.95)">飞机不是单点技术突破能赢的赛道，是系统性工程。能不能走到长期，看的是长期计划、商业敏感、整合资源、影响监管，加上飞行飞轮和持续融资。这六项能力是叠加关系，每一项都需要数年积累。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
@@ -2608,15 +2644,31 @@ footer{background:#0f172a;color:rgba(255,255,255,.4);padding:32px 24px;text-alig
       </div>
     </div>
 
+    <!-- Content Nutrition Facts — 内容营养标签 -->
+    <div class="nutrition" style="background:var(--paper);border-color:var(--paper)">
+      <h4>Content Nutrition Facts</h4>
+      <div class="sub">本文为人机协作产物。下方标签声明协作模式与素材来源，作为透明度承诺。</div>
+      <div class="row"><span class="label">协作模式</span><span class="val">CO-CREATED</span></div>
+      <div class="row"><span class="label">人类主导环节</span><span class="val">FRAMING / JUDGMENT</span></div>
+      <div class="row"><span class="label">AI 辅助环节</span><span class="val">RESEARCH / DRAFT / FORMAT</span></div>
+      <div class="row"><span class="label">数据来源</span><span class="val">CAAC · FAA · NBS · BEA</span></div>
+      <div class="row"><span class="label">最后更新</span><span class="val">2026 · 04 · 26</span></div>
+      <div class="footnote">"Co-created"（深度协作）：作者负责论点框架、判断、写作风格与价值取向；AI 协助完成资料检索、数据整理、表格生成、文案草稿。所有数据均标注权威来源。</div>
+    </div>
+
   </div>
 </section>
 
 
 <footer>
   <div style="max-width:var(--max-w);margin:0 auto">
-    <div style="margin-bottom:8px">物流通航：中美需求对比分析 | Logistics GA: China-US Demand Comparison</div>
-    <div>数据截至2024年12月 | 汇率: 1 USD = 7.27 RMB | 所有金额以人民币计价</div>
-    <div style="margin-top:4px">数据来源: CAAC, FAA, 国家统计局, US Census Bureau, BEA, BTS, 国家邮政局, 交通运输部, IATA</div>
+    <div class="monogram">N<span class="paren">(</span>e<span class="paren">)</span>O</div>
+    <div class="tagline">碳硅之间，思考发生.</div>
+    <div class="meta">
+      物流通航 · 中美无人货运对比 · 2026-04<br>
+      数据截至 2026 年 4 月 · 汇率 1 USD = 7.27 RMB · 金额以人民币计价<br>
+      来源 CAAC · FAA · NBS · US CENSUS · BEA · BTS · 国家邮政局 · 交通运输部 · IATA
+    </div>
   </div>
 </footer>
 
