@@ -1579,11 +1579,9 @@ footer .meta{font-family:var(--font-mono);font-size:11px;color:rgba(247,243,238,
       <div class="chart-title">有人机 + UAV 雷达图对比（10 款，5+5）</div>
       <div class="chart-desc">五个维度：载荷、航程、速度、短跑道能力（起飞距离越短越好）、性价比（载荷÷价格，kg/万元，越大越好）。<b>实线 = 有人机（暖色），虚线 = UAV（冷色）</b>。<br>主要观察：
         <ul style="margin:6px 0 6px 20px">
-          <li>UAV 性价比全面领先，同尺寸对比 W5000 ≈ 2.8× ATR 42-600F，Caravan UAV 改装 ≈ 2.2× Grand Caravan EX 新机；TP500 以 3.33 kg/万元居首</li>
-          <li>短跑道能力 Kodiak 100（305m）最强，UAV 中 HH-200 / CY-8（500m）并列第二梯队，W5000（1,200m）和 ATR 42（1,050m）反而受限</li>
-          <li>ATR 42 在速度维度（556 km/h）单项封顶，W5000（526 km/h）紧随</li>
-          <li>航程 CY-8（3,000+ km）> 所有有人机；有人机最长航程 Kodiak 100（2,445 km）仍输给 HH-200（2,360 km）与 CY-8</li>
-          <li>有人机里性价比最高的是 Grand Caravan EX（0.84 kg/万元），但仍只有 TP500 的 1/4</li>
+          <li>UAV 性价比有结构性领先（TP500 3.33 kg/万元，Caravan UAV 改装 1.81，AutoFlight 1.6；有人机最高 PAC P-750 XSTOL 0.855，Grand Caravan EX 0.840），价格里没算驾驶舱与飞行员摊销是主因</li>
+          <li>短跑道、长航程、大载荷分别由不同机型占据，不存在「全能机型」：短跑道靠常规涡桨小机（PAC P-750 244m，Kodiak 100 305m），长航程靠双发涡桨公务机（King Air 360 3,540 km，King Air 260 2,980 km），大载荷靠支线货机（ATR 72-600F 8.5t，Dash 8-400 8t），三个维度互不重叠</li>
+          <li>W5000 / CY-8 / HH-200 在跑道与价格之间取了平衡（跑道 500-1,200m，价格 1,500-4,500 万元），但都不是任一单维冠军——速度由 Dash 8-400（667 km/h）封顶，ATR 42 / 72 与 W5000（526）同档</li>
         </ul>
       </div>
       <div id="chart-aircraft-radar" class="chart-box" style="height:560px"></div>
@@ -1629,7 +1627,7 @@ footer .meta{font-family:var(--font-mono);font-size:11px;color:rgba(247,243,238,
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
         <div class="tag" style="background:rgba(138,155,144,.2);color:#4ade80">方向 2</div>
         <h4 style="color:#fff;font-size:15px;margin-top:4px">绕开机队规模差距</h4>
-        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通用航空有人机队 3,232 架，美国 21 万架。按近十年年均净增 150-200 架的速度，即使政策加码到年增 500 架，追平美国存量也需三十年以上。<br><br>UAV 在三个边际上改变成本结构：飞行员与驾驶舱完全绕过；机场要求部分降低（500 m 短跑道把建设门槛从数亿压到千万级，但仍需选址征地）；低空空域不绕过——<span class="tip" data-t="Beyond Visual Line of Sight 超视距运行">BVLOS</span> 运行仍依赖空管、低空开放、通信避障配套。<br><br>UAV 解决的是机上成本和短跑道适配，不解决低空空域能不能用。未来五年的宏观瓶颈在空域政策落地速度，与机型数量关系不大。</p>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.7">中国通用航空有人机队 3,232 架，美国 21 万架，差 65 倍。这个量级差距不靠「加大有人机机队」能补——按近十年年均净增 150-200 架的速度，靠存量增长追平在数百年量级。中国走的是另一条路：直接跳到无人货运，不补有人机存量。<br><br>UAV 在三个边际上改变成本结构：飞行员与驾驶舱完全绕过；机场要求部分降低（500 m 短跑道把建设门槛从数亿压到千万级，但仍需选址征地）；低空空域不绕过——<span class="tip" data-t="Beyond Visual Line of Sight 超视距运行">BVLOS</span> 运行仍依赖空管、低空开放、通信避障配套。<br><br>UAV 解决的是机上成本和短跑道适配，不解决低空空域能不能用。未来五年的宏观瓶颈在空域政策落地速度，与机型数量关系不大。</p>
         <div style="margin-top:10px;font-size:10.5px;color:rgba(255,255,255,.4);line-height:1.5">来源：AOPA 中国通航年度报告 2024（3,232 架）；AOPA USA General Aviation Statistical Databook 2023（21 万架）；中国民航局 2024 年通航机队统计</div>
       </div>
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px">
@@ -2419,7 +2417,7 @@ footer .meta{font-family:var(--font-mono);font-size:11px;color:rgba(247,243,238,
 
     <div class="thesis-card fade-in" style="background:rgba(247,243,238,.05);border-color:rgba(247,243,238,.15);border-left-color:var(--accent)">
       <div class="thesis-tag" style="background:rgba(255,251,235,.15);border-color:rgba(253,230,138,.3)">本章一句话</div>
-      <div class="thesis-line" style="color:rgba(255,255,255,.95)">飞机不是单点技术突破能赢的赛道，是系统性工程。能不能走到长期，看的是长期计划、商业敏感、整合资源、影响监管，加上飞行飞轮和持续融资。这六项能力是叠加关系，每一项都需要数年积累。</div>
+      <div class="thesis-line" style="color:rgba(255,255,255,.95)">飞机不是单点技术突破能赢的赛道，是系统性工程。能不能走到长期，看的是四类能力——长期计划+影响监管，商业敏感+整合资源，飞行飞轮，跨代承接——以及穿透始终的资本耐力。每一项都需要数年积累。</div>
       <ul class="thesis-evidence" style="color:rgba(255,255,255,.7)">
         <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)"><b style="color:#4ade80">1 · 取证到规模运营仍有距离</b>：仅 V2000CG（载人 eVTOL）三证齐全可合法商业飞行，货运 UAV 全部还在取证路上。航空器从 TC 到累计 100 架是 5-10 年的部署曲线，由监管惯性决定。</li>
         <li style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.75)"><b style="color:#60a5fa">2 · 系统性工程不等于单点技术</b>：子系统选型是商业判断，供应链整合是资源能力，参与标准制定是体制嵌入。SkyCourier 3 年取证 vs C919 10 年取证，差别不在工程难度，在子系统是否有现成证据。</li>
@@ -2564,7 +2562,7 @@ footer .meta{font-family:var(--font-mono);font-size:11px;color:rgba(247,243,238,
           </thead>
           <tbody>
             <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>2026 Q4</b></td><td style="border-color:rgba(255,255,255,.08)">至少一款货运 UAV 拿到 TC</td><td style="border-color:rgba(255,255,255,.08)">整体论点后延 6 个月，短期预测取下限（¥5 亿）</td></tr>
-            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>2027 H1</b></td><td style="border-color:rgba(255,255,255,.08)">TP500 进入 PC + 首架交付 + 累计试飞 ≥500 架次</td><td style="border-color:rgba(255,255,255,.08)">TP500 路径受阻，短期预测下修至 ¥3-7 亿（仅剩 CY-8 军采 + V2000CG）</td></tr>
+            <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>2027 H1</b></td><td style="border-color:rgba(255,255,255,.08)">TP500 进入 PC + 首架交付 + 累计试飞 ≥150 架次</td><td style="border-color:rgba(255,255,255,.08)">TP500 路径受阻，短期预测下修至 ¥3-7 亿（仅剩 CY-8 军采 + V2000CG）</td></tr>
             <tr style="border-color:rgba(255,255,255,.08)"><td style="border-color:rgba(255,255,255,.08)"><b>2028 Q2</b></td><td style="border-color:rgba(255,255,255,.08)">累计商业货运 ≥3,000 吨 + W5000 TC 审查阶段</td><td style="border-color:rgba(255,255,255,.08)">中期预测取下限（¥25 亿）</td></tr>
             <tr style="border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)"><td style="border-color:rgba(255,255,255,.08)"><b>2029 H2</b></td><td style="border-color:rgba(255,255,255,.08)">西部试点航线月吞吐 ≥2,000 吨/月</td><td style="border-color:rgba(255,255,255,.08)">西部需求未达预期，长期预测上限作废，压缩至 ¥60-120 亿</td></tr>
           </tbody>
