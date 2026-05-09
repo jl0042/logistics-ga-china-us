@@ -4339,21 +4339,28 @@ function renderRadiusMaps(){
     $('radius-insight-text').textContent=' —— 中国头部货运枢纽集中在沿海, 公路圈很快罩住主要城市; 西部覆盖不到的国土才是航空空间, 那里地形复杂, 实际运输时间远超理论值。'+areaNote;
   }
 
-  // Generate circle data for all hubs (Anchorage gets a separate prominent style)
-  function buildCircleSeries(hubs,radiusKm,isAlaska){
-    return hubs.map(function(h,i){
-      var isAk=isAlaska&&isAlaska(h,i);
-      return{type:'lines',coordinateSystem:'geo',polyline:true,silent:true,
-        lineStyle:isAk
-          ?{color:'rgba(168,100,100,.85)',width:3.5,type:'solid'}
-          :{color:'rgba(200,185,154,.55)',width:2,type:'solid'},
-        effect:{show:false},
-        zlevel:isAk?2:1,
-        data:[{coords:geoCircle(h[1],h[0],radiusKm,72)}]};
-    });
+  // Generate circle polygons for all hubs (filled, stroked). Anchorage gets the accent terracotta on top.
+  function buildCircleSeries(hubs,radiusKm,isAlaska,country){
+    var baseRGB=country==='cn'?'168,100,100':'122,139,148'; // CN terracotta / US slate
+    var akRGB='184,88,74'; // accent terracotta for Anchorage
+    var indexed=hubs.map(function(h,i){return{h:h,i:i,ak:!!(isAlaska&&isAlaska(h,i))}});
+    indexed.sort(function(a,b){return (a.ak?1:0)-(b.ak?1:0)}); // draw Alaska last so it sits on top
+    return [{type:'custom',coordinateSystem:'geo',silent:true,zlevel:1,
+      renderItem:function(params,api){
+        var e=indexed[params.dataIndex];
+        var rgb=e.ak?akRGB:baseRGB;
+        var pts=geoCircle(e.h[1],e.h[0],radiusKm,72).map(function(c){return api.coord(c)});
+        return{type:'polygon',shape:{points:pts},style:{
+          fill:'rgba('+rgb+','+(e.ak?0.14:0.09)+')',
+          stroke:'rgba('+rgb+','+(e.ak?0.95:0.80)+')',
+          lineWidth:e.ak?3:1.8
+        }};
+      },
+      data:indexed.map(function(_,i){return i})
+    }];
   }
-  var cnCircleSeries=buildCircleSeries(cnCargoHubs,cnRadius,null);
-  var usCircleSeries=buildCircleSeries(usCargoHubs,usRadius,function(h){return h[0]<-140&&h[1]>50});
+  var cnCircleSeries=buildCircleSeries(cnCargoHubs,cnRadius,null,'cn');
+  var usCircleSeries=buildCircleSeries(usCargoHubs,usRadius,function(h){return h[0]<-140&&h[1]>50},'us');
 
   // Province/state coloring: gradient by area coverage fraction × GDP share intensity
   var cnMapData=cnProvinces.filter(function(p){return p.name!=='台湾'&&p.name!=='香港'&&p.name!=='澳门'}).map(function(p){
@@ -4398,7 +4405,7 @@ function renderRadiusMaps(){
       return{value:[h[0],h[1]],name:names[i],isHub:true};
     }),
     symbol:'diamond',symbolSize:13,itemStyle:{color:'#C8B99A',borderColor:'#fff',borderWidth:2.5},
-    label:{show:true,formatter:'{b}',position:'top',fontSize:10,fontWeight:700,color:'var(--gray-1)',backgroundColor:'rgba(255,255,255,.85)',padding:[1,4],borderRadius:2}
+    label:{show:true,formatter:'{b}',position:'top',fontSize:10,fontWeight:700,color:'#4A4440',backgroundColor:'rgba(255,255,255,.85)',padding:[1,4],borderRadius:2}
   };
   var usHubScatter={type:'scatter',coordinateSystem:'geo',zlevel:8,
     data:usCargoHubs.map(function(h,i){
@@ -4406,7 +4413,7 @@ function renderRadiusMaps(){
       return{value:[h[0],h[1]],name:names[i],isHub:true};
     }),
     symbol:'diamond',symbolSize:13,itemStyle:{color:'#C8B99A',borderColor:'#fff',borderWidth:2.5},
-    label:{show:true,formatter:'{b}',position:'top',fontSize:10,fontWeight:700,color:'var(--gray-1)',backgroundColor:'rgba(255,255,255,.85)',padding:[1,4],borderRadius:2}
+    label:{show:true,formatter:'{b}',position:'top',fontSize:10,fontWeight:700,color:'#4A4440',backgroundColor:'rgba(255,255,255,.85)',padding:[1,4],borderRadius:2}
   };
 
   var cnOpt={
